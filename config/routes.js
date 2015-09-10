@@ -38,6 +38,7 @@ module.exports.routes = {
   },
 
   'get /about': 'HomeController.index',
+  'get /contests': 'HomeController.index',
 
   'get /login': 'AuthController.login',
   'get /logout': 'AuthController.logout',

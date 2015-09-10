@@ -12,6 +12,7 @@ angular.module( 'bidio', [
     'bidio.sidebar',
     'bidio.home',
     'bidio.about',
+    'bidio.contests',
     'bidio.intro'
 
 ])
@@ -19,6 +20,7 @@ angular.module( 'bidio', [
 .config( function myAppConfig ( $stateProvider, $urlRouterProvider, $locationProvider ) {
 
     $urlRouterProvider.when('/about/', '/about');
+    $urlRouterProvider.when('/contests/', '/contests');
 
     $urlRouterProvider.otherwise(function ($injector, $location) {
         if ($location.$$url === '/') {

@@ -1,4 +1,4 @@
-angular.module('templates-app', ['about/index.tpl.html', 'home/index.tpl.html', 'intro/index.tpl.html', 'sidebar/index.tpl.html']);
+angular.module('templates-app', ['about/index.tpl.html', 'contests/index.tpl.html', 'home/index.tpl.html', 'intro/index.tpl.html', 'sidebar/index.tpl.html']);
 
 angular.module("about/index.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("about/index.tpl.html",
@@ -20,6 +20,15 @@ angular.module("about/index.tpl.html", []).run(["$templateCache", function($temp
     "	<p>this is the about page</p>\n" +
     "	<p>this is the about page</p>\n" +
     "\n" +
+    "\n" +
+    "\n" +
+    "</div>");
+}]);
+
+angular.module("contests/index.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("contests/index.tpl.html",
+    "<div class=\"surface-container home-pad\">\n" +
+    "	<h1>contests</h1>\n" +
     "\n" +
     "\n" +
     "</div>");
@@ -80,6 +89,14 @@ angular.module("sidebar/index.tpl.html", []).run(["$templateCache", function($te
     "                <div class=\"list-item\">\n" +
     "                    <div class=\"nav-small-list\"><i class=\"fa fa-info\"></i></div>\n" +
     "                    <div class=\"nav-large-list\">About</div>\n" +
+    "                </div>\n" +
+    "            </a>\n" +
+    "        </div>\n" +
+    "        <div class=\"item-container\">\n" +
+    "            <a href=\"/contests/\">\n" +
+    "                <div class=\"list-item\">\n" +
+    "                    <div class=\"nav-small-list\"><i class=\"fa fa-video-camera\"></i></div>\n" +
+    "                    <div class=\"nav-large-list\">Contests</div>\n" +
     "                </div>\n" +
     "            </a>\n" +
     "        </div>\n" +
