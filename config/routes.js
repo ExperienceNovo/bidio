@@ -32,17 +32,25 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  'get /': {
-    controller: 'HomeController',
-    action: 'index'
-  },
 
+  'get /': 'HomeController.index',
   'get /about': 'HomeController.index',
+  'get /admin': 'HomeController.index',
+  'get /account': 'HomeController.index',
   'get /contests': 'HomeController.index',
+  'get /contest/:path': 'HomeController.index',
+  'get /creators': 'HomeController.index',
+  'get /creator/:path': 'HomeController.index',
+  'get /dashboard': 'HomeController.index',
 
-  'get /login': 'AuthController.login',
+  'get /login': 'HomeController.index',
   'get /logout': 'AuthController.logout',
-  'get /register': 'AuthController.register',
+  'get /register': 'HomeController.index',
+
+  'get /search': 'HomeController.index',
+  'get /sponsors': 'HomeController.index',
+  'get /search/:path': 'HomeController.index',
+  'get /video/:id': 'HomeController.index',
 
   'post /auth/local': 'AuthController.callback',
   'post /auth/local/:action': 'AuthController.callback',
