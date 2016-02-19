@@ -9,14 +9,15 @@ angular.module( 'bidio', [
     'templates-app',
     'services',
     'models',
-    'bidio.sidebar',
     'bidio.home',
     'bidio.about',
     'bidio.creators',
     'bidio.contests',
     'bidio.intro',
     'bidio.login',
+    'bidio.nav',
     'bidio.register',
+    'bidio.search',
     'bidio.sponsors',
 
 ])
