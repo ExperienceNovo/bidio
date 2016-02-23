@@ -6,7 +6,6 @@
 */
 
 module.exports = {
-
 	attributes: {
         viewCount: {
             type: 'integer'

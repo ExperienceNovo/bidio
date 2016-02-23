@@ -51,6 +51,15 @@ angular.module("creators/index.tpl.html", []).run(["$templateCache", function($t
     "<div class=\"surface-container home-pad\">\n" +
     "	<h1>creators</h1>\n" +
     "\n" +
+    "	<h3>Upload Your Videos</h3>\n" +
+    "	<p>Our unique influencer marketing platform hosts content for creators who want to get support from sponsors without giving up creative control. Unlike other digital media networks and exchanges, we only take 8% of our users’ hard-earned advertising revenue.</p>\n" +
+    "\n" +
+    "	<h3>Enter Sponsored Contests</h3>\n" +
+    "	<p>Explore our active sponsors and discover video contests involving branded content. Simply follow the contest guidelines and submit uploads for the chance to get paid! If a brand likes your video, you’ll receive incremental payments based on your content’s performance.</p>\n" +
+    "\n" +
+    "	<h3>Get Paid Based on Virality</h3>\n" +
+    "	<p>Bidio’s auction system enables perfectly cost-effective content sponsorship, which helps any creator earn money by doing what they love. Share your sponsored content and capitalize that influence on the word wide web. Using our platform, the audience is anywhere and everywhere.</p>\n" +
+    "\n" +
     "\n" +
     "</div>");
 }]);
@@ -59,21 +68,12 @@ angular.module("home/index.tpl.html", []).run(["$templateCache", function($templ
   $templateCache.put("home/index.tpl.html",
     "<div class=\"surface-container-home\" ng-controller=\"HomeCtrl\">\n" +
     "    <div ng-include=\"'intro/index.tpl.html'\"></div>\n" +
-    "    CONTENT<br>\n" +
-    "    CONTENT<br>\n" +
-    "    CONTENT<br>\n" +
-    "    CONTENT<br>\n" +
-    "    CONTENT<br>\n" +
-    "    CONTENT<br>\n" +
-    "    CONTENT<br>\n" +
-    "    CONTENT<br>\n" +
-    "    CONTENT<br>\n" +
-    "    CONTENT<br>\n" +
-    "    CONTENT<br>\n" +
-    "    CONTENT<br>\n" +
-    "    CONTENT<br>\n" +
-    "    <div style=\"height:2000px;\"></div>\n" +
-    "    \n" +
+    "\n" +
+    "\n" +
+    "    <a href=\"/creators\">creators</a>\n" +
+    "    <a href=\"/sponsors\">sponsors</a>\n" +
+    "\n" +
+    "    <div style=\"height:800px;\"></div>    \n" +
     "</div>\n" +
     "\n" +
     "\n" +
@@ -90,7 +90,7 @@ angular.module("intro/index.tpl.html", []).run(["$templateCache", function($temp
     "<div class=\"intro\">\n" +
     "    <div class=\"intro-container\">\n" +
     "      <svg class=\"svg-defs\" viewBox=\"0 0 1920 1080\" viewPort=\"0 0 1920 1080\" preserveAspectRatio=\"xMidYMid slice\" xmlns=\"http://www.w3.org/2000/svg\">\n" +
-    "        <symbol id=\"intro-desktop-text\">\n" +
+    "        <a href=\"/creators\"><symbol id=\"intro-desktop-text\">\n" +
     "          <text text-anchor=\"middle\"\n" +
     "                x=\"960\"  \n" +
     "                y=\"570\"\n" +
@@ -99,7 +99,7 @@ angular.module("intro/index.tpl.html", []).run(["$templateCache", function($temp
     "                >\n" +
     "            connecting creators with sponsors\n" +
     "          </text>    \n" +
-    "        </symbol>\n" +
+    "        </symbol></a>\n" +
     "        <mask id=\"intro-desktop-mask\"\n" +
     "              maskunits=\"userSpaceOnUse\"\n" +
     "              maskcontentunits=\"userSpaceOnUse\">\n" +
@@ -265,6 +265,15 @@ angular.module("sponsors/index.tpl.html", []).run(["$templateCache", function($t
   $templateCache.put("sponsors/index.tpl.html",
     "<div class=\"surface-container home-pad\">\n" +
     "	<h1>sponsors</h1>\n" +
+    "\n" +
+    "	<h3>Sponsor Video Contests</h3>\n" +
+    "	<p>Establish your maximum budget, CPC and creative parameters, then let our users produce videos for your consideration. If you choose to sponsor any entries, the original creator will receive incremental payments each time an audience member clicks through to your landing page.</p>\n" +
+    "\n" +
+    "	<h3>Customize Your Channel</h3>\n" +
+    "	<p>Control the aesthetic of your sponsored content’s surroundings, and rest assured, your logo will follow it across platforms and devices. You can even produce and upload your own video to accompany your branded bidio channel and profile.</p>\n" +
+    "\n" +
+    "	<h3>Only Pay For Results</h3>\n" +
+    "	<p>Using our unique pay-per-click model, your organization can confidently invest in user-generated content marketing. Giving up creative influence will help motivate creators and regain consumer trust online. Plus our dashboard makes it easier to measure performance and maximize ROI.</p>\n" +
     "\n" +
     "\n" +
     "</div>");
