@@ -21,8 +21,13 @@
             <li><a href="/about">about</a></li>
             <li><a href="/creators">creators</a></li>
             <li><a href="/sponsors">sponsors</a></li>
-            <li><a href="/login">login</a></li>
-            <li><a href="/register">register</a></li>
+            <li><a href="/contests">contests</a></li>
+            <li><a href="/search">search</a></li>
+            <li ng-show="currentUser"><a href="/dashboard">dashboard</a></li>
+            <li ng-show="currentUser"><a href="/account">account</a></li>
+            <li ng-show="currentUser"><a href="/logout">signout</a></li>
+            <li ng-show="!currentUser"><a href="/login">login</a></li>
+            <li ng-show="!currentUser"><a href="/register">register</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

@@ -1,0 +1,235 @@
+{
+  "data": {
+    "bid": [],
+    "passport": [
+      {
+        "protocol": "local",
+        "password": "$2a$10$8urDNC8fs.LY4fdE7wojXO7JKGpqJKEBCty5twqeobKxZtA0lP.FG",
+        "user": 1,
+        "createdAt": "2016-02-24T23:21:39.666Z",
+        "updatedAt": "2016-02-24T23:21:39.666Z",
+        "id": 1
+      }
+    ],
+    "post": [],
+    "user": [
+      {
+        "username": "troverman",
+        "email": "troverman@gmail.com",
+        "first_name": "Trevor",
+        "createdAt": "2016-02-24T23:21:39.432Z",
+        "updatedAt": "2016-02-24T23:21:39.432Z",
+        "id": 1
+      }
+    ],
+    "video": [],
+    "view": []
+  },
+  "schema": {
+    "bid": {
+      "value": {
+        "type": "string"
+      },
+      "video": {
+        "type": "integer",
+        "model": "video",
+        "foreignKey": true,
+        "alias": "video"
+      },
+      "user": {
+        "type": "integer",
+        "model": "user",
+        "foreignKey": true,
+        "alias": "user"
+      },
+      "date": {
+        "type": "string"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "passport": {
+      "protocol": {
+        "type": "string"
+      },
+      "password": {
+        "type": "string"
+      },
+      "provider": {
+        "type": "string"
+      },
+      "identifier": {
+        "type": "string"
+      },
+      "tokens": {
+        "type": "json"
+      },
+      "user": {
+        "type": "integer",
+        "model": "user",
+        "foreignKey": true,
+        "alias": "user"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "post": {
+      "title": {
+        "type": "string",
+        "unique": true
+      },
+      "post_content": {
+        "type": "string"
+      },
+      "url_title": {
+        "type": "string",
+        "unique": true
+      },
+      "user": {
+        "type": "integer",
+        "model": "user",
+        "foreignKey": true,
+        "alias": "user"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "user": {
+      "username": {
+        "type": "string",
+        "unique": true
+      },
+      "email": {
+        "type": "string",
+        "unique": true
+      },
+      "first_name": {
+        "type": "string"
+      },
+      "message_count": {
+        "type": "string"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "video": {
+      "title": {
+        "type": "string",
+        "unique": true
+      },
+      "urlTitle": {
+        "type": "string",
+        "unique": true
+      },
+      "amazonUrl": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string",
+        "unique": true
+      },
+      "user": {
+        "type": "integer",
+        "model": "user",
+        "foreignKey": true,
+        "alias": "user"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "view": {
+      "viewCount": {
+        "type": "integer"
+      },
+      "date": {
+        "type": "string"
+      },
+      "video": {
+        "type": "integer",
+        "model": "video",
+        "foreignKey": true,
+        "alias": "video"
+      },
+      "user": {
+        "type": "integer",
+        "model": "user",
+        "foreignKey": true,
+        "alias": "user"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    }
+  },
+  "counters": {
+    "bid": {},
+    "passport": {
+      "id": 1
+    },
+    "post": {},
+    "user": {
+      "id": 1
+    },
+    "video": {},
+    "view": {}
+  }
+}

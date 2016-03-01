@@ -15,4 +15,5 @@ angular.module( 'bidio.video', [
 
 .controller( 'VideoCtrl', function VideoCtrl( $scope, titleService ) {
 	titleService.setTitle('video - bidio');
+	$scope.video = {};
 });

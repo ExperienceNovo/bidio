@@ -14,7 +14,10 @@ angular.module( 'bidio.register', [
 })
 
 .controller( 'RegisterCtrl', function RegisterController( $scope, titleService, config ) {
-	titleService.setTitle('NOVO');
+	titleService.setTitle('register');
 	$scope.currentUser = config.currentUser;
+	//if ($scope.currentUser){
+		//$location.path('/');
+	//};
 
 });

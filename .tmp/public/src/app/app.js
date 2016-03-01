@@ -19,6 +19,8 @@ angular.module( 'bidio', [
     'bidio.register',
     'bidio.search',
     'bidio.sponsors',
+    'bidio.upload',
+    'bidio.video'
 
 ])
 

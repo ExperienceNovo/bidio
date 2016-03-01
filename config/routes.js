@@ -50,6 +50,7 @@ module.exports.routes = {
   'get /search': 'HomeController.index',
   'get /sponsors': 'HomeController.index',
   'get /search/:path': 'HomeController.index',
+  'get /upload': 'HomeController.index',
   'get /video/:id': 'HomeController.index',
 
   'post /auth/local': 'AuthController.callback',

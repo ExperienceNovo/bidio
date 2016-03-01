@@ -18,8 +18,8 @@ module.exports = {
             type: 'number'
         },
         // A User can have many messages
-        posts: {
-            collection: 'post',
+        videos: {
+            collection: 'video',
             via: 'user'
         },
         passports : { collection: 'Passport', via: 'user' }

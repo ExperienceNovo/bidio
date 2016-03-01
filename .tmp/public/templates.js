@@ -1,26 +1,29 @@
-angular.module('templates-app', ['about/index.tpl.html', 'account/index.tpl.html', 'contests/index.tpl.html', 'creators/index.tpl.html', 'home/index.tpl.html', 'intro/index.tpl.html', 'login/index.tpl.html', 'nav/index.tpl.html', 'register/index.tpl.html', 'seach/index.tpl.html', 'sponsors/index.tpl.html', 'video/index.tpl.html']);
+angular.module('templates-app', ['about/index.tpl.html', 'account/index.tpl.html', 'contests/index.tpl.html', 'creators/index.tpl.html', 'dashboard/index.tpl.html', 'home/index.tpl.html', 'intro/index.tpl.html', 'login/index.tpl.html', 'nav/index.tpl.html', 'register/index.tpl.html', 'seach/index.tpl.html', 'sponsors/index.tpl.html', 'upload/index.tpl.html', 'video/index.tpl.html']);
 
 angular.module("about/index.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("about/index.tpl.html",
     "<div class=\"surface-container home-pad\">\n" +
     "\n" +
+    "	<h1>creators</h1>\n" +
+    "	<h3>Upload Your Videos</h3>\n" +
+    "	<p>Our unique influencer marketing platform hosts content for creators who want to get support from sponsors without giving up creative control. Unlike other digital media networks and exchanges, we only take 8% of our users’ hard-earned advertising revenue.</p>\n" +
     "\n" +
-    "	<p>this is the about page</p>\n" +
-    "	<p>this is the about page</p>\n" +
-    "	<p>this is the about page</p>\n" +
-    "	<p>this is the about page</p>\n" +
-    "	<p>this is the about page</p>\n" +
-    "	<p>this is the about page</p>\n" +
-    "	<p>this is the about page</p>\n" +
-    "	<p>this is the about page</p>\n" +
-    "	<p>this is the about page</p>\n" +
-    "	<p>this is the about page</p>\n" +
-    "	<p>this is the about page</p>\n" +
-    "	<p>this is the about page</p>\n" +
-    "	<p>this is the about page</p>\n" +
-    "	<p>this is the about page</p>\n" +
+    "	<h3>Enter Sponsored Contests</h3>\n" +
+    "	<p>Explore our active sponsors and discover video contests involving branded content. Simply follow the contest guidelines and submit uploads for the chance to get paid! If a brand likes your video, you’ll receive incremental payments based on your content’s performance.</p>\n" +
+    "\n" +
+    "	<h3>Get Paid Based on Virality</h3>\n" +
+    "	<p>Bidio’s auction system enables perfectly cost-effective content sponsorship, which helps any creator earn money by doing what they love. Share your sponsored content and capitalize that influence on the word wide web. Using our platform, the audience is anywhere and everywhere.</p>\n" +
     "\n" +
     "\n" +
+    "	<h1>sponsors</h1>\n" +
+    "	<h3>Sponsor Video Contests</h3>\n" +
+    "	<p>Establish your maximum budget, CPC and creative parameters, then let our users produce videos for your consideration. If you choose to sponsor any entries, the original creator will receive incremental payments each time an audience member clicks through to your landing page.</p>\n" +
+    "\n" +
+    "	<h3>Customize Your Channel</h3>\n" +
+    "	<p>Control the aesthetic of your sponsored content’s surroundings, and rest assured, your logo will follow it across platforms and devices. You can even produce and upload your own video to accompany your branded bidio channel and profile.</p>\n" +
+    "\n" +
+    "	<h3>Only Pay For Results</h3>\n" +
+    "	<p>Using our unique pay-per-click model, your organization can confidently invest in user-generated content marketing. Giving up creative influence will help motivate creators and regain consumer trust online. Plus our dashboard makes it easier to measure performance and maximize ROI.</p>\n" +
     "\n" +
     "</div>");
 }]);
@@ -64,6 +67,15 @@ angular.module("creators/index.tpl.html", []).run(["$templateCache", function($t
     "</div>");
 }]);
 
+angular.module("dashboard/index.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("dashboard/index.tpl.html",
+    "<div class=\"surface-container home-pad\">\n" +
+    "	<h1>contests</h1>\n" +
+    "\n" +
+    "\n" +
+    "</div>");
+}]);
+
 angular.module("home/index.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("home/index.tpl.html",
     "<div class=\"surface-container-home\" ng-controller=\"HomeCtrl\">\n" +
@@ -73,6 +85,20 @@ angular.module("home/index.tpl.html", []).run(["$templateCache", function($templ
     "    <a href=\"/creators\">creators</a>\n" +
     "    <a href=\"/sponsors\">sponsors</a>\n" +
     "\n" +
+    "\n" +
+    "    <h3>join the creative revolution</h3>\n" +
+    "\n" +
+    "    <h3>truly native content sponsorship</h3>\n" +
+    "\n" +
+    "    <p>Our unique influencer marketing platform hosts content for creators who want to get support from sponsors without giving up creative control. Unlike other digital media networks and exchanges, we only take 8% of our users’ hard-earned advertising revenue.</p>\n" +
+    "\n" +
+    "	<p>Establish your maximum budget, CPC and creative parameters, then let our users produce videos for your consideration. If you choose to sponsor any entries, the original creator will receive incremental payments each time an audience member clicks through to your landing page.</p>\n" +
+    "\n" +
+    "\n" +
+    "    <h2>trending</h2>\n" +
+    "    <div ng-repeat=\"video in trendingVideos\">\n" +
+    "    	<a href=\"video/{{video}}\">trending video {{video}}</a>\n" +
+    "	</div>\n" +
     "    <div style=\"height:800px;\"></div>    \n" +
     "</div>\n" +
     "\n" +
@@ -90,7 +116,7 @@ angular.module("intro/index.tpl.html", []).run(["$templateCache", function($temp
     "<div class=\"intro\">\n" +
     "    <div class=\"intro-container\">\n" +
     "      <svg class=\"svg-defs\" viewBox=\"0 0 1920 1080\" viewPort=\"0 0 1920 1080\" preserveAspectRatio=\"xMidYMid slice\" xmlns=\"http://www.w3.org/2000/svg\">\n" +
-    "        <a href=\"/creators\"><symbol id=\"intro-desktop-text\">\n" +
+    "        <symbol id=\"intro-desktop-text\">\n" +
     "          <text text-anchor=\"middle\"\n" +
     "                x=\"960\"  \n" +
     "                y=\"570\"\n" +
@@ -99,7 +125,7 @@ angular.module("intro/index.tpl.html", []).run(["$templateCache", function($temp
     "                >\n" +
     "            connecting creators with sponsors\n" +
     "          </text>    \n" +
-    "        </symbol></a>\n" +
+    "        </symbol>\n" +
     "        <mask id=\"intro-desktop-mask\"\n" +
     "              maskunits=\"userSpaceOnUse\"\n" +
     "              maskcontentunits=\"userSpaceOnUse\">\n" +
@@ -199,8 +225,13 @@ angular.module("nav/index.tpl.html", []).run(["$templateCache", function($templa
     "            <li><a href=\"/about\">about</a></li>\n" +
     "            <li><a href=\"/creators\">creators</a></li>\n" +
     "            <li><a href=\"/sponsors\">sponsors</a></li>\n" +
-    "            <li><a href=\"/login\">login</a></li>\n" +
-    "            <li><a href=\"/register\">register</a></li>\n" +
+    "            <li><a href=\"/contests\">contests</a></li>\n" +
+    "            <li><a href=\"/search\">search</a></li>\n" +
+    "            <li ng-show=\"currentUser\"><a href=\"/dashboard\">dashboard</a></li>\n" +
+    "            <li ng-show=\"currentUser\"><a href=\"/account\">account</a></li>\n" +
+    "            <li ng-show=\"currentUser\"><a href=\"/logout\">signout</a></li>\n" +
+    "            <li ng-show=\"!currentUser\"><a href=\"/login\">login</a></li>\n" +
+    "            <li ng-show=\"!currentUser\"><a href=\"/register\">register</a></li>\n" +
     "          </ul>\n" +
     "        </div><!--/.nav-collapse -->\n" +
     "      </div>\n" +
@@ -279,11 +310,34 @@ angular.module("sponsors/index.tpl.html", []).run(["$templateCache", function($t
     "</div>");
 }]);
 
+angular.module("upload/index.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("upload/index.tpl.html",
+    "<div class=\"surface-container home-pad\">\n" +
+    "	<h1>upload</h1>\n" +
+    "	<p>video description</p>\n" +
+    "</div>");
+}]);
+
 angular.module("video/index.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("video/index.tpl.html",
     "<div class=\"surface-container home-pad\">\n" +
     "	<h1>video</h1>\n" +
-    "	<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/IBCV88pHRQA\" frameborder=\"0\" allowfullscreen></iframe>\n" +
+    "\n" +
+    "	<div class=\"video-container\">\n" +
+    "		<iframe \n" +
+    "		width=\"560\" \n" +
+    "		height=\"315\" \n" +
+    "		src=\"https://www.youtube.com/embed/IBCV88pHRQA\" \n" +
+    "		frameborder=\"0\" \n" +
+    "		allowfullscreen>\n" +
+    "		</iframe>\n" +
+    "	</div>\n" +
+    "\n" +
+    "	<p>video description</p>\n" +
+    "	<p>view count</p>\n" +
+    "\n" +
+    "	<p>current sponsors</p>\n" +
+    "	<p>current $bid/view</p>\n" +
     "\n" +
     "</div>");
 }]);
