@@ -1,3 +1,3 @@
 # bidio #
 
-1.phase 1 leggo
+1. phase 1 leggo
