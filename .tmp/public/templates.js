@@ -1,4 +1,4 @@
-angular.module('templates-app', ['about/index.tpl.html', 'account/index.tpl.html', 'contests/index.tpl.html', 'creators/index.tpl.html', 'dashboard/index.tpl.html', 'home/index.tpl.html', 'intro/index.tpl.html', 'login/index.tpl.html', 'nav/index.tpl.html', 'register/index.tpl.html', 'seach/index.tpl.html', 'sponsors/index.tpl.html', 'upload/index.tpl.html', 'video/index.tpl.html']);
+angular.module('templates-app', ['about/index.tpl.html', 'account/index.tpl.html', 'contest/index.tpl.html', 'contests/index.tpl.html', 'creators/index.tpl.html', 'dashboard/index.tpl.html', 'home/index.tpl.html', 'intro/index.tpl.html', 'login/index.tpl.html', 'nav/index.tpl.html', 'register/index.tpl.html', 'seach/index.tpl.html', 'sponsors/index.tpl.html', 'upload/index.tpl.html', 'video/index.tpl.html']);
 
 angular.module("about/index.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("about/index.tpl.html",
@@ -40,10 +40,55 @@ angular.module("account/index.tpl.html", []).run(["$templateCache", function($te
     "</div>");
 }]);
 
+angular.module("contest/index.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("contest/index.tpl.html",
+    "<div class=\"surface-container home-pad\">\n" +
+    "	<h1>contest</h1>\n" +
+    "	{{contest.user.username}}\n" +
+    "	\n" +
+    "	<form ng-submit=\"updateContest(contest)\">\n" +
+    "		<p>Update Title</p>\n" +
+    "		<input type=\"text\" ng-model=\"contest.title\"/>\n" +
+    "		<p>Update Content</p>\n" +
+    "		<input type=\"text\" ng-model=\"contest.contestContent\"/>\n" +
+    "		<button type=\"submit\">Update Contest</button>\n" +
+    "		\n" +
+    "	</form>\n" +
+    "	<div class=\"contestVideos\">\n" +
+    "		<ul>\n" +
+    "			<li ng-repeat=\"video in videos\">{{video}}</li>\n" +
+    "		</ul>\n" +
+    "	\n" +
+    "	</div>\n" +
+    "</div>");
+}]);
+
 angular.module("contests/index.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("contests/index.tpl.html",
     "<div class=\"surface-container home-pad\">\n" +
     "	<h1>contests</h1>\n" +
+    "	\n" +
+    "	<form ng-submit=\"createContest(newContest)\">\n" +
+    "		<p>title</p>\n" +
+    "		<input type='text' ng-model=\"newContest.title\"></input>\n" +
+    "		<p>contest Content</p>\n" +
+    "		<input type='text' ng-model=\"newContest.contestContent\"></input>\n" +
+    "		<p>URL</p>\n" +
+    "		<input type='text' ng-model=\"newContest.urlTitle\"></input>\n" +
+    "		\n" +
+    "		\n" +
+    "		<button type='submit'>Submit Contest</button>\n" +
+    "	</form>\n" +
+    "	\n" +
+    "	\n" +
+    "	<div ng-repeat=\"contest in contests\">\n" +
+    "		{{contest.user}}\n" +
+    "		{{contest.title}}\n" +
+    "		\n" +
+    "	</div>\n" +
+    "	\n" +
+    "	<h3>My Contests</h3>\n" +
+    "	\n" +
     "\n" +
     "\n" +
     "</div>");
@@ -99,7 +144,7 @@ angular.module("home/index.tpl.html", []).run(["$templateCache", function($templ
     "    <div ng-repeat=\"video in trendingVideos\">\n" +
     "    	<a href=\"video/{{video}}\">trending video {{video}}</a>\n" +
     "	</div>\n" +
-    "    <div style=\"height:800px;\"></div>    \n" +
+    "    <div style=\"height:800px;\"></div>\n" +
     "</div>\n" +
     "\n" +
     "\n" +
@@ -315,13 +360,25 @@ angular.module("upload/index.tpl.html", []).run(["$templateCache", function($tem
     "<div class=\"surface-container home-pad\">\n" +
     "	<h1>upload</h1>\n" +
     "	<p>video description</p>\n" +
+    "	\n" +
+    "	\n" +
+    "	<form ng-submit=\"createVideo(newVideo)\">\n" +
+    "		<p>Title</p>\n" +
+    "		<input type=\"text\" ng-model=\"newVideo.title\"/>\n" +
+    "		<p>Amazon URL</p>\n" +
+    "		<input type=\"text\" ng-model=\"newVideo.amazonUrl\"/>\n" +
+    "		<p>Description</p>\n" +
+    "		<input type=\"text\" ng-model=\"newVideo.description\"/>\n" +
+    "		<button type=\"submit\">Upload Video</button>\n" +
+    "		\n" +
+    "	</form>\n" +
     "</div>");
 }]);
 
 angular.module("video/index.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("video/index.tpl.html",
     "<div class=\"surface-container home-pad\">\n" +
-    "	<h1>video</h1>\n" +
+    "	<h1>{{video.title}}</h1>\n" +
     "\n" +
     "	<div class=\"video-container\">\n" +
     "		<iframe \n" +
@@ -333,11 +390,16 @@ angular.module("video/index.tpl.html", []).run(["$templateCache", function($temp
     "		</iframe>\n" +
     "	</div>\n" +
     "\n" +
-    "	<p>video description</p>\n" +
+    "	<p>{{video.description}}</p>\n" +
     "	<p>view count</p>\n" +
+    "	\n" +
+    "	{{video.title}}\n" +
     "\n" +
     "	<p>current sponsors</p>\n" +
     "	<p>current $bid/view</p>\n" +
+    "	\n" +
+    "	\n" +
+    "	\n" +
     "\n" +
     "</div>");
 }]);

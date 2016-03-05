@@ -15,8 +15,8 @@ module.exports = {
         },
         urlTitle: {
             type: 'string',
-            required: true,
-            unique: true
+            //required: true,
+            //unique: true
         },
         amazonUrl: {
             type: 'string',

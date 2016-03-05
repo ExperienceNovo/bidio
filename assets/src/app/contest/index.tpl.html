@@ -1,0 +1,19 @@
+<div class="surface-container home-pad">
+	<h1>contest</h1>
+	{{contest.user.username}}
+	
+	<form ng-submit="updateContest(contest)">
+		<p>Update Title</p>
+		<input type="text" ng-model="contest.title"/>
+		<p>Update Content</p>
+		<input type="text" ng-model="contest.contestContent"/>
+		<button type="submit">Update Contest</button>
+		
+	</form>
+	<div class="contestVideos">
+		<ul>
+			<li ng-repeat="video in videos">{{video}}</li>
+		</ul>
+	
+	</div>
+</div>

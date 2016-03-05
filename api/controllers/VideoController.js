@@ -20,20 +20,6 @@ module.exports = {
 		});
 	},
 
-	getByUrl: function(req, res) {
-		Video.find()
-		.where({urlTitle: req.param('path')})
-		.populateAll()
-		.spread(function(model) {
-			Video.watch(req);
-			Video.subscribe(req, model);
-			res.json(model);
-		})
-		.fail(function(err) {
-			res.send(404,err);
-		});
-	},
-
 	getSome: function(req, res) {
 		var limit = req.param('limit');
 		var skip = req.param('skip');
@@ -50,19 +36,6 @@ module.exports = {
 		})
 		.fail(function(err) {
 			// An error occured
-		});
-	},
-
-	getPromoted: function(req, res) {
-		Video.find()
-		.where({isPromoted: true})
-		.then(function(model) {
-			Video.watch(req);
-			Video.subscribe(req, model);
-			res.json(model);
-		})
-		.fail(function(err) {
-			res.send(404,err);
 		});
 	},
 
@@ -122,140 +95,31 @@ module.exports = {
 	},
 
 	create: function (req, res) {
-		var userId = req.param('user');
-		var title = req.param('title');
-		var urlTitle = req.param('urlTitle');
-		var categoryList = req.param('categoryList');
-		var boxPrice = req.param('boxPrice');
-		var imageList = req.param('imageList');
-		var price = req.param('price');
-		var weight = req.param('weight');
-		var VideoInformation = req.param('VideoInformation');
-		var VideoOptions = req.param('VideoOptions');
-		var hiddenPrice = req.param('hiddenPrice');
-		var isPromoted = req.param('isPromoted');
-		//var views = ''
-
-
+		
 		var model = {
-			user: userId,
-			title: title,
-			urlTitle: urlTitle,
-			categoryList: categoryList,
-			boxPrice: boxPrice,
-			imageList: imageList,
-			price: price,
-			weight: weight,
-			VideoInformation: VideoInformation,
-			VideoOptions: VideoOptions,
-			hiddenPrice: hiddenPrice,
-			isPromoted: isPromoted,
-			//views: views
+			title: req.param('title'),
+			amazonUrl: req.param('amazonUrl'),
+			description: req.param('description'),
+			user: req.param('user')
 		};
 
 		Video.create(model)
-		.exec(function(err, Video) {
+		.exec(function(err, video) {
 			if (err) {
 				return console.log(err);
 			}
 			else {
-				Video.publishCreate(Video);
-				res.json(Video);
+				Video.publishCreate(video);
+				res.json(video);
 			}
 		});
 	},
 
 	update: function(req, res) {
-
-		/*var id = req.param('id');
-		var userId = req.param('user');
-		var title = req.param('title');
-		var urlTitle = req.param('urlTitle');
-		var categoryList = req.param('categoryList');
-		var boxPrice = req.param('boxPrice');
-		var imageList = req.param('imageList');
-		var price = req.param('price');
-		var weight = req.param('weight');
-		var VideoInformation = req.param('VideoInformation');
-		var VideoOptions = req.param('VideoOptions');
-		var hiddenPrice = req.param('hiddenPrice');
-		var isPromoted = req.param('isPromoted');
-
-
-		req.file('VideoImage').upload({
-		  adapter: require('skipper-s3'),
-		  key: 'AKIAJZS6F2HWDJWWZE7A',
-		  secret: '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',
-		  bucket: 'iboxxz'
-		}, function whenDone(err, uploadedFiles) {
-
-		    if (err) {
-		      return res.negotiate(err);
-		    }
-		    // If no files were uploaded, respond with an error.
-		    if (uploadedFiles.length === 0){
-		      return res.badRequest('No file was uploaded');
-		    }
-
-		    var imageUrl = uploadedFiles[0].extra.Location;
-		    imageList.push(imageUrl);
-		    console.log(imageUrl);
-		    console.log(imageList);
-
-			var model = {
-				user: userId,
-				title: title,
-				urlTitle: urlTitle,
-				categoryList: categoryList,
-				boxPrice: boxPrice,
-				imageList: imageList,
-				price: price,
-				weight: weight,
-				VideoInformation: VideoInformation,
-				VideoOptions: VideoOptions,
-				hiddenPrice: hiddenPrice,
-				isPromoted: isPromoted,
-			};
-
-			Video.update( {id: id}, model).exec(function afterwards(err, updated){
-			  if (err) {
-			    return;
-			  }
-			});
-
-
-		});*/
-
 		
 		var id = req.param('id');
-		var userId = req.param('user');
-		var title = req.param('title');
-		var urlTitle = req.param('urlTitle');
-		var categoryList = req.param('categoryList');
-		var boxPrice = req.param('boxPrice');
-		var imageList = req.param('imageList');
-		var price = req.param('price');
-		var weight = req.param('weight');
-		var VideoInformation = req.param('VideoInformation');
-		var VideoOptions = req.param('VideoOptions');
-		var hiddenPrice = req.param('hiddenPrice');
-		var isPromoted = req.param('isPromoted');
-
-		
-		var model = {
-			user: userId,
-			title: title,
-			urlTitle: urlTitle,
-			categoryList: categoryList,
-			boxPrice: boxPrice,
-			imageList: imageList,
-			price: price,
-			weight: weight,
-			VideoInformation: VideoInformation,
-			VideoOptions: VideoOptions,
-			hiddenPrice: hiddenPrice,
-			isPromoted: isPromoted,
-		};
+	
+		var model = {};
 
 		Video.update( {id: id}, model).exec(function afterwards(err, updated){
 		  if (err) {
@@ -264,7 +128,6 @@ module.exports = {
 		  console.log(updated);
 		});
 		
-
 	},
 
 	destroy: function (req, res) {
@@ -293,46 +156,7 @@ module.exports = {
 		});
 	},
 
-	uploadPicture: function(req, res) {
-
-		var id = req.param("id");
-
-		req.file('video').upload({
-		  adapter: require('skipper-s3'),
-		  key: 'AKIAJZS6F2HWDJWWZE7A',
-		  secret: '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',
-		  bucket: 'iboxxz',
-		  name: 'Videos'
-		}, function whenDone(err, uploadedFiles) {
-
-		    if (err) {
-		      return res.negotiate(err);
-		    }
-		    // If no files were uploaded, respond with an error.
-		    if (uploadedFiles.length === 0){
-		      return res.badRequest('No file was uploaded');
-		    }
-
-		    var newUrl = uploadedFiles[0].extra.Location;
-		    Video.findOne(id).then(function(Video){
-		    	var imageList;
-		    	if (Video.imageList){
-		    		imageList = Video.imageList;
-		    	}
-		    	else{
-		    		imageList = [];
-		    	}
-		    	imageList.push(newUrl);
-		    	return Video.update({id: id}, {imageList: imageList});
-		    }).then(function(success){
-		    	return res.ok();
-		    }).fail(function(err){
-		    	console.log(err);
-		    	return res.fail(err);
-		    });
-		});
-
-	}
+	
 	
 };
 

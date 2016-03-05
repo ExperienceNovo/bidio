@@ -9,6 +9,14 @@
         "createdAt": "2016-02-24T23:21:39.666Z",
         "updatedAt": "2016-02-24T23:21:39.666Z",
         "id": 1
+      },
+      {
+        "protocol": "local",
+        "password": "$2a$10$YipUV9y8d56o2Ue8gppZVuflbfYeOYiPkuo/o/DdmJyqkLvHoZamK",
+        "user": 2,
+        "createdAt": "2016-03-04T20:45:56.883Z",
+        "updatedAt": "2016-03-04T20:45:56.883Z",
+        "id": 2
       }
     ],
     "post": [],
@@ -20,10 +28,66 @@
         "createdAt": "2016-02-24T23:21:39.432Z",
         "updatedAt": "2016-02-24T23:21:39.432Z",
         "id": 1
+      },
+      {
+        "username": "lobstar",
+        "email": "danushac@gmail.com",
+        "first_name": "Danila",
+        "createdAt": "2016-03-04T20:45:56.619Z",
+        "updatedAt": "2016-03-04T20:45:56.619Z",
+        "id": 2
       }
     ],
-    "video": [],
-    "view": []
+    "video": [
+      {
+        "title": "qqq",
+        "amazonUrl": "q",
+        "description": "q",
+        "user": 2,
+        "createdAt": "2016-03-05T00:38:37.070Z",
+        "updatedAt": "2016-03-05T00:38:37.070Z",
+        "id": 1
+      }
+    ],
+    "view": [],
+    "contest": [
+      {
+        "title": "contest",
+        "urlTitle": "url",
+        "contestContent": "khgf",
+        "user": 2,
+        "createdAt": "2016-03-04T20:46:13.199Z",
+        "updatedAt": "2016-03-04T20:46:13.199Z",
+        "id": 1
+      },
+      {
+        "title": "cleanbroeeaa",
+        "urlTitle": "tt",
+        "contestContent": "truuuuuuuu",
+        "user": 2,
+        "createdAt": "2016-03-04T20:48:07.000Z",
+        "updatedAt": "2016-03-04T22:21:53.106Z",
+        "id": 2
+      },
+      {
+        "title": "new",
+        "urlTitle": "kjnk",
+        "contestContent": "newnew",
+        "user": 2,
+        "createdAt": "2016-03-04T20:50:01.146Z",
+        "updatedAt": "2016-03-04T20:50:01.146Z",
+        "id": 3
+      },
+      {
+        "title": "newnew",
+        "urlTitle": "newnew",
+        "contestContent": "newnew",
+        "user": 2,
+        "createdAt": "2016-03-04T22:07:29.557Z",
+        "updatedAt": "2016-03-04T22:07:29.557Z",
+        "id": 4
+      }
+    ]
   },
   "schema": {
     "bid": {
@@ -158,8 +222,7 @@
         "unique": true
       },
       "urlTitle": {
-        "type": "string",
-        "unique": true
+        "type": "string"
       },
       "amazonUrl": {
         "type": "string"
@@ -218,18 +281,54 @@
       "updatedAt": {
         "type": "datetime"
       }
+    },
+    "contest": {
+      "title": {
+        "type": "string",
+        "unique": true
+      },
+      "contestContent": {
+        "type": "string"
+      },
+      "urlTitle": {
+        "type": "string",
+        "unique": true
+      },
+      "user": {
+        "type": "integer",
+        "model": "user",
+        "foreignKey": true,
+        "alias": "user"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
     }
   },
   "counters": {
     "bid": {},
     "passport": {
-      "id": 1
+      "id": 2
     },
     "post": {},
     "user": {
+      "id": 2
+    },
+    "video": {
       "id": 1
     },
-    "video": {},
-    "view": {}
+    "view": {},
+    "contest": {
+      "id": 4
+    }
   }
 }

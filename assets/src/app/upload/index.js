@@ -13,6 +13,16 @@ angular.module( 'bidio.upload', [
 	});
 })
 
-.controller( 'UploadCtrl', function UploadCtrl( $scope, titleService ) {
+.controller( 'UploadCtrl', function UploadCtrl( $scope, config, titleService, VideoModel ) {
 	titleService.setTitle('upload - bidio');
+	
+	$scope.currentUser = config.currentUser;
+	
+	
+	$scope.createVideo = function(newVideo){
+		console.log(newVideo);
+		newVideo.user = $scope.currentUser.id;
+		
+		VideoModel.create(newVideo);
+	}
 });

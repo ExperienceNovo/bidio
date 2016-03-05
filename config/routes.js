@@ -72,7 +72,27 @@ module.exports.routes = {
   'post /api/post': 'PostController.create',
   'delete /api/post/:id': 'PostController.destroy',
 
-
+  /**
+  *	Contest Routes
+  */
+  'get /api/contest': 'ContestController.getAll',
+  'get /api/contest/:id': 'ContestController.getOne',
+  'get /api/contest/url/:path': 'ContestController.getByUrlTitle',
+  'post /api/contest': 'ContestController.create',
+  'post /api/contest/:id': 'ContestController.update',
+  'delete /api/contest/:id': 'ContestController.destroy',
+  
+  /**
+  *	Video Routes
+  */
+  'get /api/video': 'VideoController.getAll',
+  'get /api/video/:id': 'VideoController.getOne',
+  //'get /api/video/url/:path': 'VideoController.getByUrlTitle',
+  'post /api/video': 'VideoController.create',
+  'post /api/video/:id': 'VideoController.update',
+  'delete /api/video/:id': 'VideoController.destroy',
+  
+  
   // If a request to a URL doesn't match any of the custom routes above, it is matched 
   // against Sails route blueprints.  See `config/blueprints.js` for configuration options
   // and examples.

@@ -12,6 +12,7 @@ angular.module( 'bidio', [
     'bidio.home',
     'bidio.about',
     'bidio.creators',
+	'bidio.contest',
     'bidio.contests',
     'bidio.intro',
     'bidio.login',

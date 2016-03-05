@@ -9,11 +9,21 @@ angular.module( 'bidio.video', [
 				controller: 'VideoCtrl',
 				templateUrl: 'video/index.tpl.html'
 			}
+			
+		},
+		resolve: {
+			video: function(VideoModel, $stateParams){
+				return VideoModel.getOne($stateParams.id);
+			}
 		}
+		
 	});
 })
 
-.controller( 'VideoCtrl', function VideoCtrl( $scope, titleService ) {
+.controller( 'VideoCtrl', function VideoCtrl( $scope, titleService, video ) {
 	titleService.setTitle('video - bidio');
-	$scope.video = {};
+	$scope.video = video;
+	
+	console.log(video);
+	
 });

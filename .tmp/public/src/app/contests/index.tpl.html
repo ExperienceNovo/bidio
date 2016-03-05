@@ -1,5 +1,27 @@
 <div class="surface-container home-pad">
 	<h1>contests</h1>
+	
+	<form ng-submit="createContest(newContest)">
+		<p>title</p>
+		<input type='text' ng-model="newContest.title"></input>
+		<p>contest Content</p>
+		<input type='text' ng-model="newContest.contestContent"></input>
+		<p>URL</p>
+		<input type='text' ng-model="newContest.urlTitle"></input>
+		
+		
+		<button type='submit'>Submit Contest</button>
+	</form>
+	
+	
+	<div ng-repeat="contest in contests">
+		{{contest.user}}
+		{{contest.title}}
+		
+	</div>
+	
+	<h3>My Contests</h3>
+	
 
 
 </div>
