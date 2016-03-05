@@ -21,7 +21,6 @@ angular.module( 'bidio', [
     'bidio.sponsors',
     'bidio.upload',
     'bidio.video'
-
 ])
 
 .config( function myAppConfig ( $stateProvider, $urlRouterProvider, $locationProvider ) {

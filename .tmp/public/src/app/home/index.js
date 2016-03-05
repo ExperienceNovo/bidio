@@ -17,5 +17,6 @@ angular.module( 'bidio.home', [
 	titleService.setTitle('bidio');
 	$scope.currentUser = config.currentUser;
 	$scope.trendingVideos = [1,2,3,4,5,6,8];
+	console.log('hello world')
 
 });
