@@ -40,6 +40,7 @@ module.exports = {
     getAll: function() {
         return Contest.find()
         .sort({createdAt: 'asc'})
+		.populate('user')
         .then(function (models) {
             return [models];
         });

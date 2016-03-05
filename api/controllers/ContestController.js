@@ -33,7 +33,8 @@ module.exports = {
 
 	getByUrlTitle: function(req, res) {
 		Contest.find()
-		.where({url_title: req.param('path')})
+		.where({urlTitle: req.param('path')})
+		.populate('user')
 		.spread(function(model) {
 			Contest.subscribe(req, model);
 			res.json(model);
@@ -47,21 +48,42 @@ module.exports = {
 		var userId = req.param('user');
 		var model = {
 			title: req.param('title'),
-			url_title: req.param('url_title'),
-			Contest_content: req.param('Contest_content'),
+			urlTitle: req.param('urlTitle'),
+			contestContent: req.param('contestContent'),
 			user: userId
 		};
 
 		Contest.create(model)
-		.exec(function(err, Contest) {
+		.exec(function(err, contest) {
 			if (err) {
 				return console.log(err);
 			}
 			else {
-				Contest.publishCreate(Contest);
-				res.json(Contest);
+				Contest.publishCreate(contest);
+				res.json(contest);
 			}
 		});
+	},
+	
+	update: function(req,res){
+		var id = req.param('id');
+		console.log(id);
+		var model = {
+			title: req.param('title'),
+			urlTitle: req.param('urlTitle'),
+			contestContent: req.param('contestContent'),
+			user: req.param('user')
+		};
+		
+		console.log(model);
+		
+		Contest.update({id: id}, model)
+		.then(function(model){
+			Contest.publishUpdate(model[0].id, model);
+			res.json(model);
+		});
+		
+		
 	},
 
 	destroy: function (req, res) {

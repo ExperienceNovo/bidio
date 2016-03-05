@@ -6,13 +6,54 @@ angular.module( 'bidio.contests', [
 		url: '/contests',
 		views: {
 			"main": {
-				controller: 'ContestCtrl',
+				controller: 'ContestsCtrl',
 				templateUrl: 'contests/index.tpl.html'
+			}
+		},
+		resolve: {
+			contests: function(ContestModel){
+				return ContestModel.getAll();
 			}
 		}
 	});
 })
 
-.controller( 'ContestCtrl', function ContestCtrl( $scope, titleService ) {
+.controller( 'ContestsCtrl', function ContestsCtrl( $scope, config, titleService, ContestModel, contests, $sailsSocket ) {
 	titleService.setTitle('contests - bidio');
+	
+	$scope.currentUser = config.currentUser;
+	$scope.contests = contests;
+	$scope.createContest = function(newContest){
+		newContest.user = $scope.currentUser.id;
+		
+		//titleService.setTitle(newContest.title);
+		//console.log(titleService);
+		//console.log(newContest);
+		ContestModel.create(newContest);
+	}
+	
+	$sailsSocket.subscribe('contest', function(envelope){
+		
+		
+		switch(envelope.verb){
+			case 'created':
+				$scope.contests.unshift(envelope.data);
+				break;
+			case 'updated':
+				var index = $scope.contests.map(function(e){
+					return e.id;
+				}).indexOf(envelope.data[0].id);
+				
+				$scope.contests[index] = envelope.data[0];
+				
+				break;
+			//case 'destroyed':
+				
+		}
+	});
+	
+	
+	
+	
+	
 });
