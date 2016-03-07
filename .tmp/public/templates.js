@@ -358,20 +358,24 @@ angular.module("sponsors/index.tpl.html", []).run(["$templateCache", function($t
 angular.module("upload/index.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("upload/index.tpl.html",
     "<div class=\"surface-container home-pad\">\n" +
-    "	<h1>upload</h1>\n" +
-    "	<p>video description</p>\n" +
-    "	\n" +
-    "	\n" +
-    "	<form ng-submit=\"createVideo(newVideo)\">\n" +
-    "		<p>Title</p>\n" +
-    "		<input type=\"text\" ng-model=\"newVideo.title\"/>\n" +
-    "		<p>Amazon URL</p>\n" +
-    "		<input type=\"text\" ng-model=\"newVideo.amazonUrl\"/>\n" +
-    "		<p>Description</p>\n" +
-    "		<input type=\"text\" ng-model=\"newVideo.description\"/>\n" +
-    "		<button type=\"submit\">Upload Video</button>\n" +
-    "		\n" +
-    "	</form>\n" +
+    "	<div ng-show=\"!currentUser\">\n" +
+    "		<a href=\"/login\">login</a> or <a href=\"/register\">register</a> to upload\n" +
+    "	</div>\n" +
+    "	<div ng-show=\"currentUser\">\n" +
+    "		<h1>upload</h1>\n" +
+    "		<p>video description</p>\n" +
+    "		<form ng-submit=\"createVideo(newVideo)\">\n" +
+    "			<p>Title</p>\n" +
+    "			<input type=\"text\" ng-model=\"newVideo.title\"/>\n" +
+    "			<p>Amazon URL</p>\n" +
+    "			<input type=\"text\" ng-model=\"newVideo.amazonUrl\"/>\n" +
+    "			<p>Description</p>\n" +
+    "			<input type=\"text\" ng-model=\"newVideo.description\"/>\n" +
+    "			<button type=\"submit\">Upload Video</button>\n" +
+    "		</form>\n" +
+    "	</div>\n" +
+    "\n" +
+    "\n" +
     "</div>");
 }]);
 

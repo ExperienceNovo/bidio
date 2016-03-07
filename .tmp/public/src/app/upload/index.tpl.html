@@ -1,16 +1,20 @@
 <div class="surface-container home-pad">
-	<h1>upload</h1>
-	<p>video description</p>
-	
-	
-	<form ng-submit="createVideo(newVideo)">
-		<p>Title</p>
-		<input type="text" ng-model="newVideo.title"/>
-		<p>Amazon URL</p>
-		<input type="text" ng-model="newVideo.amazonUrl"/>
-		<p>Description</p>
-		<input type="text" ng-model="newVideo.description"/>
-		<button type="submit">Upload Video</button>
-		
-	</form>
+	<div ng-show="!currentUser">
+		<a href="/login">login</a> or <a href="/register">register</a> to upload
+	</div>
+	<div ng-show="currentUser">
+		<h1>upload</h1>
+		<p>video description</p>
+		<form ng-submit="createVideo(newVideo)">
+			<p>Title</p>
+			<input type="text" ng-model="newVideo.title"/>
+			<p>Amazon URL</p>
+			<input type="text" ng-model="newVideo.amazonUrl"/>
+			<p>Description</p>
+			<input type="text" ng-model="newVideo.description"/>
+			<button type="submit">Upload Video</button>
+		</form>
+	</div>
+
+
 </div>
