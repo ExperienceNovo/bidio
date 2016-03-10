@@ -2,6 +2,10 @@
 	width:100%;
 }
 
+.bidio-nav {
+	color: #eee
+}
+
 .large-text {
     font-family: 'Ubuntu', sans-serif;
 	font-weight:700;
@@ -10,27 +14,27 @@
 }
 
 .large-medium-text {
-	font-family:'Play',sans-serif;
+	font-family:'Lato',sans-serif;
 	font-weight:400;
 	font-size:14em;
 	letter-spacing:-.02em
 }
 
 .medium-text {
-	font-family:'Play',sans-serif;
+	font-family:'Lato',sans-serif;
 	font-weight:400;
-	font-size:5.65em;
+	font-size:3.5em;
 }
 
 .small-text {
-	font-family:'Monda',sans-serif;
+	font-family:'Lato',sans-serif;
 	font-weight:600;
 	font-size:3em;
 	letter-spacing:2px;
 }
 
 .smaller-text {
-	font-family:'Monda',sans-serif;
+	font-family:'Lato',sans-serif;
 	font-weight:600;
 	color:white;
 	font-size:2.25em;
@@ -38,7 +42,7 @@
 }
 
 .smallest-text {
-	font-family:'Monda',sans-serif;
+	font-family:'Lato',sans-serif;
 	font-weight:600;
 	color:white;
 	font-size:1.5em;
@@ -47,7 +51,7 @@
 
 .learn-more {
 	font-size:2em;
-	font-family:'Monda',sans-serif;
+	font-family:'Lato',sans-serif;
 	font-weight:400;
 	letter-spacing:.35em
 }
@@ -74,7 +78,7 @@ input:focus {
 }
 
 .ctr {
-    display: block;
+    disLato: block;
     position: relative;
     margin-left:auto;
     margin-right:auto;
@@ -147,7 +151,7 @@ input:focus {
     left: 0;
     right: 0;
     bottom: 0;
-    font-family: 'Monda', sans-serif;
+    font-family: 'Lato', sans-serif;
     color: #fff;
     text-align: center;
     font-size: 2em;
@@ -176,8 +180,8 @@ input:focus {
     color: #14B795;
 }
 
-.display-none {
-    display: none;
+.disLato-none {
+    disLato: none;
 }
 
 .tri-wrap {
@@ -192,7 +196,7 @@ input:focus {
 }
 
 .section-head h3 {
-	font-family:'Monda',sans-serif;
+	font-family:'Lato',sans-serif;
 	color:#000;
 	font-size:4em;
 	font-weight:600;
@@ -398,15 +402,15 @@ input:focus {
 }
 
 #contact-img-desktop {
-   display:block;
+   disLato:block;
   }
 
 #contact-img-mobile {
-   display:none;
+   disLato:none;
 }
 
 .mobile-intro-top {
-	display:none;
+	disLato:none;
 }
 
 @media only screen and (max-width: 620px) {
@@ -420,15 +424,15 @@ input:focus {
 }
 
 .port-mobile {
-	display:block;
+	disLato:block;
 }
 
 #contact-img-desktop {
-   display:none;
+   disLato:none;
 }
 
 #contact-img-mobile {
-   display:block;
+   disLato:block;
 }
 
 .contact-box a #fill-hover {

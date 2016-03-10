@@ -13,6 +13,15 @@
 	z-index:1
 }
 
+.intro-logo {
+	position: absolute;
+	margin: 0 auto;
+	left:0;
+	right:0;
+	top:15%;
+	z-index: 10;
+}
+
 .intro-mobile {
 	visibility:hidden;
 	position:absolute;
@@ -135,11 +144,11 @@ svg {
 }
 
 .shape--fill {
-	fill:rgba(0,0,0,0.62);
+	fill:rgba(0,0,0,0.85);
 }
 
 .text--transparent {
-	fill:rgba(255,255,255,0.25);
+	fill:rgba(255,255,255,0.75);
 }
 
 .svg-defs {
