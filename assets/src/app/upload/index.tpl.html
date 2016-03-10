@@ -17,4 +17,24 @@
 	</div>
 
 
+
+
+	    <div class="button" ngf-select="upload($files)" ngf-multiple="true">Select File</div>
+	    Drop File:
+	    <div ngf-drop ngf-select ng-model="files" class="drop-box" 
+	        ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true">Drag and drop</div>
+	    <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+	    Files:
+	    <ul>
+	        <li ng-repeat="f in files" style="font:smaller">{{f.name}} {{f.$error}} {{f.$errorParam}}</li>
+	    </ul>
+	    Upload Log:
+	    <pre>{{log}}</pre>
+		</div>
+
+
+
+
+
+
 </div>
