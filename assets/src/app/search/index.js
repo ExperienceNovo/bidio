@@ -2,8 +2,8 @@ angular.module( 'bidio.search', [
 ])
 
 .config(function config( $stateProvider ) {
-    $stateProvider.state( 'seach', {
-        url: '/search/:path',
+    $stateProvider.state( 'search', {
+        url: '/search',
         views: {
             "main": {
                 controller: 'SearchCtrl',
