@@ -15,11 +15,31 @@
 
 .intro-logo {
 	position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: -250px;
+    z-index: 10;
+}
+
+.list-inline {
+	z-index:10;
+	position: absolute;
 	margin: 0 auto;
-	left:0;
-	right:0;
-	top:15%;
-	z-index: 10;
+	left: 0;right: 0;
+	top: 150px;
+	text-align: center;
+}
+
+.btn-group-lg>.btn, .btn-lg {
+    padding: 15px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 6px;
+}
+
+.btn-lg i{
+	font-weight: bold;
 }
 
 .intro-mobile {
