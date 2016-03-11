@@ -1,4 +1,4 @@
-angular.module('templates-app', ['about/index.tpl.html', 'account/index.tpl.html', 'contest/index.tpl.html', 'contests/index.tpl.html', 'creators/index.tpl.html', 'dashboard/index.tpl.html', 'home/index.tpl.html', 'intro/index.tpl.html', 'login/index.tpl.html', 'nav/index.tpl.html', 'register/index.tpl.html', 'search/index.tpl.html', 'sponsors/index.tpl.html', 'upload/index.tpl.html', 'video/index.tpl.html']);
+angular.module('templates-app', ['about/index.tpl.html', 'account/index.tpl.html', 'contest/index.tpl.html', 'contests/index.tpl.html', 'creators/index.tpl.html', 'dashboard/analytics.tpl.html', 'dashboard/home.tpl.html', 'dashboard/index.tpl.html', 'dashboard/videos.tpl.html', 'home/index.tpl.html', 'intro/index.tpl.html', 'login/index.tpl.html', 'nav/index.tpl.html', 'register/index.tpl.html', 'search/index.tpl.html', 'sponsors/index.tpl.html', 'upload/index.tpl.html', 'video/index.tpl.html']);
 
 angular.module("about/index.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("about/index.tpl.html",
@@ -73,13 +73,11 @@ angular.module("contests/index.tpl.html", []).run(["$templateCache", function($t
     "<div class=\"surface-container home-pad\" style=\"margin-left:10%\">\n" +
     "	<h1>contests</h1>\n" +
     "	<!--<h3>My Contests</h3>-->\n" +
-    "\n" +
-    "	<button ng-click=\"myFunction()\">my button</button>\n" +
     "	<form ng-submit=\"createContest(newContest)\">\n" +
     "		<p>title</p>\n" +
     "		<input type='text' ng-model=\"newContest.title\"></input>\n" +
     "		<p>contest Content</p>\n" +
-    "		<input type='text' ng-model=\"newContest.contestContent\"></input>\n" +
+    "		<textarea ng-model=\"newContest.contestContent\"></textarea>\n" +
     "		<p>URL</p>\n" +
     "		<input type='text' ng-model=\"newContest.urlTitle\"></input><br>\n" +
     "		<button type='submit'>Submit Contest</button>\n" +
@@ -135,13 +133,88 @@ angular.module("creators/index.tpl.html", []).run(["$templateCache", function($t
     "</div>");
 }]);
 
+angular.module("dashboard/analytics.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("dashboard/analytics.tpl.html",
+    "<div id=\"sidebar-wrapper\">\n" +
+    "  <ul class=\"sidebar-nav\">\n" +
+    "    <br>\n" +
+    "    <li><a style=\"font-weight:bold\" href=\"/dashboard\">dashboard</a></li>\n" +
+    "    <hr>\n" +
+    "    <li><a href=\"dashboard/analytics\">analytics</a></li>\n" +
+    "    <li><a href=\"dashboard/videos\">videos</a></li>\n" +
+    "    <li><a href=\"dashboard/analytics\">balance</a></li>\n" +
+    "  </ul>\n" +
+    "</div>\n" +
+    "<div id=\"main-container\">\n" +
+    "  <div class=\"dashboard-title\">\n" +
+    "    <h1>Dashboard Analytics</h1>\n" +
+    "  </div>\n" +
+    "	<canvas id=\"line\" class=\"chart chart-line\" chart-data=\"data\"\n" +
+    "		chart-labels=\"labels\" chart-legend=\"true\" chart-series=\"series\"\n" +
+    "		chart-click=\"onClick\" >\n" +
+    "	</canvas> \n" +
+    "</div>\n" +
+    "");
+}]);
+
+angular.module("dashboard/home.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("dashboard/home.tpl.html",
+    "<div id=\"sidebar-wrapper\">\n" +
+    "  <ul class=\"sidebar-nav\">\n" +
+    "    <br>\n" +
+    "    <li><a style=\"font-weight:bold\" href=\"/dashboard\">dashboard</a></li>\n" +
+    "    <hr>\n" +
+    "    <li><a href=\"dashboard/analytics\">analytics</a></li>\n" +
+    "    <li><a href=\"dashboard/videos\">videos</a></li>\n" +
+    "    <li><a href=\"dashboard/analytics\">balance</a></li>\n" +
+    "  </ul>\n" +
+    "</div>\n" +
+    "<div id=\"main-container\">\n" +
+    "  <div class=\"dashboard-title\">\n" +
+    "    <h1>Dashboard Home</h1>\n" +
+    "  </div>\n" +
+    "</div>\n" +
+    "");
+}]);
+
 angular.module("dashboard/index.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("dashboard/index.tpl.html",
-    "<div class=\"surface-container home-pad\">\n" +
-    "	<h1>Dashboard</h1>\n" +
+    "<link rel=\"stylesheet\" href=\"bower_components/angular-chart.js/dist/angular-chart.css\">\n" +
+    "<link href=\"http://vjs.zencdn.net/5.8.0/video-js.css\" rel=\"stylesheet\">\n" +
+    "<div ui-view=\"home\"></div>\n" +
+    "<div ui-view=\"analytics\"></div>\n" +
+    "<div ui-view=\"videos\"></div>\n" +
+    "\n" +
+    "");
+}]);
+
+angular.module("dashboard/videos.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("dashboard/videos.tpl.html",
+    "<div id=\"sidebar-wrapper\">\n" +
+    "  <ul class=\"sidebar-nav\">\n" +
+    "    <br>\n" +
+    "    <li><a style=\"font-weight:bold\" href=\"/dashboard\">dashboard</a></li>\n" +
+    "    <hr>\n" +
+    "    <li><a href=\"dashboard/analytics\">analytics</a></li>\n" +
+    "    <li><a href=\"dashboard/vidoes\">videos</a></li>\n" +
+    "    <li><a href=\"dashboard/analytics\">balance</a></li>\n" +
+    "  </ul>\n" +
+    "</div>\n" +
+    "<div id=\"main-container\">\n" +
+    "  <div class=\"dashboard-title\">\n" +
+    "    <h1>Dashboard Videos</h1>\n" +
+    "  </div>\n" +
+    "\n" +
+    "  <div class=\"dashboardVideos\" ng-repeat=\"vidoe in videos\">\n" +
+    "    <h1>{{video}}</h1>\n" +
+    "    <video class=\"video-js vjs-default-skin\" controls preload=\"auto\" width=\"640\" height=\"264\" poster=\"poster.jpg\" vjs-video>\n" +
+    "      <source src=\"videos/video.mp4\" type=\"video/mp4\">\n" +
+    "    </video>\n" +
+    "  </div>\n" +
     "\n" +
     "\n" +
-    "</div>");
+    "</div>\n" +
+    "");
 }]);
 
 angular.module("home/index.tpl.html", []).run(["$templateCache", function($templateCache) {
@@ -283,6 +356,7 @@ angular.module("login/index.tpl.html", []).run(["$templateCache", function($temp
     "                <button type=\"submit\" id=\"login-button\">Login</button>\n" +
     "            </form>\n" +
     "            <a href=\"/register\"><h3>Sign Up</h3></a>\n" +
+    "            <!--<a href=\"/forgot\"><h3>forgot your password</h3></a>-->\n" +
     "        </div>\n" +
     "    </div>\n" +
     "</div>\n" +
@@ -320,11 +394,12 @@ angular.module("nav/index.tpl.html", []).run(["$templateCache", function($templa
     "        <div class=\"collapse navbar-collapse\">\n" +
     "          <ul class=\"nav navbar-nav pull-right\">\n" +
     "           <!-- <li><a class=\"bidio-nav\" href=\"/about\">About</a></li>-->\n" +
-    "            <li><a class=\"bidio-nav\" href=\"/creators\">Creators</a></li>\n" +
-    "            <li><a class=\"bidio-nav\" href=\"/sponsors\">Sponsors</a></li>\n" +
+    "            <li ng-show=\"!currentUser\"><a class=\"bidio-nav\" href=\"/creators\">Creators</a></li>\n" +
+    "            <li ng-show=\"!currentUser\"><a class=\"bidio-nav\" href=\"/sponsors\">Sponsors</a></li>\n" +
     "            <!--<li><a href=\"/contests\">Contests</a></li>\n" +
     "            <li><a href=\"/search\">Search</a></li>-->\n" +
     "            <li ng-show=\"currentUser\"><a href=\"/dashboard\">Dashboard</a></li>\n" +
+    "            <li ng-show=\"currentUser\"><a href=\"/upload\">Upload</a></li>\n" +
     "            <li ng-show=\"currentUser\"><a href=\"/account\">Account</a></li>\n" +
     "            <li ng-show=\"currentUser\"><a href=\"/logout\">Signout</a></li>\n" +
     "            <li ng-show=\"!currentUser\"><a href=\"/login\">Login</a></li>\n" +
@@ -359,7 +434,7 @@ angular.module("register/index.tpl.html", []).run(["$templateCache", function($t
     "\n" +
     "                <button type=\"submit\" id=\"login-button\">Sign Up</button>\n" +
     "            </form>\n" +
-    "            <a href=\"/register\"><h3>Already Have An Account?</h3></a>\n" +
+    "            <a href=\"/login\"><h3>Already Have An Account?</h3></a>\n" +
     "        </div>\n" +
     "    </div>\n" +
     "</div>");
@@ -414,25 +489,22 @@ angular.module("sponsors/index.tpl.html", []).run(["$templateCache", function($t
 
 angular.module("upload/index.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("upload/index.tpl.html",
-    "<div class=\"surface-container home-pad\">\n" +
+    "<div style=\"margin-left:10%\">\n" +
     "	<div ng-show=\"!currentUser\">\n" +
     "		<a href=\"/login\">login</a> or <a href=\"/register\">register</a> to upload\n" +
     "	</div>\n" +
     "	<div ng-show=\"currentUser\">\n" +
     "		<h1>upload</h1>\n" +
-    "		<p>video description</p>\n" +
     "		<form ng-submit=\"createVideo(newVideo)\">\n" +
     "			<p>Title</p>\n" +
     "			<input type=\"text\" ng-model=\"newVideo.title\"/>\n" +
     "			<p>Amazon URL</p>\n" +
     "			<input type=\"text\" ng-model=\"newVideo.amazonUrl\"/>\n" +
     "			<p>Description</p>\n" +
-    "			<input type=\"text\" ng-model=\"newVideo.description\"/>\n" +
+    "			<textarea ng-model=\"newVideo.description\"></textarea>\n" +
+    "			<br>\n" +
     "			<button type=\"submit\">Upload Video</button>\n" +
     "		</form>\n" +
-    "	</div>\n" +
-    "\n" +
-    "\n" +
     "\n" +
     "\n" +
     "	    <div class=\"button\" ngf-select=\"upload($files)\" ngf-multiple=\"true\">Select File</div>\n" +
@@ -449,29 +521,26 @@ angular.module("upload/index.tpl.html", []).run(["$templateCache", function($tem
     "		</div>\n" +
     "\n" +
     "\n" +
-    "\n" +
-    "\n" +
-    "\n" +
+    "	</div>\n" +
     "\n" +
     "</div>");
 }]);
 
 angular.module("video/index.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("video/index.tpl.html",
-    "<div class=\"surface-container home-pad\">\n" +
+    "<div style=\"margin-left:10%\">\n" +
     "	<h1>{{video.title}}</h1>\n" +
     "  	<link href=\"http://vjs.zencdn.net/5.8.0/video-js.css\" rel=\"stylesheet\">\n" +
     "	<video class=\"video-js vjs-default-skin\" controls preload=\"auto\" width=\"640\" height=\"264\" poster=\"poster.jpg\" vjs-video>\n" +
     " 		<source src=\"videos/video.mp4\" type=\"video/mp4\">\n" +
     "	</video>\n" +
+    "	<p><a href=\"#\">user</a></p>\n" +
     "\n" +
     "	<p>{{video.description}}</p>\n" +
     "	<p>view count</p>\n" +
     "	\n" +
-    "	{{video.title}}\n" +
-    "\n" +
-    "	<p>current sponsors</p>\n" +
-    "	<p>current $bid/view</p>\n" +
+    "	<!--<p>current sponsors</p>\n" +
+    "	<p>current $bid/view</p>-->\n" +
     "	\n" +
     "\n" +
     "	\n" +

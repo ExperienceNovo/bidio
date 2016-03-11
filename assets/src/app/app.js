@@ -2,6 +2,7 @@ angular.module( 'bidio', [
     'ui.router',
     'sails.io',
     'angularMoment',
+    'chart.js',
     'duScroll',
     'lodash',
     'ui.bootstrap',

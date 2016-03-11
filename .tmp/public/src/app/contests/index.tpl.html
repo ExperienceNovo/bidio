@@ -1,13 +1,11 @@
 <div class="surface-container home-pad" style="margin-left:10%">
 	<h1>contests</h1>
 	<!--<h3>My Contests</h3>-->
-
-	<button ng-click="myFunction()">my button</button>
 	<form ng-submit="createContest(newContest)">
 		<p>title</p>
 		<input type='text' ng-model="newContest.title"></input>
 		<p>contest Content</p>
-		<input type='text' ng-model="newContest.contestContent"></input>
+		<textarea ng-model="newContest.contestContent"></textarea>
 		<p>URL</p>
 		<input type='text' ng-model="newContest.urlTitle"></input><br>
 		<button type='submit'>Submit Contest</button>
