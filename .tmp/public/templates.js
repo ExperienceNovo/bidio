@@ -1,4 +1,4 @@
-angular.module('templates-app', ['about/index.tpl.html', 'account/index.tpl.html', 'contest/index.tpl.html', 'contests/index.tpl.html', 'creators/index.tpl.html', 'dashboard/index.tpl.html', 'home/index.tpl.html', 'intro/index.tpl.html', 'login/index.tpl.html', 'nav/index.tpl.html', 'register/index.tpl.html', 'seach/index.tpl.html', 'sponsors/index.tpl.html', 'upload/index.tpl.html', 'video/index.tpl.html']);
+angular.module('templates-app', ['about/index.tpl.html', 'account/index.tpl.html', 'contest/index.tpl.html', 'contests/index.tpl.html', 'creators/index.tpl.html', 'dashboard/index.tpl.html', 'home/index.tpl.html', 'intro/index.tpl.html', 'login/index.tpl.html', 'nav/index.tpl.html', 'register/index.tpl.html', 'search/index.tpl.html', 'sponsors/index.tpl.html', 'upload/index.tpl.html', 'video/index.tpl.html']);
 
 angular.module("about/index.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("about/index.tpl.html",
@@ -339,8 +339,8 @@ angular.module("register/index.tpl.html", []).run(["$templateCache", function($t
     "<a href=\"/login\">already have an account?</a>");
 }]);
 
-angular.module("seach/index.tpl.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("seach/index.tpl.html",
+angular.module("search/index.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("search/index.tpl.html",
     "<div class=\"surface-container home-pad\">\n" +
     "	<h1>search</h1>\n" +
     "\n" +
