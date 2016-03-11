@@ -16,14 +16,12 @@ angular.module( 'bidio.video', [
 				return VideoModel.getOne($stateParams.id);
 			}
 		}
-		
 	});
 })
 
-.controller( 'VideoCtrl', function VideoCtrl( $scope, titleService, video ) {
+.controller( 'VideoCtrl', function VideoCtrl( $scope, titleService, video, $location ) {
 	titleService.setTitle('video - bidio');
 	$scope.video = video;
-	
-	console.log(video);
-	
+	if(typeof($scope.video)=="undefined"){$location.path('/')}
+		
 });

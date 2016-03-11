@@ -1,5 +1,7 @@
-<div class="surface-container home-pad">
+<div class="surface-container home-pad" style="margin-left:10%">
 	<h1>contests</h1>
+
+	<!--<h3>My Contests</h3>-->
 	
 	<form ng-submit="createContest(newContest)">
 		<p>title</p>
@@ -7,21 +9,16 @@
 		<p>contest Content</p>
 		<input type='text' ng-model="newContest.contestContent"></input>
 		<p>URL</p>
-		<input type='text' ng-model="newContest.urlTitle"></input>
-		
-		
+		<input type='text' ng-model="newContest.urlTitle"></input><br>
 		<button type='submit'>Submit Contest</button>
 	</form>
-	
-	
+	<br><br>
+
 	<div ng-repeat="contest in contests">
-		{{contest.user}}
-		{{contest.title}}
+		<h3><a href="/contest/{{contest.urlTitle}}">{{contest.title}}</a></h3>
+		<p>sponsered by</p>
+		<p>{{contest.user.username}}</p>
 		
 	</div>
-	
-	<h3>My Contests</h3>
-	
-
-
+		
 </div>

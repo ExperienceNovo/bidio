@@ -42,31 +42,38 @@ angular.module("account/index.tpl.html", []).run(["$templateCache", function($te
 
 angular.module("contest/index.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("contest/index.tpl.html",
-    "<div class=\"surface-container home-pad\">\n" +
-    "	<h1>contest</h1>\n" +
+    "<link href=\"http://vjs.zencdn.net/5.8.0/video-js.css\" rel=\"stylesheet\">\n" +
+    "<div class=\"surface-container home-pad\" style=\"margin-left:10%\">\n" +
+    "	<h1>{{contest.title}}</h1>\n" +
+    "	\n" +
+    "	<p>sponsored by</p>\n" +
     "	{{contest.user.username}}\n" +
     "	\n" +
+    "	<h3>edit contest</h3>\n" +
     "	<form ng-submit=\"updateContest(contest)\">\n" +
     "		<p>Update Title</p>\n" +
     "		<input type=\"text\" ng-model=\"contest.title\"/>\n" +
     "		<p>Update Content</p>\n" +
     "		<input type=\"text\" ng-model=\"contest.contestContent\"/>\n" +
     "		<button type=\"submit\">Update Contest</button>\n" +
-    "		\n" +
     "	</form>\n" +
-    "	<div class=\"contestVideos\">\n" +
-    "		<ul>\n" +
-    "			<li ng-repeat=\"video in videos\">{{video}}</li>\n" +
-    "		</ul>\n" +
-    "	\n" +
+    "\n" +
+    "	<h3>contest submissions</h3>\n" +
+    "	<div class=\"contestVideos\" ng-repeat=\"vidoe in videos\">\n" +
+    "		<h1>{{video}}</h1>\n" +
+    "		<video class=\"video-js vjs-default-skin\" controls preload=\"auto\" width=\"640\" height=\"264\" poster=\"poster.jpg\" vjs-video>\n" +
+    "	 		<source src=\"videos/video.mp4\" type=\"video/mp4\">\n" +
+    "		</video>\n" +
     "	</div>\n" +
     "</div>");
 }]);
 
 angular.module("contests/index.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("contests/index.tpl.html",
-    "<div class=\"surface-container home-pad\">\n" +
+    "<div class=\"surface-container home-pad\" style=\"margin-left:10%\">\n" +
     "	<h1>contests</h1>\n" +
+    "\n" +
+    "	<!--<h3>My Contests</h3>-->\n" +
     "	\n" +
     "	<form ng-submit=\"createContest(newContest)\">\n" +
     "		<p>title</p>\n" +
@@ -74,23 +81,18 @@ angular.module("contests/index.tpl.html", []).run(["$templateCache", function($t
     "		<p>contest Content</p>\n" +
     "		<input type='text' ng-model=\"newContest.contestContent\"></input>\n" +
     "		<p>URL</p>\n" +
-    "		<input type='text' ng-model=\"newContest.urlTitle\"></input>\n" +
-    "		\n" +
-    "		\n" +
+    "		<input type='text' ng-model=\"newContest.urlTitle\"></input><br>\n" +
     "		<button type='submit'>Submit Contest</button>\n" +
     "	</form>\n" +
-    "	\n" +
-    "	\n" +
+    "	<br><br>\n" +
+    "\n" +
     "	<div ng-repeat=\"contest in contests\">\n" +
-    "		{{contest.user}}\n" +
-    "		{{contest.title}}\n" +
+    "		<h3><a href=\"/contest/{{contest.urlTitle}}\">{{contest.title}}</a></h3>\n" +
+    "		<p>sponsered by</p>\n" +
+    "		<p>{{contest.user.username}}</p>\n" +
     "		\n" +
     "	</div>\n" +
-    "	\n" +
-    "	<h3>My Contests</h3>\n" +
-    "	\n" +
-    "\n" +
-    "\n" +
+    "		\n" +
     "</div>");
 }]);
 
@@ -115,7 +117,7 @@ angular.module("creators/index.tpl.html", []).run(["$templateCache", function($t
 angular.module("dashboard/index.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("dashboard/index.tpl.html",
     "<div class=\"surface-container home-pad\">\n" +
-    "	<h1>contests</h1>\n" +
+    "	<h1>Dashboard</h1>\n" +
     "\n" +
     "\n" +
     "</div>");
@@ -123,38 +125,27 @@ angular.module("dashboard/index.tpl.html", []).run(["$templateCache", function($
 
 angular.module("home/index.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("home/index.tpl.html",
-    "<div class=\"surface-container-home\" ng-controller=\"HomeCtrl\">\n" +
+    "<div class=\"surface-container-home\">\n" +
     "    <div ng-include=\"'intro/index.tpl.html'\"></div>\n" +
-    "\n" +
-    "\n" +
-    "    <a href=\"/creators\">creators</a>\n" +
-    "    <a href=\"/sponsors\">sponsors</a>\n" +
-    "\n" +
-    "\n" +
-    "    <h3>join the creative revolution</h3>\n" +
-    "\n" +
-    "    <h3>truly native content sponsorship</h3>\n" +
-    "\n" +
-    "    <p>Our unique influencer marketing platform hosts content for creators who want to get support from sponsors without giving up creative control. Unlike other digital media networks and exchanges, we only take 8% of our users’ hard-earned advertising revenue.</p>\n" +
-    "\n" +
-    "	<p>Establish your maximum budget, CPC and creative parameters, then let our users produce videos for your consideration. If you choose to sponsor any entries, the original creator will receive incremental payments each time an audience member clicks through to your landing page.</p>\n" +
-    "\n" +
-    "\n" +
-    "    <h2>Advertising Sponsors</h2>\n" +
-    "    <p>Attach your brand to viral user-generated content, and simply pay per click</p>\n" +
-    " \n" +
-    "    <h2>Content Creators</h2>\n" +
-    "    <p>Earn 92 percent of advertising revenue generated by your media productions.</p>\n" +
-    " \n" +
-    "    <h2>Web Surfers</h2>\n" +
-    "    <p>Watch cool videos created by everyday bidio users, and share what you like</p>\n" +
-    "\n" +
-    "\n" +
-    "    <h2>trending</h2>\n" +
-    "    <div ng-repeat=\"video in trendingVideos\">\n" +
-    "    	<a href=\"video/{{video}}\">trending video {{video}}</a>\n" +
-    "	</div>\n" +
-    "    <div style=\"height:800px;\"></div>\n" +
+    "    <div style=\"margin-left:10%\">\n" +
+    "        <a href=\"/creators\">creators</a>\n" +
+    "        <a href=\"/sponsors\">sponsors</a>\n" +
+    "        <h3>join the creative revolution</h3>\n" +
+    "        <h3>truly native content sponsorship</h3>\n" +
+    "        <p>Our unique influencer marketing platform hosts content for creators who want to get support from sponsors without giving up creative control. Unlike other digital media networks and exchanges, we only take 8% of our users’ hard-earned advertising revenue.</p>\n" +
+    "    	<p>Establish your maximum budget, CPC and creative parameters, then let our users produce videos for your consideration. If you choose to sponsor any entries, the original creator will receive incremental payments each time an audience member clicks through to your landing page.</p>\n" +
+    "        <h2>Advertising Sponsors</h2>\n" +
+    "        <p>Attach your brand to viral user-generated content, and simply pay per click</p>\n" +
+    "        <h2>Content Creators</h2>\n" +
+    "        <p>Earn 92 percent of advertising revenue generated by your media productions.</p>\n" +
+    "        <h2>Web Surfers</h2>\n" +
+    "        <p>Watch cool videos created by everyday bidio users, and share what you like</p>\n" +
+    "        <h2>trending</h2>\n" +
+    "        <div ng-repeat=\"video in trendingVideos\">\n" +
+    "        	<a href=\"video/{{video.id}}\">{{video.title}}</a>\n" +
+    "    	</div>\n" +
+    "        <div style=\"height:800px;\"></div>\n" +
+    "    </div>\n" +
     "</div>\n" +
     "\n" +
     "\n" +
@@ -264,7 +255,7 @@ angular.module("nav/index.tpl.html", []).run(["$templateCache", function($templa
     "\n" +
     "</style>\n" +
     "\n" +
-    "<div ng-controller=\"HeaderCtrl\">\n" +
+    "<div ng-controller=\"NavCtrl\">\n" +
     "    <div class=\"navbar navbar-inverse navbar-fixed-top\" role=\"navigation\">\n" +
     "      <div class=\"container\">\n" +
     "        <div class=\"navbar-header\">\n" +
@@ -283,13 +274,13 @@ angular.module("nav/index.tpl.html", []).run(["$templateCache", function($templa
     "            <li><a class=\"bidio-nav\" href=\"/about\">About</a></li>\n" +
     "            <li><a class=\"bidio-nav\" href=\"/creators\">Creators</a></li>\n" +
     "            <li><a class=\"bidio-nav\" href=\"/sponsors\">Sponsors</a></li>\n" +
-    "        <!--<li><a href=\"/contests\">contests</a></li>\n" +
-    "            <li><a href=\"/search\">search</a></li>\n" +
-    "            <li ng-show=\"currentUser\"><a href=\"/dashboard\">dashboard</a></li>\n" +
-    "            <li ng-show=\"currentUser\"><a href=\"/account\">account</a></li>\n" +
-    "            <li ng-show=\"currentUser\"><a href=\"/logout\">signout</a></li>\n" +
-    "            <li ng-show=\"!currentUser\"><a href=\"/login\">login</a></li>\n" +
-    "            <li ng-show=\"!currentUser\"><a href=\"/register\">register</a></li>--> \n" +
+    "            <!--<li><a href=\"/contests\">Contests</a></li>\n" +
+    "            <li><a href=\"/search\">Search</a></li>-->\n" +
+    "            <li ng-show=\"currentUser\"><a href=\"/dashboard\">Dashboard</a></li>\n" +
+    "            <li ng-show=\"currentUser\"><a href=\"/account\">Account</a></li>\n" +
+    "            <li ng-show=\"currentUser\"><a href=\"/logout\">Signout</a></li>\n" +
+    "            <li ng-show=\"!currentUser\"><a href=\"/login\">Login</a></li>\n" +
+    "            <li ng-show=\"!currentUser\"><a href=\"/register\">Register</a></li>\n" +
     "          </ul>\n" +
     "        </div><!--/.nav-collapse -->\n" +
     "      </div>\n" +

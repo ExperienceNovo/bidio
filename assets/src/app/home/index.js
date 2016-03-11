@@ -9,13 +9,18 @@ angular.module( 'bidio.home', [
 				controller: 'HomeCtrl',
 				templateUrl: 'home/index.tpl.html'
 			}
+		},
+		resolve: {
+			trendingVideos: function(VideoModel){
+				return VideoModel.getAll();
+			}
 		}
 	});
 })
 
-.controller( 'HomeCtrl', function HomeController( $scope, titleService, config ) {
+.controller( 'HomeCtrl', function HomeController( $scope, titleService, config, trendingVideos ) {
 	titleService.setTitle('bidio');
 	$scope.currentUser = config.currentUser;
-	$scope.trendingVideos = [1,2,3,4,5,6,8];
+	$scope.trendingVideos = trendingVideos;
 
 });

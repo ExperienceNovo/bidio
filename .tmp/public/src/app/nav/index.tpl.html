@@ -4,7 +4,7 @@
 
 </style>
 
-<div ng-controller="HeaderCtrl">
+<div ng-controller="NavCtrl">
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -23,13 +23,13 @@
             <li><a class="bidio-nav" href="/about">About</a></li>
             <li><a class="bidio-nav" href="/creators">Creators</a></li>
             <li><a class="bidio-nav" href="/sponsors">Sponsors</a></li>
-        <!--<li><a href="/contests">contests</a></li>
-            <li><a href="/search">search</a></li>
-            <li ng-show="currentUser"><a href="/dashboard">dashboard</a></li>
-            <li ng-show="currentUser"><a href="/account">account</a></li>
-            <li ng-show="currentUser"><a href="/logout">signout</a></li>
-            <li ng-show="!currentUser"><a href="/login">login</a></li>
-            <li ng-show="!currentUser"><a href="/register">register</a></li>--> 
+            <!--<li><a href="/contests">Contests</a></li>
+            <li><a href="/search">Search</a></li>-->
+            <li ng-show="currentUser"><a href="/dashboard">Dashboard</a></li>
+            <li ng-show="currentUser"><a href="/account">Account</a></li>
+            <li ng-show="currentUser"><a href="/logout">Signout</a></li>
+            <li ng-show="!currentUser"><a href="/login">Login</a></li>
+            <li ng-show="!currentUser"><a href="/register">Register</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

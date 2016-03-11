@@ -2,17 +2,17 @@ angular.module( 'bidio.dashboard', [
 ])
 
 .config(function config( $stateProvider ) {
-	$stateProvider.state( 'contests', {
-		url: '/contests',
+	$stateProvider.state( 'dashboard', {
+		url: '/dashboard',
 		views: {
 			"main": {
-				controller: 'ContestCtrl',
-				templateUrl: 'contests/index.tpl.html'
+				controller: 'DashboardCtrl',
+				templateUrl: 'dashboard/index.tpl.html'
 			}
 		}
 	});
 })
 
-.controller( 'ContestCtrl', function ContestCtrl( $scope, titleService ) {
-	titleService.setTitle('contests - bidio');
+.controller( 'DashboardCtrl', function DashboardCtrl( $scope, titleService ) {
+	titleService.setTitle('dashboard - bidio');
 });
