@@ -98,19 +98,40 @@ angular.module("contests/index.tpl.html", []).run(["$templateCache", function($t
 
 angular.module("creators/index.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("creators/index.tpl.html",
-    "<div class=\"surface-container home-pad\">\n" +
-    "	<h1>creators</h1>\n" +
-    "\n" +
-    "	<h3>Upload Your Videos</h3>\n" +
-    "	<p>Our unique influencer marketing platform hosts content for creators who want to get support from sponsors without giving up creative control. Unlike other digital media networks and exchanges, we only take 8% of our users’ hard-earned advertising revenue.</p>\n" +
-    "\n" +
-    "	<h3>Enter Sponsored Contests</h3>\n" +
-    "	<p>Explore our active sponsors and discover video contests involving branded content. Simply follow the contest guidelines and submit uploads for the chance to get paid! If a brand likes your video, you’ll receive incremental payments based on your content’s performance.</p>\n" +
-    "\n" +
-    "	<h3>Get Paid Based on Virality</h3>\n" +
-    "	<p>Bidio’s auction system enables perfectly cost-effective content sponsorship, which helps any creator earn money by doing what they love. Share your sponsored content and capitalize that influence on the word wide web. Using our platform, the audience is anywhere and everywhere.</p>\n" +
-    "\n" +
-    "\n" +
+    "<div class=\"surface-container home-pad\" style=\"text-align:center;padding-top:50px\">\n" +
+    "    <div class=\"row\">\n" +
+    "    	<div class=\"col-md-12\" style=\"margin-top:5%;margin-bottom:75px\">\n" +
+    "    		<h1>Did you know Facebook and YouTube take<br>45% of advertising revenue? We take 8%.</h1>\n" +
+    "    	</div>\n" +
+    "        <div class=\"col-sm-4\">\n" +
+    "            <img style=\"height:200px;margin:0 auto\" class=\"img-responsive img-center\" src=\"/images/play.png\" alt=\"\">\n" +
+    "            <br><br>\n" +
+    "            <h2 style=\"color:#FE9A2E\">Upload Your Videos</h2>\n" +
+    "            <p style=\"padding:25px;font-size:18px;color:#555;\">Our unique influencer marketing platform hosts content for creators who want to get support from sponsors without giving up creative control. Unlike other digital media networks and exchanges, we only take 8% of our users’ hard-earned advertising revenue.</p>\n" +
+    "            <br><br>\n" +
+    "        </div>\n" +
+    "        <div class=\"col-sm-4\">\n" +
+    "            <img style=\"height:200px;margin:0 auto\" class=\"img-responsive img-center\" src=\"/images/cup.png\" alt=\"\">\n" +
+    "            <br><br>\n" +
+    "            <h2 style=\"color:#FE9A2E\">Enter Sponsored Contests</h2>\n" +
+    "            <p style=\"padding:25px;font-size:18px;color:#555;\">Explore our active sponsors and discover video contests involving branded content. Simply follow the contest guidelines and submit uploads for the chance to get paid! If a brand likes your video, you’ll receive incremental payments based on your content’s performance.</p>\n" +
+    "            <br><br>\n" +
+    "        </div>\n" +
+    "        <div class=\"col-sm-4\">\n" +
+    "            <img style=\"height:200px;margin:0 auto\" class=\"img-responsive img-center\" src=\"/images/business.png\" alt=\"\">\n" +
+    "            <br><br>\n" +
+    "            <h2 style=\"color:#FE9A2E\">Get Paid Based on Virality</h2>\n" +
+    "            <p style=\"padding:25px;font-size:18px;color:#555;\">Bidio’s auction system enables perfectly cost-effective content sponsorship, which helps any creator earn money by doing what they love. Share your sponsored content and capitalize that influence on the word wide web. Using our platform, the audience is anywhere and everywhere.</p>\n" +
+    "            <br><br>\n" +
+    "        </div>\n" +
+    "        <div class=\"col-md-12\">\n" +
+    "	        <ul class=\"list-inline intro-social-buttons\">\n" +
+    "	          <li>\n" +
+    "	              <a href=\"/register\" class=\"btn btn-default btn-lg btn-reg\"><span class=\"network-name\">Get Started - For FREE!</span></a>\n" +
+    "	          </li>\n" +
+    "	        </ul>\n" +
+    "        </div>\n" +
+    "    </div>\n" +
     "</div>");
 }]);
 
@@ -127,24 +148,52 @@ angular.module("home/index.tpl.html", []).run(["$templateCache", function($templ
   $templateCache.put("home/index.tpl.html",
     "<div class=\"surface-container-home\">\n" +
     "    <div ng-include=\"'intro/index.tpl.html'\"></div>\n" +
-    "    <div style=\"margin-left:10%\">\n" +
-    "        <a href=\"/creators\">creators</a>\n" +
-    "        <a href=\"/sponsors\">sponsors</a>\n" +
-    "        <h3>join the creative revolution</h3>\n" +
-    "        <h3>truly native content sponsorship</h3>\n" +
-    "        <p>Our unique influencer marketing platform hosts content for creators who want to get support from sponsors without giving up creative control. Unlike other digital media networks and exchanges, we only take 8% of our users’ hard-earned advertising revenue.</p>\n" +
-    "    	<p>Establish your maximum budget, CPC and creative parameters, then let our users produce videos for your consideration. If you choose to sponsor any entries, the original creator will receive incremental payments each time an audience member clicks through to your landing page.</p>\n" +
-    "        <h2>Advertising Sponsors</h2>\n" +
-    "        <p>Attach your brand to viral user-generated content, and simply pay per click</p>\n" +
-    "        <h2>Content Creators</h2>\n" +
-    "        <p>Earn 92 percent of advertising revenue generated by your media productions.</p>\n" +
-    "        <h2>Web Surfers</h2>\n" +
-    "        <p>Watch cool videos created by everyday bidio users, and share what you like</p>\n" +
-    "        <h2>trending</h2>\n" +
-    "        <div ng-repeat=\"video in trendingVideos\">\n" +
-    "        	<a href=\"video/{{video.id}}\">{{video.title}}</a>\n" +
-    "    	</div>\n" +
-    "        <div style=\"height:800px;\"></div>\n" +
+    "        <div class=\"content-section-a\">\n" +
+    "        <div class=\"container\">\n" +
+    "            <div class=\"row\">\n" +
+    "                <div class=\"col-lg-5 col-sm-6\">\n" +
+    "                    <hr class=\"section-heading-spacer\">\n" +
+    "                    <div class=\"clearfix\"></div>\n" +
+    "                    <h2 class=\"section-heading\">Truly Native Campaigns and Creative Contests</h2>\n" +
+    "                    <p class=\"lead\">Our unique influencer marketing platform hosts content for creators who want to get support from sponsors without giving up creative control.</p>\n" +
+    "                </div>\n" +
+    "                <div class=\"col-lg-5 col-lg-offset-2 col-sm-6\" style=\"text-align:center;\">\n" +
+    "                   <i class=\"fa fa-video-camera img-responsive\" style=\"font-size:125px;text-align:center;line-height:250px;\"></i>\n" +
+    "                </div>\n" +
+    "            </div>\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "\n" +
+    "    <div class=\"content-section-b\">\n" +
+    "        <div class=\"container\">\n" +
+    "            <div class=\"row\">\n" +
+    "                <div class=\"col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6\">\n" +
+    "                    <hr class=\"section-heading-spacer\">\n" +
+    "                    <div class=\"clearfix\"></div>\n" +
+    "                    <h2 class=\"section-heading\">Discover Interesting User-Generated Content</h2>\n" +
+    "                    <p class=\"lead\">Find cool videos created by everyday bidio users. Watch what you like, when you like - all while supporting the creative community!</p>\n" +
+    "                </div>\n" +
+    "                <div class=\"col-lg-5 col-sm-pull-6 col-sm-6\" style=\"text-align:center;\">\n" +
+    "                    <i class=\"fa fa-play-circle img-responsive\" style=\"font-size:125px;text-align:center;line-height:250px;\"></i>\n" +
+    "                </div>\n" +
+    "            </div>\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "\n" +
+    "    <div class=\"content-section-a\">\n" +
+    "        <div class=\"container\">\n" +
+    "            <div class=\"row\">\n" +
+    "                <div class=\"col-lg-5 col-sm-6\">\n" +
+    "                    <hr class=\"section-heading-spacer\">\n" +
+    "                    <div class=\"clearfix\"></div>\n" +
+    "                    <h2 class=\"section-heading\">Digital Creators Get Paid What They Deserve</h2>\n" +
+    "                    <p class=\"lead\">Unlike other digital media networks and exchanges, bidio members keep 92% of their hard-earned advertising revenue - no strings attached.</p>\n" +
+    "                </div>\n" +
+    "                <div class=\"col-lg-5 col-lg-offset-2 col-sm-6\" style=\"text-align:center;\">\n" +
+    "                   <i class=\"fa fa-usd img-responsive\" style=\"font-size:125px;text-align:center;line-height:250px;\"></i>\n" +
+    "                </div>\n" +
+    "            </div>\n" +
+    "        </div>\n" +
     "    </div>\n" +
     "</div>\n" +
     "\n" +
@@ -154,39 +203,44 @@ angular.module("home/index.tpl.html", []).run(["$templateCache", function($templ
 
 angular.module("intro/index.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("intro/index.tpl.html",
-    "<!--<div class=\"intro-container\">\n" +
-    "    <img src=\"/images/intro.jpg\" style=\"height:100%;width:100%;\">\n" +
-    "</div>\n" +
-    "<h1>connecting creators with sponsors</h1>-->\n" +
-    "\n" +
     "<div class=\"intro\">\n" +
     "    <div class=\"intro-container\">\n" +
-    "      <img class=\"intro-logo\" src=\"/images/intro logo.png\">\n" +
-    "      <svg class=\"svg-defs\" viewBox=\"0 0 1920 1080\" viewPort=\"0 0 1920 1080\" preserveAspectRatio=\"xMidYMid slice\" xmlns=\"http://www.w3.org/2000/svg\">\n" +
-    "        <symbol id=\"intro-desktop-text\">\n" +
-    "          <text text-anchor=\"middle\"\n" +
-    "                x=\"960\"  \n" +
-    "                y=\"570\"\n" +
-    "                dy=\".35em\"\n" +
-    "                class=\"medium-text\"\n" +
-    "                >\n" +
-    "            Connecting creators with sponsors. Get paid to create. \n" +
-    "          </text>    \n" +
-    "        </symbol>\n" +
-    "        <mask id=\"intro-desktop-mask\"\n" +
-    "              maskunits=\"userSpaceOnUse\"\n" +
-    "              maskcontentunits=\"userSpaceOnUse\">\n" +
-    "          <rect\n" +
-    "                width=\"100%\"\n" +
-    "                height=\"100%\"\n" +
-    "                class=\"mask__shape\">\n" +
-    "          </rect>\n" +
-    "          <use xlink:href=\"#intro-desktop-text\"\n" +
-    "               class=\"mask__text\"\n" +
-    "               ></use>\n" +
-    "          <use xlink:href=\"#intro-desktop-novo\" />\n" +
-    "        </mask>\n" +
-    "      </svg>\n" +
+    "      <div class=\"container\" style=\"position: absolute;width: 100%;top: 49%;\">\n" +
+    "        <img class=\"intro-logo\" src=\"/images/intro logo.png\">\n" +
+    "        <svg class=\"svg-defs\" viewBox=\"0 0 1920 1080\" viewPort=\"0 0 1920 1080\" preserveAspectRatio=\"xMidYMid slice\" xmlns=\"http://www.w3.org/2000/svg\">\n" +
+    "          <symbol id=\"intro-desktop-text\">\n" +
+    "            <text text-anchor=\"middle\"\n" +
+    "                  x=\"960\"  \n" +
+    "                  y=\"570\"\n" +
+    "                  dy=\".35em\"\n" +
+    "                  class=\"medium-text\"\n" +
+    "                  >\n" +
+    "              Connecting creators with sponsors.\n" +
+    "            </text>    \n" +
+    "          </symbol>\n" +
+    "          <mask id=\"intro-desktop-mask\"\n" +
+    "                maskunits=\"userSpaceOnUse\"\n" +
+    "                maskcontentunits=\"userSpaceOnUse\">\n" +
+    "            <rect\n" +
+    "                  width=\"100%\"\n" +
+    "                  height=\"100%\"\n" +
+    "                  class=\"mask__shape\">\n" +
+    "            </rect>\n" +
+    "            <use xlink:href=\"#intro-desktop-text\"\n" +
+    "                 class=\"mask__text\"\n" +
+    "                 ></use>\n" +
+    "            <use xlink:href=\"#intro-desktop-novo\" />\n" +
+    "          </mask>\n" +
+    "        </svg>\n" +
+    "        <ul class=\"list-inline intro-social-buttons\">\n" +
+    "          <li>\n" +
+    "              <a href=\"/creators\" class=\"btn btn-default btn-lg\"><i class=\"fa fa-angle-left fa-fw\"></i> <span class=\"network-name\">Video Producers</span></a>\n" +
+    "          </li>\n" +
+    "          <li>\n" +
+    "              <a href=\"/sponsors\" class=\"btn btn-default btn-lg\"><span class=\"network-name\">Digital Marketers</span> <i class=\"fa fa-angle-right fa-fw\"></i></a>\n" +
+    "          </li>\n" +
+    "        </ul>\n" +
+    "      </div>\n" +
     "      <div class=\"box-with-text\">\n" +
     "        <div class=\"text-fill\">\n" +
     "          <video itemscope itemtype=\"VideoObject\"\n" +
@@ -217,31 +271,25 @@ angular.module("intro/index.tpl.html", []).run(["$templateCache", function($temp
 
 angular.module("login/index.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("login/index.tpl.html",
-    "<!--login-->\n" +
     "<div class=\"row\">\n" +
-    "    <div class=\"col-md-6\">\n" +
-    "        <h3>Login</h3>\n" +
-    "        <form class=\"form-horizontal\" role=\"form\" action=\"/auth/local\" method=\"post\">\n" +
-    "            <div class=\"form-group\">\n" +
-    "                <label for=\"inputUsername3\" class=\"col-sm-2 control-label\">Username</label>\n" +
-    "                <div class=\"col-sm-10\">\n" +
-    "                    <input type=\"text\" class=\"form-control\" id=\"inputUsername3\" name=\"identifier\" placeholder=\"Username\">\n" +
-    "                </div>\n" +
-    "            </div>\n" +
-    "            <div class=\"form-group\">\n" +
-    "                <label for=\"inputPassword3\" class=\"col-sm-2 control-label\">Password</label>\n" +
-    "                <div class=\"col-sm-10\">\n" +
-    "                    <input type=\"password\" class=\"form-control\" id=\"inputPassword3\" name=\"password\" placeholder=\"Password\">\n" +
-    "                </div>\n" +
-    "            </div>\n" +
-    "            <div class=\"form-group\">\n" +
-    "                <div class=\"col-sm-offset-2 col-sm-10\">\n" +
-    "                    <button type=\"submit\" class=\"btn btn-default\">Sign in</button>\n" +
-    "                </div>\n" +
-    "            </div>\n" +
-    "        </form>\n" +
+    "    <div class=\"form-wrapper\">\n" +
+    "        <div class=\"form-container\">\n" +
+    "            <h1>Welcome Back!</h1>\n" +
+    "            <form class=\"form ng-pristine ng-valid\" role=\"form\" action=\"/auth/local\" method=\"post\" _lpchecked=\"1\">\n" +
+    "                <label for=\"inputUsername3\"></label>\n" +
+    "                <input type=\"text\" placeholder=\"Username\" id=\"inputUsername3\" name=\"identifier\">\n" +
+    "                <label for=\"inputPassword3\"></label>\n" +
+    "                <input type=\"password\" placeholder=\"Password\" id=\"inputPassword3\" name=\"password\">\n" +
+    "                <button type=\"submit\" id=\"login-button\">Login</button>\n" +
+    "            </form>\n" +
+    "            <a href=\"/register\"><h3>Sign Up</h3></a>\n" +
+    "        </div>\n" +
     "    </div>\n" +
     "</div>\n" +
+    "\n" +
+    "\n" +
+    "\n" +
+    "\n" +
     "\n" +
     "\n" +
     "");
@@ -271,7 +319,7 @@ angular.module("nav/index.tpl.html", []).run(["$templateCache", function($templa
     "        </div>\n" +
     "        <div class=\"collapse navbar-collapse\">\n" +
     "          <ul class=\"nav navbar-nav pull-right\">\n" +
-    "            <li><a class=\"bidio-nav\" href=\"/about\">About</a></li>\n" +
+    "           <!-- <li><a class=\"bidio-nav\" href=\"/about\">About</a></li>-->\n" +
     "            <li><a class=\"bidio-nav\" href=\"/creators\">Creators</a></li>\n" +
     "            <li><a class=\"bidio-nav\" href=\"/sponsors\">Sponsors</a></li>\n" +
     "            <!--<li><a href=\"/contests\">Contests</a></li>\n" +
@@ -292,45 +340,29 @@ angular.module("nav/index.tpl.html", []).run(["$templateCache", function($templa
 
 angular.module("register/index.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("register/index.tpl.html",
-    "<!--register-->\n" +
     "<div class=\"row\">\n" +
-    "    <div class=\"col-md-6\">\n" +
-    "        <h3>Create an Account</h3>\n" +
-    "        <form class=\"form-horizontal\" role=\"form\" action=\"/auth/local/register\" method=\"post\">\n" +
-    "            <div class=\"form-group\">\n" +
-    "                <label for=\"inputUsername3\" class=\"col-sm-2 control-label\">Username</label>\n" +
-    "                <div class=\"col-sm-10\">\n" +
-    "                    <input type=\"text\" class=\"form-control\" id=\"inputUsername3\" name=\"username\" placeholder=\"Username\" value=\"\">\n" +
-    "                </div>\n" +
-    "            </div>\n" +
-    "            <div class=\"form-group\">\n" +
-    "                <label for=\"inputPassword3\" class=\"col-sm-2 control-label\">Password</label>\n" +
-    "                <div class=\"col-sm-10\">\n" +
-    "                    <input type=\"password\" class=\"form-control\" id=\"inputPassword3\" name=\"password\" placeholder=\"Password\" value=\"\">\n" +
-    "                </div>\n" +
-    "            </div>\n" +
-    "            <div class=\"form-group\">\n" +
-    "                <label for=\"inputEmail3\" class=\"col-sm-2 control-label\">Email</label>\n" +
-    "                <div class=\"col-sm-10\">\n" +
-    "                    <input type=\"email\" class=\"form-control\" id=\"inputEmail3\" name=\"email\" placeholder=\"Email\" value=\"\">\n" +
-    "                </div>\n" +
-    "            </div>\n" +
-    "            <div class=\"form-group\">\n" +
-    "                <label for=\"inputFirstName3\" class=\"col-sm-2 control-label\">First Name</label>\n" +
-    "                <div class=\"col-sm-10\">\n" +
-    "                    <input type=\"text\" class=\"form-control\" id=\"inputFirstName3\" name=\"first_name\" placeholder=\"First Name\" value=\"\">\n" +
-    "                </div>\n" +
-    "            </div>\n" +
-    "            <div class=\"form-group\">\n" +
-    "                <div class=\"col-sm-offset-2 col-sm-10\">\n" +
-    "                    <button type=\"submit\" class=\"btn btn-default\">Sign in</button>\n" +
-    "                </div>\n" +
-    "            </div>\n" +
-    "        </form>\n" +
-    "    </div>\n" +
-    "</div>\n" +
+    "    <div class=\"form-wrapper\">\n" +
+    "        <div class=\"form-container\">\n" +
+    "            <h1>Welcome to Bidio!</h1>\n" +
+    "            <form class=\"form ng-pristine ng-valid\" role=\"form\" action=\"/auth/local/register\" method=\"post\" _lpchecked=\"1\">\n" +
+    "                <label for=\"inputUsername3\" class=\"col-sm-2 control-label\"></label>\n" +
+    "                <input type=\"text\" class=\"form-control\" id=\"inputUsername3\" name=\"username\" placeholder=\"Username\" value=\"\">\n" +
     "\n" +
-    "<a href=\"/login\">already have an account?</a>");
+    "                <label for=\"inputPassword3\" class=\"col-sm-2 control-label\"></label>\n" +
+    "                <input type=\"password\" class=\"form-control\" id=\"inputPassword3\" name=\"password\" placeholder=\"Password\" value=\"\">\n" +
+    "\n" +
+    "                <label for=\"inputEmail3\" class=\"col-sm-2 control-label\"></label>\n" +
+    "                <input type=\"email\" class=\"form-control\" id=\"inputEmail3\" name=\"email\" placeholder=\"Email\" value=\"\">\n" +
+    "\n" +
+    "                <label for=\"inputFirstName3\" class=\"col-sm-2 control-label\"></label>\n" +
+    "                <input type=\"text\" class=\"form-control\" id=\"inputFirstName3\" name=\"first_name\" placeholder=\"First Name\" value=\"\">\n" +
+    "\n" +
+    "                <button type=\"submit\" id=\"login-button\">Sign Up</button>\n" +
+    "            </form>\n" +
+    "            <a href=\"/register\"><h3>Already Have An Account?</h3></a>\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "</div>");
 }]);
 
 angular.module("seach/index.tpl.html", []).run(["$templateCache", function($templateCache) {
@@ -343,19 +375,40 @@ angular.module("seach/index.tpl.html", []).run(["$templateCache", function($temp
 
 angular.module("sponsors/index.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("sponsors/index.tpl.html",
-    "<div class=\"surface-container home-pad\">\n" +
-    "	<h1>sponsors</h1>\n" +
-    "\n" +
-    "	<h3>Sponsor Video Contests</h3>\n" +
-    "	<p>Establish your maximum budget, CPC and creative parameters, then let our users produce videos for your consideration. If you choose to sponsor any entries, the original creator will receive incremental payments each time an audience member clicks through to your landing page.</p>\n" +
-    "\n" +
-    "	<h3>Customize Your Channel</h3>\n" +
-    "	<p>Control the aesthetic of your sponsored content’s surroundings, and rest assured, your logo will follow it across platforms and devices. You can even produce and upload your own video to accompany your branded bidio channel and profile.</p>\n" +
-    "\n" +
-    "	<h3>Only Pay For Results</h3>\n" +
-    "	<p>Using our unique pay-per-click model, your organization can confidently invest in user-generated content marketing. Giving up creative influence will help motivate creators and regain consumer trust online. Plus our dashboard makes it easier to measure performance and maximize ROI.</p>\n" +
-    "\n" +
-    "\n" +
+    "<div class=\"surface-container home-pad\" style=\"text-align:center;padding-top:50px\">\n" +
+    "    <div class=\"row\">\n" +
+    "    	<div class=\"col-md-12\" style=\"margin-top:5%;margin-bottom:75px\">\n" +
+    "    		<h1>Perfectly Cost-Effective,<br>Crowdsourced Content Marketing</h1>\n" +
+    "    	</div>\n" +
+    "        <div class=\"col-sm-4\">\n" +
+    "            <img style=\"height:200px;margin:0 auto\" class=\"img-responsive img-center\" src=\"/images/business.png\" alt=\"\">\n" +
+    "            <br><br>\n" +
+    "            <h2 style=\"color:#FE9A2E\">Sponsor Video Contests</h2>\n" +
+    "            <p style=\"padding:25px;font-size:18px;color:#555;\">Establish your maximum budget, CPC and creative parameters, then let our users produce videos for your consideration. If you choose to sponsor any entries, the original creator will receive incremental payments each time an audience member clicks through to your landing page.</p>\n" +
+    "            <br><br>\n" +
+    "        </div>\n" +
+    "        <div class=\"col-sm-4\">\n" +
+    "            <img style=\"height:200px;margin:0 auto\" class=\"img-responsive img-center\" src=\"/images/paint.png\" alt=\"\">\n" +
+    "            <br><br>\n" +
+    "            <h2 style=\"color:#FE9A2E\">Customize Your Channel</h2>\n" +
+    "            <p style=\"padding:25px;font-size:18px;color:#555;\">Control the aesthetic of your sponsored content’s surroundings, and rest assured, your logo will follow it across platforms and devices. You can even produce and upload your own video to accompany your branded bidio channel and profile.</p>\n" +
+    "            <br><br>\n" +
+    "        </div>\n" +
+    "        <div class=\"col-sm-4\">\n" +
+    "            <img style=\"height:200px;margin:0 auto\" class=\"img-responsive img-center\" src=\"/images/arrow.png\" alt=\"\">\n" +
+    "            <br><br>\n" +
+    "            <h2 style=\"color:#FE9A2E\">Only Pay For Results</h2>\n" +
+    "            <p style=\"padding:25px;font-size:18px;color:#555;\">Using our unique pay-per-click model, your organization can confidently invest in user-generated content marketing. Giving up creative influence will help motivate creators and regain consumer trust online. Plus our dashboard makes it easier to measure performance and maximize ROI.</p>\n" +
+    "            <br><br>\n" +
+    "        </div>\n" +
+    "        <div class=\"col-md-12\">\n" +
+    "	        <ul class=\"list-inline intro-social-buttons\">\n" +
+    "	          <li>\n" +
+    "	              <a href=\"/register\" class=\"btn btn-default btn-lg btn-reg\"><span class=\"network-name\">Get Started - For FREE!</span></a>\n" +
+    "	          </li>\n" +
+    "	        </ul>\n" +
+    "        </div>\n" +
+    "    </div>\n" +
     "</div>");
 }]);
 
