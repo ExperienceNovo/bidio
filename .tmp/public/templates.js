@@ -72,9 +72,9 @@ angular.module("contests/index.tpl.html", []).run(["$templateCache", function($t
   $templateCache.put("contests/index.tpl.html",
     "<div class=\"surface-container home-pad\" style=\"margin-left:10%\">\n" +
     "	<h1>contests</h1>\n" +
-    "\n" +
     "	<!--<h3>My Contests</h3>-->\n" +
-    "	\n" +
+    "\n" +
+    "	<button ng-click=\"myFunction()\">my button</button>\n" +
     "	<form ng-submit=\"createContest(newContest)\">\n" +
     "		<p>title</p>\n" +
     "		<input type='text' ng-model=\"newContest.title\"></input>\n" +

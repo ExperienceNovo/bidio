@@ -20,9 +20,9 @@ angular.module( 'bidio.contests', [
 
 .controller( 'ContestsCtrl', function ContestsCtrl( $scope, config, titleService, ContestModel, contests, $sailsSocket ) {
 	titleService.setTitle('contests - bidio');
-	
 	$scope.currentUser = config.currentUser;
 	$scope.contests = contests;
+
 	$scope.createContest = function(newContest){
 		newContest.user = $scope.currentUser.id;
 		
@@ -33,8 +33,6 @@ angular.module( 'bidio.contests', [
 	}
 	
 	$sailsSocket.subscribe('contest', function(envelope){
-		
-		
 		switch(envelope.verb){
 			case 'created':
 				$scope.contests.unshift(envelope.data);
@@ -43,12 +41,8 @@ angular.module( 'bidio.contests', [
 				var index = $scope.contests.map(function(e){
 					return e.id;
 				}).indexOf(envelope.data[0].id);
-				
 				$scope.contests[index] = envelope.data[0];
-				
 				break;
-			//case 'destroyed':
-				
 		}
 	});
 	
