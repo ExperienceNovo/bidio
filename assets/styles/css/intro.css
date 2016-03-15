@@ -26,9 +26,11 @@
 	z-index:10;
 	position: absolute;
 	margin: 0 auto;
-	left: 0;right: 0;
+	left: 0;
+	right: 0;
 	top: 150px;
 	text-align: center;
+	margin-bottom: 75px;
 }
 
 .btn-group-lg>.btn, .btn-lg {
