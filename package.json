@@ -34,7 +34,7 @@
     "passport-twitter": "^1.0.2",
     "bcryptjs": "~2.1.0",
     "validator": "~3.28.0",
-    "sails-generate-auth": "~0.2.0"
+    "sails-generate-auth": "~0.2.0",
   },
   "scripts": {
     "start": "node app.js",

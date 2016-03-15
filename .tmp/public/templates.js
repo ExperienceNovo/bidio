@@ -371,44 +371,38 @@ angular.module("login/index.tpl.html", []).run(["$templateCache", function($temp
 
 angular.module("nav/index.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("nav/index.tpl.html",
-    "<style>\n" +
-    "\n" +
-    ".navbar-inverse{background-color:rgba(36,36,46,1);}\n" +
-    "\n" +
-    "</style>\n" +
-    "\n" +
-    "<div ng-controller=\"NavCtrl\">\n" +
-    "    <div class=\"navbar navbar-inverse navbar-fixed-top\" role=\"navigation\">\n" +
-    "      <div class=\"container\">\n" +
-    "        <div class=\"navbar-header\">\n" +
-    "          <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-collapse\">\n" +
-    "            <span class=\"sr-only\">Toggle navigation</span>\n" +
-    "            <span class=\"icon-bar\"></span>\n" +
-    "            <span class=\"icon-bar\"></span>\n" +
-    "            <span class=\"icon-bar\"></span>\n" +
-    "          </button>\n" +
-    "          <a class=\"navbar-brand\" href=\"/\" style=\"color: #fff;letter-spacing: 1px\"><img src=\"/images/bidio_logo.png\" style=\"max-height:20px;float:left\">\n" +
-    "            <span style=\"margin-left:10px\">bidio</span>\n" +
-    "          </a>\n" +
-    "        </div>\n" +
-    "        <div class=\"collapse navbar-collapse\">\n" +
-    "          <ul class=\"nav navbar-nav pull-right\">\n" +
-    "           <!-- <li><a class=\"bidio-nav\" href=\"/about\">About</a></li>-->\n" +
-    "            <li ng-show=\"!currentUser\"><a class=\"bidio-nav\" href=\"/creators\">Creators</a></li>\n" +
-    "            <li ng-show=\"!currentUser\"><a class=\"bidio-nav\" href=\"/sponsors\">Sponsors</a></li>\n" +
-    "            <!--<li><a href=\"/contests\">Contests</a></li>\n" +
-    "            <li><a href=\"/search\">Search</a></li>-->\n" +
-    "            <li ng-show=\"currentUser\"><a href=\"/dashboard\">Dashboard</a></li>\n" +
-    "            <li ng-show=\"currentUser\"><a href=\"/upload\">Upload</a></li>\n" +
-    "            <li ng-show=\"currentUser\"><a href=\"/account\">Account</a></li>\n" +
-    "            <li ng-show=\"currentUser\"><a href=\"/logout\">Signout</a></li>\n" +
-    "            <li ng-show=\"!currentUser\"><a href=\"/login\">Login</a></li>\n" +
-    "            <li ng-show=\"!currentUser\"><a href=\"/register\">Register</a></li>\n" +
-    "          </ul>\n" +
-    "        </div><!--/.nav-collapse -->\n" +
+    "<nav class=\"navbar navbar-inverse navbar-fixed-top\" role=\"navigation\" ng-controller=\"NavCtrl\">\n" +
+    "  <div class=\"container\">\n" +
+    "    <div class=\"container-fluid\">\n" +
+    "      <div class=\"navbar-header\">\n" +
+    "        <button class=\"navbar-toggle\" type=\"button\" ng-click=\"isCollapsed = !isCollapsed\">\n" +
+    "          <span class=\"sr-only\">Toggle navigation</span>\n" +
+    "          <span class=\"icon-bar\"></span>\n" +
+    "          <span class=\"icon-bar\"></span>\n" +
+    "          <span class=\"icon-bar\"></span>\n" +
+    "        </button>\n" +
+    "        <a class=\"navbar-brand\" href=\"/\" style=\"color: #fff;letter-spacing: 1px\"><img src=\"/images/bidio_logo.png\" style=\"max-height:20px;float:left\">\n" +
+    "          <span style=\"margin-left:10px\">bidio</span>\n" +
+    "        </a>    \n" +
+    "      </div>\n" +
+    "      <div collapse=\"isCollapsed\" class=\"navbar-collapse bs-js-navbar-collapse\">\n" +
+    "        <ul class=\"nav navbar-nav nav-float\">\n" +
+    "      <!--<li><a class=\"bidio-nav\" href=\"/about\">About</a></li>-->\n" +
+    "          <li class=\"dropdown\" ng-show=\"!currentUser\"><a class=\"bidio-nav\" href=\"/creators\">Creators</a></li>\n" +
+    "          <li class=\"dropdown\" ng-show=\"!currentUser\"><a class=\"bidio-nav\" href=\"/sponsors\">Sponsors</a></li>\n" +
+    "      <!--<li><a href=\"/contests\">Contests</a></li>\n" +
+    "          <li><a href=\"/search\">Search</a></li>-->\n" +
+    "          <li class=\"dropdown\" ng-show=\"currentUser\"><a href=\"/dashboard\">Dashboard</a></li>\n" +
+    "          <li class=\"dropdown\" ng-show=\"currentUser\"><a href=\"/upload\">Upload</a></li>\n" +
+    "          <li class=\"dropdown\" ng-show=\"currentUser\"><a href=\"/account\">Account</a></li>\n" +
+    "          <li class=\"dropdown\" ng-show=\"currentUser\"><a href=\"/logout\">Signout</a></li>\n" +
+    "          <li class=\"dropdown\" ng-show=\"!currentUser\"><a href=\"/login\">Login</a></li>\n" +
+    "          <li class=\"dropdown\" ng-show=\"!currentUser\"><a href=\"/register\">Register</a></li>\n" +
+    "        </ul>\n" +
     "      </div>\n" +
     "    </div>\n" +
-    "</div>\n" +
+    "  </div>\n" +
+    "</nav>\n" +
     "\n" +
     "");
 }]);
