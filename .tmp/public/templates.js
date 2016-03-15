@@ -260,7 +260,9 @@ angular.module("home/index.tpl.html", []).run(["$templateCache", function($templ
     "                    <hr class=\"section-heading-spacer\">\n" +
     "                    <div class=\"clearfix\"></div>\n" +
     "                    <h2 class=\"section-heading\">Digital Creators Get Paid What They Deserve</h2>\n" +
-    "                    <p class=\"lead\">Unlike other digital media networks and exchanges, bidio members keep 92% of their hard-earned advertising revenue - no strings attached.</p>\n" +
+    "                    <p class=\"lead\">\n" +
+    "                    Bidio producers keep more of their hard-earned sponsorship revenue - no strings attached. \n" +
+    "                    </p>\n" +
     "                </div>\n" +
     "                <div class=\"col-lg-5 col-lg-offset-2 col-sm-6\" style=\"text-align:center;\">\n" +
     "                   <i class=\"fa fa-usd img-responsive\" style=\"font-size:125px;text-align:center;line-height:250px;\"></i>\n" +
@@ -349,14 +351,15 @@ angular.module("login/index.tpl.html", []).run(["$templateCache", function($temp
     "        <div class=\"form-container\">\n" +
     "            <h1>Welcome Back!</h1>\n" +
     "            <form class=\"form ng-pristine ng-valid\" role=\"form\" action=\"/auth/local\" method=\"post\" _lpchecked=\"1\">\n" +
-    "                <label for=\"inputUsername3\"></label>\n" +
-    "                <input type=\"text\" placeholder=\"Username\" id=\"inputUsername3\" name=\"identifier\">\n" +
-    "                <label for=\"inputPassword3\"></label>\n" +
-    "                <input type=\"password\" placeholder=\"Password\" id=\"inputPassword3\" name=\"password\">\n" +
+    "                <label for=\"inputUsername3\" class=\"col-sm-2 control-label\"></label>\n" +
+    "                <input type=\"text\" class=\"form-control\" id=\"inputUsername3\" name=\"username\" placeholder=\"Username\" value=\"\">\n" +
+    "\n" +
+    "                <label for=\"inputPassword3\" class=\"col-sm-2 control-label\"></label>\n" +
+    "                <input type=\"password\" class=\"form-control\" id=\"inputPassword3\" name=\"password\" placeholder=\"Password\" value=\"\">\n" +
+    "\n" +
     "                <button type=\"submit\" id=\"login-button\">Login</button>\n" +
     "            </form>\n" +
-    "            <a href=\"/register\"><h3>Sign Up</h3></a>\n" +
-    "            <!--<a href=\"/forgot\"><h3>forgot your password</h3></a>-->\n" +
+    "            <a href=\"/register\"><h3>Don't have an account?</h3></a>\n" +
     "        </div>\n" +
     "    </div>\n" +
     "</div>\n" +

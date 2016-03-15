@@ -627,3 +627,8 @@ form[role=search] .form-group {
     float: left;
   }
 }
+
+.intro {
+  position: relative;
+  height: 50vh;
+}
