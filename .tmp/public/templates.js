@@ -96,10 +96,10 @@ angular.module("contests/index.tpl.html", []).run(["$templateCache", function($t
 
 angular.module("creators/index.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("creators/index.tpl.html",
-    "<div class=\"surface-container home-pad\" style=\"text-align:center;padding-top:50px\">\n" +
+    "<div class=\"surface-container\" style=\"text-align:center;padding-top:50px\">\n" +
     "    <div class=\"row\">\n" +
     "    	<div class=\"col-md-12\" style=\"margin-top:5%;margin-bottom:75px\">\n" +
-    "    		<h1>Did you know Facebook and YouTube take<br>45% of advertising revenue? We take 8%.</h1>\n" +
+    "    		<h1>Did you know Facebook and YouTube take<br>45% of advertising revenue?</h1>\n" +
     "    	</div>\n" +
     "        <div class=\"col-sm-4\">\n" +
     "            <img style=\"height:200px;margin:0 auto\" class=\"img-responsive img-center\" src=\"/images/play.png\" alt=\"\">\n" +
@@ -260,7 +260,9 @@ angular.module("home/index.tpl.html", []).run(["$templateCache", function($templ
     "                    <hr class=\"section-heading-spacer\">\n" +
     "                    <div class=\"clearfix\"></div>\n" +
     "                    <h2 class=\"section-heading\">Digital Creators Get Paid What They Deserve</h2>\n" +
-    "                    <p class=\"lead\">Unlike other digital media networks and exchanges, bidio members keep 92% of their hard-earned advertising revenue - no strings attached.</p>\n" +
+    "                    <p class=\"lead\">\n" +
+    "                    Bidio producers keep more of their hard-earned sponsorship revenue - no strings attached. \n" +
+    "                    </p>\n" +
     "                </div>\n" +
     "                <div class=\"col-lg-5 col-lg-offset-2 col-sm-6\" style=\"text-align:center;\">\n" +
     "                   <i class=\"fa fa-usd img-responsive\" style=\"font-size:125px;text-align:center;line-height:250px;\"></i>\n" +
@@ -349,14 +351,15 @@ angular.module("login/index.tpl.html", []).run(["$templateCache", function($temp
     "        <div class=\"form-container\">\n" +
     "            <h1>Welcome Back!</h1>\n" +
     "            <form class=\"form ng-pristine ng-valid\" role=\"form\" action=\"/auth/local\" method=\"post\" _lpchecked=\"1\">\n" +
-    "                <label for=\"inputUsername3\"></label>\n" +
-    "                <input type=\"text\" placeholder=\"Username\" id=\"inputUsername3\" name=\"identifier\">\n" +
-    "                <label for=\"inputPassword3\"></label>\n" +
-    "                <input type=\"password\" placeholder=\"Password\" id=\"inputPassword3\" name=\"password\">\n" +
+    "                <label for=\"inputUsername3\" class=\"col-sm-2 control-label\"></label>\n" +
+    "                <input type=\"text\" class=\"form-control\" id=\"inputUsername3\" name=\"username\" placeholder=\"Username\" value=\"\">\n" +
+    "\n" +
+    "                <label for=\"inputPassword3\" class=\"col-sm-2 control-label\"></label>\n" +
+    "                <input type=\"password\" class=\"form-control\" id=\"inputPassword3\" name=\"password\" placeholder=\"Password\" value=\"\">\n" +
+    "\n" +
     "                <button type=\"submit\" id=\"login-button\">Login</button>\n" +
     "            </form>\n" +
-    "            <a href=\"/register\"><h3>Sign Up</h3></a>\n" +
-    "            <!--<a href=\"/forgot\"><h3>forgot your password</h3></a>-->\n" +
+    "            <a href=\"/register\"><h3>Don't have an account?</h3></a>\n" +
     "        </div>\n" +
     "    </div>\n" +
     "</div>\n" +
@@ -371,44 +374,38 @@ angular.module("login/index.tpl.html", []).run(["$templateCache", function($temp
 
 angular.module("nav/index.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("nav/index.tpl.html",
-    "<style>\n" +
-    "\n" +
-    ".navbar-inverse{background-color:rgba(36,36,46,1);}\n" +
-    "\n" +
-    "</style>\n" +
-    "\n" +
-    "<div ng-controller=\"NavCtrl\">\n" +
-    "    <div class=\"navbar navbar-inverse navbar-fixed-top\" role=\"navigation\">\n" +
-    "      <div class=\"container\">\n" +
-    "        <div class=\"navbar-header\">\n" +
-    "          <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-collapse\">\n" +
-    "            <span class=\"sr-only\">Toggle navigation</span>\n" +
-    "            <span class=\"icon-bar\"></span>\n" +
-    "            <span class=\"icon-bar\"></span>\n" +
-    "            <span class=\"icon-bar\"></span>\n" +
-    "          </button>\n" +
-    "          <a class=\"navbar-brand\" href=\"/\" style=\"color: #fff;letter-spacing: 1px\"><img src=\"/images/bidio_logo.png\" style=\"max-height:20px;float:left\">\n" +
-    "            <span style=\"margin-left:10px\">bidio</span>\n" +
-    "          </a>\n" +
-    "        </div>\n" +
-    "        <div class=\"collapse navbar-collapse\">\n" +
-    "          <ul class=\"nav navbar-nav pull-right\">\n" +
-    "           <!-- <li><a class=\"bidio-nav\" href=\"/about\">About</a></li>-->\n" +
-    "            <li ng-show=\"!currentUser\"><a class=\"bidio-nav\" href=\"/creators\">Creators</a></li>\n" +
-    "            <li ng-show=\"!currentUser\"><a class=\"bidio-nav\" href=\"/sponsors\">Sponsors</a></li>\n" +
-    "            <!--<li><a href=\"/contests\">Contests</a></li>\n" +
-    "            <li><a href=\"/search\">Search</a></li>-->\n" +
-    "            <li ng-show=\"currentUser\"><a href=\"/dashboard\">Dashboard</a></li>\n" +
-    "            <li ng-show=\"currentUser\"><a href=\"/upload\">Upload</a></li>\n" +
-    "            <li ng-show=\"currentUser\"><a href=\"/account\">Account</a></li>\n" +
-    "            <li ng-show=\"currentUser\"><a href=\"/logout\">Signout</a></li>\n" +
-    "            <li ng-show=\"!currentUser\"><a href=\"/login\">Login</a></li>\n" +
-    "            <li ng-show=\"!currentUser\"><a href=\"/register\">Register</a></li>\n" +
-    "          </ul>\n" +
-    "        </div><!--/.nav-collapse -->\n" +
+    "<nav class=\"navbar navbar-inverse navbar-fixed-top\" role=\"navigation\" ng-controller=\"NavCtrl\">\n" +
+    "  <div class=\"container\">\n" +
+    "    <div class=\"container-fluid\">\n" +
+    "      <div class=\"navbar-header\">\n" +
+    "        <button class=\"navbar-toggle\" type=\"button\" ng-click=\"isCollapsed = !isCollapsed\">\n" +
+    "          <span class=\"sr-only\">Toggle navigation</span>\n" +
+    "          <span class=\"icon-bar\"></span>\n" +
+    "          <span class=\"icon-bar\"></span>\n" +
+    "          <span class=\"icon-bar\"></span>\n" +
+    "        </button>\n" +
+    "        <a class=\"navbar-brand\" href=\"/\" style=\"color: #fff;letter-spacing: 1px\"><img src=\"/images/bidio_logo.png\" style=\"max-height:20px;float:left\">\n" +
+    "          <span style=\"margin-left:10px\">bidio</span>\n" +
+    "        </a>    \n" +
+    "      </div>\n" +
+    "      <div collapse=\"isCollapsed\" class=\"navbar-collapse bs-js-navbar-collapse\">\n" +
+    "        <ul class=\"nav navbar-nav nav-float\">\n" +
+    "          <!--<li><a class=\"bidio-nav\" href=\"/about\">About</a></li>-->\n" +
+    "          <!--<li><a href=\"/contests\">Contests</a></li>\n" +
+    "          <li><a href=\"/search\">Search</a></li>-->\n" +
+    "          <li ng-show=\"currentUser\"><a href=\"/dashboard\">Dashboard</a></li>\n" +
+    "          <li ng-show=\"currentUser\"><a href=\"/upload\">Upload</a></li>\n" +
+    "          <li ng-show=\"currentUser\"><a href=\"/account\">Account</a></li>\n" +
+    "          <li ng-show=\"currentUser\"><a href=\"/logout\">Signout</a></li>\n" +
+    "          <li ng-show=\"!currentUser\"><a class=\"bidio-nav\" href=\"/creators\">Creators</a></li>\n" +
+    "          <li ng-show=\"!currentUser\"><a class=\"bidio-nav\" href=\"/sponsors\">Sponsors</a></li>\n" +
+    "          <li ng-show=\"!currentUser\"><a href=\"/login\">Login</a></li>\n" +
+    "          <li ng-show=\"!currentUser\"><a href=\"/register\">Register</a></li>\n" +
+    "        </ul>\n" +
     "      </div>\n" +
     "    </div>\n" +
-    "</div>\n" +
+    "  </div>\n" +
+    "</nav>\n" +
     "\n" +
     "");
 }]);
@@ -450,7 +447,7 @@ angular.module("search/index.tpl.html", []).run(["$templateCache", function($tem
 
 angular.module("sponsors/index.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("sponsors/index.tpl.html",
-    "<div class=\"surface-container home-pad\" style=\"text-align:center;padding-top:50px\">\n" +
+    "<div class=\"surface-container\" style=\"text-align:center;padding-top:50px\">\n" +
     "    <div class=\"row\">\n" +
     "    	<div class=\"col-md-12\" style=\"margin-top:5%;margin-bottom:75px\">\n" +
     "    		<h1>Perfectly Cost-Effective,<br>Crowdsourced Content Marketing</h1>\n" +
