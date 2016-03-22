@@ -101,25 +101,25 @@ angular.module("creators/index.tpl.html", []).run(["$templateCache", function($t
     "    	<div class=\"col-md-12\" style=\"margin-top:5%;margin-bottom:75px\">\n" +
     "    		<h1>Did you know Facebook and YouTube take<br>45% of advertising revenue?</h1>\n" +
     "    	</div>\n" +
-    "        <div class=\"col-sm-4\">\n" +
-    "            <img style=\"height:200px;margin:0 auto\" class=\"img-responsive img-center\" src=\"/images/play.png\" alt=\"\">\n" +
+    "        <div class=\"col-sm-4 service-desc\">\n" +
+    "            <img class=\"img-responsive img-center\" src=\"/images/play.png\" alt=\"\">\n" +
     "            <br><br>\n" +
-    "            <h2 style=\"color:#FE9A2E\">Upload Your Videos</h2>\n" +
-    "            <p style=\"padding:25px;font-size:18px;color:#555;\">Our unique influencer marketing platform hosts content for creators who want to get support from sponsors without giving up creative control. Unlike other digital media networks and exchanges, we only take 8% of our users’ hard-earned advertising revenue.</p>\n" +
-    "            <br><br>\n" +
-    "        </div>\n" +
-    "        <div class=\"col-sm-4\">\n" +
-    "            <img style=\"height:200px;margin:0 auto\" class=\"img-responsive img-center\" src=\"/images/cup.png\" alt=\"\">\n" +
-    "            <br><br>\n" +
-    "            <h2 style=\"color:#FE9A2E\">Enter Sponsored Contests</h2>\n" +
-    "            <p style=\"padding:25px;font-size:18px;color:#555;\">Explore our active sponsors and discover video contests involving branded content. Simply follow the contest guidelines and submit uploads for the chance to get paid! If a brand likes your video, you’ll receive incremental payments based on your content’s performance.</p>\n" +
+    "            <h2>Upload Your Videos</h2>\n" +
+    "            <p>Our unique influencer marketing platform hosts content for creators who want to get support from sponsors without giving up creative control. Unlike other digital media networks and exchanges, we only take 8% of our users’ hard-earned advertising revenue.</p>\n" +
     "            <br><br>\n" +
     "        </div>\n" +
-    "        <div class=\"col-sm-4\">\n" +
-    "            <img style=\"height:200px;margin:0 auto\" class=\"img-responsive img-center\" src=\"/images/business.png\" alt=\"\">\n" +
+    "        <div class=\"col-sm-4 service-desc\">\n" +
+    "            <img class=\"img-responsive img-center\" src=\"/images/cup.png\" alt=\"\">\n" +
     "            <br><br>\n" +
-    "            <h2 style=\"color:#FE9A2E\">Get Paid Based on Virality</h2>\n" +
-    "            <p style=\"padding:25px;font-size:18px;color:#555;\">Bidio’s auction system enables perfectly cost-effective content sponsorship, which helps any creator earn money by doing what they love. Share your sponsored content and capitalize that influence on the word wide web. Using our platform, the audience is anywhere and everywhere.</p>\n" +
+    "            <h2>Enter Sponsored Contests</h2>\n" +
+    "            <p>Explore our active sponsors and discover video contests involving branded content. Simply follow the contest guidelines and submit uploads for the chance to get paid! If a brand likes your video, you’ll receive incremental payments based on your content’s performance.</p>\n" +
+    "            <br><br>\n" +
+    "        </div>\n" +
+    "        <div class=\"col-sm-4 service-desc\">\n" +
+    "            <img class=\"img-responsive img-center\" src=\"/images/business.png\" alt=\"\">\n" +
+    "            <br><br>\n" +
+    "            <h2>Get Paid Based on Virality</h2>\n" +
+    "            <p>Bidio’s auction system enables perfectly cost-effective content sponsorship, which helps any creator earn money by doing what they love. Share your sponsored content and capitalize that influence on the word wide web. Using our platform, the audience is anywhere and everywhere.</p>\n" +
     "            <br><br>\n" +
     "        </div>\n" +
     "        <div class=\"col-md-12\">\n" +
@@ -219,61 +219,331 @@ angular.module("dashboard/videos.tpl.html", []).run(["$templateCache", function(
 
 angular.module("home/index.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("home/index.tpl.html",
-    "<div class=\"surface-container-home\">\n" +
-    "    <div ng-include=\"'intro/index.tpl.html'\"></div>\n" +
-    "        <div class=\"content-section-a\">\n" +
-    "        <div class=\"container\">\n" +
-    "            <div class=\"row\">\n" +
-    "                <div class=\"col-lg-5 col-sm-6\">\n" +
-    "                    <hr class=\"section-heading-spacer\">\n" +
-    "                    <div class=\"clearfix\"></div>\n" +
-    "                    <h2 class=\"section-heading\">Truly Native Campaigns and Creative Contests</h2>\n" +
-    "                    <p class=\"lead\">Our unique influencer marketing platform hosts content for creators who want to get support from sponsors without giving up creative control.</p>\n" +
-    "                </div>\n" +
-    "                <div class=\"col-lg-5 col-lg-offset-2 col-sm-6\" style=\"text-align:center;\">\n" +
-    "                   <i class=\"fa fa-video-camera img-responsive\" style=\"font-size:125px;text-align:center;line-height:250px;\"></i>\n" +
-    "                </div>\n" +
-    "            </div>\n" +
-    "        </div>\n" +
-    "    </div>\n" +
-    "\n" +
-    "    <div class=\"content-section-b\">\n" +
-    "        <div class=\"container\">\n" +
-    "            <div class=\"row\">\n" +
-    "                <div class=\"col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6\">\n" +
-    "                    <hr class=\"section-heading-spacer\">\n" +
-    "                    <div class=\"clearfix\"></div>\n" +
-    "                    <h2 class=\"section-heading\">Discover Interesting User-Generated Content</h2>\n" +
-    "                    <p class=\"lead\">Find cool videos created by everyday bidio users. Watch what you like, when you like - all while supporting the creative community!</p>\n" +
-    "                </div>\n" +
-    "                <div class=\"col-lg-5 col-sm-pull-6 col-sm-6\" style=\"text-align:center;\">\n" +
-    "                    <i class=\"fa fa-play-circle img-responsive\" style=\"font-size:125px;text-align:center;line-height:250px;\"></i>\n" +
-    "                </div>\n" +
-    "            </div>\n" +
-    "        </div>\n" +
-    "    </div>\n" +
-    "\n" +
-    "    <div class=\"content-section-a\">\n" +
-    "        <div class=\"container\">\n" +
-    "            <div class=\"row\">\n" +
-    "                <div class=\"col-lg-5 col-sm-6\">\n" +
-    "                    <hr class=\"section-heading-spacer\">\n" +
-    "                    <div class=\"clearfix\"></div>\n" +
-    "                    <h2 class=\"section-heading\">Digital Creators Get Paid What They Deserve</h2>\n" +
-    "                    <p class=\"lead\">\n" +
-    "                    Bidio producers keep more of their hard-earned sponsorship revenue - no strings attached. \n" +
-    "                    </p>\n" +
-    "                </div>\n" +
-    "                <div class=\"col-lg-5 col-lg-offset-2 col-sm-6\" style=\"text-align:center;\">\n" +
-    "                   <i class=\"fa fa-usd img-responsive\" style=\"font-size:125px;text-align:center;line-height:250px;\"></i>\n" +
+    "<div id=\"main\">\n" +
+    "    <div id=\"wrapper\">\n" +
+    "        <div class=\"content-holder\">\n" +
+    "            <div class=\"content intro-sec\">\n" +
+    "                <div class=\"hero-wrap\">\n" +
+    "                    <div class=\"media-container\" data-top-bottom=\"transform: translateY(300px);\" data-bottom-top=\"transform: translateY(-300px);\">\n" +
+    "                        <div class=\"video-mask\"></div>\n" +
+    "                        <div class=\"video-holder\">\n" +
+    "                            <div class=\"background-vimeo\"> \n" +
+    "                            <video src=\"/videos/video.mp4\" autoplay loop muted></video>\n" +
+    "                            </div>\n" +
+    "                            <div class=\"intro-mobile bg\"></div>\n" +
+    "                        </div>\n" +
+    "                    </div>\n" +
+    "                    <div class=\"overlay\"></div>\n" +
+    "                    <div class=\"hero-wrap-item center-item\" style=\"top:25%;\">\n" +
+    "                        <img class=\"intro-logo\" src=\"/images/intro logo.png\">\n" +
+    "                        <div class='transition-content' style=\"text-transform: uppercase;\">\n" +
+    "                          <div class='transition-visible'>\n" +
+    "                            <p class=\"transition-p\">\n" +
+    "                              Connecting\n" +
+    "                            </p>\n" +
+    "                            <ul class=\"transition-ul\">\n" +
+    "                              <li class=\"transition-li\">creators!</li>\n" +
+    "                              <li class=\"transition-li\">sponsors!</li>\n" +
+    "                              <li class=\"transition-li\">viewers!</li>\n" +
+    "                              <li class=\"transition-li\">communities!</li>\n" +
+    "                            </ul>\n" +
+    "                          </div>\n" +
+    "                        </div>\n" +
+    "                    </div>\n" +
     "                </div>\n" +
     "            </div>\n" +
+    "            <div class=\"content\">\n" +
+    "                <section id=\"sec1\">\n" +
+    "                    <div class=\"sect-subtitle right-align-dec\" data-top-bottom=\"transform: translateY(200px);\" data-bottom-top=\"transform: translateY(-200px);\">\n" +
+    "                        <span>01</span>\n" +
+    "                    </div>\n" +
+    "                    <div class=\"container\">\n" +
+    "                        <div class=\"row\">\n" +
+    "                            <div class=\"col-md-4 col-md-pull-1\">\n" +
+    "                              <div class=\"container service-graphic sg2\">\n" +
+    "                                <div class=\"screen monitor\">\n" +
+    "                                  <div class=\"content\">\n" +
+    "                                    <div class=\"browser\">\n" +
+    "                                      <ul class=\"btns\">\n" +
+    "                                        <li></li>\n" +
+    "                                        <li></li>\n" +
+    "                                        <li></li>\n" +
+    "                                      </ul>\n" +
+    "                                      <div class=\"browser-content\">\n" +
+    "                                        <ul class=\"txt\">\n" +
+    "                                          <li></li>\n" +
+    "                                          <li class=\"big\"></li>\n" +
+    "                                          <li class=\"third\"></li>\n" +
+    "                                          <li class=\"third\"></li>\n" +
+    "                                          <li class=\"third\"></li>\n" +
+    "                                          <li></li>\n" +
+    "                                          <li></li>\n" +
+    "                                          <li class=\"third\"></li>\n" +
+    "                                          <li class=\"third\"></li>\n" +
+    "                                          <li class=\"third\"></li>\n" +
+    "                                          <li class=\"third\"></li>\n" +
+    "                                          <li class=\"third\"></li>\n" +
+    "                                          <li class=\"third\"></li>\n" +
+    "                                          <li></li>\n" +
+    "                                          <li class=\"big\"></li>\n" +
+    "                                          <li class=\"third\"></li>\n" +
+    "                                          <li class=\"third\"></li>\n" +
+    "                                          <li class=\"third\"></li>\n" +
+    "                                          <li class=\"third\"></li>\n" +
+    "                                          <li class=\"third\"></li>\n" +
+    "                                          <li class=\"third\"></li>\n" +
+    "                                        </ul>\n" +
+    "                                      </div>\n" +
+    "                                    </div>\n" +
+    "                                  </div>\n" +
+    "                                  <div class=\"base\">\n" +
+    "                                    <div class=\"grey-shadow\"></div>\n" +
+    "                                    <div class=\"foot top\"></div>\n" +
+    "                                    <div class=\"foot bottom\"></div>\n" +
+    "                                  </div>\n" +
+    "                                </div>\n" +
+    "\n" +
+    "                                <div class=\"laptop\">\n" +
+    "                                  <div class=\"screen\">\n" +
+    "                                    <ul class=\"txt\">\n" +
+    "                                      <li></li>\n" +
+    "                                      <li class=\"big\"></li>\n" +
+    "                                      <li class=\"third\"></li>\n" +
+    "                                      <li class=\"third\"></li>\n" +
+    "                                      <li class=\"third\"></li>\n" +
+    "                                      <li></li>\n" +
+    "                                      <li></li>\n" +
+    "                                      <li class=\"third\"></li>\n" +
+    "                                      <li class=\"third\"></li>\n" +
+    "                                      <li class=\"third\"></li>\n" +
+    "                                      <li class=\"third\"></li>\n" +
+    "                                      <li class=\"third\"></li>\n" +
+    "                                      <li class=\"third\"></li>\n" +
+    "                                      <li></li>\n" +
+    "                                      <li class=\"big\"></li>\n" +
+    "                                      <li class=\"third\"></li>\n" +
+    "                                      <li class=\"third\"></li>\n" +
+    "                                      <li class=\"third\"></li>\n" +
+    "                                      <li class=\"third\"></li>\n" +
+    "                                      <li class=\"third\"></li>\n" +
+    "                                      <li class=\"third\"></li>\n" +
+    "                                    </ul>\n" +
+    "                                  </div>\n" +
+    "                                  <div class=\"btm\"></div>\n" +
+    "                                </div>\n" +
+    "\n" +
+    "                                <div class=\"phone\">\n" +
+    "                                  <div class=\"screen\">\n" +
+    "                                    <ul class=\"txt\">\n" +
+    "                                      <li></li>\n" +
+    "                                      <li></li>\n" +
+    "                                      <li class=\"txt-half\"></li>\n" +
+    "                                      <li class=\"txt-half\"></li>\n" +
+    "                                      <li></li>\n" +
+    "                                      <li></li>\n" +
+    "                                      <li></li>\n" +
+    "                                      <li></li>\n" +
+    "                                      <li></li>\n" +
+    "                                      <li></li>\n" +
+    "                                      <li class=\"txt-half\"></li>\n" +
+    "                                      <li class=\"txt-half\"></li>\n" +
+    "                                      <li class=\"txt-half\"></li>\n" +
+    "                                      <li class=\"txt-half\"></li>\n" +
+    "                                      <li></li>\n" +
+    "                                      <li></li>\n" +
+    "                                    </ul>\n" +
+    "                                  </div>\n" +
+    "                                  <div class=\"shadow\"></div>\n" +
+    "                                </div>\n" +
+    "\n" +
+    "                                <div class=\"ipad\" style=\"z-index: 999;\">\n" +
+    "                                  <div class=\"screen\">\n" +
+    "                                    <ul class=\"txt\">\n" +
+    "                                      <li></li>\n" +
+    "                                      <li class=\"big\"></li>\n" +
+    "                                      <li class=\"txt-half\"></li>\n" +
+    "                                      <li class=\"txt-half\"></li>\n" +
+    "                                      <li class=\"txt-half\"></li>\n" +
+    "                                      <li class=\"txt-half\"></li>\n" +
+    "                                      <li></li>\n" +
+    "                                      <li></li>\n" +
+    "                                      <li class=\"txt-half\"></li>\n" +
+    "                                      <li class=\"txt-half\"></li>\n" +
+    "                                      <li class=\"txt-half\"></li>\n" +
+    "                                      <li class=\"txt-half\"></li>\n" +
+    "                                      <li class=\"txt-half\"></li>\n" +
+    "                                      <li class=\"txt-half\"></li>\n" +
+    "                                      <li class=\"txt-half\"></li>\n" +
+    "                                      <li class=\"txt-half\"></li>\n" +
+    "                                      <li></li>\n" +
+    "                                    </ul>\n" +
+    "                                  </div>\n" +
+    "                                </div>\n" +
+    "                              </div>\n" +
+    "                            </div>\n" +
+    "                            <div class=\"col-md-8\">\n" +
+    "                                <h2 class=\"section-title\">Say Hello to <strong style=\"color:#FE9A2E\"> bidio</strong></h2>\n" +
+    "                                <p>Donec ac elementum metus. Nulla facilisi. Nulla gravida nec augue ac ornare. Phasellus posuere velit id mauris auctor, ac convallis ante rutrum. Suspendisse potenti. Maecenas laoreet id orci quis rutrum. In elementum risus at eros cursus bibendum.</p>\n" +
+    "                                <p>Pellentesque fringilla scelerisque turpis a facilisis. Pellentesque sollicitudin, neque a dapibus condimentum, sem justo finibus dui, non dignissim augue mi in massa. Aenean in malesuada magna, a varius nisi. Donec pharetra porttitor elit, tristique facilisis mi ullamcorper vitae.</p>\n" +
+    "                                <div class=\"process-box\">\n" +
+    "                                    <h3>Let's Get Started</h3>\n" +
+    "                                   <ul class=\"list-inline intro-social-buttons\" style=\"text-align: left;\">\n" +
+    "                                      <li>\n" +
+    "                                          <a href=\"/creators\" class=\"btn anim-button fl-l\"><i class=\"fa fa-long-arrow-left fa-fw\"></i> <span class=\"network-name\">Video Producers</span></a>\n" +
+    "                                      </li>\n" +
+    "                                      <li>\n" +
+    "                                          <a href=\"/sponsors\" class=\"btn anim-button fl-l\"><span class=\"network-name\">Digital Marketers</span> <i class=\"fa fa-long-arrow-right fa-fw\"></i></a>\n" +
+    "                                      </li>\n" +
+    "                                    </ul>\n" +
+    "                                </div>\n" +
+    "                            </div>\n" +
+    "                        </div>\n" +
+    "                    </div>\n" +
+    "                </section>\n" +
+    "            </div>\n" +
+    "            <div class=\"content dark-bg\">\n" +
+    "                <div class=\"sect-subtitle left-align-dec\" data-top-bottom=\"transform: translateY(-200px);\" data-bottom-top=\"transform: translateY(200px);\">\n" +
+    "                    <span>02</span>\n" +
+    "                </div>                    \n" +
+    "                <div class=\"parallax-inner\">\n" +
+    "                    <div class=\"bg\" data-bg=\"images/bg/1.jpg\" data-top-bottom=\"transform: translateY(300px);\" data-bottom-top=\"transform: translateY(-300px);\"></div>\n" +
+    "                    <div class=\"overlay\"></div>\n" +
+    "                </div>\n" +
+    "                <section>\n" +
+    "                    <div class=\"container\">\n" +
+    "                        <div class=\"row\">\n" +
+    "                            <div class=\"col-md-4\">\n" +
+    "                                <h2 class=\"section-title\">The Numbers <strong> Don't Lie</strong></h2>\n" +
+    "                            </div>\n" +
+    "                            <div class=\"col-md-8\">\n" +
+    "                                <p>Pellentesque fringilla scelerisque turpis a facilisis. Pellentesque sollicitudin, neque a dapibus condimentum, sem justo finibus dui, non dignissim augue mi in massa. Aenean in malesuada magna, a varius nisi. Donec pharetra porttitor elit, tristique facilisis mi ullamcorper vitae.</p>\n" +
+    "                            </div>\n" +
+    "                        </div>\n" +
+    "                        <div class=\"row\">\n" +
+    "                            <div class=\"col-md-4\"></div>\n" +
+    "                            <div class=\"col-md-8\">\n" +
+    "                                <div class=\"inline-facts-holder row\">\n" +
+    "                                    <div class=\"inline-facts col-md-4 \">\n" +
+    "                                        <div class=\"milestone-counter\">\n" +
+    "                                            <div class=\"stats animaper\">\n" +
+    "                                                <div class=\"num\" data-content=\"888\" data-num=\"888\">0</div>\n" +
+    "                                            </div>\n" +
+    "                                        </div>\n" +
+    "                                        <h6>relevant stat</h6>\n" +
+    "                                    </div>\n" +
+    "                                    <!-- 3 -->\n" +
+    "                                    <div class=\"inline-facts col-md-4\">\n" +
+    "                                        <div class=\"milestone-counter\">\n" +
+    "                                            <div class=\"stats animaper\">\n" +
+    "                                                <div class=\"num\" data-content=\"88\" data-num=\"88\">0</div>\n" +
+    "                                            </div>\n" +
+    "                                        </div>\n" +
+    "                                        <h6>relevant stat</h6>\n" +
+    "                                    </div>\n" +
+    "                                    <div class=\"inline-facts col-md-4\">\n" +
+    "                                        <div class=\"milestone-counter\">\n" +
+    "                                            <div class=\"stats animaper\">\n" +
+    "                                                <div class=\"num\" data-content=\"8\" data-num=\"8\">0</div>\n" +
+    "                                            </div>\n" +
+    "                                        </div>\n" +
+    "                                        <h6>relevant stat</h6>\n" +
+    "                                    </div>\n" +
+    "                                </div>\n" +
+    "                            </div>\n" +
+    "                        </div>\n" +
+    "                    </div>\n" +
+    "                </section>\n" +
+    "            </div>      \n" +
+    "            <div class=\"content\">\n" +
+    "                <section>\n" +
+    "                    <div class=\"sect-subtitle right-align-dec\" data-top-bottom=\"transform: translateY(200px);\" data-bottom-top=\"transform: translateY(-200px);\">\n" +
+    "                        <span>03</span>\n" +
+    "                    </div>\n" +
+    "                    <div class=\"container\">\n" +
+    "                        <div class=\"row\">\n" +
+    "                            <div class=\"col-md-12\">\n" +
+    "                                <h2 class=\"section-title algn-right dec-title\"><span>featured  <strong  style=\"color:#FE9A2E\"> Contest</strong></span></h2>\n" +
+    "                            </div>\n" +
+    "                        </div>\n" +
+    "                        <div class=\"row\">\n" +
+    "                            <div class=\"col-md-7\">\n" +
+    "                                <div class=\"parallax-item left-direction\">\n" +
+    "                                    <div class=\"paralax-media\">\n" +
+    "                                        <ul class=\"creat-list\">\n" +
+    "                                            <li><a href=\"#\">Animation</a></li>\n" +
+    "                                            <li><a href=\"#\">Design</a></li>\n" +
+    "                                            <li><a href=\"#\">Art</a></li>\n" +
+    "                                        </ul>\n" +
+    "                                        <div class=\"paralax-wrap\">\n" +
+    "                                            <img src=\"images/folio/thumbs/1.jpg\" class=\"respimg\" alt=\"\">\n" +
+    "                                        </div>\n" +
+    "                                    </div>\n" +
+    "                                    <div class=\"parallax-deck\" data-top-bottom=\"transform: translateY(-200px);\" data-bottom-top=\"transform: translateY(200px);\">\n" +
+    "                                        <div class=\"parallax-deck-item\">\n" +
+    "                                            <h3>Sed ut perspiciatis <strong>unde this</strong></h3>\n" +
+    "                                            <a href=\"portfolio-single.html\" class=\"btn anim-button fl-l\"><span>Watch Now</span><i class=\"fa fa-long-arrow-right\"></i></a>                                                                \n" +
+    "                                        </div>\n" +
+    "                                    </div>\n" +
+    "                                </div>\n" +
+    "                            </div>\n" +
+    "                            <div class=\"col-md-5\"></div>\n" +
+    "                        </div>\n" +
+    "                    <!--<div class=\"row\">\n" +
+    "                            <div class=\"col-md-5\"></div>\n" +
+    "                            <div class=\"col-md-7\">\n" +
+    "                                <div class=\"parallax-item right-direction\">\n" +
+    "                                    <div class=\"paralax-media\">\n" +
+    "                                        <ul class=\"creat-list\">\n" +
+    "                                            <li><a href=\"#\">Tutorials</a></li>\n" +
+    "                                            <li><a href=\"#\">Code</a></li>\n" +
+    "                                            <li><a href=\"#\">Technology</a></li>\n" +
+    "                                        </ul>\n" +
+    "                                        <div class=\"paralax-wrap\">  \n" +
+    "                                            <img src=\"images/folio/thumbs/1.jpg\" class=\"respimg\" alt=\"\">\n" +
+    "                                        </div>\n" +
+    "                                    </div>\n" +
+    "                                    <div class=\"parallax-deck\" data-top-bottom=\"transform: translateY(-200px);\" data-bottom-top=\"transform: translateY(200px);\">\n" +
+    "                                        <div class=\"parallax-deck-item\">\n" +
+    "                                            <h3>Sed ut perspiciatis <strong>unde this</strong></h3>\n" +
+    "                                            <a href=\"portfolio-single.html\" class=\"btn anim-button fl-l\"><span>Watch Now</span><i class=\"fa fa-long-arrow-right\"></i></a>                                                                \n" +
+    "                                        </div>\n" +
+    "                                    </div>\n" +
+    "                                </div>\n" +
+    "                            </div>\n" +
+    "                        </div>\n" +
+    "                        <div class=\"row\">\n" +
+    "                            <div class=\"col-md-7\">\n" +
+    "                                <div class=\"parallax-item left-direction\">\n" +
+    "                                    <div class=\"paralax-media\">\n" +
+    "                                        <ul class=\"creat-list\">\n" +
+    "                                            <li><a href=\"#\">Humor</a></li>\n" +
+    "                                            <li><a href=\"#\">Stand-up</a></li>\n" +
+    "                                            <li><a href=\"#\">NYC</a></li>\n" +
+    "                                        </ul>\n" +
+    "                                        <div class=\"paralax-wrap\"> \n" +
+    "                                            <img src=\"images/folio/thumbs/1.jpg\" class=\"respimg\" alt=\"\">\n" +
+    "                                        </div>\n" +
+    "                                    </div>\n" +
+    "                                    <div class=\"parallax-deck\" data-top-bottom=\"transform: translateY(-200px);\" data-bottom-top=\"transform: translateY(200px);\">\n" +
+    "                                        <div class=\"parallax-deck-item\">\n" +
+    "                                            <h3>Sed ut perspiciatis <strong>unde this</strong></h3>\n" +
+    "                                            <a href=\"portfolio-single.html\" class=\"btn anim-button fl-l\"><span>Watch Now</span><i class=\"fa fa-long-arrow-right\"></i></a>                                                                \n" +
+    "                                        </div>\n" +
+    "                                    </div>\n" +
+    "                                </div>\n" +
+    "                            </div>\n" +
+    "                            <div class=\"col-md-5\"></div>\n" +
+    "                        </div>-->\n" +
+    "                        <div class=\"custom-link-holder\">\n" +
+    "                            <a href=\"portfolio.html\" class=\"btn anim-button\"  data-top-bottom=\"transform: translateY(-50px);\" data-bottom-top=\"transform: translateY(50px);\"><span>Learn More</span><i class=\"fa fa-long-arrow-right\"></i></a>   \n" +
+    "                        </div>\n" +
+    "                    </div>\n" +
+    "                </section>\n" +
+    "            </div>\n" +
+    "            <div class=\"height-emulator\"></div>\n" +
     "        </div>\n" +
     "    </div>\n" +
-    "</div>\n" +
-    "\n" +
-    "\n" +
-    "");
+    "</div>");
 }]);
 
 angular.module("intro/index.tpl.html", []).run(["$templateCache", function($templateCache) {
@@ -417,18 +687,12 @@ angular.module("register/index.tpl.html", []).run(["$templateCache", function($t
     "        <div class=\"form-container\">\n" +
     "            <h1>Welcome to Bidio!</h1>\n" +
     "            <form class=\"form ng-pristine ng-valid\" role=\"form\" action=\"/auth/local/register\" method=\"post\" _lpchecked=\"1\">\n" +
-    "                <label for=\"inputUsername3\" class=\"col-sm-2 control-label\"></label>\n" +
-    "                <input type=\"text\" class=\"form-control\" id=\"inputUsername3\" name=\"username\" placeholder=\"Username\" value=\"\">\n" +
-    "\n" +
-    "                <label for=\"inputPassword3\" class=\"col-sm-2 control-label\"></label>\n" +
-    "                <input type=\"password\" class=\"form-control\" id=\"inputPassword3\" name=\"password\" placeholder=\"Password\" value=\"\">\n" +
-    "\n" +
     "                <label for=\"inputEmail3\" class=\"col-sm-2 control-label\"></label>\n" +
     "                <input type=\"email\" class=\"form-control\" id=\"inputEmail3\" name=\"email\" placeholder=\"Email\" value=\"\">\n" +
-    "\n" +
-    "                <label for=\"inputFirstName3\" class=\"col-sm-2 control-label\"></label>\n" +
-    "                <input type=\"text\" class=\"form-control\" id=\"inputFirstName3\" name=\"first_name\" placeholder=\"First Name\" value=\"\">\n" +
-    "\n" +
+    "                <label for=\"inputUsername3\" class=\"col-sm-2 control-label\"></label>\n" +
+    "                <input type=\"text\" class=\"form-control\" id=\"inputUsername3\" name=\"username\" placeholder=\"Username\" value=\"\">\n" +
+    "                <label for=\"inputPassword3\" class=\"col-sm-2 control-label\"></label>\n" +
+    "                <input type=\"password\" class=\"form-control\" id=\"inputPassword3\" name=\"password\" placeholder=\"Password\" value=\"\">\n" +
     "                <button type=\"submit\" id=\"login-button\">Sign Up</button>\n" +
     "            </form>\n" +
     "            <a href=\"/login\"><h3>Already Have An Account?</h3></a>\n" +
@@ -452,25 +716,25 @@ angular.module("sponsors/index.tpl.html", []).run(["$templateCache", function($t
     "    	<div class=\"col-md-12\" style=\"margin-top:5%;margin-bottom:75px\">\n" +
     "    		<h1>Perfectly Cost-Effective,<br>Crowdsourced Content Marketing</h1>\n" +
     "    	</div>\n" +
-    "        <div class=\"col-sm-4\">\n" +
-    "            <img style=\"height:200px;margin:0 auto\" class=\"img-responsive img-center\" src=\"/images/business.png\" alt=\"\">\n" +
+    "        <div class=\"col-sm-4 service-desc\">\n" +
+    "            <img class=\"img-responsive img-center\" src=\"/images/business.png\" alt=\"\">\n" +
     "            <br><br>\n" +
-    "            <h2 style=\"color:#FE9A2E\">Sponsor Video Contests</h2>\n" +
-    "            <p style=\"padding:25px;font-size:18px;color:#555;\">Establish your maximum budget, CPC and creative parameters, then let our users produce videos for your consideration. If you choose to sponsor any entries, the original creator will receive incremental payments each time an audience member clicks through to your landing page.</p>\n" +
-    "            <br><br>\n" +
-    "        </div>\n" +
-    "        <div class=\"col-sm-4\">\n" +
-    "            <img style=\"height:200px;margin:0 auto\" class=\"img-responsive img-center\" src=\"/images/paint.png\" alt=\"\">\n" +
-    "            <br><br>\n" +
-    "            <h2 style=\"color:#FE9A2E\">Customize Your Channel</h2>\n" +
-    "            <p style=\"padding:25px;font-size:18px;color:#555;\">Control the aesthetic of your sponsored content’s surroundings, and rest assured, your logo will follow it across platforms and devices. You can even produce and upload your own video to accompany your branded bidio channel and profile.</p>\n" +
+    "            <h2>Sponsor Video Contests</h2>\n" +
+    "            <p>Establish your maximum budget, CPC and creative parameters, then let our users produce videos for your consideration. If you choose to sponsor any entries, the original creator will receive incremental payments each time an audience member clicks through to your landing page.</p>\n" +
     "            <br><br>\n" +
     "        </div>\n" +
-    "        <div class=\"col-sm-4\">\n" +
-    "            <img style=\"height:200px;margin:0 auto\" class=\"img-responsive img-center\" src=\"/images/arrow.png\" alt=\"\">\n" +
+    "        <div class=\"col-sm-4 service-desc\">\n" +
+    "            <img class=\"img-responsive img-center\" src=\"/images/paint.png\" alt=\"\">\n" +
     "            <br><br>\n" +
-    "            <h2 style=\"color:#FE9A2E\">Only Pay For Results</h2>\n" +
-    "            <p style=\"padding:25px;font-size:18px;color:#555;\">Using our unique pay-per-click model, your organization can confidently invest in user-generated content marketing. Giving up creative influence will help motivate creators and regain consumer trust online. Plus our dashboard makes it easier to measure performance and maximize ROI.</p>\n" +
+    "            <h2>Customize Your Channel</h2>\n" +
+    "            <p>Control the aesthetic of your sponsored content’s surroundings, and rest assured, your logo will follow it across platforms and devices. You can even produce and upload your own video to accompany your branded bidio channel and profile.</p>\n" +
+    "            <br><br>\n" +
+    "        </div>\n" +
+    "        <div class=\"col-sm-4 service-desc\">\n" +
+    "            <img class=\"img-responsive img-center\" src=\"/images/arrow.png\" alt=\"\">\n" +
+    "            <br><br>\n" +
+    "            <h2>Only Pay For Results</h2>\n" +
+    "            <p>Using our unique pay-per-click model, your organization can confidently invest in user-generated content marketing. Giving up creative influence will help motivate creators and regain consumer trust online. Plus our dashboard makes it easier to measure performance and maximize ROI.</p>\n" +
     "            <br><br>\n" +
     "        </div>\n" +
     "        <div class=\"col-md-12\">\n" +
