@@ -10,14 +10,6 @@ module.exports = {
             required: true,
             unique: true
         },
-        first_name: {
-            type: 'string',
-            required: true
-        },
-        message_count: {
-            type: 'number'
-        },
-        // A User can have many messages
         videos: {
             collection: 'video',
             via: 'user'
