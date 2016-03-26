@@ -1,0 +1,24 @@
+<div id="sidebar-wrapper">
+  <ul class="sidebar-nav">
+    <br>
+    <li><a style="font-weight:bold" href="/dashboard">dashboard</a></li>
+    <hr>
+    <li><a href="dashboard/analytics">analytics</a></li>
+    <li><a href="dashboard/vidoes">videos</a></li>
+    <li><a href="dashboard/analytics">balance</a></li>
+  </ul>
+</div>
+<div id="main-container">
+  <div class="dashboard-title">
+    <h1>Dashboard Videos</h1>
+  </div>
+
+  <div class="dashboardVideos" ng-repeat="vidoe in videos">
+    <h1>{{video}}</h1>
+    <video class="video-js vjs-default-skin" controls preload="auto" width="640" height="264" poster="poster.jpg" vjs-video>
+      <source src="videos/video.mp4" type="video/mp4">
+    </video>
+  </div>
+
+
+</div>
