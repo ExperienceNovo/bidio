@@ -73,7 +73,7 @@ h6 {
 
 p {
   text-align: left;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 24px;
   padding-bottom: 10px;
 }
@@ -1548,7 +1548,7 @@ article {
 
 .num {
   float: right;
-  font-size: 82px;
+  font-size: 35px;
   text-align: right;
   text-transform: uppercase;
   width: 100%;

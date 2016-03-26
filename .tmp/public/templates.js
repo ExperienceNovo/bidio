@@ -265,13 +265,13 @@ angular.module("home/index.tpl.html", []).run(["$templateCache", function($templ
     "            </div>\n" +
     "            <div class=\"content\">\n" +
     "                <section id=\"sec1\">\n" +
-    "                    <div class=\"sect-subtitle right-align-dec\" data-top-bottom=\"transform: translateY(200px);\" data-bottom-top=\"transform: translateY(-200px);\">\n" +
+    "                <!--<div class=\"sect-subtitle right-align-dec\" data-top-bottom=\"transform: translateY(200px);\" data-bottom-top=\"transform: translateY(-200px);\">\n" +
     "                        <span>01</span>\n" +
-    "                    </div>\n" +
+    "                    </div>-->\n" +
     "                    <div class=\"container\">\n" +
     "                        <div class=\"row\">\n" +
-    "                            <div class=\"col-md-4 col-md-pull-1\">\n" +
-    "                              <div class=\"container service-graphic sg2\">\n" +
+    "                            <div class=\"col-md-5\">\n" +
+    "                              <div class=\"service-graphic sg2\">\n" +
     "                                <div class=\"screen monitor\">\n" +
     "                                  <div class=\"content\">\n" +
     "                                    <div class=\"browser\">\n" +
@@ -392,10 +392,10 @@ angular.module("home/index.tpl.html", []).run(["$templateCache", function($templ
     "                                </div>\n" +
     "                              </div>\n" +
     "                            </div>\n" +
-    "                            <div class=\"col-md-8\">\n" +
-    "                                <h2 class=\"section-title\">Say Hello to <strong style=\"color:#FE9A2E\"> bidio</strong></h2>\n" +
-    "                                <p>Donec ac elementum metus. Nulla facilisi. Nulla gravida nec augue ac ornare. Phasellus posuere velit id mauris auctor, ac convallis ante rutrum. Suspendisse potenti. Maecenas laoreet id orci quis rutrum. In elementum risus at eros cursus bibendum.</p>\n" +
-    "                                <p>Pellentesque fringilla scelerisque turpis a facilisis. Pellentesque sollicitudin, neque a dapibus condimentum, sem justo finibus dui, non dignissim augue mi in massa. Aenean in malesuada magna, a varius nisi. Donec pharetra porttitor elit, tristique facilisis mi ullamcorper vitae.</p>\n" +
+    "                            <div class=\"col-md-7\">\n" +
+    "                                <h2 class=\"section-title\">Say Hello to <strong style=\"color:#FE9A2E\"> BIDIO</strong></h2>\n" +
+    "                                <p>Our video-hosting platform’s real-time auction system facilitates crowdsourced digital marketing. Bidio never interrupts media viewers, and we promote passive, retroactive content sponsorship. Basically, we help video producers get paid, without giving up any creative control to brands.</p>\n" +
+    "                                <p>If marketers want to design a campaign around Bidio, they can sponsor a creative video contest. This allows them to upload a video or written strategy statement, then establish a maximum budget and “prize-per-click.”</p>\n" +
     "                                <div class=\"process-box\">\n" +
     "                                    <h3>Let's Get Started</h3>\n" +
     "                                   <ul class=\"list-inline intro-social-buttons\" style=\"text-align: left;\">\n" +
@@ -413,9 +413,9 @@ angular.module("home/index.tpl.html", []).run(["$templateCache", function($templ
     "                </section>\n" +
     "            </div>\n" +
     "            <div class=\"content dark-bg\">\n" +
-    "                <div class=\"sect-subtitle left-align-dec\" data-top-bottom=\"transform: translateY(-200px);\" data-bottom-top=\"transform: translateY(200px);\">\n" +
+    "            <!--<div class=\"sect-subtitle left-align-dec\" data-top-bottom=\"transform: translateY(-200px);\" data-bottom-top=\"transform: translateY(200px);\">\n" +
     "                    <span>02</span>\n" +
-    "                </div>                    \n" +
+    "                </div>-->                  \n" +
     "                <div class=\"parallax-inner\">\n" +
     "                    <div class=\"bg\" data-bg=\"images/bg/1.jpg\" data-top-bottom=\"transform: translateY(300px);\" data-bottom-top=\"transform: translateY(-300px);\"></div>\n" +
     "                    <div class=\"overlay\"></div>\n" +
@@ -424,40 +424,46 @@ angular.module("home/index.tpl.html", []).run(["$templateCache", function($templ
     "                    <div class=\"container\">\n" +
     "                        <div class=\"row\">\n" +
     "                            <div class=\"col-md-4\">\n" +
-    "                                <h2 class=\"section-title\">The Numbers <strong> Don't Lie</strong></h2>\n" +
+    "                                <h2 class=\"section-title\">The Numbers<br><strong> Don't Lie</strong></h2>\n" +
     "                            </div>\n" +
     "                            <div class=\"col-md-8\">\n" +
-    "                                <p>Pellentesque fringilla scelerisque turpis a facilisis. Pellentesque sollicitudin, neque a dapibus condimentum, sem justo finibus dui, non dignissim augue mi in massa. Aenean in malesuada magna, a varius nisi. Donec pharetra porttitor elit, tristique facilisis mi ullamcorper vitae.</p>\n" +
+    "                                <p>Bidio provides perfectly cost-effective, user-generated content, which people really want to watch. Brands should get recognition for supporting creators and delighting viewers, without forcing any messages.</p>\n" +
     "                            </div>\n" +
+    "                            <br>\n" +
     "                        </div>\n" +
     "                        <div class=\"row\">\n" +
     "                            <div class=\"col-md-4\"></div>\n" +
     "                            <div class=\"col-md-8\">\n" +
-    "                                <div class=\"inline-facts-holder row\">\n" +
+    "                                <div class=\"inline-facts-holder row\" style=\"text-align: right;\">\n" +
     "                                    <div class=\"inline-facts col-md-4 \">\n" +
     "                                        <div class=\"milestone-counter\">\n" +
     "                                            <div class=\"stats animaper\">\n" +
-    "                                                <div class=\"num\" data-content=\"888\" data-num=\"888\">0</div>\n" +
+    "                                                <div class=\"num\">$22 Billion</div>\n" +
     "                                            </div>\n" +
     "                                        </div>\n" +
-    "                                        <h6>relevant stat</h6>\n" +
-    "                                    </div>\n" +
-    "                                    <!-- 3 -->\n" +
-    "                                    <div class=\"inline-facts col-md-4\">\n" +
-    "                                        <div class=\"milestone-counter\">\n" +
-    "                                            <div class=\"stats animaper\">\n" +
-    "                                                <div class=\"num\" data-content=\"88\" data-num=\"88\">0</div>\n" +
-    "                                            </div>\n" +
-    "                                        </div>\n" +
-    "                                        <h6>relevant stat</h6>\n" +
+    "                                        <h6 style=\"margin-bottom: 15px;\">was the cost of ad-blocking to publishers in 2015</h6>\n" +
+    "                                        <br><br><br>\n" +
+    "                                        <a href=\"http://www.iab.com/insights/ad-blocking/\">Source</a>\n" +
     "                                    </div>\n" +
     "                                    <div class=\"inline-facts col-md-4\">\n" +
     "                                        <div class=\"milestone-counter\">\n" +
     "                                            <div class=\"stats animaper\">\n" +
-    "                                                <div class=\"num\" data-content=\"8\" data-num=\"8\">0</div>\n" +
+    "                                                <div class=\"num\">$6.3 Billion</div>\n" +
     "                                            </div>\n" +
     "                                        </div>\n" +
-    "                                        <h6>relevant stat</h6>\n" +
+    "                                        <h6 style=\"margin-bottom: 15px;\">was the cost of click fraud to advertisers in 2015</h6>\n" +
+    "                                        <br><br><br>\n" +
+    "                                        <a href=\"http://www.whiteops.com/botfraud\">Source</a>\n" +
+    "                                    </div>\n" +
+    "                                    <div class=\"inline-facts col-md-4\">\n" +
+    "                                        <div class=\"milestone-counter\">\n" +
+    "                                            <div class=\"stats animaper\">\n" +
+    "                                                <div class=\"num\">$0</div>\n" +
+    "                                            </div>\n" +
+    "                                        </div>\n" +
+    "                                        <h6 style=\"margin-bottom: 15px;\">in fines imposed by the FTC against dishonest influencer marketing</h6>\n" +
+    "                                        <br><br><br>\n" +
+    "                                        <a href=\"https://www.ftc.gov/enforcement/cases-proceedings/closing-letters/machinima-inc\">Source</a>\n" +
     "                                    </div>\n" +
     "                                </div>\n" +
     "                            </div>\n" +
@@ -467,13 +473,13 @@ angular.module("home/index.tpl.html", []).run(["$templateCache", function($templ
     "            </div>      \n" +
     "            <div class=\"content\">\n" +
     "                <section>\n" +
-    "                    <div class=\"sect-subtitle right-align-dec\" data-top-bottom=\"transform: translateY(200px);\" data-bottom-top=\"transform: translateY(-200px);\">\n" +
+    "                <!--<div class=\"sect-subtitle right-align-dec\" data-top-bottom=\"transform: translateY(200px);\" data-bottom-top=\"transform: translateY(-200px);\">\n" +
     "                        <span>03</span>\n" +
-    "                    </div>\n" +
+    "                    </div>-->\n" +
     "                    <div class=\"container\">\n" +
     "                        <div class=\"row\">\n" +
     "                            <div class=\"col-md-12\">\n" +
-    "                                <h2 class=\"section-title algn-right dec-title\"><span>featured  <strong  style=\"color:#FE9A2E\"> Contest</strong></span></h2>\n" +
+    "                                <h2 class=\"section-title algn-right dec-title\"><span>featured  <strong  style=\"color:#FE9A2E\"> Contests</strong></span></h2>\n" +
     "                            </div>\n" +
     "                        </div>\n" +
     "                        <div class=\"row\">\n" +
@@ -481,18 +487,18 @@ angular.module("home/index.tpl.html", []).run(["$templateCache", function($templ
     "                                <div class=\"parallax-item left-direction\">\n" +
     "                                    <div class=\"paralax-media\">\n" +
     "                                        <ul class=\"creat-list\">\n" +
-    "                                            <li><a href=\"#\">Animation</a></li>\n" +
-    "                                            <li><a href=\"#\">Design</a></li>\n" +
-    "                                            <li><a href=\"#\">Art</a></li>\n" +
+    "                                            <li><a href=\"#\">Food</a></li>\n" +
+    "                                            <li><a href=\"#\">Lifestyle</a></li>\n" +
+    "                                            <li><a href=\"#\">Health</a></li>\n" +
     "                                        </ul>\n" +
-    "                                        <div class=\"paralax-wrap\">\n" +
-    "                                            <img src=\"images/folio/thumbs/1.jpg\" class=\"respimg\" alt=\"\">\n" +
+    "                                        <div class=\"paralax-wrap\" style=\"opacity: .35;\">\n" +
+    "                                            <img src=\"images/zaxbys.png\" class=\"respimg\" alt=\"\">\n" +
     "                                        </div>\n" +
     "                                    </div>\n" +
     "                                    <div class=\"parallax-deck\" data-top-bottom=\"transform: translateY(-200px);\" data-bottom-top=\"transform: translateY(200px);\">\n" +
     "                                        <div class=\"parallax-deck-item\">\n" +
-    "                                            <h3>Sed ut perspiciatis <strong>unde this</strong></h3>\n" +
-    "                                            <a href=\"portfolio-single.html\" class=\"btn anim-button fl-l\"><span>Watch Now</span><i class=\"fa fa-long-arrow-right\"></i></a>                                                                \n" +
+    "                                            <h3>Zaxby’s <br><strong>Sponsoring the Carolina RailHawks Youth Program</strong></h3>\n" +
+    "                                            <a class=\"btn anim-button fl-l\"><span>Learn More</span><i class=\"fa fa-long-arrow-right\"></i></a>\n" +
     "                                        </div>\n" +
     "                                    </div>\n" +
     "                                </div>\n" +
@@ -545,9 +551,6 @@ angular.module("home/index.tpl.html", []).run(["$templateCache", function($templ
     "                            </div>\n" +
     "                            <div class=\"col-md-5\"></div>\n" +
     "                        </div>-->\n" +
-    "                        <div class=\"custom-link-holder\">\n" +
-    "                            <a href=\"portfolio.html\" class=\"btn anim-button\"  data-top-bottom=\"transform: translateY(-50px);\" data-bottom-top=\"transform: translateY(50px);\"><span>Learn More</span><i class=\"fa fa-long-arrow-right\"></i></a>   \n" +
-    "                        </div>\n" +
     "                    </div>\n" +
     "                </section>\n" +
     "            </div>\n" +
