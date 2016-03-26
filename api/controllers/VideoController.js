@@ -95,23 +95,42 @@ module.exports = {
 	},
 
 	create: function (req, res) {
-		
-		var model = {
-			title: req.param('title'),
-			amazonUrl: req.param('amazonUrl'),
-			description: req.param('description'),
-			user: req.param('user')
-		};
 
-		Video.create(model)
-		.exec(function(err, video) {
-			if (err) {
-				return console.log(err);
-			}
-			else {
-				Video.publishCreate(video);
-				res.json(video);
-			}
+		var params = JSON.parse(req.param('info'));
+		var title = params.title;
+		var description = params.description;
+		var user = params.user;
+
+		req.file('videoFile').upload({
+		  adapter: require('skipper-s3'),
+		  key: 'AKIAJZS6F2HWDJWWZE7A',
+		  secret: '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',
+		  bucket: 'bidio'
+		}, function whenDone(err, uploadedFiles) {
+		    if (err) {
+		      return res.negotiate(err);
+		    }
+		    if (uploadedFiles.length === 0){
+		      return res.badRequest('No file was uploaded');
+		    }
+		    var amazonUrl = uploadedFiles[0].extra.Location;
+		    var model = {
+				title: title,
+				description: description,
+				amazonUrl: amazonUrl,
+				user: user
+			};
+			Video.create(model)
+			.exec(function(err, box) {
+				if (err) {
+					return console.log(err);
+				}
+				else {
+
+					Video.publishCreate(box);
+					return res.json(box);
+				}
+			});
 		});
 	},
 
