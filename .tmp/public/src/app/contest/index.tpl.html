@@ -1,0 +1,24 @@
+<link href="http://vjs.zencdn.net/5.8.0/video-js.css" rel="stylesheet">
+<div class="surface-container home-pad" style="margin-left:10%">
+	<h1>{{contest.title}}</h1>
+	
+	<p>sponsored by</p>
+	{{contest.user.username}}
+	
+	<h3>edit contest</h3>
+	<form ng-submit="updateContest(contest)">
+		<p>Update Title</p>
+		<input type="text" ng-model="contest.title"/>
+		<p>Update Content</p>
+		<input type="text" ng-model="contest.contestContent"/>
+		<button type="submit">Update Contest</button>
+	</form>
+
+	<h3>contest submissions</h3>
+	<div class="contestVideos" ng-repeat="vidoe in videos">
+		<h1>{{video}}</h1>
+		<video class="video-js vjs-default-skin" controls preload="auto" width="640" height="264" poster="poster.jpg" vjs-video>
+	 		<source src="videos/video.mp4" type="video/mp4">
+		</video>
+	</div>
+</div>

@@ -96,7 +96,7 @@ module.exports = {
 
 	create: function (req, res) {
 
-		var params = JSON.parse(req.param('info'));
+		var params = JSON.parse(req.param('videoData'));
 		var title = params.title;
 		var description = params.description;
 		var user = params.user;
@@ -105,7 +105,7 @@ module.exports = {
 		  adapter: require('skipper-s3'),
 		  key: 'AKIAJZS6F2HWDJWWZE7A',
 		  secret: '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',
-		  bucket: 'bidio'
+		  bucket: 'bidio8'
 		}, function whenDone(err, uploadedFiles) {
 		    if (err) {
 		      return res.negotiate(err);
@@ -121,14 +121,13 @@ module.exports = {
 				user: user
 			};
 			Video.create(model)
-			.exec(function(err, box) {
+			.exec(function(err, video) {
 				if (err) {
 					return console.log(err);
 				}
 				else {
-
-					Video.publishCreate(box);
-					return res.json(box);
+					Video.publishCreate(video);
+					return res.json(video);
 				}
 			});
 		});

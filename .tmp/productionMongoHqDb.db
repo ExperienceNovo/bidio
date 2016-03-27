@@ -1,0 +1,381 @@
+{
+  "data": {
+    "bid": [],
+    "contest": [],
+    "passport": [
+      {
+        "protocol": "local",
+        "password": "$2a$10$M9MRy1pg7D1sfZUUohRk9usqy2EobGi771Q.nqf6zNERPLmpWdb.6",
+        "user": 1,
+        "createdAt": "2016-03-27T13:17:29.905Z",
+        "updatedAt": "2016-03-27T13:17:29.905Z",
+        "id": 1
+      },
+      {
+        "protocol": "local",
+        "password": "$2a$10$K5nX1gEGd2OYVvHJUh4RQO8PmM68zfXmVyYX0QCJlsSNQFjzauY4u",
+        "user": 2,
+        "createdAt": "2016-03-27T13:30:11.846Z",
+        "updatedAt": "2016-03-27T13:30:11.846Z",
+        "id": 2
+      },
+      {
+        "protocol": "local",
+        "password": "$2a$10$wvk0T48FSTzTxuA7E5jif.xpbRw2QqY8a9ytOXEP7OqiQ9nJsmoJu",
+        "user": 3,
+        "createdAt": "2016-03-27T13:35:00.885Z",
+        "updatedAt": "2016-03-27T13:35:00.885Z",
+        "id": 3
+      },
+      {
+        "protocol": "local",
+        "password": "$2a$10$eyarVyV0vkalOwkpHr9he.DG2jfnJxKDL8.qAXOOJlC7uNgzWiC8e",
+        "user": 4,
+        "createdAt": "2016-03-27T13:38:45.022Z",
+        "updatedAt": "2016-03-27T13:38:45.022Z",
+        "id": 4
+      },
+      {
+        "protocol": "local",
+        "password": "$2a$10$2SLr9oBdrBbyaiw/jgBXIeACHRkccYa6pxTCpuUmSq0s2fY3gyMSq",
+        "user": 6,
+        "createdAt": "2016-03-27T13:40:24.974Z",
+        "updatedAt": "2016-03-27T13:40:24.974Z",
+        "id": 5
+      },
+      {
+        "protocol": "local",
+        "password": "$2a$10$SiY24eKu27Wp59Zi0ZKoNeCPooB1aVMRHlPImaV/M.Ht1YHI802du",
+        "user": 7,
+        "createdAt": "2016-03-27T13:44:00.043Z",
+        "updatedAt": "2016-03-27T13:44:00.043Z",
+        "id": 6
+      },
+      {
+        "protocol": "local",
+        "password": "$2a$10$Mt2Gw2swlX1770i5Fbux5uZ501a4IVBSnio/DVaEZkeUBEMPY2KEW",
+        "user": 9,
+        "createdAt": "2016-03-27T13:50:16.224Z",
+        "updatedAt": "2016-03-27T13:50:16.224Z",
+        "id": 7
+      }
+    ],
+    "user": [
+      {
+        "username": "troverman1234",
+        "email": "troverman1234@gmail.com",
+        "createdAt": "2016-03-27T13:17:29.648Z",
+        "updatedAt": "2016-03-27T13:17:29.648Z",
+        "id": 1
+      },
+      {
+        "username": "troverman12345678",
+        "email": "troverman12345678@gmail.com",
+        "createdAt": "2016-03-27T13:30:11.577Z",
+        "updatedAt": "2016-03-27T13:30:11.577Z",
+        "id": 2
+      },
+      {
+        "username": "troverman12345",
+        "email": "troverman12345@gmail.com",
+        "createdAt": "2016-03-27T13:35:00.614Z",
+        "updatedAt": "2016-03-27T13:35:00.614Z",
+        "id": 3
+      },
+      {
+        "username": "troverman111",
+        "email": "troverman111@gmail.com",
+        "createdAt": "2016-03-27T13:38:44.755Z",
+        "updatedAt": "2016-03-27T13:38:44.755Z",
+        "id": 4
+      },
+      {
+        "username": "123123123",
+        "email": "troverman12121331@gmail.com",
+        "createdAt": "2016-03-27T13:40:24.712Z",
+        "updatedAt": "2016-03-27T13:40:24.712Z",
+        "id": 6
+      },
+      {
+        "username": "troverman777",
+        "email": "troverman777@gmail.com",
+        "createdAt": "2016-03-27T13:43:59.781Z",
+        "updatedAt": "2016-03-27T13:43:59.781Z",
+        "id": 7
+      },
+      {
+        "username": "troverman123123123123123",
+        "email": "troverman1234588@gmail.com",
+        "createdAt": "2016-03-27T13:50:15.967Z",
+        "updatedAt": "2016-03-27T13:50:15.967Z",
+        "id": 9
+      }
+    ],
+    "userinformation": [],
+    "video": [
+      {
+        "title": "TEST UPLOAD",
+        "description": "okay great",
+        "amazonUrl": "https://bidio8.s3.amazonaws.com/06713f66-a704-487d-8118-6a294985453a.png",
+        "user": 9,
+        "createdAt": "2016-03-27T13:50:38.596Z",
+        "updatedAt": "2016-03-27T13:50:38.596Z",
+        "id": 1
+      }
+    ],
+    "view": []
+  },
+  "schema": {
+    "bid": {
+      "value": {
+        "type": "string"
+      },
+      "video": {
+        "type": "integer",
+        "model": "video",
+        "foreignKey": true,
+        "alias": "video"
+      },
+      "user": {
+        "type": "integer",
+        "model": "user",
+        "foreignKey": true,
+        "alias": "user"
+      },
+      "date": {
+        "type": "string"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "contest": {
+      "title": {
+        "type": "string",
+        "unique": true
+      },
+      "contestContent": {
+        "type": "string"
+      },
+      "urlTitle": {
+        "type": "string",
+        "unique": true
+      },
+      "user": {
+        "type": "integer",
+        "model": "user",
+        "foreignKey": true,
+        "alias": "user"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "passport": {
+      "protocol": {
+        "type": "string"
+      },
+      "password": {
+        "type": "string"
+      },
+      "provider": {
+        "type": "string"
+      },
+      "identifier": {
+        "type": "string"
+      },
+      "tokens": {
+        "type": "json"
+      },
+      "user": {
+        "type": "integer",
+        "model": "user",
+        "foreignKey": true,
+        "alias": "user"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "user": {
+      "username": {
+        "type": "string",
+        "unique": true
+      },
+      "email": {
+        "type": "string",
+        "unique": true
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "userinformation": {
+      "user": {
+        "type": "integer",
+        "model": "user",
+        "foreignKey": true,
+        "alias": "user"
+      },
+      "firstName": {
+        "type": "string"
+      },
+      "lastName": {
+        "type": "string"
+      },
+      "address": {
+        "type": "string"
+      },
+      "addressAdditional": {
+        "type": "string"
+      },
+      "city": {
+        "type": "string"
+      },
+      "state": {
+        "type": "json"
+      },
+      "zip": {
+        "type": "string"
+      },
+      "displayName": {
+        "type": "string"
+      },
+      "webAddress": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "video": {
+      "title": {
+        "type": "string",
+        "unique": true
+      },
+      "urlTitle": {
+        "type": "string"
+      },
+      "amazonUrl": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string",
+        "unique": true
+      },
+      "user": {
+        "type": "integer",
+        "model": "user",
+        "foreignKey": true,
+        "alias": "user"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "view": {
+      "viewCount": {
+        "type": "integer"
+      },
+      "date": {
+        "type": "string"
+      },
+      "video": {
+        "type": "integer",
+        "model": "video",
+        "foreignKey": true,
+        "alias": "video"
+      },
+      "user": {
+        "type": "integer",
+        "model": "user",
+        "foreignKey": true,
+        "alias": "user"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    }
+  },
+  "counters": {
+    "bid": {},
+    "contest": {},
+    "passport": {
+      "id": 7
+    },
+    "user": {
+      "id": 9
+    },
+    "userinformation": {},
+    "video": {
+      "id": 1
+    },
+    "view": {}
+  }
+}
