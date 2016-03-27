@@ -504,18 +504,38 @@ angular.module("upload/index.tpl.html", []).run(["$templateCache", function($tem
     "		</form>\n" +
     "\n" +
     "\n" +
-    "	    <div class=\"button\" ngf-select=\"upload($files)\" ngf-multiple=\"true\">Select File</div>\n" +
-    "	    Drop File:\n" +
-    "	    <div ngf-drop ngf-select ng-model=\"files\" class=\"drop-box\" \n" +
+    "	    <!--<div class=\"button\" ngf-select=\"upload($files)\" ngf-multiple=\"true\">Select File</div>-->\n" +
+    "	    <!--Drop File:-->\n" +
+    "		\n" +
+    "	    <!--<div ngf-drop ngf-select ng-model=\"files\" class=\"drop-box\" \n" +
     "	        ngf-drag-over-class=\"'dragover'\" ngf-multiple=\"true\" ngf-allow-dir=\"true\">Drag and drop</div>\n" +
-    "	    <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>\n" +
-    "	    Files:\n" +
-    "	    <ul>\n" +
-    "	        <li ng-repeat=\"f in files\" style=\"font:smaller\">{{f.name}} {{f.$error}} {{f.$errorParam}}</li>\n" +
-    "	    </ul>\n" +
-    "	    Upload Log:\n" +
-    "	    <pre>{{log}}</pre>\n" +
+    "	    <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>-->\n" +
+    "		\n" +
+    "		<div style=\"width:100%;\" ngf-drop ngf-select=\"upload($files)\" ng-model=\"files\" class=\"drop-box\" ngf-drag-over-class=\"dragover\" ngf-multiple=\"true\" ngf-allow-dir=\"true\">\n" +
+    "			<div>Drag videos or click here to upload.</div>\n" +
+    "			\n" +
+    "			\n" +
+    "			<div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>\n" +
+    "			\n" +
+    "\n" +
     "		</div>\n" +
+    "		\n" +
+    "		\n" +
+    "		\n" +
+    "		\n" +
+    "	    Files: \n" +
+    "	    <ul>\n" +
+    "	        <li ng-repeat=\"f in files\" style=\"font:smaller\">{{fileName}} {{f.$error}} {{f.$errorParam}}</li>\n" +
+    "	    </ul>\n" +
+    "	    Upload Progress:\n" +
+    "		\n" +
+    "		<div class=\"progress\">\n" +
+    "			<div class=\"progress-bar\" role=\"progressbar\" aria-valuenow=\"60\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: {{pp}}%;\">\n" +
+    "				{{pp}}%\n" +
+    "			</div>\n" +
+    "		</div>\n" +
+    "		\n" +
+    "		<!--{{console.log(log);}}-->\n" +
     "\n" +
     "\n" +
     "	</div>\n" +

@@ -20,6 +20,30 @@
         "createdAt": "2016-03-11T20:36:44.038Z",
         "updatedAt": "2016-03-11T20:36:44.038Z",
         "id": 1
+      },
+      {
+        "protocol": "local",
+        "password": "$2a$10$NqeUqUKl8R7/NbOYIsv3wuDWhMqKBykRpYq34Thg4kpfOx6uTBFqi",
+        "user": 2,
+        "createdAt": "2016-03-26T21:16:43.889Z",
+        "updatedAt": "2016-03-26T21:16:43.889Z",
+        "id": 2
+      },
+      {
+        "protocol": "local",
+        "password": "$2a$10$1bjF5gh5tcDGxPYQnsEvO.6jHjjiGBIDAJDES5q5lEeWsnCH.fkgu",
+        "user": 3,
+        "createdAt": "2016-03-26T22:10:24.381Z",
+        "updatedAt": "2016-03-26T22:10:24.381Z",
+        "id": 3
+      },
+      {
+        "protocol": "local",
+        "password": "$2a$10$aZTvQDVQvl1h3rnkTZn51./OBwahpVaK9Z9HvBuEo/1isp.rbT91C",
+        "user": 4,
+        "createdAt": "2016-03-26T22:24:29.571Z",
+        "updatedAt": "2016-03-26T22:24:29.571Z",
+        "id": 4
       }
     ],
     "user": [
@@ -30,6 +54,30 @@
         "createdAt": "2016-03-11T20:36:43.794Z",
         "updatedAt": "2016-03-11T21:38:27.755Z",
         "id": 1
+      },
+      {
+        "username": "chenchik",
+        "email": "chenchik@email.unc.edu",
+        "first_name": "Danila",
+        "createdAt": "2016-03-26T21:16:43.623Z",
+        "updatedAt": "2016-03-26T21:16:43.623Z",
+        "id": 2
+      },
+      {
+        "username": "guy2",
+        "email": "danushac@gmail.com",
+        "first_name": "danusha",
+        "createdAt": "2016-03-26T22:10:24.037Z",
+        "updatedAt": "2016-03-26T22:10:24.037Z",
+        "id": 3
+      },
+      {
+        "username": "dc",
+        "email": "d@c.com",
+        "first_name": "danila",
+        "createdAt": "2016-03-26T22:24:29.248Z",
+        "updatedAt": "2016-03-26T22:24:29.248Z",
+        "id": 4
       }
     ],
     "video": [
@@ -41,6 +89,15 @@
         "createdAt": "2016-03-11T20:55:41.837Z",
         "updatedAt": "2016-03-11T20:55:41.837Z",
         "id": 1
+      },
+      {
+        "title": "UploadTest",
+        "amazonUrl": "http://www.google.com",
+        "description": "a description",
+        "user": 2,
+        "createdAt": "2016-03-26T21:18:07.710Z",
+        "updatedAt": "2016-03-26T21:18:07.710Z",
+        "id": 2
       }
     ],
     "view": []
@@ -245,13 +302,13 @@
       "id": 1
     },
     "passport": {
-      "id": 1
+      "id": 4
     },
     "user": {
-      "id": 1
+      "id": 4
     },
     "video": {
-      "id": 1
+      "id": 2
     },
     "view": {}
   }
