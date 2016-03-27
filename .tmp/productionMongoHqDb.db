@@ -44,6 +44,14 @@
         "createdAt": "2016-03-26T22:24:29.571Z",
         "updatedAt": "2016-03-26T22:24:29.571Z",
         "id": 4
+      },
+      {
+        "protocol": "local",
+        "password": "$2a$10$8/HSA/HwIQOAMiQ2EPhibe58ikEFdaYaaqURt7WDiXbHZI6BVgyEu",
+        "user": 5,
+        "createdAt": "2016-03-27T01:01:26.633Z",
+        "updatedAt": "2016-03-27T01:01:26.633Z",
+        "id": 5
       }
     ],
     "user": [
@@ -78,6 +86,14 @@
         "createdAt": "2016-03-26T22:24:29.248Z",
         "updatedAt": "2016-03-26T22:24:29.248Z",
         "id": 4
+      },
+      {
+        "username": "dac",
+        "email": "d@ac.com",
+        "first_name": "danila",
+        "createdAt": "2016-03-27T01:01:26.369Z",
+        "updatedAt": "2016-03-27T01:01:26.369Z",
+        "id": 5
       }
     ],
     "video": [
@@ -302,10 +318,10 @@
       "id": 1
     },
     "passport": {
-      "id": 4
+      "id": 5
     },
     "user": {
-      "id": 4
+      "id": 5
     },
     "video": {
       "id": 2

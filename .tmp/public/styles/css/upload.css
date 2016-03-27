@@ -38,6 +38,6 @@
 	
 }
 .dragover {
-    border: 5px dashed blue;
+    border: 5px dashed #FAA93F;
 	cursor: pointer;
 }
