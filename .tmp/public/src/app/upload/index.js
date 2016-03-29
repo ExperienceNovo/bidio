@@ -51,7 +51,7 @@ angular.module( 'bidio.upload', [
                         var progressPercentage = parseInt(100.0 *
                         evt.loaded / evt.total);
                         $scope.log = 'progress: ' + progressPercentage + 
-                        '% ' + evt.config.data.videoFile.name + '\n' + $scope.log
+                        '% ' + evt.config.data.videoFile.name + '\n' + $scope.log;
                         $scope.pp = progressPercentage;
                         $scope.fileName = evt.config.data.videoFile.name;
                 });

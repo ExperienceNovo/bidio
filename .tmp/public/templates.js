@@ -34,6 +34,46 @@ angular.module("account/index.tpl.html", []).run(["$templateCache", function($te
     "\n" +
     "\n" +
     "	<p>this is the account page</p>\n" +
+    "	\n" +
+    "	<div ng-show=\"!currentUser\">\n" +
+    "		<a href=\"/login\">login</a> or <a href=\"/register\">register</a> to upload\n" +
+    "	</div>\n" +
+    "	<div ng-show=\"currentUser\">\n" +
+    "		{{currentUser}}\n" +
+    "		\n" +
+    "		\n" +
+    "		<h1>upload</h1>\n" +
+    "		\n" +
+    "		<form ng-submit=\"update(updatedUser)\">\n" +
+    "			<p>Username : {{currentUser.username}}</p>\n" +
+    "			\n" +
+    "			<input class=\"accountInput\" type=\"text\" ng-model=\"updatedUser.username\" value=\"{{currentUser.username}}\"/>\n" +
+    "			\n" +
+    "			<p>Email: {{currentUser.email}}</p>\n" +
+    "			<input class=\"accountInput\" type=\"text\" ng-model=\"updatedUser.email\" value=\"{{currentUser.email}}\"/>\n" +
+    "			\n" +
+    "			<button type=\"submit\">Update Profile</button>\n" +
+    "		</form>\n" +
+    "		<form ng-submit=\"upload(file)\">\n" +
+    "			<br>\n" +
+    "\n" +
+    "			<div id=\"upload-container\">\n" +
+    "				<div style=\"width:100%;\" ngf-drop ngf-select=\"upload($file)\" ng-model=\"file\" class=\"drop-box\" ngf-drag-over-class=\"dragover\" ngf-allow-dir=\"true\">\n" +
+    "					<div>Drag pictures or click here to upload Avatar.</div>\n" +
+    "					<div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>	\n" +
+    "				</div>\n" +
+    "				<p>{{fileName}}</p>\n" +
+    "			    Upload Progress:\n" +
+    "				<div class=\"progress\">\n" +
+    "					<div class=\"progress-bar\" role=\"progressbar\" aria-valuenow=\"60\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: {{pp}}%;\">\n" +
+    "						{{pp}}%\n" +
+    "					</div>\n" +
+    "				</div>\n" +
+    "			</div>\n" +
+    "			<button type=\"submit\">Update Avatar</button>\n" +
+    "		</form>\n" +
+    "	\n" +
+    "	</div>\n" +
     "\n" +
     "\n" +
     "\n" +

@@ -2,6 +2,46 @@
 
 
 	<p>this is the account page</p>
+	
+	<div ng-show="!currentUser">
+		<a href="/login">login</a> or <a href="/register">register</a> to upload
+	</div>
+	<div ng-show="currentUser">
+		{{currentUser}}
+		
+		
+		<h1>upload</h1>
+		
+		<form ng-submit="update(updatedUser)">
+			<p>Username : {{currentUser.username}}</p>
+			
+			<input class="accountInput" type="text" ng-model="updatedUser.username" value="{{currentUser.username}}"/>
+			
+			<p>Email: {{currentUser.email}}</p>
+			<input class="accountInput" type="text" ng-model="updatedUser.email" value="{{currentUser.email}}"/>
+			
+			<button type="submit">Update Profile</button>
+		</form>
+		<form ng-submit="upload(file)">
+			<br>
+
+			<div id="upload-container">
+				<div style="width:100%;" ngf-drop ngf-select="upload($file)" ng-model="file" class="drop-box" ngf-drag-over-class="dragover" ngf-allow-dir="true">
+					<div>Drag pictures or click here to upload Avatar.</div>
+					<div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>	
+				</div>
+				<p>{{fileName}}</p>
+			    Upload Progress:
+				<div class="progress">
+					<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{pp}}%;">
+						{{pp}}%
+					</div>
+				</div>
+			</div>
+			<button type="submit">Update Avatar</button>
+		</form>
+	
+	</div>
 
 
 
