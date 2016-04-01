@@ -2,42 +2,30 @@
 	<div class="contestsTitleContainer">
 		<h1 class="contentTitleLetters">Featured</h1>
 	</div>
-	<!--<h3>My Contests</h3>-->
 	
-	<div class="container" ng-hide="contests.length > 0">
-		<p class="contestsInfoText">there are currently no contests posted.</p>
+	<div class="container" ng-repeat="contest in contests">
+		<h3><a href="/contest/{{contest.urlTitle}}">{{contest.title}}</a></h3>
+		<p>sponsered by</p>
+		<p>{{contest.user.username}}</p>
 	</div>
 	
-	<div class="container" ng-show="contests.length > 0" ng-repeat="contest in contests">
-			{{contests}}
-			<h3><a href="/contest/{{contest.urlTitle}}">{{contest.title}}</a></h3>
-			<p>sponsered by</p>
-			<p>{{contest.user.username}}</p>
-			<div ng-repeat="video in videos">
-				{{video}}
-			</div>
-			
-	</div>
-	
-	<div class="contestsTitleContainer">
-		<h1 class="contentTitleLetters">Create a Contest</h1>
-	</div>
-	
-	<div class="container">
-		<form ng-submit="createContest(newContest)">
-			<p class="contestsInfoText">Title</p>
-			<input class="contestsInfoInput" type='text' ng-model="newContest.title"></input>
-			<p class="contestsInfoText">Tell us about the Contest.</p>
-			<textarea class="contestsInfoInput" ng-model="newContest.contestContent"></textarea>
-			<p class="contestsInfoText">URL</p>
-			<input class="contestsInfoInput" type='text' ng-model="newContest.urlTitle"></input><br>
-			<button class="createContestButton" type='submit'>Create</button>
-		</form>
-		<br><br>
+	<div ng-show="currentUser">
+		<div class="contestsTitleContainer">
+			<h1 class="contentTitleLetters">Create a Contest</h1>
+		</div>
 		
-		
-
-		
+		<div class="container">
+			<form ng-submit="createContest(newContest)">
+				<p class="contestsInfoText">Title</p>
+				<input class="contestsInfoInput" type='text' ng-model="newContest.title"></input>
+				<p class="contestsInfoText">Tell us about the Contest.</p>
+				<textarea class="contestsInfoInput" ng-model="newContest.contestContent"></textarea>
+				<p class="contestsInfoText">URL</p>
+				<input class="contestsInfoInput" type='text' ng-model="newContest.urlTitle"></input><br>
+				<button class="createContestButton" type='submit'>Create</button>
+			</form>
+			<br><br>
+		</div>
 	</div>
 		
 </div>

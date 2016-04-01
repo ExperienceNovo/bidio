@@ -1,4 +1,4 @@
-angular.module('templates-app', ['about/index.tpl.html', 'account/index.tpl.html', 'contest/index.tpl.html', 'contests/index.tpl.html', 'creators/index.tpl.html', 'dashboard/analytics.tpl.html', 'dashboard/home.tpl.html', 'dashboard/index.tpl.html', 'dashboard/videos.tpl.html', 'home/index.tpl.html', 'intro/index.tpl.html', 'login/index.tpl.html', 'nav/index.tpl.html', 'register/index.tpl.html', 'search/index.tpl.html', 'sponsors/index.tpl.html', 'upload/index.tpl.html', 'video/index.tpl.html']);
+angular.module('templates-app', ['about/index.tpl.html', 'account/index.tpl.html', 'contest/index.tpl.html', 'contests/index.tpl.html', 'creators/index.tpl.html', 'dashboard/analytics.tpl.html', 'dashboard/home.tpl.html', 'dashboard/index.tpl.html', 'dashboard/videos.tpl.html', 'footer/index.tpl.html', 'home/index.tpl.html', 'intro/index.tpl.html', 'login/index.tpl.html', 'nav/index.tpl.html', 'register/index.tpl.html', 'search/index.tpl.html', 'sponsors/index.tpl.html', 'upload/index.tpl.html', 'video/index.tpl.html']);
 
 angular.module("about/index.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("about/index.tpl.html",
@@ -84,18 +84,23 @@ angular.module("contest/index.tpl.html", []).run(["$templateCache", function($te
   $templateCache.put("contest/index.tpl.html",
     "<link href=\"http://vjs.zencdn.net/5.8.0/video-js.css\" rel=\"stylesheet\">\n" +
     "<div class=\"surface-container home-pad\">\n" +
+    "\n" +
     "	<div class=\"contestsTitleContainer\">\n" +
     "		<h1 class=\"contentTitleLetters\">{{contest.title}}</h1>\n" +
     "	</div>\n" +
+    "\n" +
     "	<div class=\"container contestContainer\">\n" +
+    "\n" +
     "		<div class=\"sponsoredByContainer col-md-6 col-lg-6\">\n" +
     "			<p class=\"sponsorText sponsorTitle\" >Sponsored By</p>\n" +
-    "			<a href=\"/api/user/{{createdBy.id}}\"><img class=\"sponsorPic\" src=\"images/silhouette_orange.jpg\"></a>\n" +
-    "			<p class=\"sponsorText sponsorName\" ><a class=\"sponsorName\" href=\"/api/user/{{createdBy.id}}\">{{createdBy.username}}</a> on {{day}}/{{month}}/{{year}}</p>\n" +
-    "			\n" +
-    "			\n" +
+    "			<a href=\"/api/user/{{contest.user.id}}\"><img class=\"sponsorPic\" src=\"images/silhouette_orange.jpg\"></a>\n" +
+    "			<p>\n" +
+    "				<a class=\"sponsorName\" href=\"/api/user/{{contest.user.id}}\">{{contest.user.username}}</a>\n" +
+    "				on {{contest.createdAt}}\n" +
+    "			</p>\n" +
     "		</div>\n" +
-    "		<div class=\"editContestContainer col-md-6 col-lg-6\">\n" +
+    "\n" +
+    "		<div ng-show=\"currentUser.id == contest.user.id\" class=\"editContestContainer col-md-6 col-lg-6\">\n" +
     "			<p class=\"sponsorText sponsorTitle editContestTitle\">Edit Contest</p>\n" +
     "			<form ng-submit=\"updateContest(contest)\">\n" +
     "				<div class=\"editTitleAndUrl\">\n" +
@@ -108,19 +113,22 @@ angular.module("contest/index.tpl.html", []).run(["$templateCache", function($te
     "						<input class=\"editPropertiesInput\" type=\"text\" ng-model=\"contest.urlTitle\"/>\n" +
     "					</div>\n" +
     "				</div>\n" +
-    "				\n" +
     "				<p class=\"editPropertiesTitle\">Update Content</p>\n" +
-    "				\n" +
     "				<textarea class=\"editPropertiesInput editProperitesTextArea\" ng-model=\"contest.contestContent\"></textarea>\n" +
     "				<button class=\"updateContestButton\" type=\"submit\">Update Contest</button>\n" +
     "			</form>\n" +
     "		</div>\n" +
+    "\n" +
+    "		<div ng-show=\"currentUser.id != contest.user.id\" class=\"editContestContainer col-md-6 col-lg-6\">\n" +
+    "			<h1>{{contest.title}}</h1>\n" +
+    "			<p>{{contest.contestContent}}</p>\n" +
+    "		</div>\n" +
+    "\n" +
     "	</div>\n" +
     "	\n" +
     "	<div class=\"contestsTitleContainer submissionsTitleContainer\">\n" +
     "		<h1 class=\"contentTitleLetters\">Submissions</h1>\n" +
     "	</div>\n" +
-    "		\n" +
     "		\n" +
     "	<div class=\"container\">\n" +
     "		<div class=\"contestVideos\" ng-repeat=\"video in videos\">\n" +
@@ -129,8 +137,8 @@ angular.module("contest/index.tpl.html", []).run(["$templateCache", function($te
     "				<source src=\"videos/video.mp4\" type=\"video/mp4\">\n" +
     "			</video>\n" +
     "		</div>\n" +
-    "		\n" +
     "	</div>\n" +
+    "\n" +
     "</div>");
 }]);
 
@@ -140,42 +148,30 @@ angular.module("contests/index.tpl.html", []).run(["$templateCache", function($t
     "	<div class=\"contestsTitleContainer\">\n" +
     "		<h1 class=\"contentTitleLetters\">Featured</h1>\n" +
     "	</div>\n" +
-    "	<!--<h3>My Contests</h3>-->\n" +
     "	\n" +
-    "	<div class=\"container\" ng-hide=\"contests.length > 0\">\n" +
-    "		<p class=\"contestsInfoText\">there are currently no contests posted.</p>\n" +
+    "	<div class=\"container\" ng-repeat=\"contest in contests\">\n" +
+    "		<h3><a href=\"/contest/{{contest.urlTitle}}\">{{contest.title}}</a></h3>\n" +
+    "		<p>sponsered by</p>\n" +
+    "		<p>{{contest.user.username}}</p>\n" +
     "	</div>\n" +
     "	\n" +
-    "	<div class=\"container\" ng-show=\"contests.length > 0\" ng-repeat=\"contest in contests\">\n" +
-    "			{{contests}}\n" +
-    "			<h3><a href=\"/contest/{{contest.urlTitle}}\">{{contest.title}}</a></h3>\n" +
-    "			<p>sponsered by</p>\n" +
-    "			<p>{{contest.user.username}}</p>\n" +
-    "			<div ng-repeat=\"video in videos\">\n" +
-    "				{{video}}\n" +
-    "			</div>\n" +
-    "			\n" +
-    "	</div>\n" +
-    "	\n" +
-    "	<div class=\"contestsTitleContainer\">\n" +
-    "		<h1 class=\"contentTitleLetters\">Create a Contest</h1>\n" +
-    "	</div>\n" +
-    "	\n" +
-    "	<div class=\"container\">\n" +
-    "		<form ng-submit=\"createContest(newContest)\">\n" +
-    "			<p class=\"contestsInfoText\">Title</p>\n" +
-    "			<input class=\"contestsInfoInput\" type='text' ng-model=\"newContest.title\"></input>\n" +
-    "			<p class=\"contestsInfoText\">Tell us about the Contest.</p>\n" +
-    "			<textarea class=\"contestsInfoInput\" ng-model=\"newContest.contestContent\"></textarea>\n" +
-    "			<p class=\"contestsInfoText\">URL</p>\n" +
-    "			<input class=\"contestsInfoInput\" type='text' ng-model=\"newContest.urlTitle\"></input><br>\n" +
-    "			<button class=\"createContestButton\" type='submit'>Create</button>\n" +
-    "		</form>\n" +
-    "		<br><br>\n" +
+    "	<div ng-show=\"currentUser\">\n" +
+    "		<div class=\"contestsTitleContainer\">\n" +
+    "			<h1 class=\"contentTitleLetters\">Create a Contest</h1>\n" +
+    "		</div>\n" +
     "		\n" +
-    "		\n" +
-    "\n" +
-    "		\n" +
+    "		<div class=\"container\">\n" +
+    "			<form ng-submit=\"createContest(newContest)\">\n" +
+    "				<p class=\"contestsInfoText\">Title</p>\n" +
+    "				<input class=\"contestsInfoInput\" type='text' ng-model=\"newContest.title\"></input>\n" +
+    "				<p class=\"contestsInfoText\">Tell us about the Contest.</p>\n" +
+    "				<textarea class=\"contestsInfoInput\" ng-model=\"newContest.contestContent\"></textarea>\n" +
+    "				<p class=\"contestsInfoText\">URL</p>\n" +
+    "				<input class=\"contestsInfoInput\" type='text' ng-model=\"newContest.urlTitle\"></input><br>\n" +
+    "				<button class=\"createContestButton\" type='submit'>Create</button>\n" +
+    "			</form>\n" +
+    "			<br><br>\n" +
+    "		</div>\n" +
     "	</div>\n" +
     "		\n" +
     "</div>");
@@ -300,6 +296,14 @@ angular.module("dashboard/videos.tpl.html", []).run(["$templateCache", function(
     "  </div>\n" +
     "\n" +
     "\n" +
+    "</div>\n" +
+    "");
+}]);
+
+angular.module("footer/index.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("footer/index.tpl.html",
+    "<div id=\"footer\" ng-controller=\"FooterCtrl\">\n" +
+    "  {{date | date:'yyyy'}} <a href=\"/\">bidio.co</a>\n" +
     "</div>\n" +
     "");
 }]);
@@ -641,6 +645,7 @@ angular.module("home/index.tpl.html", []).run(["$templateCache", function($templ
     "                    </div>\n" +
     "                </section>\n" +
     "            </div>\n" +
+    "            <div ng-include=\"'footer/index.tpl.html'\"></div>\n" +
     "            <div class=\"height-emulator\"></div>\n" +
     "        </div>\n" +
     "    </div>\n" +
@@ -888,22 +893,146 @@ angular.module("upload/index.tpl.html", []).run(["$templateCache", function($tem
 
 angular.module("video/index.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("video/index.tpl.html",
-    "<div style=\"margin-left:10%\">\n" +
-    "	<h1>{{video.title}}</h1>\n" +
-    "  	<link href=\"http://vjs.zencdn.net/5.8.0/video-js.css\" rel=\"stylesheet\">\n" +
-    "	<video class=\"video-js vjs-default-skin\" controls preload=\"auto\" width=\"640\" height=\"264\" poster=\"poster.jpg\" vjs-video>\n" +
-    " 		<source src=\"videos/video.mp4\" type=\"video/mp4\">\n" +
+    "<!--ad video js overlay -->\n" +
+    "<!--implement in angular-->\n" +
+    "<!--\n" +
+    "<style>\n" +
+    "	#vjs-image-overlay-holder {\n" +
+    "	    position: absolute;\n" +
+    "	    top: 0;\n" +
+    "	    left: 0;\n" +
+    "	    text-align: center;\n" +
+    "	    cursor: pointer;\n" +
+    "	}\n" +
+    "	#vjs-image-overlay-holder img {\n" +
+    "	    height: 100%;\n" +
+    "	    margin: auto;\n" +
+    "	    cursor: pointer;\n" +
+    "	}\n" +
+    "</style>\n" +
+    "<script>\n" +
+    "	(function(window, videojs) {\n" +
+    "	  var defaults = {\n" +
+    "	      image_url: null,\n" +
+    "	      click_url:     '',\n" +
+    "	      start_time: null,\n" +
+    "	      end_time: null,\n" +
+    "	      opacity: 0.7,\n" +
+    "	      height: '100%',\n" +
+    "	      width: '100%'\n" +
+    "	  },\n" +
+    "	  imageOverlay = function(options) {\n" +
+    "	    var player = this,\n" +
+    "	        settings = videojs.mergeOptions(defaults, options),\n" +
+    "	        showingImage = false;\n" +
+    "\n" +
+    "	    if (settings.start_time === null)\n" +
+    "	      settings.start_time = 0;\n" +
+    "\n" +
+    "	    overlay = {\n" +
+    "	      checkEndTime: function() {\n" +
+    "	        if (settings.end_time === null) {\n" +
+    "	          settings.end_time = player.duration() + 1;\n" +
+    "	        }\n" +
+    "	      },\n" +
+    "	      checkOverlay: function() {\n" +
+    "	        if ((player.currentTime() >= settings.start_time) && (player.currentTime() < settings.end_time)) {\n" +
+    "	          overlay.showImage();\n" +
+    "	        } else {\n" +
+    "	          overlay.hideImage();\n" +
+    "	        }\n" +
+    "	      },\n" +
+    "	      showImage: function() {\n" +
+    "	        if (showingImage) {\n" +
+    "	          return;\n" +
+    "	        }\n" +
+    "	        showingImage = true;\n" +
+    "	        var holderDiv = document.createElement('a');\n" +
+    "	        holderDiv.id = 'vjs-image-overlay-holder';\n" +
+    "	        holderDiv.style.height = settings.height;\n" +
+    "	        holderDiv.style.width = settings.width;\n" +
+    "\n" +
+    "	        if (settings.image_url) {\n" +
+    "	            var overlayImage = document.createElement('img');\n" +
+    "	            overlayImage.src = settings.image_url;\n" +
+    "	            overlayImage.style.opacity = settings.opacity;\n" +
+    "	            holderDiv.appendChild(overlayImage);\n" +
+    "	        }\n" +
+    "\n" +
+    "	        holderDiv.onclick = function() {\n" +
+    "	          player.pause();\n" +
+    "	          window.open(settings.click_url);\n" +
+    "	        };\n" +
+    "\n" +
+    "	        player.el().appendChild(holderDiv);\n" +
+    "	      },\n" +
+    "	      hideImage: function() {\n" +
+    "	        if (!showingImage) {\n" +
+    "	          return;\n" +
+    "	        }\n" +
+    "	        showingImage = false;\n" +
+    "	        player.el().removeChild(document.getElementById('vjs-image-overlay-holder'));\n" +
+    "	      }\n" +
+    "	    };\n" +
+    "\n" +
+    "	    player.on('timeupdate', overlay.checkOverlay);\n" +
+    "	    player.on('loadedmetadata', overlay.checkEndTime);\n" +
+    "	  };\n" +
+    "\n" +
+    "	  videojs.plugin('imageOverlay', imageOverlay);\n" +
+    "	}(window, window.videojs));\n" +
+    "</script>\n" +
+    "<script>\n" +
+    "	var player = videojs('video');\n" +
+    "		player.imageOverlay({\n" +
+    "		image_url: \"http://assets0.ordienetworks.com/misc/JimCarreyEyebrow.jpg\",\n" +
+    "		click_url:\"https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewAlbum?id=624854547\",\n" +
+    "		opacity: 0.5,\n" +
+    "		start_time: 10,\n" +
+    "		height: '20%'\n" +
+    "	});\n" +
+    "</script>\n" +
+    "-->\n" +
+    "<!--ad video js overlay -->\n" +
+    "<!--implement in angular-->\n" +
+    "<!--.video-js {padding-top: 56.25%}-->\n" +
+    "<link href=\"http://vjs.zencdn.net/5.8.0/video-js.css\" rel=\"stylesheet\">\n" +
+    "<div class=\"contestsTitleContainer\">\n" +
+    "	<h1 class=\"contentTitleLetters\">{{video.title}}</h1>\n" +
+    "</div>\n" +
+    "\n" +
+    "<div id=\"video-container\">\n" +
+    "	<!--<vjs-video-container vjs-ratio=\"16:9\" vjs-media=\"media\" vjs-setup=\"options\">\n" +
+    "		<video \n" +
+    "			class=\"video-js vjs-default-skin\"\n" +
+    "			controls preload=\"auto\" \n" +
+    "			width=\"640\" \n" +
+    "			height=\"264\" \n" +
+    "			poster=\"images/bidio_logo.png\">\n" +
+    "		</video>\n" +
+    "	</vjs-video-container>-->\n" +
+    "	<video \n" +
+    "		class=\"video-js vjs-default-skin\"\n" +
+    "		controls preload=\"auto\" \n" +
+    "		width=\"640\" \n" +
+    "		height=\"264\" \n" +
+    "		fluid=\"true\"\n" +
+    "		poster=\"images/bidio_logo.png\" \n" +
+    "		vjs-video\n" +
+    "		vjs-media=\"media\"\n" +
+    "		vjs-setup=\"options\"\n" +
+    "		vjs-ratio=\"16:9\">\n" +
     "	</video>\n" +
-    "	<p><a href=\"#\">user</a></p>\n" +
+    "</div>\n" +
     "\n" +
-    "	<p>{{video.description}}</p>\n" +
-    "	<p>view count</p>\n" +
-    "	\n" +
-    "	<!--<p>current sponsors</p>\n" +
-    "	<p>current $bid/view</p>-->\n" +
-    "	\n" +
-    "\n" +
-    "	\n" +
-    "\n" +
-    "</div>");
+    "<div id=\"video-details\"> \n" +
+    "	<h2><a href=\"/api/user/{{video.user.id}}\">{{video.user.username}}</a></h2>\n" +
+    "	<h3>{{video.description}}</h3>\n" +
+    "	<h2>{{viewCount}}</h2>\n" +
+    "	<h3>current sponsors:</h3>\n" +
+    "	<h5>sponsor 1</h5>\n" +
+    "	<h5>sponsor 2</h5>\n" +
+    "	<h3>$/view: {{bidPerView}}</h3>\n" +
+    "</div>\n" +
+    "");
 }]);

@@ -22,5 +22,4 @@ angular.module( 'bidio.home', [
 	titleService.setTitle('bidio');
 	$scope.currentUser = config.currentUser;
 	$scope.trendingVideos = trendingVideos;
-
 });

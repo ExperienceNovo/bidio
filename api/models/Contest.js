@@ -48,6 +48,7 @@ module.exports = {
 
     getOne: function(id) {
         return Contest.findOne(id)
+        .populate('user')
         .then(function (model) {
             return [model];
         });

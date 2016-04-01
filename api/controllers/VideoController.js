@@ -96,7 +96,7 @@ module.exports = {
 
 	create: function (req, res) {
 
-		var params = JSON.parse(req.param('videoData'));
+		var params = JSON.parse(req.body.videoData);
 		var title = params.title;
 		var description = params.description;
 		var user = params.user;
@@ -120,6 +120,8 @@ module.exports = {
 				amazonUrl: amazonUrl,
 				user: user
 			};
+			console.log(model)
+
 			Video.create(model)
 			.exec(function(err, video) {
 				if (err) {
@@ -131,14 +133,13 @@ module.exports = {
 				}
 			});
 		});
+
 	},
 
 	update: function(req, res) {
 		
 		var id = req.param('id');
-	
 		var model = {};
-
 		Video.update( {id: id}, model).exec(function afterwards(err, updated){
 		  if (err) {
 		    return;

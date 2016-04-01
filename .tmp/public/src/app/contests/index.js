@@ -22,14 +22,10 @@ angular.module( 'bidio.contests', [
 	titleService.setTitle('contests - bidio');
 	$scope.currentUser = config.currentUser;
 	$scope.contests = contests;
-	//$scope.videos = videos;
 
 	$scope.createContest = function(newContest){
 		newContest.user = $scope.currentUser.id;
-		
-		//titleService.setTitle(newContest.title);
-		//console.log(titleService);
-		//console.log(newContest);
+		console.log(newContest);
 		ContestModel.create(newContest);
 	}
 	

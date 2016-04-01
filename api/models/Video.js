@@ -56,6 +56,7 @@ module.exports = {
 
     getOne: function(id) {
         return Video.findOne(id)
+        .populate('user')
         .then(function (model) {
             return [model];
         });

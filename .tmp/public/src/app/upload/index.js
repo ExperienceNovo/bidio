@@ -16,6 +16,7 @@ angular.module( 'bidio.upload', [
 .controller( 'UploadCtrl', function UploadCtrl( $scope, config, titleService, VideoModel, Upload ) {
 	titleService.setTitle('upload - bidio');
 	$scope.currentUser = config.currentUser;
+    $scope.newVideo = {};
 
 	$scope.createVideo = function(newVideo){
 		console.log(newVideo);
@@ -23,11 +24,11 @@ angular.module( 'bidio.upload', [
 		VideoModel.create(newVideo);
 	};
 
-    $scope.$watch('file', function () {
+    /*$scope.$watch('file', function () {
         if ($scope.file != null) {
             $scope.upload($scope.file);
         }
-    });
+    });*/
 
 	$scope.upload = function (file) {
         if (file) {

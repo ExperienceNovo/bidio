@@ -28,6 +28,15 @@
         "createdAt": "2016-03-30T21:12:47.083Z",
         "updatedAt": "2016-03-30T21:12:47.083Z",
         "id": 3
+      },
+      {
+        "title": "this is a title",
+        "urlTitle": "ok",
+        "contestContent": "awesome",
+        "user": 1,
+        "createdAt": "2016-04-01T20:53:01.745Z",
+        "updatedAt": "2016-04-01T20:53:01.745Z",
+        "id": 4
       }
     ],
     "passport": [
@@ -401,6 +410,60 @@
         "createdAt": "2016-03-27T21:42:03.015Z",
         "updatedAt": "2016-03-27T21:42:03.015Z",
         "id": 4
+      },
+      {
+        "title": "test upload",
+        "description": "test upload",
+        "amazonUrl": "https://bidio8.s3.amazonaws.com/b2ed452a-b2ad-4d43-97e4-16d36adf2228.mov",
+        "user": 1,
+        "createdAt": "2016-04-01T19:36:59.928Z",
+        "updatedAt": "2016-04-01T19:36:59.928Z",
+        "id": 5
+      },
+      {
+        "title": "this is a test",
+        "description": "scope new vid",
+        "amazonUrl": "https://bidio8.s3.amazonaws.com/c209ea0c-dd44-4c07-a694-c69f6e4a2976.mov",
+        "user": 1,
+        "createdAt": "2016-04-01T19:42:49.358Z",
+        "updatedAt": "2016-04-01T19:42:49.358Z",
+        "id": 6
+      },
+      {
+        "title": "tetete",
+        "description": "tetetee",
+        "amazonUrl": "https://bidio8.s3.amazonaws.com/83bde256-f583-45a2-a45a-6e2d749df1e5.mov",
+        "user": 1,
+        "createdAt": "2016-04-01T19:45:00.594Z",
+        "updatedAt": "2016-04-01T19:45:00.594Z",
+        "id": 7
+      },
+      {
+        "title": "YESSSSS",
+        "description": "THANK UUU",
+        "amazonUrl": "https://bidio8.s3.amazonaws.com/43f86373-fbdd-4866-bec7-04006664313a.mov",
+        "user": 1,
+        "createdAt": "2016-04-01T20:26:52.145Z",
+        "updatedAt": "2016-04-01T20:26:52.145Z",
+        "id": 8
+      },
+      {
+        "title": "test",
+        "description": "testtesttest",
+        "amazonUrl": "https://bidio8.s3.amazonaws.com/e20a6d04-4218-4efe-b619-c9fed5c41090.webm",
+        "user": 1,
+        "createdAt": "2016-04-01T21:12:38.920Z",
+        "updatedAt": "2016-04-01T21:12:38.920Z",
+        "id": 9
+      },
+      {
+        "title": "blood",
+        "description": "yum",
+        "amazonUrl": "https://bidio8.s3.amazonaws.com/abfe2fd7-41c9-4ebc-91ab-1d5ec045a6e8.mp4",
+        "user": 1,
+        "createdAt": "2016-04-01T21:16:40.370Z",
+        "updatedAt": "2016-04-01T21:16:40.370Z",
+        "id": 10
       }
     ],
     "view": []
@@ -646,7 +709,7 @@
   "counters": {
     "bid": {},
     "contest": {
-      "id": 3
+      "id": 4
     },
     "passport": {
       "id": 22
@@ -656,7 +719,7 @@
     },
     "userinformation": {},
     "video": {
-      "id": 4
+      "id": 10
     },
     "view": {}
   }
