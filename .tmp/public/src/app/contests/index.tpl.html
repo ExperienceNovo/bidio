@@ -1,13 +1,17 @@
 <div class="surface-container home-pad">
 	<div class="contestsTitleContainer">
-		<h1 class="contentTitleLetters">Featured</h1>
+		<h1 class="contentTitleLetters">Contests</h1>
 	</div>
+
+	<br><br>
 	
 	<div class="container" ng-repeat="contest in contests">
-		<h3><a href="/contest/{{contest.urlTitle}}">{{contest.title}}</a></h3>
-		<p>sponsered by</p>
-		<p>{{contest.user.username}}</p>
+		<h2><a href="/contest/{{contest.urlTitle}}">{{contest.title}}</a></h2>
+		<h4>sponsered by</h4>
+		<h3>{{contest.user.username}}</h3>
 	</div>
+
+	<br><br>
 	
 	<div ng-show="currentUser">
 		<div class="contestsTitleContainer">

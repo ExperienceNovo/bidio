@@ -146,14 +146,18 @@ angular.module("contests/index.tpl.html", []).run(["$templateCache", function($t
   $templateCache.put("contests/index.tpl.html",
     "<div class=\"surface-container home-pad\">\n" +
     "	<div class=\"contestsTitleContainer\">\n" +
-    "		<h1 class=\"contentTitleLetters\">Featured</h1>\n" +
+    "		<h1 class=\"contentTitleLetters\">Contests</h1>\n" +
     "	</div>\n" +
+    "\n" +
+    "	<br><br>\n" +
     "	\n" +
     "	<div class=\"container\" ng-repeat=\"contest in contests\">\n" +
-    "		<h3><a href=\"/contest/{{contest.urlTitle}}\">{{contest.title}}</a></h3>\n" +
-    "		<p>sponsered by</p>\n" +
-    "		<p>{{contest.user.username}}</p>\n" +
+    "		<h2><a href=\"/contest/{{contest.urlTitle}}\">{{contest.title}}</a></h2>\n" +
+    "		<h4>sponsered by</h4>\n" +
+    "		<h3>{{contest.user.username}}</h3>\n" +
     "	</div>\n" +
+    "\n" +
+    "	<br><br>\n" +
     "	\n" +
     "	<div ng-show=\"currentUser\">\n" +
     "		<div class=\"contestsTitleContainer\">\n" +
