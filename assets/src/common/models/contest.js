@@ -10,6 +10,11 @@ angular.module('models.contest', ['lodash', 'services', 'sails.io',])
         var url = utils.prepareUrl('contest/url/' + model);
         return $sailsSocket.get(url).then(success, error);
     };
+	
+	this.getById = function(model) {
+        var url = utils.prepareUrl('contest/' + model);
+        return $sailsSocket.get(url).then(success, error);
+    };
 
     this.create = function(newModel) {
         var url = utils.prepareUrl('contest');

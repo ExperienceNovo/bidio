@@ -34,6 +34,46 @@ angular.module("account/index.tpl.html", []).run(["$templateCache", function($te
     "\n" +
     "\n" +
     "	<p>this is the account page</p>\n" +
+    "	\n" +
+    "	<div ng-show=\"!currentUser\">\n" +
+    "		<a href=\"/login\">login</a> or <a href=\"/register\">register</a> to upload\n" +
+    "	</div>\n" +
+    "	<div ng-show=\"currentUser\">\n" +
+    "		{{currentUser}}\n" +
+    "		\n" +
+    "		\n" +
+    "		<h1>upload</h1>\n" +
+    "		\n" +
+    "		<form ng-submit=\"update(updatedUser)\">\n" +
+    "			<p>Username : {{currentUser.username}}</p>\n" +
+    "			\n" +
+    "			<input class=\"accountInput\" type=\"text\" ng-model=\"updatedUser.username\" value=\"{{currentUser.username}}\"/>\n" +
+    "			\n" +
+    "			<p>Email: {{currentUser.email}}</p>\n" +
+    "			<input class=\"accountInput\" type=\"text\" ng-model=\"updatedUser.email\" value=\"{{currentUser.email}}\"/>\n" +
+    "			\n" +
+    "			<button type=\"submit\">Update Profile</button>\n" +
+    "		</form>\n" +
+    "		<form ng-submit=\"upload(file)\">\n" +
+    "			<br>\n" +
+    "\n" +
+    "			<div id=\"upload-container\">\n" +
+    "				<div style=\"width:100%;\" ngf-drop ngf-select=\"upload($file)\" ng-model=\"file\" class=\"drop-box\" ngf-drag-over-class=\"dragover\" ngf-allow-dir=\"true\">\n" +
+    "					<div>Drag pictures or click here to upload Avatar.</div>\n" +
+    "					<div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>	\n" +
+    "				</div>\n" +
+    "				<p>{{fileName}}</p>\n" +
+    "			    Upload Progress:\n" +
+    "				<div class=\"progress\">\n" +
+    "					<div class=\"progress-bar\" role=\"progressbar\" aria-valuenow=\"60\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: {{pp}}%;\">\n" +
+    "						{{pp}}%\n" +
+    "					</div>\n" +
+    "				</div>\n" +
+    "			</div>\n" +
+    "			<button type=\"submit\">Update Avatar</button>\n" +
+    "		</form>\n" +
+    "	\n" +
+    "	</div>\n" +
     "\n" +
     "\n" +
     "\n" +
@@ -43,51 +83,98 @@ angular.module("account/index.tpl.html", []).run(["$templateCache", function($te
 angular.module("contest/index.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("contest/index.tpl.html",
     "<link href=\"http://vjs.zencdn.net/5.8.0/video-js.css\" rel=\"stylesheet\">\n" +
-    "<div class=\"surface-container home-pad\" style=\"margin-left:10%\">\n" +
-    "	<h1>{{contest.title}}</h1>\n" +
+    "<div class=\"surface-container home-pad\">\n" +
+    "	<div class=\"contestsTitleContainer\">\n" +
+    "		<h1 class=\"contentTitleLetters\">{{contest.title}}</h1>\n" +
+    "	</div>\n" +
+    "	<div class=\"container contestContainer\">\n" +
+    "		<div class=\"sponsoredByContainer col-md-6 col-lg-6\">\n" +
+    "			<p class=\"sponsorText sponsorTitle\" >Sponsored By</p>\n" +
+    "			<a href=\"/api/user/{{createdBy.id}}\"><img class=\"sponsorPic\" src=\"images/silhouette_orange.jpg\"></a>\n" +
+    "			<p class=\"sponsorText sponsorName\" ><a class=\"sponsorName\" href=\"/api/user/{{createdBy.id}}\">{{createdBy.username}}</a> on {{day}}/{{month}}/{{year}}</p>\n" +
+    "			\n" +
+    "			\n" +
+    "		</div>\n" +
+    "		<div class=\"editContestContainer col-md-6 col-lg-6\">\n" +
+    "			<p class=\"sponsorText sponsorTitle editContestTitle\">Edit Contest</p>\n" +
+    "			<form ng-submit=\"updateContest(contest)\">\n" +
+    "				<div class=\"editTitleAndUrl\">\n" +
+    "					<div class=\"updateTitle\">\n" +
+    "						<p class=\"editPropertiesTitle\">Update Title</p>\n" +
+    "						<input class=\"editPropertiesInput\" type=\"text\" ng-model=\"contest.title\"/>\n" +
+    "					</div>\n" +
+    "					<div class=\"updateUrl\">\n" +
+    "						<p class=\"editPropertiesTitle\">Update URL</p>\n" +
+    "						<input class=\"editPropertiesInput\" type=\"text\" ng-model=\"contest.urlTitle\"/>\n" +
+    "					</div>\n" +
+    "				</div>\n" +
+    "				\n" +
+    "				<p class=\"editPropertiesTitle\">Update Content</p>\n" +
+    "				\n" +
+    "				<textarea class=\"editPropertiesInput editProperitesTextArea\" ng-model=\"contest.contestContent\"></textarea>\n" +
+    "				<button class=\"updateContestButton\" type=\"submit\">Update Contest</button>\n" +
+    "			</form>\n" +
+    "		</div>\n" +
+    "	</div>\n" +
     "	\n" +
-    "	<p>sponsored by</p>\n" +
-    "	{{contest.user.username}}\n" +
-    "	\n" +
-    "	<h3>edit contest</h3>\n" +
-    "	<form ng-submit=\"updateContest(contest)\">\n" +
-    "		<p>Update Title</p>\n" +
-    "		<input type=\"text\" ng-model=\"contest.title\"/>\n" +
-    "		<p>Update Content</p>\n" +
-    "		<input type=\"text\" ng-model=\"contest.contestContent\"/>\n" +
-    "		<button type=\"submit\">Update Contest</button>\n" +
-    "	</form>\n" +
-    "\n" +
-    "	<h3>contest submissions</h3>\n" +
-    "	<div class=\"contestVideos\" ng-repeat=\"vidoe in videos\">\n" +
-    "		<h1>{{video}}</h1>\n" +
-    "		<video class=\"video-js vjs-default-skin\" controls preload=\"auto\" width=\"640\" height=\"264\" poster=\"poster.jpg\" vjs-video>\n" +
-    "	 		<source src=\"videos/video.mp4\" type=\"video/mp4\">\n" +
-    "		</video>\n" +
+    "	<div class=\"contestsTitleContainer submissionsTitleContainer\">\n" +
+    "		<h1 class=\"contentTitleLetters\">Submissions</h1>\n" +
+    "	</div>\n" +
+    "		\n" +
+    "		\n" +
+    "	<div class=\"container\">\n" +
+    "		<div class=\"contestVideos\" ng-repeat=\"video in videos\">\n" +
+    "			<h1>{{video}}</h1>\n" +
+    "			<video class=\"video-js vjs-default-skin\" controls preload=\"auto\" width=\"640\" height=\"264\" poster=\"poster.jpg\" vjs-video>\n" +
+    "				<source src=\"videos/video.mp4\" type=\"video/mp4\">\n" +
+    "			</video>\n" +
+    "		</div>\n" +
+    "		\n" +
     "	</div>\n" +
     "</div>");
 }]);
 
 angular.module("contests/index.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("contests/index.tpl.html",
-    "<div class=\"surface-container home-pad\" style=\"margin-left:10%\">\n" +
-    "	<h1>contests</h1>\n" +
+    "<div class=\"surface-container home-pad\">\n" +
+    "	<div class=\"contestsTitleContainer\">\n" +
+    "		<h1 class=\"contentTitleLetters\">Featured</h1>\n" +
+    "	</div>\n" +
     "	<!--<h3>My Contests</h3>-->\n" +
-    "	<form ng-submit=\"createContest(newContest)\">\n" +
-    "		<p>title</p>\n" +
-    "		<input type='text' ng-model=\"newContest.title\"></input>\n" +
-    "		<p>contest Content</p>\n" +
-    "		<textarea ng-model=\"newContest.contestContent\"></textarea>\n" +
-    "		<p>URL</p>\n" +
-    "		<input type='text' ng-model=\"newContest.urlTitle\"></input><br>\n" +
-    "		<button type='submit'>Submit Contest</button>\n" +
-    "	</form>\n" +
-    "	<br><br>\n" +
+    "	\n" +
+    "	<div class=\"container\" ng-hide=\"contests.length > 0\">\n" +
+    "		<p class=\"contestsInfoText\">there are currently no contests posted.</p>\n" +
+    "	</div>\n" +
+    "	\n" +
+    "	<div class=\"container\" ng-show=\"contests.length > 0\" ng-repeat=\"contest in contests\">\n" +
+    "			{{contests}}\n" +
+    "			<h3><a href=\"/contest/{{contest.urlTitle}}\">{{contest.title}}</a></h3>\n" +
+    "			<p>sponsered by</p>\n" +
+    "			<p>{{contest.user.username}}</p>\n" +
+    "			<div ng-repeat=\"video in videos\">\n" +
+    "				{{video}}\n" +
+    "			</div>\n" +
+    "			\n" +
+    "	</div>\n" +
+    "	\n" +
+    "	<div class=\"contestsTitleContainer\">\n" +
+    "		<h1 class=\"contentTitleLetters\">Create a Contest</h1>\n" +
+    "	</div>\n" +
+    "	\n" +
+    "	<div class=\"container\">\n" +
+    "		<form ng-submit=\"createContest(newContest)\">\n" +
+    "			<p class=\"contestsInfoText\">Title</p>\n" +
+    "			<input class=\"contestsInfoInput\" type='text' ng-model=\"newContest.title\"></input>\n" +
+    "			<p class=\"contestsInfoText\">Tell us about the Contest.</p>\n" +
+    "			<textarea class=\"contestsInfoInput\" ng-model=\"newContest.contestContent\"></textarea>\n" +
+    "			<p class=\"contestsInfoText\">URL</p>\n" +
+    "			<input class=\"contestsInfoInput\" type='text' ng-model=\"newContest.urlTitle\"></input><br>\n" +
+    "			<button class=\"createContestButton\" type='submit'>Create</button>\n" +
+    "		</form>\n" +
+    "		<br><br>\n" +
+    "		\n" +
+    "		\n" +
     "\n" +
-    "	<div ng-repeat=\"contest in contests\">\n" +
-    "		<h3><a href=\"/contest/{{contest.urlTitle}}\">{{contest.title}}</a></h3>\n" +
-    "		<p>sponsered by</p>\n" +
-    "		<p>{{contest.user.username}}</p>\n" +
     "		\n" +
     "	</div>\n" +
     "		\n" +
@@ -764,7 +851,7 @@ angular.module("sponsors/index.tpl.html", []).run(["$templateCache", function($t
 
 angular.module("upload/index.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("upload/index.tpl.html",
-    "<div style=\"margin-left:10%\">\n" +
+    "<div style=\"margin-left:10%;margin-right:10%\">\n" +
     "	<div ng-show=\"!currentUser\">\n" +
     "		<a href=\"/login\">login</a> or <a href=\"/register\">register</a> to upload\n" +
     "	</div>\n" +
@@ -778,24 +865,22 @@ angular.module("upload/index.tpl.html", []).run(["$templateCache", function($tem
     "			<p>Description</p>\n" +
     "			<textarea ng-model=\"newVideo.description\"></textarea>\n" +
     "			<br>\n" +
+    "\n" +
+    "			<div id=\"upload-container\">\n" +
+    "				<div style=\"width:100%;\" ngf-drop ngf-select=\"upload($file)\" ng-model=\"file\" class=\"drop-box\" ngf-drag-over-class=\"dragover\" ngf-allow-dir=\"true\">\n" +
+    "					<div>Drag videos or click here to upload.</div>\n" +
+    "					<div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>	\n" +
+    "				</div>\n" +
+    "			    Upload Progress:\n" +
+    "				<div class=\"progress\">\n" +
+    "					<div class=\"progress-bar\" role=\"progressbar\" aria-valuenow=\"60\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: {{pp}}%;\">\n" +
+    "						{{pp}}%\n" +
+    "					</div>\n" +
+    "				</div>\n" +
+    "			</div>\n" +
     "			<button type=\"submit\">Upload Video</button>\n" +
     "		</form>\n" +
-    "\n" +
-    "\n" +
-    "	    <div class=\"button\" ngf-select=\"upload($files)\" ngf-multiple=\"true\">Select File</div>\n" +
-    "	    Drop File:\n" +
-    "	    <div ngf-drop ngf-select ng-model=\"files\" class=\"drop-box\" \n" +
-    "	        ngf-drag-over-class=\"'dragover'\" ngf-multiple=\"true\" ngf-allow-dir=\"true\">Drag and drop</div>\n" +
-    "	    <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>\n" +
-    "	    Files:\n" +
-    "	    <ul>\n" +
-    "	        <li ng-repeat=\"f in files\" style=\"font:smaller\">{{f.name}} {{f.$error}} {{f.$errorParam}}</li>\n" +
-    "	    </ul>\n" +
-    "	    Upload Log:\n" +
-    "	    <pre>{{log}}</pre>\n" +
-    "		</div>\n" +
-    "\n" +
-    "\n" +
+    "	\n" +
     "	</div>\n" +
     "\n" +
     "</div>");

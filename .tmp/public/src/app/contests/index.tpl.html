@@ -1,21 +1,42 @@
-<div class="surface-container home-pad" style="margin-left:10%">
-	<h1>contests</h1>
+<div class="surface-container home-pad">
+	<div class="contestsTitleContainer">
+		<h1 class="contentTitleLetters">Featured</h1>
+	</div>
 	<!--<h3>My Contests</h3>-->
-	<form ng-submit="createContest(newContest)">
-		<p>title</p>
-		<input type='text' ng-model="newContest.title"></input>
-		<p>contest Content</p>
-		<textarea ng-model="newContest.contestContent"></textarea>
-		<p>URL</p>
-		<input type='text' ng-model="newContest.urlTitle"></input><br>
-		<button type='submit'>Submit Contest</button>
-	</form>
-	<br><br>
+	
+	<div class="container" ng-hide="contests.length > 0">
+		<p class="contestsInfoText">there are currently no contests posted.</p>
+	</div>
+	
+	<div class="container" ng-show="contests.length > 0" ng-repeat="contest in contests">
+			{{contests}}
+			<h3><a href="/contest/{{contest.urlTitle}}">{{contest.title}}</a></h3>
+			<p>sponsered by</p>
+			<p>{{contest.user.username}}</p>
+			<div ng-repeat="video in videos">
+				{{video}}
+			</div>
+			
+	</div>
+	
+	<div class="contestsTitleContainer">
+		<h1 class="contentTitleLetters">Create a Contest</h1>
+	</div>
+	
+	<div class="container">
+		<form ng-submit="createContest(newContest)">
+			<p class="contestsInfoText">Title</p>
+			<input class="contestsInfoInput" type='text' ng-model="newContest.title"></input>
+			<p class="contestsInfoText">Tell us about the Contest.</p>
+			<textarea class="contestsInfoInput" ng-model="newContest.contestContent"></textarea>
+			<p class="contestsInfoText">URL</p>
+			<input class="contestsInfoInput" type='text' ng-model="newContest.urlTitle"></input><br>
+			<button class="createContestButton" type='submit'>Create</button>
+		</form>
+		<br><br>
+		
+		
 
-	<div ng-repeat="contest in contests">
-		<h3><a href="/contest/{{contest.urlTitle}}">{{contest.title}}</a></h3>
-		<p>sponsered by</p>
-		<p>{{contest.user.username}}</p>
 		
 	</div>
 		

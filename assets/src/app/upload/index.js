@@ -19,37 +19,42 @@ angular.module( 'bidio.upload', [
 
 	$scope.createVideo = function(newVideo){
 		console.log(newVideo);
-		newVideo.user = $scope.currentUser.id;
+		$scope.newVideo.user = $scope.currentUser.id;
 		VideoModel.create(newVideo);
 	};
 
+    $scope.$watch('file', function () {
+        if ($scope.file != null) {
+            $scope.upload($scope.file);
+        }
+    });
 
-	$scope.upload = function (files) {
-        if (files && files.length) {
-            for (var i = 0; i < files.length; i++) {
-              var file = files[i];
-              if (!file.$error) {
+	$scope.upload = function (file) {
+        if (file) {
+            if (!file.$error) {
+                $scope.newVideo.user = $scope.currentUser.id;
                 Upload.upload({
-                    url: 'https://angular-file-upload-cors-srv.appspot.com/upload',
+                    url:'api/video',
                     data: {
-                      //username: $scope.username,
-                      file: file  
+                        videoData: Upload.json($scope.newVideo),
+                        videoFile: file  
                     }
-                }).then(function (resp) {
+                })
+                .then(function (resp) {
                     $timeout(function() {
                         $scope.log = 'file: ' +
-                        resp.config.data.file.name +
+                        resp.config.data.videoFile.name +
                         ', Response: ' + JSON.stringify(resp.data) +
                         '\n' + $scope.log;
                     });
-                }, null, function (evt) {
-                    var progressPercentage = parseInt(100.0 *
-                    		evt.loaded / evt.total);
-                    $scope.log = 'progress: ' + progressPercentage + 
-                    	'% ' + evt.config.data.file.name + '\n' + 
-                      $scope.log;
+                    }, null, function (evt) {
+                        var progressPercentage = parseInt(100.0 *
+                        evt.loaded / evt.total);
+                        $scope.log = 'progress: ' + progressPercentage + 
+                        '% ' + evt.config.data.videoFile.name + '\n' + $scope.log;
+                        $scope.pp = progressPercentage;
+                        $scope.fileName = evt.config.data.videoFile.name;
                 });
-              }
             }
         }
     };

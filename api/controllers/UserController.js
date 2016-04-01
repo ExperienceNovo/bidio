@@ -36,5 +36,29 @@ module.exports = {
 				res.json(model);
 			}
 		});
+	},
+	update: function(req,res){
+		var id = req.param('id');
+		console.log(id);
+		var model = {
+			email: req.param('email'),
+			username : req.param('username')
+			//urlTitle: req.param('urlTitle'),
+			//contestContent: req.param('contestContent'),
+			//user: req.param('user')
+		};
+		
+		console.log("model in controller is: " + model);
+		console.log("model.email in controller is: " + model.email);
+		console.log("model.username in controller is: " + model.username);
+		
+		
+		User.update({id: id}, model)
+		.then(function(model){
+			User.publishUpdate(id, model);
+			res.json(model);
+		});
+		
+		
 	}
 };

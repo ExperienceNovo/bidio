@@ -1,4 +1,4 @@
-<div style="margin-left:10%">
+<div style="margin-left:10%;margin-right:10%">
 	<div ng-show="!currentUser">
 		<a href="/login">login</a> or <a href="/register">register</a> to upload
 	</div>
@@ -12,24 +12,22 @@
 			<p>Description</p>
 			<textarea ng-model="newVideo.description"></textarea>
 			<br>
+
+			<div id="upload-container">
+				<div style="width:100%;" ngf-drop ngf-select="upload($file)" ng-model="file" class="drop-box" ngf-drag-over-class="dragover" ngf-allow-dir="true">
+					<div>Drag videos or click here to upload.</div>
+					<div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>	
+				</div>
+			    Upload Progress:
+				<div class="progress">
+					<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{pp}}%;">
+						{{pp}}%
+					</div>
+				</div>
+			</div>
 			<button type="submit">Upload Video</button>
 		</form>
-
-
-	    <div class="button" ngf-select="upload($files)" ngf-multiple="true">Select File</div>
-	    Drop File:
-	    <div ngf-drop ngf-select ng-model="files" class="drop-box" 
-	        ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true">Drag and drop</div>
-	    <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
-	    Files:
-	    <ul>
-	        <li ng-repeat="f in files" style="font:smaller">{{f.name}} {{f.$error}} {{f.$errorParam}}</li>
-	    </ul>
-	    Upload Log:
-	    <pre>{{log}}</pre>
-		</div>
-
-
+	
 	</div>
 
 </div>

@@ -1,24 +1,50 @@
 <link href="http://vjs.zencdn.net/5.8.0/video-js.css" rel="stylesheet">
-<div class="surface-container home-pad" style="margin-left:10%">
-	<h1>{{contest.title}}</h1>
+<div class="surface-container home-pad">
+	<div class="contestsTitleContainer">
+		<h1 class="contentTitleLetters">{{contest.title}}</h1>
+	</div>
+	<div class="container contestContainer">
+		<div class="sponsoredByContainer col-md-6 col-lg-6">
+			<p class="sponsorText sponsorTitle" >Sponsored By</p>
+			<a href="/api/user/{{createdBy.id}}"><img class="sponsorPic" src="images/silhouette_orange.jpg"></a>
+			<p class="sponsorText sponsorName" ><a class="sponsorName" href="/api/user/{{createdBy.id}}">{{createdBy.username}}</a> on {{day}}/{{month}}/{{year}}</p>
+			
+			
+		</div>
+		<div class="editContestContainer col-md-6 col-lg-6">
+			<p class="sponsorText sponsorTitle editContestTitle">Edit Contest</p>
+			<form ng-submit="updateContest(contest)">
+				<div class="editTitleAndUrl">
+					<div class="updateTitle">
+						<p class="editPropertiesTitle">Update Title</p>
+						<input class="editPropertiesInput" type="text" ng-model="contest.title"/>
+					</div>
+					<div class="updateUrl">
+						<p class="editPropertiesTitle">Update URL</p>
+						<input class="editPropertiesInput" type="text" ng-model="contest.urlTitle"/>
+					</div>
+				</div>
+				
+				<p class="editPropertiesTitle">Update Content</p>
+				
+				<textarea class="editPropertiesInput editProperitesTextArea" ng-model="contest.contestContent"></textarea>
+				<button class="updateContestButton" type="submit">Update Contest</button>
+			</form>
+		</div>
+	</div>
 	
-	<p>sponsored by</p>
-	{{contest.user.username}}
-	
-	<h3>edit contest</h3>
-	<form ng-submit="updateContest(contest)">
-		<p>Update Title</p>
-		<input type="text" ng-model="contest.title"/>
-		<p>Update Content</p>
-		<input type="text" ng-model="contest.contestContent"/>
-		<button type="submit">Update Contest</button>
-	</form>
-
-	<h3>contest submissions</h3>
-	<div class="contestVideos" ng-repeat="vidoe in videos">
-		<h1>{{video}}</h1>
-		<video class="video-js vjs-default-skin" controls preload="auto" width="640" height="264" poster="poster.jpg" vjs-video>
-	 		<source src="videos/video.mp4" type="video/mp4">
-		</video>
+	<div class="contestsTitleContainer submissionsTitleContainer">
+		<h1 class="contentTitleLetters">Submissions</h1>
+	</div>
+		
+		
+	<div class="container">
+		<div class="contestVideos" ng-repeat="video in videos">
+			<h1>{{video}}</h1>
+			<video class="video-js vjs-default-skin" controls preload="auto" width="640" height="264" poster="poster.jpg" vjs-video>
+				<source src="videos/video.mp4" type="video/mp4">
+			</video>
+		</div>
+		
 	</div>
 </div>
