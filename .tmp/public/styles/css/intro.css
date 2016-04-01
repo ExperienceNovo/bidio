@@ -30,25 +30,29 @@
 }
 
 .transition-content {
-    position: absolute;
-    top: 145%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    font-size: 35px;
-    line-height: 40px;
-	text-transform: uppercase;    
-	color: #ecf0f1;
-    height: 160px;
-    overflow: hidden;
-    zoom: 1.35;
+  position: absolute;
+  top: 145%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  font-size: 15px;
+  line-height: 40px;
+  text-transform: uppercase;    
+  color: #ecf0f1;
+  overflow: hidden;
+}
+
+@media screen and (min-width: 767px) {
+  .transition-content {
+    zoom:2;
+  }
 }
 
 .transition-visible {
 	font-weight: 600;
 	overflow: hidden;
 	height: 40px;
-	padding: 0 40px;
+	padding: 0 25px;
 }
 
 .transition-visible:before {
@@ -73,22 +77,22 @@
 }
 
 .transition-p {
-    display: inline;
-    float: left;
-    margin: 0;
-    font-size: 35px;
-    line-height: 40px;
-    text-indent: 85px;
+  display: inline;
+  float: left;
+  margin: 0;
+  font-size: 15px;
+  line-height: 40px;
+  text-indent: 35px;
 }
 
 .transition-ul {
-	margin-top: 0;
-    padding-left: 330px;
-    padding-right: 60px;
-	text-align: left;
-	list-style: none;
-	-webkit-animation: 6s linear 0s normal none infinite change;
-	animation: 6s linear 0s normal none infinite change;
+  margin-top: 0;
+  padding-left: 155px;
+  padding-right: 15px;
+  text-align: left;
+  list-style: none;
+  -webkit-animation: 6s linear 0s normal none infinite change;
+  animation: 6s linear 0s normal none infinite change;
 }
 
 ul .transition-li {
@@ -175,6 +179,7 @@ ul .transition-li {
   font-size: 8px;
   padding: 1em;
   position: relative;
+  height:250px;
 }
 @media screen and (min-width: 38em) {
   .service-graphic {

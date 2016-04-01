@@ -485,12 +485,12 @@ angular.module("home/index.tpl.html", []).run(["$templateCache", function($templ
     "                                <p>If marketers want to design a campaign around Bidio, they can sponsor a creative video contest. This allows them to upload a video or written strategy statement, then establish a maximum budget and “prize-per-click.”</p>\n" +
     "                                <div class=\"process-box\">\n" +
     "                                    <h3>Let's Get Started</h3>\n" +
-    "                                   <ul class=\"list-inline intro-social-buttons\" style=\"text-align: left;\">\n" +
+    "                                   <ul class=\"list-inline intro-social-buttons\" style=\"text-align:left;position:relative;top:25px\">\n" +
     "                                      <li>\n" +
-    "                                          <a href=\"/creators\" class=\"btn anim-button fl-l\"><i class=\"fa fa-long-arrow-left fa-fw\"></i> <span class=\"network-name\">Video Producers</span></a>\n" +
+    "                                          <a href=\"/creators\" class=\"btn anim-button fl-l\" style=\"margin-bottom: 15px;\"><i class=\"fa fa-long-arrow-left fa-fw\"></i> <span class=\"network-name\">Video Producers</span></a>\n" +
     "                                      </li>\n" +
     "                                      <li>\n" +
-    "                                          <a href=\"/sponsors\" class=\"btn anim-button fl-l\"><span class=\"network-name\">Digital Marketers</span> <i class=\"fa fa-long-arrow-right fa-fw\"></i></a>\n" +
+    "                                          <a href=\"/sponsors\" class=\"btn anim-button fl-l\" style=\"margin-bottom: 15px;\"><span class=\"network-name\">Digital Marketers</span> <i class=\"fa fa-long-arrow-right fa-fw\"></i></a>\n" +
     "                                      </li>\n" +
     "                                    </ul>\n" +
     "                                </div>\n" +
