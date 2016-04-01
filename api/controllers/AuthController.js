@@ -10,7 +10,6 @@ var AuthController = {
   login: function (req, res) {
     var strategies = sails.config.passport
       , providers  = {};
-
     // Get a list of available providers for use in your templates.
     Object.keys(strategies).forEach(function (key) {
       if (key === 'local') return;

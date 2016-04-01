@@ -723,10 +723,10 @@ angular.module("login/index.tpl.html", []).run(["$templateCache", function($temp
     "            <h1>Welcome Back!</h1>\n" +
     "            <form class=\"form ng-pristine ng-valid\" role=\"form\" action=\"/auth/local\" method=\"post\" _lpchecked=\"1\">\n" +
     "                <label for=\"inputUsername3\" class=\"col-sm-2 control-label\"></label>\n" +
-    "                <input type=\"text\" class=\"form-control\" id=\"inputUsername3\" name=\"username\" placeholder=\"Username\" value=\"\">\n" +
+    "                <input type=\"text\" class=\"form-control\" id=\"inputUsername3\" name=\"identifier\" placeholder=\"Username\">\n" +
     "\n" +
     "                <label for=\"inputPassword3\" class=\"col-sm-2 control-label\"></label>\n" +
-    "                <input type=\"password\" class=\"form-control\" id=\"inputPassword3\" name=\"password\" placeholder=\"Password\" value=\"\">\n" +
+    "                <input type=\"password\" class=\"form-control\" id=\"inputPassword3\" name=\"password\" placeholder=\"Password\">\n" +
     "\n" +
     "                <button type=\"submit\" id=\"login-button\">Login</button>\n" +
     "            </form>\n" +
