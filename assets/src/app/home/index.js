@@ -13,13 +13,17 @@ angular.module( 'bidio.home', [
 		resolve: {
 			trendingVideos: function(VideoModel){
 				return VideoModel.getAll();
+			},
+			contests: function(ContestModel){
+				return ContestModel.getAll();
 			}
 		}
 	});
 })
 
-.controller( 'HomeCtrl', function HomeController( $scope, titleService, config, trendingVideos ) {
+.controller( 'HomeCtrl', function HomeController( $scope, titleService, config, trendingVideos, contests ) {
 	titleService.setTitle('bidio');
 	$scope.currentUser = config.currentUser;
 	$scope.trendingVideos = trendingVideos;
+	$scope.contests = contests
 });
