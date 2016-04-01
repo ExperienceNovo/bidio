@@ -511,7 +511,7 @@ angular.module("home/index.tpl.html", []).run(["$templateCache", function($templ
     "                    <div class=\"container\">\n" +
     "                        <div class=\"row\">\n" +
     "                            <div class=\"col-md-4\">\n" +
-    "                                <h2 class=\"section-title\">The Numbers<br><strong> Don't Lie</strong></h2>\n" +
+    "                                <h2 class=\"section-title\">The Numbers<br><strong style=\"color: #FE9A2E;\"> Don't Lie</strong></h2>\n" +
     "                            </div>\n" +
     "                            <div class=\"col-md-8\">\n" +
     "                                <p>Bidio provides perfectly cost-effective, user-generated content, which people really want to watch. Brands should get recognition for supporting creators and delighting viewers, without forcing any messages.</p>\n" +
