@@ -1,3 +1,5 @@
+@import "https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css";
+
 .intro {
 	position:relative;
 	top:0;
@@ -319,12 +321,24 @@ ul .transition-li {
     margin-top: -50px;
   }
 }
+
 .screen .txt > .third {
   height: 2.25em;
   width: 30%;
   margin-right: 5%;
   display: inline-block;
 }
+
+.screen .txt > .third:after {
+  font-family: "fontawesome";
+  content: "\f144";
+  font-size: 18px;
+  text-align: center;
+  line-height: 2.15em;
+  color: #444;
+  margin: 0 auto;
+}
+
 .screen .txt > li:nth-child(5),
 .screen .txt > li:nth-child(10),
 .screen .txt > li:nth-child(13),
@@ -527,11 +541,33 @@ ul .transition-li {
 .phone .txt > li {
   height: 1.1250em;
 }
+
 .screen .txt > li.txt-half {
   width: 46%;
   margin-right: 8%;
   display: inline-block;
 }
+
+.screen .txt > li.txt-half:after {
+  font-family: "fontawesome";
+  content: "\f144";
+  font-size: 14px;
+  text-align: center;
+  line-height: 2.5em;
+  color: #555;
+  margin: 0 auto;
+}
+
+.phone .screen .txt > li.txt-half:after {
+  font-family: "fontawesome";
+  content: "\f144";
+  font-size: 11px;
+  text-align: center;
+  line-height: 0.5em;
+  color: #555;
+  margin: 0 auto;
+}
+
 .screen .txt > li.txt-half:nth-of-type(even) {
   margin-right: 0;
 }

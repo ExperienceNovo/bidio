@@ -603,16 +603,6 @@ section {
   margin-bottom: 40px;
 }
 
-.parallax-deck-item h3:before {
-  content: '';
-  position: absolute;
-  top: -50px;
-  left: 0;
-  width: 50px;
-  height: 1px;
-  background: #000;
-}
-
 .parallax-deck-item h3 strong {
   font-weight: 700;
 }
@@ -1552,7 +1542,7 @@ article {
   text-align: right;
   text-transform: uppercase;
   width: 100%;
-  color: #fff;
+  color: #FE9A2E;
   font-weight: 700;
 }
 
