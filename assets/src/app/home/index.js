@@ -21,9 +21,10 @@ angular.module( 'bidio.home', [
 	});
 })
 
-.controller( 'HomeCtrl', function HomeController( $scope, titleService, config, trendingVideos, contests ) {
+.controller( 'HomeCtrl', function HomeController( $scope, titleService, config, trendingVideos, contests, testing ) {
 	titleService.setTitle('bidio');
 	$scope.currentUser = config.currentUser;
 	$scope.trendingVideos = trendingVideos;
-	$scope.contests = contests
+	$scope.contests = contests;
+
 });
