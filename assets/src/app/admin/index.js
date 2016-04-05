@@ -138,7 +138,4 @@ angular.module( 'bidio.admin', [
 })
 .controller( 'VidCtrl', function MainController( $scope ){
 
-})
-.controller( 'ContestCtrl', function MainController( $scope ){
-
 });
