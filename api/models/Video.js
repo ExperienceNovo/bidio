@@ -15,8 +15,8 @@ module.exports = {
         },
         urlTitle: {
             type: 'string',
-            //required: true,
-            //unique: true
+            required: true,
+            unique: true
         },
         amazonUrl: {
             type: 'string',
@@ -35,6 +35,10 @@ module.exports = {
             collection: 'view',
             via: 'video'
         },
+				selectedContests: {
+						collection: 'contest',
+						via: 'submittedVideos'
+				}
     },
 
     //afterCreate: function (post, next) {
@@ -62,4 +66,3 @@ module.exports = {
         });
     }
 };
-

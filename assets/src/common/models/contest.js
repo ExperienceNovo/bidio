@@ -5,13 +5,18 @@ angular.module('models.contest', ['lodash', 'services', 'sails.io',])
         var url = utils.prepareUrl('contest');
         return $sailsSocket.get(url).then(success, error);
     };
-	
+
 	this.getByUrl = function(model) {
         var url = utils.prepareUrl('contest/url/' + model);
         return $sailsSocket.get(url).then(success, error);
     };
-	
+
 	this.getOne = function(model) {
+        var url = utils.prepareUrl('contest/' + model);
+        return $sailsSocket.get(url).then(success, error);
+    };
+
+    this.getSubmittedVideos = function(model) {
         var url = utils.prepareUrl('contest/' + model);
         return $sailsSocket.get(url).then(success, error);
     };
@@ -25,7 +30,7 @@ angular.module('models.contest', ['lodash', 'services', 'sails.io',])
         var url = utils.prepareUrl('contest/' + model.id);
         return $sailsSocket.post(url, model).then(success, error);
     };
-	
+
     this.delete = function(model) {
         var url = utils.prepareUrl('contest/' + model.id);
         return $sailsSocket.delete(url).then(success, error);
@@ -38,6 +43,6 @@ angular.module('models.contest', ['lodash', 'services', 'sails.io',])
     var error = function(error) {
         console.log(error);
     };
-	
-	
+
+
 });

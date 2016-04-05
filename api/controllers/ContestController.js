@@ -35,6 +35,7 @@ module.exports = {
 		Contest.find()
 		.where({urlTitle: req.param('path')})
 		.populate('user')
+		.populate('submittedVideos')
 		.spread(function(model) {
 			Contest.subscribe(req, model);
 			res.json(model);
@@ -43,6 +44,18 @@ module.exports = {
 			res.send(404);
 		});
 	},
+
+	// getSubmittedVideos: function(req, res) {
+	// 	Contest.findOne(req.param('id'))
+	// 	.populate('submittedVideos')
+	// 	.spread(function(model) {
+	// 		Contest.subscribe(req, model);
+	// 		res.json(model);
+	// 	})
+	// 	.fail(function(err) {
+	// 		res.send(404);
+	// 	});
+	// },
 
 	create: function (req, res) {
 		var userId = req.param('user');
@@ -64,7 +77,7 @@ module.exports = {
 			}
 		});
 	},
-	
+
 	update: function(req,res){
 		var id = req.param('id');
 		console.log(id);
@@ -74,16 +87,16 @@ module.exports = {
 			contestContent: req.param('contestContent'),
 			user: req.param('user')
 		};
-		
+
 		console.log(model);
-		
+
 		Contest.update({id: id}, model)
 		.then(function(model){
 			Contest.publishUpdate(model[0].id, model);
 			res.json(model);
 		});
-		
-		
+
+
 	},
 
 	destroy: function (req, res) {
@@ -111,6 +124,5 @@ module.exports = {
 			});
 		});
 	}
-	
-};
 
+};

@@ -14,23 +14,25 @@ angular.module( 'bidio.contest', [
 			contest: function(ContestModel, $stateParams){
 				return ContestModel.getByUrl($stateParams.path);
 			},
-			videos: function(){
-				return [1,2,3,4,5];
-			},
-			contestById: function(ContestModel, $stateParams){				
+			// videos: function(){
+			// 	return ContestModel.getSubmittedVideos($stateParams.path);
+			// },
+			contestById: function(ContestModel, $stateParams){
 				return ContestModel.getOne($stateParams.path);
 			}
 		}
 	});
 })
 
-.controller( 'ContestCtrl', function ContestCtrl( $scope, config, titleService, ContestModel, contest, contestById, videos) {
+.controller( 'ContestCtrl', function ContestCtrl( $scope, config, titleService, ContestModel, contest, contestById) {
 	titleService.setTitle('contest - bidio');
 	$scope.currentUser = config.currentUser;
 	$scope.contest = contest;
-	$scope.videos = videos;
-	
+	$scope.videos = contest.submittedVideos;
+
 	console.log(contest.user)
+	console.log($scope.contest)
+	console.log($scope.videos)
 
 	$scope.updateContest = function(contest){
 		ContestModel.update(contest);
