@@ -32,13 +32,12 @@ angular.module('models.user', ['lodash', 'services', 'sails.io'])
 
 	this.update = function(updatedModel){
 			
-		console.log("end user model in front end");
 		var url = utils.prepareUrl('user/' + updatedModel.id);
 		return $sailsSocket.post(url, updatedModel)
         .then(function(response){
             return response.data;
         });;
-	},
+	};
 
     this.delete = function(id){
         var url = utils.prepareUrl('user/' + id);
@@ -46,5 +45,14 @@ angular.module('models.user', ['lodash', 'services', 'sails.io'])
         .then(function(response){
             return response.data;
         });
-    }
+    };
+
+    var success = function(response) {
+        return response.data;
+    };
+
+    var error = function(error) {
+        console.log(error);
+    };
+
 });

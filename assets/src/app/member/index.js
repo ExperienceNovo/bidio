@@ -19,7 +19,7 @@ angular.module( 'bidio.member', [
 	});
 })
 
-.controller( 'MemberCtrl', function MemberCtrl( $scope, titleService, member ) {
+.controller( 'MemberCtrl', function MemberCtrl( $scope, member ) {
 	$scope.member = member;
-
+	console.log(member);
 });
