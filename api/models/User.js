@@ -14,8 +14,22 @@ module.exports = {
             collection: 'video',
             via: 'user'
         },
+        isAdmin: {
+            type: 'boolean',
+            defaultsTo: false
+        },
         passports : { collection: 'Passport', via: 'user' }
     },
+
+    getSome: function(limiting, skipping) {
+
+        return User.find()
+            .limit(limiting)
+            .skip(skipping)
+            .then(function (models) {
+                return models;
+            });
+        },
 
     getAll: function() {
         return User.find()

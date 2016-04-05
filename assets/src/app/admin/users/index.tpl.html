@@ -1,0 +1,100 @@
+<div class="navbar navbar-inverse" role="navigation" style="border-radius:0px">
+  <div class="navbar-header">
+    <div class="logo">
+      <h1 style="padding-top:5px"><img src="images/logo_white.png" style="height:30px;margin-top:-3px;">  Administrator</h1>
+    </div>
+    <button class="navbar-toggle" data-target=".admin-sidebar" data-toggle="collapse" type="button">
+      <span class="sr-only">Toggle navigation</span> 
+      <span class="icon-bar"></span> 
+      <span class="icon-bar"></span> 
+      <span class="icon-bar"></span>
+    </button>
+  </div>
+</div>
+<div class="admin-page-wrapper">
+  <div class="navbar-collapse collapse admin-sidebar">
+    <ul class="admin-sidebar-menu">
+      <li>
+        <a href="/admin"><i class="fa fa-sitemap"></i>Overview</a>
+      </li>
+      <li>
+        <a href="admin/games"><i class="fa fa-trophy"></i><span class="badge pull-right"></span>Game Database</a>
+      </li>
+      <li>
+        <a href="admin/products"><i class="fa fa-server"></i><span class="badge pull-right"></span>Product Database</a>
+      </li>
+      <li>
+        <a href="/admin/transactions"><i class="fa fa-credit-card"></i><span class="badge pull-right"></span>Transaction Database</a>
+      </li>
+      <li class="active">
+        <a href="admin/users"><i class="fa fa-users"></i><span class="badge pull-right"></span>User Database</a>
+      </li>
+      <li>
+        <a href="admin/data"><i class="fa fa-bar-chart"></i><span class="badge pull-right"></span>Data Visualization</a>
+      </li>
+      <li>
+        <a href="admin/preferences"><i class="fa fa-cog"></i>Preferences</a>
+      </li>
+      <li>
+        <a href="/signout"><i class="fa fa-sign-out"></i>Sign Out</a>
+      </li>
+    </ul>
+  </div>
+  <div class="admin-content-wrapper">
+    <div class="admin-content">
+      <ol class="breadcrumb">
+        <li><a href="/admin">Admin Panel</a></li>
+        <li class="active"><a href="/admin/users">Manage Users</a></li>
+      </ol>
+      <h1>Manage Users</h1>
+      <section class="admin-dropdown">
+        <input type="checkbox" id="check-1" style="display:none"/>
+        <label for="check-1" ng-click="newUserToggleFunction()" class="admin-page-btn">+ New User</label>
+        <article>
+          <div ng-show="newUserToggle">
+            <div>
+              <form class="game-admin-input" ng-submit="createUser(newUser)" role="form">
+                <div class="form-group">
+                  <div class="row" style="margin-bottom:25px">
+                    <div class="col-md-4">
+                      <label for="user-email">Email Address</label> 
+                      <input id="user-email" class="form-control" ng-model="newUser.email" type="text">
+                    </div>
+                  </div>               
+                </div>
+                <button class="admin-page-sub" type="submit">Submit</button> 
+              </form>
+            </div>
+          </div>
+        </article>
+      </section>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="table-responsive">
+            <h4 class="margin-bottom-15">Users Table</h4>
+            <table class="table table-striped table-hover table-bordered">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Email</th>
+                  <th>Edit</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="user in users">
+                  <td><a href="/admin/user/{{user.id}}">{{user.id}}</a></td>
+                  <td>{{user.firstName}}</td>
+                  <td>{{user.lastName}}</td>
+                  <td>{{user.email}}</td>
+                  <td><a href="/admin/user/{{user.id}}" class="btn btn-default">Edit</a></td>
+                </tr>           
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

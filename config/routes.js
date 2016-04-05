@@ -36,14 +36,14 @@ module.exports.routes = {
   'get /': 'HomeController.index',
   'get /about': 'HomeController.index',
   'get /admin': 'HomeController.index',
+  'get /admin/:path': 'HomeController.index',
   'get /account': 'HomeController.index',
   'get /contests': 'HomeController.index',
   'get /contest/:path': 'HomeController.index',
   'get /creators': 'HomeController.index',
   'get /creator/:path': 'HomeController.index',
   'get /dashboard': 'HomeController.index',
-  'get /dashboard/analytics': 'HomeController.index',
-  'get /dashboard/videos': 'HomeController.index',
+  'get /dashboard/:path': 'HomeController.index',
 
 
   'get /login': 'HomeController.index',
@@ -63,9 +63,12 @@ module.exports.routes = {
    * User routes
    */
   'get /api/user': 'UserController.getAll',
+  'get /api/user/me': 'UserController.getMe',
+  'post /api/user/some': 'UserController.getSome',
   'get /api/user/:id': 'UserController.getOne',
   'post /api/user': 'UserController.create',
   'post /api/user/:id': 'UserController.update',
+  'delete /api/user/:id': 'UserController.destroy',
 
   /**
    * Post routes

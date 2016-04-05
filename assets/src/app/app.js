@@ -12,6 +12,7 @@ angular.module( 'bidio', [
     'vjs.video',
     'models',
     'ngFileUpload',
+    'ngMaterial',
     'bidio.home',
     'bidio.about',
     'bidio.account',
@@ -27,10 +28,11 @@ angular.module( 'bidio', [
     'bidio.search',
     'bidio.sponsors',
     'bidio.upload',
-    'bidio.video'
+    'bidio.video',
+    'bidio.admin'
 ])
 
-.config( function myAppConfig ( $stateProvider, $urlRouterProvider, $locationProvider ) {
+.config( function myAppConfig ( $mdThemingProvider, $stateProvider, $urlRouterProvider, $locationProvider ) {
 
     $urlRouterProvider.when('/about/', '/about');
     $urlRouterProvider.when('/contests/', '/contests');
@@ -46,6 +48,10 @@ angular.module( 'bidio', [
     });
 
     $locationProvider.html5Mode(true);
+
+    $mdThemingProvider.theme('default')
+        .primaryPalette('grey')
+        .accentPalette('orange');
 
 })
 

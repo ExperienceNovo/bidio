@@ -2,11 +2,39 @@ module.exports = {
 	getAll: function(req, res) {
 		User.getAll()
 		.spread(function(models) {
+			User.watch(req);
 			res.json(models);
 		})
 		.fail(function(err) {
 			// An error occured
 		});
+	},
+
+	getSome: function(req,res){
+
+		var limiting = req.param('limiting');
+		var skipping = req.param('skipping');
+
+		User.getSome(limiting,skipping)
+			.then(function(users){
+				User.watch(req);
+				return res.json(users);
+			})
+			.catch(function(err){
+				return res.negotiate(err);
+			})
+	},
+
+	getMe: function(req,res){
+		return req.user ? 
+
+		res.json(req.user)
+
+		:
+
+		res.json({noUser: true});
+
+
 	},
 
 	getOne: function(req, res) {
@@ -39,7 +67,6 @@ module.exports = {
 	},
 	update: function(req,res){
 		var id = req.param('id');
-		console.log(id);
 		var model = {
 			email: req.param('email'),
 			username : req.param('username')
@@ -60,5 +87,16 @@ module.exports = {
 		});
 		
 		
+	},
+
+	destroy: function(res,res){
+		var id = req.param("id");
+		User.destroy(id)
+			.then(function(){
+				return res.send(200);
+			})
+			.catch(function(err){
+				return res.negotiate(err);
+			})
 	}
 };

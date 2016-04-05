@@ -1,0 +1,40 @@
+<ol style="margin-bottom:0" class="breadcrumb">
+	<li>
+		<a href="/admin">Admin Panel</a>
+	</li>
+	<li class="active">Users</li>
+</ol>
+
+<div class="admin-content-wrapper" layout-padding>
+	<div class="admin-content">
+		<h1>Users</h1>
+		<br><br>
+
+		<p style="text-align:center;">
+			<md-button ng-disabled="page == 0 || isLoading" class="md-icon-button" ng-click="pageDown()"><md-icon>chevron_left</md-icon></md-button>
+			Page&nbsp;{{page + 1}}&nbsp;<i class="fa fa-spinner fa-spin" ng-show="isLoading"></i>
+			<md-button ng-disabled="isMax || isLoading" class="md-icon-button" ng-click="pageUp()"><md-icon>chevron_right</md-icon></md-button>
+		</p>
+
+		<md-list style="text-align:left">
+			<md-list-item layout="row">
+				<div flex="20">ID</div>
+				<div flex="30">username</div>
+				<div flex="30">email</div>
+				<div flex="10">admin</div>
+				<div flex="10">delete</div>
+			</md-list-item>
+			<div ng-repeat="user in users">
+				<md-divider/>
+				<md-list-item layout="row">
+					<div flex="20">{{user.id}}</div>
+					<div flex="30">{{user.username}}</div>
+					<div flex="30">{{user.email}}</div>
+					<div flex="10"><md-switch ng-model="user.isAdmin" ng-change="update(user)" aria-label="admin"/></div>
+					<div flex="10"><md-button class="md-icon-button" ng-click="delete(user.id)"><md-icon>delete</md-icon></md-button></div>
+				</md-list-item>
+			</div>
+
+		</md-list>
+	</div>
+</div>

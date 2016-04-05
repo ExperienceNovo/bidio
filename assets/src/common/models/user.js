@@ -1,40 +1,48 @@
-angular.module('models.user', ['lodash', 'services', 'sails.io',])
+angular.module('models.user', ['lodash', 'services', 'sails.io'])
 
 .service('UserModel', function($q, lodash, utils, $sailsSocket) {
     this.getAll = function() {
-        var deferred = $q.defer();
         var url = utils.prepareUrl('user');
-
-        $sailsSocket.get(url, function(models) {
-            return deferred.resolve(models);
-        });
-
-        return deferred.promise;
+        return $sailsSocket.get(url)
+        .then(function(response){
+            return response.data;
+        });;
     };
 
-    this.getOne = function(id) {
-        var deferred = $q.defer();
-        var url = utils.prepareUrl('user/' + id);
+    this.getSome = function(limiting,skipping) {
 
-        $sailsSocket.get(url, function(model) {
-            return deferred.resolve(model);
+        var url = utils.prepareUrl('user/some');
+
+        return $sailsSocket.post(url, {limiting: limiting, skipping: skipping})
+        .then(function(response){
+            return response.data;
         });
+    };
 
-        return deferred.promise;
+    this.getMe = function(){
+        var url = utils.prepareUrl('user/me');
+        return $sailsSocket.get(url)
+        .then(function(response){
+            return response.data;
+        });
+    }
+
+    this.getOne = function(id) {
+        var url = utils.prepareUrl('user/' + id);
+        return $sailsSocket.get(url)
+        .then(function(response){
+            return response.data;
+        });
     };
 
     this.create = function(newModel) {
-        var deferred = $q.defer();
         var url = utils.prepareUrl('user');
-
-        $sailsSocket.post(url, newModel, function(model) {
-            return deferred.resolve(model);
+        return $sailsSocket.post(url, newModel)
+        .then(function(response){
+            return response.data;
         });
-
-        return deferred.promise;
     };
 	this.update = function(updatedModel){
-		var deferred = $q.defer();
 		
 		console.log("user model in front end");
 		console.log("updatedModel id is: " + updatedModel.id);
@@ -43,12 +51,16 @@ angular.module('models.user', ['lodash', 'services', 'sails.io',])
 		
 		console.log("end user model in front end");
 		var url = utils.prepareUrl('user/' + updatedModel.id);
-		//return $sailsSocket.post(url, model).then(success, error);
-		
-		$sailsSocket.post(url, updatedModel, function(model) {
-            return deferred.resolve(model);
+		return $sailsSocket.post(url, updatedModel)
+        .then(function(response){
+            return response.data;
+        });;
+	},
+    this.delete = function(id){
+        var url = utils.prepareUrl('user/' + id);
+        return $sailsSocket.delete(url)
+        .then(function(response){
+            return response.data;
         });
-
-        return deferred.promise;
-	}
+    }
 });

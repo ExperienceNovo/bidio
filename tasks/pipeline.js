@@ -15,7 +15,8 @@
 // (if you're using LESS with the built-in default config, you'll want
 //  to change `assets/styles/importer.less` instead.)
 var cssFilesToInject = [
-  'styles/**/*.css'
+  'styles/**/*.css',
+  'bower_components/angular-material/angular-material.css'
 ];
 
 
@@ -39,8 +40,11 @@ var jsFilesToInject = [
   'bower_components/vjs-video/dist/vjs-video.js',
   'bower_components/Chart.js/Chart.min.js',
   'bower_components/angular-chart.js/dist/angular-chart.js',
-
-
+  'bower_components/angular-chart.js/dist/angular-chart.js',
+  'bower_components/angular-animate/angular-animate.min.js',
+  'bower_components/angular-aria/angular-aria.min.js',
+  'bower_components/angular-messages/angular-messages.min.js',
+  '/bower_components/angular-material/angular-material.js',
 
   //
   // *->    you might put other dependencies like jQuery or Angular here   <-*

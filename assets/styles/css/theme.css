@@ -47,6 +47,22 @@ a:hover {
   text-decoration:none;
 }
 
+.menu-select.active a, .menu-select:hover a{
+  color: #FE9A2E !important;
+}
+
+.menu-select.active, .menu-select:hover {
+  background-color: #eee;
+}
+
+.menu-select {
+  transition: background-color 0.3s;
+}
+
+.menu-select a {
+  transition: color 0.3s;
+}
+
 h2 {
   font-size: 3.2em;
   font-weight: 300;

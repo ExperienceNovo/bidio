@@ -1,0 +1,67 @@
+<div layout="row">
+	<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="true">
+	  <md-toolbar class="md-primary md-hue-2">
+	    <h1 class="md-toolbar-tools">Admin dashboard</h1>
+	  </md-toolbar>
+	  <md-content>
+	    <md-list>
+	    <md-list-item ui-sref-active="active" class="menu-select md-3-line" md-ink-ripple="#101010">
+	        <div class="md-list-item-text" layout="column">
+	          <h3><a ui-sref="admin.main"><i class="fa fa-home"></i><span class="badge pull-right"></span>&nbsp;Home</a></h3>
+	        </div>
+	      </md-list-item>
+	      <md-divider ></md-divider>
+	      <md-list-item ui-sref-active="active" class="menu-select md-3-line" md-ink-ripple="#101010">
+	        <div class="md-list-item-text" layout="column">
+	          <h3><a ui-sref="admin.users"><i class="fa fa-users"></i><span class="badge pull-right"></span>&nbsp;Users</a></h3>
+	        </div>
+	      </md-list-item>
+	      <md-divider ></md-divider>
+	      <md-list-item ui-sref-active="active" class="menu-select md-3-line" md-ink-ripple="#101010">
+	        <div class="md-list-item-text" layout="column">
+	          <h3><a ui-sref="admin.videos"><i class="fa fa-video-camera"></i><span class="badge pull-right"></span>&nbsp;Videos</a></h3>
+	        </div>
+	      </md-list-item>
+	      <md-divider ></md-divider>
+	      <md-list-item ui-sref-active="active" class="menu-select md-3-line" md-ink-ripple="#101010">
+	        <div class="md-list-item-text" layout="column">
+	          <h3><a ui-sref="admin.contests"><i class="fa fa-trophy"></i><span class="badge pull-right"></span>&nbsp;Contests</a></h3>
+	        </div>
+	      </md-list-item>
+	      <md-divider ></md-divider>
+	      <md-list-item ui-sref-active="active" class="menu-select md-3-line" md-ink-ripple="#101010">
+	        <div class="md-list-item-text" layout="column">
+	          <h3><a ui-sref="admin.bids"><i class="fa fa-dollar"></i><span class="badge pull-right"></span>&nbsp;Bids</a></h3>
+	        </div>
+	      </md-list-item>
+	    </md-list>
+	</md-sidenav>
+
+	<div class="admin-page-wrapper" layout-fill>
+		<div ui-view></div>
+		<!-- <ol style="margin-bottom:0" class="breadcrumb">
+			<li>
+				<a href="/admin">Admin Panel</a>
+			</li>
+			<li class="active">Overview</li>
+		</ol>
+		
+		<div class="admin-content-wrapper" layout-padding>
+			<div class="admin-content">
+				<h1>Overview</h1>
+				<div class="admin-panels">
+					<div class="row">
+						<div class="col-md-6 col-sm-6 margin-bottom-30">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									Data Visualization -- Phase 2
+								</div>
+								<canvas height="120" id="admin-line-chart" width="500"></canvas>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> -->
+	</div>
+</div>

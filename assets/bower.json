@@ -18,6 +18,11 @@
     "vjs-video": "~0.1.5",
     "video.js": "~5.8.2",
     "angular-chart.js": "~0.8.8",
-    "Chart.js": "~1.0.2"
+    "Chart.js": "~1.0.2",
+    "angular-aria": "~1.5.3",
+    "angular-animate": "~1.5.3",
+    "angular-messages": "~1.5.3",
+    "ng-material": "~0.0.4",
+    "angular-material": "~1.0.7"
   }
 }

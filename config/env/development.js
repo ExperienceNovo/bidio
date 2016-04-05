@@ -21,4 +21,13 @@ module.exports = {
   //   connection: 'someMongodbServer'
   // }
 
+  orm: {
+  	_hookTimeout: 60000
+  },
+
+  models: {
+    connection: 'localDiskDb',
+    migrate: 'drop'
+  }
+
 };
