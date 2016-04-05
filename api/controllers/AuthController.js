@@ -55,7 +55,7 @@ var AuthController = {
         // will available.
         else {
         	console.log('currently logged in user is: ' + req.user.username);
-          res.redirect('/');
+          res.redirect('/dashboard');
         }
       });
     });

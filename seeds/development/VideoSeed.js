@@ -8,7 +8,7 @@ var videos = Array.apply(null,Array(30)).map(function(a,i){
 		id: i + 1,
 		title: title,
 		urlTitle: title.split(" ").join("-"),
-		amazonUrl: title.split(" ").join("-"),
+		amazonUrl: sails.getBaseUrl() + "/videos/" + title.split(" ").join("-"),
 		description: faker.lorem.paragraph(),
 		user: 1,
 		contest: Math.floor((i + 1) / 3)

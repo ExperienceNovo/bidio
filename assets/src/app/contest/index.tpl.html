@@ -49,8 +49,7 @@
 	<div class="container">
 		<div class="contestVideos" ng-repeat="video in contest.videos">
 			<h1>{{video.title}}</h1>
-			<video ng-src="{{ getUrl(video.urlTitle) }}" class="video-js vjs-default-skin" controls preload="auto" width="640" height="264" vjs-video>
-				<source type="video/mp4">
+			<video src={{video.amazonUrl}} class="video-js vjs-default-skin" controls preload="auto" width="640" height="264" vjs-video>
 			</video>
 		</div>
 	</div>
