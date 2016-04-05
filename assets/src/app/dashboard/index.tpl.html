@@ -1,6 +1,33 @@
 <link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css">
 <link href="http://vjs.zencdn.net/5.8.0/video-js.css" rel="stylesheet">
-<div ui-view="home"></div>
-<div ui-view="analytics"></div>
-<div ui-view="videos"></div>
+<div layout="row">
+	<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="true">
+	  <md-toolbar class="md-primary md-hue-2">
+	    <h1 class="md-toolbar-tools">Dashboard</h1>
+	  </md-toolbar>
+	  <md-content>
+	    <md-list>
+	    <md-list-item ui-sref-active="active" class="menu-select md-3-line" md-ink-ripple="#101010">
+	        <div class="md-list-item-text" layout="column">
+	          <h3><a ui-sref="dashboard.home"><i class="fa fa-home"></i><span class="badge pull-right"></span>&nbsp;Home</a></h3>
+	        </div>
+	      </md-list-item>
+	      <md-divider ></md-divider>
+	      <md-list-item ui-sref-active="active" class="menu-select md-3-line" md-ink-ripple="#101010">
+	        <div class="md-list-item-text" layout="column">
+	          <h3><a ui-sref="dashboard.analytics"><i class="fa fa-users"></i><span class="badge pull-right"></span>&nbsp;Users</a></h3>
+	        </div>
+	      </md-list-item>
+	      <md-divider ></md-divider>
+	      <md-list-item ui-sref-active="active" class="menu-select md-3-line" md-ink-ripple="#101010">
+	        <div class="md-list-item-text" layout="column">
+	          <h3><a ui-sref="dashboard.videos"><i class="fa fa-video-camera"></i><span class="badge pull-right"></span>&nbsp;Videos</a></h3>
+	        </div>
+	      </md-list-item>
+	    </md-list>
+	</md-sidenav>
 
+	<div class="admin-page-wrapper" layout-fill>
+		<div ui-view></div>
+	</div>
+</div>

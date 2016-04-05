@@ -22,25 +22,16 @@ angular.module( 'bidio.video', [
 	});
 })
 
+<<<<<<< HEAD
 .controller( 'VideoCtrl', function VideoCtrl( $scope, titleService, video, $location, $sce, bids ) {
 	$scope.video = video;
 	if(typeof($scope.video)=="undefined"){$location.path('/')}
 	$scope.bids = bids;
+=======
+.controller( 'VideoCtrl', function VideoCtrl( $scope, titleService, video, $location, $sce ) {
+>>>>>>> 4b9e4eefc7d363c4e6ed70251c544e138923c6bc
 	titleService.setTitle(video.title + ' - bidio');
-	$scope.trustedData = $sce.trustAsResourceUrl($scope.video.amazonUrl);
-
-	$scope.options = {
-		poster: 'images/bidio_logo.png'
-    };
-    
-	$scope.media = {
-	    sources: [
-	        {
-	            src: $scope.trustedData,
-	            type: 'video/mp4'
-	        }
-	    ]
-	}
+	$scope.video = video;
 
 	$scope.viewCount = Math.floor(Math.random() * (10000 - 100 + 1)) + 100;
 	$scope.bidPerView = Math.floor(Math.random() * (100 - 1 + 1)) + 1;

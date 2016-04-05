@@ -14,30 +14,18 @@ angular.module( 'bidio.dashboard', [
     })
     .state( 'dashboard.home', {
         url: '',
-        views: {
-            "home": {
-                controller: 'DashboardHomeCtrl',
-                templateUrl: 'dashboard/home.tpl.html'
-            }
-        }
+        controller: 'DashboardHomeCtrl',
+        templateUrl: 'dashboard/templates/home.tpl.html'
     })
     .state( 'dashboard.analytics', {
         url: '/analytics',
-        views: {
-            "analytics": {
-                controller: 'DashboardAnalyticsCtrl',
-                templateUrl: 'dashboard/analytics.tpl.html'
-            }
-        }
+        controller: 'DashboardAnalyticsCtrl',
+        templateUrl: 'dashboard/templates/analytics.tpl.html'
     })
     .state( 'dashboard.videos', {
         url: '/videos',
-        views: {
-            "videos": {
-                controller: 'DashboardVideosCtrl',
-                templateUrl: 'dashboard/videos.tpl.html'
-            }
-        }
+        controller: 'DashboardVideosCtrl',
+        templateUrl: 'dashboard/templates/videos.tpl.html'
     })
 })
 
