@@ -22,14 +22,10 @@ angular.module( 'bidio.video', [
 	});
 })
 
-<<<<<<< HEAD
 .controller( 'VideoCtrl', function VideoCtrl( $scope, titleService, video, $location, $sce, bids ) {
 	$scope.video = video;
 	if(typeof($scope.video)=="undefined"){$location.path('/')}
 	$scope.bids = bids;
-=======
-.controller( 'VideoCtrl', function VideoCtrl( $scope, titleService, video, $location, $sce ) {
->>>>>>> 4b9e4eefc7d363c4e6ed70251c544e138923c6bc
 	titleService.setTitle(video.title + ' - bidio');
 	$scope.video = video;
 
