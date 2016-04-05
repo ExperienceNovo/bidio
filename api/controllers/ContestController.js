@@ -35,7 +35,7 @@ module.exports = {
 		Contest.find()
 		.where({urlTitle: req.param('path')})
 		.populate('user')
-		.populate('submittedVideos')
+		.populate('videos')
 		.spread(function(model) {
 			Contest.subscribe(req, model);
 			res.json(model);

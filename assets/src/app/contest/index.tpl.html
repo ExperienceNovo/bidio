@@ -12,7 +12,7 @@
 			<a href="/api/user/{{contest.user.id}}"><img class="sponsorPic" src="images/silhouette_orange.jpg"></a>
 			<p>
 				<a class="sponsorName" href="/api/user/{{contest.user.id}}">{{contest.user.username}}</a>
-				on {{contest.createdAt}}
+				on {{contest.createdAt | date: "shortDate"}}
 			</p>
 		</div>
 
@@ -37,7 +37,7 @@
 
 		<div ng-show="currentUser.id != contest.user.id" class="editContestContainer col-md-6 col-lg-6">
 			<h1>{{contest.title}}</h1>
-			<p>{{contest.contestContent}}</p>
+			<p ng-bind-html="contest.contestContent"></p>
 		</div>
 
 	</div>
@@ -47,9 +47,9 @@
 	</div>
 		
 	<div class="container">
-		<div class="contestVideos" ng-repeat="video in videos">
-			<h1>{{video}}</h1>
-			<video class="video-js vjs-default-skin" controls preload="auto" width="640" height="264" poster="poster.jpg" vjs-video>
+		<div class="contestVideos" ng-repeat="video in contest.videos">
+			<h1>{{video.title}}</h1>
+			<video class="video-js vjs-default-skin" controls preload="auto" width="640" height="264" vjs-video>
 				<source src="videos/video.mp4" type="video/mp4">
 			</video>
 		</div>

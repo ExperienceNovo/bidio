@@ -32,7 +32,7 @@ angular.module( 'bidio', [
     'bidio.admin'
 ])
 
-.config( function myAppConfig ( $mdThemingProvider, $stateProvider, $urlRouterProvider, $locationProvider ) {
+.config( function myAppConfig ( $mdThemingProvider, $urlRouterProvider, $locationProvider ) {
 
     $urlRouterProvider.when('/about/', '/about');
     $urlRouterProvider.when('/contests/', '/contests');
