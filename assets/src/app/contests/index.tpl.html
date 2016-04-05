@@ -8,7 +8,7 @@
 	<div class="container" ng-repeat="contest in contests">
 		<h2><a href="/contest/{{contest.urlTitle}}">{{contest.title}}</a></h2>
 		<h4>sponsered by</h4>
-		<h3>{{contest.user.username}}</h3>
+		<h3><a href="/member/{{contest.user.username}}">{{contest.user.username}}</a></h3>
 	</div>
 
 	<br><br>
