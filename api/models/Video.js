@@ -35,10 +35,10 @@ module.exports = {
             collection: 'view',
             via: 'video'
         },
-				selectedContests: {
-						collection: 'contest',
-						via: 'submittedVideos'
-				}
+		selectedContests: {
+			collection: 'contest',
+			via: 'submittedVideos'
+		}
     },
 
     //afterCreate: function (post, next) {

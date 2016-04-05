@@ -26,11 +26,11 @@ module.exports = {
             model: 'user',
             required: true
         },
-				submittedVideos: {
-						collection: 'video',
-						via: 'selectedContests',
-						dominant: true
-				}
+		submittedVideos: {
+			collection: 'video',
+			via: 'selectedContests',
+			dominant: true
+		}
     },
 
     afterCreate: function (post, next) {
