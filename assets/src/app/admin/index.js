@@ -15,12 +15,12 @@ angular.module( 'bidio.admin', [
     })
     .state( 'admin.main', {
         url: '',
-        controller: 'MainCtrl',
+        controller: 'MainAdminCtrl',
         templateUrl: 'admin/templates/main.tpl.html'
     })
     .state( 'admin.users', {
         url: '/users',
-        controller: 'UserCtrl',
+        controller: 'UserAdminCtrl',
         templateUrl: 'admin/templates/users.tpl.html',
         resolve: {
             UserModel: "UserModel",
@@ -31,17 +31,17 @@ angular.module( 'bidio.admin', [
     })
     .state( 'admin.bids', {
         url: '/bids',
-        controller: 'BidCtrl',
+        controller: 'BidAdminCtrl',
         templateUrl: 'admin/templates/bids.tpl.html'
     })
     .state( 'admin.videos', {
         url: '/videos',
-        controller: 'VidCtrl',
+        controller: 'VidAdminCtrl',
         templateUrl: 'admin/templates/videos.tpl.html'
     })
     .state( 'admin.contests', {
         url: '/contest',
-        controller: 'ContestCtrl',
+        controller: 'ContestAdminCtrl',
         templateUrl: 'admin/templates/contests.tpl.html'
     });
 })
@@ -56,10 +56,10 @@ angular.module( 'bidio.admin', [
     }
 })
 
-.controller( 'MainCtrl', function MainController( $scope ){
+.controller( 'MainAdminCtrl', function MainController( $scope ){
 
 })
-.controller( 'UserCtrl', function MainController( $scope, users, UserModel, lodash ){
+.controller( 'UserAdminCtrl', function MainController( $scope, users, UserModel, lodash ){
 
     $scope.page = 0;
 
@@ -133,9 +133,12 @@ angular.module( 'bidio.admin', [
     }
 
 })
-.controller( 'BidCtrl', function MainController( $scope ){
+.controller( 'BidAdminCtrl', function MainController( $scope ){
 
 })
-.controller( 'VidCtrl', function MainController( $scope ){
+.controller( 'VidAdminCtrl', function MainController( $scope ){
+
+})
+.controller( 'ContestAdminCtrl', function MainController( $scope ){
 
 });

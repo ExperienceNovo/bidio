@@ -25,16 +25,16 @@ module.exports = {
 			})
 	},
 
-	getMe: function(req,res){
-		return req.user ? 
-
-		res.json(req.user)
-
-		:
-
-		res.json({noUser: true});
-
-
+	getByUsername: function(req, res) {
+		User.find()
+		.where({username: req.param('path')})
+		.spread(function(model) {
+			User.subscribe(req, model);
+			res.json(model);
+		})
+		.fail(function(err) {
+			res.send(404);
+		});
 	},
 
 	getOne: function(req, res) {

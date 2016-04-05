@@ -26,11 +26,11 @@ module.exports = {
             model: 'user',
             required: true
         },
-		submittedVideos: {
-			collection: 'video',
-			via: 'selectedContests',
-			dominant: true
-		}
+        submittedVideos: {
+            collection: 'video',
+            via: 'selectedContests',
+            dominant: true
+        }    
     },
 
     afterCreate: function (post, next) {
@@ -45,7 +45,7 @@ module.exports = {
     getAll: function() {
         return Contest.find()
         .sort({createdAt: 'asc'})
-				.populate('user')
+		.populate('user')
         .then(function (models) {
             return [models];
         });

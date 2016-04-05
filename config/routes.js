@@ -48,6 +48,9 @@ module.exports.routes = {
 
   'get /login': 'HomeController.index',
   'get /logout': 'AuthController.logout',
+
+  'get /member/:path': 'HomeController.index',
+
   'get /register': 'HomeController.index',
 
   'get /search': 'HomeController.index',
@@ -63,8 +66,7 @@ module.exports.routes = {
    * User routes
    */
   'get /api/user': 'UserController.getAll',
-  'get /api/user/me': 'UserController.getMe',
-  'post /api/user/some': 'UserController.getSome',
+  'get /api/user/username/:path': 'UserController.getByUsername',
   'get /api/user/:id': 'UserController.getOne',
   'post /api/user': 'UserController.create',
   'post /api/user/:id': 'UserController.update',

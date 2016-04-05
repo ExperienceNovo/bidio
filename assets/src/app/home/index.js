@@ -27,4 +27,6 @@ angular.module( 'bidio.home', [
 	$scope.trendingVideos = trendingVideos;
 	$scope.contests = contests;
 
+	console.log(contests);
+
 });
