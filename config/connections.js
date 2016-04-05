@@ -25,8 +25,8 @@ module.exports.connections = {
 		//url: process.env.MONGOLAB_URI
 	},
 
-  //localDiskDb: {
-  //  adapter: 'sails-disk'
-  //}
+  localDiskDb: {
+   adapter: 'sails-disk'
+  }
 };
 

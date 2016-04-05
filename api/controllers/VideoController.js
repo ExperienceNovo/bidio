@@ -5,6 +5,7 @@
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
 var _ = require('lodash');
+var fs = require("fs");
 
 module.exports = {
 
@@ -174,6 +175,19 @@ module.exports = {
 			});
 		});
 	},
+
+	download: function(req,res){
+
+		utilsService.randomVid()
+			.then(function(vid){
+				res.set("Content-type", "video/mp4");
+				res.send(vid);
+			})
+			.catch(function(err){
+				res.negotiate(err);
+			})
+
+	}
 
 	
 	

@@ -99,6 +99,7 @@ module.exports.routes = {
   'post /api/video': 'VideoController.create',
   'post /api/video/:id': 'VideoController.update',
   'delete /api/video/:id': 'VideoController.destroy',
+  'get /videos/:path': 'VideoController.download',
 
 
   // If a request to a URL doesn't match any of the custom routes above, it is matched
