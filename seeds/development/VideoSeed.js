@@ -14,7 +14,6 @@ var videos = Array.apply(null,Array(globals.videos * globals.users * globals.con
 		user: Math.floor(i / (globals.videos * globals.contests)) + 1,
 		contest: Math.floor(i / (globals.videos)) + 1
 	}
-})
-
+});
 
 module.exports = videos;
