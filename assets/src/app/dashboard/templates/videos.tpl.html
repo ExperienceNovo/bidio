@@ -1,14 +1,17 @@
-<div id="main-container">
+<md-content layout-padding>
   <div class="dashboard-title">
     <h1>Dashboard Videos</h1>
   </div>
 
-  <div class="dashboardVideos" ng-repeat="vidoe in videos">
-    <h1>{{video}}</h1>
-    <video class="video-js vjs-default-skin" controls preload="auto" width="640" height="264" poster="poster.jpg" vjs-video>
-      <source src="videos/video.mp4" type="video/mp4">
+  <div>
+  	<md-button ng-click="addVideo($event)">Add video</md-button>
+  </div>
+
+  <div class="dashboardVideos" ng-repeat="video in videos">
+    <h1>{{video.title}}</h1>
+    <video style="display:inline-block;" class="video-js vjs-default-skin" src={{video.amazonUrl}} controls preload="none" width="640" height="264" poster="poster.jpg" vjs-video>
     </video>
   </div>
 
 
-</div>
+</md-content>

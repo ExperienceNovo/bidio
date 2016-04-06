@@ -15,8 +15,25 @@ module.exports = {
 			Contest.subscribe(req, models);
 			res.json(models);
 		})
-		.fail(function(err) {
-			// An error occured
+		.catch(function(err) {
+			console.log(err);
+			return res.negotiate(err);			
+		});
+	},
+
+	getMine: function(req, res) {
+
+		var id = req.user.id;
+
+		Contest.find({user: id})
+		.then(function(models) {
+			Contest.watch(req);
+			Contest.subscribe(req, models);
+			return res.json(models);
+		})
+		.catch(function(err) {
+			console.log(err);
+			return res.negotiate(err);
 		});
 	},
 
@@ -26,7 +43,7 @@ module.exports = {
 			Contest.subscribe(req, model);
 			res.json(model);
 		})
-		.fail(function(err) {
+		.catch(function(err) {
 			res.send(404);
 		});
 	},
@@ -35,12 +52,12 @@ module.exports = {
 		Contest.find()
 		.where({urlTitle: req.param('path')})
 		.populate('user')
-		.populate('submittedVideos')
+		.populate('videos')
 		.spread(function(model) {
 			Contest.subscribe(req, model);
 			res.json(model);
 		})
-		.fail(function(err) {
+		.catch(function(err) {
 			res.send(404);
 		});
 	},
@@ -58,12 +75,12 @@ module.exports = {
 	// },
 
 	create: function (req, res) {
-		var userId = req.param('user');
+
 		var model = {
 			title: req.param('title'),
 			urlTitle: req.param('urlTitle'),
 			contestContent: req.param('contestContent'),
-			user: userId
+			user: req.user.id
 		};
 
 		Contest.create(model)

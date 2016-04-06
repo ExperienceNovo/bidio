@@ -28,6 +28,8 @@ angular.module( 'bidio.contest', [
 
 	contest.contestContent = $sce.trustAsHtml(contest.contestContent);
 
+	console.log(contest);
+
 	titleService.setTitle('contest - bidio');
 	$scope.currentUser = config.currentUser;
 	$scope.contest = contest;

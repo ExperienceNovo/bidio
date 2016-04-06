@@ -21,6 +21,21 @@ module.exports = {
 		});
 	},
 
+	getMine: function(req,res){
+		var me = req.user.id;
+
+		Video.find({user: me})
+			.then(function(models){
+				Video.watch(req);
+				Video.subscribe(req, models);
+				res.json(models);
+			})
+			.catch(function(err){
+				console.log(err);
+				res.negotiate(err);
+			})
+	},
+
 	getSome: function(req, res) {
 		var limit = req.param('limit');
 		var skip = req.param('skip');
@@ -95,45 +110,54 @@ module.exports = {
 		});
 	},
 
-	create: function (req, res) {
+	upload: function(req,res){
 
-		var params = JSON.parse(req.body.videoData);
-		var title = params.title;
-		var description = params.description;
-		var user = params.user;
+		/*uncomment this if you want to save to a particular folder*/
+		//var filename = req.file('video')._files[0].stream.filename;
 
-		req.file('videoFile').upload({
-		  adapter: require('skipper-s3'),
+		req.file('video').upload({
+			adapter: require('skipper-s3'),
 		  key: 'AKIAJZS6F2HWDJWWZE7A',
 		  secret: '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',
-		  bucket: 'bidio8'
-		}, function whenDone(err, uploadedFiles) {
-		    if (err) {
-		      return res.negotiate(err);
-		    }
-		    if (uploadedFiles.length === 0){
-		      return res.badRequest('No file was uploaded');
-		    }
-		    var amazonUrl = uploadedFiles[0].extra.Location;
-		    var model = {
-				title: title,
-				description: description,
-				amazonUrl: amazonUrl,
-				user: user
-			};
-			console.log(model)
+		  bucket: 'bidio8',
+		  /*uncomment this if you want to save to a particular folder*/
+		  //saveAs: "Event-Pictures/" + utilsService.guid() + filename.split(".").pop()
+		}, function response(err,uploadedFiles){
 
-			Video.create(model)
-			.exec(function(err, video) {
-				if (err) {
-					return console.log(err);
-				}
-				else {
-					Video.publishCreate(video);
-					return res.json(video);
-				}
+			if (err) {
+	      return res.negotiate(err);
+	    }
+
+	    if (uploadedFiles.length === 0){
+	      return res.badRequest('No file was uploaded');
+	    }
+
+	    var amazonUrl = uploadedFiles[0].extra.Location;
+
+	    return res.json({amazonUrl: amazonUrl});
+		})
+
+	},
+
+	create: function (req, res) {
+
+		var model = {
+			title: req.param("title"),
+			description: req.param("description"),
+			amazonUrl: req.param("amazonUrl"),
+			urlTitle: req.param("urlTitle"),
+			user: req.user.id
+		};
+
+		Video.create(model)
+			.then(function(video) {
+				Video.publishCreate(video);
+				return res.json(video);
+			})
+			.catch(function(err){
+				console.log(err);
+				res.negotiate(err);
 			});
-		});
 
 	},
 

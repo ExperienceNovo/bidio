@@ -85,6 +85,7 @@ module.exports.routes = {
   *	Contest Routes
   */
   'get /api/contest': 'ContestController.getAll',
+  'get /api/contest/me': 'ContestController.getMine',
   'get /api/contest/:id': 'ContestController.getOne',
   'get /api/contest/url/:path': 'ContestController.getByUrlTitle',
   // 'get /api/contest/:id': 'ContestController.getSubmittedVideos',
@@ -96,8 +97,10 @@ module.exports.routes = {
   *	Video Routes
   */
   'get /api/video': 'VideoController.getAll',
+  'get /api/video/me': 'VideoController.getMine',
   'get /api/video/:id': 'VideoController.getOne',
   //'get /api/video/url/:path': 'VideoController.getByUrlTitle',
+  'post /api/video/upload': 'VideoController.upload',
   'post /api/video': 'VideoController.create',
   'post /api/video/:id': 'VideoController.update',
   'delete /api/video/:id': 'VideoController.destroy',

@@ -35,9 +35,8 @@ module.exports = {
             collection: 'view',
             via: 'video'
         },
-        selectedContests: {
-            collection: 'contest',
-            via: 'submittedVideos'
+        contest: {
+            model: 'contest'
         }
     },
 

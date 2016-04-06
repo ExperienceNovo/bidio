@@ -1,7 +1,9 @@
 var faker = require("faker");
+var globals = require("./globals.js");
 
-var users = Array.apply(null, Array(20)).map(function(){
+var users = Array.apply(null, Array(globals.users - 1)).map(function(a,i){
 	return {
+		id: i + 1,
 		username: faker.internet.userName(),
 		email: faker.internet.email()
 	}

@@ -13,6 +13,10 @@ module.exports = {
             required: true,
             unique: true
         },
+        video: {
+            model: 'video',
+            unique: true
+        },
         contestContent: {
             type: 'string',
             required: true
@@ -26,10 +30,9 @@ module.exports = {
             model: 'user',
             required: true
         },
-        submittedVideos: {
+        videos: {
             collection: 'video',
-            via: 'selectedContests',
-            dominant: true
+            via: 'contest'
         }    
     },
 

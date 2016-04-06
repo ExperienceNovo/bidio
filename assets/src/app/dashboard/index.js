@@ -25,14 +25,40 @@ angular.module( 'bidio.dashboard', [
     .state( 'dashboard.videos', {
         url: '/videos',
         controller: 'DashboardVideosCtrl',
-        templateUrl: 'dashboard/templates/videos.tpl.html'
+        templateUrl: 'dashboard/templates/videos.tpl.html',
+        resolve: {
+            VideoModel: 'VideoModel',
+            videos: function(VideoModel){
+                return VideoModel.getMine();
+            }
+        }
+    })
+    .state( 'dashboard.profile', {
+        url: '/profile',
+        controller: 'DashboardProfileCtrl',
+        templateUrl: 'dashboard/templates/profile.tpl.html'
+    })
+    .state( 'dashboard.contests', {
+        url: '/contests',
+        controller: 'DashboardContestsCtrl',
+        templateUrl: 'dashboard/templates/contests.tpl.html',
+        resolve: {
+            ContestModel: "ContestModel",
+            contests: function(ContestModel){
+                return ContestModel.getMine();
+            }
+        }
     })
 })
 
-.controller( 'DashboardCtrl', function DashboardCtrl( $scope ) {
+.controller( 'DashboardCtrl', function DashboardCtrl( $scope, $location, config ) {
+
+    if (!config.currentUser){
+        $location.path("/")
+    }
 })
 
-.controller( 'DashboardHomeCtrl', function DashboardHomeCtrl( $scope, $sailsSocket, $location, titleService, lodash, config ) {
+.controller( 'DashboardHomeCtrl', function DashboardHomeCtrl( $scope, titleService, lodash, config ) {
     titleService.setTitle('dashboard');
     $scope.currentUser = config.currentUser;
 })
@@ -51,8 +77,86 @@ angular.module( 'bidio.dashboard', [
     };
 })
 
-.controller( 'DashboardVideosCtrl', function DashboardVideosCtrl( $scope, $sailsSocket, $location, titleService, lodash, config ) {
+.controller( 'DashboardVideosCtrl', function DashboardVideosCtrl( $scope, titleService, videos, VideoModel, $mdDialog ) {
     titleService.setTitle('videos');
-    $scope.currentUser = config.currentUser;
-    $scope.videos = [1,2,3,4,5]
+    $scope.videos = videos;
+
+    $scope.addVideo = function(ev){
+        $mdDialog.show({
+          controller: 'VideoDialogCtrl',
+          templateUrl: 'dashboard/templates/createVideo.tpl.html',
+          parent: angular.element(document.body),
+          targetEvent: ev,
+          clickOutsideToClose:true,
+          fullscreen: false
+        })
+        .then(function(result){
+            $scope.videos.push(result);
+        })
+    }
+})
+
+.controller('VideoDialogCtrl', function DialogCtrl($scope, $mdDialog, Upload, VideoModel) {
+    $scope.video = {};
+
+    $scope.submit = function(video,file){
+
+        Upload.upload({
+            url: '/api/video/upload',
+            method: 'POST',
+            data: {video: file}
+        })
+        .then(function(response){
+
+            video.amazonUrl = response.data.amazonUrl;
+
+            return VideoModel.create(video);
+        })
+        .then(function(response){
+            console.log(response);
+
+            $mdDialog.hide(response);
+        })
+    }
+
+    $scope.cancel = function(){
+        $mdDialog.cancel();
+    }
+})
+
+.controller('DashboardProfileCtrl', function ($scope) {
+    
+})
+
+.controller('DashboardContestsCtrl', function ($scope, contests, ContestModel, $mdDialog) {
+    $scope.contests = contests;
+
+    $scope.addContest = function(ev){
+        $mdDialog.show({
+          controller: 'ContestDialogCtrl',
+          templateUrl: 'dashboard/templates/createContest.tpl.html',
+          parent: angular.element(document.body),
+          targetEvent: ev,
+          clickOutsideToClose:true,
+          fullscreen: false
+        })
+        .then(function(result){
+            $scope.contests.push(result);
+        })
+    }
+})
+
+.controller('ContestDialogCtrl', function DialogCtrl($scope, $mdDialog, Upload, ContestModel) {
+    $scope.contest = {};
+
+    $scope.submit = function(contest){
+        ContestModel.create(contest)
+        .then(function(response){
+            $mdDialog.hide(response);
+        })
+    }
+
+    $scope.cancel = function(){
+        $mdDialog.cancel();
+    }
 })

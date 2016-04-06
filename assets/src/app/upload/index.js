@@ -42,6 +42,9 @@ angular.module( 'bidio.upload', [
                     }
                 })
                 .then(function (resp) {
+
+                    console.log(resp);
+
                     $timeout(function() {
                         $scope.log = 'file: ' +
                         resp.config.data.videoFile.name +

@@ -1,0 +1,23 @@
+<md-content layout-padding style="width:500px">
+	<h3>Create Video</h3>
+	<md-input-container>
+    <label>Title</label>
+    <input ng-model="video.title" type="text">
+  </md-input-container>
+  <br>
+  <md-input-container>
+    <label>URL Title</label>
+    <input ng-model="video.urlTitle" type="text">
+  </md-input-container>
+  <br>
+  <md-input-container>
+    <label>Description</label>
+    <textarea ng-model="video.description" rows="4"></textarea>
+  </md-input-container>
+  <br>
+  <input type="file" ngf-select="" ng-model="file" name="file" ngf-accept="'image/*'" required="" style="margin-top:15px">
+  <br>
+  <md-button ng-click="submit(video,file)">Submit</md-button>
+  <br>
+  <md-button ng-click="cancel()">Cancel</md-button>
+</md-content>

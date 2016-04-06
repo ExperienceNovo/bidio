@@ -12,6 +12,11 @@ angular.module('models.contest', ['lodash', 'services', 'sails.io',])
         return $sailsSocket.get(url).then(success, error);
     };
 
+    this.getMine = function(){
+        var url = utils.prepareUrl('contest/me');
+        return $sailsSocket.get(url).then(success,error);
+    };
+
 	this.getOne = function(model) {
         var url = utils.prepareUrl('contest/' + model);
         return $sailsSocket.get(url).then(success, error);

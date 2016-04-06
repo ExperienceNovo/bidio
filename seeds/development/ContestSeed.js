@@ -1,6 +1,7 @@
 var faker = require("faker");
+var globals = require("./globals.js");
 
-var contests = Array.apply(null,Array(9)).map(function(a,i){
+var contests = Array.apply(null,Array(globals.users * globals.contests)).map(function(a,i){
 
 	var title = faker.lorem.words();
 	var content = Array.apply(null,Array(3)).map(function(){return faker.lorem.paragraph()}).join("<br>");
@@ -10,14 +11,14 @@ var contests = Array.apply(null,Array(9)).map(function(a,i){
 		title: title,
 		contestContent: content,
 		urlTitle: title.split(" ").join("-"),
-		user: 1
+		user: Math.floor(i / globals.contests) + 2
 	}
 });
 
 contests.unshift({
 	id: 1,
 	title: "Zaxby's",
-	contestContent: "Zaxby'x Contest",
+	contestContent: "Zaxby's Contest",
 	urlTitle: "zaxbys",
 	user: 1
 });

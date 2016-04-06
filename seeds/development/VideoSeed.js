@@ -1,6 +1,7 @@
 var faker = require("faker");
+var globals = require("./globals.js");
 
-var videos = Array.apply(null,Array(30)).map(function(a,i){
+var videos = Array.apply(null,Array(globals.videos * globals.users * globals.contests)).map(function(a,i){
 
 	var title = faker.lorem.words();
 
@@ -10,8 +11,8 @@ var videos = Array.apply(null,Array(30)).map(function(a,i){
 		urlTitle: title.split(" ").join("-"),
 		amazonUrl: sails.getBaseUrl() + "/videos/" + title.split(" ").join("-"),
 		description: faker.lorem.paragraph(),
-		user: 1,
-		contest: Math.floor((i + 1) / 3)
+		user: Math.floor(i / (globals.videos * globals.contests)) + 1,
+		contest: Math.floor(i / (globals.videos)) + 1
 	}
 })
 
