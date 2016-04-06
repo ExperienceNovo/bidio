@@ -49,11 +49,38 @@ module.exports = {
 	},
 
 	getByUrlTitle: function(req, res) {
-		Contest.find()
-		.where({urlTitle: req.param('path')})
+		Contest.findOne({urlTitle: req.param('path')})
 		.populate('user')
 		.populate('videos')
-		.spread(function(model) {
+		.then(function(contest){
+			return [contest, Profile.findOne({user: contest.user.id})]
+		})
+		.spread(function(contest,profile){
+			if (!profile){
+				return contest;
+			}
+			contest = contest.toObject();
+			contest.user.profile = profile;
+			return contest;
+		})
+		.then(function(contest){
+
+			/*add users to videos*/
+			return Promise.all(
+				contest.videos.map(function(video){
+					return User.find({id: video.user})
+						.then(function(user){
+							video.user = user[0];
+							return video;
+						})
+				})
+			)
+			.then(function(videos){
+				contest.videos = videos;
+				return contest;
+			})
+		})
+		.then(function(model) {
 			Contest.subscribe(req, model);
 			res.json(model);
 		})

@@ -1,4 +1,6 @@
 angular.module( 'bidio.contest', [
+	'ui.bootstrap',
+	'ngAnimate'
 ])
 
 .config(function config( $stateProvider ) {
@@ -27,8 +29,7 @@ angular.module( 'bidio.contest', [
 .controller( 'ContestCtrl', function ContestCtrl( $scope, config, titleService, ContestModel, contest, $sce ) {
 
 	contest.contestContent = $sce.trustAsHtml(contest.contestContent);
-
-	console.log(contest);
+	contest.title = $sce.trustAsHtml(contest.title);
 
 	titleService.setTitle('contest - bidio');
 	$scope.currentUser = config.currentUser;
@@ -36,6 +37,12 @@ angular.module( 'bidio.contest', [
 
 	$scope.updateContest = function(contest){
 		ContestModel.update(contest);
+	}
+
+	console.log(contest, $scope.currentUser);
+
+	$scope.apply = function(){
+		console.log("hi");
 	}
 
 });

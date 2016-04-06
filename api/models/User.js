@@ -18,6 +18,10 @@ module.exports = {
             type: 'boolean',
             defaultsTo: false
         },
+        profile: {
+            collection: 'Profile',
+            via: 'user'
+        },
         passports : { collection: 'Passport', via: 'user' }
     },
 

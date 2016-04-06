@@ -2664,3 +2664,63 @@ article .section-title {
     background-position: center;
   }
 }
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover, .nav-tabs>li>a:hover, .nav-tabs>li>a:focus {
+    border: none;
+    background-color: inherit;
+    color: #FAA93F;
+    cursor: pointer;
+}
+
+.nav-tabs>li>a{
+  color: inherit;
+  border: none;
+}
+
+ul.nav.nav-tabs {
+    border-bottom: none;
+    background-color: #222222;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 15px;
+    color: #9d9d9d;
+    font-family: inherit;
+    font-weight: 700;
+    padding: 5px 0;
+    text-align: center;
+}
+
+.contestVideos{
+  padding-top: 25px;
+}
+
+.zaxbys{
+  background: url(/images/zaxbys.png);
+  background-size: cover;
+  background-position: top center;
+}
+
+.zaxbys-cover{
+  background: rgba(255,255,255,0.85);
+  padding: 200px 0;
+}
+
+.zaxbys-cover h3 {
+  font-size: 50px;
+  line-height: 64px;
+  text-transform: uppercase;
+  float: left;
+  text-align: left;
+  width: 100%;
+  color: #000;
+  font-weight: 300;
+  position: relative;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-bottom: 40px;
+}
+
+.zaxbys-cover strong {
+  font-weight: 700;
+}

@@ -13,6 +13,7 @@ angular.module( 'bidio', [
     'models',
     'ngFileUpload',
     'ngMaterial',
+    'ngAnimate',
     'bidio.home',
     'bidio.about',
     'bidio.account',

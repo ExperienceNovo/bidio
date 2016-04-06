@@ -6,7 +6,7 @@
 	<br><br>
 	
 	<div class="container" ng-repeat="contest in contests">
-		<h2><a href="/contest/{{contest.urlTitle}}">{{contest.title}}</a></h2>
+		<h2><a ng-bind-html="contest.title" href="/contest/{{contest.urlTitle}}"></a></h2>
 		<h4>sponsered by</h4>
 		<h3><a href="/member/{{contest.user.username}}">{{contest.user.username}}</a></h3>
 	</div>

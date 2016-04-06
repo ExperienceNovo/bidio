@@ -21,6 +21,10 @@ module.exports = {
             type: 'string',
             required: true
         },
+        price: {
+            type: 'string',
+            required: true
+        },
         urlTitle: {
             type: 'string',
             required: true,
@@ -33,7 +37,15 @@ module.exports = {
         videos: {
             collection: 'video',
             via: 'contest'
-        }    
+        },
+        prompt: {
+            type: 'string',
+            required: true
+        },
+        intro: {
+            type: 'string',
+            required: true
+        }
     },
 
     afterCreate: function (post, next) {

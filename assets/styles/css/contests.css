@@ -4,6 +4,7 @@
 }
 .contentTitleLetters{
 	color:white;
+    font-weight:700;
 }
 p.contestsInfoText{
 	padding-bottom: 25px;
@@ -28,11 +29,12 @@ button.createContestButton {
     font-weight: 500;
 }
 img.sponsorPic{
-	height: 200px;
-	width: 200px;
-	object-fit: cover;
-	border-radius: 100px;
-	
+	height: 1.25em;
+    padding-top: 5px;
+}
+
+img.sponsorPicLarge{
+    width: 100%;
 }
 .contestContainer {
     padding-top: 50px;
@@ -99,4 +101,26 @@ button.updateContestButton {
 }
 .contestsTitleContainer.submissionsTitleContainer {
     background: #ccc;
+}
+
+.aboutTxt{
+    font-size:18px;
+    line-height:2;
+}
+
+.contest-desc{
+    padding: 15px;
+}
+
+.contest-desc>a, .contest-desc>p{
+    font-size: 24px;
+    font-weight:700;
+}
+
+.contest-desc>p{
+    float: left;
+}
+
+.contest-desc>a{
+    float:right;
 }

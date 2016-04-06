@@ -18,10 +18,13 @@ angular.module( 'bidio.contests', [
 	});
 })
 
-.controller( 'ContestsCtrl', function ContestsCtrl( $scope, config, titleService, ContestModel, contests, $sailsSocket) {
+.controller( 'ContestsCtrl', function ContestsCtrl( $scope, config, titleService, ContestModel, contests, $sailsSocket, $sce) {
 	titleService.setTitle('contests - bidio');
 	$scope.currentUser = config.currentUser;
-	$scope.contests = contests;
+	$scope.contests = contests.map(function(contest){
+		contest.title = $sce.trustAsHtml(contest.title);
+		return contest;
+	});
 
 	$scope.createContest = function(newContest){
 		newContest.user = $scope.currentUser.id;

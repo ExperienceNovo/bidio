@@ -2,56 +2,49 @@
 <div class="surface-container home-pad">
 
 	<div class="contestsTitleContainer">
-		<h1 class="contentTitleLetters">{{contest.title}}</h1>
+		<h2 ng-bind-html="contest.title" class="contentTitleLetters"></h2>
 	</div>
 
-	<div class="container contestContainer">
-
-		<div class="sponsoredByContainer col-md-6 col-lg-6">
-			<p class="sponsorText sponsorTitle" >Sponsored By</p>
-			<a href="member/{{contest.user.username}}"><img class="sponsorPic" src="images/silhouette_orange.jpg"></a>
-			<p>
-				<a class="sponsorName" href="member/{{contest.user.username}}">{{contest.user.username}}</a>
-				on {{contest.createdAt | date: "shortDate"}}
-			</p>
-		</div>
-
-		<div ng-show="currentUser.id == contest.user.id" class="editContestContainer col-md-6 col-lg-6">
-			<p class="sponsorText sponsorTitle editContestTitle">Edit Contest</p>
-			<form ng-submit="updateContest(contest)">
-				<div class="editTitleAndUrl">
-					<div class="updateTitle">
-						<p class="editPropertiesTitle">Update Title</p>
-						<input class="editPropertiesInput" type="text" ng-model="contest.title"/>
+	<tabset active="active">
+    <tab index="0" heading="About">
+			<div class="container contestContainer">
+				<div class="row">
+					<div class="sponsoredByContainer col-md-4 col-lg-3">
+						<p class="sponsorText sponsorTitle" >Sponsored By</p>
+						<a href="member/{{contest.user.username}}"><img class="sponsorPicLarge" ng-src="{{ contest.user.profile.picture }}"></a>
+						<p style="text-align:center;">
+							<a class="sponsorName" href="member/{{contest.user.username}}">{{contest.user.username}}</a>
+							on {{contest.createdAt | date: "shortDate"}}
+						</p>
 					</div>
-					<div class="updateUrl">
-						<p class="editPropertiesTitle">Update URL</p>
-						<input class="editPropertiesInput" type="text" ng-model="contest.urlTitle"/>
+
+					<div class="aboutTxt editContestContainer col-md-8 col-lg-9">
+						<b>About</b>
+						<p class="aboutTxt">{{contest.intro}}</p>
 					</div>
 				</div>
-				<p class="editPropertiesTitle">Update Content</p>
-				<textarea class="editPropertiesInput editProperitesTextArea" ng-model="contest.contestContent"></textarea>
-				<button class="updateContestButton" type="submit">Update Contest</button>
-			</form>
-		</div>
-
-		<div ng-show="currentUser.id != contest.user.id" class="editContestContainer col-md-6 col-lg-6">
-			<h1>{{contest.title}}</h1>
-			<p ng-bind-html="contest.contestContent"></p>
-		</div>
-
-	</div>
-	
-	<div class="contestsTitleContainer submissionsTitleContainer">
-		<h1 class="contentTitleLetters">Submissions</h1>
-	</div>
-		
-	<div class="container">
-		<div class="contestVideos" ng-repeat="video in contest.videos">
-			<h1>{{video.title}}</h1>
-			<video src={{video.amazonUrl}} class="video-js vjs-default-skin" controls preload="auto" width="640" height="264" vjs-video>
-			</video>
-		</div>
-	</div>
+				<p ng-bind-html="contest.contestContent"></p>
+			</div>
+  	</tab>
+    <tab index="1" heading="Submissions">	
+			<div class="container">
+				<div class="row clearfix">
+					<div class="contestVideos col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-repeat="video in contest.videos">
+						<h2><a ui-sref="video({id: video.id})">{{video.title}}</a></h2>
+						<h3>By <b>{{video.user.username}}</b> on {{video.createdAt | date: "shortDate"}}</h3>
+						<br>
+						<video style="margin:auto" src={{video.amazonUrl}} class="video-js vjs-default-skin" controls preload="auto" width="500" height="205" vjs-video>
+						</video>
+					</div>
+				</div>
+			</div>
+    </tab>
+    <li>
+    	<a ng-click="apply()">Submit a video</a>
+    </li>
+    <li ng-show="currentUser.id == contest.user.id">
+    	<a href="#">Edit</a>
+    </li>
+  </tabset>
 
 </div>

@@ -8,7 +8,15 @@
 module.exports = {
 
   attributes: {
-
+  	picture: {
+  		type: "string",
+  		defaultsTo: "/images/silhouette_orange.jpg"
+  	},
+  	user: {
+  		model: "user",
+  		required: true,
+  		unique: true
+  	}
   }
 };
 

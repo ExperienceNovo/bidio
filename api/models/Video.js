@@ -51,6 +51,7 @@ module.exports = {
     getOne: function(id) {
         return Video.findOne(id)
         .populate('user')
+        .populate('contest')
         .then(function (model) {
             return [model];
         });

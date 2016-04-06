@@ -23,15 +23,20 @@ angular.module( 'bidio.video', [
 })
 
 .controller( 'VideoCtrl', function VideoCtrl( $scope, titleService, video, $location, $sce, bids ) {
+
+	if (video.contest){
+		video.contest.title = $sce.trustAsHtml(video.contest.title)
+	}
+
 	$scope.video = video;
 	if(typeof($scope.video)=="undefined"){$location.path('/')}
 	$scope.bids = bids;
 	titleService.setTitle(video.title + ' - bidio');
-	$scope.video = video;
 
 	$scope.viewCount = Math.floor(Math.random() * (10000 - 100 + 1)) + 100;
 	$scope.bidPerView = Math.floor(Math.random() * (100 - 1 + 1)) + 1;
 
+	console.log(video);
 
 	$scope.createBid = function(){
 
