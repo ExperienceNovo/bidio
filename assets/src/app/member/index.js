@@ -21,5 +21,5 @@ angular.module( 'bidio.member', [
 
 .controller( 'MemberCtrl', function MemberCtrl( $scope, member ) {
 	$scope.member = member;
-	console.log(member);
+	if(typeof($scope.member)=="undefined"){$location.path('/')}
 });

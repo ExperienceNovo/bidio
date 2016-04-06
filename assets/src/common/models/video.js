@@ -5,7 +5,7 @@ angular.module('models.video', ['lodash', 'services', 'sails.io',])
         var url = utils.prepareUrl('video');
         return $sailsSocket.get(url).then(success, error);
     };
-	
+
     this.getMine = function(){
         var url = utils.prepareUrl('video/me');
         return $sailsSocket.get(url).then(success,error);
@@ -15,7 +15,7 @@ angular.module('models.video', ['lodash', 'services', 'sails.io',])
         var url = utils.prepareUrl('video/url/' + model);
         return $sailsSocket.get(url).then(success, error);
     };*/
-	
+
 	this.getOne = function(model){
 		var url = utils.prepareUrl('video/' + model);
 		return $sailsSocket.get(url).then(success, error);
@@ -43,6 +43,5 @@ angular.module('models.video', ['lodash', 'services', 'sails.io',])
     var error = function(error) {
         console.log(error);
     };
-	
 	
 });

@@ -9,9 +9,9 @@
 
 		<div class="sponsoredByContainer col-md-6 col-lg-6">
 			<p class="sponsorText sponsorTitle" >Sponsored By</p>
-			<a href="/api/user/{{contest.user.id}}"><img class="sponsorPic" src="images/silhouette_orange.jpg"></a>
+			<a href="member/{{contest.user.username}}"><img class="sponsorPic" src="images/silhouette_orange.jpg"></a>
 			<p>
-				<a class="sponsorName" href="/api/user/{{contest.user.id}}">{{contest.user.username}}</a>
+				<a class="sponsorName" href="member/{{contest.user.username}}">{{contest.user.username}}</a>
 				on {{contest.createdAt | date: "shortDate"}}
 			</p>
 		</div>
