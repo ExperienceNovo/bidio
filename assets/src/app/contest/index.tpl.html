@@ -2,20 +2,50 @@
 <div class="surface-container home-pad">
 
 	<div class="contestsTitleContainer">
-		<h1 class="contentTitleLetters">{{contest.title}}</h1>
+		<h2 class="contentTitleLetters"><img class="sponsorPic" src="images/zaxbys2.png"> {{contest.title2}}</h2>
 	</div>
 
 	<div class="container contestContainer">
+		<div class="row">
+			<div class="sponsoredByContainer col-md-6 col-lg-6">
+				<h2 style="font-weight: bold;">Contest Description</h2>
+				<br>
+				<p style="font-size: 17px;">Zaxby's welcomes kids ages 7-15 to submit video tryouts for the Carolina RailHawks soccer team summer program! Advertising revenue from winning videos will go directly to funding the cost of the program.</p>
+				<!--<a href="/api/user/{{contest.user.id}}">Sponsored By 
+					<br>
+					<img class="sponsorPic" src="images/zaxbys2.png"></a>-->
 
-		<div class="sponsoredByContainer col-md-6 col-lg-6">
-			<p class="sponsorText sponsorTitle" >Sponsored By</p>
-			<a href="/api/user/{{contest.user.id}}"><img class="sponsorPic" src="images/silhouette_orange.jpg"></a>
-			<p>
-				<a class="sponsorName" href="/api/user/{{contest.user.id}}">{{contest.user.username}}</a>
-				on {{contest.createdAt | date: "shortDate"}}
-			</p>
+				<!--<p>
+						<a class="sponsorName" href="/api/user/{{contest.user.id}}">{{contest.user.username}}</a>
+						on {{contest.createdAt | date: "shortDate"}}
+					</p>-->
+			</div>			
+			<div class="sponsoredByContainer col-md-6 col-lg-6">
+				<h2 style="font-weight: bold;">Contest Info</h2>
+				<br>
+				<ul style="list-style-type:disc;display:table;margin:0 auto;font-size: 18px;text-align: left;">
+				  <li>Ages 7-15</li>
+				  <li>Video must show soccer ability in a fun way!</li>
+				</ul> 
+				<!--<a href="/api/user/{{contest.user.id}}">Sponsored By 
+					<br>
+					<img class="sponsorPic" src="images/zaxbys2.png"></a>-->
+
+				<!--<p>
+						<a class="sponsorName" href="/api/user/{{contest.user.id}}">{{contest.user.username}}</a>
+						on {{contest.createdAt | date: "shortDate"}}
+					</p>-->
+			</div>
 		</div>
-
+		<div class="row">
+			<div class="col-md-12">
+				<div style="text-align: center;margin-top: 50px;">
+					<div style="display: inline-block;">
+						<a href="" class="btn anim-button fl-l"><span>Submit Video!</span><i class="fa fa-long-arrow-right"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div ng-show="currentUser.id == contest.user.id" class="editContestContainer col-md-6 col-lg-6">
 			<p class="sponsorText sponsorTitle editContestTitle">Edit Contest</p>
 			<form ng-submit="updateContest(contest)">
@@ -34,25 +64,42 @@
 				<button class="updateContestButton" type="submit">Update Contest</button>
 			</form>
 		</div>
-
-		<div ng-show="currentUser.id != contest.user.id" class="editContestContainer col-md-6 col-lg-6">
+	<!--<div ng-show="currentUser.id != contest.user.id" class="editContestContainer col-md-6 col-lg-6">
 			<h1>{{contest.title}}</h1>
 			<p ng-bind-html="contest.contestContent"></p>
-		</div>
-
+		</div>-->
 	</div>
 	
 	<div class="contestsTitleContainer submissionsTitleContainer">
 		<h1 class="contentTitleLetters">Submissions</h1>
 	</div>
 		
-	<div class="container">
-		<div class="contestVideos" ng-repeat="video in contest.videos">
-			<h1>{{video.title}}</h1>
-			<video class="video-js vjs-default-skin" controls preload="auto" width="640" height="264" vjs-video>
-				<source src="videos/video.mp4" type="video/mp4">
+	<div class="container" style="margin-top: 275px;margin-bottom: 50px;">
+		<div class="col-md-4">
+			<video width="400" controls style="padding: 10px;">
+			  <source src="videos/video.mp4" type="video/mp4">
+			</video>
+		</div>		
+		<div class="col-md-4">
+			<video width="400" controls style="padding: 10px;">
+			  <source src="videos/video.mp4" type="video/mp4">
+			</video>
+		</div>		
+		<div class="col-md-4">
+			<video width="400" controls style="padding: 10px;">
+			  <source src="videos/video.mp4" type="video/mp4">
 			</video>
 		</div>
+
+
+	<!--<div class="contestVideos" ng-repeat="video in contest.videos">
+			<div class="col-md-4">
+				<h1>{{video.title}}</h1>
+				<video class="video-js vjs-default-skin" controls preload="auto" width="640" height="264" vjs-video>
+					<source src="videos/video.mp4" type="video/mp4">
+				</video>
+			</div>
+		</div>-->
 	</div>
 
 </div>

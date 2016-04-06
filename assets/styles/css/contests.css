@@ -4,6 +4,7 @@
 }
 .contentTitleLetters{
 	color:white;
+    font-weight: bold;
 }
 p.contestsInfoText{
 	padding-bottom: 25px;
@@ -28,10 +29,8 @@ button.createContestButton {
     font-weight: 500;
 }
 img.sponsorPic{
-	height: 200px;
-	width: 200px;
-	object-fit: cover;
-	border-radius: 100px;
+    height: 1.25em;
+    padding-top: 5px;
 	
 }
 .contestContainer {
@@ -98,5 +97,5 @@ button.updateContestButton {
     font-weight: 500;
 }
 .contestsTitleContainer.submissionsTitleContainer {
-    background: #ccc;
+    background: #444;
 }

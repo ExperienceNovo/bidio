@@ -17,8 +17,9 @@ var contests = Array.apply(null,Array(9)).map(function(a,i){
 contests.unshift({
 	id: 1,
 	title: "Zaxby's",
-	contestContent: "Zaxby'x Contest",
-	urlTitle: "zaxbys",
+	title2: "Sponsors Carolina RailHawks Youth Programs",
+	contestContent: "Sponsoring the Carolina RailHawks Youth Program",
+	urlTitle: "zaxbys-railhawks",
 	user: 1
 });
 
