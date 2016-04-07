@@ -37,6 +37,18 @@ module.exports = {
 			})
 	},
 
+	getByMember: function(req, res) {
+		Video.find()
+		.where({user:req.param('id')})
+		.then(function(model) {
+			Contest.subscribe(req, model);
+			res.json(model);
+		})
+		.catch(function(err) {
+			res.send(404);
+		});
+	},
+
 	getSome: function(req, res) {
 		var limit = req.param('limit');
 		var skip = req.param('skip');

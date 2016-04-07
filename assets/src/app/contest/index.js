@@ -40,7 +40,12 @@ angular.module( 'bidio.contest', [
 	}
 
 	$scope.apply = function(){
-		console.log("hi");
+		if ($scope.currentUser){
+			console.log("hi");
+		}
+		else{
+			
+		}
 	}
 
 });

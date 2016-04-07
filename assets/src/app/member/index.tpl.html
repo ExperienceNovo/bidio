@@ -1,6 +1,19 @@
 <div class="contestsTitleContainer">
 	<h1 class="contentTitleLetters">{{member.username}}</h1>
 </div>
-<h2>information</h2>
-<h2>videos</h2>
-<h2>contests</h2>
+<h2>information</h2><hr>
+<br><br>
+
+<h2>videos</h2><hr>
+<div class="video-list" ng-repeat="video in videos">
+	<h2><a href="/video/{{video.id}}">{{video.title}}</a></h2>
+</div>
+<hr>
+<br><br>
+
+<h2>contests</h2><hr>
+<div class="contest-list" ng-repeat="contest in contests">
+	<h2><a href="/contest/{{contest.urlTitle}}">{{contest.title}}</a></h2>
+	<p>{{contest.intro}}</p>
+</div>
+<hr>
