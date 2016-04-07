@@ -1,7 +1,7 @@
 /**
- * Production environment settings
+ * Development environment settings
  *
- * This file can include shared settings for a production environment,
+ * This file can include shared settings for a development team,
  * such as API keys or remote database passwords.  If you're using
  * a version control solution for your Sails app, this file will
  * be committed to your repository unless you add it to your .gitignore
@@ -12,41 +12,28 @@
 
 module.exports = {
 
-  hookTimeout: 10000000,
-
-
   /***************************************************************************
-   * Set the default database connection for models in the production        *
+   * Set the default database connection for models in the development       *
    * environment (see config/connections.js and config/models.js )           *
    ***************************************************************************/
 
   // models: {
-  //   connection: 'someMysqlServer'
-  // },
+  //   connection: 'someMongodbServer'
+  // }
 
-  /***************************************************************************
-   * Set the port in the production environment to 80                        *
-   ***************************************************************************/
-
-  // port: 80,
-
-  /***************************************************************************
-   * Set the log level in production environment to "silent"                 *
-   ***************************************************************************/
-
-  // log: {
-  //   level: "silent"
-  // },
-
-  session: {
-    adapter: 'mongo',
-    url: 'mongodb://heroku_wds9j5tq:i54cta42llqeu518u7s5o6gnl4@ds011790.mlab.com:11790/heroku_wds9j5tq',
-    collection: 'sessions'
+  orm: {
+  	_hookTimeout: 60000
   },
+
+  seed: {
+    seed: {
+      active: false
+    }
+  }
 
   models: {
     connection: 'productionMongoHqDb',
-    migrate: 'drop'
+    migrate: 'safe'
   }
 
 };

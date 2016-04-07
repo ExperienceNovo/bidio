@@ -1,7 +1,14 @@
+
+var globals = require("./globals.js");
+
 module.exports = [{
-	user: 1,
-	//id: 1,
-	//_id: 1,
+	
+	user: globals.users[0],
+	
+	id: globals.passports[0],
+	
 	password: "test1234",
+	
 	protocol: "local"
+	
 }]

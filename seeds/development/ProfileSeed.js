@@ -1,13 +1,19 @@
 var faker = require("faker");
 var globals = require("./globals.js");
 
-var profiles = Array.apply(null,Array(globals.users - 1)).map(function(a,i){
-	return {user: i + 2};
-})
+var profiles = globals.profiles.slice(1).map(function(id,i){
+
+	i = i + 1
+
+	return {
+		user: globals.users[i]
+	};
+
+});
 
 profiles.unshift({
 	picture: "images/zaxbys.png",
-	user: 1
-})
+	user: globals.users[0]
+});
 
 module.exports = profiles;

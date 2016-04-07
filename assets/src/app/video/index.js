@@ -13,26 +13,7 @@ angular.module( 'bidio.video', [
 		},
 		resolve: {
 			video: function(VideoModel, $stateParams){
-				//return VideoModel.getOne($stateParams.id);
-				return {
-					id: 1,
-					title: "Michael's soccer tryout",
-					urlTitle: "michaels-soccer-tryout",
-					amazonUrl: "/videos/" + "michaels-soccer-tryout",
-					description: "Checkout my vid",
-					user: {
-						id: 2,
-						username: "Michael",
-						profile: {
-							picture: "/images/silhouette_orange.jpg"
-						}
-					},
-					contest: {
-						title: "<img class='sponsorPic' src='/images/zaxbys2.png'/> Sponsors Railhawks Tryouts",
-						urlTitle: "zaxbys-railhawks",
-						prompt: "Buy tickets to support future champions"
-					}
-				}
+				return VideoModel.getOne($stateParams.id);
 			},
 			bids: function(video){
 				return video;

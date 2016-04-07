@@ -26,8 +26,8 @@ module.exports = {
   },
 
   models: {
-    connection: 'productionMongoHqDb',
-    migrate: 'safe'
+    connection: 'localDiskDb',
+    migrate: 'drop'
   }
 
 };

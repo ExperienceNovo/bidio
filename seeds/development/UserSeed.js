@@ -1,10 +1,9 @@
 var faker = require("faker");
 var globals = require("./globals.js");
 
-var users = Array.apply(null, Array(globals.users - 1)).map(function(a,i){
+var users = globals.users.slice(1).map(function(id,i){
 	return {
-		//id: i + 2,
-		//_id: i + 2,
+		id: id,
 		username: faker.internet.userName(),
 		email: faker.internet.email()
 	}
@@ -14,8 +13,7 @@ users.unshift({
 	email: "test@test.com",
 	username: "Zaxby's",
 	isAdmin: true,
-	//id: 1,
-	//_id: 1
+	id: globals.users[0]
 });
 
 module.exports = users;

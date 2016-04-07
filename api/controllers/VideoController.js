@@ -14,10 +14,11 @@ module.exports = {
 		.spread(function(models) {
 			Video.watch(req);
 			Video.subscribe(req, models);
-			res.json(models);
+			return res.json(models);
 		})
 		.fail(function(err) {
-			// An error occured
+			console.log(err);
+			return res.negotiate(err);
 		});
 	},
 
