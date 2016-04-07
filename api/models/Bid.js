@@ -19,10 +19,6 @@ module.exports = {
         user: {
             model: 'user',
             required: true,
-        },
-        date: {
-            type: 'string',
-            required: true,
         }
     },
 

@@ -81,6 +81,17 @@ module.exports.routes = {
   'post /api/post': 'PostController.create',
   'delete /api/post/:id': 'PostController.destroy',
 
+
+  /**
+   * Bid routes
+   */
+  'get /api/bid/:id': 'BidController.getOne',
+  'get /api/bid/me': 'BidController.getMine',
+  'get /api/bid/video/:id': 'BidController.getByVideo',
+  'post /api/bid': 'BidController.create',
+  'delete /api/bid/:id': 'BidController.destroy',
+
+
   /**
   *	Contest Routes
   */

@@ -15,14 +15,14 @@ angular.module( 'bidio.video', [
 			video: function(VideoModel, $stateParams){
 				return VideoModel.getOne($stateParams.id);
 			},
-			bids: function(video){
-				return video;
+			bids: function(BidModel, video){
+				return BidModel.getByVideo(video);
 			}
 		}
 	});
 })
 
-.controller( 'VideoCtrl', function VideoCtrl( $scope, titleService, video, $location, $sce, bids ) {
+.controller( 'VideoCtrl', function VideoCtrl( $scope, config titleService, video, $location, $sce, bids, BidModel ) {
 
 	if (video.contest){
 		video.contest.title = $sce.trustAsHtml(video.contest.title)
@@ -32,14 +32,15 @@ angular.module( 'bidio.video', [
 	if(typeof($scope.video)=="undefined"){$location.path('/')}
 	$scope.bids = bids;
 	titleService.setTitle(video.title + ' - bidio');
-
 	$scope.viewCount = Math.floor(Math.random() * (10000 - 100 + 1)) + 100;
 	$scope.bidPerView = Math.floor(Math.random() * (100 - 1 + 1)) + 1;
 
-	console.log(video);
 
-	$scope.createBid = function(){
+	$scope.createBid = function(newBid){
 
+		$scope.newBid.user = $scope.config.currentUser;
+		$scope.newBid.video = video.id;
+		BidModel.create($scope.newBid);
 	};
 
 });
