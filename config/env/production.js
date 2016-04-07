@@ -29,7 +29,7 @@ module.exports = {
     seed: {
       active: false
     }
-  }
+  },
 
   models: {
     connection: 'productionMongoHqDb',
