@@ -7,14 +7,19 @@ angular.module('models.bid', ['lodash', 'services', 'sails.io',])
         return $sailsSocket.post(url, newModel).then(success, error);
     };
 
+    this.getByMember = function(model) {
+        var url = utils.prepareUrl('bid/member/' + model);
+        return $sailsSocket.get(url).then(success, error);
+    };
+
     this.getByVideo = function(model) {
         var url = utils.prepareUrl('bid/video/' + model.id);
-        return $sailsSocket.delete(url).then(success, error);
+        return $sailsSocket.get(url).then(success, error);
     };
 
     this.getMine = function(model) {
         var url = utils.prepareUrl('bid/me/' + model.id);
-        return $sailsSocket.delete(url).then(success, error);
+        return $sailsSocket.get(url).then(success, error);
     };
 
     this.delete = function(model) {

@@ -47,13 +47,30 @@ module.exports = {
 		});
 	},
 
+	getByMember: function(req, res) {
+		Bid.find()
+		.populate('video')
+		.where({user:req.param('id')})
+		.then(function(model) {
+			Bid.watch(req);
+			Bid.subscribe(req, model);
+			res.json(model);
+			console.log(model)
+		})
+		.catch(function(err) {
+			res.send(404);
+		});
+	},
+
 	getByVideo: function(req, res) {
 		Bid.find()
+		.populate('user')
 		.where({video:req.param('id')})
 		.then(function(model) {
 			Bid.watch(req);
 			Bid.subscribe(req, model);
 			res.json(model);
+			console.log(model)
 		})
 		.catch(function(err) {
 			res.send(404);
@@ -67,6 +84,8 @@ module.exports = {
 			video: req.param('video'),
 			user: req.param('user'),
 		};
+
+		console.log(model)
 
 		Bid.create(model)
 		.exec(function(err, bid) {

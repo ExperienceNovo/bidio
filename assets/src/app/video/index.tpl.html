@@ -36,4 +36,26 @@
 			<h3><a href="#">share</a></h3>
 		</div>
 	</div>	
+
+	<div class="row" ng-show="currentUser">
+		<h2>new bid</h2>
+		<md-input-container>
+			<label>Bid </label>
+			<textarea ng-model="newBid.value" rows="4"></textarea>
+		</md-input-container>
+		<md-button ng-click="createBid(newBid)">Submit</md-button>
+	</div>
+
+	<div class="row">
+		<div ng-repeat="bid in bids">
+			<h3>{{bid.value}}</h3>
+			<h3><a href="/member/{{bid.user.username}}">{{bid.user.username}}</a></h3>
+			<h3>{{bid.createdAt}}</h3>
+		</div>
+	</div>
+
+
 </div>
+
+<div ng-include="'footer/index.tpl.html'"></div>
+

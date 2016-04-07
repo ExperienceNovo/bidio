@@ -22,12 +22,12 @@ angular.module( 'bidio.video', [
 	});
 })
 
-.controller( 'VideoCtrl', function VideoCtrl( $scope, config titleService, video, $location, $sce, bids, BidModel ) {
+.controller( 'VideoCtrl', function VideoCtrl( $scope, config, titleService, $sailsSocket, video, $location, $sce, bids, BidModel ) {
 
+	$scope.currentUser = config.currentUser;
 	if (video.contest){
 		video.contest.title = $sce.trustAsHtml(video.contest.title)
 	}
-
 	$scope.video = video;
 	if(typeof($scope.video)=="undefined"){$location.path('/')}
 	$scope.bids = bids;
@@ -37,10 +37,23 @@ angular.module( 'bidio.video', [
 
 
 	$scope.createBid = function(newBid){
-
-		$scope.newBid.user = $scope.config.currentUser;
-		$scope.newBid.video = video.id;
-		BidModel.create($scope.newBid);
+		if($scope.currentUser){
+			$scope.newBid.user = $scope.currentUser.id;
+			$scope.newBid.video = video.id;
+			console.log($scope.newBid)
+			BidModel.create($scope.newBid);
+		}
 	};
+
+	$sailsSocket.subscribe('bid', function (envelope) {
+        switch(envelope.verb) {
+            case 'created':
+                $scope.bids.unshift(envelope.data);
+                break;
+            case 'destroyed':
+                lodash.remove($scope.bids, {id: envelope.id});
+                break;
+        }
+    });
 
 });

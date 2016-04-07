@@ -87,6 +87,7 @@ module.exports.routes = {
    */
   'get /api/bid/:id': 'BidController.getOne',
   'get /api/bid/me': 'BidController.getMine',
+  'get /api/bid/member/:id': 'BidController.getByMember',
   'get /api/bid/video/:id': 'BidController.getByVideo',
   'post /api/bid': 'BidController.create',
   'delete /api/bid/:id': 'BidController.destroy',

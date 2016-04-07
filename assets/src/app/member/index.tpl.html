@@ -17,3 +17,10 @@
 	<p>{{contest.intro}}</p>
 </div>
 <hr>
+
+<h2>bids</h2><hr>
+<div class="contest-list" ng-repeat="bid in bids">
+	<h2>{{bid.value}}</h2>
+	<h2><a href="/video/{{bid.video.id}}">{{bid.video.title}}</a></h2>
+</div>
+<hr>
