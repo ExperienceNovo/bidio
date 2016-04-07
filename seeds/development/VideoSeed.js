@@ -6,7 +6,8 @@ var videos = Array.apply(null,Array(globals.videos * globals.users * globals.con
 	var title = faker.lorem.words();
 
 	return {
-		id: i + 1,
+		//id: i + 1,
+		//_id: i+1,
 		title: title,
 		urlTitle: title.split(" ").join("-"),
 		amazonUrl: sails.getBaseUrl() + "/videos/" + title.split(" ").join("-"),

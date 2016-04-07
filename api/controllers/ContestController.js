@@ -53,7 +53,10 @@ module.exports = {
 		.populate('user')
 		.populate('videos')
 		.then(function(contest){
-			return [contest, Profile.findOne({user: contest.user.id})]
+
+			console.log(contest);
+
+			return [contest, Profile.findOne({user: contest.user.id || contest.user._id})]
 		})
 		.spread(function(contest,profile){
 			if (!profile){

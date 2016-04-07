@@ -22,7 +22,7 @@ module.exports = {
 	},
 
 	getMine: function(req,res){
-		var me = req.user.id;
+		var me = req.user.id || req.user._id;
 
 		Video.find({user: me})
 			.then(function(models){
