@@ -44,18 +44,14 @@ module.exports.routes = {
   'get /creator/:path': 'HomeController.index',
   'get /dashboard': 'HomeController.index',
   'get /dashboard/:path': 'HomeController.index',
-
-
+  'get /discover': 'HomeController.index',
   'get /login': 'HomeController.index',
   'get /logout': 'AuthController.logout',
-
   'get /member/:path': 'HomeController.index',
-
   'get /register': 'HomeController.index',
-
   'get /search': 'HomeController.index',
-  'get /sponsors': 'HomeController.index',
   'get /search/:path': 'HomeController.index',
+  'get /sponsors': 'HomeController.index',
   'get /upload': 'HomeController.index',
   'get /video/:id': 'HomeController.index',
 
