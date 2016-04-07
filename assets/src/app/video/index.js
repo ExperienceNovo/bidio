@@ -31,6 +31,7 @@ angular.module( 'bidio.video', [
 	$scope.video = video;
 	if(typeof($scope.video)=="undefined"){$location.path('/')}
 	$scope.bids = bids;
+	$scope.highestBid = bids[0]
 	titleService.setTitle(video.title + ' - bidio');
 	$scope.viewCount = Math.floor(Math.random() * (10000 - 100 + 1)) + 100;
 	$scope.bidPerView = Math.floor(Math.random() * (100 - 1 + 1)) + 1;

@@ -8,6 +8,9 @@
 module.exports = {
 
 	attributes: {
+        clickThoughCount: {
+            type: 'string'
+        },
         value: {
             type: 'string',
             required: true,

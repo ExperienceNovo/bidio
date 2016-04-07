@@ -29,6 +29,7 @@
 			<p><b>User</b>: <a href="member/{{video.user.username}}">{{video.user.username}}</a></p>
 			<p><b>Viewcount</b>: {{viewCount}}</p>
 			<p ng-show="video.contest"><b>$/click</b>: ${{video.contest.price | number: 2 }}</h3>
+			<p><b>bid: $/click</b>: ${{highestBid.value}}
 		</div>
 		<div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
 			<b>About</b>
