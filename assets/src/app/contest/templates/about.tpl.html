@@ -3,29 +3,32 @@
 		<div class="sponsoredByContainer col-md-4 col-lg-3">
 			<p class="sponsorText sponsorTitle" style="display:block!important" >Sponsored By</p>
 			<a ui-sref='contest.main({path: contest.urlTitle})'><img class="sponsorPicLarge" ng-src="{{ contest.user.profile.picture }}"></a>
-			<p style="text-align:center;">
+		<!--<p style="text-align:center;">
 				<a class="sponsorName" ui-sref='member({path: contest.user.username})'>{{contest.user.username}}</a>
 				on {{contest.createdAt | date: "shortDate"}}
-			</p>
+			</p>-->
 		</div>
 		<h2 style="font-weight:bold;text-align:right">About</h2>
 		<br>
 		<div class="aboutTxt editContestContainer col-md-8 col-lg-9">
 			<p>{{contest.intro}}</p>
+			<div class="spacing-50"></div>
+			<div class="contest-submit">
+				<a class="btn anim-button fl-l" ng-click="apply()">Submit a video</a>
+			</div>
 		</div>
 		<br>
+	    <li ng-show="currentUser.id == contest.user.id">
+	    	<a href="#">Edit</a>
+	    </li>
+		<br>
 		<h2 style="font-weight:bold;">Submissions</h2>
+		<div class="spacing-25"></div>
 		<div class="contestVideos col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-repeat="video in contest.videos">
-			<h2><a ui-sref="video({id: video.id})">{{video.title}}</a></h2>
+			<h2 style="font-size: 2.5em;margin-bottom: 15px;"><a ui-sref="video({id: video.id})">{{video.title}}</a></h2>
 			<h3>By <b>{{video.user.username}}</b> on {{video.createdAt | date: "shortDate"}}</h3>
 			<br>
 			<video style="margin:auto" src={{video.amazonUrl}} class="video-js vjs-default-skin" controls preload="auto" width="500" height="205" vjs-video></video>
 		</div>
-	<!--<li>
-	    	<a ng-click="apply()">Submit a video</a>
-	    </li>
-	    <li ng-show="currentUser.id == contest.user.id">
-	    	<a href="#">Edit</a>
-	    </li>-->
 	</div>
 </div>
