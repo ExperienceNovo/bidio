@@ -16,6 +16,10 @@
 				</div>
 			</div>
 	</div>
+	<h1 class="text-center">Submissions</h1>
+	<div class="text-center clearfix">
+		<button class="btn btn-default" ng-click="apply()"><i class="fa fa-plus"></i> Submit video</button>
+	</div>
 	<div class="row clearfix">
 		<div class="contestVideos col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-repeat="video in contest.videos">
 			<h2><a ui-sref="video({id: video.id})">{{video.title}}</a></h2>
@@ -23,18 +27,6 @@
 			<br>
 			<video style="margin:auto" src={{video.amazonUrl}} class="video-js vjs-default-skin" controls preload="auto" width="500" height="205" vjs-video>
 			</video>
-		</div>
-
-		<div class="container">
-			<div class="row clearfix">
-				<div class="contestVideos col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-repeat="video in contest.videos">
-					<h2><a ui-sref="video({id: video.id})">{{video.title}}</a></h2>
-					<h3>By <b>{{video.user.username}}</b> on {{video.createdAt | date: "shortDate"}}</h3>
-					<br>
-					<video style="margin:auto" src={{video.amazonUrl}} class="video-js vjs-default-skin" controls preload="auto" width="500" height="205" vjs-video>
-					</video>
-				</div>	
-			</div>
 		</div>
 </div>
 

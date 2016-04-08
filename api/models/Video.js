@@ -37,6 +37,10 @@ module.exports = {
         },
         contest: {
             model: 'contest'
+        },
+        approved: {
+            type: 'boolean',
+            defaultsTo: false
         }
     },
 

@@ -161,6 +161,7 @@ angular.module( 'bidio.dashboard', [
 })
 
 .controller('DashboardContestsCtrl', function ($scope, contests, ContestModel, $mdDialog) {
+    
     $scope.contests = contests;
 
     $scope.addContest = function(ev){

@@ -21,7 +21,7 @@
 		<div ng-repeat="contest in contests">
 			<md-divider/>
 			<md-list-item layout="row">
-				<div flex="50"><a ui-sref="contest({path: contest.urlTitle})" class="md-primary">{{contest.title}}</a></div>
+				<div flex="50"><a ui-sref="contest.about({path: contest.urlTitle})" class="md-primary">{{contest.title}}</a></div>
 				<div flex="15">{{contest.createdAt | date : "short"}}</div>
 				<div flex="15">{{contest.updatedAt | date : "short"}}</div>
 				<div flex="10"><md-icon>mode_edit</md-icon></div>

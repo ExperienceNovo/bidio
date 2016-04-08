@@ -40,6 +40,7 @@ module.exports.routes = {
   'get /account': 'HomeController.index',
   'get /contests': 'HomeController.index',
   'get /contest/:path': 'HomeController.index',
+  'get /contest/:path/:path': 'HomeController.index',
   'get /creators': 'HomeController.index',
   'get /creator/:path': 'HomeController.index',
   'get /dashboard': 'HomeController.index',
