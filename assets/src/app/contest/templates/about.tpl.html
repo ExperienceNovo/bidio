@@ -6,7 +6,7 @@
 						<p class="sponsorText sponsorTitle" >Sponsored By</p>
 						<a ui-sref="contest({path: contest.urlTitle})"><img class="sponsorPicLarge" ng-src="{{ contest.user.profile.picture }}"></a>
 						<p style="text-align:center;">
-							<a class="sponsorName" href="member/{{contest.user.username}}">{{contest.user.username}}</a>
+							<a class="sponsorName" ui-sref="member({path: contest.user.username})">{{contest.user.username}}</a>
 							on {{contest.createdAt | date: "shortDate"}}
 						</p>
 					</div>
