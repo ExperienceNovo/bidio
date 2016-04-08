@@ -5,44 +5,12 @@
 	</div>
 </div>
 <tabset active="active" class="contest-tabs">
-    <tab index="0" heading="Contests" ui-sref="contest.about">
-		<div class="container contestContainer">
-			<div class="row">
-				<div class="sponsoredByContainer col-md-4 col-lg-3">
-					<p class="sponsorText sponsorTitle" style="display:block!important" >Sponsored By</p>
-					<a href="member/{{contest.user.username}}"><img class="sponsorPicLarge" ng-src="{{ contest.user.profile.picture }}"></a>
-					<p style="text-align:center;">
-						<a class="sponsorName" href="member/{{contest.user.username}}">{{contest.user.username}}</a>
-						on {{contest.createdAt | date: "shortDate"}}
-					</p>
-				</div>
-				<h2 style="font-weight:bold;text-align:right">About</h2>
-				<br>
-				<div class="aboutTxt editContestContainer col-md-8 col-lg-9">
-					<p>{{contest.intro}}</p>
-				</div>
-				<br>
-				<h2 style="font-weight:bold;">Submissions</h2>
-				<div class="contestVideos col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-repeat="video in contest.videos">
-					<h2><a ui-sref="video({id: video.id})">{{video.title}}</a></h2>
-					<h3>By <b>{{video.user.username}}</b> on {{video.createdAt | date: "shortDate"}}</h3>
-					<br>
-					<video style="margin:auto" src={{video.amazonUrl}} class="video-js vjs-default-skin" controls preload="auto" width="500" height="205" vjs-video></video>
-				</div>
-			<!--<li>
-			    	<a ng-click="apply()">Submit a video</a>
-			    </li>
-			    <li ng-show="currentUser.id == contest.user.id">
-			    	<a href="#">Edit</a>
-			    </li>-->
-			</div>
-		</div>
-  	</tab>
-    <tab index="1" heading="Sponsor" ui-sref="contest.main">	
-		<div class="container">
-			<div class="row clearfix">
-
-			</div>
-		</div>
-    </tab>
+		<li>
+			<a ui-sref="contest.about({path: contest.urlTitle})">Contest</a>
+		</li>
+		<li>
+			<a ui-sref="contest.main({path: contest.urlTitle})">Sponsor</a>
+		</li>
 </tabset>
+
+<div ui-view></div>
