@@ -125,3 +125,8 @@ button.updateContestButton {
 .contest-desc>a{
     float:right;
 }
+
+.contest-tabs li {
+    float: none;
+    display: inline-block;
+}
