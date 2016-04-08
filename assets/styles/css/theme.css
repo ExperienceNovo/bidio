@@ -347,6 +347,11 @@ form[role=search] .form-group {
   background: #fff;
 }
 
+.video-container {
+  max-width: 50%;
+  margin:0 auto;
+}
+
 .intro-sec {
   width: 100%;
   position: relative;
