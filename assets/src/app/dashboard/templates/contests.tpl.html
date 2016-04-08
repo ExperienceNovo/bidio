@@ -24,7 +24,7 @@
 				<div flex="50"><a ui-sref="contest.about({path: contest.urlTitle})" class="md-primary">{{contest.title}}</a></div>
 				<div flex="15">{{contest.createdAt | date : "short"}}</div>
 				<div flex="15">{{contest.updatedAt | date : "short"}}</div>
-				<div flex="10"><md-icon>mode_edit</md-icon></div>
+				<div flex="10"><a ui-sref="dashboard.contests.edit({id: contest.id})"><md-icon>mode_edit</md-icon></a></div>
 				<div flex="10"><md-button class="md-icon-button" ng-click="delete(user.id)"><md-icon>delete</md-icon></md-button></div>
 			</md-list-item>
 		</div>
