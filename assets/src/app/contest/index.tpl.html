@@ -6,7 +6,10 @@
 	</div>
 
 	<tabset active="active">
-    <tab index="0" heading="About">
+		<tab heading="Main">
+			<p ng-bind-html="contest.contestContent"></p>
+		</tab>
+    <tab index="1" heading="About">
 			<div class="container contestContainer">
 				<div class="row">
 					<div class="sponsoredByContainer col-md-4 col-lg-3">
@@ -23,10 +26,9 @@
 						<p class="aboutTxt">{{contest.intro}}</p>
 					</div>
 				</div>
-				<p ng-bind-html="contest.contestContent"></p>
 			</div>
   	</tab>
-    <tab index="1" heading="Submissions">	
+    <tab index="2" heading="Submissions">	
 			<div class="container">
 				<div class="row clearfix">
 					<div class="contestVideos col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-repeat="video in contest.videos">

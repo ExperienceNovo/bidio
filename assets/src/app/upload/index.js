@@ -51,13 +51,17 @@ angular.module( 'bidio.upload', [
                         ', Response: ' + JSON.stringify(resp.data) +
                         '\n' + $scope.log;
                     });
-                    }, null, function (evt) {
-                        var progressPercentage = parseInt(100.0 *
-                        evt.loaded / evt.total);
-                        $scope.log = 'progress: ' + progressPercentage + 
-                        '% ' + evt.config.data.videoFile.name + '\n' + $scope.log;
-                        $scope.pp = progressPercentage;
-                        $scope.fileName = evt.config.data.videoFile.name;
+                }, 
+
+                null, 
+
+                function (evt) {
+                    var progressPercentage = parseInt(100.0 *
+                    evt.loaded / evt.total);
+                    $scope.log = 'progress: ' + progressPercentage + 
+                    '% ' + evt.config.data.videoFile.name + '\n' + $scope.log;
+                    $scope.pp = progressPercentage;
+                    $scope.fileName = evt.config.data.videoFile.name;
                 });
             }
         }

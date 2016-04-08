@@ -10,7 +10,7 @@ var videos = globals.videos.map(function(id,i){
 		id: id,
 		title: title,
 		urlTitle: title.split(" ").join("-"),
-		amazonUrl: sails.getBaseUrl() + "/videos/" + title.split(" ").join("-"),
+		amazonUrl: "/videos/" + title.split(" ").join("-"),
 		description: faker.lorem.paragraph(),
 		user: globals.users[ Math.floor( i * ( globals.users.length / globals.videos.length ) ) ],
 		contest: globals.contests[ Math.floor( i * ( globals.contests.length / globals.videos.length ) ) ]

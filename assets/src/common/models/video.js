@@ -42,6 +42,7 @@ angular.module('models.video', ['lodash', 'services', 'sails.io',])
 
     var error = function(error) {
         console.log(error);
+        throw error;
     };
 	
 });

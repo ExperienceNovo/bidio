@@ -77,8 +77,14 @@ angular.module( 'bidio.dashboard', [
     };
 })
 
-.controller( 'DashboardVideosCtrl', function DashboardVideosCtrl( $scope, titleService, videos, VideoModel, $mdDialog ) {
+.controller( 'DashboardVideosCtrl', function DashboardVideosCtrl( $scope, titleService, videos, VideoModel, $mdDialog, $sce ) {
     titleService.setTitle('videos');
+
+    videos.forEach(function(video){
+        video.amazonUrl = $sce.trustAsResourceUrl(video.amazonUrl);
+        return video;
+    })
+
     $scope.videos = videos;
 
     $scope.addVideo = function(ev){
@@ -91,6 +97,7 @@ angular.module( 'bidio.dashboard', [
           fullscreen: false
         })
         .then(function(result){
+            $sce.trustAsResourceUrl(result.amazonUrl);
             $scope.videos.push(result);
         })
     }
@@ -98,8 +105,12 @@ angular.module( 'bidio.dashboard', [
 
 .controller('VideoDialogCtrl', function DialogCtrl($scope, $mdDialog, Upload, VideoModel) {
     $scope.video = {};
+    $scope.loading = $scope.videoLoading = false;
+    $scope.error = null;
 
-    $scope.submit = function(video,file){
+    $scope.upload = function(file){
+
+        $scope.videoLoading = true;
 
         Upload.upload({
             url: '/api/video/upload',
@@ -107,15 +118,36 @@ angular.module( 'bidio.dashboard', [
             data: {video: file}
         })
         .then(function(response){
-
-            video.amazonUrl = response.data.amazonUrl;
-
-            return VideoModel.create(video);
+            $scope.videoLoading = false;
+            $scope.video.amazonUrl = response.data.amazonUrl;
+        },
+        null,
+        function (evt) {
+            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+            $scope.pp = progressPercentage;
         })
+
+    };
+
+    $scope.submit = function(video){
+
+        if (!video.urlTitle, !video.title, !video.amazonUrl, !video.description){
+            $scope.error = "Incomplete entry";
+            return;
+        }
+
+        $scope.loading = true;
+
+        VideoModel.create(video)
         .then(function(response){
             console.log(response);
-
+            $scope.loading = false;
             $mdDialog.hide(response);
+        })
+        .catch(function(response){
+            //TODO: more details plz
+            $scope.error = "An error occurred";
+            $scope.loading = false;
         })
     }
 

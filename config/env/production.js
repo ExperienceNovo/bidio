@@ -21,19 +21,25 @@ module.exports = {
   //   connection: 'someMongodbServer'
   // }
 
+  hookTimeout: 160000,
+
   orm: {
   	_hookTimeout: 60000
   },
 
   seed: {
-    seed: {
-      active: false
-    }
+    active: false,
   },
 
   models: {
     connection: 'productionMongoHqDb',
     migrate: 'safe'
+  },
+
+  session: {
+    adapter: 'mongo',
+    url: 'mongodb://heroku_wds9j5tq:i54cta42llqeu518u7s5o6gnl4@ds011790.mlab.com:11790/heroku_wds9j5tq',
+    collection: 'sessions'
   }
 
 };
