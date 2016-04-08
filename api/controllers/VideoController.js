@@ -162,6 +162,10 @@ module.exports = {
 			user: req.user.id
 		};
 
+		if (req.param("contest")){
+			model.contest = req.param("contest");
+		}
+
 		Video.create(model)
 			.then(function(video) {
 				Video.publishCreate(video);
@@ -225,8 +229,6 @@ module.exports = {
 			})
 
 	}
-
-	
 	
 };
 
