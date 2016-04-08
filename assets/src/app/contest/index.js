@@ -5,6 +5,7 @@ angular.module( 'bidio.contest', [
 
 .config(function config( $stateProvider ) {
 	$stateProvider.state( 'contest', {
+		abstract: true,
 		url: '/contest/:path',
 		views: {
 			"main": {
@@ -23,6 +24,14 @@ angular.module( 'bidio.contest', [
 				});
 			}
 		}
+	})
+	.state( 'contest.main', {
+		url: "",
+		templateUrl: "contest/templates/main.tpl.html"
+	})
+	.state( 'contest.about', {
+		url: "/about",
+		templateUrl: "contest/templates/about.tpl.html"
 	});
 })
 
