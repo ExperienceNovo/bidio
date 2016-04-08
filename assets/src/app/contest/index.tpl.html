@@ -1,10 +1,50 @@
 <link href="http://vjs.zencdn.net/5.8.0/video-js.css" rel="stylesheet">
 <div class="surface-container home-pad">
-
 	<div class="contestsTitleContainer">
 		<h2 ng-bind-html="contest.title" class="contentTitleLetters"></h2>
 	</div>
-	  <a ui-sref="contest.about">About</a>
-	  <a ui-sref="contest.main">Main</a>
-  <div ui-view></div>
 </div>
+<tabset active="active" class="contest-tabs">
+    <tab index="0" heading="Contests" ui-sref="contest.about">
+		<div class="container contestContainer">
+			<div class="row">
+				<div class="sponsoredByContainer col-md-4 col-lg-3">
+					<p class="sponsorText sponsorTitle" >Sponsored By</p>
+					<a href="member/{{contest.user.username}}"><img class="sponsorPicLarge" ng-src="{{ contest.user.profile.picture }}"></a>
+					<p style="text-align:center;">
+						<a class="sponsorName" href="member/{{contest.user.username}}">{{contest.user.username}}</a>
+						on {{contest.createdAt | date: "shortDate"}}
+					</p>
+				</div>
+				<h2 style="font-weight:bold;">About</h2>
+				<br>
+				<div class="aboutTxt editContestContainer col-md-8 col-lg-9" 	  style="margin-bottom:150px">
+					<p>{{contest.intro}}</p>
+				</div>
+				<br>
+				<h2 style="font-weight:bold;">Submissions</h2>
+				<div class="contestVideos col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-repeat="video in contest.videos">
+					<h2><a ui-sref="video({id: video.id})">{{video.title}}</a></h2>
+					<h3>By <b>{{video.user.username}}</b> on {{video.createdAt | date: "shortDate"}}</h3>
+					<br>
+					<video style="margin:auto" src={{video.amazonUrl}} class="video-js vjs-default-skin" controls preload="auto" width="500" height="205" vjs-video></video>
+				</div>
+
+
+			<!--<li>
+			    	<a ng-click="apply()">Submit a video</a>
+			    </li>
+			    <li ng-show="currentUser.id == contest.user.id">
+			    	<a href="#">Edit</a>
+			    </li>-->
+			</div>
+		</div>
+  	</tab>
+    <tab index="1" heading="Sponsor" ui-sref="contest.main">	
+		<div class="container">
+			<div class="row clearfix">
+
+			</div>
+		</div>
+    </tab>
+</tabset>
