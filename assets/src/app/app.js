@@ -35,7 +35,14 @@ angular.module( 'bidio', [
     'bidio.admin'
 ])
 
-.config( function myAppConfig ( $mdThemingProvider, $urlRouterProvider, $locationProvider ) {
+.config( function myAppConfig ( $sceDelegateProvider, $mdThemingProvider, $urlRouterProvider, $locationProvider ) {
+
+    $sceDelegateProvider.resourceUrlWhitelist([
+        // Allow same origin resource loads.
+        'self',
+        // Allow loading from our assets domain.  Notice the difference between * and **.
+        'https://bidio8.s3.amazonaws.com/**'
+    ]);
 
     $urlRouterProvider.when('/about/', '/about');
     $urlRouterProvider.when('/contests/', '/contests');

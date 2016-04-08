@@ -179,15 +179,28 @@ module.exports = {
 	},
 
 	update: function(req, res) {
-		
-		var id = req.param('id');
-		var model = {};
-		Video.update( {id: id}, model).exec(function afterwards(err, updated){
-		  if (err) {
-		    return;
-		  }
-		  console.log(updated);
-		});
+
+		var id = req.param('id')
+
+		var model = {
+			id: id,
+			title: req.param("title"),
+			urlTitle: req.param("urlTitle"),
+			amazonUrl: req.param("amazonUrl"),
+			approved: req.param("approved"),
+			isNew: req.param("isNew"),
+			description: req.param("description"),
+		}
+
+		Video.update( {id: id}, model)
+			.then(function(result){
+				console.log(result);
+				return res.json(result);
+			})
+			.catch(function(err){
+				res.negotiate(err);
+			})
+
 		
 	},
 

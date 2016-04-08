@@ -7,7 +7,6 @@ angular.module('models.contest', ['lodash', 'services', 'sails.io',])
     };
 
 	this.getByUrl = function(model) {
-        console.log(model)
         var url = utils.prepareUrl('contest/url/' + model);
         return $sailsSocket.get(url).then(success, error);
     };
@@ -24,6 +23,7 @@ angular.module('models.contest', ['lodash', 'services', 'sails.io',])
 
 	this.getOne = function(model) {
         var url = utils.prepareUrl('contest/' + model);
+
         return $sailsSocket.get(url).then(success, error);
     };
 

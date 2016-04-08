@@ -41,6 +41,10 @@ module.exports = {
         approved: {
             type: 'boolean',
             defaultsTo: false
+        },
+        isNew: {
+            type: 'boolean',
+            defaultsTo: true
         }
     },
 

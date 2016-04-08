@@ -22,7 +22,7 @@ var contests = globals.contests.slice(1).map(function(id,i){
 
 contests.unshift({
 	id: globals.contests[0],
-	title: "<img class='sponsorPic' src='/images/zaxbys2.png'/> Sponsors Railhawks Tryouts",
+	title: "Zaxby's Sponsors Railhawks Tryouts",
 	intro: "Zaxby's invites kids (ages 7-15) to submit video auditions for the Carolina RailHawks' summer camps! Each time a person viewing your video clicks on the contest link, we put $0.50 towards the cost for you to attend summer camp. Each video submission may recieve up to $199, and we have pledged to contribute up to $7,000 in total. Come and show your passion for Soccer!",
 	contestContent: "<link href='http://boxoffice.etix.com/ticket/exportEvent/defaultExport.css' type='text/css' rel='stylesheet' />" +
 	"<img src='https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/Carolina_RailHawks.svg/737px-Carolina_RailHawks.svg.png' style='height:250px' />" +

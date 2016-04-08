@@ -45,6 +45,7 @@ module.exports.routes = {
   'get /creator/:path': 'HomeController.index',
   'get /dashboard': 'HomeController.index',
   'get /dashboard/:path': 'HomeController.index',
+  'get /dashboard/:path/:path': 'HomeController.index',
   'get /discover': 'HomeController.index',
   'get /login': 'HomeController.index',
   'get /logout': 'AuthController.logout',

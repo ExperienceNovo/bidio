@@ -49,8 +49,8 @@ angular.module( 'bidio.dashboard', [
             }
         }
     })
-    .state( 'dashboard.contests.edit', {
-        url: '/:id',
+    .state( 'dashboard.contestEdit', {
+        url: '/contest/:id',
         controller: 'DashboardContestEditCtrl',
         templateUrl: 'dashboard/templates/contestEdit.tpl.html',
         resolve: {
@@ -88,13 +88,8 @@ angular.module( 'bidio.dashboard', [
     };
 })
 
-.controller( 'DashboardVideosCtrl', function DashboardVideosCtrl( $scope, titleService, videos, VideoModel, $mdDialog, $sce ) {
+.controller( 'DashboardVideosCtrl', function DashboardVideosCtrl( $scope, titleService, videos, VideoModel, $mdDialog ) {
     titleService.setTitle('videos');
-
-    videos.forEach(function(video){
-        video.amazonUrl = $sce.trustAsResourceUrl(video.amazonUrl);
-        return video;
-    })
 
     $scope.videos = videos;
 
@@ -108,7 +103,6 @@ angular.module( 'bidio.dashboard', [
           fullscreen: false
         })
         .then(function(result){
-            $sce.trustAsResourceUrl(result.amazonUrl);
             $scope.videos.push(result);
         })
     }
@@ -190,23 +184,116 @@ angular.module( 'bidio.dashboard', [
     }
 })
 
-.controller('DashboardContestEditCtrl', function ($scope, contest, ContestModel, $mdDialog) {
+.controller('DashboardContestEditCtrl', function ($scope, contest, ContestModel, $mdDialog, VideoModel, lodash, $q) {
+
+    var originals = lodash.cloneDeep(contest.videos);
 
     $scope.contest = contest;
+    $scope.selectedIndex = 0;
+    $scope.selection = "new";
+    $scope.clean = true;
+    $scope.saving = false;
 
-    // $scope.addContest = function(ev){
-    //     $mdDialog.show({
-    //       controller: 'ContestDialogCtrl',
-    //       templateUrl: 'dashboard/templates/createContest.tpl.html',
-    //       parent: angular.element(document.body),
-    //       targetEvent: ev,
-    //       clickOutsideToClose:true,
-    //       fullscreen: false
-    //     })
-    //     .then(function(result){
-    //         $scope.contests.push(result);
-    //     })
-    // }
+    var sorted = {
+        "new": $scope.contest.videos.filter(function(video){return video.isNew}),
+        "approved": $scope.contest.videos.filter(function(video){return !video.isNew && video.approved}),
+        "unapproved": $scope.contest.videos.filter(function(video){return !video.isNew && !video.approved})
+    };
+
+    $scope.view = function(ev, video){
+
+        var before = video.approved;
+
+        function after(){
+            if (video.approved != before){
+                $scope.clean = false;
+                video.dirty = true;
+            }
+        }
+
+        $mdDialog.show({
+          controller: 'ViewDialogCtrl',
+          templateUrl: 'dashboard/templates/viewModal.tpl.html',
+          parent: angular.element(document.body),
+          resolve: {
+            video: function(){
+                return video;
+            }
+          },
+          targetEvent: ev,
+          clickOutsideToClose:true,
+          fullscreen: false
+        })
+        .then(after, after, null);
+
+    }
+
+    $scope.selectedVideos = sorted[$scope.selection];
+
+    $scope.$watch(
+        "selection", 
+        function(newVal, oldVal){
+            $scope.clean = true;
+            $scope.selectedVideos = sorted[newVal]
+        }
+    );
+
+    $scope.dirty = function(video){
+        video.dirty = true;
+        video.isNew = false
+        $scope.clean = false;
+    }
+
+    $scope.save = function(){
+        var toSave = $scope.selectedVideos.filter(function(video){
+            return video.dirty;
+        });
+
+        $scope.saving = true;
+
+        $q.all(
+            toSave.map(function(video){
+                return VideoModel.update(video);
+            })
+        )
+        .then(function(){
+            $scope.saving = false;
+            sorted = {
+                "new": $scope.contest.videos.filter(function(video){return video.isNew}),
+                "approved": $scope.contest.videos.filter(function(video){return !video.isNew && video.approved}),
+                "unapproved": $scope.contest.videos.filter(function(video){return !video.isNew && !video.approved})
+            };
+            $scope.selectedVideos = sorted[$scope.selection];
+        })
+        .catch(function(err){
+            $scope.saving = false;
+            //TODO: handle error logging
+        })
+    }
+
+    $scope.undo = function(){
+        $scope.contest.videos = originals;
+        originals = lodash.cloneDeep(contest.videos);
+
+        sorted = {
+            "new": $scope.contest.videos.filter(function(video){return video.isNew}),
+            "approved": $scope.contest.videos.filter(function(video){return !video.isNew && video.approved}),
+            "unapproved": $scope.contest.videos.filter(function(video){return !video.isNew && !video.approved})
+        };
+
+        $scope.selectedVideos = sorted[$scope.selection];
+    }
+})
+
+.controller('ViewDialogCtrl', function DialogCtrl($scope, $mdDialog, video) {
+
+    $scope.video = video;
+
+    $scope.dismiss = function(){
+
+        $mdDialog.hide({approved: $scope.video.approved, id: $scope.video.id});
+    }
+
 })
 
 .controller('ContestDialogCtrl', function DialogCtrl($scope, $mdDialog, Upload, ContestModel) {
