@@ -138,3 +138,30 @@ button.updateContestButton {
     float: none;
     display: inline-block;
 }
+
+ul.contest-listinfo {
+    list-style-type: disc;
+    display: table;
+    margin: 0 auto;
+    float: right;
+}
+
+.contest-listinfo li {
+    text-align: left;
+}
+
+.contest-submit {
+    float: right;
+}
+
+.contest-submit a {
+    font-size: 20px;
+}
+
+.sponsor-banner {
+    background: url(http://placehold.it/1500x350?text=Banner);
+    background-size:cover;
+    width: 100%;
+    height: 250px;
+    padding: 25px 0;
+}
