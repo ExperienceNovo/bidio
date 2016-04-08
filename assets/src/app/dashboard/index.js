@@ -49,6 +49,17 @@ angular.module( 'bidio.dashboard', [
             }
         }
     })
+    .state( 'dashboard.contests.edit', {
+        url: '/:id',
+        controller: 'DashboardContestEditCtrl',
+        templateUrl: 'dashboard/templates/contestEdit.tpl.html',
+        resolve: {
+            ContestModel: "ContestModel",
+            contest: function($stateParams, ContestModel){
+                return ContestModel.getOne($stateParams.id);
+            }
+        }
+    })
 })
 
 .controller( 'DashboardCtrl', function DashboardCtrl( $scope, $location, config ) {
@@ -161,7 +172,7 @@ angular.module( 'bidio.dashboard', [
 })
 
 .controller('DashboardContestsCtrl', function ($scope, contests, ContestModel, $mdDialog) {
-    
+
     $scope.contests = contests;
 
     $scope.addContest = function(ev){
@@ -177,6 +188,25 @@ angular.module( 'bidio.dashboard', [
             $scope.contests.push(result);
         })
     }
+})
+
+.controller('DashboardContestEditCtrl', function ($scope, contest, ContestModel, $mdDialog) {
+
+    $scope.contest = contest;
+
+    // $scope.addContest = function(ev){
+    //     $mdDialog.show({
+    //       controller: 'ContestDialogCtrl',
+    //       templateUrl: 'dashboard/templates/createContest.tpl.html',
+    //       parent: angular.element(document.body),
+    //       targetEvent: ev,
+    //       clickOutsideToClose:true,
+    //       fullscreen: false
+    //     })
+    //     .then(function(result){
+    //         $scope.contests.push(result);
+    //     })
+    // }
 })
 
 .controller('ContestDialogCtrl', function DialogCtrl($scope, $mdDialog, Upload, ContestModel) {
