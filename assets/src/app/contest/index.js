@@ -61,13 +61,7 @@ angular.module( 'bidio.contest', [
 			resolve: {
 				contest: function(){return contest}
 			}
-		})
-		.result
-		.then(function(video){
-			$sce.trustAsResourceUrl(video.amazonUrl);
-			//actually needs to be approved first
-			contest.videos.push(video);
-		})
+		});
 
 	}
 
@@ -76,10 +70,12 @@ angular.module( 'bidio.contest', [
 .controller('submitVideoCtrl', function ($scope, contest, config, $modalInstance, Upload, VideoModel) {
 
 		$scope.currentUser = config.currentUser;
-
 		$scope.video = {contest: contest.id};
-
 		$scope.pp = 0;
+		$scope.error = null;
+		$scope.loading = false;
+		$scope.videoLoading = false;
+		$scope.finished = false;
 
 		$scope.upload = function(file){
 
@@ -114,7 +110,7 @@ angular.module( 'bidio.contest', [
         VideoModel.create(video)
         .then(function(response){
             $scope.loading = false;
-            $modalInstance.close(response);
+            $scope.finished = true;
         })
         .catch(function(response){
             //TODO: more details plz

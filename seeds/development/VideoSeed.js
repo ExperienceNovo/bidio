@@ -13,7 +13,8 @@ var videos = globals.videos.map(function(id,i){
 		amazonUrl: "/videos/" + title.split(" ").join("-"),
 		description: faker.lorem.paragraph(),
 		user: globals.users[ Math.floor( i * ( globals.users.length / globals.videos.length ) ) ],
-		contest: globals.contests[ Math.floor( i * ( globals.contests.length / globals.videos.length ) ) ]
+		contest: globals.contests[ Math.floor( i * ( globals.contests.length / globals.videos.length ) ) ],
+		approved: true
 	}
 });
 

@@ -10,7 +10,7 @@
 				<p class="clearfix"><a class="btn btn-default" ng-click="cancel()" ui-sref="register">Register here</a></p>
 			</div>
 		</div>
-		<div ng-show="currentUser" class="modal-footer" style="display:inline-block;width:100%;">
+		<div ng-show="currentUser && !finished" class="modal-footer" style="display:inline-block;width:100%;">
 
 				
 				<div class="col-xs-12">
@@ -60,6 +60,12 @@
 
 		    <!-- <button class="cart-page-btn" type="button" ng-click="cancel()">Cancel</button>
 		    <button class="cart-page-btn" type="button" ng-click="ok()">OK</button> -->
+		</div>
+		<div ng-show="finished">
+			<div class="col-xs-12 col-sm-8 col-sm-push-2" style="padding:50px 0">
+				<h2>Submission completed!</h2>
+				<p>You will be notified when BRAND_NAME decides to accept of decline your submission.</p>
+			</div>
 		</div>
 	</div>
 </div>

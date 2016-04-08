@@ -63,7 +63,7 @@ module.exports = {
 	getByUrlTitle: function(req, res) {
 		Contest.findOne({urlTitle: req.param('path')})
 		.populate('user')
-		.populate('videos')
+		.populate('videos', {where: {approved: true}})
 		.then(function(contest){
 			return [contest, Profile.findOne({user: contest.user.id || contest.user._id})]
 		})
