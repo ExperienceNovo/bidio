@@ -29,10 +29,34 @@
 			<p><b>User</b>: <a href="member/{{video.user.username}}">{{video.user.username}}</a></p>
 			<p><b>Viewcount</b>: {{viewCount}}</p>
 			<p ng-show="video.contest"><b>$/click</b>: ${{video.contest.price | number: 2 }}</h3>
+			<p><b>bid: $/click</b>: ${{highestBid.value}}
 		</div>
 		<div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
 			<b>About</b>
 			<p>{{video.description}}</p>
+			<h3><a href="#">share</a></h3>
 		</div>
 	</div>	
+
+	<div class="row" ng-show="currentUser">
+		<h2>new bid</h2>
+		<md-input-container>
+			<label>Bid </label>
+			<textarea ng-model="newBid.value" rows="4"></textarea>
+		</md-input-container>
+		<md-button ng-click="createBid(newBid)">Submit</md-button>
+	</div>
+
+	<div class="row">
+		<div ng-repeat="bid in bids">
+			<h3>{{bid.value}}</h3>
+			<h3><a href="/member/{{bid.user.username}}">{{bid.user.username}}</a></h3>
+			<h3>{{bid.createdAt}}</h3>
+		</div>
+	</div>
+
+
 </div>
+
+<div ng-include="'footer/index.tpl.html'"></div>
+

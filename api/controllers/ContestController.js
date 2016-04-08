@@ -48,6 +48,18 @@ module.exports = {
 		});
 	},
 
+	getByMember: function(req, res) {
+		Contest.find()
+		.where({user:req.param('id')})
+		.then(function(model) {
+			Contest.subscribe(req, model);
+			res.json(model);
+		})
+		.catch(function(err) {
+			res.send(404);
+		});
+	},
+
 	getByUrlTitle: function(req, res) {
 		Contest.findOne({urlTitle: req.param('path')})
 		.populate('user')

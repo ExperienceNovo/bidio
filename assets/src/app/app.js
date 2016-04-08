@@ -21,6 +21,7 @@ angular.module( 'bidio', [
 	'bidio.contest',
     'bidio.contests',
     'bidio.dashboard',
+    'bidio.discover',
     'bidio.footer',
     'bidio.intro',
     'bidio.login',

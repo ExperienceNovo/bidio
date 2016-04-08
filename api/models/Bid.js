@@ -8,8 +8,11 @@
 module.exports = {
 
 	attributes: {
+        clickThoughCount: {
+            type: 'string'
+        },
         value: {
-            type: 'double',
+            type: 'string',
             required: true,
         },
         video: {
@@ -19,24 +22,12 @@ module.exports = {
         user: {
             model: 'user',
             required: true,
-        },
-        date: {
-            type: 'string',
-            required: true,
         }
     },
 
-    //afterCreate: function (post, next) {
-    //    set message.user = to appropriate user model
-    //    User.getOne(post.user)
-    //    .spread(function(user) {
-    //        post.user = user;
-    //        next(null, post);
-    //    });
-    //},
-
     getAll: function() {
         return Bid.find()
+        .populate('user')
         .sort({createdAt: 'asc'})
         .then(function (models) {
             return [models];

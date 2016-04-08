@@ -20,13 +20,13 @@
 							on {{contest.createdAt | date: "shortDate"}}
 						</p>
 					</div>
-
-					<div class="aboutTxt editContestContainer col-md-8 col-lg-9">
-						<b>About</b>
-						<p class="aboutTxt">{{contest.intro}}</p>
-					</div>
+				<div class="aboutTxt editContestContainer col-md-8 col-lg-9">
+					<b>About</b>
+					<p class="aboutTxt">{{contest.intro}}</p>
 				</div>
 			</div>
+			<p ng-bind-html="contest.contestContent"></p>
+		</div>
   	</tab>
     <tab index="2" heading="Submissions">	
 			<div class="container">
@@ -38,12 +38,24 @@
 						<video style="margin:auto" src={{video.amazonUrl}} class="video-js vjs-default-skin" controls preload="auto" width="500" height="205" vjs-video>
 						</video>
 					</div>
+
+
+					<h2>upload</h2><hr>
+					<p>upload form</p>			
+
+
+				</div>
+				<div ng-show="!currentUser">
+					<h1>login to submit a video!
 				</div>
 			</div>
+		</div>
     </tab>
+    <!--
     <li>
     	<a ng-click="apply()">Submit a video</a>
     </li>
+	-->
     <li ng-show="currentUser.id == contest.user.id">
     	<a href="#">Edit</a>
     </li>

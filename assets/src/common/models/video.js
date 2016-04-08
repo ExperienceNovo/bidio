@@ -16,6 +16,11 @@ angular.module('models.video', ['lodash', 'services', 'sails.io',])
         return $sailsSocket.get(url).then(success, error);
     };*/
 
+    this.getByMember = function(model) {
+        var url = utils.prepareUrl('video/member/' + model);
+        return $sailsSocket.get(url).then(success, error);
+    };
+
 	this.getOne = function(model){
 		var url = utils.prepareUrl('video/' + model);
 		return $sailsSocket.get(url).then(success, error);

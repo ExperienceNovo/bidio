@@ -14,12 +14,25 @@ angular.module( 'bidio.member', [
 		resolve: {
 			member: function(UserModel, $stateParams){
 				return UserModel.getByUsername($stateParams.path);
-			}
+			},
+			//userInformation: function(userInformationModel, member){}
+			bids: function(BidModel, member){
+				return BidModel.getByMember(member.id);
+			},
+			contests: function(ContestModel, member){
+				return ContestModel.getByMember(member.id);
+			},
+			videos: function(VideoModel, member){
+				return VideoModel.getByMember(member.id);
+			},
 		}
 	});
 })
 
-.controller( 'MemberCtrl', function MemberCtrl( $scope, member ) {
+.controller( 'MemberCtrl', function MemberCtrl( $scope, member, bids, contests, videos ) {
 	$scope.member = member;
 	if(typeof($scope.member)=="undefined"){$location.path('/')}
+	$scope.bids = bids;
+	$scope.contests = contests;
+	$scope.videos = videos;
 });

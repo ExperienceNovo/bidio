@@ -44,18 +44,14 @@ module.exports.routes = {
   'get /creator/:path': 'HomeController.index',
   'get /dashboard': 'HomeController.index',
   'get /dashboard/:path': 'HomeController.index',
-
-
+  'get /discover': 'HomeController.index',
   'get /login': 'HomeController.index',
   'get /logout': 'AuthController.logout',
-
   'get /member/:path': 'HomeController.index',
-
   'get /register': 'HomeController.index',
-
   'get /search': 'HomeController.index',
-  'get /sponsors': 'HomeController.index',
   'get /search/:path': 'HomeController.index',
+  'get /sponsors': 'HomeController.index',
   'get /upload': 'HomeController.index',
   'get /video/:id': 'HomeController.index',
 
@@ -81,12 +77,25 @@ module.exports.routes = {
   'post /api/post': 'PostController.create',
   'delete /api/post/:id': 'PostController.destroy',
 
+
+  /**
+   * Bid routes
+   */
+  'get /api/bid/:id': 'BidController.getOne',
+  'get /api/bid/me': 'BidController.getMine',
+  'get /api/bid/member/:id': 'BidController.getByMember',
+  'get /api/bid/video/:id': 'BidController.getByVideo',
+  'post /api/bid': 'BidController.create',
+  'delete /api/bid/:id': 'BidController.destroy',
+
+
   /**
   *	Contest Routes
   */
   'get /api/contest': 'ContestController.getAll',
   'get /api/contest/me': 'ContestController.getMine',
   'get /api/contest/:id': 'ContestController.getOne',
+  'get /api/contest/member/:id': 'ContestController.getByMember',
   'get /api/contest/url/:path': 'ContestController.getByUrlTitle',
   // 'get /api/contest/:id': 'ContestController.getSubmittedVideos',
   'post /api/contest': 'ContestController.create',
@@ -99,6 +108,7 @@ module.exports.routes = {
   'get /api/video': 'VideoController.getAll',
   'get /api/video/me': 'VideoController.getMine',
   'get /api/video/:id': 'VideoController.getOne',
+  'get /api/video/member/:id': 'VideoController.getByMember',
   //'get /api/video/url/:path': 'VideoController.getByUrlTitle',
   'post /api/video/upload': 'VideoController.upload',
   'post /api/video': 'VideoController.create',
