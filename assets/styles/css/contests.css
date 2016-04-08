@@ -105,8 +105,16 @@ button.updateContestButton {
 }
 
 .aboutTxt{
-    font-size:18px;
+    margin-bottom: 150px;
     line-height:2;
+    padding: 0!important;
+}
+
+.aboutTxt p {
+    font-size: 19px;
+    line-height: 2;
+    text-align: justify;
+    padding: 0;
 }
 
 .contest-desc{

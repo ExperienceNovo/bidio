@@ -9,16 +9,16 @@
 		<div class="container contestContainer">
 			<div class="row">
 				<div class="sponsoredByContainer col-md-4 col-lg-3">
-					<p class="sponsorText sponsorTitle" >Sponsored By</p>
+					<p class="sponsorText sponsorTitle" style="display:block!important" >Sponsored By</p>
 					<a href="member/{{contest.user.username}}"><img class="sponsorPicLarge" ng-src="{{ contest.user.profile.picture }}"></a>
 					<p style="text-align:center;">
 						<a class="sponsorName" href="member/{{contest.user.username}}">{{contest.user.username}}</a>
 						on {{contest.createdAt | date: "shortDate"}}
 					</p>
 				</div>
-				<h2 style="font-weight:bold;">About</h2>
+				<h2 style="font-weight:bold;text-align:right">About</h2>
 				<br>
-				<div class="aboutTxt editContestContainer col-md-8 col-lg-9" 	  style="margin-bottom:150px">
+				<div class="aboutTxt editContestContainer col-md-8 col-lg-9">
 					<p>{{contest.intro}}</p>
 				</div>
 				<br>
@@ -29,8 +29,6 @@
 					<br>
 					<video style="margin:auto" src={{video.amazonUrl}} class="video-js vjs-default-skin" controls preload="auto" width="500" height="205" vjs-video></video>
 				</div>
-
-
 			<!--<li>
 			    	<a ng-click="apply()">Submit a video</a>
 			    </li>
