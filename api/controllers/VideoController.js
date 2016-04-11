@@ -180,6 +180,8 @@ module.exports = {
 
 	update: function(req, res) {
 
+		console.log("DEBUG: ", req.params.all(), req.user);
+
 		var id = req.param('id');
 
 		var model = {

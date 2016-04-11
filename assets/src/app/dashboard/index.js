@@ -211,8 +211,7 @@ angular.module( 'bidio.dashboard', [
     var originals = lodash.cloneDeep(contest.videos);
 
     $scope.contest = contest;
-    $scope.selectedIndex = 0;
-    $scope.selection = "new";
+    $scope.selection = {type: "new"};
     $scope.clean = true;
     $scope.saving = false;
     $scope.editingLanding = false;
@@ -467,14 +466,15 @@ angular.module( 'bidio.dashboard', [
         $scope.editPromptToggle();
     }
 
-    $scope.selectedVideos = sorted[$scope.selection];
+    $scope.selectedVideos = sorted[$scope.selection.type];
 
     $scope.$watch(
-        "selection", 
+        "selection.type", 
         function(newVal, oldVal){
             $scope.clean = true;
             $scope.selectedVideos = sorted[newVal]
-        }
+        },
+        true
     );
 
     $scope.dirty = function(video){
@@ -507,7 +507,7 @@ angular.module( 'bidio.dashboard', [
                 "approved": $scope.contest.videos.filter(function(video){return !video.isNew && video.approved}),
                 "unapproved": $scope.contest.videos.filter(function(video){return !video.isNew && !video.approved})
             };
-            $scope.selectedVideos = sorted[$scope.selection];
+            $scope.selectedVideos = sorted[$scope.selection.typ];
         })
         .catch(function(err){
             $scope.saving = false;
@@ -526,7 +526,7 @@ angular.module( 'bidio.dashboard', [
             "unapproved": $scope.contest.videos.filter(function(video){return !video.isNew && !video.approved})
         };
 
-        $scope.selectedVideos = sorted[$scope.selection];
+        $scope.selectedVideos = sorted[$scope.selection.type];
     }
 })
 
