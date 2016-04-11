@@ -101,6 +101,7 @@ module.exports.routes = {
   'get /api/contest/url/:path': 'ContestController.getByUrlTitle',
   // 'get /api/contest/:id': 'ContestController.getSubmittedVideos',
   'post /api/contest': 'ContestController.create',
+  'post /api/contest/check': 'ContestController.check',
   'post /api/contest/:id': 'ContestController.update',
   'delete /api/contest/:id': 'ContestController.destroy',
 

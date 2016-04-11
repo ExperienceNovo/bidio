@@ -7,12 +7,6 @@
 
 module.exports = {
 	attributes: {
-        viewCount: {
-            type: 'integer'
-        },
-		date: {
-            type: 'string'
-        },
         video: {
             model: 'video'
         },

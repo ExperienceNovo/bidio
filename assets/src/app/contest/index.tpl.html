@@ -4,13 +4,13 @@
 		<h2 ng-bind-html="contest.title" class="contentTitleLetters"></h2>
 	</div>
 </div>
-<tabset active="active" class="contest-tabs">
+<uib-tabset active="active" class="contest-tabs">
 		<li ui-sref-active="active">
 			<a ui-sref="contest.about({path: contest.urlTitle})">Contest</a>
 		</li>
 		<li ui-sref-active="active">
 			<a ui-sref="contest.main({path: contest.urlTitle})">Sponsor</a>
 		</li>
-</tabset>
+</uib-tabset>
 
 <div ui-view></div>

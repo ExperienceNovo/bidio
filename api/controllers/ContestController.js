@@ -8,6 +8,24 @@ var _ = require('lodash');
 
 module.exports = {
 
+	check: function(req,res){
+
+		var params = req.params.all();
+
+		Contest.find(params)
+			.then(function(result){
+				if (result.length){
+					return res.send(400, "Record already exists");
+				}
+
+				return res.send(200);
+			})
+			.catch(function(err){
+				return res.negotiate(err);
+			})
+
+	},
+
 	getAll: function(req, res) {
 		Contest.getAll()
 		.spread(function(models) {
@@ -65,6 +83,12 @@ module.exports = {
 		.populate('user')
 		.populate('videos', {where: {approved: true}})
 		.then(function(contest){
+
+			if (!contest.published){
+				//error handling here
+				return res.redirect("/contests")
+			}
+
 			return [contest, Profile.findOne({user: contest.user.id || contest.user._id})]
 		})
 		.spread(function(contest,profile){
@@ -115,11 +139,21 @@ module.exports = {
 
 	create: function (req, res) {
 
+		if (req.user.id != req.param("user")){
+			return res.send(400, "Wrong User");
+		}
+
 		var model = {
 			title: req.param('title'),
+			videoUrl: req.param('videoUrl'),
+			bannerUrl: req.param('bannerUrl'),
+			published: req.param('published'),
+			price: req.param('price'),
+			intro: req.param('intro'),
+			prompt: req.param('prompt'),
 			urlTitle: req.param('urlTitle'),
 			contestContent: req.param('contestContent'),
-			user: req.user.id
+			user: req.param('user')
 		};
 
 		Contest.create(model)
@@ -135,16 +169,29 @@ module.exports = {
 	},
 
 	update: function(req,res){
+
 		var id = req.param('id');
-		console.log(id);
+
 		var model = {
 			title: req.param('title'),
+			videoUrl: req.param('videoUrl'),
+			bannerUrl: req.param('bannerUrl'),
+			published: req.param('published'),
+			price: req.param('price'),
+			intro: req.param('intro'),
+			prompt: req.param('prompt'),
 			urlTitle: req.param('urlTitle'),
 			contestContent: req.param('contestContent'),
 			user: req.param('user')
 		};
 
-		console.log(model);
+    if(req.param('contributionGoal')){
+    	model.contributionGoal = req.param('contributionGoal')
+    }
+
+    if(req.param('maxContributionPerVideo')){
+    	model.maxContributionPerVideo = req.param('maxContributionPerVideo')
+    }
 
 		Contest.update({id: id}, model)
 		.then(function(model){

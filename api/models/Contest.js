@@ -10,12 +10,15 @@ module.exports = {
 	attributes: {
         title: {
             type: 'string',
-            required: true,
-            unique: true
+            required: true
         },
-        video: {
-            model: 'video',
-            unique: true
+        videoUrl: {
+            type: 'string',
+            required: true
+        },
+        published: {
+            type: 'boolean',
+            defaultsTo: false
         },
         contestContent: {
             type: 'string',
@@ -24,6 +27,12 @@ module.exports = {
         price: {
             type: 'string',
             required: true
+        },
+        contributionGoal: {
+            type: 'string'
+        },
+        maxContributionPerVideo: {
+            type: 'string'
         },
         urlTitle: {
             type: 'string',
@@ -58,7 +67,7 @@ module.exports = {
     },
 
     getAll: function() {
-        return Contest.find()
+        return Contest.find({published: true})
         .sort({createdAt: 'asc'})
 		.populate('user')
         .then(function (models) {

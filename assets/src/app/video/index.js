@@ -11,6 +11,14 @@ angular.module( 'bidio.video', [
 			}
 			
 		},
+		onExit: function($state, video, VideoModel){
+
+			$state.transition.then(function(toState){
+				video.clicked = true;
+				return VideoModel.update(video);
+			});
+
+		},
 		resolve: {
 			video: function(VideoModel, $stateParams){
 				return VideoModel.getOne($stateParams.id);
@@ -33,7 +41,7 @@ angular.module( 'bidio.video', [
 	$scope.bids = bids;
 	$scope.highestBid = bids[0]
 	titleService.setTitle(video.title + ' - bidio');
-	$scope.viewCount = Math.floor(Math.random() * (10000 - 100 + 1)) + 100;
+
 	$scope.bidPerView = Math.floor(Math.random() * (100 - 1 + 1)) + 1;
 
 

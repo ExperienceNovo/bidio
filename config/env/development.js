@@ -30,4 +30,10 @@ module.exports = {
     migrate: 'drop'
   }
 
+  /*for seeding the production DB*/
+  // models: {
+  //   connection: 'productionMongoHqDb',
+  //   migrate: 'safe'
+  // },
+
 };

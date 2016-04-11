@@ -10,13 +10,9 @@
     <input ng-model="contest.urlTitle" type="text">
   </md-input-container>
   <br>
-  <md-input-container>
-    <label>Description</label>
-    <textarea ng-model="contest.contestContent" rows="4"></textarea>
-  </md-input-container>
-  <br>
-  <h2><b>TODO: implement video selection here</b></h2>
-  <br>
+  <div ng-show="error">
+    <p class="errorTxt">{{error}}</p>
+  </div>
   <md-button ng-click="submit(contest)">Submit</md-button>
   <br>
   <md-button ng-click="cancel()">Cancel</md-button>

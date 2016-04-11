@@ -180,7 +180,7 @@ module.exports = {
 
 	update: function(req, res) {
 
-		var id = req.param('id')
+		var id = req.param('id');
 
 		var model = {
 			id: id,
@@ -188,11 +188,22 @@ module.exports = {
 			urlTitle: req.param("urlTitle"),
 			amazonUrl: req.param("amazonUrl"),
 			approved: req.param("approved"),
+			clickCount: req.param("clickCount"),
+			viewCount: req.param("viewCount"),
 			isNew: req.param("isNew"),
 			description: req.param("description"),
+		};
+
+		if (req.param('clicked')){
+			model.click = {video: id};
+
+			if (req.user){
+				model.click.user = req.user.id;
+			}
+
 		}
 
-		Video.update( {id: id}, model)
+		Video.update({id: id}, model)
 			.then(function(result){
 				console.log(result);
 				return res.json(result);

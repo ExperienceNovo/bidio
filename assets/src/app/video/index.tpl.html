@@ -4,7 +4,7 @@
 </div>
 <div class="contest-desc clearfix" ng-show="video.contest">
 	<p ng-bind-html="video.contest.title"></p>
-	<a ui-sref="contest({path: video.contest.urlTitle})">{{video.contest.prompt}}&nbsp;<i class="fa fa-caret-right"></i></a>
+	<a ui-sref="contest.main({path: video.contest.urlTitle})">{{video.contest.prompt}}&nbsp;<i class="fa fa-caret-right"></i></a>
 </div>
 
 <div class="video-container">
@@ -27,7 +27,7 @@
 	<div class="row">
 		<div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
 			<p><b>Posted by</b>: <a href="member/{{video.user.username}}">{{video.user.username}}</a></p>
-			<p><b>Views</b>: {{viewCount}}</p>
+			<p><b>Views</b>: {{video.viewCount}}</p>
 
 		<!--<p ng-show="video.contest"><b>$/click</b>: ${{video.contest.price | number: 2 }}</h3>
 			<p><b>bid: $/click</b>: ${{highestBid.value}}-->

@@ -1,0 +1,73 @@
+<md-content ng-hide="videoSelecting" layout-padding style="width:500px">
+  <h3>Update video</h3>
+  <div ng-hide="videoUrl" style="width:100%;" ngf-accept="'video/*'" ngf-drop ngf-select="upload($file)" ng-model="file" class="drop-box" ngf-drag-over-class="dragover" ngf-allow-dir="true">
+    <div>Drag videos or click here to upload.</div>
+    <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>  
+  </div>
+  <p class="text-center"><b>Or</b></p>
+  <md-button ng-click="videoSelect()">Select existing video</md-button><br>
+  <p ng-show="videoLoading" style="text-align:center"><i class="fa fa-spin fa-spinner"></i>&nbsp;{{pp}}%</p>
+  <div ng-show="videoLoading" class="progress">
+    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{pp}}%;">
+    </div>
+  </div>
+  <div ng-show="error">
+    <p style="text-align:center;color:#ff664c;font-weight:700;">{{error}}</p>
+  </div>
+  <md-button class="md-raised md-accent" ng-disabled="!videoUrl" ng-click="submit(video)">Submit</md-button>
+  <md-button class="md-raised md-warn" ng-click="cancel()">Cancel</md-button> 
+</md-content>
+<md-content ng-show="videoSelecting && !viewing" layout-padding style="width:500px;min-height:350px">
+  <md-button ng-click="videoSelectToggle()"><md-icon>chevron_left</md-icon>Back to upload</md-button>
+  <md-button ng-disabled="!videoUrl" ng-click="submit()"><md-icon>check</md-icon>Submit</md-button>
+  <md-list>
+    <md-list-item layout="row">
+      <div flex="20"><p><b>Title</b></p></div>
+      <div flex="50"><p><b>Description</b></p></div>
+      <div flex="15"><p><b>View</b></p></div>
+      <div flex="15"><p><b>Select</b></p></div>
+    </md-list-item>
+
+    <md-radio-group ng-model="videoUrl">
+    <div ng-repeat="video in videos">
+      <md-divider></md-divider>
+      <md-list-item class="md-no-proxy" layout="row">
+        <div flex="20"><p style="height:1.4em;overflow-y:hidden;">{{video.title}}</p></div>
+        <div flex="50"><p style="height:1.4em;overflow-y:hidden;">{{video.description}}</p></div>
+        <div flex="15">
+          <md-button class="md-icon-button" ng-click="view(video)">
+            <md-progress-circular ng-show="viewLoading" md-mode="indeterminate"></md-progress-circular>
+            <md-icon ng-show="!viewLoading">play_arrow</md-icon>
+          </md-button>
+        </div>
+        <div flex="15">
+            <md-radio-button style="margin-bottom:0" ng-value="video.amazonUrl" aria-label="Select video">
+            </md-radio-button>
+          
+        </div>
+      </md-list-item>
+    </div>
+    </md-radio-group>
+  </md-list>
+</md-content>
+<md-content layout-padding style="width:500px;min-height:350px" ng-if="viewing">
+  <h2>{{viewingVideo.title}}</h2>
+  <div class="video-container">
+    <video 
+      ng-src="{{viewingVideo.amazonUrl}}"
+      class="video-js vjs-default-skin"
+      controls preload="auto" 
+      width="640" 
+      height="264" 
+      fluid="true"
+      poster="images/bidio_logo.png" 
+      vjs-video
+      vjs-media="media"
+      vjs-setup="options"
+      vjs-ratio="16:9">
+    </video>
+    <p class="text-center"><b>About</b></p>
+    <p>{{viewingVideo.description}}</p>
+    <md-button ng-click="dismissView()"><md-icon>chevron_left</md-icon>Back to videos</md-button>
+  </div>
+</md-content>

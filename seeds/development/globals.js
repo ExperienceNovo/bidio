@@ -2,6 +2,7 @@
 # of users, and # of resource per user
 */
 
+var faker = require("faker");
 var ObjectId = require("sails-mongo").mongo.objectId;
 
 var getId = sails.config.models.connection == 'localDiskDb' ?
@@ -31,6 +32,8 @@ var users = Array.apply(null,Array(amounts.users)).map(function(){
 	return getId()
 });
 
+var soccerNames = Array.apply(null,Array(3)).map(function(){ return [faker.name.firstName(), faker.name.lastName()].join(" ") })
+
 var videos = Array.apply(null,Array(amounts.users * amounts.videos * amounts.contests)).map(function(){
 	return getId()
 });
@@ -48,5 +51,6 @@ module.exports = {
 	videos: videos,
 	contests: contests,
 	profiles: profiles,
-	passports: [ObjectId(1).toJSON()]
+	passports: [ObjectId(1).toJSON()],
+	soccerNames: soccerNames
 };

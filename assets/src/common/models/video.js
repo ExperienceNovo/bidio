@@ -7,6 +7,7 @@ angular.module('models.video', ['lodash', 'services', 'sails.io',])
     };
 
     this.getMine = function(){
+
         var url = utils.prepareUrl('video/me');
         return $sailsSocket.get(url).then(success,error);
     }

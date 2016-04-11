@@ -35,9 +35,9 @@ angular.module( 'bidio.contest', [
 	});
 })
 
-.controller( 'ContestCtrl', function ContestCtrl( $scope, config, titleService, ContestModel, contest, $sce, $modal ) {
+.controller( 'ContestCtrl', function ContestCtrl( $scope, config, titleService, ContestModel, contest, $sce, $uibModal ) {
 
-	contest.contestContent = $sce.trustAsHtml(contest.contestContent);
+	//contest.contestContent = $sce.trustAsHtml(contest.contestContent);
 	contest.title = $sce.trustAsHtml(contest.title);
 
 	contest.videos = contest.videos.map(function(video){
@@ -54,7 +54,7 @@ angular.module( 'bidio.contest', [
 	}
 
 	$scope.apply = function(){
-		$modal.open({
+		$uibModal.open({
 			animation: true,
 			templateUrl: "contest/templates/submitModal.tpl.html",
 			controller: "submitVideoCtrl",
@@ -67,7 +67,9 @@ angular.module( 'bidio.contest', [
 
 })
 
-.controller('submitVideoCtrl', function ($scope, contest, config, $modalInstance, Upload, VideoModel) {
+.controller('submitVideoCtrl', function ($scope, contest, config, $uibModalInstance, Upload, VideoModel) {
+
+		$scope.contest = contest;
 
 		$scope.currentUser = config.currentUser;
 		$scope.video = {contest: contest.id};
@@ -120,7 +122,7 @@ angular.module( 'bidio.contest', [
     }
 
 		$scope.cancel = function(){
-			$modalInstance.close();
+			$uibModalInstance.close();
 		}
 
 });
