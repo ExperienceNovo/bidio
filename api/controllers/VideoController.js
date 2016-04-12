@@ -180,10 +180,6 @@ module.exports = {
 
 	update: function(req, res) {
 
-		//console.log(req.params.all())
-
-		console.log("VALUES", req.params.all().clickCount, req.params.all(), req.body.clickCount)
-
 		var id = req.param('id');
 
 		var model = {
@@ -211,10 +207,12 @@ module.exports = {
 			.then(function(result){
 
 				return res.json(result);
+
 			})
 			.catch(function(err){
 
-				res.negotiate(err);
+				return res.negotiate(err);
+
 			})
 
 		
