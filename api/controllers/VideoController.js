@@ -147,8 +147,6 @@ module.exports = {
 
 	    var amazonUrl = uploadedFiles[0].extra.Location;
 
-	    console.log("hi", amazonUrl);
-
 	    return res.json({amazonUrl: amazonUrl});
 		})
 
@@ -182,7 +180,9 @@ module.exports = {
 
 	update: function(req, res) {
 
-		console.log("DEBUG: ", req.params.all(), req.user);
+		//console.log("DEBUG: ", req.params.all(), req.user);
+
+		console.log("hi1")
 
 		var id = req.param('id');
 
@@ -198,6 +198,8 @@ module.exports = {
 			description: req.param("description"),
 		};
 
+		console.log("hi2");
+
 		if (req.param('clicked')){
 			model.click = {video: id};
 
@@ -207,12 +209,20 @@ module.exports = {
 
 		}
 
+		console.log("hi3")
+
 		Video.update({id: id}, model)
 			.then(function(result){
+
+				console.log("hi4")
+
 				console.log(result);
 				return res.json(result);
 			})
 			.catch(function(err){
+
+				console.log("ERROR", err);
+
 				res.negotiate(err);
 			})
 
