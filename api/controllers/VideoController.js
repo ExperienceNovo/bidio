@@ -182,7 +182,7 @@ module.exports = {
 
 		//console.log(req.params.all())
 
-		console.log("VALUES", req.param("clickCount"), req.param("clickcount"), req.params.clickCount)
+		console.log("VALUES", req.params.all().clickCount, req.params.all())
 
 		var id = req.param('id');
 
