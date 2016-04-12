@@ -1,0 +1,151 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   '--save',
+1 verbose cli   'skiper-better-s3' ]
+2 info using npm@2.11.2
+3 info using node@v0.12.6
+4 verbose install initial load of C:\dev\node\bidio\package.json
+5 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\bcryptjs\package.json
+6 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\chai\package.json
+7 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\chai-as-promised\package.json
+8 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\connect-mongo\package.json
+9 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\ejs\package.json
+10 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\faker\package.json
+11 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\grunt\package.json
+12 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\grunt-contrib-clean\package.json
+13 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\grunt-contrib-coffee\package.json
+14 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\grunt-contrib-concat\package.json
+15 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\grunt-contrib-copy\package.json
+16 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\grunt-contrib-cssmin\package.json
+17 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\grunt-contrib-jst\package.json
+18 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\grunt-contrib-less\package.json
+19 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\grunt-contrib-uglify\package.json
+20 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\grunt-contrib-watch\package.json
+21 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\grunt-html2js\package.json
+22 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\grunt-sails-linker\package.json
+23 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\grunt-sync\package.json
+24 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\include-all\package.json
+25 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\lodash\package.json
+26 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\mocha\package.json
+27 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\mongodb\package.json
+28 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\passport\package.json
+29 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\passport-facebook\package.json
+30 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\passport-github\package.json
+31 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\passport-google\package.json
+32 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\passport-google-oauth\package.json
+33 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\passport-local\package.json
+34 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\passport-twitter\package.json
+35 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\rc\package.json
+36 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\sails\package.json
+37 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\sails-disk\package.json
+38 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\sails-generate-auth\package.json
+39 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\sails-hook-seed\package.json
+40 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\sails-mongo\package.json
+41 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\skipper\package.json
+42 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\skipper-s3\package.json
+43 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\sprintf-js\package.json
+44 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\supertest\package.json
+45 verbose installManyTop reading scoped package data from C:\dev\node\bidio\node_modules\validator\package.json
+46 info package.json bcryptjs@2.1.0 No license field.
+47 info package.json connect-mongo@0.8.2 No license field.
+48 info package.json ejs@0.8.8 No license field.
+49 info package.json grunt-contrib-clean@0.5.0 No license field.
+50 info package.json grunt-contrib-coffee@0.10.1 No license field.
+51 info package.json grunt-contrib-concat@0.3.0 No license field.
+52 info package.json grunt-contrib-copy@0.5.0 No license field.
+53 info package.json grunt-contrib-cssmin@0.9.0 No license field.
+54 info package.json grunt-contrib-jst@0.6.0 No license field.
+55 info package.json grunt-contrib-watch@0.5.3 No license field.
+56 info package.json grunt-contrib-uglify@0.4.1 No license field.
+57 info package.json grunt-html2js@0.3.5 No license field.
+58 info package.json grunt-sync@0.0.8 No license field.
+59 info package.json passport-facebook@1.0.3 No license field.
+60 info package.json passport-github@0.1.5 No license field.
+61 info package.json passport-google@0.3.0 No license field.
+62 info package.json passport-google-oauth@0.2.0 No license field.
+63 info package.json passport-local@1.0.0 No license field.
+64 info package.json sails@0.11.5 No license field.
+65 info package.json rc@0.5.5 No license field.
+66 info package.json validator@3.28.0 No license field.
+67 info package.json grunt@0.4.2 No license field.
+68 info package.json grunt-contrib-less@0.11.1 No license field.
+69 info package.json passport@0.2.1 No license field.
+70 verbose readDependencies loading dependencies from C:\dev\node\bidio\package.json
+71 silly cache add args [ 'skiper-better-s3', null ]
+72 verbose cache add spec skiper-better-s3
+73 silly cache add parsed spec { raw: 'skiper-better-s3',
+73 silly cache add   scope: null,
+73 silly cache add   name: 'skiper-better-s3',
+73 silly cache add   rawSpec: '',
+73 silly cache add   spec: '*',
+73 silly cache add   type: 'range' }
+74 silly addNamed skiper-better-s3@*
+75 verbose addNamed "*" is a valid semver range for skiper-better-s3
+76 silly addNameRange { name: 'skiper-better-s3', range: '*', hasData: false }
+77 silly mapToRegistry name skiper-better-s3
+78 silly mapToRegistry using default registry
+79 silly mapToRegistry registry https://registry.npmjs.org/
+80 silly mapToRegistry uri https://registry.npmjs.org/skiper-better-s3
+81 verbose addNameRange registry:https://registry.npmjs.org/skiper-better-s3 not in flight; fetching
+82 verbose request uri https://registry.npmjs.org/skiper-better-s3
+83 verbose request no auth needed
+84 info attempt registry request try #1 at 1:35:49 PM
+85 verbose request using bearer token for auth
+86 verbose request id 5be35beb548021dd
+87 http request GET https://registry.npmjs.org/skiper-better-s3
+88 http 404 https://registry.npmjs.org/skiper-better-s3
+89 verbose headers { 'content-type': 'application/json',
+89 verbose headers   'cache-control': 'max-age=0',
+89 verbose headers   'content-length': '2',
+89 verbose headers   'accept-ranges': 'bytes',
+89 verbose headers   date: 'Tue, 12 Apr 2016 17:35:50 GMT',
+89 verbose headers   via: '1.1 varnish',
+89 verbose headers   connection: 'keep-alive',
+89 verbose headers   'x-served-by': 'cache-jfk1020-JFK',
+89 verbose headers   'x-cache': 'MISS',
+89 verbose headers   'x-cache-hits': '0',
+89 verbose headers   'x-timer': 'S1460482550.590950,VS0,VE21',
+89 verbose headers   vary: 'Accept-Encoding' }
+90 silly get cb [ 404,
+90 silly get   { 'content-type': 'application/json',
+90 silly get     'cache-control': 'max-age=0',
+90 silly get     'content-length': '2',
+90 silly get     'accept-ranges': 'bytes',
+90 silly get     date: 'Tue, 12 Apr 2016 17:35:50 GMT',
+90 silly get     via: '1.1 varnish',
+90 silly get     connection: 'keep-alive',
+90 silly get     'x-served-by': 'cache-jfk1020-JFK',
+90 silly get     'x-cache': 'MISS',
+90 silly get     'x-cache-hits': '0',
+90 silly get     'x-timer': 'S1460482550.590950,VS0,VE21',
+90 silly get     vary: 'Accept-Encoding' } ]
+91 verbose stack Error: Registry returned 404 for GET on https://registry.npmjs.org/skiper-better-s3
+91 verbose stack     at CachingRegistryClient.<anonymous> (C:\Users\Taylor\AppData\Roaming\nvm\v0.12.6\node_modules\npm\node_modules\npm-registry-client\lib\request.js:239:14)
+91 verbose stack     at Request._callback (C:\Users\Taylor\AppData\Roaming\nvm\v0.12.6\node_modules\npm\node_modules\npm-registry-client\lib\request.js:170:14)
+91 verbose stack     at Request.self.callback (C:\Users\Taylor\AppData\Roaming\nvm\v0.12.6\node_modules\npm\node_modules\request\request.js:354:22)
+91 verbose stack     at Request.emit (events.js:110:17)
+91 verbose stack     at Request.<anonymous> (C:\Users\Taylor\AppData\Roaming\nvm\v0.12.6\node_modules\npm\node_modules\request\request.js:1207:14)
+91 verbose stack     at Request.emit (events.js:129:20)
+91 verbose stack     at IncomingMessage.<anonymous> (C:\Users\Taylor\AppData\Roaming\nvm\v0.12.6\node_modules\npm\node_modules\request\request.js:1153:12)
+91 verbose stack     at IncomingMessage.emit (events.js:129:20)
+91 verbose stack     at _stream_readable.js:908:16
+91 verbose stack     at process._tickCallback (node.js:355:11)
+92 verbose statusCode 404
+93 verbose pkgid skiper-better-s3
+94 verbose cwd C:\dev\node\bidio
+95 error Windows_NT 6.3.9600
+96 error argv "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "--save" "skiper-better-s3"
+97 error node v0.12.6
+98 error npm  v2.11.2
+99 error code E404
+100 error 404 Registry returned 404 for GET on https://registry.npmjs.org/skiper-better-s3
+100 error 404
+100 error 404 'skiper-better-s3' is not in the npm registry.
+100 error 404 You should bug the author to publish it (or use the name yourself!)
+100 error 404 It was specified as a dependency of '1.0.0'
+100 error 404
+100 error 404 Note that you can also install from a
+100 error 404 tarball, folder, http url, or git url.
+101 verbose exit [ 1, true ]

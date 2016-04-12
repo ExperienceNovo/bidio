@@ -1,0 +1,183 @@
+.campaignsTitleContainer {
+    padding: 50px;
+    background-color: #faa93f;
+}
+.contentTitleLetters{
+	color:white;
+    font-weight:700;
+}
+p.campaignsInfoText{
+	padding-bottom: 25px;
+    padding-top: 25px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 300;
+}
+.campaignsInfoInput{
+	font-size: 25px;
+	width: 100%;
+}
+button.createCampaignButton {
+    padding: 25px;
+    margin-top: 25px;
+    width: 30%;
+    background: #faa93f;
+    border: 0px solid white;
+    border-radius: 5px;
+    color: white;
+    font-size: 25px;
+    font-weight: 500;
+}
+img.sponsorPic{
+	height: 1.25em;
+    padding-top: 5px;
+}
+
+img.sponsorPicLarge{
+    width: 100%;
+}
+.campaignContainer {
+    padding-top: 50px;
+	padding-bottom: 50px;
+}
+p.sponsorText {
+    text-align: center;
+    padding-bottom: 25px;
+}
+p.sponsorText.sponsorTitle {
+    font-weight: 500;
+    font-size: 25px;
+    color: #555555;
+}
+/*.editCampaignContainer{
+	height: 250px;
+}*/
+p.sponsorText.sponsorName.ng-binding {
+    margin-top: 25px;
+    padding-top: 25px;
+    border-top: 1px solid #ccc;
+	margin-left: 150px;
+	margin-right: 150px;
+}
+p.editPropertiesTitle {
+    text-align: center;
+    padding-bottom: 25px;
+}
+input.editPropertiesInput {
+    margin-bottom: 25px;
+    width: 100%;
+    padding: 2px;
+	text-align: center;
+}
+p.dateTitle {
+    padding-bottom: 25px;
+    text-align: center;
+}
+a.sponsorName {
+    font-size: 16px;
+}
+.editTitleAndUrl {
+    display: -webkit-box;
+}
+.updateTitle {
+	width: 50%;
+}
+.updateUrl{
+	width: 50%;
+}
+textarea.editPropertiesInput.editProperitesTextArea {
+    width: 100%;
+    height: 78px;
+    margin-bottom: 25px;
+}
+button.updateCampaignButton {
+    padding: 10px;
+    background: #faa93f;
+    border: 0px solid white;
+    border-radius: 5px;
+    color: white;
+    font-size: 19px;
+    font-weight: 500;
+}
+.campaignsTitleContainer.submissionsTitleContainer {
+    background: #ccc;
+    background: #444;
+}
+
+.aboutTxt{
+    margin-bottom: 150px;
+    line-height:2;
+    padding: 0!important;
+}
+
+.aboutTxt p {
+    font-size: 19px;
+    line-height: 2;
+    text-align: justify;
+    padding: 0;
+}
+
+.campaign-desc{
+    padding: 15px;
+}
+
+.campaign-desc>a, .campaign-desc>p{
+    font-size: 24px;
+    font-weight:700;
+}
+
+.campaign-desc>p{
+    float: left;
+}
+
+.campaign-desc>a{
+    float:right;
+}
+
+.campaign-tabs li {
+    float: none;
+    display: inline-block;
+}
+
+ul.campaign-listinfo {
+    list-style-type: disc;
+    display: table;
+    margin: 0 auto;
+    float: right;
+}
+
+.campaign-listinfo li {
+    text-align: left;
+}
+
+.campaign-submit {
+    float: right;
+}
+
+.campaign-submit a {
+    font-size: 20px;
+}
+
+.sponsor-banner {
+    background: url(http://placehold.it/1500x350?text=Banner);
+    background-size:cover;
+    width: 100%;
+    height: 250px;
+    padding: 25px 0;
+}
+
+.delete-btn {
+    transition: color 0.3s;
+}
+
+.delete-btn:hover {
+    color: #ff6644;
+}
+
+.delete-btn:hover ~ p {
+    color: #ff6644;
+}
+
+.delete-btn ~ p {
+    transition: color 0.3s;
+}

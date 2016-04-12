@@ -1,0 +1,19 @@
+<md-content layout-padding style="width:500px">
+	<h3>Create Campaign</h3>
+	<md-input-container>
+    <label>Title</label>
+    <input ng-model="campaign.title" type="text">
+  </md-input-container>
+  <br>
+  <md-input-container>
+    <label>URL Title</label>
+    <input ng-model="campaign.urlTitle" type="text">
+  </md-input-container>
+  <br>
+  <div ng-show="error">
+    <p class="errorTxt">{{error}}</p>
+  </div>
+  <md-button ng-click="submit(campaign)">Submit</md-button>
+  <br>
+  <md-button ng-click="cancel()">Cancel</md-button>
+</md-content>

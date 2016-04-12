@@ -1,0 +1,35 @@
+<div class="surface-container home-pad">
+	<div class="campaignsTitleContainer">
+		<h1 class="contentTitleLetters">Campaigns</h1>
+	</div>
+
+	<br><br>
+	
+	<div class="container" ng-repeat="campaign in campaigns">
+		<h2><a ng-bind-html="campaign.title" href="/campaign/{{campaign.urlTitle}}"></a></h2>
+		<h4>sponsered by</h4>
+		<h3><a href="/member/{{campaign.user.username}}">{{campaign.user.username}}</a></h3>
+	</div>
+
+	<br><br>
+	
+	<div ng-show="currentUser">
+		<div class="campaignsTitleContainer">
+			<h1 class="contentTitleLetters">Create a Campaign</h1>
+		</div>
+		
+		<div class="container">
+			<form ng-submit="createCampaign(newCampaign)">
+				<p class="campaignsInfoText">Title</p>
+				<input class="campaignsInfoInput" type='text' ng-model="newCampaign.title"></input>
+				<p class="campaignsInfoText">Tell us about the Campaign.</p>
+				<textarea class="campaignsInfoInput" ng-model="newCampaign.campaignContent"></textarea>
+				<p class="campaignsInfoText">URL</p>
+				<input class="campaignsInfoInput" type='text' ng-model="newCampaign.urlTitle"></input><br>
+				<button class="createCampaignButton" type='submit'>Create</button>
+			</form>
+			<br><br>
+		</div>
+	</div>
+		
+</div>
