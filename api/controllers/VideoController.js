@@ -147,7 +147,7 @@ module.exports = {
 
 	    var amazonUrl = uploadedFiles[0].extra.Location;
 
-	    console.log("hi")
+	    console.log("hi", amazonUrl);
 
 	    return res.json({amazonUrl: amazonUrl});
 		})
