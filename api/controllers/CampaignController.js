@@ -175,6 +175,7 @@ module.exports = {
 		var model = {
 			title: req.param('title'),
 			videoUrl: req.param('videoUrl'),
+			doesRedirect: req.param('doesRedirect'),
 			bannerUrl: req.param('bannerUrl'),
 			published: req.param('published'),
 			price: req.param('price'),
@@ -184,6 +185,10 @@ module.exports = {
 			campaignContent: req.param('campaignContent'),
 			user: req.param('user')
 		};
+
+		if(req.param('redirectUrl')){
+    	model.redirectUrl = req.param('redirectUrl');
+    }
 
     if(req.param('contributionGoal')){
     	model.contributionGoal = req.param('contributionGoal')

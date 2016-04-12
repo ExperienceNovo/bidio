@@ -227,6 +227,7 @@ angular.module( 'bidio.dashboard', [
     $scope.contentHolder = null;
     $scope.infoHolder = null;
     $scope.promptHolder = null;
+    $scope.urlSaving = null;
 
     var sorted = {
         "new": $scope.campaign.videos.filter(function(video){return video.isNew}),
@@ -285,6 +286,13 @@ angular.module( 'bidio.dashboard', [
             return -1;
         }
     })[0];
+
+    $scope.submitUrl = function(){
+        $scope.urlSaving = true;
+        campaignSave().then(function(){
+            $scope.urlSaving = false;
+        });
+    }
 
     $scope.publish = function(){
         //check canPublish first
@@ -384,6 +392,7 @@ angular.module( 'bidio.dashboard', [
 
         var toUpdate = {
             id: $scope.campaign.id,
+            doesRedirect: $scope.campaign.doesRedirect,
             bannerUrl: $scope.campaign.bannerUrl,
             videoUrl: $scope.campaign.videoUrl,
             published: $scope.campaign.published,
@@ -395,6 +404,10 @@ angular.module( 'bidio.dashboard', [
             intro: $scope.campaign.intro,
             campaignContent: $scope.campaign.campaignContent
         };
+
+        if($scope.campaign.redirectUrl){
+            toUpdate.redirectUrl = $scope.campaign.redirectUrl;
+        }
 
         if($scope.campaign.contributionGoal){
             toUpdate.contributionGoal = $scope.campaign.contributionGoal;

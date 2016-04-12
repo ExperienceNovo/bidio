@@ -12,6 +12,13 @@ module.exports = {
             type: 'string',
             required: true
         },
+        doesRedirect: {
+            type: 'boolean',
+            defaultsTo: true
+        },
+        redirectUrl: {
+            type: 'string'
+        },
         videoUrl: {
             type: 'string',
             required: true
