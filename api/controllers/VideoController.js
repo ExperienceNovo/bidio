@@ -180,7 +180,7 @@ module.exports = {
 
 	update: function(req, res) {
 
-		console.log(req.pararms.all())
+		console.log(req.params.all())
 
 		var id = req.param('id');
 
@@ -207,7 +207,7 @@ module.exports = {
 
 		Video.update({id: id}, model)
 			.then(function(result){
-				
+
 				return res.json(result);
 			})
 			.catch(function(err){
