@@ -1,10 +1,10 @@
 <link href="http://vjs.zencdn.net/5.8.0/video-js.css" rel="stylesheet">
-<div class="contestsTitleContainer">
+<div class="campaignsTitleContainer">
 	<h1 class="contentTitleLetters">{{video.title}}</h1>
 </div>
-<div class="contest-desc clearfix" ng-show="video.contest">
-	<p ng-bind-html="video.contest.title"></p>
-	<a ui-sref="contest.main({path: video.contest.urlTitle})">{{video.contest.prompt}}&nbsp;<i class="fa fa-caret-right"></i></a>
+<div class="campaign-desc clearfix" ng-show="video.campaign">
+	<p ng-bind-html="video.campaign.title"></p>
+	<a ui-sref="campaign.main({path: video.campaign.urlTitle})">{{video.campaign.prompt}}&nbsp;<i class="fa fa-caret-right"></i></a>
 </div>
 
 <div class="video-container">
@@ -29,7 +29,7 @@
 			<p><b>Posted by</b>: <a href="member/{{video.user.username}}">{{video.user.username}}</a></p>
 			<p><b>Views</b>: {{video.viewCount}}</p>
 
-		<!--<p ng-show="video.contest"><b>$/click</b>: ${{video.contest.price | number: 2 }}</h3>
+		<!--<p ng-show="video.campaign"><b>$/click</b>: ${{video.campaign.price | number: 2 }}</h3>
 			<p><b>bid: $/click</b>: ${{highestBid.value}}-->
 		</div>
 		<div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">

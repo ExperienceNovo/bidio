@@ -15,15 +15,23 @@
     <textarea ng-model="video.description" rows="4"></textarea>
   </md-input-container>
   <br>
+
   <div ng-hide="video.amazonUrl || videoLoading" style="width:100%;" ngf-accept="'video/*'" ngf-drop ngf-select="upload($file)" ng-model="file" class="drop-box" ngf-drag-over-class="dragover" ngf-allow-dir="true">
     <div>Drag videos or click here to upload.</div>
     <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>  
   </div>
+
   <p ng-show="videoLoading" style="text-align:center"><i class="fa fa-spin fa-spinner"></i>&nbsp;{{pp}}%</p>
   <div ng-show="videoLoading" class="progress">
     <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{pp}}%;">
     </div>
   </div>
+  
+  <div class="clearfix" ng-show="video.amazonUrl">
+    <i ng-click="clear()" class="delete-btn pull-left fa fa-times fa-2x"></i>
+    <p class="pull-right"><b>{{fileName}}</b></p>
+  </div>
+
   <div ng-show="error">
     <p style="text-align:center;color:#ff664c;font-weight:700;">{{error}}</p>
   </div>

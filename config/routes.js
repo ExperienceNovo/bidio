@@ -38,9 +38,9 @@ module.exports.routes = {
   'get /admin': 'HomeController.index',
   'get /admin/:path': 'HomeController.index',
   'get /account': 'HomeController.index',
-  'get /contests': 'HomeController.index',
-  'get /contest/:path': 'HomeController.index',
-  'get /contest/:path/:path': 'HomeController.index',
+  'get /campaigns': 'HomeController.index',
+  'get /campaign/:path': 'HomeController.index',
+  'get /campaign/:path/:path': 'HomeController.index',
   'get /creators': 'HomeController.index',
   'get /creator/:path': 'HomeController.index',
   'get /dashboard': 'HomeController.index',
@@ -92,18 +92,18 @@ module.exports.routes = {
 
 
   /**
-  *	Contest Routes
+  *	Campaign Routes
   */
-  'get /api/contest': 'ContestController.getAll',
-  'get /api/contest/me': 'ContestController.getMine',
-  'get /api/contest/:id': 'ContestController.getOne',
-  'get /api/contest/member/:id': 'ContestController.getByMember',
-  'get /api/contest/url/:path': 'ContestController.getByUrlTitle',
-  // 'get /api/contest/:id': 'ContestController.getSubmittedVideos',
-  'post /api/contest': 'ContestController.create',
-  'post /api/contest/check': 'ContestController.check',
-  'post /api/contest/:id': 'ContestController.update',
-  'delete /api/contest/:id': 'ContestController.destroy',
+  'get /api/campaign': 'CampaignController.getAll',
+  'get /api/campaign/me': 'CampaignController.getMine',
+  'get /api/campaign/:id': 'CampaignController.getOne',
+  'get /api/campaign/member/:id': 'CampaignController.getByMember',
+  'get /api/campaign/url/:path': 'CampaignController.getByUrlTitle',
+  // 'get /api/campaign/:id': 'CampaignController.getSubmittedVideos',
+  'post /api/campaign': 'CampaignController.create',
+  'post /api/campaign/check': 'CampaignController.check',
+  'post /api/campaign/:id': 'CampaignController.update',
+  'delete /api/campaign/:id': 'CampaignController.destroy',
 
   /**
   *	Video Routes

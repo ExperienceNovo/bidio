@@ -33,8 +33,8 @@ angular.module( 'bidio.video', [
 .controller( 'VideoCtrl', function VideoCtrl( $scope, config, titleService, $sailsSocket, video, $location, $sce, bids, BidModel ) {
 
 	$scope.currentUser = config.currentUser;
-	if (video.contest){
-		video.contest.title = $sce.trustAsHtml(video.contest.title)
+	if (video.campaign){
+		video.campaign.title = $sce.trustAsHtml(video.campaign.title)
 	}
 	$scope.video = video;
 	if(typeof($scope.video)=="undefined"){$location.path('/')}

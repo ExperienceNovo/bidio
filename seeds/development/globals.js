@@ -24,7 +24,7 @@ var getId = sails.config.models.connection == 'localDiskDb' ?
 var amounts = {
 	users: 10,
 	videos: 3,
-	contests: 1,
+	campaigns: 1,
 	profiles: 1
 };
 
@@ -34,11 +34,11 @@ var users = Array.apply(null,Array(amounts.users)).map(function(){
 
 var soccerNames = Array.apply(null,Array(3)).map(function(){ return [faker.name.firstName(), faker.name.lastName()].join(" ") })
 
-var videos = Array.apply(null,Array(amounts.users * amounts.videos * amounts.contests)).map(function(){
+var videos = Array.apply(null,Array(amounts.users * amounts.videos * amounts.campaigns)).map(function(){
 	return getId()
 });
 
-var contests = Array.apply(null,Array(amounts.users * amounts.contests)).map(function(){
+var campaigns = Array.apply(null,Array(amounts.users * amounts.campaigns)).map(function(){
 	return getId()
 });
 
@@ -49,7 +49,7 @@ var profiles = Array.apply(null,Array(amounts.users * amounts.profiles)).map(fun
 module.exports = {
 	users: users,
 	videos: videos,
-	contests: contests,
+	campaigns: campaigns,
 	profiles: profiles,
 	passports: [ObjectId(1).toJSON()],
 	soccerNames: soccerNames

@@ -13,6 +13,6 @@ angular.module( 'bidio.discover', [
 	});
 })
 
-.controller( 'DiscoverCtrl', function DiscoverCtrl( $scope, config, titleService, ContestModel, contest, $sce ) {
+.controller( 'DiscoverCtrl', function DiscoverCtrl( $scope, config, titleService, CampaignModel, campaign, $sce ) {
 
 });

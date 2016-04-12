@@ -18,8 +18,8 @@ angular.module( 'bidio', [
     'bidio.about',
     'bidio.account',
     'bidio.creators',
-	'bidio.contest',
-    'bidio.contests',
+	'bidio.campaign',
+    'bidio.campaigns',
     'bidio.dashboard',
     'bidio.discover',
     'bidio.footer',
@@ -45,7 +45,7 @@ angular.module( 'bidio', [
     ]);
 
     $urlRouterProvider.when('/about/', '/about');
-    $urlRouterProvider.when('/contests/', '/contests');
+    $urlRouterProvider.when('/campaigns/', '/campaigns');
 
     $urlRouterProvider.otherwise(function ($injector, $location) {
         if ($location.$$url === '/') {

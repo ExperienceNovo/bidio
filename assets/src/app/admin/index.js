@@ -39,10 +39,10 @@ angular.module( 'bidio.admin', [
         controller: 'VidAdminCtrl',
         templateUrl: 'admin/templates/videos.tpl.html'
     })
-    .state( 'admin.contests', {
-        url: '/contest',
-        controller: 'ContestAdminCtrl',
-        templateUrl: 'admin/templates/contests.tpl.html'
+    .state( 'admin.campaigns', {
+        url: '/campaign',
+        controller: 'CampaignAdminCtrl',
+        templateUrl: 'admin/templates/campaigns.tpl.html'
     });
 })
 
@@ -139,6 +139,6 @@ angular.module( 'bidio.admin', [
 .controller( 'VidAdminCtrl', function MainController( $scope ){
 
 })
-.controller( 'ContestAdminCtrl', function MainController( $scope ){
+.controller( 'CampaignAdminCtrl', function MainController( $scope ){
 
 });

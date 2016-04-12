@@ -19,8 +19,8 @@ angular.module( 'bidio.member', [
 			bids: function(BidModel, member){
 				return BidModel.getByMember(member.id);
 			},
-			contests: function(ContestModel, member){
-				return ContestModel.getByMember(member.id);
+			campaigns: function(CampaignModel, member){
+				return CampaignModel.getByMember(member.id);
 			},
 			videos: function(VideoModel, member){
 				return VideoModel.getByMember(member.id);
@@ -29,10 +29,10 @@ angular.module( 'bidio.member', [
 	});
 })
 
-.controller( 'MemberCtrl', function MemberCtrl( $scope, member, bids, contests, videos ) {
+.controller( 'MemberCtrl', function MemberCtrl( $scope, member, bids, campaigns, videos ) {
 	$scope.member = member;
 	if(typeof($scope.member)=="undefined"){$location.path('/')}
 	$scope.bids = bids;
-	$scope.contests = contests;
+	$scope.campaigns = campaigns;
 	$scope.videos = videos;
 });

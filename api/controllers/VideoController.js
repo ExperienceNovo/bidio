@@ -41,7 +41,7 @@ module.exports = {
 		Video.find()
 		.where({user:req.param('id')})
 		.then(function(model) {
-			Contest.subscribe(req, model);
+			Campaign.subscribe(req, model);
 			res.json(model);
 		})
 		.catch(function(err) {
@@ -128,14 +128,22 @@ module.exports = {
 		/*uncomment this if you want to save to a particular folder*/
 		//var filename = req.file('video')._files[0].stream.filename;
 
-		return req.file('video').upload({
-			adapter: require('skipper-s3'),
+		var options = {
+			adapter: require("skipper-s3"),
 		  key: 'AKIAJZS6F2HWDJWWZE7A',
 		  secret: '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',
 		  bucket: 'bidio8',
 		  /*uncomment this if you want to save to a particular folder*/
 		  //saveAs: "Event-Pictures/" + utilsService.guid() + filename.split(".").pop()
-		}, function response(err,uploadedFiles){
+		}
+
+		if (process.env.NODE_ENV == 'development'){
+			var filename = req.file('video')._files[0].stream.filename;
+			options.saveAs = "development/" + utilsService.guid() + "." + filename.split(".").pop();
+		}
+
+
+		return req.file('video').upload( options, function response(err,uploadedFiles){
 
 			if (err) {
 	      return res.negotiate(err);
@@ -162,8 +170,8 @@ module.exports = {
 			user: req.user.id
 		};
 
-		if (req.param("contest")){
-			model.contest = req.param("contest");
+		if (req.param("campaign")){
+			model.campaign = req.param("campaign");
 		}
 
 		Video.create(model)

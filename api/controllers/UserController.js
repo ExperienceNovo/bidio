@@ -70,9 +70,6 @@ module.exports = {
 		var model = {
 			email: req.param('email'),
 			username : req.param('username')
-			//urlTitle: req.param('urlTitle'),
-			//contestContent: req.param('contestContent'),
-			//user: req.param('user')
 		};
 		
 		console.log("model in controller is: " + model);

@@ -48,8 +48,8 @@ module.exports = {
             required: true,
             defaultsTo: 0
         },
-        contest: {
-            model: 'contest'
+        campaign: {
+            model: 'campaign'
         },
         approved: {
             type: 'boolean',
@@ -72,7 +72,7 @@ module.exports = {
     getOne: function(id) {
         return Video.findOne(id)
         .populate('user')
-        .populate('contest')
+        .populate('campaign')
         .then(function (model) {
             return [model];
         });

@@ -1,6 +1,6 @@
 angular.module('models', [
 	'models.bid',
-	'models.contest',
+	'models.campaign',
 	'models.post',
 	'models.user',
 	'models.video'

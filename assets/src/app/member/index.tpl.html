@@ -1,4 +1,4 @@
-<div class="contestsTitleContainer">
+<div class="campaignsTitleContainer">
 	<h1 class="contentTitleLetters">{{member.username}}</h1>
 </div>
 <h2>information</h2><hr>
@@ -11,15 +11,15 @@
 <hr>
 <br><br>
 
-<h2>contests</h2><hr>
-<div class="contest-list" ng-repeat="contest in contests">
-	<h2><a href="/contest/{{contest.urlTitle}}">{{contest.title}}</a></h2>
-	<p>{{contest.intro}}</p>
+<h2>campaigns</h2><hr>
+<div class="campaign-list" ng-repeat="campaign in campaigns">
+	<h2><a href="/campaign/{{campaign.urlTitle}}">{{campaign.title}}</a></h2>
+	<p>{{campaign.intro}}</p>
 </div>
 <hr>
 
 <h2>bids</h2><hr>
-<div class="contest-list" ng-repeat="bid in bids">
+<div class="campaign-list" ng-repeat="bid in bids">
 	<h2>{{bid.value}}</h2>
 	<h2><a href="/video/{{bid.video.id}}">{{bid.video.title}}</a></h2>
 </div>

@@ -38,27 +38,27 @@ angular.module( 'bidio.dashboard', [
         controller: 'DashboardProfileCtrl',
         templateUrl: 'dashboard/templates/profile.tpl.html'
     })
-    .state( 'dashboard.contests', {
-        url: '/contests',
-        controller: 'DashboardContestsCtrl',
-        templateUrl: 'dashboard/templates/contests.tpl.html',
+    .state( 'dashboard.campaigns', {
+        url: '/campaigns',
+        controller: 'DashboardCampaignsCtrl',
+        templateUrl: 'dashboard/templates/campaigns.tpl.html',
         resolve: {
-            ContestModel: "ContestModel",
-            contests: function(ContestModel){
-                return ContestModel.getMine();
+            CampaignModel: "CampaignModel",
+            campaigns: function(CampaignModel){
+                return CampaignModel.getMine();
             }
         }
     })
-    .state( 'dashboard.contestEdit', {
-        url: '/contest/:id',
-        controller: 'DashboardContestEditCtrl',
-        templateUrl: 'dashboard/templates/contestEdit.tpl.html',
+    .state( 'dashboard.campaignEdit', {
+        url: '/campaign/:id',
+        controller: 'DashboardCampaignEditCtrl',
+        templateUrl: 'dashboard/templates/campaignEdit.tpl.html',
         resolve: {
-            ContestModel: "ContestModel",
+            CampaignModel: "CampaignModel",
             config: "config",
-            contest: function(config, $stateParams, ContestModel){
+            campaign: function(config, $stateParams, CampaignModel){
 
-                return ContestModel.getOne($stateParams.id);
+                return CampaignModel.getOne($stateParams.id);
             }
         }
     })
@@ -115,6 +115,7 @@ angular.module( 'bidio.dashboard', [
     $scope.loading = $scope.videoLoading = false;
     $scope.error = null;
     $scope.pp = 0;
+    $scope.fileName = null;
 
     $scope.upload = function(file){
 
@@ -126,6 +127,7 @@ angular.module( 'bidio.dashboard', [
             data: {video: file}
         })
         .then(function(response){
+            $scope.fileName = file.name;
             $scope.videoLoading = false;
             $scope.video.amazonUrl = response.data.amazonUrl;
         },
@@ -162,20 +164,25 @@ angular.module( 'bidio.dashboard', [
     $scope.cancel = function(){
         $mdDialog.cancel();
     }
+
+    $scope.clear = function(){
+        $scope.fileName = null;
+        $scope.video.amazonUrl = null;
+    }
 })
 
 .controller('DashboardProfileCtrl', function ($scope) {
     
 })
 
-.controller('DashboardContestsCtrl', function (config, $state, $scope, contests, ContestModel, $mdDialog) {
+.controller('DashboardCampaignsCtrl', function (config, $state, $scope, campaigns, CampaignModel, $mdDialog) {
 
-    $scope.contests = contests;
+    $scope.campaigns = campaigns;
 
-    $scope.addContest = function(ev){
+    $scope.addCampaign = function(ev){
         $mdDialog.show({
-          controller: 'ContestDialogCtrl',
-          templateUrl: 'dashboard/templates/createContest.tpl.html',
+          controller: 'CampaignDialogCtrl',
+          templateUrl: 'dashboard/templates/createCampaign.tpl.html',
           parent: angular.element(document.body),
           targetEvent: ev,
           clickOutsideToClose:true,
@@ -185,7 +192,7 @@ angular.module( 'bidio.dashboard', [
 
             result.id = "create";
 
-            return ContestModel.create({
+            return CampaignModel.create({
                 /*placeholder here*/
                 bannerUrl: "http://placehold.it/1000x400?name=banner",
                 /*placeholder here*/
@@ -197,20 +204,20 @@ angular.module( 'bidio.dashboard', [
                 urlTitle: result.urlTitle,
                 prompt: "Write and exciting prompt here",
                 intro: "Write an exiciting intro here",
-                contestContent: "Write exciting content here"
+                campaignContent: "Write exciting content here"
             });
 
         }).then(function(model){
-            $state.go("dashboard.contestEdit", {id: model.id});
+            $state.go("dashboard.campaignEdit", {id: model.id});
         });
     }
 })
 
-.controller('DashboardContestEditCtrl', function ($state, $mdMenu, $scope, contest, ContestModel, $mdDialog, VideoModel, lodash, $q) {
+.controller('DashboardCampaignEditCtrl', function ($state, $mdMenu, $scope, campaign, CampaignModel, $mdDialog, VideoModel, lodash, $q) {
 
-    var originals = lodash.cloneDeep(contest.videos);
+    var originals = lodash.cloneDeep(campaign.videos);
 
-    $scope.contest = contest;
+    $scope.campaign = campaign;
     $scope.selection = {type: "new"};
     $scope.clean = true;
     $scope.saving = false;
@@ -222,22 +229,22 @@ angular.module( 'bidio.dashboard', [
     $scope.promptHolder = null;
 
     var sorted = {
-        "new": $scope.contest.videos.filter(function(video){return video.isNew}),
-        "approved": $scope.contest.videos.filter(function(video){return !video.isNew && video.approved}),
-        "unapproved": $scope.contest.videos.filter(function(video){return !video.isNew && !video.approved})
+        "new": $scope.campaign.videos.filter(function(video){return video.isNew}),
+        "approved": $scope.campaign.videos.filter(function(video){return !video.isNew && video.approved}),
+        "unapproved": $scope.campaign.videos.filter(function(video){return !video.isNew && !video.approved})
     };
 
-    $scope.totalClicks = $scope.contest.videos.reduce(function(val,item){
+    $scope.totalClicks = $scope.campaign.videos.reduce(function(val,item){
         val += item.clickCount;
         return val;
     },0);
 
-    $scope.totalViews = $scope.contest.videos.reduce(function(val,item){
+    $scope.totalViews = $scope.campaign.videos.reduce(function(val,item){
         val += item.viewCount;
         return val;
     },0);
 
-    $scope.topViews = $scope.contest.videos.sort(function(a,b){
+    $scope.topViews = $scope.campaign.videos.sort(function(a,b){
         if (a.viewCount < b.viewCount){
             return 1
         }
@@ -251,7 +258,7 @@ angular.module( 'bidio.dashboard', [
         }
     })[0];
 
-    $scope.topClicks = $scope.contest.videos.sort(function(a,b){
+    $scope.topClicks = $scope.campaign.videos.sort(function(a,b){
         if (a.clickCount < b.clickCount){
             return 1
         }
@@ -265,7 +272,7 @@ angular.module( 'bidio.dashboard', [
         }
     })[0];
 
-    $scope.topConversion = $scope.contest.videos.sort(function(a,b){
+    $scope.topConversion = $scope.campaign.videos.sort(function(a,b){
         if ((a.clickCount / a.viewCount) < (b.clickCount / b.viewCount)){
             return 1;
         }
@@ -281,10 +288,10 @@ angular.module( 'bidio.dashboard', [
 
     $scope.publish = function(){
         //check canPublish first
-        $scope.contest.published = true;
-        contestSave()
+        $scope.campaign.published = true;
+        campaignSave()
             .then(function(result){
-                $state.go("dashboard.contests")
+                $state.go("dashboard.campaigns")
             })
     }
 
@@ -300,8 +307,8 @@ angular.module( 'bidio.dashboard', [
             templateUrl: 'dashboard/templates/addPhoto.tpl.html',
             parent: angular.element(document.body),
             resolve: {
-                contest: function(){
-                    return contest;
+                campaign: function(){
+                    return campaign;
                 }
             },
             targetEvent: ev,
@@ -318,8 +325,8 @@ angular.module( 'bidio.dashboard', [
             templateUrl: 'dashboard/templates/addVideo.tpl.html',
             parent: angular.element(document.body),
             resolve: {
-                contest: function(){
-                    return contest;
+                campaign: function(){
+                    return campaign;
                 }
             },
             targetEvent: ev,
@@ -330,17 +337,17 @@ angular.module( 'bidio.dashboard', [
     }
 
     $scope.editInfoToggle = function(){
-        $scope.infoHolder = lodash.clone($scope.contest.contestContent);
+        $scope.infoHolder = lodash.clone($scope.campaign.campaignContent);
         $scope.editingInfo = !$scope.editingInfo;
     }
 
     $scope.editLandingToggle = function(){
-        $scope.contentHolder = lodash.clone($scope.contest.contestContent);
+        $scope.contentHolder = lodash.clone($scope.campaign.campaignContent);
         $scope.editingLanding = !$scope.editingLanding;
     }
 
     $scope.editPromptToggle = function(){
-        $scope.promptHolder = lodash.clone($scope.contest.prompt);
+        $scope.promptHolder = lodash.clone($scope.campaign.prompt);
         $scope.editingPrompt = !$scope.editingPrompt;
     }
 
@@ -372,38 +379,38 @@ angular.module( 'bidio.dashboard', [
 
     }
 
-    function contestSave(){
+    function campaignSave(){
         $scope.saving = true;
 
         var toUpdate = {
-            id: $scope.contest.id,
-            bannerUrl: $scope.contest.bannerUrl,
-            videoUrl: $scope.contest.videoUrl,
-            published: $scope.contest.published,
-            title: $scope.contest.title,
-            price: $scope.contest.price,
-            user: $scope.contest.user.id,
-            urlTitle: $scope.contest.urlTitle,
-            prompt: $scope.contest.prompt,
-            intro: $scope.contest.intro,
-            contestContent: $scope.contest.contestContent
+            id: $scope.campaign.id,
+            bannerUrl: $scope.campaign.bannerUrl,
+            videoUrl: $scope.campaign.videoUrl,
+            published: $scope.campaign.published,
+            title: $scope.campaign.title,
+            price: $scope.campaign.price,
+            user: $scope.campaign.user.id,
+            urlTitle: $scope.campaign.urlTitle,
+            prompt: $scope.campaign.prompt,
+            intro: $scope.campaign.intro,
+            campaignContent: $scope.campaign.campaignContent
         };
 
-        if($scope.contest.contributionGoal){
-            toUpdate.contributionGoal = $scope.contest.contributionGoal;
+        if($scope.campaign.contributionGoal){
+            toUpdate.contributionGoal = $scope.campaign.contributionGoal;
         }
 
-        if($scope.contest.maxContributionPerVideo){
-            toUpdate.maxContributionPerVideo = $scope.contest.maxContributionPerVideo;
+        if($scope.campaign.maxContributionPerVideo){
+            toUpdate.maxContributionPerVideo = $scope.campaign.maxContributionPerVideo;
         }
 
-        return ContestModel.update(toUpdate)
+        return CampaignModel.update(toUpdate)
     }
 
     $scope.landingSave = function(){
 
-        contestSave()
-            .then(function(contest){
+        campaignSave()
+            .then(function(campaign){
 
                 $scope.saving = false;
                 $scope.editLandingToggle();
@@ -418,8 +425,8 @@ angular.module( 'bidio.dashboard', [
 
     $scope.infoSave = function(){
 
-        contestSave()
-            .then(function(contest){
+        campaignSave()
+            .then(function(campaign){
 
                 $scope.infoSaving = false;
                 $scope.editInfoToggle();
@@ -434,8 +441,8 @@ angular.module( 'bidio.dashboard', [
 
     $scope.promptSave = function(){
 
-        contestSave()
-            .then(function(contest){
+        campaignSave()
+            .then(function(campaign){
 
                 $scope.promptSaving = false;
                 $scope.editPromptToggle();
@@ -450,19 +457,19 @@ angular.module( 'bidio.dashboard', [
 
     $scope.landingUndo = function(){
 
-        $scope.contest.contestContent = $scope.contentHolder;
+        $scope.campaign.campaignContent = $scope.contentHolder;
         $scope.editLandingToggle();
     }
 
     $scope.infoUndo = function(){
 
-        $scope.contest.info = $scope.infoHolder;
+        $scope.campaign.info = $scope.infoHolder;
         $scope.editInfoToggle();
     }
 
     $scope.promptUndo = function(){
 
-        $scope.contest.prompt = $scope.promptHolder;
+        $scope.campaign.prompt = $scope.promptHolder;
         $scope.editPromptToggle();
     }
 
@@ -490,8 +497,6 @@ angular.module( 'bidio.dashboard', [
             return video.dirty;
         });
 
-        console.log(toSave);
-
         $scope.saving = true;
 
         //update all of them
@@ -505,11 +510,11 @@ angular.module( 'bidio.dashboard', [
             //recategorize videos based on changes
             $scope.saving = false;
             sorted = {
-                "new": $scope.contest.videos.filter(function(video){return video.isNew}),
-                "approved": $scope.contest.videos.filter(function(video){return !video.isNew && video.approved}),
-                "unapproved": $scope.contest.videos.filter(function(video){return !video.isNew && !video.approved})
+                "new": $scope.campaign.videos.filter(function(video){return video.isNew}),
+                "approved": $scope.campaign.videos.filter(function(video){return !video.isNew && video.approved}),
+                "unapproved": $scope.campaign.videos.filter(function(video){return !video.isNew && !video.approved})
             };
-            $scope.selectedVideos = sorted[$scope.selection.typ];
+            $scope.selectedVideos = sorted[$scope.selection.type];
         })
         .catch(function(err){
             $scope.saving = false;
@@ -519,20 +524,20 @@ angular.module( 'bidio.dashboard', [
 
     $scope.undo = function(){
         $scope.clean = true;
-        $scope.contest.videos = originals;
-        originals = lodash.cloneDeep(contest.videos);
+        $scope.campaign.videos = originals;
+        originals = lodash.cloneDeep(campaign.videos);
 
         sorted = {
-            "new": $scope.contest.videos.filter(function(video){return video.isNew}),
-            "approved": $scope.contest.videos.filter(function(video){return !video.isNew && video.approved}),
-            "unapproved": $scope.contest.videos.filter(function(video){return !video.isNew && !video.approved})
+            "new": $scope.campaign.videos.filter(function(video){return video.isNew}),
+            "approved": $scope.campaign.videos.filter(function(video){return !video.isNew && video.approved}),
+            "unapproved": $scope.campaign.videos.filter(function(video){return !video.isNew && !video.approved})
         };
 
         $scope.selectedVideos = sorted[$scope.selection.type];
     }
 })
 
-.controller('AddPhotoCtrl', function ($scope, $mdDialog, Upload, contest, ContestModel) {
+.controller('AddPhotoCtrl', function ($scope, $mdDialog, Upload, campaign, CampaignModel) {
 
     $scope.pp = 0;
     $scope.bannerUrl = null;
@@ -541,31 +546,31 @@ angular.module( 'bidio.dashboard', [
 
     $scope.submit = function(){
 
-        contest.bannerUrl = $scope.bannerUrl;
+        campaign.bannerUrl = $scope.bannerUrl;
 
         var toUpdate = {
-            id: contest.id,
-            bannerUrl: contest.bannerUrl,
-            videoUrl: contest.videoUrl,
-            published: contest.published,
-            title: contest.title,
-            price: contest.price,
-            user: contest.user.id,
-            urlTitle: contest.urlTitle,
-            prompt: contest.prompt,
-            intro: contest.intro,
-            contestContent: contest.contestContent
+            id: campaign.id,
+            bannerUrl: campaign.bannerUrl,
+            videoUrl: campaign.videoUrl,
+            published: campaign.published,
+            title: campaign.title,
+            price: campaign.price,
+            user: campaign.user.id,
+            urlTitle: campaign.urlTitle,
+            prompt: campaign.prompt,
+            intro: campaign.intro,
+            campaignContent: campaign.campaignContent
         };
 
-        if(contest.contributionGoal){
-            toUpdate.contributionGoal = contest.contributionGoal;
+        if(campaign.contributionGoal){
+            toUpdate.contributionGoal = campaign.contributionGoal;
         }
 
-        if(contest.maxContributionPerVideo){
-            toUpdate.maxContributionPerVideo = contest.maxContributionPerVideo;
+        if(campaign.maxContributionPerVideo){
+            toUpdate.maxContributionPerVideo = campaign.maxContributionPerVideo;
         }
 
-        ContestModel.update(toUpdate)
+        CampaignModel.update(toUpdate)
             .then(function(){
                 $mdDialog.hide();
             })
@@ -602,7 +607,7 @@ angular.module( 'bidio.dashboard', [
 
 })
 
-.controller('AddVideoCtrl', function ($scope, $mdDialog, Upload, contest, ContestModel, VideoModel) {
+.controller('AddVideoCtrl', function ($scope, $mdDialog, Upload, campaign, CampaignModel, VideoModel) {
 
     $scope.pp = 0;
     $scope.videoUrl = null;
@@ -617,31 +622,31 @@ angular.module( 'bidio.dashboard', [
 
     $scope.submit = function(){
 
-        contest.videoUrl = $scope.videoUrl;
+        campaign.videoUrl = $scope.videoUrl;
 
         var toUpdate = {
-            id: contest.id,
-            bannerUrl: contest.bannerUrl,
-            videoUrl: contest.videoUrl,
-            published: contest.published,
-            title: contest.title,
-            price: contest.price,
-            user: contest.user.id,
-            urlTitle: contest.urlTitle,
-            prompt: contest.prompt,
-            intro: contest.intro,
-            contestContent: contest.contestContent
+            id: campaign.id,
+            bannerUrl: campaign.bannerUrl,
+            videoUrl: campaign.videoUrl,
+            published: campaign.published,
+            title: campaign.title,
+            price: campaign.price,
+            user: campaign.user.id,
+            urlTitle: campaign.urlTitle,
+            prompt: campaign.prompt,
+            intro: campaign.intro,
+            campaignContent: campaign.campaignContent
         };
 
-        if(contest.contributionGoal){
-            toUpdate.contributionGoal = contest.contributionGoal;
+        if(campaign.contributionGoal){
+            toUpdate.contributionGoal = campaign.contributionGoal;
         }
 
-        if(contest.maxContributionPerVideo){
-            toUpdate.maxContributionPerVideo = contest.maxContributionPerVideo;
+        if(campaign.maxContributionPerVideo){
+            toUpdate.maxContributionPerVideo = campaign.maxContributionPerVideo;
         }
 
-        ContestModel.update(toUpdate)
+        CampaignModel.update(toUpdate)
             .then(function(){
                 $mdDialog.hide();
             })
@@ -741,19 +746,19 @@ angular.module( 'bidio.dashboard', [
 
 })
 
-.controller('ContestDialogCtrl', function DialogCtrl($scope, $mdDialog, Upload, ContestModel) {
-    $scope.contest = {};
+.controller('CampaignDialogCtrl', function DialogCtrl($scope, $mdDialog, Upload, CampaignModel) {
+    $scope.campaign = {};
     $scope.error = null;
 
-    $scope.submit = function(contest){
+    $scope.submit = function(campaign){
 
-        if (!contest.title || !contest.urlTitle){
+        if (!campaign.title || !campaign.urlTitle){
             $scope.error = "Title and URL Title required"
         }
 
-        ContestModel.check(contest)
+        CampaignModel.check(campaign)
             .then(function(){
-                $mdDialog.hide(contest);
+                $mdDialog.hide(campaign);
             })
             .catch(function(err){
                 console.log(err);

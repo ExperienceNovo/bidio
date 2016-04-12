@@ -14,18 +14,18 @@ angular.module( 'bidio.home', [
 			trendingVideos: function(VideoModel){
 				return VideoModel.getAll();
 			},
-			contest: function(ContestModel){
-				return ContestModel.getByUrl("zaxbys-railhawks");
+			campaign: function(CampaignModel){
+				return CampaignModel.getByUrl("zaxbys-railhawks");
 			}
 		}
 	});
 })
 
-.controller( 'HomeCtrl', function HomeController( $scope, titleService, config, trendingVideos, contest, $sce ) {
+.controller( 'HomeCtrl', function HomeController( $scope, titleService, config, trendingVideos, campaign, $sce ) {
 	titleService.setTitle('bidio');
 	$scope.currentUser = config.currentUser;
 	$scope.trendingVideos = trendingVideos;
-	contest.title = $sce.trustAsHtml(contest.title)
-	$scope.contest = contest;
+	campaign.title = $sce.trustAsHtml(campaign.title)
+	$scope.campaign = campaign;
 
 });
