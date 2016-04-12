@@ -67,8 +67,8 @@
 	    		<md-input-container>
 	    			<label>Redirect URL</label>
 	    			<input ng-disabled="!campaign.doesRedirect" type="text" ng-model="campaign.redirectUrl">
-	    		</md-input-container>
-	    		<md-button ng-disabled="!campaign.doesRedirect" ng-click="submitUrl()"><md-icon>check</md-icon>Submit<span>&nbsp;<i class="fa fa-spin fa-spinner"></i></span></md-button>
+	    		</md-input-container><br>
+	    		<md-button ng-disabled="!campaign.doesRedirect" ng-click="submitUrl()"><md-icon>check</md-icon>Submit<span>&nbsp;<i class="fa fa-spin fa-spinner" ng-show="urlSaving"></i></span></md-button>
 	    	</div>
 	    	<hr>
 	    	<h3><b>Or host with Bidio? (free)</b></h3>
