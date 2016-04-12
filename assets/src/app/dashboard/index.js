@@ -490,6 +490,8 @@ angular.module( 'bidio.dashboard', [
             return video.dirty;
         });
 
+        console.log(toSave);
+
         $scope.saving = true;
 
         //update all of them
