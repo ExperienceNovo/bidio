@@ -128,9 +128,7 @@ module.exports = {
 		/*uncomment this if you want to save to a particular folder*/
 		//var filename = req.file('video')._files[0].stream.filename;
 
-		console.log("UPLOADING");
-
-		req.file('video').upload({
+		return req.file('video').upload({
 			adapter: require('skipper-s3'),
 		  key: 'AKIAJZS6F2HWDJWWZE7A',
 		  secret: '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',
@@ -138,8 +136,6 @@ module.exports = {
 		  /*uncomment this if you want to save to a particular folder*/
 		  //saveAs: "Event-Pictures/" + utilsService.guid() + filename.split(".").pop()
 		}, function response(err,uploadedFiles){
-
-			console.log("ERROR", err, uploadedFiles[0].extra);
 
 			if (err) {
 	      return res.negotiate(err);
@@ -150,6 +146,8 @@ module.exports = {
 	    }
 
 	    var amazonUrl = uploadedFiles[0].extra.Location;
+
+	    console.log("hi")
 
 	    return res.json({amazonUrl: amazonUrl});
 		})
