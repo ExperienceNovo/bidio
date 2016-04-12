@@ -128,6 +128,8 @@ module.exports = {
 		/*uncomment this if you want to save to a particular folder*/
 		//var filename = req.file('video')._files[0].stream.filename;
 
+		console.log("UPLOADING");
+
 		req.file('video').upload({
 			adapter: require('skipper-s3'),
 		  key: 'AKIAJZS6F2HWDJWWZE7A',
@@ -136,6 +138,8 @@ module.exports = {
 		  /*uncomment this if you want to save to a particular folder*/
 		  //saveAs: "Event-Pictures/" + utilsService.guid() + filename.split(".").pop()
 		}, function response(err,uploadedFiles){
+
+			console.log("ERROR", err, uploadedFiles);
 
 			if (err) {
 	      return res.negotiate(err);
