@@ -139,7 +139,7 @@ module.exports = {
 		  //saveAs: "Event-Pictures/" + utilsService.guid() + filename.split(".").pop()
 		}, function response(err,uploadedFiles){
 
-			console.log("ERROR", err, uploadedFiles);
+			console.log("ERROR", err, uploadedFiles[0].extra);
 
 			if (err) {
 	      return res.negotiate(err);
