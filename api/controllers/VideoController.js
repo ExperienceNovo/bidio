@@ -180,7 +180,9 @@ module.exports = {
 
 	update: function(req, res) {
 
-		console.log(req.params.all())
+		//console.log(req.params.all())
+
+		console.log("VALUES", req.param("clickCount"), req.param("clickcount"))
 
 		var id = req.param('id');
 
