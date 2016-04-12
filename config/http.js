@@ -73,6 +73,8 @@ module.exports.http = {
 
   // },
 
+  bodyParser: require('skipper'),
+
   /***************************************************************************
   *                                                                          *
   * The number of seconds to cache flat files on disk being served by        *
