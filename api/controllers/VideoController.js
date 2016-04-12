@@ -182,7 +182,7 @@ module.exports = {
 
 		//console.log(req.params.all())
 
-		console.log("VALUES", req.params.all().clickCount, req.params.all())
+		console.log("VALUES", req.params.all().clickCount, req.params.all(), req.body.clickCount)
 
 		var id = req.param('id');
 
@@ -192,8 +192,8 @@ module.exports = {
 			urlTitle: req.param("urlTitle"),
 			amazonUrl: req.param("amazonUrl"),
 			approved: req.param("approved"),
-			clickCount: req.params.clickCount,
-			viewCount: req.params.viewCount,
+			clickCount: req.body.clickCount,
+			viewCount: req.body.viewCount,
 			isNew: req.param("isNew"),
 			description: req.param("description"),
 		};
