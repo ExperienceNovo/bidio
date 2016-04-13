@@ -13,6 +13,13 @@ angular.module( 'bidio.video', [
 		},
 		onExit: function($state, video, VideoModel){
 
+			if(video.campaign && video.campaign.doesRedirect){
+				return window.open(
+					video.campaign.redirectUrl,
+					"_blank"
+				)
+			}
+
 			$state.transition.then(function(toState){
 				video.clicked = true;
 				return VideoModel.update(video);

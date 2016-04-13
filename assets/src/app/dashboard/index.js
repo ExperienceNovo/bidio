@@ -234,6 +234,7 @@ angular.module( 'bidio.dashboard', [
     $scope.infoHolder = null;
     $scope.promptHolder = null;
     $scope.urlSaving = null;
+    $scope.refreshing = false;
 
     var sorted = {
         "new": $scope.campaign.videos.filter(function(video){return video.isNew}),
@@ -292,6 +293,31 @@ angular.module( 'bidio.dashboard', [
             return -1;
         }
     })[0];
+
+    $scope.refresh = function(){
+
+        $scope.refreshing = true;
+
+        CampaignModel.getOne($scope.campaign.id)
+            .then(function(campaign){
+
+                $scope.refreshing = false;
+                $scope.campaign.videos = campaign.videos;
+
+                sorted = {
+                    "new": $scope.campaign.videos.filter(function(video){return video.isNew}),
+                    "approved": $scope.campaign.videos.filter(function(video){return !video.isNew && video.approved}),
+                    "unapproved": $scope.campaign.videos.filter(function(video){return !video.isNew && !video.approved})
+                };
+
+                $scope.selectedVideos = sorted[$scope.selection.type];
+
+            })
+            .catch(function(error){
+                $scope.refreshing = false;
+                console.log(error)
+            })
+    }
 
     $scope.submitUrl = function(){
         $scope.urlSaving = true;

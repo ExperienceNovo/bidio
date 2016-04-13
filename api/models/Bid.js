@@ -9,7 +9,20 @@ module.exports = {
 
 	attributes: {
         clickThoughCount: {
-            type: 'string'
+            type: 'integer',
+            defaultsTo: 0
+        },
+        viewCount: {
+            type: 'integer',
+            defaultsTo: 0
+        },
+        isAccepted: {
+            type: 'boolean',
+            defaultsTo: false
+        },
+        isActive: {
+            type: 'boolean',
+            defaultsTo: false
         },
         value: {
             type: 'string',
