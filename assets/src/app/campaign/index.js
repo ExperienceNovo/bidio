@@ -27,7 +27,15 @@ angular.module( 'bidio.campaign', [
 	})
 	.state( 'campaign.main', {
 		url: "",
-		templateUrl: "campaign/templates/main.tpl.html"
+		templateUrl: "campaign/templates/main.tpl.html",
+    onEnter: function(campaign){
+      if(campaign.doesRedirect){
+        window.open(
+          campaign.redirectUrl,
+          "_blank"
+        )
+      }
+    }
 	})
 	.state( 'campaign.about', {
 		url: "/about",

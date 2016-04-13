@@ -153,6 +153,8 @@
 				<md-toolbar>
 					<div class="md-toolbar-tools">
 
+						<md-button ng-disabled="refreshing" class="md-icon-button" ng-click="refresh()"><md-icon ng-hide="refreshing">refresh</md-icon><md-progress-circular md-mode="indeterminate" ng-show="refreshing"></md-progress-circular></md-button>
+
 						<md-input-container>
 							<md-select aria-label="Submussion selector" ng-model="selection.type">
 							  <md-option value="new">New Submissions</md-option>
