@@ -12,6 +12,29 @@ module.exports = {
   		type: "string",
   		defaultsTo: "/images/silhouette_orange.jpg"
   	},
+    firstName: {
+      type: "string",
+    },
+    lastName: {
+      type: "string"
+    },
+    description: {
+      type: "string"
+    },
+    companyName: {
+      type: "string"
+    },
+    companyUrl: {
+      type: "string"
+    },
+    isSponsor: {
+      type: "boolean",
+      defaultsTo: false
+    },
+    isTrusted: {
+      type: "boolean",
+      deafaultsTo: false
+    },
   	user: {
   		model: "user",
   		required: true,
