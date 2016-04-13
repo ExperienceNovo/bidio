@@ -5,25 +5,45 @@
   			<img style="width:100%" ng-src="{{profile.picture}}">
   		</div>
   		<div flex="55">
+  			<p class="profile-title">About</p>
   			<p class="profile-description">{{profile.description}}</p>
   		</div>
   	</div>
   	<div flex="60" layout="row" layout-padding>
-  		<md-content layout-padding>
-  			<md-list>
-					<md-list-item ng-if="profile.firstName">
-					  <p><b>First Name</b>&nbsp;{{profile.firstName}}</p>
-					</md-list-item>
-					<md-divider></md-divider>
-					<md-list-item ng-if="profile.lastName">
-					  <p><b>Last Name</b>&nbsp;{{profile.lastName}}</p>
-					</md-list-item>
-					<md-divider></md-divider>
-					<md-list-item ng-if="profile.companyName && profile.companyUrl">
-					  <p><b>Company</b>&nbsp;<a target="_blank" href="{{profile.companyUrl}}">{{profile.companyName}}</a></p>
-					</md-list-item>
-  			</md-list>
-  		</md-content>
+  		<div flex="40" layout="column">
+  			<md-card flex="100" layout="column">
+  				<md-card-content flex="100" layout="row">
+						<div flex="20"></div>
+						<div flex="60" layout="column">
+							<div layout="row">
+								<md-button ui-sref="dashboard.profileEdit" class="md-raised" layout-fill><md-icon>edit</md-icon>Edit</md-button><br>
+							</div>
+							<div flex="100"></div>
+							<div layout="row">
+								<md-button ui-sref="member({path: username})" class="md-raised" layout-fill><md-icon>person</md-icon>View</md-button>
+							</div>
+						</div>
+						<div flex="20"></div>
+  				</md-card-content>
+  			</md-card>
+  		</div>
+  		<div flex="60">
+  			<md-content layout-padding layout-fill>
+	  			<md-list>
+						<md-list-item ng-if="profile.firstName">
+						  <p><b>First Name</b>&nbsp;{{profile.firstName}}</p>
+						</md-list-item>
+						<md-divider></md-divider>
+						<md-list-item ng-if="profile.lastName">
+						  <p><b>Last Name</b>&nbsp;{{profile.lastName}}</p>
+						</md-list-item>
+						<md-divider></md-divider>
+						<md-list-item ng-if="profile.companyName && profile.companyUrl">
+						  <p><b>Company</b>&nbsp;<a target="_blank" href="{{profile.companyUrl}}">{{profile.companyName}}</a></p>
+						</md-list-item>
+	  			</md-list>
+	  		</md-content>
+  		</div>
   	</div>
   </div>
 </div>

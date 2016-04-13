@@ -3,5 +3,6 @@ angular.module('models', [
 	'models.campaign',
 	'models.post',
 	'models.user',
+	'models.profile',
 	'models.video'
 ]);

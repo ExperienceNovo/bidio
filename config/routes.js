@@ -106,6 +106,8 @@ module.exports.routes = {
   'post /api/campaign/:id': 'CampaignController.update',
   'delete /api/campaign/:id': 'CampaignController.destroy',
 
+  'post /api/profile/:id': 'ProfileController.update',
+
   /**
   *	Video Routes
   */

@@ -33,13 +33,26 @@ angular.module( 'bidio.dashboard', [
             }
         }
     })
-    .state( 'dashboard.profile', {
+    .state( 'dashboard.profileMain', {
         url: '/profile',
         controller: 'DashboardProfileCtrl',
         templateUrl: 'dashboard/templates/profile.tpl.html',
         resolve: {
             UserModel: 'UserModel',
             user: function(UserModel){
+
+                return UserModel.getMine();
+            }
+        }
+    })
+    .state( 'dashboard.profileEdit', {
+        url: '/profile/edit',
+        controller: 'DashboardProfileCtrl',
+        templateUrl: 'dashboard/templates/profileEdit.tpl.html',
+        resolve: {
+            UserModel: 'UserModel',
+            user: function(UserModel){
+
                 return UserModel.getMine();
             }
         }
@@ -183,14 +196,121 @@ angular.module( 'bidio.dashboard', [
     }
 })
 
-.controller('DashboardProfileCtrl', function ($scope, user) {
+.controller('DashboardProfileCtrl', function ($state, $scope, user, ProfileModel, $mdDialog) {
 
+    $scope.username = user.username;
+    $scope.submitLoading = false;
     $scope.profile = user.profile[0];
-    $scope.profile.description = "Lorem ipsum stuff goes here Lorem ipsum stuff goes here Lorem ipsum stuff goes her Lorem ipsum stuff goes heeLoem ipsumstuff goes ere Lorem ipu stuff goes hee Lorem ipsu stuff goes hereLorem ipu tuf goes hee Lorem ipsum stuff goes here Loem ipsum stuff goesere Lorem ipsm stuff goes here";
-    $scope.profile.firstName = "Stevens";
-    $scope.profile.lastName = "Stevens";
-    $scope.profile.companyName = "Compnay";
-    $scope.profile.companyUrl = "http://google.com/";
+
+    $scope.submit = function(profile){
+
+        $scope.submitLoading = true;
+
+        var toUpdate = {id: profile.id};
+
+        if (profile.picture){
+            toUpdate.picture = profile.picture;
+        }
+
+        if (profile.firstName){
+            toUpdate.firstName = profile.firstName;
+        }
+
+        if (profile.lastName){
+            toUpdate.lastName = profile.lastName;
+        }
+
+        if (profile.description){
+            toUpdate.description = profile.description;
+        }
+
+        if (profile.companyName){
+            toUpdate.companyName = profile.companyName;
+        }
+
+        if (profile.companyUrl){
+            toUpdate.companyUrl = profile.companyUrl;
+        }
+
+        if (profile.isSponsor){
+            toUpdate.isSponsor = profile.isSponsor;
+        }
+
+        if (profile.isTrusted){
+            toUpdate.isTrusted = profile.isTrusted;
+        }
+
+        if (profile.user){
+            toUpdate.user = profile.user;
+        }
+
+        ProfileModel.update(toUpdate)
+            .then(function(){
+                $scope.submitLoading = false;
+                $state.go('dashboard.profileMain')
+            })
+            .catch(function(err){
+                console.log(err);
+                $scope.submitLoading = false;
+            })
+    }
+
+    $scope.addProfilePic = function(ev){
+
+        $mdDialog.show({
+          controller: 'ProfilePicCtrl',
+          templateUrl: 'dashboard/templates/addProfilePic.tpl.html',
+          parent: angular.element(document.body),
+          targetEvent: ev,
+          clickOutsideToClose:true,
+          fullscreen: false
+        })
+        .then(function(result){
+            $scope.profile.picture = result;
+        })
+    }
+
+})
+
+.controller('ProfilePicCtrl', function ($scope, Upload, $mdDialog) {
+
+    $scope.photoLoading = false;
+    $scope.pp = 0;
+    $scope.profilePicUrl = null;
+    
+    //TODO: refactor backend so that videos and images are uploaded through separate endpoints (separation of concerns)
+    $scope.upload = function(file){
+
+        $scope.photoLoading = true;
+
+        Upload.upload({
+            url: '/api/video/upload',
+            method: 'POST',
+            data: {video: file}
+        })
+        .then(function(response){
+
+            $scope.videoLoading = false;
+            $scope.profilePicUrl = response.data.amazonUrl;
+        },
+        function(err){
+            $scope.videoLoading = false;
+            console.log(err);
+        },
+        function (evt) {
+            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+            $scope.pp = progressPercentage;
+        })
+
+    };
+
+    $scope.submit = function(){
+        $mdDialog.hide($scope.profilePicUrl);
+    }
+
+    $scope.cancel = function(){
+        $mdDialog.cancel();
+    }
 
 })
 

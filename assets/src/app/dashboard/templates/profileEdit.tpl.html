@@ -1,0 +1,83 @@
+<style type="text/css">
+
+	.edit-btn{
+		position: absolute;
+		left: 15px;
+	}
+
+	.edit-container{
+		position: relative;
+	}
+
+</style>
+
+<div id="main-container">
+  <div class="dashboard-title" style="min-height:500px" layout="column" layout-padding>
+  	<div flex="40" layout="row" layout-padding>
+  		<div flex="45">
+  			<div class="edit-container">
+  				<div class="edit-btn"><md-button ng-click="addProfilePic($event)" class="md-fab md-mini"><md-icon>edit</md-icon></md-button></div>
+  				<img style="width:100%" ng-src="{{profile.picture}}">
+  			</div>
+  		</div>
+  		<div flex="55">
+  			<md-input-container layout-fill>
+  				<label>About</label>
+  				<textarea aria-label="Profile Description" rows="5" ng-model="profile.description"></textarea>
+  			</md-input-container>
+  		</div>
+  	</div>
+  	<div flex="60" layout="row" layout-padding>
+  		<div flex="40" layout="column">
+  			<md-card flex="100" layout="column">
+  				<md-card-content flex="100" layout="row">
+						<div flex="20"></div>
+						<div flex="60" layout="column">
+							<div layout="row">
+								<md-button ng-click="submit(profile)" class="md-raised" layout-fill><md-icon>check</md-icon>Submit</md-button><br>
+							</div>
+							<div flex="100"></div>
+							<div layout="row">
+								<md-button ui-sref="dashboard.profileMain" class="md-raised" layout-fill><md-icon>chevron_left</md-icon>Back</md-button>
+							</div>
+						</div>
+						<div flex="20"></div>
+  				</md-card-content>
+  			</md-card>
+  		</div>
+  		<div flex="60">
+  			<md-content layout-padding layout-fill>
+	  			<md-list>
+						<md-list-item>
+							<div style="white-space:nowrap;padding:20px;"><b>First Name</b></div>
+					  	<md-input-container layout-fill>
+					  		<input aria-label="Profile First Name" type="text" ng-model="profile.firstName">
+						  </md-input-container>
+						</md-list-item>
+						<md-divider></md-divider>
+						<md-list-item>
+							<div style="white-space:nowrap;padding:20px;"><b>Last Name</b></div>
+					  	<md-input-container layout-fill>
+					  		<input aria-label="Profile Last Name" type="text" ng-model="profile.lastName">
+						  </md-input-container>
+						</md-list-item>
+						<md-divider></md-divider>
+						<md-list-item>
+							<div style="white-space:nowrap;padding:20px;"><b>Company (name)</b></div>
+					  	<md-input-container layout-fill>
+					  		<input aria-label="Profile Company Name" type="text" ng-model="profile.companyName">
+						  </md-input-container>
+						</md-list-item>
+						<md-divider></md-divider>
+						<md-list-item>
+							<div style="white-space:nowrap;padding:20px;"><b>Company (url)</b></div>
+					  	<md-input-container layout-fill>
+					  		<input aria-label="Profile Company Url" type="text" ng-model="profile.companyUrl">
+						  </md-input-container>
+						</md-list-item>
+	  			</md-list>
+	  		</md-content>
+  		</div>
+  	</div>
+  </div>
+</div>
