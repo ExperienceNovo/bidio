@@ -17,7 +17,7 @@ module.exports = {
         },
         campaign: {
             model: 'campaign',
-        }
+        },
         video: {
             model: 'video',
             required: true,
