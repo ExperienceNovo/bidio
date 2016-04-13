@@ -1,9 +1,93 @@
-<div id="main-container">
-  <div class="dashboard-title">
-    <h1>Dashboard Analytics</h1>
-  </div>
-	<canvas id="line" class="chart chart-line" chart-data="data"
-		chart-labels="labels" chart-legend="true" chart-series="series"
-		chart-click="onClick" >
-	</canvas> 
+<div layout="row">
+	<md-card flex="30">
+		<img class="md-card-image" src="http://placehold.it/500x500?text=Chart">
+	</md-card>
+	<div flex="70" layout="column">
+		<h2 class="text-center" style="margin:10px">Summary</h2>
+		<div layout="row" flex="100">
+			<md-card flex="33">
+				<md-card-content>
+					<p><b>Weekly Statistics</b></p>
+					<p><b>Clicks</b><span class="pull-right">12345</span></p>
+					<md-divider></md-divider>
+					<p><b>Clicks per View</b><span class="pull-right">0.321</span></p>
+					<md-divider></md-divider>
+					<p><b>Expenditure</b><span class="pull-right">5$</span></p>
+					<md-divider></md-divider>
+					<p><b>Top campaign</b></p>
+					<p>Campaign name here</p>
+				</md-card-content>
+			</md-card>
+			<md-card flex="33">
+				<md-card-content>
+					<p><b>Active Campaigns</b></p>
+					<md-content layout="row" layout-fill>
+				  	<div flex="60"><p><b>Name</b></p></div>
+				  	<div flex="20"><p><md-icon>remove_red_eye</md-icon></p></div>
+				  	<div flex="20"><p><md-icon>mouse</md-icon></p></div>
+				  </md-content>
+				  <md-divider></md-divider>
+				  <md-content layout="row" layout-fill>
+				  	<div flex="60"><p>Campaign</p></div>
+				  	<div flex="20"><p>50</p></div>
+				  	<div flex="20"><p>10</p></div>
+				  </md-content>
+				  <md-divider></md-divider>
+				  <md-content layout="row" layout-fill>
+				  	<div flex="60"><p>Campaign</p></div>
+				  	<div flex="20"><p>50</p></div>
+				  	<div flex="20"><p>10</p></div>
+				  </md-content>	
+				  <md-divider></md-divider>
+				  <md-content layout="row" layout-fill>
+				  	<div flex="60"><p>Campaign</p></div>
+				  	<div flex="20"><p>50</p></div>
+				  	<div flex="20"><p>10</p></div>
+				  </md-content>
+				</md-card-content>
+			</md-card>
+			<md-card flex="33">
+				<md-card-content>
+					<p><b>Accomplishments</b></p>
+					<p><md-icon>lock_open</md-icon><span class="pull-right">You did a thing!</span></p>
+					<p><md-icon>lightbulb_outline</md-icon><span class="pull-right">You did a different thing!</span></p>
+					<p><md-icon>cake</md-icon><span class="pull-right">Happy 1 year</span></p>
+				</md-card-content>
+			</md-card>
+		</div>
+	</div>
+</div>
+<div layout="row">
+	<md-card flex="50">
+		<md-card-content>
+			<h2>Cummulative Statistics</h2>
+			<p><b>Views</b><span class="pull-right">1234</span></p>
+			<md-divider></md-divider>
+			<p><b>Clicks</b><span class="pull-right">431</span></p>
+			<md-divider></md-divider>
+			<p><b>Views per Clicks</b><span class="pull-right">5</span></p>
+			<md-divider></md-divider>
+			<p><b>Expenditure</b><span class="pull-right">6</span></p>
+			<md-divider></md-divider>
+			<p><b>Campaigns</b><span class="pull-right">8</span></p>
+		</md-card-content>
+	</md-card>
+	<md-card flex="50">
+		<md-card-content>
+			<h2>Activity Log</h2>
+			<p><b>3/5/16</b><span class="pull-right">You did a thing</span></p>
+			<md-divider></md-divider>
+			<p><b>3/4/16</b><span class="pull-right">You did a different thing</span></p>
+			<md-divider></md-divider>
+			<p><b>3/2/16</b><span class="pull-right">You did also did this thing</span></p>
+			<md-divider></md-divider>
+			<p><b>2/25/16</b><span class="pull-right">You did a thing</span></p>
+			<md-divider></md-divider>
+			<p><b>2/22/16</b><span class="pull-right">You did something</span></p>
+			<md-divider></md-divider>
+			<p><b>2/15/16</b><span class="pull-right">You keep on doing things</span></p>
+			<md-divider></md-divider>
+			<p><b>2/15/16</b><span class="pull-right">You did a thing</span></p>
+		</md-card-content>
+	</md-card>
 </div>
