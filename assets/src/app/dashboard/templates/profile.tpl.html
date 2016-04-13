@@ -1,15 +1,29 @@
 <div id="main-container">
-  <div class="dashboard-title" style="min-height:800px" layout="column" layout-padding>
+  <div class="dashboard-title" style="min-height:500px" layout="column" layout-padding>
   	<div flex="40" layout="row" layout-padding>
-  		<div flex="35">
-  			<img style="width:100%" src="http://placehold.it/600x400?text=profile">
+  		<div flex="45">
+  			<img style="width:100%" ng-src="{{profile.picture}}">
   		</div>
-  		<div flex="65"></div>
+  		<div flex="55">
+  			<p class="profile-description">{{profile.description}}</p>
+  		</div>
   	</div>
   	<div flex="60" layout="row" layout-padding>
-  		<div flex="50"></div>
-  		<div flex="50"></div>
+  		<md-content layout-padding>
+  			<md-list>
+					<md-list-item ng-if="profile.firstName">
+					  <p><b>First Name</b>&nbsp;{{profile.firstName}}</p>
+					</md-list-item>
+					<md-divider></md-divider>
+					<md-list-item ng-if="profile.lastName">
+					  <p><b>Last Name</b>&nbsp;{{profile.lastName}}</p>
+					</md-list-item>
+					<md-divider></md-divider>
+					<md-list-item ng-if="profile.companyName && profile.companyUrl">
+					  <p><b>Company</b>&nbsp;<a target="_blank" href="{{profile.companyUrl}}">{{profile.companyName}}</a></p>
+					</md-list-item>
+  			</md-list>
+  		</md-content>
   	</div>
-    <h1>Profile</h1>
   </div>
 </div>

@@ -64,6 +64,7 @@ module.exports.routes = {
    * User routes
    */
   'get /api/user': 'UserController.getAll',
+  'get /api/user/me': 'UserController.getMine',
   'get /api/user/username/:path': 'UserController.getByUsername',
   'get /api/user/:id': 'UserController.getOne',
   'post /api/user': 'UserController.create',

@@ -17,6 +17,19 @@ angular.module('models.user', ['lodash', 'services', 'sails.io'])
         });
     };
 
+    this.getMine = function(id) {
+        var url = utils.prepareUrl('user/me');
+        return $sailsSocket.get(url)
+        .then(function(response){
+
+            return response.data;
+        })
+        .catch(function(err){
+            console.log(err);
+            return err;
+        });
+    };
+
     this.getByUsername = function(model) {
         var url = utils.prepareUrl('user/username/' + model);
         return $sailsSocket.get(url).then(success, error);

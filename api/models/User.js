@@ -25,6 +25,26 @@ module.exports = {
         passports : { collection: 'Passport', via: 'user' }
     },
 
+    afterCreate: function(model,next){
+
+        Profile.create({user: model.id})
+            .then(function(profile){
+
+                if (!profile){
+                    return next(new Error("Error creating user profile"), null);
+                }
+
+                model.profile = profile;
+
+                return next(null, model);
+
+            })
+            .catch(function(err){
+                return next(err, null);
+            });
+
+    },
+
     getSome: function(limiting, skipping) {
 
         return User.find()

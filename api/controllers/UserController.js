@@ -10,6 +10,23 @@ module.exports = {
 		});
 	},
 
+	getMine: function(req,res){
+
+		var me = req.user.id;
+
+		User.findOne(me)
+			.populate('profile')
+			.then(function(user){
+
+				return res.json(user);
+			})
+			.catch(function(err){
+				
+				return res.negotiate(err);
+			});
+
+	},
+
 	getSome: function(req,res){
 
 		var limiting = req.param('limiting');

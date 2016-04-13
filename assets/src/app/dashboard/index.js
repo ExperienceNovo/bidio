@@ -36,7 +36,13 @@ angular.module( 'bidio.dashboard', [
     .state( 'dashboard.profile', {
         url: '/profile',
         controller: 'DashboardProfileCtrl',
-        templateUrl: 'dashboard/templates/profile.tpl.html'
+        templateUrl: 'dashboard/templates/profile.tpl.html',
+        resolve: {
+            UserModel: 'UserModel',
+            user: function(UserModel){
+                return UserModel.getMine();
+            }
+        }
     })
     .state( 'dashboard.campaigns', {
         url: '/campaigns',
@@ -171,8 +177,15 @@ angular.module( 'bidio.dashboard', [
     }
 })
 
-.controller('DashboardProfileCtrl', function ($scope) {
-    
+.controller('DashboardProfileCtrl', function ($scope, user) {
+
+    $scope.profile = user.profile[0];
+    $scope.profile.description = "Lorem ipsum stuff goes here Lorem ipsum stuff goes here Lorem ipsum stuff goes her Lorem ipsum stuff goes heeLoem ipsumstuff goes ere Lorem ipu stuff goes hee Lorem ipsu stuff goes hereLorem ipu tuf goes hee Lorem ipsum stuff goes here Loem ipsum stuff goesere Lorem ipsm stuff goes here";
+    $scope.profile.firstName = "Stevens";
+    $scope.profile.lastName = "Stevens";
+    $scope.profile.companyName = "Compnay";
+    $scope.profile.companyUrl = "http://google.com/";
+
 })
 
 .controller('DashboardCampaignsCtrl', function (config, $state, $scope, campaigns, CampaignModel, $mdDialog) {

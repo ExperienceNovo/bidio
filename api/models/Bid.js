@@ -28,9 +28,23 @@ module.exports = {
             type: 'string',
             required: true,
         },
+        originCampaign: {
+            model: 'campaign'
+        },
+        originCampaignExpiry: {
+            type: 'date',
+            defaultsTo: function(){
+                var now = new Date().getTime();
+
+                var later = new Date( now + 14 * 24 * 60 * 60 * 1000 );
+
+                return later;
+            }
+        },
         campaign: {
             model: 'campaign',
-        }
+            required: true
+        },
         video: {
             model: 'video',
             required: true,
