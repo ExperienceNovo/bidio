@@ -73,8 +73,14 @@ angular.module( 'bidio.dashboard', [
 .controller( 'DashboardCtrl', function DashboardCtrl( $scope, $location, config ) {
 
     if (!config.currentUser){
-        $location.path("/login")
+        $location.path('/login')
     }
+
+    $scope.changePath = function (path) {
+        $location.path('/dashboard' + path);
+    };
+
+
 })
 
 .controller( 'DashboardHomeCtrl', function DashboardHomeCtrl( $scope, titleService, lodash, config ) {
