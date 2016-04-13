@@ -15,6 +15,9 @@ module.exports = {
             type: 'string',
             required: true,
         },
+        campaign: {
+            model: 'campaign',
+        }
         video: {
             model: 'video',
             required: true,
