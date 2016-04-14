@@ -31,6 +31,9 @@ module.exports = {
             type: 'string',
             required: true
         },
+        endDate: {
+            type: 'date'
+        }
         price: {
             type: 'string',
             required: true

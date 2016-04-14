@@ -24,6 +24,66 @@
   </div>
 
 	<md-tabs md-dynamic-height md-border-bottom>
+		<md-tab ng-if="!campaign.published" label="Details">
+			<md-content layout="row" layout-padding layout-wrap>
+				<div flex="50">
+					<h2>Campaign Rules</h2>
+					<p style="padding-top:50px;" class="text-left">
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+				</div>
+
+				<div flex="50">
+					<h2>Specifics</h2>
+					<div layout="row" layout-wrap>
+						<md-input-container flex="100">
+							<label>Price per click</label>
+							<md-icon>attach_money</md-icon>
+							<input type="text" ng-model="campaign.price">
+						</md-input-container>
+						<div class="text-left" flex="40">
+							<md-checkbox ng-model="setBudget" aria-label="Set budget">
+								Set a campaign budget?
+							</md-checkbox>
+						</div>
+						<div flex="60">
+							<md-input-container layout-fill>
+								<label>Campaign Budget</label>
+								<input type="text" ng-model="campaign.contributionGoal" ng-disabled="!setBudget">
+							</md-input-container>
+						</div>
+						<div class="text-left" flex="40">
+							<md-checkbox ng-model="setVideoBudget" aria-label="Set video budget">
+								Set a per video budget?
+							</md-checkbox>
+						</div>
+						<div flex="60">
+							<md-input-container layout-fill>
+								<label>Per Video Budget</label>
+								<input type="text" ng-model="campaign.maxContributionPerVideo" ng-disabled="!setVideoBudget">
+							</md-input-container>
+						</div>
+						<div class="text-left" flex="40">
+							<md-checkbox ng-model="setEndDate" aria-label="Set end">
+								Set an end date?
+							</md-checkbox>
+						</div>
+						<div flex="60">
+							<md-datepicker layout-fill ng-model="endDate" ng-disabled="!setEndDate" md-placeholder="End Date"></md-datepicker>
+						</div>
+					</div>
+					<div class="text-right">
+						<md-button class="md-raised md-accent">submit</md-button>
+					</div>
+				</div>
+
+			</md-content>
+		</md-tab>
 		<md-tab ng-if="campaign.published" label="Overview">
 		  <md-content layout-padding layout-wrap layout="row">
 		  	<div flex="100">
@@ -53,37 +113,34 @@
 		</md-tab>
 	  <md-tab label="Landing Page">
 	    <md-content layout-paddings style="padding-bottom:100px">
-	    	<div>
-	    		<md-input-container>
-	    			<md-switch ng-model="campaign.doesRedirect" aria-label="3rd party landing page switch">
-	    			  Redirect to 3rd party landing page?
-	    			</md-switch>
-	    		</md-input-container><br>
-	    		<md-input-container>
-	    			<label>Redirect URL</label>
-	    			<input ng-disabled="!campaign.doesRedirect" type="text" ng-model="campaign.redirectUrl">
-	    		</md-input-container><br>
-	    		<md-button ng-disabled="!campaign.doesRedirect" ng-click="submitUrl()"><md-icon>check</md-icon>Submit<span>&nbsp;<i class="fa fa-spin fa-spinner" ng-show="urlSaving"></i></span></md-button>
+	    	<div layout="row">
+	    		<div flex="45">
+		    		<md-input-container>
+		    			<md-switch ng-model="campaign.doesRedirect" aria-label="3rd party landing page switch">
+		    			  Redirect to 3rd party landing page? (or create bidio landing page)
+		    			</md-switch>
+		    		</md-input-container>
+		    		<md-input-container layout-fill>
+		    			<label>Redirect URL</label>
+		    			<input ng-disabled="!campaign.doesRedirect" type="text" ng-model="campaign.redirectUrl">
+		    		</md-input-container><br>
+		    		<md-button ng-disabled="!campaign.doesRedirect" ng-click="submitUrl()"><md-icon>check</md-icon>Submit<span>&nbsp;<i class="fa fa-spin fa-spinner" ng-show="urlSaving"></i></span></md-button>
+		    	</div>
+		    	<div flex="10"></div>
+		    	<div flex="45">
+		    		<p style="text-align:center;margin:38px;height:26px;"><b>Click through prompt</b></p>
+		    		<md-input-container layout-fill>
+		    			<textarea aria-label="Campaign prompt" rows="10" ng-model="campaign.prompt"></textarea>
+		    		</md-input-container>
+		    		<md-button ng-disabled="promptSaving" ng-click="promptSave()">
+		    		<span ng-show="promptSaving" class="fa fa-spin fa-spinner">&nbsp;</span><md-icon>check</md-icon>Submit</md-button>
+		    	</div>
 	    	</div>
 	    	<hr>
-	    	<h3><b>Or host with Bidio? (free)</b></h3>
 	    	<div style="position:relative">
 	    		<div class="cover-all" ng-show="campaign.doesRedirect"></div>
 		    	<p class="edit-prompt"><b>Mouse over content to edit</b></p>
 		    	<hr>
-		    	<p><b>Click through prompt</b></p>
-		    	<div ng-show="!editingPrompt" style="padding:40px 0" class="edit-container">
-		    		<div class="edit-btn"><md-button ng-click="editPromptToggle()" class="md-fab md-mini"><md-icon>edit</md-icon></md-button></div>
-		    		<p>{{campaign.prompt}}</p>
-		    	</div>
-		    	<div ng-show="editingPrompt">
-		    		<md-input-container layout-fill>
-		    			<textarea aria-label="Campaign prompt" rows="10" ng-model="campaign.prompt"></textarea>
-		    		</md-input-container>
-		    		<md-progress-circular ng-show="promptSaving" md-mode="indeterminate"></md-progress-circular>
-		    		<md-button ng-disabled="promptSaving" ng-click="promptSave()">Save</md-button>
-		    		<md-button ng-disabled="promptSaving" ng-click="promptUndo()">Undo</md-button>
-		    	</div>
 		    	<p><b>Landing Page Banner</b></p>
 					<div class="edit-container">
 						<div class="edit-btn"><md-button  ng-click="getImage()" class="md-fab md-mini"><md-icon>edit</md-icon></md-button></div>
@@ -105,7 +162,7 @@
 	    	</div>	
 	  	</md-content>
 	  </md-tab>
-		<md-tab label="Information">
+		<md-tab label="About">
 	    <md-content layout-padding style="padding-bottom:100px">
 	    	<p class="edit-prompt"><b>Mouse over content to edit</b></p>
 	    	<hr>

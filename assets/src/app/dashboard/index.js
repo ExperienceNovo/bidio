@@ -368,6 +368,7 @@ angular.module( 'bidio.dashboard', [
     $scope.promptHolder = null;
     $scope.urlSaving = null;
     $scope.refreshing = false;
+    $scope.endDate = new Date();
 
     var sorted = {
         "new": $scope.campaign.videos.filter(function(video){return video.isNew}),
