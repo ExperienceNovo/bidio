@@ -38,6 +38,10 @@ var videos = Array.apply(null,Array(amounts.users * amounts.videos * amounts.cam
 	return getId()
 });
 
+var bids = Array.apply(null,Array(amounts.users * amounts.videos * amounts.campaigns)).map(function(){
+	return getId()
+});
+
 var campaigns = Array.apply(null,Array(amounts.users * amounts.campaigns)).map(function(){
 	return getId()
 });
@@ -51,6 +55,7 @@ module.exports = {
 	videos: videos,
 	campaigns: campaigns,
 	profiles: profiles,
-	passports: [ObjectId(1).toJSON()],
+	bids: bids,
+	passports: [getId()],
 	soccerNames: soccerNames
 };

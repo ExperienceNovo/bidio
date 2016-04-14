@@ -81,7 +81,7 @@ module.exports = {
 	getByUrlTitle: function(req, res) {
 		Campaign.findOne({urlTitle: req.param('path')})
 		.populate('user')
-		.populate('videos', {where: {approved: true}})
+		.populate('bids', {where: {isActive: true}})
 		.then(function(campaign){
 
 			if (!campaign.published){
@@ -89,13 +89,28 @@ module.exports = {
 				return res.redirect("/campaigns")
 			}
 
+			return [campaign, Promise.all(
+				campaign.bids.map(function(bid){
+					return Video.findOne(bid.video)
+				})
+			)];
+
+		})
+		.spread(function(campaign, videos){
+			campaign = campaign.toObject();
+			campaign.videos = videos;
+			return campaign;
+		})
+		.then(function(campaign){
+
+			/*get profile*/
 			return [campaign, Profile.findOne({user: campaign.user.id || campaign.user._id})]
 		})
 		.spread(function(campaign,profile){
 			if (!profile){
 				return campaign;
 			}
-			campaign = campaign.toObject();
+			
 			campaign.user.profile = profile;
 			return campaign;
 		})

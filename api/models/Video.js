@@ -8,53 +8,66 @@
 module.exports = {
 
 	attributes: {
+
         title: {
             type: 'string',
             required: true,
             unique: true
         },
+
         urlTitle: {
             type: 'string',
             required: true,
             unique: true
         },
+
         amazonUrl: {
             type: 'string',
             required: true
         },
+
         description: {
             type: 'string',
             required: true
         },
+
         user: {
             model: 'user',
             required: true
         },
+
         views: {
             collection: 'view',
             via: 'video'
         },
+
         clicks: {
             collection: 'click',
             via: 'video'
         },
+
         viewCount: {
             type: 'integer',
             required: true,
             defaultsTo: 0
         },
+
         clickCount: {
             type: 'integer',
             required: true,
             defaultsTo: 0
         },
-        campaign: {
-            model: 'campaign'
+
+        bids: {
+            collection: 'bid',
+            via: 'video'  
         },
+
         approved: {
             type: 'boolean',
             defaultsTo: false
         },
+
         isNew: {
             type: 'boolean',
             defaultsTo: true
@@ -72,59 +85,61 @@ module.exports = {
     getOne: function(id) {
         return Video.findOne(id)
         .populate('user')
-        .populate('campaign')
+        .populate('bids')
         .then(function (model) {
             return [model];
         });
     },
 
     beforeUpdate: function(model, next){
-        /*This code assumes that se aren't updating click and view at the same time*/
-        if (model.click && model.view){
-            var err = new Error("Can't update click and view at the same time");
-            err.status = 400;
-            return next(err,null);
+
+        /*if no click or view continue*/
+        if(!(model.click || model.view)){
+            return next(null,model);
         }
 
-        else if (model.click){
-
-            Click.create(model.click).then(function(newClick){
-
-                if (!newClick){
-                    var err = new Error("Click creation failed");
-                    err.status = 500;
-                    return next(err,null);
-                }
-
-                delete model.click;
-
-                model.clickCount++;
-
-                return next(null,model);
-            })
+        /*adjust click count*/
+        if (model.click){
+            model.clickCount++;
         }
 
-        else if (model.view){
+        /*adjust view count*/
+        if (model.view){
+            model.viewCount++;
+        }
 
-            View.create(model.view).then(function(newView){
+        /*cycle through all posible updates*/
+        Promise.resolve()
+        .then(function(){
 
-                if (!newView){
-                    var err = new Error("View creation failed");
-                    err.status = 500;
-                    return next(err,null);
-                }
+            return model.click ? Click.create(model.click) : true;
 
-                delete model.view;
+        })
+        .then(function(){
 
-                model.viewCount++;
+            return (model.click && model.click.bid) ? Bid.click(model.click.bid) : true;
 
-                return next(null,model);
-            })
+        })
+        .then(function(){
 
-        } else {
+            return model.view ? View.create(model.view) : true;
+
+        })
+        .then(function(){
+
+            return (model.view && model.view.bid) ? Bid.view(model.view.bid) : true;
+
+        })
+        .then(function(){
 
             return next(null,model);
-            
-        }
+
+        })
+        .catch(function(err){
+
+            return next(err,null);
+
+        });
+
     }
 };

@@ -12,51 +12,64 @@ module.exports = {
             type: 'string',
             required: true
         },
+
         doesRedirect: {
             type: 'boolean',
             defaultsTo: true
         },
+
         redirectUrl: {
             type: 'string'
         },
+
         videoUrl: {
             type: 'string',
             required: true
         },
+
         published: {
             type: 'boolean',
             defaultsTo: false
         },
+
         campaignContent: {
             type: 'string',
             required: true
         },
+
         endDate: {
             type: 'date'
-        }
+        },
+
         price: {
             type: 'string',
             required: true
         },
+
         contributionGoal: {
             type: 'string'
         },
+
         maxContributionPerVideo: {
             type: 'string'
         },
+
         urlTitle: {
             type: 'string',
             required: true,
             unique: true
         },
+
         user: {
             model: 'user',
             required: true
         },
-        videos: {
-            collection: 'video',
+
+        bids: {
+            collection: 'bid',
             via: 'campaign'
         },
+
         prompt: {
             type: 'string',
             required: true
