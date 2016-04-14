@@ -75,7 +75,7 @@ angular.module( 'bidio.campaign', [
 
 })
 
-.controller('submitVideoCtrl', function ($scope, campaign, config, $uibModalInstance, Upload, VideoModel) {
+.controller('submitVideoCtrl', function (BidModel, $scope, campaign, config, $uibModalInstance, Upload, VideoModel) {
 
 		$scope.campaign = campaign;
 
@@ -181,6 +181,21 @@ angular.module( 'bidio.campaign', [
       $scope.loading = true;
 
       VideoModel.create(video)
+      .then(function(video){
+
+        var toUpdate = {
+          video: video.id,
+          campaign: $scope.campaign.id,
+          originCampaign: $scope.campaign.id,
+          value: $scope.campaign.price
+        };
+
+        if ($scope.campaign.endDate){
+          toUpdate.originCampaignExpiry = $scope.campaign.endDate;
+        }
+
+        return BidModel.create(toUpdate)
+      })
       .then(function(response){
         $scope.loading = false;
         $scope.finished = true;
@@ -190,10 +205,13 @@ angular.module( 'bidio.campaign', [
         $scope.error = "An error occurred";
         $scope.loading = false;
       })
-    }
+    
+    };
 
 		$scope.cancel = function(){
+
 			$uibModalInstance.close();
-		}
+		
+    };
 
 });

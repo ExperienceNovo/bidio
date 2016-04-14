@@ -101,7 +101,19 @@ module.exports = {
     getOne: function(id) {
         return Campaign.findOne(id)
         .populate('user')
-        .populate('videos')
+        .populate('bids')
+        .then(function(campaign){
+            return [campaign,Promise.all(
+                campaign.bids.map(function(bid){
+                    return Video.findOne(bid.video);
+                })
+            )];
+        })
+        .spread(function(model,videos){
+            model = model.toObject();
+            model.videos = videos;
+            return model;
+        })
         .then(function (model) {
             return [model];
         });
