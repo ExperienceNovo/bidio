@@ -111,7 +111,9 @@ module.exports = {
         })
         .spread(function(model,videos){
             model = model.toObject();
-            model.videos = videos;
+            model.bids.forEach(function(bid,i){
+                bid.video = videos[i]
+            });
             return model;
         })
         .then(function (model) {

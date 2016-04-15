@@ -36,11 +36,11 @@
 	<div class="row">
 		<h2 style="font-weight:bold;">Submissions</h2>
 		<div class="spacing-25"></div>
-		<div class="campaignVideos col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-repeat="video in campaign.videos">
-			<h2 style="font-size: 2.5em;margin-bottom: 15px;"><a ui-sref="video({id: video.id})">{{video.title}}</a></h2>
-			<h3>By <b>{{video.user.username}}</b> on {{video.createdAt | date: "shortDate"}}</h3>
+		<div class="campaignVideos col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-repeat="bid in campaign.bids">
+			<h2 style="font-size: 2.5em;margin-bottom: 15px;"><a ui-sref="video({id: bid.video.id})">{{bid.video.title}}</a></h2>
+			<h3>By <b>{{bid.video.user.username}}</b> on {{bid.video.createdAt | date: "shortDate"}}</h3>
 			<br>
-			<video style="margin:auto" ng-src="{{video.amazonUrl}}" class="video-js vjs-default-skin" controls preload="auto" width="500" height="205" vjs-video></video>
+			<video style="margin:auto" ng-src="{{bid.video.amazonUrl}}" class="video-js vjs-default-skin" controls preload="auto" width="500" height="205" vjs-video></video>
 		</div>
 	</div>
 </div>

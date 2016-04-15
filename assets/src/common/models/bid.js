@@ -7,6 +7,11 @@ angular.module('models.bid', ['lodash', 'services', 'sails.io',])
         return $sailsSocket.post(url, newModel).then(success, error);
     };
 
+    this.update = function(model) {
+        var url = utils.prepareUrl('bid/' + model.id);
+        return $sailsSocket.post(url, model).then(success, error);
+    };
+
     this.getByMember = function(model) {
         var url = utils.prepareUrl('bid/member/' + model);
         return $sailsSocket.get(url).then(success, error);
@@ -33,5 +38,6 @@ angular.module('models.bid', ['lodash', 'services', 'sails.io',])
 
     var error = function(error) {
         console.log(error);
+        return error;
     };
 });

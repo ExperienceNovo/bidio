@@ -352,9 +352,9 @@ angular.module( 'bidio.dashboard', [
     }
 })
 
-.controller('DashboardCampaignEditCtrl', function ($state, $mdMenu, $scope, campaign, CampaignModel, $mdDialog, VideoModel, lodash, $q) {
+.controller('DashboardCampaignEditCtrl', function ($state, $mdMenu, $scope, campaign, CampaignModel, $mdDialog, VideoModel, lodash, $q, BidModel) {
 
-    var originals = lodash.cloneDeep(campaign.videos);
+    var originals = lodash.cloneDeep(campaign.bids);
 
     $scope.campaign = campaign;
     $scope.selection = {type: "new"};
@@ -370,63 +370,105 @@ angular.module( 'bidio.dashboard', [
     $scope.refreshing = false;
     $scope.endDate = new Date();
 
-    var sorted = {
-        "new": $scope.campaign.videos.filter(function(video){return video.isNew}),
-        "approved": $scope.campaign.videos.filter(function(video){return !video.isNew && video.approved}),
-        "unapproved": $scope.campaign.videos.filter(function(video){return !video.isNew && !video.approved})
-    };
+    function sort(bid){
 
-    $scope.totalClicks = $scope.campaign.videos.reduce(function(val,item){
-        val += item.clickCount;
+        if (bid.isNewEntry){
+            return "new";
+        }
+
+        if (!bid.isActive){
+            return "old";
+        }
+
+        if(!bid.isAccepted){
+            return "unapproved";
+        }
+
+        return "approved"
+    }
+
+    var sorted = $scope.campaign.bids.reduce(function(value,bid){
+
+        value[sort(bid)].push(bid);
+                return value;
+
+
+    }, {"new": [],
+        "old": [],
+        "approved": [],
+        "unapproved": []
+    });
+
+    $scope.totalClicks = $scope.campaign.bids.reduce(function(val,item){
+        val += item.video.clickCount;
         return val;
     },0);
 
-    $scope.totalViews = $scope.campaign.videos.reduce(function(val,item){
-        val += item.viewCount;
+    $scope.totalViews = $scope.campaign.bids.reduce(function(val,item){
+        val += item.video.viewCount;
         return val;
     },0);
 
-    $scope.topViews = $scope.campaign.videos.sort(function(a,b){
-        if (a.viewCount < b.viewCount){
+    $scope.topViews = $scope.campaign.bids.sort(function(a,b){
+        if (a.video.viewCount < b.video.viewCount){
             return 1
         }
 
-        if (a.viewCount == b.viewCount){
+        if (a.video.viewCount == b.video.viewCount){
             return 0;
         }
 
-        if (a.viewCount > b.viewCount){
+        if (a.video.viewCount > b.video.viewCount){
             return -1
         }
     })[0];
 
-    $scope.topClicks = $scope.campaign.videos.sort(function(a,b){
-        if (a.clickCount < b.clickCount){
+    $scope.topClicks = $scope.campaign.bids.sort(function(a,b){
+        if (a.video.clickCount < b.video.clickCount){
             return 1
         }
 
-        if (a.clickCount == b.clickCount){
+        if (a.video.clickCount == b.video.clickCount){
             return 0;
         }
 
-        if (a.clickCount > b.clickCount){
+        if (a.video.clickCount > b.video.clickCount){
             return -1
         }
     })[0];
 
-    $scope.topConversion = $scope.campaign.videos.sort(function(a,b){
-        if ((a.clickCount / a.viewCount) < (b.clickCount / b.viewCount)){
+    $scope.topConversion = $scope.campaign.bids.sort(function(a,b){
+        if ((a.video.clickCount / a.video.viewCount) < (b.video.clickCount / b.video.viewCount)){
             return 1;
         }
 
-        if ((a.clickCount / a.viewCount) == (b.clickCount / b.viewCount)){
+        if ((a.video.clickCount / a.video.viewCount) == (b.video.clickCount / b.video.viewCount)){
             return 0;
         }
 
-        if ((a.clickCount / a.viewCount) > (b.clickCount / b.viewCount)){
+        if ((a.video.clickCount / a.video.viewCount) > (b.video.clickCount / b.video.viewCount)){
             return -1;
         }
     })[0];
+
+    var bidWatches = $scope.campaign.bids.map(function(bid){
+
+        return $scope.$watch(function($scope){
+            return bid;
+        }, function(newVal, oldVal){
+
+            if (newVal.isAccepted == oldVal.isAccepted){
+                return;
+            }
+
+            if (oldVal.isNewEntry){
+                newVal.isNewEntry = false;
+                newVal.isActive = true;
+            }
+
+        },true);
+
+    });
 
     $scope.refresh = function(){
 
@@ -436,15 +478,44 @@ angular.module( 'bidio.dashboard', [
             .then(function(campaign){
 
                 $scope.refreshing = false;
-                $scope.campaign.videos = campaign.videos;
+                $scope.campaign.bids = campaign.bids;
 
-                sorted = {
-                    "new": $scope.campaign.videos.filter(function(video){return video.isNew}),
-                    "approved": $scope.campaign.videos.filter(function(video){return !video.isNew && video.approved}),
-                    "unapproved": $scope.campaign.videos.filter(function(video){return !video.isNew && !video.approved})
-                };
+                //stop watching old ones
+                bidWatches.forEach(function(bidWatch){bidWatch()});
 
-                $scope.selectedVideos = sorted[$scope.selection.type];
+                bidWatches = $scope.campaign.bids.map(function(bid){
+
+                    return $scope.$watch(function($scope){
+                        return bid;
+                    }, function(newVal, oldVal){
+
+                        if (newVal.isAccepted == oldVal.isAccepted){
+                            return;
+                        }
+
+                        if (oldVal.isNewEntry){
+                            newVal.isNewEntry = false;
+                            newVal.isActive = true;
+                        }
+
+                    },true);
+
+                });
+
+                sorted = $scope.campaign.bids.reduce(function(value,bid){
+
+                    value[sort(bid)].push(bid);
+                    return value;
+
+                }, {"new": [],
+                    "old": [],
+                    "approved": [],
+                    "unapproved": []
+                });
+
+                originals = lodash.cloneDeep($scope.campaign.bids);
+
+                $scope.selectedBids = sorted[$scope.selection.type];
 
             })
             .catch(function(error){
@@ -525,14 +596,14 @@ angular.module( 'bidio.dashboard', [
         $scope.editingPrompt = !$scope.editingPrompt;
     }
 
-    $scope.view = function(ev, video){
+    $scope.view = function(ev, bid){
 
-        var before = video.approved;
+        var before = bid.isApproved;
 
         function after(){
-            if (video.approved != before){
+            if (bid.isApproved != before){
                 $scope.clean = false;
-                video.dirty = true;
+                bid.dirty = true;
             }
         }
 
@@ -541,8 +612,8 @@ angular.module( 'bidio.dashboard', [
           templateUrl: 'dashboard/templates/viewModal.tpl.html',
           parent: angular.element(document.body),
           resolve: {
-            video: function(){
-                return video;
+            bid: function(){
+                return bid;
             }
           },
           targetEvent: ev,
@@ -652,48 +723,96 @@ angular.module( 'bidio.dashboard', [
         $scope.editPromptToggle();
     }
 
-    $scope.selectedVideos = sorted[$scope.selection.type];
+    $scope.selectedBids = sorted[$scope.selection.type];
 
     $scope.$watch(
         "selection.type", 
         function(newVal, oldVal){
             $scope.clean = true;
-            $scope.selectedVideos = sorted[newVal]
+            $scope.selectedBids = sorted[newVal]
         },
         true
     );
 
-    $scope.dirty = function(video){
-        video.dirty = true;
-        video.isNew = false
+    $scope.dirty = function(bid){
+        bid.dirty = true;
         $scope.clean = false;
     }
 
-    $scope.save = function(){
+    $scope.saveVideo = function(){
 
         //get all entries that have been modified
-        var toSave = $scope.selectedVideos.filter(function(video){
-            return video.dirty;
+        var toSave = $scope.selectedBids.filter(function(bid){
+
+            return bid.dirty;
+
+        })
+        .map(function(bid){
+
+            var model = {
+                value: bid.value,
+                video: bid.video,
+                campaign: bid.campaign
+            };
+
+            if (bid.user){
+                model.user = bid.user;
+            }
+
+            if (bid.viewCount){
+                model.viewCount = bid.viewCount;
+            }
+
+            if (bid.clickCount){
+                model.clickCount = bid.clickCount;
+            }
+
+            if (bid.hasOwnProperty(isNewEntry)){
+                model.isNewEntry = bid.isNewEntry;
+            }
+
+            if (bid.hasOwnProperty(isActive)){
+                model.isActive = bid.isActive;
+            }
+
+            if (bid.hasOwnProperty(isAccepted)){
+                model.isAccepted = bid.isAccepted;
+            }
+
+            if (bid.originCampiagn){
+                model.originCampiagn = bid.originCampiagn;
+            }
+
+            return model;
+
         });
 
         $scope.saving = true;
 
         //update all of them
         $q.all(
-            toSave.map(function(video){
-                return VideoModel.update(video);
+            toSave.map(function(bid){
+                return BidModel.update(bid);
             })
         )
         .then(function(){
 
             //recategorize videos based on changes
             $scope.saving = false;
-            sorted = {
-                "new": $scope.campaign.videos.filter(function(video){return video.isNew}),
-                "approved": $scope.campaign.videos.filter(function(video){return !video.isNew && video.approved}),
-                "unapproved": $scope.campaign.videos.filter(function(video){return !video.isNew && !video.approved})
-            };
-            $scope.selectedVideos = sorted[$scope.selection.type];
+            sorted = $scope.campaign.bids.reduce(function(value,bid){
+
+                value[sort(bid)].push(bid);
+                return value;
+
+            }, {"new": [],
+                "old": [],
+                "approved": [],
+                "unapproved": []
+            });
+
+            originals = lodash.cloneDeep($scope.campaign.bids);
+
+            $scope.selectedBids = sorted[$scope.selection.type];
         })
         .catch(function(err){
             $scope.saving = false;
@@ -701,18 +820,26 @@ angular.module( 'bidio.dashboard', [
         })
     }
 
-    $scope.undo = function(){
+    $scope.undoVideo = function(){
         $scope.clean = true;
         $scope.campaign.videos = originals;
         originals = lodash.cloneDeep(campaign.videos);
 
-        sorted = {
-            "new": $scope.campaign.videos.filter(function(video){return video.isNew}),
-            "approved": $scope.campaign.videos.filter(function(video){return !video.isNew && video.approved}),
-            "unapproved": $scope.campaign.videos.filter(function(video){return !video.isNew && !video.approved})
-        };
+        sorted = $scope.campaign.bids.reduce(function(value,bid){
 
-        $scope.selectedVideos = sorted[$scope.selection.type];
+            value[sort(bid)].push(bid);
+                return value;
+
+
+        }, {"new": [],
+            "old": [],
+            "approved": [],
+            "unapproved": []
+        });
+
+        originals = lodash.cloneDeep($scope.campaign.bids);
+
+        $scope.selectedBids = sorted[$scope.selection.type];
     }
 })
 
@@ -914,13 +1041,13 @@ angular.module( 'bidio.dashboard', [
 
 })
 
-.controller('ViewDialogCtrl', function DialogCtrl($scope, $mdDialog, video) {
+.controller('ViewDialogCtrl', function DialogCtrl($scope, $mdDialog, bid) {
 
-    $scope.video = video;
+    $scope.bid = bid;
 
     $scope.dismiss = function(){
 
-        $mdDialog.hide({approved: $scope.video.approved, id: $scope.video.id});
+        $mdDialog.hide();
     }
 
 })

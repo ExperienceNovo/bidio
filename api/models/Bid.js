@@ -9,7 +9,7 @@ module.exports = {
 
 	attributes: {
         
-        clickThoughCount: {
+        clickCount: {
             type: 'integer',
             defaultsTo: 0
         },
@@ -35,6 +35,11 @@ module.exports = {
         },
 
         isActive: {
+            type: 'boolean',
+            defaultsTo: false
+        },
+
+        isNewEntry: {
             type: 'boolean',
             defaultsTo: false
         },

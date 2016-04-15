@@ -45,14 +45,6 @@ angular.module( 'bidio.campaign', [
 
 .controller( 'CampaignCtrl', function CampaignCtrl( $scope, config, titleService, CampaignModel, campaign, $sce, $uibModal ) {
 
-	//campaign.campaignContent = $sce.trustAsHtml(campaign.campaignContent);
-	campaign.title = $sce.trustAsHtml(campaign.title);
-
-	campaign.videos = campaign.videos.map(function(video){
-		video.amazonUrl = $sce.trustAsResourceUrl(video.amazonUrl);
-		return video;
-	})
-
 	titleService.setTitle('campaign - bidio');
 	$scope.currentUser = config.currentUser;
 	$scope.campaign = campaign;
@@ -185,6 +177,7 @@ angular.module( 'bidio.campaign', [
 
         var toUpdate = {
           video: video.id,
+          isNewEntry: true,
           campaign: $scope.campaign.id,
           originCampaign: $scope.campaign.id,
           value: $scope.campaign.price
@@ -194,9 +187,14 @@ angular.module( 'bidio.campaign', [
           toUpdate.originCampaignExpiry = $scope.campaign.endDate;
         }
 
+        console.log(toUpdate);
+
         return BidModel.create(toUpdate)
       })
       .then(function(response){
+
+        console.log(response);
+
         $scope.loading = false;
         $scope.finished = true;
       })

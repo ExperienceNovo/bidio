@@ -212,18 +212,19 @@
 							  <md-option value="new">New Submissions</md-option>
 							  <md-option value="approved">Approved Submissions</md-option>
 							  <md-option value="unapproved">Unapproved Submissions</md-option>
+							  <md-option value="old">Old Submissions</md-option>
 							</md-select>
 						</md-input-container>
 
 						<span layout-fill></span>
 
-						<md-button ng-click="save()" ng-disabled="clean == true || saving">
+						<md-button ng-click="saveVideo()" ng-disabled="clean == true || saving">
 				    	<md-icon>save</md-icon>
 				    	&nbsp;Save
 				    	<span ng-show="saving">&nbsp;<i class="fa fa-spin fa-spinner"></i></span>
 				    </md-button>
 
-				    <md-button ng-click="undo()" ng-disabled="clean == true || saving">
+				    <md-button ng-click="undoVideo()" ng-disabled="clean == true || saving">
 				    	<md-icon>undo</md-icon>
 				    	&nbsp;Undo
 				    </md-button>
@@ -239,14 +240,14 @@
 						<div flex="10">View</div>
 						<div flex="10">Approved</div>
 					</md-list-item>
-			    <div ng-repeat="video in selectedVideos">
+			    <div ng-repeat="bid in selectedBids">
 			    	<md-divider></md-divider>
 			    	<md-list-item layout="row">
-			    		<div flex="15">{{video.title}}</div>
-							<div flex="15">{{video.user}}</div>
-							<div flex="50"><p style="height:1.4em;overflow-y:hidden;">{{video.description}}</p></div>
-							<div flex="10"><md-button ng-click="view($event, video)" class="md-icon-button"><md-icon>play_arrow</md-icon></md-button></div>
-							<div flex="10"><md-checkbox ng-click="dirty(video)" ng-model="video.approved" aria-label="Approved"></md-checkbox></div>
+			    		<div flex="15">{{bid.video.title}}</div>
+							<div flex="15">{{bid.video.user}}</div>
+							<div flex="50"><p style="height:1.4em;overflow-y:hidden;">{{bid.video.description}}</p></div>
+							<div flex="10"><md-button ng-click="view($event, bid.video)" class="md-icon-button"><md-icon>play_arrow</md-icon></md-button></div>
+							<div flex="10"><md-checkbox ng-disabled="selection.type == 'old'" ng-click="dirty(bid)" ng-model="bid.isAccepted" aria-label="Approved"></md-checkbox></div>
 			    	</md-list-item>
 			    </div>
 				</md-list>

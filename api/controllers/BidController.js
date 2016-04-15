@@ -82,8 +82,36 @@ module.exports = {
 		var model = {
 			value: req.param('value'),
 			video: req.param('video'),
-			user: req.param('user'),
+			campaign: req.param('campaign')
 		};
+
+		if (req.param('user')){
+			model.user = req.param('user')
+		}
+
+		if (req.param('viewCount')){
+			model.viewCount = req.param('viewCount')
+		}
+
+		if (req.param('clickCount')){
+			model.clickCount = req.param('clickCount')
+		}
+
+		if (req.param('isActive')){
+			model.isActive = req.param('isActive')
+		}
+
+		if (req.param('isAccepted')){
+			model.isAccepted = req.param('isAccepted')
+		}
+
+		if (req.param('isNewEntry')){
+			model.isNewEntry = req.param('isNewEntry')
+		}
+
+		if (req.param('originCampiagn')){
+			model.originCampiagn = req.param('originCampiagn')
+		}
 
 		Bid.create(model)
 		.exec(function(err, bid) {
@@ -98,17 +126,49 @@ module.exports = {
 	},
 
 	update: function(req,res){
+
 		var id = req.param('id');
+
 		var model = {
 			value: req.param('value'),
 			video: req.param('video'),
-			user: req.param('user'),
+			campaign: req.param('campaign')
 		};
+
+		if (req.param('user')){
+			model.user = req.param('user')
+		}
+
+		if (req.param('viewCount')){
+			model.viewCount = req.param('viewCount')
+		}
+
+		if (req.param('clickCount')){
+			model.clickCount = req.param('clickCount')
+		}
+
+		if (req.param('isActive')){
+			model.isActive = req.param('isActive')
+		}
+
+		if (req.param('isAccepted')){
+			model.isAccepted = req.param('isAccepted')
+		}
+
+		if (req.param('isNewEntry')){
+			model.isNewEntry = req.param('isNewEntry')
+		}
+
+		if (req.param('originCampiagn')){
+			model.originCampiagn = req.param('originCampiagn')
+		}
+
 		Bid.update({id: id}, model)
 		.then(function(model){
-			Bid.publishUpdate(model[0].id, model);
+			//Bid.publishUpdate(model[0].id, model);
 			res.json(model);
 		});
+
 	},
 
 	destroy: function (req, res) {

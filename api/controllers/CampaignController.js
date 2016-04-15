@@ -89,6 +89,8 @@ module.exports = {
 				return res.redirect("/campaigns")
 			}
 
+			console.log(campaign.bids);
+
 			return [campaign, Promise.all(
 				campaign.bids.map(function(bid){
 					return Video.findOne(bid.video)
@@ -98,7 +100,9 @@ module.exports = {
 		})
 		.spread(function(campaign, videos){
 			campaign = campaign.toObject();
-			campaign.videos = videos;
+			campaign.bids.forEach(function(bid,i){
+				bid.video = videos[i];
+			})
 			return campaign;
 		})
 		.then(function(campaign){
@@ -117,26 +121,25 @@ module.exports = {
 		.then(function(campaign){
 
 			/*add users to videos*/
-			return Promise.all(
-				campaign.videos.map(function(video){
-					return User.find({id: video.user})
-						.then(function(user){
-							video.user = user[0];
-							return video;
-						})
+			return [campaign, Promise.all(
+				campaign.bids.map(function(bid){
+					return User.findOne({id: bid.video.user});
 				})
-			)
-			.then(function(videos){
-				campaign.videos = videos;
-				return campaign;
-			})
+			)]
+		})
+		.spread(function(campaign, users){
+			campaign.bids.forEach(function(bid,i){
+				bid.video.user = users[i]
+			});
+
+			return campaign;
 		})
 		.then(function(model) {
 			Campaign.subscribe(req, model);
 			res.json(model);
 		})
 		.catch(function(err) {
-			res.send(404);
+			res.negotiate(err);
 		});
 	},
 
