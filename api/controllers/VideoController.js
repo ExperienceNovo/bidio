@@ -26,6 +26,7 @@ module.exports = {
 		var me = req.user.id || req.user._id;
 
 		Video.find({user: me})
+			.populate('bids')
 			.then(function(models){
 				Video.watch(req);
 				Video.subscribe(req, models);
@@ -170,8 +171,8 @@ module.exports = {
 			user: req.user.id
 		};
 
-		if (req.param("campaign")){
-			model.campaign = req.param("campaign");
+		if (req.param("minimumPrice")){
+			model.minimumPrice = req.param("minimumPrice");
 		}
 
 		Video.create(model)
@@ -201,6 +202,10 @@ module.exports = {
 			isNew: req.param("isNew"),
 			description: req.param("description"),
 		};
+
+		if (req.param("minimumPrice")){
+			model.minimumPrice = req.param("minimumPrice");
+		}
 
 		if (req.param('clicked')){
 			model.click = {video: id};

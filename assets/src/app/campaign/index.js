@@ -119,7 +119,24 @@ angular.module( 'bidio.campaign', [
                     return;
                 }
 
+                videos.forEach(function(video){
+
+                  var activeBids = video.bids.filter(function(bid){return bid.isActive}).map(function(bid){return bid.campaign});
+
+                  var newBids = video.bids.filter(function(bid){return bid.isNewEntry}).map(function(bid){return bid.campaign});
+
+                  if (activeBids.indexOf($scope.campaign.id) != -1){
+                    video.disabled = true;
+                  }
+
+                  if (newBids.indexOf($scope.campaign.id) != -1){
+                    video.disabled = true;
+                  }
+
+                })  
+
                 $scope.videos = videos;
+
                 $scope.videoSelectToggle();
             })
             .catch(function(err){
@@ -187,13 +204,9 @@ angular.module( 'bidio.campaign', [
           toUpdate.originCampaignExpiry = $scope.campaign.endDate;
         }
 
-        console.log(toUpdate);
-
         return BidModel.create(toUpdate)
       })
       .then(function(response){
-
-        console.log(response);
 
         $scope.loading = false;
         $scope.finished = true;
@@ -205,6 +218,39 @@ angular.module( 'bidio.campaign', [
       })
     
     };
+
+    $scope.submitPrev = function(id){
+
+      $scope.prevLoading = true;
+
+      var toUpdate = {
+        video: id,
+        isNewEntry: true,
+        campaign: $scope.campaign.id,
+        originCampaign: $scope.campaign.id,
+        value: $scope.campaign.price
+      };
+
+      if ($scope.campaign.endDate){
+        toUpdate.originCampaignExpiry = $scope.campaign.endDate;
+      }
+
+      return BidModel.create(toUpdate)
+      .then(function(){
+
+        $scope.prevLoading = false;
+        $scope.finished = true;
+
+      })
+      .catch(function(err){
+        
+        //TODO: more details plz
+        console.log(err);
+
+        $scope.error = "An error occurred";
+        $scope.loading = false;
+      })
+    }
 
 		$scope.cancel = function(){
 

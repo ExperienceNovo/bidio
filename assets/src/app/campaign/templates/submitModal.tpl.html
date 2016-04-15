@@ -1,5 +1,5 @@
-<div class="container">
-	<div ng-hide="videoSelecting" class="row">
+<div class="container" style="padding:50px;">
+	<div ng-hide="videoSelecting && !finished" class="row">
 		<div ng-show="!currentUser">
 			<div class="col-xs-12 col-sm-8 col-sm-push-2" style="padding:50px 0">
 				<h2>Before you continue</h2>
@@ -73,12 +73,16 @@
 			</div>
 		</div>
 	</div>
-	<div ng-show="videoSelecting && !viewing" class="row">
+	<div ng-show="videoSelecting && !viewing && !finished" class="row">
 		<div class="col-xs-12">
-			<button class="btn" ng-click="videoSelectToggle()"><i class="fa fa-caret-left"></i>&nbsp;Back</button>
-			<button class="btn" ng-click="submit()" ng-disabled=""><i class="fa fa-check"></i>&nbsp;Submit</button>
 
-			{{selectedVideo | json}}
+			<div class="clearfix" style="padding-bottom:25px;">
+				<button class="btn pull-left" ng-click="videoSelectToggle()"><i class="fa fa-caret-left"></i>&nbsp;Back</button>
+				<button class="btn pull-right" ng-click="submitPrev(selectedVideo.video)" ng-disabled="!selectedVideo.video">
+					<span ng-show="prevLoading"><i class="fa fa-spin fa-spinner"></i>&nbsp;</span>
+					<i class="fa fa-check"></i>&nbsp;Submit
+				</button>
+			</div>
 
 			<table class="table">
 			  <thead>
@@ -94,14 +98,15 @@
 			      <td>{{video.title}}</th>
 			      <td>{{video.description}}</td>
 			      <td><i ng-click="view(video)" class="fa fa-play"></i></td>
-			      <td><input ng-model="selectedVideo.video" ng-value="video" type="radio"></td>
+			      <td><input ng-disabled="video.disabled" ng-model="selectedVideo.video" ng-value="video.id" type="radio"></td>
 			    </tr>
 			  </tbody>
 			</table>
+
 		</div>
 	</div>
-	<div class="row">
-		<div ng-if="viewing" class="col-xs-12">
+	<div ng-if="viewing" class="row">
+		<div class="col-xs-12">
 			<h2>{{viewingVideo.title}}</h2>
 		  <div class="video-container">
 		    <video 

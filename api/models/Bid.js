@@ -49,10 +49,12 @@ module.exports = {
             required: true,
         },
 
+        //TODO: this should be on the video model
         originCampaign: {
             model: 'campaign'
         },
 
+        //TODO: this should be on the video model
         originCampaignExpiry: {
             type: 'date',
             defaultsTo: function(){
@@ -140,10 +142,11 @@ module.exports = {
             return next(null,model);
         }
 
-        Bid.find({isActive: true})
+        Bid.find({isActive: true, video: model.video})
             .then(function(bid){
+
                 if (!bid.length){
-                    return Promise.resolve();
+                    return true;
                 }
 
                 if (bid.length == 1){

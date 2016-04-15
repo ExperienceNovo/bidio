@@ -171,6 +171,10 @@ angular.module( 'bidio.dashboard', [
             return;
         }
 
+        if ($scope.setMinimum){
+            video.minimumPrice = $scope.minimumPrice;
+        }
+
         $scope.loading = true;
 
         VideoModel.create(video)
@@ -181,6 +185,7 @@ angular.module( 'bidio.dashboard', [
         })
         .catch(function(response){
             //TODO: more details plz
+            console.log(response);
             $scope.error = "An error occurred";
             $scope.loading = false;
         })
@@ -750,13 +755,14 @@ angular.module( 'bidio.dashboard', [
         .map(function(bid){
 
             var model = {
+                id: bid.id,
                 value: bid.value,
-                video: bid.video,
+                video: bid.video.id,
                 campaign: bid.campaign
             };
 
             if (bid.user){
-                model.user = bid.user;
+                model.user = bid.user.id;
             }
 
             if (bid.viewCount){
@@ -767,15 +773,15 @@ angular.module( 'bidio.dashboard', [
                 model.clickCount = bid.clickCount;
             }
 
-            if (bid.hasOwnProperty(isNewEntry)){
+            if (bid.hasOwnProperty("isNewEntry")){
                 model.isNewEntry = bid.isNewEntry;
             }
 
-            if (bid.hasOwnProperty(isActive)){
+            if (bid.hasOwnProperty("isActive")){
                 model.isActive = bid.isActive;
             }
 
-            if (bid.hasOwnProperty(isAccepted)){
+            if (bid.hasOwnProperty("isAccepted")){
                 model.isAccepted = bid.isAccepted;
             }
 
@@ -795,7 +801,7 @@ angular.module( 'bidio.dashboard', [
                 return BidModel.update(bid);
             })
         )
-        .then(function(){
+        .then(function(results){
 
             //recategorize videos based on changes
             $scope.saving = false;
@@ -815,6 +821,7 @@ angular.module( 'bidio.dashboard', [
             $scope.selectedBids = sorted[$scope.selection.type];
         })
         .catch(function(err){
+            console.log(err);
             $scope.saving = false;
             //TODO: handle error logging
         })

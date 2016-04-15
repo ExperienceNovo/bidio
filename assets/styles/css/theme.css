@@ -349,7 +349,9 @@ form[role=search] .form-group {
 
 .video-container {
   max-width: 50%;
-  margin:0 auto;
+  width: 500px;
+  display: inline-block;
+  padding-right: 15px;
 }
 
 .intro-sec {

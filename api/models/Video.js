@@ -15,6 +15,10 @@ module.exports = {
             unique: true
         },
 
+        minimumPrice: {
+            type: 'string'
+        },
+
         urlTitle: {
             type: 'string',
             required: true,
@@ -61,17 +65,8 @@ module.exports = {
         bids: {
             collection: 'bid',
             via: 'video'  
-        },
-
-        approved: {
-            type: 'boolean',
-            defaultsTo: false
-        },
-
-        isNew: {
-            type: 'boolean',
-            defaultsTo: true
         }
+        
     },
 
     getAll: function() {

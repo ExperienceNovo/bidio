@@ -97,16 +97,16 @@ module.exports = {
 			model.clickCount = req.param('clickCount')
 		}
 
-		if (req.param('isActive')){
-			model.isActive = req.param('isActive')
+		if (req.body.hasOwnProperty('isActive')){
+			model.isActive = req.body.isActive;
 		}
 
-		if (req.param('isAccepted')){
-			model.isAccepted = req.param('isAccepted')
+		if (req.body.hasOwnProperty('isAccepted')){
+			model.isAccepted = req.body.isAccepted;
 		}
 
-		if (req.param('isNewEntry')){
-			model.isNewEntry = req.param('isNewEntry')
+		if (req.body.hasOwnProperty('isNewEntry')){
+			model.isNewEntry = req.body.isNewEntry;
 		}
 
 		if (req.param('originCampiagn')){
@@ -130,6 +130,7 @@ module.exports = {
 		var id = req.param('id');
 
 		var model = {
+			id: id,
 			value: req.param('value'),
 			video: req.param('video'),
 			campaign: req.param('campaign')
@@ -147,16 +148,16 @@ module.exports = {
 			model.clickCount = req.param('clickCount')
 		}
 
-		if (req.param('isActive')){
-			model.isActive = req.param('isActive')
+		if (req.body.hasOwnProperty('isActive')){
+			model.isActive = req.body.isActive;
 		}
 
-		if (req.param('isAccepted')){
-			model.isAccepted = req.param('isAccepted')
+		if (req.body.hasOwnProperty('isAccepted')){
+			model.isAccepted = req.body.isAccepted;
 		}
 
-		if (req.param('isNewEntry')){
-			model.isNewEntry = req.param('isNewEntry')
+		if (req.body.hasOwnProperty('isNewEntry')){
+			model.isNewEntry = req.body.isNewEntry;
 		}
 
 		if (req.param('originCampiagn')){
@@ -166,7 +167,11 @@ module.exports = {
 		Bid.update({id: id}, model)
 		.then(function(model){
 			//Bid.publishUpdate(model[0].id, model);
-			res.json(model);
+			return res.json(model);
+		})
+		.then(function(err){
+			console.log(err);
+			return res.negotiate(err);
 		});
 
 	},

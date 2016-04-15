@@ -89,8 +89,6 @@ module.exports = {
 				return res.redirect("/campaigns")
 			}
 
-			console.log(campaign.bids);
-
 			return [campaign, Promise.all(
 				campaign.bids.map(function(bid){
 					return Video.findOne(bid.video)

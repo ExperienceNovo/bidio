@@ -3,7 +3,7 @@
 	<h1 class="contentTitleLetters">{{video.title}}</h1>
 </div>
 <div class="campaign-desc clearfix" ng-show="video.campaign">
-	<p ng-bind-html="video.campaign.title"></p>
+	<p>{{video.campaign.title}}</p>
 	<a ui-sref="campaign.main({path: video.campaign.urlTitle})">{{video.campaign.prompt}}&nbsp;<i class="fa fa-caret-right"></i></a>
 </div>
 
@@ -35,26 +35,10 @@
 		<div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
 			<p>{{video.description}}</p>
 			<div class="spacing-50"></div>
+			<button ng-hide="!currentUser" class="btn" ng-click="bid()" style="float:left">Make Bid</button>
 			<a href="#" class="btn anim-button fl-l" style="float:right">share</a>
 		</div>
 	</div>	
 
-	<div class="row" ng-show="currentUser">
-		<h2>new bid</h2>
-		<md-input-container>
-			<label>Bid </label>
-			<textarea ng-model="newBid.value" rows="4"></textarea>
-		</md-input-container>
-		<md-button ng-click="createBid(newBid)">Submit</md-button>
-	</div>
-
-	<div class="row">
-		<div ng-repeat="bid in bids">
-			<h3>{{bid.value}}</h3>
-			<h3><a href="/member/{{bid.user.username}}">{{bid.user.username}}</a></h3>
-			<h3>{{bid.createdAt}}</h3>
-		</div>
-	</div>
-
-
+	
 </div>

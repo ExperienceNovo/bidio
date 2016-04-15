@@ -16,13 +16,11 @@
 	}
 
 </style>
-
 <md-content layout-padding>
 	<p class="text-left"><a ui-sref="dashboard.campaigns"><md-icon>chevron_left</md-icon>&nbsp;Back to campaigns</a></p>
   <div class="dashboard-title">
     <h1>{{campaign.title}}</h1>
   </div>
-
 	<md-tabs md-dynamic-height md-border-bottom>
 		<md-tab ng-if="!campaign.published" label="Details">
 			<md-content layout="row" layout-padding layout-wrap>
@@ -37,7 +35,6 @@
 						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 					</p>
 				</div>
-
 				<div flex="50">
 					<h2>Specifics</h2>
 					<div layout="row" layout-wrap>
@@ -54,6 +51,7 @@
 						<div flex="60">
 							<md-input-container layout-fill>
 								<label>Campaign Budget</label>
+								<md-icon>attach_money</md-icon>
 								<input type="text" ng-model="campaign.contributionGoal" ng-disabled="!setBudget">
 							</md-input-container>
 						</div>
@@ -65,6 +63,7 @@
 						<div flex="60">
 							<md-input-container layout-fill>
 								<label>Per Video Budget</label>
+								<md-icon>attach_money</md-icon>
 								<input type="text" ng-model="campaign.maxContributionPerVideo" ng-disabled="!setVideoBudget">
 							</md-input-container>
 						</div>
@@ -81,7 +80,6 @@
 						<md-button class="md-raised md-accent">submit</md-button>
 					</div>
 				</div>
-
 			</md-content>
 		</md-tab>
 		<md-tab ng-if="campaign.published" label="Overview">
@@ -90,7 +88,7 @@
 		  		<img src="http://placehold.it/1000x300?text=Some%20Graph" style="width:100%" alt="">
 		  	</div>
 		  	<div flex="30">
-		  		<h2>Finance</h2>
+		  		<h2 style="font-weight:bold;color:#FAA93F;text-align:left;">Finance</h2>
 			  	<hr>
 			  	<p><b>Price per click</b>&nbsp;${{ campaign.price | number: 2 }}</p>
 			  	<p><b>Total clicks</b>&nbsp;{{ totalClicks }}</p>
@@ -99,7 +97,7 @@
 					<p ng-show="campaign.contributionGoal"><b>Max Contribution per Video</b>&nbsp;${{ campaign.contributionGoal | number: 2 }}</p>
 		  	</div>
 		  	<div flex="70">
-			  	<h2>Performance</h2>
+			  	<h2 style="font-weight:bold;color:#FAA93F;text-align:left;">Performance</h2>
 					<hr>
 					<p><b>Top video (by clicks)</b>&nbsp;{{ topClicks.title }}&nbsp;({{ topClicks.clickCount }} clicks)<br></p>
 					<p><b>Top video (by views)</b>&nbsp;{{ topViews.title }}&nbsp;({{ topClicks.clickCount }} views)<br></p>
@@ -107,7 +105,6 @@
 					<p><b>Total clicks</b>&nbsp;{{ totalClicks }}<br></p>
 					<p><b>Total views</b>&nbsp;{{ totalViews }}<br></p>
 					<p><b>Average conversion ratio</b>&nbsp;{{ (totalClicks / totalViews) * 100 | number : 2 }}&nbsp;%<br></p>
-					
 		  	</div>
 		  </md-content>
 		</md-tab>
@@ -141,12 +138,12 @@
 	    		<div class="cover-all" ng-show="campaign.doesRedirect"></div>
 		    	<p class="edit-prompt"><b>Mouse over content to edit</b></p>
 		    	<hr>
-		    	<p><b>Landing Page Banner</b></p>
+		    	<p class="dash-title-sm"><b>Landing Page Banner</b></p>
 					<div class="edit-container">
 						<div class="edit-btn"><md-button  ng-click="getImage()" class="md-fab md-mini"><md-icon>edit</md-icon></md-button></div>
 						<img style="width:100%" ng-src="{{campaign.bannerUrl}}">
 					</div>
-					<p><b>Landing Page Text</b></p>
+					<p class="dash-title-sm"><b>Landing Page Text</b></p>
 		    	<div ng-show="!editingLanding" class="edit-container">
 		    		<div class="edit-btn"><md-button ng-click="editLandingToggle()" class="md-fab md-mini"><md-icon>edit</md-icon></md-button></div>
 		    		<p>{{campaign.campaignContent}}</p>
@@ -163,10 +160,10 @@
 	  	</md-content>
 	  </md-tab>
 		<md-tab label="About">
-	    <md-content layout-padding style="padding-bottom:100px">
+	    <md-content layout-padding style="padding-bottom:100px;text-align:left;">
 	    	<p class="edit-prompt"><b>Mouse over content to edit</b></p>
 	    	<hr>
-	    	<p><b>About Video</b></p>
+	    	<p class="dash-title-sm"><b>About Video</b></p>
 	    	<div class="video-container edit-container">
 	    		<div class="edit-btn"><md-button  ng-click="getVideo()" class="md-fab md-mini"><md-icon>edit</md-icon></md-button></div>
 					<video 
@@ -183,7 +180,7 @@
 						vjs-ratio="16:9">
 					</video>
 				</div>
-				<p><b>About Text</b></p>
+				<p class="dash-title-sm"><b>About Text</b></p>
 	    	<div ng-hide="editingInfo" class="edit-container">
 	    		<div class="edit-btn"><md-button  ng-click="editInfoToggle()" class="md-fab md-mini"><md-icon>edit</md-icon></md-button></div>
 	    		<p>{{campaign.intro}}</p>
@@ -201,12 +198,11 @@
 		</md-tab>
 		<md-tab ng-if="campaign.published" label="Videos">
 			<md-content layout-padding>
-
 				<md-toolbar>
 					<div class="md-toolbar-tools">
-
-						<md-button ng-disabled="refreshing" class="md-icon-button" ng-click="refresh()"><md-icon ng-hide="refreshing">refresh</md-icon><md-progress-circular md-mode="indeterminate" ng-show="refreshing"></md-progress-circular></md-button>
-
+						<md-button ng-disabled="refreshing" class="md-icon-button" ng-click="refresh()">
+							<md-icon ng-hide="refreshing">refresh</md-icon><md-progress-circular md-mode="indeterminate" ng-show="refreshing"></md-progress-circular>
+						</md-button>
 						<md-input-container>
 							<md-select aria-label="Submussion selector" ng-model="selection.type">
 							  <md-option value="new">New Submissions</md-option>
@@ -215,9 +211,7 @@
 							  <md-option value="old">Old Submissions</md-option>
 							</md-select>
 						</md-input-container>
-
 						<span layout-fill></span>
-
 						<md-button ng-click="saveVideo()" ng-disabled="clean == true || saving">
 				    	<md-icon>save</md-icon>
 				    	&nbsp;Save
@@ -228,10 +222,8 @@
 				    	<md-icon>undo</md-icon>
 				    	&nbsp;Undo
 				    </md-button>
-
 					</div>
 			  </md-toolbar>
-				
 				<md-list>
 				  <md-list-item layout="row">
 						<div flex="15">Title</div>
@@ -259,5 +251,4 @@
 			</md-content>
 		</md-tab>
 	</md-tabs>
-
 </md-content>
