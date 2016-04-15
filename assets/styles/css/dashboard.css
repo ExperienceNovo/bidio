@@ -1,3 +1,15 @@
+.dashboard-title {
+    margin-top:5%;
+}
+.dash-title-sm {
+    font-weight: bold;
+    color: #FAA93F;
+    text-align: left;
+    font-size: 1.5em;
+    margin-bottom: 25px;
+    margin-top: 25px;
+}
+
 /* #main-container{margin-left:250px;padding-left:30px;} */
 #sidebar-wrapper {
     z-index: 1000;
