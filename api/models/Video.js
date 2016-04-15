@@ -81,7 +81,34 @@ module.exports = {
         return Video.findOne(id)
         .populate('user')
         .populate('bids')
-        .then(function (model) {
+        .then(function(model){
+
+            console.log("MODEL",model);
+
+            var active = model.bids.filter(function(bid){ return bid.isActive });
+
+            console.log("ACTIVE",active)
+
+            if (!active.length){
+                return [model,null]
+            }
+
+            if(active.length > 1){
+                throw new Error("More than one active bid found, aborting request");
+            }
+
+            return [model,Campaign.findOne(active[0].campaign)]
+
+        })
+        .spread(function(model,campaign){
+
+            console.log(model,campaign);
+
+            if (campaign){
+                model = model.toObject();
+                model.campaign = campaign;
+            }
+
             return [model];
         });
     },
