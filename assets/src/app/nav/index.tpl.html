@@ -2,7 +2,7 @@
   <div class="container">
     <div class="container-fluid">
       <div class="navbar-header">
-        <button class="navbar-toggle" type="button" ng-click="isCollapsed = !isCollapsed">
+        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
@@ -12,10 +12,10 @@
           <span style="margin-left:10px">bidio</span>
         </a>    
       </div>
-      <div collapse="isCollapsed" class="navbar-collapse bs-js-navbar-collapse">
+      <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav nav-float">
-          <!--<li><a class="bidio-nav" href="/about">About</a></li>-->
-          <!--<li><a href="/campaigns">Campaigns</a></li>
+      <!--<li><a class="bidio-nav" href="/about">About</a></li>
+          <li><a href="/campaigns">Campaigns</a></li>
           <li><a href="/search">Search</a></li>-->
           <li ng-show="currentUser"><a href="/dashboard">Dashboard</a></li>
           <li ng-show="currentUser"><a href="/upload">Upload</a></li>
@@ -30,4 +30,3 @@
     </div>
   </div>
 </nav>
-
