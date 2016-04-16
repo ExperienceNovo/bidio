@@ -9,15 +9,10 @@ angular.module( 'bidio.member', [
 				controller: 'MemberCtrl',
 				templateUrl: 'member/index.tpl.html'
 			}
-			
 		},
 		resolve: {
 			member: function(UserModel, $stateParams){
 				return UserModel.getByUsername($stateParams.path);
-			},
-			//userInformation: function(userInformationModel, member){}
-			bids: function(BidModel, member){
-				return BidModel.getByMember(member.id);
 			},
 			campaigns: function(CampaignModel, member){
 				return CampaignModel.getByMember(member.id);
@@ -29,10 +24,14 @@ angular.module( 'bidio.member', [
 	});
 })
 
-.controller( 'MemberCtrl', function MemberCtrl( $scope, member, bids, campaigns, videos ) {
-	$scope.member = member;
-	if(typeof($scope.member)=="undefined"){$location.path('/')}
-	$scope.bids = bids;
-	$scope.campaigns = campaigns;
-	$scope.videos = videos;
+.controller( 'MemberCtrl', function MemberCtrl( $scope, member, campaigns, videos ) {
+		$scope.member = member;
+		if(typeof($scope.member)=="undefined"){$location.path('/')}
+
+		console.log(campaigns);
+
+		$scope.profile = member.profile[0];
+
+		$scope.campaigns = campaigns;
+		$scope.videos = videos;
 });
