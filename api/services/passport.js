@@ -192,7 +192,7 @@ passport.endpoint = function (req, res) {
   var strategies = sails.config.passport
     , provider   = req.param('provider')
     , options    = {};
-
+    console.log(this)
   // If a provider doesn't exist for this endpoint, send the user back to the
   // login page
   if (!strategies.hasOwnProperty(provider)) {
@@ -203,7 +203,7 @@ passport.endpoint = function (req, res) {
   if (strategies[provider].hasOwnProperty('scope')) {
     options.scope = strategies[provider].scope;
   }
-
+  console.log('hi')
   // Redirect the user to the provider for authentication. When complete,
   // the provider will redirect the user back to the application at
   //     /auth/:provider/callback

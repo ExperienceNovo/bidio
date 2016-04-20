@@ -1,4 +1,5 @@
 angular.module('models', [
+	'models.auth',
 	'models.bid',
 	'models.campaign',
 	'models.post',

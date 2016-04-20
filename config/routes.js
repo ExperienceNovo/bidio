@@ -59,6 +59,10 @@ module.exports.routes = {
 
   'post /auth/local': 'AuthController.callback',
   'post /auth/local/:action': 'AuthController.callback',
+  'get /auth/providers': 'UserController.getPassports',
+  '/auth/:provider': 'AuthController.provider',
+  '/auth/:provider/callback': 'AuthController.callback',
+
 
   /**
    * User routes
