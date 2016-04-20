@@ -28,8 +28,8 @@ module.exports.passport = {
     protocol: 'oauth',
     strategy: require('passport-twitter').Strategy,
     options: {
-      consumerKey: 'gRpa4CidX3vihKWZ3L1O1matV',
-      consumerSecret: 'M7RskQyUx9Uzbc5C4O7ATQ00s3mC8JssPcP57H3EiVKcSFKSKp'
+      consumerKey: 'pIzYvAQOTHiKlysvVC5m2IYTI',
+      consumerSecret: 'qzyJkjzOEVvttX0iu6ZON72BKZ4T0q0tXudYlUqHbtdPTgVArQ'
     }
   },
 
@@ -49,8 +49,8 @@ module.exports.passport = {
     protocol: 'oauth2',
     strategy: require('passport-google-oauth').OAuth2Strategy,
     options: {
-      clientID: '956713988528-86j1pkii5m9o8c1vfmb8qcbq2eot784d.apps.googleusercontent.com',
-      clientSecret: 'TiuwOilqlUC4dtxOXbyhdqu2',
+      clientID: '140697652385-7kf690p492kpr7pub7ni2f6322ui89od.apps.googleusercontent.com',
+      clientSecret: 'EdNhiGSZajsrKl8NOJQ0PPjq',
       scope: ['email'] /* email is necessary for login behavior */
     }
   }
