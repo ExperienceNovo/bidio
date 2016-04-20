@@ -38,8 +38,8 @@ module.exports.passport = {
     protocol: 'oauth2',
     strategy: require('passport-facebook').Strategy,
     options: {
-      clientID: '1660847900851145',
-      clientSecret: '6eecbdb480a617f3e9b4c7e0c3f89665',
+      clientID: '629279003894718',
+      clientSecret: '9d1cbd6a42f185aeb94ee1aa40a324e9',
       scope: ['email'] /* email is necessary for login behavior */
     }
   },
