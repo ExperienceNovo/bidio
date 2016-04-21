@@ -200,7 +200,6 @@ passport.endpoint = function (req, res) {
   // If a provider doesn't exist for this endpoint, send the user back to the
   // login page
   if (!strategies.hasOwnProperty(provider)) {
-    console.log('provider doesnt exist for this endpoint')
     return res.redirect('/login');
   }
 

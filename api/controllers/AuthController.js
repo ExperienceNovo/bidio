@@ -49,7 +49,6 @@ var AuthController = {
         // take care of rendering the error messages.
         if (err) {
           console.log(err)
-          console.log('error occured, redirecting to login')
           res.redirect('/login');
         }
         // Upon successful login, send the user to the homepage were req.user
