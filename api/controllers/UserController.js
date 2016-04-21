@@ -81,6 +81,7 @@ module.exports = {
 
 	getByUsername: function(req, res) {
 		User.find()
+		.populate('profile')
 		.where({username: req.param('path')})
 		.spread(function(model) {
 			User.subscribe(req, model);

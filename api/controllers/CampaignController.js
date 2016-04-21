@@ -67,8 +67,7 @@ module.exports = {
 	},
 
 	getByMember: function(req, res) {
-		Campaign.find()
-		.where({user:req.param('id')})
+		Campaign.find({user:req.param('id')})
 		.then(function(model) {
 			Campaign.subscribe(req, model);
 			res.json(model);

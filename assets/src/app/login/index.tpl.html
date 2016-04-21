@@ -2,6 +2,7 @@
     <div class="form-wrapper">
         <div class="form-container">
             <h1>Welcome Back!</h1>
+            <div class="spacing-15"></div>
             <form class="form ng-pristine ng-valid" role="form" action="/auth/local" method="post" _lpchecked="1">
                 <label for="inputUsername3" class="col-sm-2 control-label"></label>
                 <input type="text" class="form-control" id="inputUsername3" name="identifier" placeholder="Username">
@@ -10,19 +11,20 @@
                 <input type="password" class="form-control" id="inputPassword3" name="password" placeholder="Password">
 
                 <button type="submit" id="login-button">Login</button>
-                <ul class="social-icons icon-rotate list-unstyled list-inline">
-                    <li>
+                <div class="spacing-15"></div>
+                <ul class="social-icons icon-rotate list-unstyled" style="bottom:15px">
+                    <li style="display:inline-block;padding:10px;font-size:20px">
                         <a href="/auth/facebook"><i class="fa fa-facebook"></i></a>
                     </li>
-                    <li>
+                    <li style="display:inline-block;padding:10px;font-size:20px">
                         <a href="/auth/google"><i class="fa fa-google-plus"></i></a>
                     </li>
-                    <li>
+                    <li style="display:inline-block;padding:10px;font-size:20px">
                         <a href="/auth/twitter"><i class="fa fa-twitter"></i></a>
                     </li>
                 </ul>
             </form>
-            <a href="/register"><h3>Don't have an account?</h3></a>
+            <a href="/register" style="font-size:15px"><h3>Don't have an account?</h3></a>
         </div>
     </div>
 </div>

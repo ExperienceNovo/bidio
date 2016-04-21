@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800);
+
 body,
 html {
     width: 100%;
@@ -11,7 +13,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: 700;
 }
 
@@ -19,18 +21,178 @@ h6 {
     font-size: 14px; 
 }
 
+.grey-bg {
+    background: #f4f4f4;
+}
+
+.bidio-orange {
+    color:#FE9A2E
+}
+
+.creators-hero {
+    background: url(/images/creator-hero.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    text-align: center;
+    line-height: 64px;
+    text-transform: uppercase;
+    color: #fff;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.sponsors-hero {
+    background: url(/images/sponsor-hero.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    text-align: center;
+    line-height: 64px;
+    text-transform: uppercase;
+    color: #fff;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.creators-hero h2 {
+    font-size: 40px;
+    font-weight: 300;
+}
+
+.creators-hero h3 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.creators-about {
+    padding-left: 30px!important;
+    padding-right: 30px!important;
+}
+
+.creators-about h2 {
+    font-size: 25px;
+    text-align:left;
+    margin-bottom:25px;
+    font-weight:bold;
+}
+
+.creators-about p {
+    font-size:18px;
+    line-height:30px;
+    text-align: justify;
+}
+
+.creator-upload {
+    background: url(/images/icons/icons-03.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height:75px;
+    width: 75px;
+    margin:0 auto;
+    margin-left: 15px;
+}
+
+.creator-enter {
+    background: url(/images/icons/icons-05.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height:75px;
+    width: 75px;
+    margin:0 auto;
+    margin-left: 15px;
+}
+
+.creator-paid {
+    background: url(/images/icons/icons-04.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height:75px;
+    width: 75px;
+    margin:0 auto;
+    margin-left: 15px;
+}
+
+.sponsor-sponsor {
+    background: url(/images/icons/icons-04.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height:75px;
+    width: 75px;
+    margin:0 auto;
+    margin-left: 15px;
+}
+
+.sponsor-custom {
+    background: url(/images/icons/icons-02.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height:75px;
+    width: 75px;
+    margin:0 auto;
+    margin-left: 15px;
+}
+
+.sponsor-results {
+    background: url(/images/icons/icons-01.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height:75px;
+    width: 75px;
+    margin:0 auto;
+    margin-left: 15px;
+}
+
+.creator-gifs {
+    padding-right: 30px!important;
+}
+
+.upload-gif {
+    background: url(http://www.placehold.it/250x250?text=placehold);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height:100%;
+    padding-bottom:65%;
+    margin:0 auto;
+}
+
+.enter-gif {
+    background: url(http://www.placehold.it/250x250?text=placehold);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height:100%;
+    padding-bottom:65%;
+    margin:0 auto;
+}
+
+.paid-gif {
+    background: url(http://www.placehold.it/250x250?text=placehold);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height:100%;
+    padding-bottom:65%;
+    margin:0 auto;
+}
+
+
 .lead {
     font-size: 18px;
     font-weight: 400;
-}
-
-.intro-header {
-    padding-top: 50px;
-    padding-bottom: 50px;
-    text-align: center;
-    color: #f8f8f8;
-    background: url(../img/intro-bg.jpg) no-repeat center center;
-    background-size: cover;
 }
 
 .intro-message {
