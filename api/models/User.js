@@ -7,8 +7,8 @@ module.exports = {
         },
         email: {
             type: 'email',
-            required: true,
-            unique: true
+            // required: true,
+            // unique: true
         },
         videos: {
             collection: 'video',
@@ -27,6 +27,8 @@ module.exports = {
 
     afterCreate: function(model,next){
 
+        console.log(model.username)
+
         Profile.create({user: model.id})
             .then(function(profile){
 
@@ -36,11 +38,24 @@ module.exports = {
 
                 model.profile = profile;
 
+                /*in case of seeding before templates are created*/
+                if (!emailService.templates.hasOwnProperty('welcome')){
+
+                    return Promise.resolve();
+                }
+
+                return emailService.sendTemplate('welcome', model.email, 'Welcome To Bidio!', {username: model.username});
+
+            })
+            .then(function(){
+
                 return next(null, model);
 
             })
             .catch(function(err){
+
                 return next(err, null);
+
             });
 
     },
