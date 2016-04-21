@@ -30,12 +30,17 @@ module.exports = {
   models: {
     connection: 'localDiskDb',
     migrate: 'drop'
-  }
+  },
 
   /*for seeding the production DB*/
   // models: {
   //   connection: 'productionMongoHqDb',
   //   migrate: 'safe'
   // },
+
+  mailgun: {
+    key: 'key-4e1b43d98f37e10fc6d350d8ec21518c',
+    domain: 'sandbox1a81c426c68447c1a945123722386e88.mailgun.org'
+  }
 
 };
