@@ -79,6 +79,8 @@ passport.connect = function (req, query, profile, next) {
     return next(new Error('No authentication provider was identified.'));
   }
 
+  console.log(profile);  // <= check the content given by fb/google/etc about the user
+
   // If the profile object contains a list of emails, grab the first one and
   // add it to the user.
   if (profile.hasOwnProperty('emails')) {
@@ -89,6 +91,9 @@ passport.connect = function (req, query, profile, next) {
     user.username = profile.username;
   }
 
+  if (!user.username && profile.hasOwnProperty('displayName')) {
+    user.username = profile.displayName;
+  }
   // If neither an email or a username was available in the profile, we don't
   // have a way of identifying the user in the future. Throw an error and let
   // whoever's next in the line take care of it.
@@ -192,7 +197,6 @@ passport.endpoint = function (req, res) {
   var strategies = sails.config.passport
     , provider   = req.param('provider')
     , options    = {};
-    console.log(this)
   // If a provider doesn't exist for this endpoint, send the user back to the
   // login page
   if (!strategies.hasOwnProperty(provider)) {
@@ -203,7 +207,6 @@ passport.endpoint = function (req, res) {
   if (strategies[provider].hasOwnProperty('scope')) {
     options.scope = strategies[provider].scope;
   }
-  console.log('hi')
   // Redirect the user to the provider for authentication. When complete,
   // the provider will redirect the user back to the application at
   //     /auth/:provider/callback
@@ -223,7 +226,6 @@ passport.endpoint = function (req, res) {
 passport.callback = function (req, res, next) {
   var provider = req.param('provider', 'local')
     , action   = req.param('action');
-
   // Passport.js wasn't really built for local user registration, but it's nice
   // having it tied into everything else.
   if (provider === 'local' && action !== undefined) {
@@ -324,7 +326,6 @@ passport.loadStrategies = function () {
       // defaults can be overriden, but I don't see a reason why you'd want to
       // do that.
       _.extend(options, strategies[key].options);
-
       self.use(new Strategy(options, self.protocols[protocol]));
     }
   });

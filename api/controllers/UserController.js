@@ -10,6 +10,43 @@ module.exports = {
 		});
 	},
 
+	getPassports: function(req,res){
+		/*
+			getPassports
+			user must be logged in, id is taken from session
+			returns all passports of user associated w/ id
+		*/
+
+		id = req.user.id;
+
+		User.findOne( id )
+			.populate('passports')
+			.then(function( user ){
+
+				return res.json( user.passports );
+
+			})
+			.fail(function( err ){
+
+				return res.json( err );
+			})
+	},
+
+	deletePassport: function(req,res){
+		id = req.user.id;
+		provider = req.param("provider");
+		console.log(provider);
+
+		Passport.destroy({user: id, provider: provider})
+			.then(function(passport){
+				console.log(passport);
+				res.json(passport);
+			})
+			.fail(function(err){
+				res.json(err);
+			});
+	},
+
 	getMine: function(req,res){
 
 		var me = req.user.id;
@@ -21,7 +58,7 @@ module.exports = {
 				return res.json(user);
 			})
 			.catch(function(err){
-				
+
 				return res.negotiate(err);
 			});
 
@@ -89,19 +126,19 @@ module.exports = {
 			email: req.param('email'),
 			username : req.param('username')
 		};
-		
+
 		console.log("model in controller is: " + model);
 		console.log("model.email in controller is: " + model.email);
 		console.log("model.username in controller is: " + model.username);
-		
-		
+
+
 		User.update({id: id}, model)
 		.then(function(model){
 			User.publishUpdate(id, model);
 			res.json(model);
 		});
-		
-		
+
+
 	},
 
 	destroy: function(res,res){
