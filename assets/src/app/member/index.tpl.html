@@ -36,6 +36,9 @@
 	</uib-tab>
 	<uib-tab heading="Videos">
 		<h2>Videos</h2>
+		<div ng-show="videos.length == 0">
+			no videos
+		</div>
 		<div class="dashboardVideos" ng-repeat="video in videos">
 	    	<h1><a ui-sref="video({id: video.id})">{{video.title}}</a></h1>
 	    	<video style="display:inline-block;" class="video-js vjs-default-skin" src={{video.amazonUrl}} controls preload="none" width="640" height="264" poster="poster.jpg" vjs-video>
@@ -44,6 +47,9 @@
 	</uib-tab>
 	<uib-tab heading="Campaigns">
 		<h2>Campaigns</h2>
+		<div ng-show="campaigns.length == 0">
+			no campaigns
+		</div>
 		<div ng-repeat="campaign in campaigns">
 			<p><a ui-sref="campaign.about({path: campaign.urlTitle})">{{campaign.title}}</a></p>
 		</div>

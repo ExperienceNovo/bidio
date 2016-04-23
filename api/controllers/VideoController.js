@@ -128,36 +128,36 @@ module.exports = {
 
 		/*uncomment this if you want to save to a particular folder*/
 		//var filename = req.file('video')._files[0].stream.filename;
-
 		var options = {
 			adapter: require("skipper-s3"),
-		  key: 'AKIAJZS6F2HWDJWWZE7A',
-		  secret: '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',
-		  bucket: 'bidio8',
-		  /*uncomment this if you want to save to a particular folder*/
-		  //saveAs: "Event-Pictures/" + utilsService.guid() + filename.split(".").pop()
+			key: 'AKIAJZS6F2HWDJWWZE7A',
+		 	secret: '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',
+		 	bucket: 'bidio8',
+		 	/*uncomment this if you want to save to a particular folder*/
+		 	//saveAs: "Event-Pictures/" + utilsService.guid() + filename.split(".").pop()
 		}
 
-		if (process.env.NODE_ENV == 'development'){
-			var filename = req.file('video')._files[0].stream.filename;
-			options.saveAs = "development/" + utilsService.guid() + "." + filename.split(".").pop();
-		}
+		//if (process.env.NODE_ENV == 'development'){
+		//	var filename = req.file('video')._files[0].stream.filename;
+		//	options.saveAs = "development/" + utilsService.guid() + "." + filename.split(".").pop();
+		//}
 
+		res.setTimeout(0)
+		console.log(req.file('video')._files[0].stream.filename)
 
-		return req.file('video').upload( options, function response(err,uploadedFiles){
-
+		req.file('video').on('progress', function (event){console.log(event);/*File.publishUpdate(newFile.id, event)*/}).upload(options, function response(err,uploadedFiles){
+			console.log('we are in the code')
 			if (err) {
-	      return res.negotiate(err);
-	    }
-
-	    if (uploadedFiles.length === 0){
-	      return res.badRequest('No file was uploaded');
-	    }
-
-	    var amazonUrl = uploadedFiles[0].extra.Location;
-
-	    return res.json({amazonUrl: amazonUrl});
-		})
+		    	return res.negotiate(err);
+		    	console.log(err)
+		    }
+		    if (uploadedFiles.length === 0){
+		    	return res.badRequest('No file was uploaded');
+		    }
+		    console.log(uploadedFiles)
+		    var amazonUrl = uploadedFiles[0].extra.Location;
+		    return res.json({amazonUrl: amazonUrl});
+		});
 
 	},
 
@@ -209,26 +209,18 @@ module.exports = {
 
 		if (req.param('clicked')){
 			model.click = {video: id};
-
 			if (req.user){
 				model.click.user = req.user.id;
 			}
-
 		}
 
 		Video.update({id: id}, model)
 			.then(function(result){
-
 				return res.json(result);
-
 			})
 			.catch(function(err){
-
 				return res.negotiate(err);
-
 			})
-
-		
 	},
 
 	destroy: function (req, res) {
