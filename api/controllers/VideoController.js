@@ -128,6 +128,7 @@ module.exports = {
 
 		/*uncomment this if you want to save to a particular folder*/
 		//var filename = req.file('video')._files[0].stream.filename;
+		res.setTimeout(0)
 		var options = {
 			adapter: require("skipper-s3"),
 			key: 'AKIAJZS6F2HWDJWWZE7A',
@@ -136,16 +137,34 @@ module.exports = {
 		 	/*uncomment this if you want to save to a particular folder*/
 		 	//saveAs: "Event-Pictures/" + utilsService.guid() + filename.split(".").pop()
 		}
+		var byteCount = req.file('video')._files[0].stream.byteCount
 
-		//if (process.env.NODE_ENV == 'development'){
-		//	var filename = req.file('video')._files[0].stream.filename;
-		//	options.saveAs = "development/" + utilsService.guid() + "." + filename.split(".").pop();
-		//}
+		if (process.env.NODE_ENV == 'development'){
+			var filename = req.file('video')._files[0].stream.filename;
+			options.saveAs = "development/" + utilsService.guid() + "." + filename.split(".").pop();
+		}
 
-		res.setTimeout(0)
-		console.log(req.file('video')._files[0].stream.filename)
+		/*
+		File.create({
+	    	state: 'uploading'
+	    }).exec({
+	    	error: res.serverError,
+	    	success: function (newFile) {
+	    		req.file('avatar')
+	        	.on('progress', function (event) {
+	        		File.publishUpdate(newFile.id, percentageUploaded);
+	        	})
+	        }
+	    })
+		*/
 
-		req.file('video').on('progress', function (event){console.log(event);/*File.publishUpdate(newFile.id, event)*/}).upload(options, function response(err,uploadedFiles){
+		req.file('video')
+		.on('progress', function (event){
+			var percentageUploaded = event.written/byteCount
+			console.log(percentageUploaded)
+			//File.publishUpdate(newFile.id, event)
+		})
+		.upload(options, function response(err,uploadedFiles){
 			console.log('we are in the code')
 			if (err) {
 		    	return res.negotiate(err);

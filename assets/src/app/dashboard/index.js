@@ -322,7 +322,6 @@ angular.module( 'bidio.dashboard', [
 .controller('DashboardCampaignsCtrl', function (config, $state, $scope, campaigns, CampaignModel, $mdDialog) {
 
     $scope.campaigns = campaigns;
-
     $scope.addCampaign = function(ev){
         $mdDialog.show({
           controller: 'CampaignDialogCtrl',
@@ -358,6 +357,16 @@ angular.module( 'bidio.dashboard', [
 })
 
 .controller('DashboardCampaignEditCtrl', function ($state, $mdMenu, $scope, campaign, CampaignModel, $mdDialog, VideoModel, lodash, $q, BidModel) {
+
+    $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
+    $scope.series = ['Series A', 'Series B'];
+    $scope.data = [
+        [65, 59, 80, 81, 56, 55, 40],
+        [28, 48, 40, 19, 86, 27, 90]
+    ];
+    $scope.onClick = function (points, evt) {
+        console.log(points, evt);
+    };
 
     var originals = lodash.cloneDeep(campaign.bids);
 
@@ -396,7 +405,6 @@ angular.module( 'bidio.dashboard', [
 
         value[sort(bid)].push(bid);
                 return value;
-
 
     }, {"new": [],
         "old": [],
@@ -481,13 +489,11 @@ angular.module( 'bidio.dashboard', [
 
         CampaignModel.getOne($scope.campaign.id)
             .then(function(campaign){
-
                 $scope.refreshing = false;
                 $scope.campaign.bids = campaign.bids;
 
                 //stop watching old ones
                 bidWatches.forEach(function(bidWatch){bidWatch()});
-
                 bidWatches = $scope.campaign.bids.map(function(bid){
 
                     return $scope.$watch(function($scope){
@@ -666,15 +672,12 @@ angular.module( 'bidio.dashboard', [
 
         campaignSave()
             .then(function(campaign){
-
                 $scope.saving = false;
                 $scope.editLandingToggle();
 
             })
             .catch(function(err){
-
                 $scope.saving = false;
-
             });
     }
 
@@ -1049,14 +1052,10 @@ angular.module( 'bidio.dashboard', [
 })
 
 .controller('ViewDialogCtrl', function DialogCtrl($scope, $mdDialog, bid) {
-
     $scope.bid = bid;
-
     $scope.dismiss = function(){
-
         $mdDialog.hide();
     }
-
 })
 
 .controller('CampaignDialogCtrl', function DialogCtrl($scope, $mdDialog, Upload, CampaignModel) {
