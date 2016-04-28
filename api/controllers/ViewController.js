@@ -1,31 +1,30 @@
 /**
  * ViewController
  *
- * @description :: Server-side logic for managing Products
+ * @description :: Server-side logic for managing views
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
 
 module.exports = {
-	getAll: function(req, res) {
+
+	getByVideo: function(req, res) {
 		View.find()
-		.where({user: req.param('user')})
-		.populateAll()
+		.where({video:req.param('id')})
 		.then(function(model) {
 			View.watch(req);
 			View.subscribe(req, model);
 			res.json(model);
 		})
-		.fail(function(err) {
-			res.send(404,err);
+		.catch(function(err) {
+			res.send(404);
 		});
-
 	},
 
 	create: function (req, res) {
 		var model = {
 			user: req.param('user'),
 			video: req.param('video'),
-			date: req.param('date'),
+			bid: req.param('bid'),
 		};
 
 		View.create(model)

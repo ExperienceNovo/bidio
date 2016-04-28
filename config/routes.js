@@ -38,6 +38,7 @@ module.exports.routes = {
   'get /admin': 'HomeController.index',
   'get /admin/:path': 'HomeController.index',
   'get /account': 'HomeController.index',
+  'get /browse': 'HomeController.index',
   'get /campaigns': 'HomeController.index',
   'get /campaign/:path': 'HomeController.index',
   'get /campaign/:path/:path': 'HomeController.index',
@@ -126,6 +127,12 @@ module.exports.routes = {
   'post /api/video/:id': 'VideoController.update',
   'delete /api/video/:id': 'VideoController.destroy',
   'get /videos/:path': 'VideoController.download',
+
+   /**
+   * View routes
+   */
+  'get /api/view/video/:id': 'ViewController.getByVideo',
+  'post /api/view': 'ViewController.create',
 
 
   // If a request to a URL doesn't match any of the custom routes above, it is matched

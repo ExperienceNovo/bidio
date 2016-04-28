@@ -12,19 +12,16 @@ angular.module( 'bidio.video', [
 			
 		},
 		onExit: function($state, video, VideoModel){
-
-			if(video.campaign && video.campaign.doesRedirect){
-				return window.open(
-					video.campaign.redirectUrl,
-					"_blank"
-				)
-			}
-
+			//if(video.campaign && video.campaign.doesRedirect){
+			//	return window.open(
+			//		video.campaign.redirectUrl,
+			//		"_blank"
+			//	)
+			//}
 			$state.transition.then(function(toState){
 				video.clicked = true;
 				return VideoModel.update(video);
 			});
-
 		},
 		resolve: {
 			video: function(VideoModel, $stateParams){
@@ -34,32 +31,31 @@ angular.module( 'bidio.video', [
 	});
 })
 
-.controller( 'VideoCtrl', function VideoCtrl( $scope, lodash, config, titleService, $sailsSocket, video, $location, $uibModal ) {
+.controller( 'VideoCtrl', function VideoCtrl( $scope, lodash, config, titleService, $sailsSocket, video, $location, $uibModal, ViewModel ) {
 
 	$scope.currentUser = config.currentUser;
-
 	$scope.video = video;
-
 	if(typeof($scope.video)=="undefined"){$location.path('/')}
+	titleService.setTitle(video.title + ' - bidio');
+	$scope.viewModel = {};
+
+	if ($scope.currentUser){
+		$scope.viewModel.user = $scope.currentUser.id;
+	    $scope.viewModel.video = $scope.video.id;
+		$scope.viewModel.bid = $scope.video.id;
+	    ViewModel.create($scope.viewModel);
+	}
+
+	console.log($scope.video.bids)
 
 	var activeBid = video.bids.filter(function(bid){ return bid.isActive });
-
 	$scope.highestBid = activeBid.length ? activeBid[0] : {value: "0.01"};
 
-	titleService.setTitle(video.title + ' - bidio');
+
+
 
 	$scope.bidPerView = Math.floor(Math.random() * (100 - 1 + 1)) + 1;
 
-	$sailsSocket.subscribe('bid', function (envelope) {
-        switch(envelope.verb) {
-            case 'created':
-                $scope.video.bids.unshift(envelope.data);
-                break;
-            case 'destroyed':
-                lodash.remove($scope.video.bids, {id: envelope.id});
-                break;
-        }
-    });
 
 	$scope.bid = function(){
 		$uibModal.open({
@@ -80,6 +76,27 @@ angular.module( 'bidio.video', [
 		});
 	}
 
+	$scope.clickThrough = function(){
+		$scope.video.clicked = true;
+		//this adds a click model -- hmm... probably a better way..
+		//want to check for unique user id here:
+		VideoModel.update($scope.video).then(function(){
+			$location.path(/campaign/+video.campaign.urlTitle)
+		});
+	}
+
+	$sailsSocket.subscribe('bid', function (envelope) {
+        switch(envelope.verb) {
+            case 'created':
+                $scope.video.bids.unshift(envelope.data);
+                break;
+            case 'destroyed':
+                lodash.remove($scope.video.bids, {id: envelope.id});
+                break;
+        }
+    });
+
+
 })
 
 .controller('BidCtrl', function ($scope, highestBid, video, config, campaigns, BidModel, $uibModalInstance ) {
@@ -87,12 +104,9 @@ angular.module( 'bidio.video', [
 	//console.log(campaigns, video);
 
 	$scope.campaigns = campaigns;
-
 	$scope.video = video;
-
 	$scope.highestBid = highestBid;
-
-	var startingValue = 
+	var startingValue = {};
 
 	$scope.bid = {
 		value: String(parseFloat(highestBid.value) + 0.05),

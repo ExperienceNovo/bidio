@@ -160,6 +160,9 @@ module.exports = {
 
 		req.file('video')
 		.on('progress', function (event){
+			//why is this doubled
+			//server processing --> to s3. 
+			//need to programatically delete s3 chunks if fail / and on delete
 			var percentageUploaded = event.written/byteCount
 			console.log(percentageUploaded)
 			//File.publishUpdate(newFile.id, event)

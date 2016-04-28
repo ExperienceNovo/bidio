@@ -22,6 +22,20 @@ angular.module( 'bidio.dashboard', [
         controller: 'DashboardAnalyticsCtrl',
         templateUrl: 'dashboard/templates/analytics.tpl.html'
     })
+    .state( 'dashboard.video', {
+        url: '/video/:id',
+        controller: 'DashboardVideoCtrl',
+        templateUrl: 'dashboard/templates/video.tpl.html',
+        resolve: {
+            VideoModel: 'VideoModel',
+            video: function(VideoModel, $stateParams){
+                return VideoModel.getOne($stateParams.id);
+            },
+            views: function(ViewModel, video){
+                return ViewModel.getByVideo(video.id);
+            }
+        }
+    })
     .state( 'dashboard.videos', {
         url: '/videos',
         controller: 'DashboardVideosCtrl',
@@ -40,7 +54,6 @@ angular.module( 'bidio.dashboard', [
         resolve: {
             UserModel: 'UserModel',
             user: function(UserModel){
-
                 return UserModel.getMine();
             }
         }
@@ -52,7 +65,6 @@ angular.module( 'bidio.dashboard', [
         resolve: {
             UserModel: 'UserModel',
             user: function(UserModel){
-
                 return UserModel.getMine();
             }
         }
@@ -76,7 +88,6 @@ angular.module( 'bidio.dashboard', [
             CampaignModel: "CampaignModel",
             config: "config",
             campaign: function(config, $stateParams, CampaignModel){
-
                 return CampaignModel.getOne($stateParams.id);
             }
         }
@@ -113,6 +124,57 @@ angular.module( 'bidio.dashboard', [
     $scope.onClick = function (points, evt) {
         console.log(points, evt);
     };
+})
+
+.controller( 'DashboardVideoCtrl', function DashboardVideosCtrl( $scope, titleService, video, views, VideoModel, $sailsSocket ) {
+    titleService.setTitle('video');
+    $scope.video = video;
+    $scope.views = views;
+
+    //could populate.. --> hm. 
+    //$scope.views = video.views
+
+    console.log(views);
+    $scope.updateViews = function(){
+
+        $scope.labels = [];
+        $scope.series = [];
+        $scope.data = [[]];
+
+        if($scope.views){
+            $scope.series = ['Views']
+            for (x in $scope.views){
+                $scope.labels.push($scope.views[x].createdAt);
+                $scope.data[0].push(x);
+            }
+        }
+        else{
+            $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
+            $scope.series = ['Views', 'Click Throughs'];
+            $scope.data = [
+                [65, 59, 80, 81, 56, 55, 40],
+                [28, 48, 40, 19, 86, 27, 90]
+            ];
+        }
+    };
+    $scope.updateViews()
+    
+    $scope.onClick = function (points, evt) {
+        console.log(points, evt);
+    };
+
+    $sailsSocket.subscribe('view', function (envelope) {
+        switch(envelope.verb) {
+            case 'created':
+                if (envelope.data.video == $scope.video.id){
+                    $scope.views.unshift(envelope.data);
+                    $scope.updateViews();
+                    break;
+                }
+                else{break;}
+        }
+    });
+
 })
 
 .controller( 'DashboardVideosCtrl', function DashboardVideosCtrl( $scope, titleService, videos, VideoModel, $mdDialog ) {

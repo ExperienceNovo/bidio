@@ -1,0 +1,14 @@
+<md-content layout-padding>
+
+  <div class="dashboard-title">
+   <h2><a ui-sref="video({id: video.id})">{{video.title}}</a></h2>
+  </div>
+  <p>{{video.description}}</p>
+  <video style="display:inline-block;" class="video-js vjs-default-skin" src={{video.amazonUrl}} controls preload="none" width="640" height="264" poster="poster.jpg" vjs-video>
+  </video>
+  <canvas id="line" class="chart chart-line" chart-data="data"
+        chart-labels="labels" chart-legend="true" chart-series="series"
+        chart-click="onClick">
+  </canvas> 
+
+</md-content>

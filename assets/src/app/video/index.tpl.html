@@ -4,7 +4,7 @@
 </div>
 <div class="campaign-desc clearfix" ng-show="video.campaign">
 	<p>{{video.campaign.title}}</p>
-	<a ui-sref="campaign.main({path: video.campaign.urlTitle})">{{video.campaign.prompt}}&nbsp;<i class="fa fa-caret-right"></i></a>
+	<a ng-click="clickThrough()">{{video.campaign.prompt}}&nbsp;<i class="fa fa-caret-right"></i></a>
 </div>
 
 <div class="video-container">
@@ -39,6 +39,8 @@
 			<a href="#" class="btn anim-button fl-l" style="float:right">share</a>
 		</div>
 	</div>	
+
+	<p>show public bids?</p>
 
 	
 </div>

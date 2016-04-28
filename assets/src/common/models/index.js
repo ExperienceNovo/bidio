@@ -5,5 +5,6 @@ angular.module('models', [
 	'models.post',
 	'models.user',
 	'models.profile',
-	'models.video'
+	'models.video',
+	'models.view'
 ]);
