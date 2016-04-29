@@ -12,6 +12,10 @@ module.exports = {
   		type: "string",
   		defaultsTo: "/images/silhouette_orange.jpg"
   	},
+    balance: {
+      type: "float",
+      defaultsTo: 0
+    },
     firstName: {
       type: "string",
     },

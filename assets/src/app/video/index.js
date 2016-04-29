@@ -31,7 +31,7 @@ angular.module( 'bidio.video', [
 	});
 })
 
-.controller( 'VideoCtrl', function VideoCtrl( $scope, lodash, config, titleService, $sailsSocket, video, $location, $uibModal, ViewModel ) {
+.controller( 'VideoCtrl', function VideoCtrl( $scope, lodash, config, titleService, $sailsSocket, video, $location, $uibModal, ViewModel, VideoModel ) {
 
 	$scope.currentUser = config.currentUser;
 	$scope.video = video;
@@ -50,8 +50,6 @@ angular.module( 'bidio.video', [
 
 	var activeBid = video.bids.filter(function(bid){ return bid.isActive });
 	$scope.highestBid = activeBid.length ? activeBid[0] : {value: "0.01"};
-
-
 
 
 	$scope.bidPerView = Math.floor(Math.random() * (100 - 1 + 1)) + 1;

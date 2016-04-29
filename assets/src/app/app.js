@@ -16,7 +16,6 @@ angular.module( 'bidio', [
     'ngAnimate',
     'bidio.home',
     'bidio.about',
-    'bidio.browse',
     'bidio.account',
     'bidio.creators',
 	'bidio.campaign',
