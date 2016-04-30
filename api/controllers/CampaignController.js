@@ -227,6 +227,7 @@ module.exports = {
 		if (!id) {
 			return res.badRequest('No id provided.');
 		}
+		console.log('campaign')
 
 		// Otherwise, find and destroy the model in question
 		Campaign.findOne(id).exec(function(err, model) {

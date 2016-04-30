@@ -61,8 +61,8 @@ module.exports.routes = {
   'post /auth/local': 'AuthController.callback',
   'post /auth/local/:action': 'AuthController.callback',
   'get /auth/providers': 'UserController.getPassports',
-  '/auth/:provider': 'AuthController.provider',
-  '/auth/:provider/callback': 'AuthController.callback',
+  'get /auth/:provider': 'AuthController.provider',
+  'get /auth/:provider/callback': 'AuthController.callback',
   'delete /auth/providers/:provider': 'UserController.removePassport',
 
 
@@ -76,16 +76,6 @@ module.exports.routes = {
   'post /api/user': 'UserController.create',
   'post /api/user/:id': 'UserController.update',
   'delete /api/user/:id': 'UserController.destroy',
-
-  /**
-   * Post routes
-   */
-  'get /api/post': 'PostController.getAll',
-  'get /api/post/:id': 'PostController.getOne',
-  'get /api/post/url/:path': 'PostController.getByUrlTitle',
-  'post /api/post': 'PostController.create',
-  'delete /api/post/:id': 'PostController.destroy',
-
 
   /**
    * Bid routes

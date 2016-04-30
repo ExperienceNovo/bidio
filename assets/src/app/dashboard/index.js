@@ -340,21 +340,21 @@ angular.module( 'bidio.dashboard', [
         })
     }
 
-		$scope.passportRegistered = function(provider) {
-				for (i in $scope.passports) {
-						if ($scope.passports[i].provider === provider)
-								return true;
-				}
-				return false;
+	$scope.passportRegistered = function(provider) {
+		for (i in $scope.passports) {
+				if ($scope.passports[i].provider === provider)
+						return true;
 		}
+		return false;
+	}
 
-		$scope.removePassport = function(provider) {
-				UserModel.removePassport(provider);
-		}
+	$scope.removePassport = function(provider) {
+		UserModel.removePassport(provider);
+	}
 
-		$scope.go = function(path) {
-		  	$location.path(path);
-		};
+	$scope.go = function(path) {
+	  	$location.path(path);
+	};
 
 })
 
