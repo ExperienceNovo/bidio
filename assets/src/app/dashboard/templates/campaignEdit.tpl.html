@@ -19,7 +19,7 @@
 <md-content layout-padding>
 	<p class="text-left"><a ui-sref="dashboard.campaigns"><md-icon>chevron_left</md-icon>&nbsp;Back to campaigns</a></p>
   <div class="dashboard-title">
-    <h1>{{campaign.title}}</h1>
+    <h1><a href="/campaign/{{campaign.urlTitle}}">{{campaign.title}}</a></h1>
   </div>
 	<md-tabs md-dynamic-height md-border-bottom>
 		<md-tab ng-if="!campaign.published" label="Details">
@@ -85,7 +85,10 @@
 		<md-tab ng-if="campaign.published" label="Overview">
 		  <md-content layout-padding layout-wrap layout="row">
 		  	<div flex="100">
-		  		<img src="http://placehold.it/1000x300?text=Some%20Graph" style="width:100%" alt="">
+		  		<canvas id="line" class="chart chart-line" chart-data="data"
+				    chart-labels="labels" chart-legend="true" chart-series="series"
+				    chart-click="onClick">
+				</canvas>
 		  	</div>
 		  	<div flex="30">
 		  		<h2 style="font-weight:bold;color:#FAA93F;text-align:left;">Finance</h2>

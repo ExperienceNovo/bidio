@@ -128,36 +128,58 @@ module.exports = {
 
 		/*uncomment this if you want to save to a particular folder*/
 		//var filename = req.file('video')._files[0].stream.filename;
-
+		res.setTimeout(0)
 		var options = {
 			adapter: require("skipper-s3"),
-		  key: 'AKIAJZS6F2HWDJWWZE7A',
-		  secret: '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',
-		  bucket: 'bidio8',
-		  /*uncomment this if you want to save to a particular folder*/
-		  //saveAs: "Event-Pictures/" + utilsService.guid() + filename.split(".").pop()
+			key: 'AKIAJZS6F2HWDJWWZE7A',
+		 	secret: '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',
+		 	bucket: 'bidio8',
+		 	/*uncomment this if you want to save to a particular folder*/
+		 	//saveAs: "Event-Pictures/" + utilsService.guid() + filename.split(".").pop()
 		}
+		var byteCount = req.file('video')._files[0].stream.byteCount
 
 		if (process.env.NODE_ENV == 'development'){
 			var filename = req.file('video')._files[0].stream.filename;
 			options.saveAs = "development/" + utilsService.guid() + "." + filename.split(".").pop();
 		}
 
+		/*
+		File.create({
+	    	state: 'uploading'
+	    }).exec({
+	    	error: res.serverError,
+	    	success: function (newFile) {
+	    		req.file('avatar')
+	        	.on('progress', function (event) {
+	        		File.publishUpdate(newFile.id, percentageUploaded);
+	        	})
+	        }
+	    })
+		*/
 
-		return req.file('video').upload( options, function response(err,uploadedFiles){
-
-			if (err) {
-	      return res.negotiate(err);
-	    }
-
-	    if (uploadedFiles.length === 0){
-	      return res.badRequest('No file was uploaded');
-	    }
-
-	    var amazonUrl = uploadedFiles[0].extra.Location;
-
-	    return res.json({amazonUrl: amazonUrl});
+		req.file('video')
+		.on('progress', function (event){
+			//why is this doubled
+			//server processing --> to s3. 
+			//need to programatically delete s3 chunks if fail / and on delete
+			var percentageUploaded = event.written/byteCount
+			console.log(percentageUploaded)
+			//File.publishUpdate(newFile.id, event)
 		})
+		.upload(options, function response(err,uploadedFiles){
+			console.log('we are in the code')
+			if (err) {
+		    	return res.negotiate(err);
+		    	console.log(err)
+		    }
+		    if (uploadedFiles.length === 0){
+		    	return res.badRequest('No file was uploaded');
+		    }
+		    console.log(uploadedFiles)
+		    var amazonUrl = uploadedFiles[0].extra.Location;
+		    return res.json({amazonUrl: amazonUrl});
+		});
 
 	},
 
@@ -209,26 +231,18 @@ module.exports = {
 
 		if (req.param('clicked')){
 			model.click = {video: id};
-
 			if (req.user){
 				model.click.user = req.user.id;
 			}
-
 		}
 
 		Video.update({id: id}, model)
 			.then(function(result){
-
 				return res.json(result);
-
 			})
 			.catch(function(err){
-
 				return res.negotiate(err);
-
 			})
-
-		
 	},
 
 	destroy: function (req, res) {

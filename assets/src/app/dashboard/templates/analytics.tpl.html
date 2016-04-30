@@ -1,6 +1,9 @@
 <div layout="row">
 	<md-card flex="30">
-		<img class="md-card-image" src="http://placehold.it/500x500?text=Chart">
+		<canvas id="line" class="chart chart-line" chart-data="data"
+		    chart-labels="labels" chart-legend="true" chart-series="series"
+		    chart-click="onClick">
+		</canvas> 
 	</md-card>
 	<div flex="70" layout="column">
 		<h2 class="text-center" style="margin:10px">Summary</h2>

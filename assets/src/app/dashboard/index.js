@@ -22,6 +22,20 @@ angular.module( 'bidio.dashboard', [
         controller: 'DashboardAnalyticsCtrl',
         templateUrl: 'dashboard/templates/analytics.tpl.html'
     })
+    .state( 'dashboard.video', {
+        url: '/video/:id',
+        controller: 'DashboardVideoCtrl',
+        templateUrl: 'dashboard/templates/video.tpl.html',
+        resolve: {
+            VideoModel: 'VideoModel',
+            video: function(VideoModel, $stateParams){
+                return VideoModel.getOne($stateParams.id);
+            },
+            views: function(ViewModel, video){
+                return ViewModel.getByVideo(video.id);
+            }
+        }
+    })
     .state( 'dashboard.videos', {
         url: '/videos',
         controller: 'DashboardVideosCtrl',
@@ -40,7 +54,6 @@ angular.module( 'bidio.dashboard', [
         resolve: {
             UserModel: 'UserModel',
             user: function(UserModel){
-
                 return UserModel.getMine();
             }
         }
@@ -52,7 +65,6 @@ angular.module( 'bidio.dashboard', [
         resolve: {
             UserModel: 'UserModel',
             user: function(UserModel){
-
                 return UserModel.getMine();
             }
         }
@@ -76,7 +88,6 @@ angular.module( 'bidio.dashboard', [
             CampaignModel: "CampaignModel",
             config: "config",
             campaign: function(config, $stateParams, CampaignModel){
-
                 return CampaignModel.getOne($stateParams.id);
             }
         }
@@ -113,6 +124,57 @@ angular.module( 'bidio.dashboard', [
     $scope.onClick = function (points, evt) {
         console.log(points, evt);
     };
+})
+
+.controller( 'DashboardVideoCtrl', function DashboardVideosCtrl( $scope, titleService, video, views, VideoModel, $sailsSocket ) {
+    titleService.setTitle('video');
+    $scope.video = video;
+    $scope.views = views;
+
+    //could populate.. --> hm. 
+    //$scope.views = video.views
+
+    console.log(views);
+    $scope.updateViews = function(){
+
+        $scope.labels = [];
+        $scope.series = [];
+        $scope.data = [[]];
+
+        if($scope.views){
+            $scope.series = ['Views']
+            for (x in $scope.views){
+                $scope.labels.push($scope.views[x].createdAt);
+                $scope.data[0].push(x);
+            }
+        }
+        else{
+            $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
+            $scope.series = ['Views', 'Click Throughs'];
+            $scope.data = [
+                [65, 59, 80, 81, 56, 55, 40],
+                [28, 48, 40, 19, 86, 27, 90]
+            ];
+        }
+    };
+    $scope.updateViews()
+    
+    $scope.onClick = function (points, evt) {
+        console.log(points, evt);
+    };
+
+    $sailsSocket.subscribe('view', function (envelope) {
+        switch(envelope.verb) {
+            case 'created':
+                if (envelope.data.video == $scope.video.id){
+                    $scope.views.unshift(envelope.data);
+                    $scope.updateViews();
+                    break;
+                }
+                else{break;}
+        }
+    });
+
 })
 
 .controller( 'DashboardVideosCtrl', function DashboardVideosCtrl( $scope, titleService, videos, VideoModel, $mdDialog ) {
@@ -341,7 +403,6 @@ angular.module( 'bidio.dashboard', [
 .controller('DashboardCampaignsCtrl', function (config, $state, $scope, campaigns, CampaignModel, $mdDialog) {
 
     $scope.campaigns = campaigns;
-
     $scope.addCampaign = function(ev){
         $mdDialog.show({
           controller: 'CampaignDialogCtrl',
@@ -377,6 +438,16 @@ angular.module( 'bidio.dashboard', [
 })
 
 .controller('DashboardCampaignEditCtrl', function ($state, $mdMenu, $scope, campaign, CampaignModel, $mdDialog, VideoModel, lodash, $q, BidModel) {
+
+    $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
+    $scope.series = ['Series A', 'Series B'];
+    $scope.data = [
+        [65, 59, 80, 81, 56, 55, 40],
+        [28, 48, 40, 19, 86, 27, 90]
+    ];
+    $scope.onClick = function (points, evt) {
+        console.log(points, evt);
+    };
 
     var originals = lodash.cloneDeep(campaign.bids);
 
@@ -415,7 +486,6 @@ angular.module( 'bidio.dashboard', [
 
         value[sort(bid)].push(bid);
                 return value;
-
 
     }, {"new": [],
         "old": [],
@@ -500,13 +570,11 @@ angular.module( 'bidio.dashboard', [
 
         CampaignModel.getOne($scope.campaign.id)
             .then(function(campaign){
-
                 $scope.refreshing = false;
                 $scope.campaign.bids = campaign.bids;
 
                 //stop watching old ones
                 bidWatches.forEach(function(bidWatch){bidWatch()});
-
                 bidWatches = $scope.campaign.bids.map(function(bid){
 
                     return $scope.$watch(function($scope){
@@ -685,15 +753,12 @@ angular.module( 'bidio.dashboard', [
 
         campaignSave()
             .then(function(campaign){
-
                 $scope.saving = false;
                 $scope.editLandingToggle();
 
             })
             .catch(function(err){
-
                 $scope.saving = false;
-
             });
     }
 
@@ -1068,14 +1133,10 @@ angular.module( 'bidio.dashboard', [
 })
 
 .controller('ViewDialogCtrl', function DialogCtrl($scope, $mdDialog, bid) {
-
     $scope.bid = bid;
-
     $scope.dismiss = function(){
-
         $mdDialog.hide();
     }
-
 })
 
 .controller('CampaignDialogCtrl', function DialogCtrl($scope, $mdDialog, Upload, CampaignModel) {

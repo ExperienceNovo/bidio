@@ -14,7 +14,6 @@ angular.module( 'bidio.campaign', [
 			}
 		},
 		resolve: {
-
 			CampaignModel: "CampaignModel",
 			$stateParams: "$stateParams",
 			campaign: function(CampaignModel, $stateParams){
@@ -122,7 +121,6 @@ angular.module( 'bidio.campaign', [
                 videos.forEach(function(video){
 
                   var activeBids = video.bids.filter(function(bid){return bid.isActive}).map(function(bid){return bid.campaign});
-
                   var newBids = video.bids.filter(function(bid){return bid.isNewEntry}).map(function(bid){return bid.campaign});
 
                   if (activeBids.indexOf($scope.campaign.id) != -1){
@@ -136,7 +134,6 @@ angular.module( 'bidio.campaign', [
                 })  
 
                 $scope.videos = videos;
-
                 $scope.videoSelectToggle();
             })
             .catch(function(err){
@@ -207,7 +204,6 @@ angular.module( 'bidio.campaign', [
         return BidModel.create(toUpdate)
       })
       .then(function(response){
-
         $scope.loading = false;
         $scope.finished = true;
       })
@@ -237,7 +233,6 @@ angular.module( 'bidio.campaign', [
 
       return BidModel.create(toUpdate)
       .then(function(){
-
         $scope.prevLoading = false;
         $scope.finished = true;
 
@@ -246,16 +241,13 @@ angular.module( 'bidio.campaign', [
         
         //TODO: more details plz
         console.log(err);
-
         $scope.error = "An error occurred";
         $scope.loading = false;
       })
     }
 
 		$scope.cancel = function(){
-
 			$uibModalInstance.close();
-		
     };
 
 });
