@@ -2,6 +2,8 @@ var path     = require('path')
   , url      = require('url')
   , passport = require('passport');
 
+var util = require('util')
+
 /**
  * Passport Service
  *
@@ -72,6 +74,7 @@ passport.connect = function (req, query, profile, next) {
   // Use profile.provider or fallback to the query.provider if it is undefined
   // as is the case for OpenID, for example
   provider = profile.provider || query.provider;
+  console.log('provider' + provider)
 
   // If the provider cannot be identified we cannot match it to a passport so
   // throw an error and let whoever's next in line take care of it.
@@ -79,7 +82,7 @@ passport.connect = function (req, query, profile, next) {
     return next(new Error('No authentication provider was identified.'));
   }
 
-  console.log(profile);  // <= check the content given by fb/google/etc about the user
+  // console.log(profile);  // <= check the content given by fb/google/etc about the user
 
   // If the profile object contains a list of emails, grab the first one and
   // add it to the user.
@@ -109,12 +112,14 @@ passport.connect = function (req, query, profile, next) {
       return next(err);
     }
 
+    // console.log('no passport found ' || util.inspect(passport, false, null));
     if (!req.user) {
       // Scenario: A new user is attempting to sign up using a third-party
       //           authentication provider.
       // Action:   Create a new user and assign them a passport.
       if (!passport) {
         User.create(user, function (err, user) {
+          console.log('in User.create callbk and user is ' + user)
           if (err) {
             if (err.code === 'E_VALIDATION') {
               if (err.invalidAttributes.email) {
@@ -132,10 +137,12 @@ passport.connect = function (req, query, profile, next) {
 
           Passport.create(query, function (err, passport) {
             // If a passport wasn't created, bail out
+            console.log(util.inspect(passport, false, null));
+            console.log(util.inspect(user, false, null));
             if (err) {
               return next(err);
             }
-
+            //user.pasports.push(passport);
             next(err, user);
           });
         });

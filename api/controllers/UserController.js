@@ -32,7 +32,8 @@ module.exports = {
 			})
 	},
 
-	deletePassport: function(req,res){
+	removePassport: function(req,res){
+		console.log('why can I not get to here?')
 		id = req.user.id;
 		provider = req.param("provider");
 		console.log(provider);
@@ -53,6 +54,7 @@ module.exports = {
 
 		User.findOne(me)
 			.populate('profile')
+			.populate('passports')
 			.then(function(user){
 
 				return res.json(user);
@@ -103,10 +105,12 @@ module.exports = {
 	},
 
 	create: function (req, res) {
+		// console.log(req)
 		var model = {
 			username: req.param('username'),
 			email: req.param('email'),
-			first_name: req.param('first_name')
+			first_name: req.param('first_name'),
+			passports: req.param('passports')
 		};
 
 		User.create(model)

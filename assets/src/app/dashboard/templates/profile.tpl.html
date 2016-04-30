@@ -7,6 +7,46 @@
   		<div flex="55">
   			<p class="profile-title">About</p>
   			<p class="profile-description">{{profile.description}}</p>
+        <md-button class='primary md-raised' ng-click="go('/auth/providers')">get providers</md-button>
+        <br>
+        <i class="fa fa-facebook"></i>
+        <md-button class="primary md-raised"
+          ng-click="go('/auth/facebook')"
+          ng-disabled="passportRegistered('facebook')">
+          activate
+        </md-button>
+        <md-button class='primary md-raised'
+          ng-click="removePassport('facebook')"
+          ng-show="passportRegistered('facebook')">
+          remove
+        </md-button>
+        <br>
+        <i class="fa fa-google-plus"></i>
+        <md-button class='primary md-raised'
+          ng-click="go('/auth/google')"
+          ng-disabled="passportRegistered('google')">
+          activate
+        </md-button>
+        <md-button class='primary md-raised'
+          ng-click="removePassport('google')"
+          ng-show="passportRegistered('google')">
+          remove
+        </md-button>
+        <br>
+        <i class="fa fa-twitter"></i>
+        <md-button class='primary md-raised'
+          ng-click="go('/auth/twitter')"
+          ng-disabled="passportRegistered('twitter')">
+          activate
+        </md-button>
+        <md-button class='primary md-raised'
+          ng-click="removePassport('twitter')"
+          ng-show="passportRegistered('twitter')">
+          remove
+        </md-button>
+
+        <p>profile : {{profile.user}}</p>
+        <p>user passports: {{profile.user.passports[0].provider}}</p>
   		</div>
   	</div>
   	<div flex="60" layout="row" layout-padding>

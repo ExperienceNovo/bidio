@@ -62,6 +62,7 @@ module.exports.routes = {
   'get /auth/providers': 'UserController.getPassports',
   '/auth/:provider': 'AuthController.provider',
   '/auth/:provider/callback': 'AuthController.callback',
+  'delete /auth/providers/:provider': 'UserController.removePassport',
 
 
   /**

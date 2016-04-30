@@ -201,11 +201,14 @@ angular.module( 'bidio.dashboard', [
     }
 })
 
-.controller('DashboardProfileCtrl', function ($state, $scope, user, ProfileModel, $mdDialog) {
+.controller('DashboardProfileCtrl', function ($state, $scope, user, ProfileModel, UserModel, $mdDialog, $location) {
 
     $scope.username = user.username;
     $scope.submitLoading = false;
     $scope.profile = user.profile[0];
+		$scope.passports = user.passports;
+		console.log($scope.passports[0].provider)
+		// console.log('profile : ' + profile)
 
     $scope.submit = function(profile){
 
@@ -275,6 +278,22 @@ angular.module( 'bidio.dashboard', [
         })
     }
 
+		$scope.passportRegistered = function(provider) {
+				for (i in $scope.passports) {
+						if ($scope.passports[i].provider === provider)
+								return true;
+				}
+				return false;
+		}
+
+		$scope.removePassport = function(provider) {
+				UserModel.removePassport(provider);
+		}
+
+		$scope.go = function(path) {
+		  	$location.path(path);
+		};
+
 })
 
 .controller('ProfilePicCtrl', function ($scope, Upload, $mdDialog) {
@@ -282,7 +301,7 @@ angular.module( 'bidio.dashboard', [
     $scope.photoLoading = false;
     $scope.pp = 0;
     $scope.profilePicUrl = null;
-    
+
     //TODO: refactor backend so that videos and images are uploaded through separate endpoints (separation of concerns)
     $scope.upload = function(file){
 
@@ -731,7 +750,7 @@ angular.module( 'bidio.dashboard', [
     $scope.selectedBids = sorted[$scope.selection.type];
 
     $scope.$watch(
-        "selection.type", 
+        "selection.type",
         function(newVal, oldVal){
             $scope.clean = true;
             $scope.selectedBids = sorted[newVal]

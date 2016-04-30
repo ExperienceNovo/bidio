@@ -43,14 +43,14 @@ angular.module('models.user', ['lodash', 'services', 'sails.io'])
         });
     };
 
-	this.update = function(updatedModel){
-			
-		var url = utils.prepareUrl('user/' + updatedModel.id);
-		return $sailsSocket.post(url, updatedModel)
-        .then(function(response){
-            return response.data;
-        });;
-	};
+  	this.update = function(updatedModel){
+
+  		var url = utils.prepareUrl('user/' + updatedModel.id);
+  		return $sailsSocket.post(url, updatedModel)
+          .then(function(response){
+              return response.data;
+          });;
+  	};
 
     this.delete = function(id){
         var url = utils.prepareUrl('user/' + id);
@@ -58,6 +58,13 @@ angular.module('models.user', ['lodash', 'services', 'sails.io'])
         .then(function(response){
             return response.data;
         });
+    };
+
+    this.removePassport = function(model) {
+        var url = utils.prepareUrl('auth/providers/' + model);
+        console.log(url);
+        return $sailsSocket.delete(url)
+        .then(success, error);
     };
 
     var success = function(response) {
