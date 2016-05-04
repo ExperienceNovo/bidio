@@ -27,6 +27,15 @@
 								<li ng-if="profile.companyName && profile.companyUrl">
 								  <p><b>Company</b>&nbsp;<a target="_blank" href="{{profile.companyUrl}}">{{profile.companyName}}</a></p>
 								</li>
+								<li ng-if="member.socialAccounts.facebook.profileUrl">
+									<a href="{{member.socialAccounts.facebook.profileUrl}}"><p>member's facebook</p></a>
+								</li>
+								<li ng-if="member.socialAccounts.google.profileUrl">
+									<a href="{{member.socialAccounts.google.profileUrl}}"><p>member's google+</p></a>
+								</li>
+								<li ng-if="member.socialAccounts.twitter.profileUrl">
+									<a href="{{member.socialAccounts.twitter.profileUrl}}"><p>member's twitter</p></a>
+								</li>
 			  			</ul>
 			  		</div>
 		  		</div>

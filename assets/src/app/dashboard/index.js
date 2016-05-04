@@ -100,8 +100,12 @@ angular.module( 'bidio.dashboard', [
         $location.path('/login')
     }
 
+		if (window.location.hash && window.location.hash == '#_=_') {
+				window.location.hash = '';
+		}
+
     $scope.changePath = function (path) {
-        $location.path('/dashboard' + path);
+				$location.path('/dashboard' + path);
     };
 
 
@@ -131,7 +135,7 @@ angular.module( 'bidio.dashboard', [
     $scope.video = video;
     $scope.views = views;
 
-    //could populate.. --> hm. 
+    //could populate.. --> hm.
     //$scope.views = video.views
 
     console.log(views);
@@ -158,7 +162,7 @@ angular.module( 'bidio.dashboard', [
         }
     };
     $scope.updateViews()
-    
+
     $scope.onClick = function (points, evt) {
         console.log(points, evt);
     };
@@ -269,8 +273,6 @@ angular.module( 'bidio.dashboard', [
     $scope.submitLoading = false;
     $scope.profile = user.profile[0];
 		$scope.passports = user.passports;
-		console.log($scope.passports[0].provider)
-		// console.log('profile : ' + profile)
 
     $scope.submit = function(profile){
 
@@ -349,10 +351,21 @@ angular.module( 'bidio.dashboard', [
 	}
 
 	$scope.removePassport = function(provider) {
-		UserModel.removePassport(provider);
+		UserModel.removePassport(provider)
+			.then(function(result) {
+				console.log(result)
+				$scope.passports = $scope.passports.filter(function(val, ind, arr) {
+					return !(arr[ind].identifier === result[0].identifier);
+				})
+
+				user.socialAccounts[(result[0].provider).toString()] = {}
+				UserModel.update(user)
+
+			})
 	}
 
 	$scope.go = function(path) {
+			console.log(path)
 	  	$location.path(path);
 	};
 

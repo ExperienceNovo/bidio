@@ -22,14 +22,17 @@ module.exports = {
             collection: 'Profile',
             via: 'user'
         },
-        passports : { collection: 'Passport', via: 'user' }
+        passports: {
+          collection: 'Passport',
+          via: 'user'
+        }
     },
 
     afterCreate: function(model,next){
-
-        console.log(model.username)
-
-        Profile.create({user: model.id})
+        Profile.create({
+          user: model.id,
+          socialAccounts: model.socialAccounts
+        })
             .then(function(profile){
 
                 if (!profile){
@@ -39,12 +42,13 @@ module.exports = {
                 model.profile = profile;
 
                 /*in case of seeding before templates are created*/
-                if (!emailService.templates.hasOwnProperty('welcome')){
 
-                    return Promise.resolve();
-                }
-
-                return emailService.sendTemplate('welcome', model.email, 'Welcome To Bidio!', {username: model.username});
+                // if (!emailService.templates.hasOwnProperty('welcome')){
+                //
+                //     return Promise.resolve();
+                // }
+                //
+                // return emailService.sendTemplate('welcome', model.email, 'Welcome To Bidio!', {username: model.username});
 
             })
             .then(function(){

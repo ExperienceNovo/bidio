@@ -43,7 +43,26 @@ module.exports = {
   		model: "user",
   		required: true,
   		unique: true
-  	}
+  	},
+    socialAccounts: {
+      type: 'json',
+      defaultsTo: {}
+    }
+    //   // facebook: {
+    //   //   profileUrl: {
+    //   //     type: "string"
+    //   //   }
+    //   // },
+    //   // twitter: {
+    //   //   profileUrl: {
+    //   //     type: "string"
+    //   //   }
+    //   // },
+    //   // google: {
+    //   //   profileUrl: {
+    //   //     type: "string"
+    //   //   }
+    //   // }
+    // }
   }
 };
-

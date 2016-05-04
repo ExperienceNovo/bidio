@@ -40,7 +40,9 @@ module.exports.passport = {
     options: {
       clientID: '629279003894718',
       clientSecret: '9d1cbd6a42f185aeb94ee1aa40a324e9',
-      scope: ['email'] /* email is necessary for login behavior */
+      //callbackURL: 'http://localhost:1337/dashboard/profile',
+      scope: ['email'], /* email is necessary for login behavior */
+      profileFields: ['displayName', 'email', 'link', 'picture']
     }
   },
 
