@@ -68,9 +68,6 @@ passport.connect = function (req, query, profile, next) {
   var user = {}
     , provider;
 
-
-  console.log(req.user)
-
   // Get the authentication provider from the query.
   query.provider = req.param('provider');
 

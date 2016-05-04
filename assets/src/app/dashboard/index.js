@@ -365,7 +365,6 @@ angular.module( 'bidio.dashboard', [
 	}
 
 	$scope.go = function(path) {
-			console.log(path)
 	  	$location.path(path);
 	};
 

@@ -27,7 +27,7 @@ angular.module( 'bidio.member', [
 .controller( 'MemberCtrl', function MemberCtrl( $scope, member, campaigns, videos ) {
 		$scope.member = member;
 		if(typeof($scope.member)=="undefined"){$location.path('/')}
-		console.log($scope.member);
+		
 		console.log(campaigns);
 
 		$scope.profile = member.profile[0];
