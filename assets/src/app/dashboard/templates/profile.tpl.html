@@ -1,5 +1,5 @@
 <div id="main-container">
-  <div class="dashboard-title" style="min-height:500px" layout="column" layout-padding>
+  <div style="min-height:500px" layout="column" layout-padding>
     <div flex="100" layout="column">
       <md-card flex="100" layout="column" style="box-shadow:none!important;">
         <md-card-content flex="100" layout="row">
@@ -19,14 +19,13 @@
         </md-card-content>
       </md-card>
     </div>
-  	<div flex="40" layout="row" layout-padding>
+  	<div flex="100" layout="row" layout-padding>
+      <div flex="25"></div>   
   		<div flex="25">
   			<img style="width:100%" ng-src="{{profile.picture}}">
   		</div>
   		<div flex="25">
   			<p class="profile-description">{{profile.description}}</p>
-        <md-button class='primary md-raised' ng-click="go('/auth/providers')">get providers</md-button>
-        <br>
         <i class="fa fa-facebook"></i>
         <md-button class="primary md-raised"
           ng-click="go('/auth/facebook')"
@@ -62,9 +61,6 @@
           ng-show="passportRegistered('twitter')">
           remove
         </md-button>
-
-        <p>profile : {{profile.user}}</p>
-        <p>user passports: {{profile.user.passports[0].provider}}</p>
   		</div>
   	</div>
   	<div flex="60" layout="row" layout-padding>

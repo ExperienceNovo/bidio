@@ -1,25 +1,3 @@
-@media only screen and (max-width:992) {
-    .sidenav-display-none {
-        display:none!important;
-    }
-}
-
-@media only screen and (max-width:768){
-    #sidenav {
-        display:none;
-    }
-    ul .mobile-dashboard-nav {
-        padding-left:5em;
-    }
-}
-
-
-@media only screen and (min-width:769) {
-     .mobile-dashboard-nav {
-        display:none;
-    }
-}
-
 .wrap {
   height: auto;
   margin: 0 auto;
@@ -43,6 +21,12 @@ div[class^="metro"] {
   transition: all .4s ease;
   user-drag: element;
   border: solid 2px transparent;
+}
+
+@media only screen and (max-width:920px) {
+  div[class^="metro"] {
+    float: none!important;
+  }
 }
 
 div[class^="metro"]:hover {
@@ -175,80 +159,145 @@ div[class^="icon"] {
   background-size: 45px 45px;
 }
 
-.icon-calendar {
-  background: url('http://icons.iconarchive.com/icons/dakirby309/windows-8-metro/256/Apps-Calendar-Metro-icon.png');
+.prof-container {
+  max-width: 350px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  margin: auto;
 }
 
-.icon-chat {
-  background: url('http://icons.iconarchive.com/icons/dakirby309/windows-8-metro/256/Other-Mail-alt-Metro-icon.png');
+.card-profile {
+  float: left;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 100%;
+  height: 530px;
+  background: #fff;
+  border-radius: 10px;
+  z-index: 1;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
-
-.icon-store {
-  background: url('http://icons.iconarchive.com/icons/dakirby309/windows-8-metro/256/Web-Microsoft-Store-Metro-icon.png');
+.card-profile:after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  bottom: 0;
+  box-shadow: 0 36px 64px -34px black, 0 16px 14px -14px rgba(0, 0, 0, 0.6), 0 22px 18px -18px rgba(0, 0, 0, 0.4), 0 22px 38px -18px black;
+  -webkit-transform: scaleX(0.7) scaleY(1.3) translateY(-15%);
+          transform: scaleX(0.7) scaleY(1.3) translateY(-15%);
+  z-index: -1;
+  opacity: 0.25;
 }
-
-.icon-ie {
-  background: url('http://icons.iconarchive.com/icons/dakirby309/windows-8-metro/256/Web-Browsers-Internet-Explorer-10-Metro-icon.png');
+.card-profile_visual {
+  height: 68%;
+  overflow: hidden;
+  position: relative;
+  background: -webkit-linear-gradient(top, #3b3c3f, #263d85, #172551);
+  background: linear-gradient(to bottom, #3b3c3f, #263d85, #172551);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
-
-.icon-people {
-  background: url('http://icons.iconarchive.com/icons/dakirby309/windows-8-metro/128/Folders-OS-User-No-Frame-Metro-icon.png');
+.card-profile_visual:before, .card-profile_visual:after {
+  display: block;
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 0;
+  background: url(https://s-media-cache-ak0.pinimg.com/236x/c5/86/e6/c586e6afd87ee357bbab52df241480ac.jpg) no-repeat center center/cover;
+  opacity: 0.5;
+  mix-blend-mode: lighten;
 }
-
-.icon-video {
-  background: url('http://icons.iconarchive.com/icons/dakirby309/windows-8-metro/128/Folders-OS-My-Videos-Metro-icon.png');
+.card-profile_visual:before {
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
 }
-
-.icon-chrome {
-  background: url('http://icons.iconarchive.com/icons/dakirby309/windows-8-metro/256/Web-Browsers-Google-Chrome-Metro-icon.png');
+.card-profile_visual:after {
+  z-index: 2;
+  mix-blend-mode: lighten;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwBAMAAAClLOS0AAAAElBMVEUAAABUUlRERkRMSkxMTkxEQkT490VOAAAAAXRSTlMAQObYZgAAAoxJREFUOI0dlImR5DAIRRXDbgaAEwCcAOAEZE/+qczTdFf1JQH/otd4SJWWf5+m7GjR28Z0TZW38pLjj1aWJl9eWaGfaCq/y4y012hPhqySnnbXe7Q6ulK6nZeV5bpjhyo9xLj7apvFSk3zSXEmtEZmNngYbhWhkmKne7XalnDrYcZMNwMlwuQuj/ezS2dJmpjEFwLe7T7zWE0zo22icr4dNZnfOLUp72rNcA8vcx3Y8r3MZpYOPSAC6mfSGRQBD1sZyFPd9b0mohN70CQTSa6+Ik15RifUaCjWq6zp2/9T697e5VsRKGUl4I4WnWpOxVAI7FoMEsrp2gLUCgH9J84B8o1Sgrb+0auEdrpocIQzU94mHBmMuliIlFemt0s8w3mUe0ssLnaecjllDunTW20d33ZxkUOoSIJbrWxZiHjdhV190e5AzjwONn4ASvTCC5CcKfywuFMBe1QpYjG0x38nJYAcR26k54o8YiXqeC7Hcth54lfwSPlHOBfOE9F0rGguJsr1V+GroafdEC+3qK2HX8Qsf0lWEwX0J29Pkh2lmFB33wKZBB8Rlhpj5AVBd6mTMYBC4cZzKNb6SygJJ3dnNIqkHnuwVgvaoCFcomyI6c+QEvxq0tKEiQCe9QoS18kaKFMl7wqEqJ2A6XkQMejE1dEcu7G/g1JRmHMOkjGIvqXHErayVgdJIIJsGBw1LzaijlFdExOIInKEOZ/oReBCsDlepSPBvRCAj/n10gfjFIml8rVSUDz2ISKeDxmFuviLVSzJOCqxtXToeJpNJr9Pnij+LQ4A/cgXDyuATWyPkrJ1En1cvPk3sB8VfMLIvwO5CKu+uC1OFNLvvoe0h97ieKNjsUkc/zQ6V/0CAoboTZwdKY4AAAAASUVORK5CYII=);
+  opacity: 1;
 }
-
-.icon-music {
-  background: url('http://icons.iconarchive.com/icons/dakirby309/windows-8-metro/256/Apps-Google-Music-Metro-icon.png');
+.card-profile_user-infos {
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: calc(68% - 100px);
+  color: #fff;
+  text-align: center;
 }
-
-.icon-games {
-  background: url('http://icons.iconarchive.com/icons/dakirby309/windows-8-metro/128/Folders-OS-Games-alt-Metro-icon.png');
+.profile-links {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;    
+  margin-top: 25px;
+  width: 25%;
 }
-
-.icon-twitter {
-  background: url('http://icons.iconarchive.com/icons/dakirby309/windows-8-metro/128/Web-Twitter-alt-2-Metro-icon.png');
+.card-profile_user-infos .infos_name,
+.card-profile_user-infos .infos_nick {
+  display: block;
+  clear: both;
+  padding: .5em 0;
+  padding-top: 0;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  top: 8px;
+  font-weight: 800;
 }
-
-.icon-gp {
-  background: url('http://icons.iconarchive.com/icons/dakirby309/windows-8-metro/128/Web-Google-plus-Metro-icon.png');
+.card-profile_user-infos .infos_nick {
+  top: 32px;
+  font-size: 14px;
+  font-weight: 300;
 }
-
-.icon-fb {
-  background: url('http://icons.iconarchive.com/icons/dakirby309/windows-8-metro/128/Web-Facebook-alt-1-Metro-icon.png');
+.card-profile_user-stats {
+  background: #fff;
+  float: left;
+  width: 100%;
+  height: calc(100% - 68% + 2px);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
-
-.icon-cnn {
-  background: url('http://icons.iconarchive.com/icons/dakirby309/windows-8-metro/128/Web-CNN-Metro-icon.png');
+.card-profile_user-stats .stats-holder {
+  position: absolute;
+  width: 100%;
+  top: calc( 70% + 4em );
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
-
-.icon-ps {
-  background: url('http://icons.iconarchive.com/icons/dakirby309/windows-8-metro/128/Apps-Adobe-Photoshop-Metro-icon.png');
+.card-profile_user-stats .user-stats {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: center;
 }
-
-.icon-bt {
-  background: url('http://icons.iconarchive.com/icons/dakirby309/windows-8-metro/128/Apps-Bluetooth-Metro-icon.png');
+.card-profile_user-stats .user-stats strong {
+  display: block;
+  float: left;
+  clear: both;
+  width: 100%;
+  color: #B3B1B2;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.2px;
 }
-
-.icon-cc {
-  background: url('http://icons.iconarchive.com/icons/dakirby309/windows-8-metro/128/Apps-CCleaner-Metro-icon.png');
-}
-
-.icon-wmp {
-  background: url('http://icons.iconarchive.com/icons/dakirby309/windows-8-metro/256/Apps-Windows-Media-Player-Metro-icon.png');
-}
-
-.icon-tube {
-  background: url('http://icons.iconarchive.com/icons/dakirby309/windows-8-metro/256/Web-YouTube-alt-1-Metro-icon.png');
-}
-
-.icon-skype {
-  background: url('http://icons.iconarchive.com/icons/dakirby309/windows-8-metro/128/Apps-Skype-Metro-icon.png');
+.card-profile_user-stats .user-stats span {
+  font-size: 26px;
+  color: #5E5E5E;
+  padding: .18em 0;
+  display: inline-block;
 }
 
 ::-webkit-scrollbar {
