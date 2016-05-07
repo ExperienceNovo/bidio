@@ -1,14 +1,13 @@
 <div class="container" style="padding:50px;">
 	<div ng-hide="videoSelecting && !finished" class="row">
 		<div ng-show="!currentUser">
-			<div class="col-xs-12 col-sm-8 col-sm-push-2" style="padding:50px 0">
-				<h2>Before you continue</h2>
-
+			<div class="col-xs-12 col-sm-8 col-sm-push-2" style="padding:0px 0">
+				<h3>Before you continue</h3>
 				<p class="text-center"><b>You will need to log in to proceed.</b></p>
 				<p>If you all ready have an account:</p>
-				<p class="clearfix"><a class="btn anim-button fl-l btn-default" ng-click="cancel()" ui-sref="login">Login here</a></p>
+				<p class="clearfix"><a class="btn anim-button fl-l btn-default" ng-click="cancel()" ui-sref="login">Login</a></p>
 				<p>If you are new to bidio:</p>
-				<p class="clearfix"><a class="btn anim-button fl-l btn-default" ng-click="cancel()" ui-sref="register">Register here</a></p>
+				<p class="clearfix"><a class="btn anim-button fl-l btn-default" ng-click="cancel()" ui-sref="register">Register</a></p>
 			</div>
 		</div>
 		<div ng-show="currentUser && !finished" class="modal-footer" style="display:inline-block;width:100%;">
