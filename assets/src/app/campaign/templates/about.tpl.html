@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="sponsoredByContainer col-md-4 col-lg-3">
 			<p class="sponsorText sponsorTitle" style="display:block!important" >Sponsored By</p>
-			<a ui-sref='campaign.main({path: campaign.urlTitle})'><img class="sponsorPicLarge" src="images/zaxbys.png"></a>
+			<a href="/member/{{campaign.user.username}}"><img class="sponsorPicLarge" src="{{campaign.user.profile.picture}}"></a>
 		</div>
 		<div class="row video-align-query">
 			<div class="video-container">
