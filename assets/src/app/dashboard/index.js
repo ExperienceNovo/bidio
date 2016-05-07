@@ -111,18 +111,6 @@ angular.module( 'bidio.dashboard', [
 
 })
 
-.controller ('DashboardNav', function DashboardeNav($scope, $window){
-    $scope.sideNav = true;
-    $scope.sideNavHide = function (){
-        if ($scope.width <768){
-            $scope.sideNav = false;
-        }
-        else{
-            $scope.sideNav = true;
-        }
-    }
-})
-
 .controller( 'DashboardHomeCtrl', function DashboardHomeCtrl( $scope, titleService, lodash, config ) {
     titleService.setTitle('dashboard');
     $scope.currentUser = config.currentUser;

@@ -11,6 +11,6 @@
 
 @media (min-width:769) {
 	 .mobile-dashboard-nav {
-		display:none;
+		display:none !important;
 	}
 }
