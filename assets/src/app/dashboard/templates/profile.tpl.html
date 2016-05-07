@@ -19,13 +19,13 @@
         </md-card-content>
       </md-card>
     </div>
-  	<div flex="100" layout="row" layout-padding>
+  	<div flex="100" layout="row" layout-padding style="margin-top: 25px;">
       <div flex="25"></div>   
   		<div flex="25">
   			<img style="width:100%" ng-src="{{profile.picture}}">
   		</div>
-  		<div flex="25">
-  			<p class="profile-description">{{profile.description}}</p>
+  		<div flex="40">
+  			<p class="profile-description" style="padding: 25px;">{{profile.description}}</p>
         <i class="fa fa-facebook"></i>
         <md-button class="primary md-raised"
           ng-click="go('/auth/facebook')"
@@ -63,8 +63,9 @@
         </md-button>
   		</div>
   	</div>
-  	<div flex="60" layout="row" layout-padding>
-  		<div flex="60">
+  	<div flex="100" layout="row" layout-padding>
+      <div flex="25"></div>
+  		<div flex="50">
   			<md-content layout-padding layout-fill>
 	  			<md-list>
 						<md-list-item ng-if="profile.firstName">
@@ -81,6 +82,7 @@
 	  			</md-list>
 	  		</md-content>
   		</div>
+      <div flex="25"></div>
   	</div>
   </div>
 </div>
