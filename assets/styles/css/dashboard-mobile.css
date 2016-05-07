@@ -1,0 +1,16 @@
+@media (max-width:768){
+
+	#sidenav {
+		display:none;
+	}
+	ul .mobile-dashboard-nav {
+		padding-left:5em;
+	}
+}
+
+
+@media (min-width:769) {
+	 .mobile-dashboard-nav {
+		display:none;
+	}
+}

@@ -10,3 +10,4 @@ angular.module( 'bidio.nav', [
     });
     $scope.isCollapsed = true;
 })
+
