@@ -7,6 +7,16 @@
 		<div class="row video-align-query">
 			<div class="video-container">
 				<video 
+					style="margin:auto" 
+					ng-src="{{campaign.videoUrl}}" 
+					class="video-js vjs-default-skin" 
+					controls preload="auto" 
+					width="640"
+					height="264" 
+					poster="{{campaign.poster}}" 
+					vjs-video>
+				</video>
+				<!--<video 
 					ng-src="{{campaign.videoUrl}}"
 					class="video-js vjs-default-skin"
 					controls preload="auto" 
@@ -18,7 +28,7 @@
 					vjs-media="media"
 					vjs-setup="options"
 					vjs-ratio="16:9">
-				</video>
+				</video>-->
 			</div>
 		</div>
 		<div class="spacing-25"></div>

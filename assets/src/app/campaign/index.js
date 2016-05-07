@@ -48,7 +48,6 @@ angular.module( 'bidio.campaign', [
 	$scope.currentUser = config.currentUser;
 	$scope.campaign = campaign;
   $scope.campaign.poster = 'images/zaxbys.png'
-  console.log($scope.campaign.bids.length)
   //$scope.campaign.poster = 'images/bidio_logo.png'
 	$scope.updateCampaign = function(campaign){
 		CampaignModel.update(campaign);
