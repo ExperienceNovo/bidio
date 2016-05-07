@@ -351,13 +351,6 @@ form[role=search] .form-group {
   background: #fff;
 }
 
-.video-container {
-  max-width: 50%;
-  width: 500px;
-  display: inline-block;
-  padding-right: 15px;
-}
-
 .intro-sec {
   width: 100%;
   position: relative;
@@ -2614,9 +2607,16 @@ article .section-title {
   }
 }
 
+@media only screen and (max-width: 990px) {
+  .zaxbys-cover {
+      padding: 75px 0!important;
+      width: 100vw!important;
+  }
+}
+
 @media only screen and (max-width: 640px) {
   .num {
-    font-size: 62px;
+    font-size: 30px;
   }
 
   .page-title h2 {

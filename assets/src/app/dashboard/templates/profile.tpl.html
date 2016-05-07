@@ -1,11 +1,29 @@
 <div id="main-container">
   <div class="dashboard-title" style="min-height:500px" layout="column" layout-padding>
+    <div flex="100" layout="column">
+      <md-card flex="100" layout="column" style="box-shadow:none!important;">
+        <md-card-content flex="100" layout="row">
+          <div flex="20"></div>
+          <div flex="50" layout="column">
+            <div layout="row">
+              <md-button ui-sref="dashboard.profileEdit" class="md-raised" layout-fill><md-icon>edit</md-icon>Edit</md-button><br>
+            </div>
+          </div>
+          <div flex="20"></div>
+          <div flex="50" layout="column">
+            <div layout="row">
+              <md-button ui-sref="member({path: username})" class="md-raised" layout-fill><md-icon>person</md-icon>View</md-button>
+            </div>
+          </div>
+          <div flex="20"></div>
+        </md-card-content>
+      </md-card>
+    </div>
   	<div flex="40" layout="row" layout-padding>
-  		<div flex="45">
+  		<div flex="25">
   			<img style="width:100%" ng-src="{{profile.picture}}">
   		</div>
-  		<div flex="55">
-  			<p class="profile-title">About</p>
+  		<div flex="25">
   			<p class="profile-description">{{profile.description}}</p>
         <md-button class='primary md-raised' ng-click="go('/auth/providers')">get providers</md-button>
         <br>
@@ -50,23 +68,6 @@
   		</div>
   	</div>
   	<div flex="60" layout="row" layout-padding>
-  		<div flex="40" layout="column">
-  			<md-card flex="100" layout="column">
-  				<md-card-content flex="100" layout="row">
-						<div flex="20"></div>
-						<div flex="60" layout="column">
-							<div layout="row">
-								<md-button ui-sref="dashboard.profileEdit" class="md-raised" layout-fill><md-icon>edit</md-icon>Edit</md-button><br>
-							</div>
-							<div flex="100"></div>
-							<div layout="row">
-								<md-button ui-sref="member({path: username})" class="md-raised" layout-fill><md-icon>person</md-icon>View</md-button>
-							</div>
-						</div>
-						<div flex="20"></div>
-  				</md-card-content>
-  			</md-card>
-  		</div>
   		<div flex="60">
   			<md-content layout-padding layout-fill>
 	  			<md-list>

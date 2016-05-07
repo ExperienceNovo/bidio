@@ -4,42 +4,48 @@
 			<p class="sponsorText sponsorTitle" style="display:block!important" >Sponsored By</p>
 			<a ui-sref='campaign.main({path: campaign.urlTitle})'><img class="sponsorPicLarge" ng-src="{{ campaign.user.profile.picture }}"></a>
 		</div>
-		<h2 style="font-weight:bold;text-align:right;font-size:4.2em;">About</h2>
+		<h2 class="camp-about-title">About</h2>
+		<hr>
 		<br>
 		<div class="aboutTxt editCampaignContainer col-md-8 col-lg-9">
-			<p style="padding-left: 50px;">{{campaign.intro}}</p>
-			<div class="spacing-25"></div>
-			<div class="row" style="text-align:right;">
-				<div class="video-container">
-					<video 
-						ng-src="{{campaign.videoUrl}}"
-						class="video-js vjs-default-skin"
-						controls preload="auto" 
-						width="640" 
-						height="264" 
-						fluid="true"
-						poster="images/bidio_logo.png" 
-						vjs-video
-						vjs-media="media"
-						vjs-setup="options"
-						vjs-ratio="16:9">
-					</video>
-				</div>
+			<p>{{campaign.intro}}</p>
+		</div>
+		<div class="spacing-25"></div>
+		<div class="row video-align-query">
+			<div class="video-container">
+				<video 
+					ng-src="{{campaign.videoUrl}}"
+					class="video-js vjs-default-skin"
+					controls preload="auto" 
+					width="640" 
+					height="264" 
+					fluid="true"
+					poster="images/bidio_logo.png" 
+					vjs-video
+					vjs-media="media"
+					vjs-setup="options"
+					vjs-ratio="16:9">
+				</video>
 			</div>
-			<div class="spacing-50"></div>
+		</div>
+	</div>
+	<div class="spacing-25"></div>
+	<hr>
+	<div class="row">
+		<div class="spacing-15"></div>
+		<h2 style="font-weight:bold;color:#FAA93F;font-size:4.2em;">Submissions</h2>
+		<div class="spacing-25"></div>
+		<div class="row">
 			<div class="campaign-submit">
 				<a class="btn anim-button fl-l" ng-click="apply()">Submit a video</a>
 			</div>
 		</div>
-	</div>
-	<div class="row">
-		<h2 style="font-weight:bold;color:#FAA93F;font-size:4.2em;">Submissions</h2>
 		<div class="spacing-25"></div>
 		<div class="campaignVideos col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-repeat="bid in campaign.bids">
 			<h2 style="font-size: 2.5em;margin-bottom: 15px;"><a ui-sref="video({id: bid.video.id})">{{bid.video.title}}</a></h2>
 			<h3>By <b><a href="/member/{{bid.video.user.username}}">{{bid.video.user.username}}</a></b> on {{bid.video.createdAt | date: "shortDate"}}</h3>
 			<br>
-			<video style="margin:auto" ng-src="{{bid.video.amazonUrl}}" class="video-js vjs-default-skin" controls preload="auto" width="500" height="205" vjs-video></video>
+			<video style="margin:auto" ng-src="{{bid.video.amazonUrl}}" class="video-js vjs-default-skin" controls preload="auto" height="205" vjs-video></video>
 		</div>
 	</div>
 </div>
