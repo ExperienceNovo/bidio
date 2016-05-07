@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="sponsoredByContainer col-md-4 col-lg-3">
 			<p class="sponsorText sponsorTitle" style="display:block!important" >Sponsored By</p>
-			<a ui-sref='campaign.main({path: campaign.urlTitle})'><img class="sponsorPicLarge" src="images/zaxbys.png"></a>
+			<a href="/member/{{campaign.user.username}}"><img class="sponsorPicLarge" src="{{campaign.user.profile.picture}}"></a>
 		</div>
 		<div class="row video-align-query">
 			<div class="video-container">
@@ -53,7 +53,13 @@
 			<h2 style="font-size: 2.5em;margin-bottom: 15px;"><a ui-sref="video({id: bid.video.id})">{{bid.video.title}}</a></h2>
 			<h3>By <b><a href="/member/{{bid.video.user.username}}">{{bid.video.user.username}}</a></b> on {{bid.video.createdAt | date: "shortDate"}}</h3>
 			<br>
-			<video style="margin:auto" ng-src="{{bid.video.amazonUrl}}" class="video-js vjs-default-skin" controls preload="auto" height="205" vjs-video></video>
+			<video 
+				style="margin:auto" 
+				ng-src="{{bid.video.amazonUrl}}" 
+				class="video-js vjs-default-skin" 
+				controls preload="auto" height="205" 
+				vjs-video>
+			</video>
 		</div>
 	</div>
 </div>
