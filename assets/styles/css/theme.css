@@ -30,6 +30,76 @@ body {
   width: device-width;
 }
 
+.no-select {
+  -webkit-user-select: none; 
+  -moz-user-select: none;  
+  -ms-user-select: none;    
+  user-select: none; 
+}
+
+@media only screen and (max-width: 1050px) {
+  .aboutdrop-mobile {
+    display: block!important;
+  }
+  .aboutdrop-desk {
+    display: none!important;
+  }
+}
+
+@media only screen and (min-width: 1051px) {
+  .aboutdrop-mobile {
+    display: none!important;
+  }
+  .aboutdrop-desk {
+    display: block!important;
+  }
+}
+
+@media only screen and (min-width: 1051px) {
+  li.desk-li {
+    margin-left:15px;
+    margin-right:15px;
+    margin-top:1px;
+  }
+}
+@media only screen and (max-width:992) {
+  .sidenav-display-none {
+    display:none!important;
+  }
+}
+
+@media only screen and (max-width:920){
+  div[class^="metro"] {
+    float: none!important;
+  }
+}
+
+@media only screen and (max-width:768){
+  #sidenav {
+      display:none;
+  }
+  ul .mobile-dashboard-nav {
+      padding-left:5em;
+  }
+}
+
+@media only screen and (min-width:769) {
+  .mobile-dashboard-nav {
+      display:none;
+  }
+}
+a.vid-clickthrough {
+  position: relative;
+  top: -60px;
+  right: 10px;
+  float: right;
+  cursor: pointer;
+}
+
+.vid-clickthrough img {
+  height: 50px;
+}
+
 h1 {
   font-size: 4.46666666667em;
   font-weight: 400;
@@ -349,13 +419,6 @@ form[role=search] .form-group {
   z-index: 3;
   float: left;
   background: #fff;
-}
-
-.video-container {
-  max-width: 50%;
-  width: 500px;
-  display: inline-block;
-  padding-right: 15px;
 }
 
 .intro-sec {
@@ -726,6 +789,18 @@ section {
   background: #000;
 }
 
+.section-title.dec-title span:before {
+  content: '';
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  width: 80px;
+  height: 8px;
+  background: #000;
+  margin: 0 auto;
+  right: 0;
+}
+
 .algn-right {
   text-align: right;
 }
@@ -748,7 +823,6 @@ section {
   display: none;
 }
 
-/* ---------responsive iframes--------------------------------------*/
 .resp-video {
   position: relative;
   padding-bottom: 56.25%;
@@ -766,7 +840,6 @@ section {
   height: 100%;
 }
 
-/*------item hover ------------------------------------------------*/
 .box-item {
   float: left;
   width: 100%;
@@ -1589,7 +1662,7 @@ article {
 
 .num {
   float: right;
-  font-size: 35px;
+  font-size: 25px;
   text-align: right;
   text-transform: uppercase;
   width: 100%;
@@ -2616,7 +2689,7 @@ article .section-title {
 
 @media only screen and (max-width: 640px) {
   .num {
-    font-size: 62px;
+    font-size: 30px;
   }
 
   .page-title h2 {
@@ -2733,19 +2806,17 @@ ul.nav.nav-tabs {
   background: url(/images/zaxbys.png);
   background-size: cover;
   background-position: top center;
+  padding: 0;
 }
 
 .zaxbys-cover{
-  background: rgba(255,255,255,0.85);
-  padding: 200px 0;
+  padding: 50px 0;
 }
 
 .zaxbys-cover h3 {
-  font-size: 50px;
+  font-size: 35px;
   line-height: 64px;
   text-transform: uppercase;
-  float: left;
-  text-align: left;
   width: 100%;
   color: #000;
   font-weight: 300;

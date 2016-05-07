@@ -74,7 +74,6 @@ passport.connect = function (req, query, profile, next) {
   // Use profile.provider or fallback to the query.provider if it is undefined
   // as is the case for OpenID, for example
   provider = profile.provider || query.provider;
-  console.log('provider' + provider)
 
   // If the provider cannot be identified we cannot match it to a passport so
   // throw an error and let whoever's next in line take care of it.
@@ -83,6 +82,7 @@ passport.connect = function (req, query, profile, next) {
   }
 
   // console.log(profile);  // <= check the content given by fb/google/etc about the user
+
 
   // If the profile object contains a list of emails, grab the first one and
   // add it to the user.
@@ -93,10 +93,36 @@ passport.connect = function (req, query, profile, next) {
   if (profile.hasOwnProperty('username')) {
     user.username = profile.username;
   }
-
+  // Else grab display name
   if (!user.username && profile.hasOwnProperty('displayName')) {
     user.username = profile.displayName;
   }
+
+  // If new user set socialAccounts to empty object, else set to preexisting
+  if (req.user === undefined) {
+    user.socialAccounts = {};
+  }
+  else {
+    user.socialAccounts = req.user.socialAccounts
+  }
+
+  switch (provider) {
+    case 'facebook':
+      user.socialAccounts.facebook = {};
+      user.socialAccounts.facebook.profileUrl = profile.profileUrl;
+      break;
+    case 'google':
+      user.socialAccounts.google = {};
+      user.socialAccounts.google.profileUrl = profile._json.url;
+      break;
+    case 'twitter':
+      user.socialAccounts.twitter = {};
+      user.socialAccounts.twitter.profileUrl = 'http://twitter.com/' + profile.username;
+      break;
+    default:
+      console.log('provider not caught')
+  }
+
   // If neither an email or a username was available in the profile, we don't
   // have a way of identifying the user in the future. Throw an error and let
   // whoever's next in the line take care of it.
@@ -118,8 +144,8 @@ passport.connect = function (req, query, profile, next) {
       //           authentication provider.
       // Action:   Create a new user and assign them a passport.
       if (!passport) {
+
         User.create(user, function (err, user) {
-          console.log('in User.create callbk and user is ' + user)
           if (err) {
             if (err.code === 'E_VALIDATION') {
               if (err.invalidAttributes.email) {
@@ -132,17 +158,13 @@ passport.connect = function (req, query, profile, next) {
 
             return next(err);
           }
-
           query.user = user.id;
 
           Passport.create(query, function (err, passport) {
             // If a passport wasn't created, bail out
-            console.log(util.inspect(passport, false, null));
-            console.log(util.inspect(user, false, null));
             if (err) {
               return next(err);
             }
-            //user.pasports.push(passport);
             next(err, user);
           });
         });
@@ -178,9 +200,15 @@ passport.connect = function (req, query, profile, next) {
           if (err) {
             return next(err);
           }
-
           next(err, req.user);
         });
+
+        User.update({id: req.user.id}, user).exec(function (err, updated){
+          if (err) {
+            console.log(err);
+            return;
+          }
+        })
       }
       // Scenario: The user is a nutjob or spammed the back-button.
       // Action:   Simply pass along the already established session.

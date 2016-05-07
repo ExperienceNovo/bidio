@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-	
+
 	update: function(req,res){
 
 		var id = req.param('id');
@@ -49,6 +49,10 @@ module.exports = {
 			model.user = req.body.user;
 		}
 
+		if (req.body.socialAccounts){
+			model.socialAccounts = req.body.socialAccounts;
+		}
+
 		Profile.update({id: id}, model)
 			.then(function(){
 				res.send(200);
@@ -60,4 +64,3 @@ module.exports = {
 	}
 
 };
-

@@ -48,14 +48,11 @@ var AuthController = {
         // If an error was thrown, redirect the user to the login which should
         // take care of rendering the error messages.
         if (err) {
-          console.log(err)
           res.redirect('/login');
         }
         // Upon successful login, send the user to the homepage were req.user
         // will available.
         else {
-        	console.log('currently logged in user is: ' + req.user.username);
-          // console.log(req.user);
           res.redirect('/dashboard');
         }
       });

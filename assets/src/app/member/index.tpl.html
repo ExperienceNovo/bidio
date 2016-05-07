@@ -5,10 +5,10 @@
 		  <div class="dashboard-title col-xs-12 col-sm-6 col-sm-push-3">
 		  	<div class="row">
 		  		<div class="col-xs-5">
-		  			<img style="width:100%" ng-src="{{profile.picture}}">
+		  			<img style="width:100%;border-radius:100px;" ng-src="{{profile.picture}}">
 		  		</div>
 		  		<div class="col-xs-7">
-		  			<p class="profile-title">About</p>
+		  			<p class="profile-title">{{member.username}}</p>
 		  			<p class="profile-description">{{profile.description}}</p>
 		  		</div>
 		  	</div>
@@ -16,17 +16,26 @@
 		  		<div class="col-xs-12">
 		  			<div>
 			  			<ul>
-								<li ng-if="profile.firstName">
-								  <p><b>First Name</b>&nbsp;{{profile.firstName}}</p>
-								</li>
-								<hr>
-								<li ng-if="profile.lastName">
-								  <p><b>Last Name</b>&nbsp;{{profile.lastName}}</p>
-								</li>
-								<hr>
-								<li ng-if="profile.companyName && profile.companyUrl">
-								  <p><b>Company</b>&nbsp;<a target="_blank" href="{{profile.companyUrl}}">{{profile.companyName}}</a></p>
-								</li>
+							<li ng-if="profile.firstName">
+							  <p><b>First Name</b>&nbsp;{{profile.firstName}}</p>
+							</li>
+							<br>
+							<li ng-if="profile.lastName">
+							  <p><b>Last Name</b>&nbsp;{{profile.lastName}}</p>
+							</li>
+							<br>
+							<li ng-if="profile.companyName && profile.companyUrl">
+							  <p><b>Company</b>&nbsp;<a target="_blank" href="{{profile.companyUrl}}">{{profile.companyName}}</a></p>
+							</li>
+							<li ng-if="member.socialAccounts.facebook.profileUrl">
+								<a href="{{member.socialAccounts.facebook.profileUrl}}"><p>member's facebook</p></a>
+							</li>
+							<li ng-if="member.socialAccounts.google.profileUrl">
+								<a href="{{member.socialAccounts.google.profileUrl}}"><p>member's google+</p></a>
+							</li>
+							<li ng-if="member.socialAccounts.twitter.profileUrl">
+								<a href="{{member.socialAccounts.twitter.profileUrl}}"><p>member's twitter</p></a>
+							</li>
 			  			</ul>
 			  		</div>
 		  		</div>
@@ -34,24 +43,33 @@
 		  </div>
 		</div>
 	</uib-tab>
+
 	<uib-tab heading="Videos">
-		<h2>Videos</h2>
+		<div class="spacing-25"></div>
 		<div ng-show="videos.length == 0">
-			no videos
+			{{member.username}} doesn't have any videos
 		</div>
-		<div class="dashboardVideos" ng-repeat="video in videos">
-	    	<h1><a ui-sref="video({id: video.id})">{{video.title}}</a></h1>
-	    	<video style="display:inline-block;" class="video-js vjs-default-skin" src={{video.amazonUrl}} controls preload="none" width="640" height="264" poster="poster.jpg" vjs-video>
+		<div class="dashboardVideos col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-repeat="video in videos">
+	    	<h2 style="font-size: 2.5em;margin-bottom: 15px;"><a ui-sref="video({id: video.id})">{{video.title}}</a></h2>
+	    	<video style="display:inline-block;" class="video-js vjs-default-skin" src="{{video.amazonUrl}}" controls preload="none" width="640" height="264" poster="images/zaxbys.png" vjs-video>
 	    	</video>
 	  	</div>
 	</uib-tab>
+
 	<uib-tab heading="Campaigns">
-		<h2>Campaigns</h2>
-		<div ng-show="campaigns.length == 0">
-			no campaigns
-		</div>
-		<div ng-repeat="campaign in campaigns">
-			<p><a ui-sref="campaign.about({path: campaign.urlTitle})">{{campaign.title}}</a></p>
+		<div class="spacing-25"></div>
+		<div style="margin-left:10%;margin-right:10%;">
+			<div ng-show="campaigns.length == 0">
+				{{member.username}} doesn't have any campaigns
+			</div>
+			<div ng-repeat="campaign in campaigns">
+				<h2><a ui-sref="campaign.about({path: campaign.urlTitle})">{{campaign.title}}</a></h2>
+			</div>
 		</div>
 	</uib-tab>
+
+
 </uib-tabset>
+
+<div ng-include="'footer/index.tpl.html'"></div>
+

@@ -35,10 +35,12 @@ angular.module('models.user', ['lodash', 'services', 'sails.io'])
   		return $sailsSocket.post(url, updatedModel).then(success, error);
   	};
 
-
+    this.getPassports = function() {
+      var url = '/auth/providers/';
+      return $sailsSocket.get(url).then(success, error);
+    }
     this.removePassport = function(model) {
         var url = '/auth/providers/' + model;
-        console.log(url);
         return $sailsSocket.delete(url).then(success, error);
     };
 
