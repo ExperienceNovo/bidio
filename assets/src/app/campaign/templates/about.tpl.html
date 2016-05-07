@@ -1,65 +1,41 @@
-<div class="container campaignContainer">
+<!--<p ng-bind-html="campaign.campaignContent"></p>-->
+<div class="container"> 
 	<div class="row">
-		<div class="sponsoredByContainer col-md-4 col-lg-3">
-			<p class="sponsorText sponsorTitle" style="display:block!important" >Sponsored By</p>
-			<a href="/member/{{campaign.user.username}}"><img class="sponsorPicLarge" src="{{campaign.user.profile.picture}}"></a>
+		<div class="col-md-12">
+			<div class="spacing-50"></div>
+			<img style="max-height:100px;max-width: 100%;" src="images/zaxbys2.png">
 		</div>
-		<div class="row video-align-query">
-			<div class="video-container">
-				<video 
-					style="margin:auto" 
-					ng-src="{{campaign.videoUrl}}" 
-					class="video-js vjs-default-skin" 
-					controls preload="auto" 
-					width="640"
-					height="264" 
-					poster="{{campaign.poster}}" 
-					vjs-video>
-				</video>
-				<!--<video 
-					ng-src="{{campaign.videoUrl}}"
-					class="video-js vjs-default-skin"
-					controls preload="auto" 
-					width="640" 
-					height="264" 
-					fluid="true"
-					poster="{{campaign.poster}}" 
-					vjs-video
-					vjs-media="media"
-					vjs-setup="options"
-					vjs-ratio="16:9">
-				</video>-->
+		<div class="spacing-5"></div>
+		<div class="col-md-12">
+            <a href="https://www.zaxbys.com/menu/" class="btn anim-button fl-l" style="float:none"><span>Order Now!</span><i class="fa fa-long-arrow-right"></i></a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="spacing-25"></div>
+		<div class="sponsor-container">
+			<div class="col-md-4">
+				<img style="max-height:150px;" src="images/zaxby-store.png">			
+			</div>
+			<div class="col-md-8">
+				<div class="aboutTxt">
+					<p>{{campaign.campaignContent}}</p>
+				</div>
 			</div>
 		</div>
-		<div class="spacing-25"></div>
-		<div class="aboutTxt editCampaignContainer col-md-8 col-lg-9">
-			<p>{{campaign.intro}}</p>
+	</div>	
+	<div class="spacing-50"></div>
+	<!-- <div class="row">
+		<div class="col-md-3">
+			<img src="http://placehold.it/200x200">
+		</div>		
+		<div class="col-md-3">
+			<img src="http://placehold.it/200x200">
+		</div>		
+		<div class="col-md-3">
+			<img src="http://placehold.it/200x200">
+		</div>		
+		<div class="col-md-3">
+			<img src="http://placehold.it/200x200">
 		</div>
-	</div>
-	<div class="spacing-25"></div>
-	<hr>
-	<div class="row">
-		<div class="spacing-25"></div>
-		<div class="row">
-			<div class="campaign-submit">
-				<a class="btn anim-button fl-l" ng-click="apply()">Submit a video</a>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<h2 ng-show="campaign.bids.length > 0" style="font-weight:bold;color:#FAA93F;font-size:4.2em;">Submissions</h2>
-		<div class="spacing-25"></div>
-		<div class="campaignVideos col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-repeat="bid in campaign.bids">
-			<h2 style="font-size: 2.5em;margin-bottom: 15px;"><a ui-sref="video({id: bid.video.id})">{{bid.video.title}}</a></h2>
-			<h3>By <b><a href="/member/{{bid.video.user.username}}">{{bid.video.user.username}}</a></b> on {{bid.video.createdAt | date: "shortDate"}}</h3>
-			<br>
-			<video 
-				style="margin:auto" 
-				ng-src="{{bid.video.amazonUrl}}" 
-				class="video-js vjs-default-skin" 
-				controls preload="auto" height="205" 
-				vjs-video>
-			</video>
-		</div>
-	</div>
+	</div> -->
 </div>
