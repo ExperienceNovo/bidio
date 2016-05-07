@@ -8,6 +8,7 @@ angular.module( 'bidio', [
     'ui.bootstrap',
     'uiGmapgoogle-maps',
     'templates-app',
+    'offClick',
     'services',
     'vjs.video',
     'models',

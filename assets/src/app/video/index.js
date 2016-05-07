@@ -72,7 +72,20 @@ angular.module( 'bidio.video', [
 				}
 			}
 		});
-	}
+	};
+
+	$scope.bid = function(){
+		$uibModal.open({
+			animation: true,
+			templateUrl: "video/templates/share.tpl.html",
+			controller: "ShareCtrl",
+			resolve: {
+				video: function(){
+					return video
+				}
+			}
+		});
+	};
 
 	$scope.clickThrough = function(){
 		$scope.video.clicked = true;
@@ -81,7 +94,7 @@ angular.module( 'bidio.video', [
 		VideoModel.update($scope.video).then(function(){
 			$location.path(/campaign/+video.campaign.urlTitle)
 		});
-	}
+	};
 
 	$sailsSocket.subscribe('bid', function (envelope) {
         switch(envelope.verb) {
@@ -94,12 +107,9 @@ angular.module( 'bidio.video', [
         }
     });
 
-
 })
 
 .controller('BidCtrl', function ($scope, highestBid, video, config, campaigns, BidModel, $uibModalInstance ) {
-
-	//console.log(campaigns, video);
 
 	$scope.campaigns = campaigns;
 	$scope.video = video;
@@ -115,11 +125,14 @@ angular.module( 'bidio.video', [
 	}
 
 	$scope.createBid = function(bid){
-		BidModel.create(bid)
-			.then(function(result){
-				console.log(result);
-				$uibModalInstance.dismiss(result.data)
-			})
+		BidModel.create(bid).then(function(result){
+			console.log(result);
+			$uibModalInstance.dismiss(result.data)
+		});
 	}
 	
 })
+
+.controller('ShareCtrl', function ($scope, video ) {
+	$scope.video = video;	
+});
