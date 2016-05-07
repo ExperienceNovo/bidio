@@ -58,7 +58,7 @@
 			<div ng-show="campaigns.length == 0">
 				{{member.username}} doesn't have any campaigns
 			</div>
-			<div ng-repeat="campaign in campaigns">
+			<div ng-repeat="campaign in campaigns" class="col-md-12">
 				<h2><a ui-sref="campaign.about({path: campaign.urlTitle})">{{campaign.title}}</a></h2>
 			</div>
 		</div>
@@ -68,5 +68,7 @@
 </uib-tabset>
 <div class="spacing-50"></div>
 <div style="clear:both"></div>
+<div class="spacing-50"></div>
+
 <div ng-include="'footer/index.tpl.html'"></div>
 
