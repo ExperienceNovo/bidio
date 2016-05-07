@@ -47,7 +47,6 @@ angular.module( 'bidio.campaign', [
 	titleService.setTitle('campaign - bidio');
 	$scope.currentUser = config.currentUser;
 	$scope.campaign = campaign;
-  {{console.log(campaign.user)}}
   $scope.campaign.poster = 'images/zaxbys.png'
   //$scope.campaign.poster = 'images/bidio_logo.png'
 	$scope.updateCampaign = function(campaign){
