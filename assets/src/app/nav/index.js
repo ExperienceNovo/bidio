@@ -9,8 +9,8 @@ angular.module( 'bidio.nav', [
     });
     $scope.isCollapsed = true;
     $scope.collapse = function(){
-		$scope.isCollapsed = true;
-		console.log($scope.isCollapsed)
+		  $scope.isCollapsed = true;
+		  console.log($scope.isCollapsed)
     }
 });
 
