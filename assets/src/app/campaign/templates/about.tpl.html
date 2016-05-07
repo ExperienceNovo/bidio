@@ -32,14 +32,13 @@
 	<div class="spacing-25"></div>
 	<hr>
 	<div class="row">
-		<div class="spacing-15"></div>
-		<h2 style="font-weight:bold;color:#FAA93F;font-size:4.2em;">Submissions</h2>
 		<div class="spacing-25"></div>
 		<div class="row">
 			<div class="campaign-submit">
 				<a class="btn anim-button fl-l" ng-click="apply()">Submit a video</a>
 			</div>
 		</div>
+		<h2 style="font-weight:bold;color:#FAA93F;font-size:4.2em;">Submissions</h2>
 		<div class="spacing-25"></div>
 		<div class="campaignVideos col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-repeat="bid in campaign.bids">
 			<h2 style="font-size: 2.5em;margin-bottom: 15px;"><a ui-sref="video({id: bid.video.id})">{{bid.video.title}}</a></h2>

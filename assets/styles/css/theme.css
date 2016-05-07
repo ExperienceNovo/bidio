@@ -719,6 +719,18 @@ section {
   background: #000;
 }
 
+.section-title.dec-title span:before {
+  content: '';
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  width: 80px;
+  height: 8px;
+  background: #000;
+  margin: 0 auto;
+  right: 0;
+}
+
 .algn-right {
   text-align: right;
 }
