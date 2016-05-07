@@ -63,6 +63,18 @@ body {
   }
 }
 
+a.vid-clickthrough {
+  position: relative;
+  top: -60px;
+  right: 10px;
+  float: right;
+  cursor: pointer;
+}
+
+.vid-clickthrough img {
+  height: 50px;
+}
+
 h1 {
   font-size: 4.46666666667em;
   font-weight: 400;

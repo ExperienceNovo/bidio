@@ -5,7 +5,7 @@
 .contentTitleLetters{
 	color:white;
     font-weight:700;
-    font-size: 4vw;
+    font-size: 3vw;
 
 }
 p.campaignsInfoText{
@@ -146,9 +146,7 @@ button.updateCampaignButton {
         font-size: 19px;
         line-height: 2;
         text-align: justify;
-        padding: 0;
-        width: 50%;
-        float: left;
+        padding: 0; 
     }
     img.sponsorPicLarge {
         width: 25%;
@@ -158,12 +156,6 @@ button.updateCampaignButton {
         font-size: 4.2em;
         text-align: left;
         margin-top: 50px;
-    }
-    .video-container {
-        width: 45%!important;
-        display: inline-block;
-        float: right;
-        padding-right:0!important;
     }
     .video-align-query {
         text-align: center;
