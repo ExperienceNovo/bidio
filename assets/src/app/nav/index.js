@@ -11,18 +11,3 @@ angular.module( 'bidio.nav', [
     $scope.isCollapsed = true;
 })
 
-.controller ('ResponsiveNav', function ResponsiveNav($scope, $window){
-
-    $scope.updateWidth = function() {
-        $scope.width = $window.innerWidth;
-    }
-	
-	$scope.sideNavHide = function (){
-		if ($scope.width <768){
-			$scope.sideNav = false;
-		}
-		else{
-			$scope.sideNav = true;
-		}
-	}
-})
