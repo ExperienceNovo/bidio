@@ -741,7 +741,6 @@ section {
   display: none;
 }
 
-/* ---------responsive iframes--------------------------------------*/
 .resp-video {
   position: relative;
   padding-bottom: 56.25%;
@@ -759,7 +758,6 @@ section {
   height: 100%;
 }
 
-/*------item hover ------------------------------------------------*/
 .box-item {
   float: left;
   width: 100%;
@@ -1582,7 +1580,7 @@ article {
 
 .num {
   float: right;
-  font-size: 35px;
+  font-size: 25px;
   text-align: right;
   text-transform: uppercase;
   width: 100%;
@@ -2607,13 +2605,6 @@ article .section-title {
   }
 }
 
-@media only screen and (max-width: 990px) {
-  .zaxbys-cover {
-      padding: 75px 0!important;
-      width: 100vw!important;
-  }
-}
-
 @media only screen and (max-width: 640px) {
   .num {
     font-size: 30px;
@@ -2733,19 +2724,17 @@ ul.nav.nav-tabs {
   background: url(/images/zaxbys.png);
   background-size: cover;
   background-position: top center;
+  padding: 0;
 }
 
 .zaxbys-cover{
-  background: rgba(255,255,255,0.85);
-  padding: 200px 0;
+  padding: 50px 0;
 }
 
 .zaxbys-cover h3 {
-  font-size: 50px;
+  font-size: 35px;
   line-height: 64px;
   text-transform: uppercase;
-  float: left;
-  text-align: left;
   width: 100%;
   color: #000;
   font-weight: 300;

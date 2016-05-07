@@ -20,12 +20,10 @@
           <li ng-show="currentUser"><a href="/dashboard">Dashboard</a></li>
 
               
-              <ul class="mobile-dashboard-nav">
-                <li ng-show="currentUser"> <a href="/dashboard/analytics"> Analytics</li>
-                <li ng-show="currentUser"> <a href="/dashboard/videos">Videos </li>
-                <li ng-show="currentUser"> <a href="dashboard/profile"> Profile </li>
-                <li ng-show="currentUser"> <a href="dashboard/campaigns">Campaigns </li>
-              </ul>
+          <li class="mobile-dashboard-nav" ng-show="currentUser"> <a href="/dashboard/analytics"> Analytics</a></li>
+          <li class="mobile-dashboard-nav" ng-show="currentUser"> <a href="/dashboard/videos">Videos</a></li>
+          <li class="mobile-dashboard-nav" ng-show="currentUser"> <a href="dashboard/profile"> Profile</a></li>
+          <li class="mobile-dashboard-nav" ng-show="currentUser"> <a href="dashboard/campaigns">Campaigns</a></li>
 
           <!--<li ng-show="currentUser"><a href="/upload">Upload</a></li>-->
           <!--<li ng-show="currentUser"><a href="/account">Account</a></li>-->

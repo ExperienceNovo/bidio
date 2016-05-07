@@ -168,6 +168,30 @@ button.updateCampaignButton {
     .video-align-query {
         text-align: center;
     }
+    .sidenav-display-none {
+        display:none!important;
+    }
+    .mobile-dashboard-nav {
+        display: block!important;
+    }
+    .admin-page-wrapper {
+        display: none!important;
+    }
+    .admin-page-wrapper-mobile {
+        display: block!important;
+    }
+}
+
+@media only screen and (min-width: 993px) {
+    .mobile-dashboard-nav {
+        display: none!important;
+    }
+    .admin-page-wrapper {
+        display: block!important;
+    }
+    .admin-page-wrapper-mobile {
+        display: none!important;
+    }
 }
 
 @media only screen and (max-width: 750px) {

@@ -1,6 +1,29 @@
+@media only screen and (max-width:992) {
+    .sidenav-display-none {
+        display:none!important;
+    }
+}
+
+@media only screen and (max-width:768){
+    #sidenav {
+        display:none;
+    }
+    ul .mobile-dashboard-nav {
+        padding-left:5em;
+    }
+}
+
+
+@media only screen and (min-width:769) {
+     .mobile-dashboard-nav {
+        display:none;
+    }
+}
+
 .dashboard-title {
     margin-top:5%;
 }
+
 .dash-title-sm {
     font-weight: bold;
     color: #FAA93F;
