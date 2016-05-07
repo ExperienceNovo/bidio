@@ -30,6 +30,39 @@ body {
   width: device-width;
 }
 
+.no-select {
+  -webkit-user-select: none; 
+  -moz-user-select: none;  
+  -ms-user-select: none;    
+  user-select: none; 
+}
+
+@media only screen and (max-width: 1050px) {
+  .aboutdrop-mobile {
+    display: block!important;
+  }
+  .aboutdrop-desk {
+    display: none!important;
+  }
+}
+
+@media only screen and (min-width: 1051px) {
+  .aboutdrop-mobile {
+    display: none!important;
+  }
+  .aboutdrop-desk {
+    display: block!important;
+  }
+}
+
+@media only screen and (min-width: 1051px) {
+  li.desk-li {
+    margin-left:15px;
+    margin-right:15px;
+    margin-top:1px;
+  }
+}
+
 h1 {
   font-size: 4.46666666667em;
   font-weight: 400;

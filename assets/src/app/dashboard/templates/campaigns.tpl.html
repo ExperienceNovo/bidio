@@ -1,32 +1,21 @@
 <md-content layout-padding>
-  <div class="dashboard-title">
-    <h1>Campaign</h1>
-  </div>
-
-  <div>
   	<md-button ng-click="addCampaign()">
 			<md-icon>add</md-icon>
 			&nbsp;Add campaign
   	</md-button>
-  </div>
 	
 	<md-list style="text-align:left">
-		<md-list-item layout="row">
-			<div flex="50">Title</div>
-			<div flex="15">Created At</div>
-			<div flex="15">Updated At</div>
-			<div flex="10">Edit</div>
-			<div flex="10">Delete</div>
-		</md-list-item>
-		<div ng-repeat="campaign in campaigns">
-			<md-divider/>
-			<md-list-item layout="row">
-				<div flex="50"><a ui-sref="campaign.about({path: campaign.urlTitle})" class="md-primary">{{campaign.title}}</a></div>
-				<div flex="15">{{campaign.createdAt | date : "short"}}</div>
-				<div flex="15">{{campaign.updatedAt | date : "short"}}</div>
-				<div flex="10"><a ui-sref="dashboard.campaignEdit({id: campaign.id})"><md-icon>mode_edit</md-icon></a></div>
-				<div flex="10"><md-button class="md-icon-button" ng-click="delete(user.id)"><md-icon>delete</md-icon></md-button></div>
-			</md-list-item>
+		<div class="container">			
+			<div ng-repeat="campaign in campaigns" style="text-align:left;margin-bottom:50px;">
+				<div class="col-md-12">			
+						<a ui-sref="campaign.about({path: campaign.urlTitle})" class="md-primary">{{campaign.title}}</a>
+						{{campaign.createdAt | date : "short"}}
+						{{campaign.updatedAt | date : "short"}}
+						<a ui-sref="dashboard.campaignEdit({id: campaign.id})"><md-icon>mode_edit</md-icon></a>
+						<md-button class="md-icon-button" ng-click="delete(user.id)"><md-icon>delete</md-icon></md-button>
+					<hr>
+				</div>
+			</div>
 		</div>
 	</md-list>
 </md-content>
