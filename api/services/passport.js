@@ -81,7 +81,7 @@ passport.connect = function (req, query, profile, next) {
     return next(new Error('No authentication provider was identified.'));
   }
 
-  // console.log(profile);  // <= check the content given by fb/google/etc about the user
+  console.log(profile);  // <= check the content given by fb/google/etc about the user
 
 
   // If the profile object contains a list of emails, grab the first one and
@@ -110,14 +110,21 @@ passport.connect = function (req, query, profile, next) {
     case 'facebook':
       user.socialAccounts.facebook = {};
       user.socialAccounts.facebook.profileUrl = profile.profileUrl;
+      user.socialAccounts.facebook.displayName = profile.displayName;
+      user.socialAccounts.facebook.profilePic = profile.photos[0].value;
       break;
     case 'google':
       user.socialAccounts.google = {};
       user.socialAccounts.google.profileUrl = profile._json.url;
+      user.socialAccounts.google.displayName = profile.displayName;
+      user.socialAccounts.google.profilePic = profile.photos[0].value;
       break;
     case 'twitter':
       user.socialAccounts.twitter = {};
       user.socialAccounts.twitter.profileUrl = 'http://twitter.com/' + profile.username;
+      user.socialAccounts.twitter.displayName = profile.displayName;
+      user.socialAccounts.twitter.handle = profile.username;
+      user.socialAccounts.twitter.profilePic = profile.photos[0].value;
       break;
     default:
       console.log('provider not caught')

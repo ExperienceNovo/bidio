@@ -20,4 +20,8 @@ angular.module( 'bidio.register', [
 		//$location.path('/');
 	//};
 
+	$scope.go = function(path) {
+	  	$location.path(path);
+	};
+
 });
