@@ -42,7 +42,7 @@ module.exports.passport = {
       clientSecret: '9d1cbd6a42f185aeb94ee1aa40a324e9',
       //callbackURL: 'http://localhost:1337/dashboard/profile',
       scope: ['email'], /* email is necessary for login behavior */
-      profileFields: ['displayName', 'email', 'link', 'picture']
+      profileFields: ['displayName', 'email', 'link', 'picture.type(small)']
     }
   },
 

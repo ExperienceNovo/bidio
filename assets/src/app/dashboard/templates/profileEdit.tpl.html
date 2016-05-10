@@ -26,6 +26,80 @@
   				<label>About</label>
   				<textarea aria-label="Profile Description" rows="5" ng-model="profile.description"></textarea>
   			</md-input-container>
+				<ul>
+
+					<li>
+						<div class="md-whiteframe-4dp" style="background-color: #3b5998; text-align:left; padding:5px; font-size:20px; color: #fff">
+							<i class="fa fa-facebook"></i>
+							<!-- case 1: call to activate -->
+							<md-button class="primary md-raised"
+			          ng-click="go('/auth/facebook')"
+			          ng-if="!passportRegistered('facebook')">
+			          activate
+			        </md-button>
+							<!-- case 2: activated, show profile and remove button -->
+							<span ng-if="passportRegistered('facebook')">
+								<a href="{{user.socialAccounts.facebook.profileUrl}}" style="color: #fff">
+									<img style="border-radius:50%" ng-src="{{user.socialAccounts.facebook.profilePic}}">
+									{{user.socialAccounts.facebook.displayName}}
+								</a>
+								<md-button class='primary md-raised'
+				          ng-click="removePassport('facebook')">
+				          remove
+				        </md-button>
+							</span>
+						</div>
+					</li>
+					<br>
+
+					<li>
+						<div class="md-whiteframe-4dp" style="background-color:#dd4b39; text-align:left; padding:5px; font-size:20px; color: #fff">
+							<i class="fa fa-google-plus"></i>
+							<!-- case 1: call to activate -->
+							<md-button class="primary md-raised"
+			          ng-click="go('/auth/google')"
+			          ng-if="!passportRegistered('google')">
+			          activate
+			        </md-button>
+							<!-- case 2: activated, show profile and remove button -->
+							<span ng-if="passportRegistered('google')">
+								<a href="{{user.socialAccounts.google.profileUrl}}" style="color: #fff">
+									<img style="border-radius:50%" ng-src="{{user.socialAccounts.google.profilePic}}">
+									{{user.socialAccounts.google.displayName}}
+								</a>
+								<md-button class='primary md-raised'
+				          ng-click="removePassport('google')">
+				          remove
+				        </md-button>
+							</span>
+						</div>
+					</li>
+					<br>
+
+					<li>
+						<div class="md-whiteframe-4dp" style="background-color: #55acee; text-align:left; padding:5px; font-size:20px; color: #f5f8fa">
+							<i class="fa fa-twitter"></i>
+							<!-- case 1: call to activate -->
+							<md-button class="primary md-raised"
+			          ng-click="go('/auth/twitter')"
+			          ng-if="!passportRegistered('twitter')">
+			          activate
+			        </md-button>
+							<!-- case 2: activated, show profile and remove button -->
+							<span ng-if="passportRegistered('twitter')">
+								<a href="{{user.socialAccounts.twitter.profileUrl}}" style="color: #f5f8fa">
+									<img style="border-radius:50%" ng-src="{{user.socialAccounts.twitter.profilePic}}">
+									{{user.socialAccounts.twitter.displayName}}
+								</a>
+								<md-button class='primary md-raised'
+				          ng-click="removePassport('twitter')">
+				          remove
+				        </md-button>
+							</span>
+						</div>
+					</li>
+				</ul>
+				
   		</div>
   	</div>
   	<div flex="60" layout="row" layout-padding>

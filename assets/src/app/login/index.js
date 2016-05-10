@@ -13,10 +13,15 @@ angular.module( 'bidio.login', [
 	});
 })
 
-.controller( 'LoginCtrl', function LoginController( $scope, titleService, config) {
+.controller( 'LoginCtrl', function LoginController( $scope, titleService, config, $location, localStorageService ) {
 	titleService.setTitle('bidio');
 	$scope.currentUser = config.currentUser;
 	if ($scope.currentUser){
 		$location.path('/');
 	};
+
+	$scope.go = function(path) {
+	  	$location.path(path);
+	};
+
 });

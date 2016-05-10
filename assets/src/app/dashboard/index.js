@@ -99,7 +99,7 @@ angular.module( 'bidio.dashboard', [
     $scope.updateWidth = function() {
         $scope.width = $window.innerWidth;
     }
-    
+
     $scope.sideNavHide = function (){
         if ($scope.width <768){
             $scope.sideNav = false;
@@ -110,16 +110,22 @@ angular.module( 'bidio.dashboard', [
     };
 })
 
-
-
-.controller( 'DashboardCtrl', function DashboardCtrl( $scope, $location, config ) {
+.controller( 'DashboardCtrl', function DashboardCtrl( $scope, $location, config, localStorageService ) {
 
     if (!config.currentUser){
         $location.path('/login')
     }
 
+		if (localStorageService.get('redirectTo') === '/dashboard/profile/edit') {
+				$location.path('/dashboard/profile/edit');
+				localStorageService.remove('redirectTo');
+				console.log(localStorageService.get('redirectTo'));
+		}
+
 		if (window.location.hash && window.location.hash == '#_=_') {
+				console.log('removing hash stuff');
 				window.location.hash = '';
+				console.log(window.location)
 		}
 
     $scope.changePath = function (path) {
@@ -287,12 +293,13 @@ angular.module( 'bidio.dashboard', [
     }
 })
 
-.controller('DashboardProfileCtrl', function ($state, $scope, user, ProfileModel, UserModel, $mdDialog, $location) {
+.controller('DashboardProfileCtrl', function ($state, $scope, user, ProfileModel, UserModel, $mdDialog, $location, localStorageService) {
 
     $scope.username = user.username;
     $scope.submitLoading = false;
     $scope.profile = user.profile[0];
 		$scope.passports = user.passports;
+		$scope.user = user;
 
     $scope.submit = function(profile){
 
@@ -385,6 +392,8 @@ angular.module( 'bidio.dashboard', [
 	}
 
 	$scope.go = function(path) {
+			localStorageService.set('redirectTo', $location.path());
+			console.log(localStorageService.get('redirectTo'))
 	  	$location.path(path);
 	};
 

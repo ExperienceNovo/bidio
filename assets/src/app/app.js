@@ -30,7 +30,8 @@ angular.module( 'bidio', [
     'bidio.search',
     'bidio.sponsors',
     'bidio.video',
-    'bidio.admin'
+    'bidio.admin',
+    'LocalStorageModule'
 ])
 
 .config( function myAppConfig ( $sceDelegateProvider, $mdThemingProvider, $urlRouterProvider, $locationProvider ) {

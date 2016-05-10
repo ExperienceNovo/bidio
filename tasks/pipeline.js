@@ -46,6 +46,7 @@ var jsFilesToInject = [
   'bower_components/angular-aria/angular-aria.min.js',
   'bower_components/angular-messages/angular-messages.min.js',
   '/bower_components/angular-material/angular-material.js',
+  'bower_components/angular-local-storage/dist/angular-local-storage.js',
   '/bower_components/angular-off-click/offClick.js',
 
   //
