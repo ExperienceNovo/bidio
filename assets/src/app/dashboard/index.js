@@ -94,6 +94,22 @@ angular.module( 'bidio.dashboard', [
     })
 })
 
+.controller ('ResponsiveDashNav', function ResponsiveDashNav($scope, $window){
+
+    $scope.updateWidth = function() {
+        $scope.width = $window.innerWidth;
+    }
+
+    $scope.sideNavHide = function (){
+        if ($scope.width <768){
+            $scope.sideNav = false;
+        }
+        else{
+            $scope.sideNav = true;
+        }
+    };
+})
+
 .controller( 'DashboardCtrl', function DashboardCtrl( $scope, $location, config, localStorageService ) {
 
     if (!config.currentUser){
@@ -118,6 +134,8 @@ angular.module( 'bidio.dashboard', [
 
 
 })
+
+
 
 .controller( 'DashboardHomeCtrl', function DashboardHomeCtrl( $scope, titleService, lodash, config ) {
     titleService.setTitle('dashboard');

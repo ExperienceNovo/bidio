@@ -1,5 +1,4 @@
 angular.module( 'bidio.nav', [
-	'ui.bootstrap'
 ])
 
 .controller( 'NavCtrl', function NavCtrl( $scope, $state, config, $rootScope ) {
@@ -9,4 +8,9 @@ angular.module( 'bidio.nav', [
         window.scrollTo(0, 0);
     });
     $scope.isCollapsed = true;
-})
+    $scope.collapse = function(){
+		  $scope.isCollapsed = true;
+		  console.log($scope.isCollapsed)
+    }
+});
+

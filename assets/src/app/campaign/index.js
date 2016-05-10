@@ -47,7 +47,8 @@ angular.module( 'bidio.campaign', [
 	titleService.setTitle('campaign - bidio');
 	$scope.currentUser = config.currentUser;
 	$scope.campaign = campaign;
-
+  $scope.campaign.poster = 'images/zaxbys.png'
+  //$scope.campaign.poster = 'images/bidio_logo.png'
 	$scope.updateCampaign = function(campaign){
 		CampaignModel.update(campaign);
 	}
@@ -61,7 +62,6 @@ angular.module( 'bidio.campaign', [
 				campaign: function(){return campaign}
 			}
 		});
-
 	}
 
 })
@@ -95,7 +95,6 @@ angular.module( 'bidio.campaign', [
 
 		$scope.videoSelectToggle = function(){
         $scope.videoSelecting = !$scope.videoSelecting;
-
         if (!$scope.videoSelecting){$scope.videoUrl = null;}
     }
 
@@ -107,39 +106,32 @@ angular.module( 'bidio.campaign', [
         }
 
         $scope.videoLoading2 = true;
-
         VideoModel.getMine()
-            .then(function(videos){
+        .then(function(videos){
+          $scope.videoLoading2 = false;
+          if (!videos.length){
+              $scope.error = "You have not uploaded any videos yet"
+              return;
+          }
 
-                $scope.videoLoading2 = false;
+          videos.forEach(function(video){
+            var activeBids = video.bids.filter(function(bid){return bid.isActive}).map(function(bid){return bid.campaign});
+            var newBids = video.bids.filter(function(bid){return bid.isNewEntry}).map(function(bid){return bid.campaign});
+            if (activeBids.indexOf($scope.campaign.id) != -1){
+              video.disabled = true;
+            }
+            if (newBids.indexOf($scope.campaign.id) != -1){
+              video.disabled = true;
+            }
 
-                if (!videos.length){
-                    $scope.error = "You have not uploaded any videos yet"
-                    return;
-                }
-
-                videos.forEach(function(video){
-
-                  var activeBids = video.bids.filter(function(bid){return bid.isActive}).map(function(bid){return bid.campaign});
-                  var newBids = video.bids.filter(function(bid){return bid.isNewEntry}).map(function(bid){return bid.campaign});
-
-                  if (activeBids.indexOf($scope.campaign.id) != -1){
-                    video.disabled = true;
-                  }
-
-                  if (newBids.indexOf($scope.campaign.id) != -1){
-                    video.disabled = true;
-                  }
-
-                })  
-
-                $scope.videos = videos;
-                $scope.videoSelectToggle();
-            })
-            .catch(function(err){
-                $scope.videoLoading2 = false;
-                $scope.error = err.message;
-            })
+          })  
+          $scope.videos = videos;
+          $scope.videoSelectToggle();
+      })
+      .catch(function(err){
+          $scope.videoLoading2 = false;
+          $scope.error = err.message;
+      })
 
     }
 
@@ -156,9 +148,7 @@ angular.module( 'bidio.campaign', [
     }
 
 		$scope.upload = function(file){
-
       $scope.videoLoading = true;
-
       Upload.upload({
         url: '/api/video/upload',
         method: 'POST',
@@ -174,21 +164,16 @@ angular.module( 'bidio.campaign', [
         var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
         $scope.pp = progressPercentage;
       })
-
     };
 
     $scope.submit = function(video){
-
       if (!video.urlTitle, !video.title, !video.amazonUrl, !video.description){
         $scope.error = "Incomplete entry";
         return;
       }
-
       $scope.loading = true;
-
       VideoModel.create(video)
       .then(function(video){
-
         var toUpdate = {
           video: video.id,
           isNewEntry: true,
@@ -196,11 +181,9 @@ angular.module( 'bidio.campaign', [
           originCampaign: $scope.campaign.id,
           value: $scope.campaign.price
         };
-
         if ($scope.campaign.endDate){
           toUpdate.originCampaignExpiry = $scope.campaign.endDate;
         }
-
         return BidModel.create(toUpdate)
       })
       .then(function(response){
@@ -211,14 +194,11 @@ angular.module( 'bidio.campaign', [
         //TODO: more details plz
         $scope.error = "An error occurred";
         $scope.loading = false;
-      })
-    
+      }) 
     };
 
     $scope.submitPrev = function(id){
-
       $scope.prevLoading = true;
-
       var toUpdate = {
         video: id,
         isNewEntry: true,
@@ -226,26 +206,22 @@ angular.module( 'bidio.campaign', [
         originCampaign: $scope.campaign.id,
         value: $scope.campaign.price
       };
-
       if ($scope.campaign.endDate){
         toUpdate.originCampaignExpiry = $scope.campaign.endDate;
       }
-
       return BidModel.create(toUpdate)
       .then(function(){
         $scope.prevLoading = false;
         $scope.finished = true;
 
       })
-      .catch(function(err){
-        
+      .catch(function(err){ 
         //TODO: more details plz
         console.log(err);
         $scope.error = "An error occurred";
         $scope.loading = false;
       })
     }
-
 		$scope.cancel = function(){
 			$uibModalInstance.close();
     };

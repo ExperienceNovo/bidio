@@ -80,6 +80,16 @@ module.exports = {
         }
     },
 
+    //beforeValidate: function(values, cb) {
+        //Campaign.findOne({urlTitle: values.urlTitle}).exec(function (err, record) {
+            //if already url title, add an iterator to the end to make it unique. 
+            //if (record){
+                //record.urlTitle
+            //}
+            //else{cb();}
+        //});
+    //}
+
     afterCreate: function (post, next) {
         // set message.user = to appropriate user model
         User.getOne(post.user)

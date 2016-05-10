@@ -1,12 +1,10 @@
 <link href="http://vjs.zencdn.net/5.8.0/video-js.css" rel="stylesheet">
-<div class="campaignsTitleContainer">
-	<h1 class="contentTitleLetters">{{video.title}}</h1>
+<div class="surface-container home-pad">
+	<div class="campaignsTitleContainer">
+		<h2 class="contentTitleLetters" style="text-transform:capitalize;">{{video.title}}</h2>
+	</div>
 </div>
-<div class="campaign-desc clearfix" ng-show="video.campaign">
-	<p>{{video.campaign.title}}</p>
-	<a ng-click="clickThrough()">{{video.campaign.prompt}}&nbsp;<i class="fa fa-caret-right"></i></a>
-</div>
-
+<div class="spacing-25"></div>
 <div class="video-container">
 	<video 
 		src={{video.amazonUrl}}
@@ -21,26 +19,28 @@
 		vjs-setup="options"
 		vjs-ratio="16:9">
 	</video>
+	<a class="vid-clickthrough" ng-click="clickThrough()"><img src="images/zaxbys-icon.png"></a>
+	<div class="spacing-15"></div>
+	<div class="row">
+		<div class="col-md-6">
+			<p><b>Posted by</b>: <a href="member/{{video.user.username}}">{{video.user.username}}</a></p>
+			<p><b>Views</b>: {{video.viewCount}}</p>
+			<p ng-show="video.campaign"><b>Prize per Click</b>: ${{video.campaign.price | number: 2 }}</p>
+		</div>
+		<div class="col-md-6">
+	<div class="spacing-15"></div>
+			<span>
+				<a ng-hide="!currentUser" class="btn anim-button fl-l" ng-click="bid()">Make Bid</a>
+				<a href="#" class="btn anim-button fl-l" style="margin-left: 15px;" ng-click="share()">Share</a>
+			</span>
+			<div class="spacing-15"></div>
+		</div>
+	</div>
 </div>
 
 <div id="video-details" class="container" style="padding-top:25px"> 
-	<div class="row">
-		<div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
-			<p><b>Posted by</b>: <a href="member/{{video.user.username}}">{{video.user.username}}</a></p>
-			<p><b>Views</b>: {{video.viewCount}}</p>
-
-		<!--<p ng-show="video.campaign"><b>$/click</b>: ${{video.campaign.price | number: 2 }}</h3>
-			<p><b>bid: $/click</b>: ${{highestBid.value}}-->
-		</div>
-		<div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
-			<p>{{video.description}}</p>
-			<div class="spacing-50"></div>
-			<button ng-hide="!currentUser" class="btn" ng-click="bid()" style="float:left">Make Bid</button>
-			<a href="#" class="btn anim-button fl-l" style="float:right">share</a>
-		</div>
-	</div>	
-
-	<p>show public bids?</p>
-
-	
+	<div class="aboutTxt" style="width:100%;margin: 0 auto;">
+		<p>{{video.description}}</p>
+	</div>
+	<div class="spacing-50"></div>
 </div>

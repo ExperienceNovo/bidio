@@ -1,6 +1,29 @@
 <link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css">
 <link href="http://vjs.zencdn.net/5.8.0/video-js.css" rel="stylesheet">
-<div layout="row">
+<!-- this should be mobile-->
+<div class="spacing-25"></div>
+<ul class="nav nav-tabs" style="width:100%;text-align:center;background:#fff">
+	<li ui-sref-active="active" class="ng-scope active" style="float:none;display:inline-block;">
+		<a ui-sref="dashboard.videos" href="/dashboard/videos">Videos</a>
+	</li>		
+	<li ui-sref-active="active" class="ng-scope" style="float:none;display:inline-block;">
+		<a ui-sref="dashboard.profileMain" href="/dashboard/profile">Profile</a>
+	</li>		
+	<li ui-sref-active="active" class="ng-scope" style="float:none;display:inline-block;">
+		<a ui-sref="dashboard.campaigns" href="/dashboard/campaigns">Campaigns</a>
+	</li>
+	<li ui-sref-active="active" class="ng-scope" style="float:none;display:inline-block;">
+		<a ui-sref="dashboard.analytics" href="/dashboard/analytics">Analytics</a>
+	</li>
+</ul>	
+<div class="admin-page-wrapper" layout-fill>
+	<div ui-view></div>
+</div>
+<div class="admin-page-wrapper-mobile" layout-fill>
+	<div ui-view></div>
+</div>
+<!-- this should be desktop-->
+<!--<div layout="row">
 	<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="true">
 	  <md-toolbar class="md-primary md-hue-2">
 	    <h1 class="md-toolbar-tools">Dashboard</h1>
@@ -42,5 +65,5 @@
 	<div class="admin-page-wrapper" layout-fill>
 		<div ui-view></div>
 	</div>
-</div>
+</div>-->
 <div ng-include="'footer/index.tpl.html'"></div>
