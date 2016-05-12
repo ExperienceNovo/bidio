@@ -126,7 +126,7 @@ button.updateCampaignButton {
 }
 
 .video-container {
-    width: 45%;
+    width: 35%;
     display: inline-block;
     padding-right: 15px;
 }
@@ -142,6 +142,14 @@ button.updateCampaignButton {
 }
 
 @media only screen and (max-width: 992px) {
+    .video-container {
+        width: 95%!important;
+        margin-top:25px;
+        margin-bottom:25px;
+        display: inline-block;
+        padding:15px;   
+        float:none!important;
+    }
     .aboutTxt p {
         font-size: 19px;
         line-height: 2;
@@ -187,15 +195,6 @@ button.updateCampaignButton {
 }
 
 @media only screen and (max-width: 750px) {
-    .video-container {
-        width: 70%!important;
-        margin-top:25px;
-        margin-bottom:25px;
-        display: inline-block;
-        padding:15px;   
-        float:none!important;
-    }
-
     .aboutTxt p {
         padding:15px;
         width: 100%;

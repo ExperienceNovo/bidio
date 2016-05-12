@@ -1,0 +1,75 @@
+.tabs {
+  min-width: 320px;
+  max-width: 800px;
+  padding: 15px 0;
+  margin: 0 auto;
+}
+
+.tabs input {
+  display: none;
+}
+
+.tabs label {
+  display: inline-block;
+  margin: 0 0 -1px;
+  padding: 15px 25px;
+  font-weight: 600;
+  text-align: center;
+  color: #4c4c4c;
+  border: 1px solid #ddd;
+  background: #f1f1f1;
+  border-radius: 3px 3px 0 0;
+}
+
+.tabs label:before {
+  font-family: fontawesome;
+  font-weight: normal;
+  margin-right: 10px;
+  color: #FE9A2E
+}
+
+.tabs label[for*="1"]:before {
+  content: "\f007";
+}
+
+.tabs label[for*="2"]:before {
+  content: "\f04b";
+}
+
+.tabs label[for*="3"]:before {
+  content: "\f155";
+}
+
+.tabs label[for*="4"]:before {
+  content: "\f1e0";
+}
+
+.tabs label[for*="5"]:before {
+  content: "\f0d6";
+}
+
+.tabs label:hover {
+  color: #888;
+  cursor: pointer;
+}
+
+.tabs input:checked + label {
+  color: #555;
+  border: 1px solid #ddd;
+  border-top: 1px solid #009933;
+  border-bottom: 1px solid #fff;
+  background: #fff;
+}
+
+#tab1:checked ~ #content1,
+#tab2:checked ~ #content2,
+#tab3:checked ~ #content3,
+#tab4:checked ~ #content4 {
+  display: block;
+}
+
+@media screen and (max-width: 680px) {
+  .tabs label {
+    margin-top: 15px;
+  }
+}

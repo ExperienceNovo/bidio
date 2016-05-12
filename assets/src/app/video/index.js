@@ -35,6 +35,7 @@ angular.module( 'bidio.video', [
 
 	$scope.currentUser = config.currentUser;
 	$scope.video = video;
+    $scope.video.poster = 'images/video-overlay.png'
 	if(typeof($scope.video)=="undefined"){$location.path('/')}
 	titleService.setTitle(video.title + ' - bidio');
 	$scope.viewModel = {};

@@ -90,12 +90,18 @@ body {
       display:none;
   }
 }
+
 a.vid-clickthrough {
   position: relative;
-  top: -60px;
-  right: 10px;
+  top: -75px;
+  right: 25px;
   float: right;
   cursor: pointer;
+  opacity: 0.25;
+}
+
+a.vid-clickthrough:hover {
+  opacity: 0.85;
 }
 
 .vid-clickthrough img {
