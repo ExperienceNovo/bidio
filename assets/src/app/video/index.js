@@ -75,7 +75,7 @@ angular.module( 'bidio.video', [
 		});
 	};
 
-	$scope.bid = function(){
+	$scope.share = function(){
 		$uibModal.open({
 			animation: true,
 			templateUrl: "video/templates/share.tpl.html",
