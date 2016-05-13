@@ -3,6 +3,7 @@
   max-width: 800px;
   padding: 15px 0;
   margin: 0 auto;
+  margin-top: 40px;
 }
 
 .tabs input {
@@ -66,6 +67,177 @@
 #tab3:checked ~ #content3,
 #tab4:checked ~ #content4 {
   display: block;
+}
+
+[class^="tooltip"] {
+  position: relative;
+}
+[class^="tooltip"]:after {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  content: attr(data-tooltip);
+  padding: 6px 10px;
+  top: -3.5em;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-2px);
+          transform: translateX(-50%) translateY(-2px);
+  background: grey;
+  color: white;
+  white-space: nowrap;
+  z-index: 2;
+  border-radius: 2px;
+  -webkit-transition: opacity 0.2s cubic-bezier(0.64, 0.09, 0.08, 1), -webkit-transform 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+  transition: opacity 0.2s cubic-bezier(0.64, 0.09, 0.08, 1), -webkit-transform 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+  transition: opacity 0.2s cubic-bezier(0.64, 0.09, 0.08, 1), transform 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+  transition: opacity 0.2s cubic-bezier(0.64, 0.09, 0.08, 1), transform 0.2s cubic-bezier(0.64, 0.09, 0.08, 1), -webkit-transform 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+}
+
+[class^="tooltip"]:hover:after {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: translateX(-50%) translateY(0);
+          transform: translateX(-50%) translateY(0);
+}
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+.cs-social-share {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.cs-share-this-product {
+  display: inline-block;
+  width: 15%;
+  height: 30px;
+  padding: 1px 0px;
+  min-width: 68px;
+  margin: 2% .8%;
+  overflow: hidden;
+  background:#fff;
+  -webkit-filter: brightness(90%);
+  -moz-filter: brightness(90%);
+  -ms-filter: brightness(90%);
+  -o-filter: brightness(90%);
+  filter: brightness(90%);
+  transition: all .45s ease-in-out;
+}
+
+.cs-share-this-product:hover {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  border-radius: 3px;
+  -webkit-filter: brightness(120%);
+  -moz-filter: brightness(120%);
+  -ms-filter: brightness(120%);
+  -o-filter: brightness(120%);
+  filter: brightness(120%);
+}
+
+.cs-share-this-product:hover i {
+  left: 25%;
+  transform: scale(1);
+}
+
+.cs-share-this-product:hover span.share-text {
+  opacity: 0;
+  left: 20px;
+  transform: rotateX(90deg) scale(0.3);
+}
+
+.cs-share-this-product a {
+  text-decoration: none;
+}
+
+.cs-share-this-product a:hover {
+  color:#fff!important;
+}
+
+.cs-share-this-product i {
+  width: 28px;
+  transition: all .5s ease;
+  position: relative;
+  left: 0;
+  top: 3.5px;
+  transform: scale(0.8);
+}
+
+.cs-share-this-product .social-share-icon-block span.share-text {
+  font-size: 12px;
+  color:#252525;
+  font-weight: bold;
+  position: relative;
+  left: -5px;
+  top: 3.5px;
+  transition: all .45s ease-in-out;
+}
+
+.cs-share-this-product.twitter:hover {
+  background: #25C0E2;
+}
+
+.cs-share-this-product.blog:hover {
+  background: #FE9A2E;
+}
+
+.cs-share-this-product.privacy:hover {
+  background: #FE9A2E;
+}
+
+@media screen and (max-width: 1900px) {
+  .video-container {
+    width: 50%
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .video-container {
+    width: 65%
+  }
+}
+
+@media screen and (max-width: 720px) {
+  a.vid-clickthrough {
+    position: relative;
+    top: -50px;
+    right: 25px;
+    float: right;
+    cursor: pointer;
+    opacity: 0.25;
+  }
+  .vid-clickthrough img {
+    height: 35px
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .cs-share-this-product .social-share-icon-block span.share-text {
+    font-size: 8px;
+  }
+}
+
+@media screen and (max-width: 391px) {
+  a.vid-clickthrough {
+    position: relative;
+    top: -170px;
+    right: 15px;
+    float: right;
+    cursor: pointer;
+    opacity: 0.25;
+  }
+  .vid-clickthrough img {
+    height: 25px
+  }
 }
 
 @media screen and (max-width: 680px) {

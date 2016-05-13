@@ -39,6 +39,13 @@ body {
   user-select: none; 
 }
 
+.footer-p {
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center
+}
+
 @media only screen and (max-width: 1050px) {
   .aboutdrop-mobile {
     display: block!important;
@@ -64,6 +71,13 @@ body {
     margin-top:1px;
   }
 }
+
+@media only screen and (max-width: 1036px) {
+  .nav-float {
+      float: left!important;
+  }
+}
+
 @media only screen and (max-width:992) {
   .sidenav-display-none {
     display:none!important;

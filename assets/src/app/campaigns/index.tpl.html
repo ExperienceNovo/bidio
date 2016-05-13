@@ -1,4 +1,4 @@
-<div class="surface-container home-pad">
+<div class="surface-container home-pad" style="height: 100%;">
 	<div class="spacing-25"></div>
     <h2 class="section-title dec-title" style="text-align: center;"><strong  style="color:#FE9A2E">Campaigns</strong>
     <hr style="width: 170px;margin: 0 auto;margin-top: 25px;"></h2>
@@ -25,4 +25,27 @@
 			</div>
 		</div>
 	</div>
+	<div ng-include="'footer/index.tpl.html'" class="video-footer footer-mobile"></div>
 </div>
+<div class="spacing-25"></div>
+<style type="text/css">
+	.video-footer {
+	    bottom: 0;
+	    width: 100%;
+	    height: 150px;
+	    background: #101010;
+	    border-top: 5px solid #FE9A2E;
+	}
+	.footer-mobile {
+		display: none
+	}
+	@media screen and (max-width: 991px) {
+		.footer-desk {
+			display: none
+		}
+		.footer-mobile {
+			display: block
+		}
+	}
+</style>
+<div ng-include="'footer/index.tpl.html'" class="video-footer footer-desk"></div>

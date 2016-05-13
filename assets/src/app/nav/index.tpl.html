@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller="NavCtrl">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller="NavCtrl" style="background:#101010">
   <div class="container">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -19,7 +19,6 @@
           <li ng-show="currentUser"><a href="/campaigns">Campaigns</a></li>
           <li ng-show="currentUser"><a href="/dashboard">Dashboard</a></li>
           <li ng-show="currentUser"><a href="/logout">Logout</a></li>
-
           <!--
           <li class="ng-scope no-select desk-li " ui-sref-active="active" ng-show="currentUser">
             <div class="aboutdrop-desk" style="padding:7.5px;"></div>
@@ -48,7 +47,6 @@
             </div>     
           </li>
           -->
-
           <!--<li ng-show="!currentUser"><a href="#">Discover</a></li>-->
           <li ng-show="!currentUser"><a href="/campaigns">Campaigns</a></li>
           <li ng-show="!currentUser"><a class="bidio-nav" href="/creators">Creators</a></li>
