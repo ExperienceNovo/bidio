@@ -58,6 +58,8 @@ module.exports.routes = {
   'get /upload': 'HomeController.index',
   'get /video/:id': 'HomeController.index',
 
+  'get /zaxbys': 'HomeController.index',
+
   'post /auth/local': 'AuthController.callback',
   'post /auth/local/:action': 'AuthController.callback',
   'get /auth/providers': 'UserController.getPassports',

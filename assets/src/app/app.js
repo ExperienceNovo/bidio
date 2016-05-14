@@ -45,6 +45,9 @@ angular.module( 'bidio', [
 
     $urlRouterProvider.when('/about/', '/about');
     $urlRouterProvider.when('/campaigns/', '/campaigns');
+    $urlRouterProvider.when('/zaxbys', '/campaign/zaxbys-railhawks');
+    $urlRouterProvider.when('/zaxbys/', '/campaign/zaxbys-railhawks');
+
 
     $urlRouterProvider.otherwise(function ($injector, $location) {
         if ($location.$$url === '/') {
