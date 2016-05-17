@@ -51,6 +51,7 @@ module.exports.routes = {
   'get /login': 'HomeController.index',
   'get /logout': 'AuthController.logout',
   'get /member/:path': 'HomeController.index',
+  'get /privacy': 'HomeController.index',
   'get /register': 'HomeController.index',
   'get /search': 'HomeController.index',
   'get /search/:path': 'HomeController.index',

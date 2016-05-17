@@ -26,6 +26,7 @@ angular.module( 'bidio', [
     'bidio.login',
     'bidio.member',
     'bidio.nav',
+    'bidio.privacy',
     'bidio.register',
     'bidio.search',
     'bidio.sponsors',

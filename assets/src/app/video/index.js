@@ -31,7 +31,7 @@ angular.module( 'bidio.video', [
 	});
 })
 
-.controller( 'VideoCtrl', function VideoCtrl( $scope, lodash, config, titleService, $sailsSocket, video, $location, $mdDialog, ViewModel, VideoModel, ClickModel, ezfb ) {
+.controller( 'VideoCtrl', function VideoCtrl( $scope, lodash, config, titleService, $sailsSocket, video, $location, $mdDialog, $uibModal, ViewModel, VideoModel, ClickModel, ezfb ) {
 
 	$scope.currentUser = config.currentUser;
 	$scope.video = video;
@@ -108,10 +108,8 @@ angular.module( 'bidio.video', [
 
 	$scope.clickThrough = function(){
 		$scope.video.clicked = true;
-		//this adds a click model -- hmm... probably a better way..
-
 		//ClickModel.create().then(function(){
-
+			//$location.path(/campaign/+video.campaign.urlTitle)
 		//});
 		VideoModel.update($scope.video).then(function(){
 			$location.path(/campaign/+video.campaign.urlTitle)

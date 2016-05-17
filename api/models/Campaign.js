@@ -27,6 +27,11 @@ module.exports = {
             type: 'string'
         },
 
+        imageUrl: {
+            type: 'string',
+            required: true
+        },
+
         videoUrl: {
             type: 'string',
             required: true
@@ -79,6 +84,7 @@ module.exports = {
             type: 'string',
             required: true
         },
+
         intro: {
             type: 'string',
             required: true
