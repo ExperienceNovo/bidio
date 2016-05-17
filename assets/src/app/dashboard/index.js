@@ -200,13 +200,13 @@ angular.module( 'bidio.dashboard', [
         if($scope.clicks){
             $scope.series = ['Clicks']
             for (x in $scope.clicks){
-                $scope.labels.push($scope.views[x].createdAt);
+                $scope.labels.push($scope.clicks[x].createdAt);
                 $scope.clickData[0].push(x);
             }
         }
         else{
             $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
-            $scope.series = ['Views', 'Click Throughs'];
+            $scope.series = ['Clicks', 'Click Throughs'];
             $scope.clickData = [
                 [65, 59, 80, 81, 56, 55, 40],
                 [28, 48, 40, 19, 86, 27, 90]
