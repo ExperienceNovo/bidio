@@ -11,18 +11,18 @@ angular.module( 'bidio.video', [
 			}
 
 		},
-		onExit: function($state, video, VideoModel){
+		//onExit: function($state, video, VideoModel){
 			//if(video.campaign && video.campaign.doesRedirect){
 			//	return window.open(
 			//		video.campaign.redirectUrl,
 			//		"_blank"
 			//	)
 			//}
-			$state.transition.then(function(toState){
-				video.clicked = true;
-				return VideoModel.update(video);
-			});
-		},
+			//$state.transition.then(function(toState){
+			//	video.clicked = true;
+			//	return VideoModel.update(video);
+			//});
+		//},
 		resolve: {
 			video: function(VideoModel, $stateParams){
 				return VideoModel.getOne($stateParams.id);
@@ -31,7 +31,7 @@ angular.module( 'bidio.video', [
 	});
 })
 
-.controller( 'VideoCtrl', function VideoCtrl( $scope, lodash, config, titleService, $sailsSocket, video, $location, $mdDialog, ViewModel, VideoModel, ClickModel ezfb ) {
+.controller( 'VideoCtrl', function VideoCtrl( $scope, lodash, config, titleService, $sailsSocket, video, $location, $mdDialog, ViewModel, VideoModel, ClickModel, ezfb ) {
 
 	$scope.currentUser = config.currentUser;
 	$scope.video = video;
@@ -109,8 +109,10 @@ angular.module( 'bidio.video', [
 	$scope.clickThrough = function(){
 		$scope.video.clicked = true;
 		//this adds a click model -- hmm... probably a better way..
-		//want to check for unique user id here:
 
+		//ClickModel.create().then(function(){
+
+		//});
 		VideoModel.update($scope.video).then(function(){
 			$location.path(/campaign/+video.campaign.urlTitle)
 		});

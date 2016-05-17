@@ -161,7 +161,7 @@ angular.module( 'bidio.dashboard', [
     titleService.setTitle('video');
     $scope.video = video;
     $scope.views = views;
-    $scope.clicks = views;
+    $scope.clicks = clicks;
 
     $scope.onClick = function (points, evt) {
         console.log(points, evt);
@@ -198,7 +198,7 @@ angular.module( 'bidio.dashboard', [
         $scope.clickData = [[]];
 
         if($scope.clicks){
-            $scope.series = ['Views']
+            $scope.series = ['Clicks']
             for (x in $scope.views){
                 $scope.labels.push($scope.views[x].createdAt);
                 $scope.clickData[0].push(x);
