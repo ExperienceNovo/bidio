@@ -35,11 +35,11 @@ module.exports = {
 				.exec(function(err, viewCount) {
 					Video.update({id: req.param('video')}, {viewCount:viewCount}).exec(function afterwards(err, updated){
 					  if (err) {return;}
-					  else{Video.publishUpdate(updated.toJSON())}
+					  //else{Video.publishUpdate(updated.toJSON())}
 					});
 					Bid.update({id: req.param('bid')}, {viewCount:viewCount}).exec(function afterwards(err, updated){
 						if (err) {return;}
-						else{Bid.publishUpdate(updated.toJSON())}
+						//else{Bid.publishUpdate(updated.toJSON())}
 					});
 				});
 				View.watch(req);

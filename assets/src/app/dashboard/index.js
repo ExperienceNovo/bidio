@@ -31,7 +31,7 @@ angular.module( 'bidio.dashboard', [
             video: function(VideoModel, $stateParams){
                 return VideoModel.getOne($stateParams.id);
             },
-            clicks: function(ClickModel, clicks){
+            clicks: function(ClickModel, video){
                 return ClickModel.getByVideo(video.id);
             },
             views: function(ViewModel, video){
