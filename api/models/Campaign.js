@@ -18,6 +18,11 @@ module.exports = {
             defaultsTo: true
         },
 
+        isFeatured: {
+            type: 'boolean',
+            defaultsTo: false
+        },
+
         redirectUrl: {
             type: 'string'
         },

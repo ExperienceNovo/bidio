@@ -169,20 +169,20 @@ angular.module( 'bidio.dashboard', [
 
     $scope.updateViews = function(){
 
-        $scope.labels = [];
-        $scope.series = [];
+        $scope.viewLabels = [];
+        $scope.viewSeries = [];
         $scope.viewData = [[]];
 
         if($scope.views){
             $scope.series = ['Views']
             for (x in $scope.views){
-                $scope.labels.push($scope.views[x].createdAt);
+                $scope.viewLabels.push($scope.views[x].createdAt);
                 $scope.viewData[0].push(x);
             }
         }
         else{
-            $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
-            $scope.series = ['Views', 'Click Throughs'];
+            $scope.viewLabels = ["January", "February", "March", "April", "May", "June", "July"];
+            $scope.viewSeries = ['Views', 'Click Throughs'];
             $scope.viewData = [
                 [65, 59, 80, 81, 56, 55, 40],
                 [28, 48, 40, 19, 86, 27, 90]
@@ -193,20 +193,20 @@ angular.module( 'bidio.dashboard', [
 
     $scope.updateClicks = function(){
 
-        $scope.labels = [];
-        $scope.series = [];
+        $scope.clickLabels = [];
+        $scope.clickSeries = [];
         $scope.clickData = [[]];
 
         if($scope.clicks){
-            $scope.series = ['Clicks']
+            $scope.clickSeries = ['Clicks']
             for (x in $scope.clicks){
-                $scope.labels.push($scope.clicks[x].createdAt);
+                $scope.clickLabels.push($scope.clicks[x].createdAt);
                 $scope.clickData[0].push(x);
             }
         }
         else{
-            $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
-            $scope.series = ['Clicks', 'Click Throughs'];
+            $scope.clickLabels = ["January", "February", "March", "April", "May", "June", "July"];
+            $scope.clickSeries = ['Clicks', 'Click Throughs'];
             $scope.clickData = [
                 [65, 59, 80, 81, 56, 55, 40],
                 [28, 48, 40, 19, 86, 27, 90]
