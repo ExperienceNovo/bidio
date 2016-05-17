@@ -69,17 +69,6 @@ module.exports.routes = {
 
 
   /**
-   * User routes
-   */
-  'get /api/user': 'UserController.getAll',
-  'get /api/user/me': 'UserController.getMine',
-  'get /api/user/username/:path': 'UserController.getByUsername',
-  'get /api/user/:id': 'UserController.getOne',
-  'post /api/user': 'UserController.create',
-  'post /api/user/:id': 'UserController.update',
-  'delete /api/user/:id': 'UserController.destroy',
-
-  /**
    * Bid routes
    */
   'get /api/bid/:id': 'BidController.getOne',
@@ -106,6 +95,29 @@ module.exports.routes = {
   'delete /api/campaign/:id': 'CampaignController.destroy',
 
   'post /api/profile/:id': 'ProfileController.update',
+
+  /**
+   * Profile routes
+   */
+  'post /api/profile/:id': 'ProfileController.update',
+
+
+  /**
+   * Click routes
+   */
+  'get /api/click/video/:id': 'ClickController.getByVideo',
+  'post /api/click': 'ClickController.create',
+
+  /**
+   * User routes
+   */
+  'get /api/user': 'UserController.getAll',
+  'get /api/user/me': 'UserController.getMine',
+  'get /api/user/username/:path': 'UserController.getByUsername',
+  'get /api/user/:id': 'UserController.getOne',
+  'post /api/user': 'UserController.create',
+  'post /api/user/:id': 'UserController.update',
+  'delete /api/user/:id': 'UserController.destroy',
 
   /**
   *	Video Routes

@@ -31,6 +31,9 @@ angular.module( 'bidio.dashboard', [
             video: function(VideoModel, $stateParams){
                 return VideoModel.getOne($stateParams.id);
             },
+            clicks: function(ClickModel, clicks){
+                return ClickModel.getByVideo(video.id);
+            },
             views: function(ViewModel, video){
                 return ViewModel.getByVideo(video.id);
             }
@@ -116,26 +119,24 @@ angular.module( 'bidio.dashboard', [
         $location.path('/login')
     }
 
-		if (localStorageService.get('redirectTo') === '/dashboard/profile/edit') {
-				$location.path('/dashboard/profile/edit');
-				localStorageService.remove('redirectTo');
-				console.log(localStorageService.get('redirectTo'));
-		}
+	if (localStorageService.get('redirectTo') === '/dashboard/profile/edit') {
+		$location.path('/dashboard/profile/edit');
+		localStorageService.remove('redirectTo');
+		console.log(localStorageService.get('redirectTo'));
+	}
 
-		if (window.location.hash && window.location.hash == '#_=_') {
-				console.log('removing hash stuff');
-				window.location.hash = '';
-				console.log(window.location)
-		}
+	if (window.location.hash && window.location.hash == '#_=_') {
+		console.log('removing hash stuff');
+		window.location.hash = '';
+		console.log(window.location)
+	}
 
     $scope.changePath = function (path) {
-				$location.path('/dashboard' + path);
+        $location.path('/dashboard' + path);
     };
 
 
 })
-
-
 
 .controller( 'DashboardHomeCtrl', function DashboardHomeCtrl( $scope, titleService, lodash, config ) {
     titleService.setTitle('dashboard');
@@ -156,32 +157,33 @@ angular.module( 'bidio.dashboard', [
     };
 })
 
-.controller( 'DashboardVideoCtrl', function DashboardVideosCtrl( $scope, titleService, video, views, VideoModel, $sailsSocket ) {
+.controller( 'DashboardVideoCtrl', function DashboardVideosCtrl( $scope, titleService, video, views, VideoModel, clicks, $sailsSocket ) {
     titleService.setTitle('video');
     $scope.video = video;
     $scope.views = views;
+    $scope.clicks = views;
 
-    //could populate.. --> hm.
-    //$scope.views = video.views
+    $scope.onClick = function (points, evt) {
+        console.log(points, evt);
+    };
 
-    console.log(views);
     $scope.updateViews = function(){
 
         $scope.labels = [];
         $scope.series = [];
-        $scope.data = [[]];
+        $scope.viewData = [[]];
 
         if($scope.views){
             $scope.series = ['Views']
             for (x in $scope.views){
                 $scope.labels.push($scope.views[x].createdAt);
-                $scope.data[0].push(x);
+                $scope.viewData[0].push(x);
             }
         }
         else{
             $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
             $scope.series = ['Views', 'Click Throughs'];
-            $scope.data = [
+            $scope.viewData = [
                 [65, 59, 80, 81, 56, 55, 40],
                 [28, 48, 40, 19, 86, 27, 90]
             ];
@@ -189,9 +191,30 @@ angular.module( 'bidio.dashboard', [
     };
     $scope.updateViews()
 
-    $scope.onClick = function (points, evt) {
-        console.log(points, evt);
+    $scope.updateClicks = function(){
+
+        $scope.labels = [];
+        $scope.series = [];
+        $scope.clickData = [[]];
+
+        if($scope.clicks){
+            $scope.series = ['Views']
+            for (x in $scope.views){
+                $scope.labels.push($scope.views[x].createdAt);
+                $scope.clickData[0].push(x);
+            }
+        }
+        else{
+            $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
+            $scope.series = ['Views', 'Click Throughs'];
+            $scope.clickData = [
+                [65, 59, 80, 81, 56, 55, 40],
+                [28, 48, 40, 19, 86, 27, 90]
+            ];
+        }
     };
+    $scope.updateClicks()
+
 
     $sailsSocket.subscribe('view', function (envelope) {
         switch(envelope.verb) {
@@ -199,6 +222,18 @@ angular.module( 'bidio.dashboard', [
                 if (envelope.data.video == $scope.video.id){
                     $scope.views.unshift(envelope.data);
                     $scope.updateViews();
+                    break;
+                }
+                else{break;}
+        }
+    });
+
+    $sailsSocket.subscribe('click', function (envelope) {
+        switch(envelope.verb) {
+            case 'created':
+                if (envelope.data.video == $scope.video.id){
+                    $scope.clicks.unshift(envelope.data);
+                    $scope.updateClicks();
                     break;
                 }
                 else{break;}

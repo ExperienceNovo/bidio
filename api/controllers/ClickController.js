@@ -1,5 +1,5 @@
 /**
- * ViewController
+ * ClickController
  *
  * @description :: Server-side logic for managing views
  * @help        :: See http://links.sailsjs.org/docs/controllers
@@ -21,29 +21,30 @@ module.exports = {
 	},
 
 	create: function (req, res) {
+
 		var model = {
 			user: req.param('user'),
 			video: req.param('video'),
 			bid: req.param('bid'),
 		};
 
-		View.create(model)
+		Click.create(model)
 		.exec(function(err, model) {
 			if (err) {return console.log(err)}
 			else {
-				View.count().where({video: req.param('video')})
+				Click.count().where({video: req.param('video')})
 				.exec(function(err, viewCount) {
-					Video.update({id: req.param('video')}, {viewCount:viewCount}).exec(function afterwards(err, updated){
-					  if (err) {return;}
-					  else{Video.publishUpdate(updated.toJSON())}
+					Video.update({id: req.param('video')}, {clickCount:clickCount}).exec(function afterwards(err, updated){
+						if (err) {return}
+						else{Video.publishUpdate(updated.toJSON())}
 					});
-					Bid.update({id: req.param('bid')}, {viewCount:viewCount}).exec(function afterwards(err, updated){
-						if (err) {return;}
+					Bid.update({id: req.param('bid')}, {clickCount:clickCount}).exec(function afterwards(err, updated){
+						if (err) {return}
 						else{Bid.publishUpdate(updated.toJSON())}
 					});
 				});
-				View.watch(req);
-				View.publishCreate(model.toJSON());
+				Click.watch(req);
+				Click.publishCreate(model.toJSON());
 				res.json(model);
 			}
 		});

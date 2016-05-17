@@ -31,7 +31,7 @@ angular.module( 'bidio.video', [
 	});
 })
 
-.controller( 'VideoCtrl', function VideoCtrl( $scope, lodash, config, titleService, $sailsSocket, video, $location, $mdDialog, ViewModel, VideoModel, ezfb ) {
+.controller( 'VideoCtrl', function VideoCtrl( $scope, lodash, config, titleService, $sailsSocket, video, $location, $mdDialog, ViewModel, VideoModel, ClickModel ezfb ) {
 
 	$scope.currentUser = config.currentUser;
 	$scope.video = video;
@@ -110,9 +110,12 @@ angular.module( 'bidio.video', [
 		$scope.video.clicked = true;
 		//this adds a click model -- hmm... probably a better way..
 		//want to check for unique user id here:
+
 		VideoModel.update($scope.video).then(function(){
 			$location.path(/campaign/+video.campaign.urlTitle)
 		});
+
+
 	};
 
 	$sailsSocket.subscribe('bid', function (envelope) {
