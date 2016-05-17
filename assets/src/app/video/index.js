@@ -9,7 +9,7 @@ angular.module( 'bidio.video', [
 				controller: 'VideoCtrl',
 				templateUrl: 'video/index.tpl.html'
 			}
-			
+
 		},
 		onExit: function($state, video, VideoModel){
 			//if(video.campaign && video.campaign.doesRedirect){
@@ -31,7 +31,7 @@ angular.module( 'bidio.video', [
 	});
 })
 
-.controller( 'VideoCtrl', function VideoCtrl( $scope, lodash, config, titleService, $sailsSocket, video, $location, $uibModal, ViewModel, VideoModel ) {
+.controller( 'VideoCtrl', function VideoCtrl( $scope, lodash, config, titleService, $sailsSocket, video, $location, $mdDialog, ViewModel, VideoModel, ezfb ) {
 
 	$scope.currentUser = config.currentUser;
 	$scope.video = video;
@@ -75,18 +75,36 @@ angular.module( 'bidio.video', [
 		});
 	};
 
-	$scope.share = function(){
-		$uibModal.open({
-			animation: true,
-			templateUrl: "video/templates/share.tpl.html",
-			controller: "ShareCtrl",
-			resolve: {
-				video: function(){
-					return video
-				}
-			}
-		});
-	};
+	// $scope.share = function(){
+	// 	$uibModal.open({
+	// 		animation: true,
+	// 		templateUrl: "video/templates/share.tpl.html",
+	// 		controller: "ShareCtrl",
+	// 		resolve: {
+	// 			video: function(){
+	// 				return video
+	// 			}
+	// 		}
+	// 	});
+	// };
+
+	$scope.share = function(ev) {
+    // var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
+    $mdDialog.show({
+      controller: ShareDialogController,
+      templateUrl: 'video/templates/shareDialog.tpl.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose: true
+      // fullscreen: useFullScreen
+    })
+
+    // $scope.$watch(function() {
+    //   return $mdMedia('xs') || $mdMedia('sm');
+    // }, function(wantsFullScreen) {
+    //   $scope.customFullscreen = (wantsFullScreen === true);
+    // });
+  };
 
 	$scope.clickThrough = function(){
 		$scope.video.clicked = true;
@@ -131,9 +149,38 @@ angular.module( 'bidio.video', [
 			$uibModalInstance.dismiss(result.data)
 		});
 	}
-	
+
 })
 
 .controller('ShareCtrl', function ($scope, video ) {
-	$scope.video = video;	
+	$scope.video = video;
 });
+
+function ShareDialogController($scope, $mdDialog, ezfb) {
+	$scope.shareFacebook = function() {
+		console.log('share facebook')
+		ezfb.ui(
+      {
+        method: 'share',
+				// href: 'www.google.com',
+				href: 'www.bidio.co',
+				name: 'name',
+        // picture: 'file:///Users/sueserene/projects/bidio/assets/images/video-overlay.png',
+				picture: 'https://2static1.fjcdn.com/comments/Haven+t+slept+well+lately+so+sleep+tight+pupper+may+flights+_f76daa893b0a5921705ff727db77b2dc.jpg',
+        description: 'description',
+				hashtag: '#ohshootwaddup'
+
+      },
+      function (res) {
+				console.log(res);
+        // res: FB.ui response
+      }
+    );
+	};
+	$scope.shareTwitter = function() {
+		console.log('share twitter')
+	};
+	$scope.cancel = function() {
+    $mdDialog.cancel();
+  };
+};

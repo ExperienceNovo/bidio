@@ -31,10 +31,11 @@ angular.module( 'bidio', [
     'bidio.sponsors',
     'bidio.video',
     'bidio.admin',
-    'LocalStorageModule'
+    'LocalStorageModule',
+    'ezfb'
 ])
 
-.config( function myAppConfig ( $sceDelegateProvider, $mdThemingProvider, $urlRouterProvider, $locationProvider ) {
+.config( function myAppConfig ( $sceDelegateProvider, $mdThemingProvider, $urlRouterProvider, $locationProvider, ezfbProvider ) {
 
     $sceDelegateProvider.resourceUrlWhitelist([
         // Allow same origin resource loads.
@@ -65,6 +66,9 @@ angular.module( 'bidio', [
         .primaryPalette('grey')
         .accentPalette('orange');
 
+    ezfbProvider.setInitParams({
+      appId: '629279003894718'
+    });
 })
 
 .run( function run () {

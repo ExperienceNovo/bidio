@@ -5,6 +5,7 @@
   "description": "NOVO LLC",
   "keywords": [],
   "dependencies": {
+    "angular-easyfb": "^1.4.4",
     "bcryptjs": "~2.1.0",
     "connect-mongo": "^0.8.2",
     "ejs": "~0.8.4",
