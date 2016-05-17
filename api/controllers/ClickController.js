@@ -8,11 +8,11 @@
 module.exports = {
 
 	getByVideo: function(req, res) {
-		View.find()
+		Click.find()
 		.where({video:req.param('id')})
 		.then(function(model) {
-			View.watch(req);
-			View.subscribe(req, model);
+			Click.watch(req);
+			Click.subscribe(req, model);
 			res.json(model);
 		})
 		.catch(function(err) {
