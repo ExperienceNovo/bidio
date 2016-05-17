@@ -174,7 +174,7 @@ angular.module( 'bidio.dashboard', [
         $scope.viewData = [[]];
 
         if($scope.views){
-            $scope.series = ['Views']
+            $scope.viewSeries = ['Views']
             for (x in $scope.views){
                 $scope.viewLabels.push($scope.views[x].createdAt);
                 $scope.viewData[0].push(x);
