@@ -199,7 +199,7 @@ angular.module( 'bidio.dashboard', [
 
         if($scope.clicks){
             $scope.series = ['Clicks']
-            for (x in $scope.views){
+            for (x in $scope.clicks){
                 $scope.labels.push($scope.views[x].createdAt);
                 $scope.clickData[0].push(x);
             }
