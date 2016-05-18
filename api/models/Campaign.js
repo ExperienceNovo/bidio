@@ -29,7 +29,6 @@ module.exports = {
 
         imageUrl: {
             type: 'string',
-            required: true
         },
 
         videoUrl: {

@@ -9,10 +9,16 @@ angular.module( 'bidio.discover', [
 				controller: 'DiscoverCtrl',
 				templateUrl: 'discover/index.tpl.html'
 			}
+		},
+		resolve:{
+			videos: function(VideoModel){
+				//return null;
+				return VideoModel.getAll();
+			}
 		}
 	});
 })
 
-.controller( 'DiscoverCtrl', function DiscoverCtrl( $scope, config, titleService, CampaignModel, campaign, $sce ) {
-
+.controller( 'DiscoverCtrl', function DiscoverCtrl( $scope, config, titleService, $sce, videos ) {
+	$scope.videos = videos;
 });
