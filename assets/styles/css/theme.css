@@ -105,6 +105,28 @@ body {
   }
 }
 
+.navbar-inverse .navbar-nav>li>a {
+    color: #eee;
+}
+
+a.navbar-brand {
+  height: 30px;
+  width: 100px;
+  margin-top: 10px;
+  background: url(https://s3.amazonaws.com/bidio8/bidio_logo_texty.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+a.navbar-brand:hover {
+  height: 30px;
+  width: 100px;
+  margin-top: 10px;
+  background: url(https://s3.amazonaws.com/bidio8/bidio_logo_textw.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 a.vid-clickthrough {
   position: relative;
   top: -75px;
