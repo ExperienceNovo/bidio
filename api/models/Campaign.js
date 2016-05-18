@@ -27,10 +27,10 @@ module.exports = {
             type: 'string'
         },
 
-        imageUrl: {
-            type: 'string',
-            required: true
-        },
+       // imageUrl: {
+         //   type: 'string',
+         //   required: true
+      //  },
 
         videoUrl: {
             type: 'string',
