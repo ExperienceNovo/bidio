@@ -39,71 +39,54 @@
 					</p>
 				</div>
 			</div>
-			<div class="spacing-25"></div>
+			<div class="spacing-50"></div>
 			<div class="row">		
-				<div class="col-md-12">
+				<div class="col-lg-8 col-lg-push-2 col-lg-pull-2">
 					<h2>Specifics</h2>
 					<div class="spacing-15"></div>
-					<div class="row">
-						<div class="col-md-4 col-md-push-4 col-md-pull-4">	
+					<div class="spacing-15"></div>
+					<div class="row" style="text-align: left;">
+						<div class="col-md-3">	
 							<md-input-container>
 								<label>Price per click</label>
 								<md-icon>attach_money</md-icon>
 								<input type="text" ng-model="campaign.price">
 							</md-input-container>
 						</div>
-					</div>
-					<div class="spacing-15"></div>
-					<div class="row">
-						<div class="col-md-4 col-md-push-4 col-md-pull-4">
+						<div class="col-md-3">
 							<md-checkbox ng-model="setBudget" aria-label="Set budget">
 								Set a campaign budget?
 							</md-checkbox>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-2 col-md-push-5 col-md-pull-5">
+							<br>
 							<md-input-container layout-fill>
 								<label>Campaign Budget</label>
 								<md-icon>attach_money</md-icon>
 								<input type="text" ng-model="campaign.contributionGoal" ng-disabled="!setBudget">
 							</md-input-container>
 						</div>
-					</div>
-					<div class="spacing-15"></div>
-					<div class="row">
-						<div class="col-md-4 col-md-push-4 col-md-pull-4">
+						<div class="col-md-3">
 							<md-checkbox ng-model="setVideoBudget" aria-label="Set video budget">
 								Set a per video budget?
 							</md-checkbox>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-2 col-md-push-5 col-md-pull-5">
+							<br>
 							<md-input-container layout-fill>
 								<label>Per Video Budget</label>
 								<md-icon>attach_money</md-icon>
 								<input type="text" ng-model="campaign.maxContributionPerVideo" ng-disabled="!setVideoBudget">
 							</md-input-container>
 						</div>
-					</div>					
-					<div class="spacing-15"></div>
-					<div class="row">
-						<div class="col-md-4 col-md-push-4 col-md-pull-4">
+						<div class="col-md-3">
 							<md-checkbox ng-model="setEndDate" aria-label="Set end">
 								Set an end date?
 							</md-checkbox>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-4 col-md-push-4 col-md-pull-4">
+							<br>
 							<md-datepicker layout-fill ng-model="endDate" ng-disabled="!setEndDate" md-placeholder="End Date"></md-datepicker>
 						</div>
 					</div>
 					<div class="spacing-15"></div>
 					<div class="row">
 						<div class="text-center">
-							<md-button class="md-raised md-accent">Submit</md-button>
+							<md-button class="md-raised md-accent">Save</md-button>
 						</div>
 					</div>
 				</div>
