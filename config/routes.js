@@ -86,22 +86,21 @@ module.exports.routes = {
   */
   'get /api/campaign': 'CampaignController.getAll',
   'get /api/campaign/me': 'CampaignController.getMine',
+  'get /api/campaign/featured': 'CampaignController.getFeatured',
   'get /api/campaign/:id': 'CampaignController.getOne',
   'get /api/campaign/member/:id': 'CampaignController.getByMember',
   'get /api/campaign/url/:path': 'CampaignController.getByUrlTitle',
-  // 'get /api/campaign/:id': 'CampaignController.getSubmittedVideos',
+   //'get /api/campaign/:id': 'CampaignController.getSubmittedVideos',
   'post /api/campaign': 'CampaignController.create',
   'post /api/campaign/check': 'CampaignController.check',
   'post /api/campaign/:id': 'CampaignController.update',
   'delete /api/campaign/:id': 'CampaignController.destroy',
-
   'post /api/profile/:id': 'ProfileController.update',
 
   /**
    * Profile routes
    */
   'post /api/profile/:id': 'ProfileController.update',
-
 
   /**
    * Click routes
