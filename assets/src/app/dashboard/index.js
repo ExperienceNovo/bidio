@@ -276,9 +276,7 @@ angular.module( 'bidio.dashboard', [
     $scope.fileName = null;
 
     $scope.upload = function(file){
-
         $scope.videoLoading = true;
-
         Upload.upload({
             url: '/api/video/upload',
             method: 'POST',
@@ -294,7 +292,6 @@ angular.module( 'bidio.dashboard', [
             var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
             $scope.pp = progressPercentage;
         })
-
     };
 
     $scope.submit = function(video){
