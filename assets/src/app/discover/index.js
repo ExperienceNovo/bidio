@@ -19,7 +19,12 @@ angular.module( 'bidio.discover', [
 	});
 })
 
-.controller( 'DiscoverCtrl', function DiscoverCtrl( $scope, config, titleService, $sce, videos ) {
+.controller( 'DiscoverCtrl', function DiscoverCtrl( $scope, config, titleService, $sce, videos, SearchModel ) {
 	$scope.videos = videos;
-  $scope.defaultposter = 'images/video-overlay.png'
+ 	$scope.defaultposter = 'images/video-overlay.png';
+ 	$scope.keyPress = function(searchValue){
+        SearchModel.search(searchValue).then(function(models){
+            $scope.searchResults = models;
+        });
+    }
 });
