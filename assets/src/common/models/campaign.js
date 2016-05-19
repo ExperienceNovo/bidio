@@ -16,6 +16,11 @@ angular.module('models.campaign', ['lodash', 'services', 'sails.io',])
         return $sailsSocket.post(url, model).then(success,error);
     }
 
+    this.getFeatured = function(){
+        var url = utils.prepareUrl('campaign/featured');
+        return $sailsSocket.get(url).then(success,error);
+    };
+
     this.getMine = function(){
         var url = utils.prepareUrl('campaign/me');
         return $sailsSocket.get(url).then(success,error);

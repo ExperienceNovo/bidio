@@ -14,6 +14,9 @@ angular.module( 'bidio.home', [
 			trendingVideos: function(VideoModel){
 				return VideoModel.getAll();
 			},
+			featuredCampaigns: function(CampaignModel){
+				return CampaignModel.getFeatured();
+			},
 			campaign: function(CampaignModel){
 				return CampaignModel.getByUrl("zaxbys-railhawks");
 			}
@@ -21,11 +24,11 @@ angular.module( 'bidio.home', [
 	});
 })
 
-.controller( 'HomeCtrl', function HomeController( $scope, titleService, config, trendingVideos, campaign, $sce ) {
+.controller( 'HomeCtrl', function HomeController( $scope, titleService, config, trendingVideos, campaign, featuredCampaigns, $sce ) {
 	titleService.setTitle('bidio');
 	$scope.currentUser = config.currentUser;
 	$scope.trendingVideos = trendingVideos;
 	campaign.title = $sce.trustAsHtml(campaign.title)
 	$scope.campaign = campaign;
-
+	$scope.featuredCampaigns = featuredCampaigns;
 });

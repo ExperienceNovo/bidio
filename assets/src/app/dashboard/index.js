@@ -15,7 +15,12 @@ angular.module( 'bidio.dashboard', [
     .state( 'dashboard.home', {
         url: '',
         controller: 'DashboardHomeCtrl',
-        templateUrl: 'dashboard/templates/home.tpl.html'
+        templateUrl: 'dashboard/templates/home.tpl.html',
+        resolve: {
+            featuredCampaigns: function(CampaignModel){
+                return CampaignModel.getFeatured();
+            }
+        }
     })
     .state( 'dashboard.analytics', {
         url: '/analytics',
@@ -138,9 +143,10 @@ angular.module( 'bidio.dashboard', [
 
 })
 
-.controller( 'DashboardHomeCtrl', function DashboardHomeCtrl( $scope, titleService, lodash, config ) {
+.controller( 'DashboardHomeCtrl', function DashboardHomeCtrl( $scope, titleService, lodash, config, featuredCampaigns ) {
     titleService.setTitle('dashboard');
     $scope.currentUser = config.currentUser;
+    $scope.featuredCampaigns = featuredCampaigns;
 })
 
 .controller( 'DashboardAnalyticsCtrl', function DashboardAnalyticsCtrl( $scope, titleService, config ) {

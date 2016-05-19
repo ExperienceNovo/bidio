@@ -66,6 +66,17 @@ module.exports = {
 		});
 	},
 
+	getFeatured: function(req, res) {
+		Campaign.find({isFeatured:true})
+		.then(function(model) {
+			Campaign.subscribe(req, model);
+			res.json(model);
+		})
+		.catch(function(err) {
+			res.send(404);
+		});
+	},
+
 	getByMember: function(req, res) {
 		Campaign.find({user:req.param('id')})
 		.then(function(model) {
@@ -76,6 +87,7 @@ module.exports = {
 			res.send(404);
 		});
 	},
+
 
 	getByUrlTitle: function(req, res) {
 		Campaign.findOne({urlTitle: req.param('path')})
