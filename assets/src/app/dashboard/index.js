@@ -546,6 +546,12 @@ angular.module( 'bidio.dashboard', [
     $scope.urlSaving = null;
     $scope.refreshing = false;
     $scope.endDate = new Date();
+    $scope.max = 3;
+    $scope.selectedIndex = 0;
+    $scope.nextTab = function() {
+        var index = ($scope.selectedIndex == $scope.max) ? 0 : $scope.selectedIndex + 1;
+        $scope.selectedIndex = index;
+    };
 
     function sort(bid){
 
