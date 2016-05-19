@@ -22,7 +22,6 @@ angular.module( 'bidio', [
     'bidio.discover',
     'bidio.footer',
     'bidio.home',
-    'bidio.intro',
     'bidio.login',
     'bidio.member',
     'bidio.nav',
