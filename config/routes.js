@@ -68,7 +68,6 @@ module.exports.routes = {
   'get /auth/:provider/callback': 'AuthController.callback',
   'delete /auth/providers/:provider': 'UserController.removePassport',
 
-
   /**
    * Bid routes
    */
@@ -79,7 +78,6 @@ module.exports.routes = {
   'post /api/bid': 'BidController.create',
   'post /api/bid/:id': 'BidController.update',
   'delete /api/bid/:id': 'BidController.destroy',
-
 
   /**
   *	Campaign Routes
@@ -97,16 +95,22 @@ module.exports.routes = {
   'delete /api/campaign/:id': 'CampaignController.destroy',
   'post /api/profile/:id': 'ProfileController.update',
 
-  /**
-   * Profile routes
-   */
-  'post /api/profile/:id': 'ProfileController.update',
 
   /**
    * Click routes
    */
   'get /api/click/video/:id': 'ClickController.getByVideo',
   'post /api/click': 'ClickController.create',
+
+  /**
+   * Profile routes
+   */
+  'post /api/profile/:id': 'ProfileController.update',
+
+  /**
+   * Search routes
+   */
+  'get /api/search/:searchQuery/:limit/:skip': 'SearchController.search',
 
   /**
    * User routes
