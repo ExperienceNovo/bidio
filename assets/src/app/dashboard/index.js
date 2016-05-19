@@ -497,7 +497,7 @@ angular.module( 'bidio.dashboard', [
 
             return CampaignModel.create({
                 /*placeholder here*/
-                bannerUrl: "http://placehold.it/1000x400?name=banner",
+                bannerUrl: "http://placehold.it/1000x400?text=banner",
                 /*placeholder here*/
                 videoUrl: "/videos/blah",
                 published: false,
@@ -505,7 +505,7 @@ angular.module( 'bidio.dashboard', [
                 price: "0.10",
                 user: config.currentUser.id,
                 urlTitle: result.urlTitle,
-                prompt: "Write and exciting prompt here",
+                prompt: "This will be the message that encourages click-throughs to the sponsor",
                 intro: "Write an exiciting intro here",
                 campaignContent: "Write exciting content here"
             });
