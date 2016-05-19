@@ -12,6 +12,9 @@
             </span>
         </div>
     </div>
+    <div style="margin-top: 25px;" ng-show="videos.length == 0">
+    	<h2 style="text-align:center">zero results</h2>
+    </div>
 	<div class="dashboardVideos col-xs-12 col-sm-12 col-md-4 col-lg-4" ng-repeat="video in videos" style="margin-top: 25px;">
 		<div class="spacing-25"></div>
 		<h2 class="bidio-orange" style="font-size:1.75em;padding-bottom: 5px;margin-bottom: 15px;font-weight: bold;text-transform:capitalize;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
