@@ -518,13 +518,6 @@ div[class^="icon"] {
     background: none;
 }
 
-
-@media(min-width:991px) {
-  .chart.chart-line {
-    zoom:0.65;
-  }
-}
-
 @media(min-width:768px) {
 
     #wrapper.toggled {
