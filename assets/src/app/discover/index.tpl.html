@@ -15,34 +15,36 @@
     <div style="margin-top: 25px;" ng-show="videos.length == 0">
     	<h2 style="text-align:center">zero results</h2>
     </div>
-	<div class="dashboardVideos col-xs-12 col-sm-12 col-md-4 col-lg-4" ng-repeat="video in videos" style="margin-top: 25px;">
-		<div class="spacing-25"></div>
-		<h2 class="bidio-orange" style="font-size:1.75em;padding-bottom: 5px;margin-bottom: 15px;font-weight: bold;text-transform:capitalize;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
-			<a ui-sref="video({id: video.id})">{{video.title}}</a>
-		</h2>
-		<video 
-			src="{{video.amazonUrl}}"
-			class="video-js vjs-default-skin"
-			controls preload="auto" 
-			width="640" 
-			height="264" 
-			fluid="true"
-			poster="{{defaultposter}}"
-			vjs-video
-			vjs-media="media"
-			vjs-setup="options"
-			vjs-ratio="16:9">
-		</video>
+    <div class="container">
+		<div class="dashboardVideos col-xs-12 col-sm-12 col-md-4 col-lg-4" ng-repeat="video in videos" style="margin-top: 25px;">
+			<div class="spacing-25"></div>
+			<h2 class="bidio-orange" style="font-size:1.75em;padding-bottom: 5px;margin-bottom: 15px;font-weight: bold;text-transform:capitalize;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+				<a ui-sref="video({id: video.id})">{{video.title}}</a>
+			</h2>
+			<video 
+				src="{{video.amazonUrl}}"
+				class="video-js vjs-default-skin"
+				controls preload="auto" 
+				width="640" 
+				height="264" 
+				fluid="true"
+				poster="{{defaultposter}}"
+				vjs-video
+				vjs-media="media"
+				vjs-setup="options"
+				vjs-ratio="16:9">
+			</video>
+		</div>
 	</div>
-    <style type="text/css">
-	  .video-footer {
-  	    margin-top: 150px;
-	  	float:left;
-		width: 100%;
-		height: 150px;
-		background: #101010;
-		border-top: 5px solid #FE9A2E;
-	  }
-	</style>
-	<div ng-include="'footer/index.tpl.html'" class="video-footer"></div>
 </div>
+<style type="text/css">
+  .video-footer {
+	    margin-top: 150px;
+  	float:left;
+	width: 100%;
+	height: 150px;
+	background: #101010;
+	border-top: 5px solid #FE9A2E;
+  }
+</style>
+<div ng-include="'footer/index.tpl.html'" class="video-footer"></div>
