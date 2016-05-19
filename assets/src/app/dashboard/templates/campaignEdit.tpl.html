@@ -58,8 +58,8 @@
 			</div>
 			<div class="spacing-25"></div>
 		</md-tab>
-		<md-tab ng-if="!campaign.published" label="About">
-		<!--<div class="row">
+		<md-tab label="About">
+			<!--<div class="row">
 				<div class="col-md-12">
 					<div class="spacing-25"></div>
 					<h2>Campaign Rules</h2>
@@ -180,7 +180,7 @@
 						</div>
 					</div>	
 					<div class="spacing-15"></div>			
-					<div class="row">
+					<div ng-if="!campaign.published" class="row">
 						<div class="text-center">
 							<md-button class="md-raised md-accent" ng-click="nextTab()">Next</md-button>
 						</div>
@@ -232,9 +232,14 @@
 		    	</div>    
 			</div>
 			<div class="spacing-25"></div>			
-			<div class="row">
+			<div ng-if="!campaign.published" class="row">
 				<div class="text-center">
 					<md-button class="md-raised md-accent" ng-click="nextTab()">Publish</md-button>
+				</div>
+			</div>
+			<div ng-if="campaign.published" class="row">
+				<div class="text-center">
+					<md-button class="md-raised md-accent" ng-click="">Save</md-button>
 				</div>
 			</div>
 	  	</md-tab>
