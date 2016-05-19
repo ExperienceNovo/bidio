@@ -21,4 +21,5 @@ angular.module( 'bidio.discover', [
 
 .controller( 'DiscoverCtrl', function DiscoverCtrl( $scope, config, titleService, $sce, videos ) {
 	$scope.videos = videos;
+  $scope.defaultposter = 'images/video-overlay.png'
 });

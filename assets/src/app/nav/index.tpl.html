@@ -13,9 +13,9 @@
       <div class="collapse navbar-collapse" nav-collapse="">
           <ul class="nav navbar-nav nav-float">
           <!--<li><a href="/search">Search</a></li>-->
-          <!--<li ng-show="currentUser"><a href="#">Discover</a></li>-->
-          <li ng-show="currentUser"><a href="/campaigns">Campaigns</a></li>
-          <li ng-show="currentUser"><a href="/dashboard">Dashboard</a></li>
+          <li ng-class="{ active: isActive('/discover')}" ng-show="currentUser"><a href="/discover">Discover</a></li>
+          <li ng-class="{ active: isActive('/campaigns')}" ng-show="currentUser"><a href="/campaigns">Campaigns</a></li>
+          <li ng-class="{ active: isActive('/dashboard')}" ng-show="currentUser"><a href="/dashboard">Dashboard</a></li>
           <li ng-show="currentUser"><a href="/logout">Logout</a></li>
           <!--
           <li class="ng-scope no-select desk-li " ui-sref-active="active" ng-show="currentUser">
@@ -45,12 +45,12 @@
             </div>     
           </li>
           -->
-          <!--<li ng-show="!currentUser"><a href="#">Discover</a></li>-->
-          <li ng-show="!currentUser"><a href="/campaigns">Campaigns</a></li>
-          <li ng-show="!currentUser"><a class="bidio-nav" href="/creators">Creators</a></li>
-          <li ng-show="!currentUser"><a class="bidio-nav" href="/sponsors">Sponsors</a></li>
-          <li ng-show="!currentUser"><a href="/login">Login</a></li>
-          <li ng-show="!currentUser"><a href="/register">Register</a></li>
+          <li ng-class="{ active: isActive('/discover')}" ng-show="!currentUser"><a href="/discover">Discover</a></li>
+          <li ng-class="{ active: isActive('/campaigns')}" ng-show="!currentUser"><a href="/campaigns">Campaigns</a></li>
+          <li ng-class="{ active: isActive('/creators')}" ng-show="!currentUser"><a class="bidio-nav" href="/creators">Creators</a></li>
+          <li ng-class="{ active: isActive('/sponsors')}" ng-show="!currentUser"><a class="bidio-nav" href="/sponsors">Sponsors</a></li>
+          <li ng-class="{ active: isActive('/login')}" ng-show="!currentUser"><a href="/login">Login</a></li>
+          <li ng-class="{ active: isActive('/register')}" ng-show="!currentUser"><a href="/register">Register</a></li>
         </ul>
       </div>
     </div>

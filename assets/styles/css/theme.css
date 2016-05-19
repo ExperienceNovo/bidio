@@ -105,6 +105,10 @@ body {
   }
 }
 
+.navbar-nav li.active a {
+  color:#FE9A2E!important;
+}
+
 .navbar-inverse .navbar-nav>li>a {
     color: #eee;
 }
