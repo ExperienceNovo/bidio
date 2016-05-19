@@ -13,7 +13,6 @@ angular.module('models.campaign', ['lodash', 'services', 'sails.io',])
 
     this.check = function(model){
         var url = utils.prepareUrl('campaign/check');
-
         return $sailsSocket.post(url, model).then(success,error);
     }
 
@@ -29,7 +28,6 @@ angular.module('models.campaign', ['lodash', 'services', 'sails.io',])
 
 	this.getOne = function(model) {
         var url = utils.prepareUrl('campaign/' + model);
-
         return $sailsSocket.get(url).then(success, error);
     };
 
