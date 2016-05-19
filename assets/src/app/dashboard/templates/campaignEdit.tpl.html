@@ -18,9 +18,9 @@
 </style>
 <md-content layout-padding>
 	<p class="text-left"><a ui-sref="dashboard.campaigns"><md-icon>chevron_left</md-icon>&nbsp;Back to campaigns</a></p>
-  <div class="dashboard-title">
-    <h2 style="font-weight: bold;"><a href="/campaign/{{campaign.urlTitle}}">{{campaign.title}}</a></h2>
-  </div>
+	<div class="dashboard-title">
+	<h2 style="font-weight: bold;"><a href="/campaign/{{campaign.urlTitle}}">{{campaign.title}}</a></h2>
+	</div>
 	<div class="spacing-25"></div>
 	<md-tabs md-dynamic-height md-border-bottom>
 		<md-tab ng-if="!campaign.published" label="Details">
