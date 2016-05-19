@@ -17,9 +17,18 @@
 		<h2 class="bidio-orange" style="font-size:1.75em;padding-bottom: 5px;margin-bottom: 15px;font-weight: bold;text-transform:capitalize;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
 			<a ui-sref="video({id: video.id})">{{video.title}}</a>
 		</h2>
-		<video src="{{video.amazonUrl}}" class="video-js vjs-default-skin" 
-			controls preload="none" width="640px" height="267px" data-setup='{}'
-			poster='{{defaultposter}'>
+		<video 
+			src="{{video.amazonUrl}}"
+			class="video-js vjs-default-skin"
+			controls preload="auto" 
+			width="640" 
+			height="264" 
+			fluid="true"
+			poster="{{defaultposter}}"
+			vjs-video
+			vjs-media="media"
+			vjs-setup="options"
+			vjs-ratio="16:9">
 		</video>
 	</div>
     <style type="text/css">
