@@ -16,7 +16,9 @@
 //  to change `assets/styles/importer.less` instead.)
 var cssFilesToInject = [
   'styles/**/*.css',
-  'bower_components/angular-material/angular-material.css'
+  'bower_components/angular-material/angular-material.css',
+  'bower_components/vjs-video/dist/vjs-video.css',
+
 ];
 
 
