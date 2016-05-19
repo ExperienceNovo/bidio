@@ -11,34 +11,22 @@ module.exports = {
 		var searchQuery = req.param('searchQuery');
 		var limit = req.param('limit');
 		var skip = req.param('skip');
-
-		var query = {
-			$text: {
-			  $search: searchQuery
-			}
-		};
-
-		var options = {
-			score: {
-				$meta: 'textScore'
-			}
-		}
-
-		Video.native(function(err, collection){
-			if (err){return res.negotiate(err);}
-
-			collection
-			.find(query, options)
-			.sort(options)
-			.skip(parseInt(skip))
-			.limit(parseInt(limit))
-			.toArray(function(err,result){
-				if (err){
-					return res.negotiate(err);
-				}
-				return res.json(result);
-			});
-			
+		Video.find()
+		.limit(limit)
+		.skip(skip)
+		.where({
+			or: [
+				{title: {contains: searchQuery}},
+				{urlTitle: {contains: searchQuery}},
+			]
+		})
+		.then(function(models) {
+			Video.watch(req);
+			Video.subscribe(req, models);
+			res.json(models);
+		})
+		.fail(function(err) {
+			// An error occured
 		});
 	},
 };

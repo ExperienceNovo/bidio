@@ -644,8 +644,6 @@ body.vjs-full-window {
 
 .video-js { margin: 20px auto; }
 
-
-
 </style>
 <div class="surface-container" style="height:100%">
 	<div class="spacing-25"></div>
@@ -653,7 +651,7 @@ body.vjs-full-window {
     <hr style="width: 170px;margin: 0 auto;margin-top: 25px;"></h2>
    <div class="discover-search">
         <div class="input-group">
-            <input type="text" class="  search-query form-control" placeholder="Search" />
+			<input ng-keyup="keyPress(searchValue)" class="search-query form-control" ng-model="searchValue" id="search-link" size="40" type="text" placeholder="">
             <span class="input-group-btn">
                 <button class="btn btn-danger" type="button">
                     <span class="fa fa-search"></span>

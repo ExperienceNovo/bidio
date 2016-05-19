@@ -1,5 +1,5 @@
 angular.module( 'bidio.discover', [
-	])
+])
 
 .config(function config( $stateProvider ) {
 	$stateProvider.state( 'discover', {
@@ -12,7 +12,6 @@ angular.module( 'bidio.discover', [
 		},
 		resolve:{
 			videos: function(VideoModel){
-				//return null;
 				return VideoModel.getAll();
 			}
 		}
@@ -20,11 +19,14 @@ angular.module( 'bidio.discover', [
 })
 
 .controller( 'DiscoverCtrl', function DiscoverCtrl( $scope, config, titleService, $sce, videos, SearchModel ) {
+	titleService.setTitle('discover - bidio');
 	$scope.videos = videos;
  	$scope.defaultposter = 'images/video-overlay.png';
  	$scope.keyPress = function(searchValue){
-        SearchModel.search(searchValue).then(function(models){
-            $scope.searchResults = models;
-        });
+ 		if (searchValue != ''){
+	        SearchModel.search(searchValue, 100, 0).then(function(models){
+	            $scope.videos = models;
+	        });
+    	}
     }
 });
