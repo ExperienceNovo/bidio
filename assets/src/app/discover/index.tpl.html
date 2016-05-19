@@ -16,7 +16,7 @@
     	<h2 style="text-align:center">zero results</h2>
     </div>
     <div class="container">
-		<div class="dashboardVideos col-xs-12 col-sm-12 col-md-3 col-lg-3" ng-repeat="video in videos" style="margin-top: 25px;">
+		<div class="dashboardVideos col-xs-12 col-sm-12 col-md-4 col-lg-4" ng-repeat="video in videos" style="margin-top: 25px;">
 			<div class="spacing-25"></div>
 			<h2 class="bidio-orange" style="font-size:1.75em;padding-bottom: 5px;margin-bottom: 15px;font-weight: bold;text-transform:capitalize;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
 				<a ui-sref="video({id: video.id})">{{video.title}}</a>
@@ -36,15 +36,15 @@
 			</video>
 		</div>
 	</div>
-    <style type="text/css">
-	  .video-footer {
-  	    margin-top: 150px;
-	  	float:left;
-		width: 100%;
-		height: 150px;
-		background: #101010;
-		border-top: 5px solid #FE9A2E;
-	  }
-	</style>
-	<div ng-include="'footer/index.tpl.html'" class="video-footer"></div>
 </div>
+<style type="text/css">
+  .video-footer {
+	    margin-top: 150px;
+  	float:left;
+	width: 100%;
+	height: 150px;
+	background: #101010;
+	border-top: 5px solid #FE9A2E;
+  }
+</style>
+<div ng-include="'footer/index.tpl.html'" class="video-footer"></div>
