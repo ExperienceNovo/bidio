@@ -929,6 +929,43 @@ section {
   transform: scale(1.05);
 }
 
+.discover-search {
+  margin:0 auto;
+  margin-top: 10px;
+  padding: 0;
+  width: 50%
+}
+ 
+.discover-search .search-query {
+    padding-right: 3px;
+    padding-right: 4px \9;
+    padding-left: 3px;
+    padding-left: 4px \9;
+    margin-bottom: 0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.discover-search button {
+  border: 0;
+  background: none;
+  padding: 2px 5px;
+  margin-top: 2px;
+  position: relative;
+  left: -28px;
+  margin-bottom: 0;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  color:#D9230F;
+}
+
+.search-query:focus + button {
+    z-index: 3;   
+}
+
+
 header {
   position: fixed;
   top: 0;
