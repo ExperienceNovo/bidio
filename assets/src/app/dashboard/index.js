@@ -171,7 +171,6 @@ angular.module( 'bidio.dashboard', [
     $scope.editingInfo= false
 
     $scope.editInfoToggle = function(){
-        $scope.infoHolder = lodash.clone($scope.campaign.campaignContent);
         $scope.editingInfo = !$scope.editingInfo;
     }
 
