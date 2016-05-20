@@ -26,6 +26,11 @@ angular.module('models.video', ['lodash', 'services', 'sails.io',])
 		return $sailsSocket.get(url).then(success, error);
 	};
 
+    this.getSome = function(limit, skip){
+        var url = utils.prepareUrl('video/' + limit + '/' + skip);
+        return $sailsSocket.get(url).then(success, error);
+    };
+
     this.create = function(newModel) {
         var url = utils.prepareUrl('video');
         return $sailsSocket.post(url, newModel).then(success, error);

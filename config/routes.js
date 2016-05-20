@@ -129,6 +129,7 @@ module.exports.routes = {
   'get /api/video': 'VideoController.getAll',
   'get /api/video/me': 'VideoController.getMine',
   'get /api/video/:id': 'VideoController.getOne',
+  'get /api/video/:limit/:skip': 'VideoController.getSome',
   'get /api/video/member/:id': 'VideoController.getByMember',
   //'get /api/video/url/:path': 'VideoController.getByUrlTitle',
   'post /api/video/upload': 'VideoController.upload',
