@@ -584,7 +584,7 @@ angular.module( 'bidio.dashboard', [
         "unapproved": []
     });
 
-    /*$scope.totalClicks = $scope.campaign.bids.reduce(function(val,item){
+    $scope.totalClicks = $scope.campaign.bids.reduce(function(val,item){
         val += item.video.clickCount;
         return val;
     },0);
@@ -642,7 +642,7 @@ angular.module( 'bidio.dashboard', [
                 newVal.isActive = true;
             }
         },true);
-    });*/
+    });
 
     $scope.refresh = function(){
 
