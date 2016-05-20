@@ -65,20 +65,23 @@
 <style>
 
 	
-	.admin-page-wrapper-mobile{display:none;}
 	@media (max-width: 1080px) {
 		.admin-page-wrapper{display:none;}
 		.admin-page-wrapper-mobile{display:block;}
 	}
+	@media (min-width: 1080px) {
+		.admin-page-wrapper{display:block;}
+		.admin-page-wrapper-mobile{display:none;}
+	}
 
-  .video-footer {
-	margin-top: 150px;
-  	float:left;
-	width: 100%;
-	height: 150px;
-	background: #101010;
-	border-top: 5px solid #FE9A2E;
-  }
+	.video-footer {
+		margin-top: 150px;
+		float:left;
+		width: 100%;
+		height: 150px;
+		background: #101010;
+		border-top: 5px solid #FE9A2E;
+	}
 </style>
 
 
