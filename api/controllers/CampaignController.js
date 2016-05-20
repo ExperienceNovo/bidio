@@ -204,6 +204,7 @@ module.exports = {
 			videoUrl: req.param('videoUrl'),
 			doesRedirect: req.param('doesRedirect'),
 			bannerUrl: req.param('bannerUrl'),
+			campaignImageUrl: req.param('bannerUrl'),
 			published: req.param('published'),
 			price: req.param('price'),
 			intro: req.param('intro'),

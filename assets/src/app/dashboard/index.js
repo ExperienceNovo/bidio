@@ -722,11 +722,29 @@ angular.module( 'bidio.dashboard', [
         return false;
     }
 
-    $scope.getImage = function(ev){
+    $scope.getBannerImage = function(ev){
 
         $mdDialog.show({
-            controller: 'AddPhotoCtrl',
-            templateUrl: 'dashboard/templates/addPhoto.tpl.html',
+            controller: 'AddBannerPhotoCtrl',
+            templateUrl: 'dashboard/templates/addBannerPhoto.tpl.html',
+            parent: angular.element(document.body),
+            resolve: {
+                campaign: function(){
+                    return campaign;
+                }
+            },
+            targetEvent: ev,
+            clickOutsideToClose:true,
+            fullscreen: false
+        })
+
+    }
+
+    $scope.getCampaignImage = function(ev){
+
+        $mdDialog.show({
+            controller: 'AddCampaignPhotoCtrl',
+            templateUrl: 'dashboard/templates/addCampaignPhoto.tpl.html',
             parent: angular.element(document.body),
             resolve: {
                 campaign: function(){
@@ -1019,7 +1037,7 @@ angular.module( 'bidio.dashboard', [
     }
 })
 
-.controller('AddPhotoCtrl', function ($scope, $mdDialog, Upload, campaign, CampaignModel) {
+.controller('AddBannerPhotoCtrl', function ($scope, $mdDialog, Upload, campaign, CampaignModel) {
 
     $scope.pp = 0;
     $scope.bannerUrl = null;
@@ -1078,6 +1096,71 @@ angular.module( 'bidio.dashboard', [
         .then(function(response){
             $scope.photoLoading = false;
             $scope.bannerUrl = response.data.amazonUrl;
+        },
+        null,
+        function (evt) {
+            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+            $scope.pp = progressPercentage;
+        })
+
+    };
+
+})
+
+.controller('AddCampaignPhotoCtrl', function ($scope, $mdDialog, Upload, campaign, CampaignModel) {
+
+    $scope.pp = 0;
+    $scope.campaignImageUrl = null;
+    $scope.photoLoading = false;
+    $scope.error = null;
+
+    $scope.submit = function(){
+        campaign.campaignImageUrl = $scope.campaignImageUrl;
+        var toUpdate = {
+            id: campaign.id,
+            bannerUrl: campaign.bannerUrl,
+            campaignImageUrl: campaign.campaignImageUrl,
+            videoUrl: campaign.videoUrl,
+            published: campaign.published,
+            title: campaign.title,
+            price: campaign.price,
+            user: campaign.user.id,
+            urlTitle: campaign.urlTitle,
+            prompt: campaign.prompt,
+            intro: campaign.intro,
+            campaignContent: campaign.campaignContent
+        };
+        if(campaign.contributionGoal){
+            toUpdate.contributionGoal = campaign.contributionGoal;
+        }
+        if(campaign.maxContributionPerVideo){
+            toUpdate.maxContributionPerVideo = campaign.maxContributionPerVideo;
+        }
+        CampaignModel.update(toUpdate)
+        .then(function(){
+            $mdDialog.hide();
+        })
+        .catch(function(err){
+            $scope.error = err.message;
+        })
+    }
+
+    $scope.cancel = function(){
+        $mdDialog.cancel();
+    }
+
+    //TODO: refactor backend so that videos and images are uploaded through separate endpoints (separation of concerns)
+    $scope.upload = function(file){
+
+        $scope.photoLoading = true;
+        Upload.upload({
+            url: '/api/video/upload',
+            method: 'POST',
+            data: {video: file}
+        })
+        .then(function(response){
+            $scope.photoLoading = false;
+            $scope.campaignImageUrl = response.data.amazonUrl;
         },
         null,
         function (evt) {
