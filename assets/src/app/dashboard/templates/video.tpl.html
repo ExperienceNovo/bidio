@@ -54,9 +54,8 @@
       <div class="spacing-25"></div>
       <div class="row">
         <div class="col-md-6">
-          <p class="dash-title-sm"><b>About Video</b></p>
+          <p class="dash-title-sm"><b>{{video.title}}</b></p>
           <div class="video-container edit-container">
-            <div class="edit-btn"><md-button ng-click="getVideo()" class="md-fab md-mini"><md-icon>edit</md-icon></md-button></div>
             <video 
               ng-src="{{video.videoUrl}}"
               class="video-js vjs-default-skin"

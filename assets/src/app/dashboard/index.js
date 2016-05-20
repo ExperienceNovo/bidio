@@ -168,6 +168,12 @@ angular.module( 'bidio.dashboard', [
     titleService.setTitle(video.title);
     $scope.views = views;
     $scope.clicks = clicks;
+    $scope.editingInfo= false
+
+    $scope.editInfoToggle = function(){
+        $scope.infoHolder = lodash.clone($scope.campaign.campaignContent);
+        $scope.editingInfo = !$scope.editingInfo;
+    }
 
     $scope.onClick = function (points, evt) {
         console.log(points, evt);
