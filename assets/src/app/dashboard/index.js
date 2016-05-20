@@ -88,10 +88,10 @@ angular.module( 'bidio.dashboard', [
             }
         }
     })
-    .state( 'dashboard.campaignEdit', {
+    .state( 'dashboard.campaign', {
         url: '/campaign/:id',
-        controller: 'DashboardCampaignEditCtrl',
-        templateUrl: 'dashboard/templates/campaignEdit.tpl.html',
+        controller: 'DashboardCampaignCtrl',
+        templateUrl: 'dashboard/templates/campaign.tpl.html',
         resolve: {
             CampaignModel: "CampaignModel",
             config: "config",
@@ -515,12 +515,12 @@ angular.module( 'bidio.dashboard', [
             });
 
         }).then(function(model){
-            $state.go("dashboard.campaignEdit", {id: model.id});
+            $state.go("dashboard.campaign", {id: model.id});
         });
     }
 })
 
-.controller('DashboardCampaignEditCtrl', function ($state, titleService, $mdMenu, $scope, campaign, CampaignModel, $mdDialog, VideoModel, lodash, $q, BidModel) {
+.controller('DashboardCampaignCtrl', function ($state, titleService, $mdMenu, $scope, campaign, CampaignModel, $mdDialog, VideoModel, lodash, $q, BidModel) {
 
     $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
     $scope.series = ['Series A', 'Series B'];
@@ -584,7 +584,7 @@ angular.module( 'bidio.dashboard', [
         "unapproved": []
     });
 
-    $scope.totalClicks = $scope.campaign.bids.reduce(function(val,item){
+    /*$scope.totalClicks = $scope.campaign.bids.reduce(function(val,item){
         val += item.video.clickCount;
         return val;
     },0);
@@ -642,7 +642,7 @@ angular.module( 'bidio.dashboard', [
                 newVal.isActive = true;
             }
         },true);
-    });
+    });*/
 
     $scope.refresh = function(){
 
