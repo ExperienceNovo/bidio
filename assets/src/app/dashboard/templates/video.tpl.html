@@ -52,40 +52,21 @@
     </md-tab>
     <md-tab label="About">
       <div class="spacing-25"></div>
-      <div class="row">
+      <div class="row">    
         <div class="col-md-6">
-          <p class="dash-title-sm"><b>{{video.title}}</b></p>
-          <div class="video-container edit-container">
-            <video 
-              ng-src="{{video.videoUrl}}"
-              class="video-js vjs-default-skin"
-              controls preload="auto" 
-              width="640" 
-              height="264" 
-              fluid="true"
-              poster="images/bidio_logo.png" 
-              vjs-video
-              vjs-media="media"
-              vjs-setup="options"
-              vjs-ratio="16:9">
-            </video>
-          </div>
-        </div>        
-        <div class="col-md-6">
-          <p class="dash-title-sm"><b>About Text</b></p>
           <div ng-hide="editingInfo" class="edit-container">
-            <div class="edit-btn"><md-button  ng-click="editInfoToggle()" class="md-fab md-mini"><md-icon>edit</md-icon></md-button></div>
-            <p>{{video.description}}</p>
+            <p class="dash-title-sm"><b>{{video.title}}</b></p>
+            <p class=""><b>{{video.description}}</b></p>
+            <md-button ng-click="editInfoToggle()">Edit</md-button>
           </div>
           <div ng-show="editingInfo">
             <md-input-container layout-fill>
-              <textarea aria-label="Edit Intro" ng-model="campaign.intro" rows="5" md-rows="5"></textarea>
+              <textarea aria-label="Edit Description" ng-model="video.description" rows="5" md-rows="5"></textarea>
             </md-input-container>
             <md-progress-circular ng-show="infoSaving" md-mode="indeterminate"></md-progress-circular>
             <md-button ng-disabled="infoSaving" ng-click="infoSave()">Save</md-button>
             <md-button ng-disabled="infoSaving" ng-click="infoUndo()">Undo</md-button>
             <md-button ng-click="videoDelete()">Delete</md-button>
-
           </div>
 
         </div>
