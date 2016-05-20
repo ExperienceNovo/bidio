@@ -45,11 +45,17 @@
 			<h3>By <b><a href="/member/{{bid.video.user.username}}">{{bid.video.user.username}}</a></b> on {{bid.video.createdAt | date: "shortDate"}}</h3>
 			<br>
 			<video 
-				style="margin:auto" 
 				ng-src="{{bid.video.amazonUrl}}" 
-				class="video-js vjs-default-skin" 
-				controls preload="auto" height="205" 
-				vjs-video>
+				class="video-js vjs-default-skin"
+				controls preload="auto" 
+				width="640" 
+				height="264" 
+				fluid="true"
+				poster="{{campaign.poster}}" 
+				vjs-video
+				vjs-media="media"
+				vjs-setup="options"
+				vjs-ratio="16:9">
 			</video>
 			<a ng-show="campaign.campaignImageUrl" class="vid-clickthrough"><img src="{{campaign.campaignImageUrl}}"></a>
 
