@@ -164,7 +164,6 @@ angular.module( 'bidio.dashboard', [
 })
 
 .controller( 'DashboardVideoCtrl', function DashboardVideosCtrl( $scope, titleService, video, views, VideoModel, clicks, $sailsSocket ) {
-    titleService.setTitle('video');
     $scope.video = video;
     titleService.setTitle(video.title);
     $scope.views = views;
@@ -172,6 +171,10 @@ angular.module( 'bidio.dashboard', [
 
     $scope.onClick = function (points, evt) {
         console.log(points, evt);
+    };
+
+    $scope.videoDelete = function () {
+        VideoModel.delete(video.id);
     };
 
     $scope.updateViews = function(){
