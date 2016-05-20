@@ -497,6 +497,7 @@ angular.module( 'bidio.dashboard', [
 
             return CampaignModel.create({
                 /*placeholder here*/
+                campaignImageUrl: "http://placehold.it/250x250?text=image",
                 bannerUrl: "http://placehold.it/1000x400?text=banner",
                 /*placeholder here*/
                 videoUrl: "/videos/blah",

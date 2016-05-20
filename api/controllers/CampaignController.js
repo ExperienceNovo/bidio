@@ -204,7 +204,7 @@ module.exports = {
 			videoUrl: req.param('videoUrl'),
 			doesRedirect: req.param('doesRedirect'),
 			bannerUrl: req.param('bannerUrl'),
-			campaignImageUrl: req.param('bannerUrl'),
+			campaignImageUrl: req.param('campaignImageUrl'),
 			published: req.param('published'),
 			price: req.param('price'),
 			intro: req.param('intro'),
@@ -215,16 +215,16 @@ module.exports = {
 		};
 
 		if(req.param('redirectUrl')){
-    	model.redirectUrl = req.param('redirectUrl');
-    }
+	    	model.redirectUrl = req.param('redirectUrl');
+	    }
 
-    if(req.param('contributionGoal')){
-    	model.contributionGoal = req.param('contributionGoal')
-    }
+	    if(req.param('contributionGoal')){
+	    	model.contributionGoal = req.param('contributionGoal')
+	    }
 
-    if(req.param('maxContributionPerVideo')){
-    	model.maxContributionPerVideo = req.param('maxContributionPerVideo')
-    }
+	    if(req.param('maxContributionPerVideo')){
+	    	model.maxContributionPerVideo = req.param('maxContributionPerVideo')
+	    }
 
 		Campaign.update({id: id}, model)
 		.then(function(model){
