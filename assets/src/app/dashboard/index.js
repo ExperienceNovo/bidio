@@ -166,6 +166,7 @@ angular.module( 'bidio.dashboard', [
 .controller( 'DashboardVideoCtrl', function DashboardVideosCtrl( $scope, titleService, video, views, VideoModel, clicks, $sailsSocket ) {
     titleService.setTitle('video');
     $scope.video = video;
+    titleService.setTitle(video.title);
     $scope.views = views;
     $scope.clicks = clicks;
 
@@ -331,7 +332,8 @@ angular.module( 'bidio.dashboard', [
     }
 })
 
-.controller('DashboardProfileCtrl', function ($state, $scope, user, ProfileModel, UserModel, $mdDialog, $location, localStorageService) {
+.controller('DashboardProfileCtrl', function ($state, titleService, $scope, user, ProfileModel, UserModel, $mdDialog, $location, localStorageService) {
+    titleService.setTitle('profile');
 
     $scope.username = user.username;
     $scope.submitLoading = false;
@@ -479,7 +481,8 @@ angular.module( 'bidio.dashboard', [
 
 })
 
-.controller('DashboardCampaignsCtrl', function (config, $state, $scope, campaigns, CampaignModel, $mdDialog) {
+.controller('DashboardCampaignsCtrl', function (config, titleService, $state, $scope, campaigns, CampaignModel, $mdDialog) {
+    titleService.setTitle('campaigns');
 
     $scope.campaigns = campaigns;
     $scope.addCampaign = function(ev){
@@ -517,7 +520,7 @@ angular.module( 'bidio.dashboard', [
     }
 })
 
-.controller('DashboardCampaignEditCtrl', function ($state, $mdMenu, $scope, campaign, CampaignModel, $mdDialog, VideoModel, lodash, $q, BidModel) {
+.controller('DashboardCampaignEditCtrl', function ($state, titleService, $mdMenu, $scope, campaign, CampaignModel, $mdDialog, VideoModel, lodash, $q, BidModel) {
 
     $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
     $scope.series = ['Series A', 'Series B'];
@@ -532,6 +535,8 @@ angular.module( 'bidio.dashboard', [
     var originals = lodash.cloneDeep(campaign.bids);
 
     $scope.campaign = campaign;
+    titleService.setTitle(campaign.title);
+
     $scope.selection = {type: "new"};
     $scope.clean = true;
     $scope.saving = false;
@@ -593,11 +598,9 @@ angular.module( 'bidio.dashboard', [
         if (a.video.viewCount < b.video.viewCount){
             return 1
         }
-
         if (a.video.viewCount == b.video.viewCount){
             return 0;
         }
-
         if (a.video.viewCount > b.video.viewCount){
             return -1
         }
@@ -607,11 +610,9 @@ angular.module( 'bidio.dashboard', [
         if (a.video.clickCount < b.video.clickCount){
             return 1
         }
-
         if (a.video.clickCount == b.video.clickCount){
             return 0;
         }
-
         if (a.video.clickCount > b.video.clickCount){
             return -1
         }
@@ -621,33 +622,26 @@ angular.module( 'bidio.dashboard', [
         if ((a.video.clickCount / a.video.viewCount) < (b.video.clickCount / b.video.viewCount)){
             return 1;
         }
-
         if ((a.video.clickCount / a.video.viewCount) == (b.video.clickCount / b.video.viewCount)){
             return 0;
         }
-
         if ((a.video.clickCount / a.video.viewCount) > (b.video.clickCount / b.video.viewCount)){
             return -1;
         }
     })[0];
 
     var bidWatches = $scope.campaign.bids.map(function(bid){
-
         return $scope.$watch(function($scope){
             return bid;
         }, function(newVal, oldVal){
-
             if (newVal.isAccepted == oldVal.isAccepted){
                 return;
             }
-
             if (oldVal.isNewEntry){
                 newVal.isNewEntry = false;
                 newVal.isActive = true;
             }
-
         },true);
-
     });
 
     $scope.refresh = function(){
@@ -859,7 +853,6 @@ angular.module( 'bidio.dashboard', [
             .then(function(campaign){
                 $scope.saving = false;
                 $scope.editLandingToggle();
-
             })
             .catch(function(err){
                 $scope.saving = false;
@@ -870,15 +863,11 @@ angular.module( 'bidio.dashboard', [
 
         campaignSave()
             .then(function(campaign){
-
                 $scope.infoSaving = false;
                 $scope.editInfoToggle();
-
             })
             .catch(function(err){
-
                 $scope.infoSaving = false;
-
             });
     }
 
@@ -886,32 +875,25 @@ angular.module( 'bidio.dashboard', [
 
         campaignSave()
             .then(function(campaign){
-
                 $scope.promptSaving = false;
                 $scope.editPromptToggle();
-
             })
             .catch(function(err){
-
                 $scope.promptSaving = false;
-
             });
     }
 
     $scope.landingUndo = function(){
-
         $scope.campaign.campaignContent = $scope.contentHolder;
         $scope.editLandingToggle();
     }
 
     $scope.infoUndo = function(){
-
         $scope.campaign.info = $scope.infoHolder;
         $scope.editInfoToggle();
     }
 
     $scope.promptUndo = function(){
-
         $scope.campaign.prompt = $scope.promptHolder;
         $scope.editPromptToggle();
     }
@@ -933,12 +915,9 @@ angular.module( 'bidio.dashboard', [
     }
 
     $scope.saveVideo = function(){
-
         //get all entries that have been modified
         var toSave = $scope.selectedBids.filter(function(bid){
-
             return bid.dirty;
-
         })
         .map(function(bid){
 
@@ -1033,7 +1012,6 @@ angular.module( 'bidio.dashboard', [
         });
 
         originals = lodash.cloneDeep($scope.campaign.bids);
-
         $scope.selectedBids = sorted[$scope.selection.type];
     }
 })
