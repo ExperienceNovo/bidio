@@ -18,6 +18,7 @@ angular.module('models.video', ['lodash', 'services', 'sails.io',])
 
     this.getByMember = function(model) {
         var url = utils.prepareUrl('video/member/' + model);
+        console.log(url)
         return $sailsSocket.get(url).then(success, error);
     };
 
