@@ -52,5 +52,10 @@
 				</div>
 			</div>
 		</div>
+
+		<div ng-repeat="featuredCampaign in featuredCampaigns">
+			<h4><a href="/campaign/{{featuredCampaign.urlTitle}}">{{featuredCampaign.title}}</a></h4>
+		</div>
+
 	</div>
 </div>
