@@ -25,10 +25,10 @@ angular.module( 'bidio.member', [
 })
 
 .controller( 'MemberCtrl', function MemberCtrl( $scope, titleService, config, member, campaigns, videos ) {
-		$scope.member = member;
-		if(typeof($scope.member)=="undefined"){$location.path('/')}
-		titleService.setTitle(member.username);
-		$scope.profile = member.profile[0];
-		$scope.campaigns = campaigns;
-		$scope.videos = videos;
+	$scope.member = member;
+	if(typeof($scope.member)=="undefined"){$location.path('/')}
+	titleService.setTitle(member.username);
+	$scope.profile = member.profile[0];
+	$scope.campaigns = campaigns;
+	$scope.videos = videos;
 });
