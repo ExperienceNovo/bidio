@@ -29,8 +29,7 @@
 				<label class="tooltip--bottom" data-tooltip="Prize Per Click" for="tab3"><!--{{video.campaign.price | number: 2 }}-->{{video.value}}</label>
 				<label for="tab4" title="Share" ng-click="share()"><a>Share</a></label>				
 				<label class="tooltip--bottom" data-tooltip="Sponsor Video?" for="tab5" ng-click="bid()" ng-hide="!currentUser">Make Bid</label>
-				<label for="tab5" title="Share" ng-click="clickThrough()"><a>{{video.campaign.prompt}}</a>><img style="height:50px" src="{{video.campaign.campaignImageUrl}}"></label>				
-				<label class="tooltip--bottom" data-tooltip="Sponsor Video?" for="tab5" ng-click="bid()" ng-hide="!currentUser">Make Bid</label>
+				<label for="tab4" title="{{video.campaign.prompt}}" ng-click="clickThrough()"><a>{{video.campaign.prompt}}</a></label>				
 
 			</div>
 			<p style="padding: 25px;text-align:center;">{{video.description}}</p>

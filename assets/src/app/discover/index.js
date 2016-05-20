@@ -12,8 +12,7 @@ angular.module( 'bidio.discover', [
 		},
 		resolve:{
 			videos: function(VideoModel){
-				return VideoModel.gatAll();
-				//return VideoModel.getSome(0, 100);
+				return VideoModel.getAll();
 			}
 		}
 	});
