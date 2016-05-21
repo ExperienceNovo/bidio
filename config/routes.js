@@ -110,6 +110,11 @@ module.exports.routes = {
   'post /api/click': 'ClickController.create',
 
   /**
+   * Share routes
+   */
+  'post /api/share/twitter/:composition': 'ShareController.shareTwitter',
+
+  /**
    * User routes
    */
   'get /api/user': 'UserController.getAll',

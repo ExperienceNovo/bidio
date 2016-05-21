@@ -1,4 +1,4 @@
-<md-dialog aria-label="Share this video!">
+<md-dialog aria-label="Share this video!" class="share-dialog">
   <form>
     <md-toolbar>
       <div class="md-toolbar-tools">
@@ -9,14 +9,19 @@
         </md-button>
       </div>
     </md-toolbar>
-    <md-dialog-content></md-dialog-content>
-    <md-dialog-actions layout="row" layout-align="center">
-      <md-button ng-click='shareFacebook()' aria-label="Share on facebook!">
-        <i class="fa fa-facebook"></i>
-      </md-button>
-      <md-button ng-click='shareTwitter()' aria-label="Tweet about it!">
-        <i class="fa fa-twitter"></i>
-      </md-button>
-    </md-dialog-actions>
+    <div class="md-dialog-content">
+      <md-input-container ng-show="tweeting" class="md-block" md-autofocus>
+          <label>Personalize!</label>
+          <textarea ng-model="share.composition" md-maxlength="{{140 - tweetCompPadding}}" rows="3" md-select-on-focus></textarea>
+      </md-input-container>
+      <md-dialog-actions class="share-dialog-action-buttons" layout="row" layout-align="center">
+        <md-button ng-show="!tweeting" ng-click='shareFacebook()' aria-label="Share on facebook!">
+          <i class="fa fa-facebook"></i>
+        </md-button>
+        <md-button ng-click='shareTwitter()' aria-label="Tweet about it!">
+          <i class="fa fa-twitter"></i>
+        </md-button>
+      </md-dialog-actions>
+    </div>
   </form>
 </md-dialog>

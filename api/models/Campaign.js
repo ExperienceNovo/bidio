@@ -29,7 +29,7 @@ module.exports = {
 
         imageUrl: {
             type: 'string',
-            required: true
+            // required: true
         },
 
         videoUrl: {
@@ -93,7 +93,7 @@ module.exports = {
 
     //beforeValidate: function(values, cb) {
         //Campaign.findOne({urlTitle: values.urlTitle}).exec(function (err, record) {
-            //if already url title, add an iterator to the end to make it unique. 
+            //if already url title, add an iterator to the end to make it unique.
             //if (record){
                 //record.urlTitle
             //}
