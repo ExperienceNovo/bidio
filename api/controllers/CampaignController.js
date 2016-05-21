@@ -66,6 +66,17 @@ module.exports = {
 		});
 	},
 
+	getFeatured: function(req, res) {
+		Campaign.find({isFeatured:true})
+		.then(function(model) {
+			Campaign.subscribe(req, model);
+			res.json(model);
+		})
+		.catch(function(err) {
+			res.send(404);
+		});
+	},
+
 	getByMember: function(req, res) {
 		Campaign.find({user:req.param('id')})
 		.then(function(model) {
@@ -76,6 +87,7 @@ module.exports = {
 			res.send(404);
 		});
 	},
+
 
 	getByUrlTitle: function(req, res) {
 		Campaign.findOne({urlTitle: req.param('path')})
@@ -192,6 +204,7 @@ module.exports = {
 			videoUrl: req.param('videoUrl'),
 			doesRedirect: req.param('doesRedirect'),
 			bannerUrl: req.param('bannerUrl'),
+			campaignImageUrl: req.param('campaignImageUrl'),
 			published: req.param('published'),
 			price: req.param('price'),
 			intro: req.param('intro'),
@@ -202,16 +215,16 @@ module.exports = {
 		};
 
 		if(req.param('redirectUrl')){
-    	model.redirectUrl = req.param('redirectUrl');
-    }
+	    	model.redirectUrl = req.param('redirectUrl');
+	    }
 
-    if(req.param('contributionGoal')){
-    	model.contributionGoal = req.param('contributionGoal')
-    }
+	    if(req.param('contributionGoal')){
+	    	model.contributionGoal = req.param('contributionGoal')
+	    }
 
-    if(req.param('maxContributionPerVideo')){
-    	model.maxContributionPerVideo = req.param('maxContributionPerVideo')
-    }
+	    if(req.param('maxContributionPerVideo')){
+	    	model.maxContributionPerVideo = req.param('maxContributionPerVideo')
+	    }
 
 		Campaign.update({id: id}, model)
 		.then(function(model){

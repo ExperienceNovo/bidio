@@ -113,6 +113,34 @@ module.exports = {
         });
     },
 
+    getSome: function(limit, skip, sort, filter) {
+        return Video.find()
+        .limit(limit)
+        .skip(skip)
+        .populate('user')
+        .populate('bids')
+        .then(function(models){
+            //this needs to work with an array
+            /*for (x in models){
+                var active = models[x].bids.filter(function(bid){ return bid.isActive });
+                if (!active.length){
+                    return [model,null]
+                }
+                if(active.length > 1){
+                    throw new Error("More than one active bid found, aborting request");
+                }
+            }
+            return [model,Campaign.findOne(active[0].campaign)]*/
+        })
+        .spread(function(models,campaign){
+            /*if (campaign){
+                model = model.toObject();
+                model.campaign = campaign;
+            }*/
+            return [model];
+        });
+    },
+
     beforeUpdate: function(model, next){
 
         /*if no click or view continue*/

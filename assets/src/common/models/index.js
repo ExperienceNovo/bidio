@@ -7,6 +7,7 @@ angular.module('models', [
 	'models.share',
 	'models.user',
 	'models.profile',
+	'models.search',
 	'models.video',
 	'models.view'
 ]);

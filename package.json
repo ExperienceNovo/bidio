@@ -68,6 +68,7 @@
     "faker": "^3.1.0",
     "mocha": "^2.4.5",
     "sails-hook-seed": "^0.2.6",
-    "supertest": "^1.2.0"
+    "supertest": "^1.2.0",
+    "video.js": "^5.9.2"
   }
 }

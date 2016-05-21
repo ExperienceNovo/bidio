@@ -42,7 +42,7 @@ module.exports = {
 		Video.find()
 		.where({user:req.param('id')})
 		.then(function(model) {
-			Campaign.subscribe(req, model);
+			Video.subscribe(req, model);
 			res.json(model);
 		})
 		.catch(function(err) {

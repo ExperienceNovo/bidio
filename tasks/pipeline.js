@@ -16,7 +16,9 @@
 //  to change `assets/styles/importer.less` instead.)
 var cssFilesToInject = [
   'styles/**/*.css',
-  'bower_components/angular-material/angular-material.css'
+  'bower_components/angular-material/angular-material.css',
+  'bower_components/video.js/dist/video-js.css',
+
 ];
 
 
@@ -37,7 +39,7 @@ var jsFilesToInject = [
   'bower_components/angular-google-maps/dist/angular-google-maps.js',
   'bower_components/angular-scroll/angular-scroll.js',
   'bower_components/ng-file-upload/ng-file-upload.js',
-  'bower_components/video.js/dist/video.js',
+  'bower_components/video.js/dist/video.min.js',
   'bower_components/vjs-video/dist/vjs-video.js',
   'bower_components/Chart.js/Chart.min.js',
   'bower_components/angular-chart.js/dist/angular-chart.js',
@@ -45,10 +47,10 @@ var jsFilesToInject = [
   'bower_components/angular-animate/angular-animate.min.js',
   'bower_components/angular-aria/angular-aria.min.js',
   'bower_components/angular-messages/angular-messages.min.js',
-  '/bower_components/angular-material/angular-material.js',
+  'bower_components/angular-material/angular-material.js',
   'bower_components/angular-local-storage/dist/angular-local-storage.js',
-  '/bower_components/angular-off-click/offClick.js',
-  '/bower_components/angular-easyfb/build/angular-easyfb.min.js',
+  'bower_components/angular-off-click/offClick.js',
+  'bower_components/angular-easyfb/build/angular-easyfb.min.js',
 
   //
   // *->    you might put other dependencies like jQuery or Angular here   <-*

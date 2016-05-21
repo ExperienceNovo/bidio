@@ -16,296 +16,303 @@
 	}
 
 </style>
-<md-content layout-padding>
-	<p class="text-left"><a ui-sref="dashboard.campaigns"><md-icon>chevron_left</md-icon>&nbsp;Back to campaigns</a></p>
-  <div class="dashboard-title">
-    <h2 style="font-weight: bold;"><a href="/campaign/{{campaign.urlTitle}}">{{campaign.title}}</a></h2>
-  </div>
-	<div class="spacing-25"></div>
-	<md-tabs md-dynamic-height md-border-bottom>
-		<md-tab ng-if="!campaign.published" label="Details">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="spacing-25"></div>
-					<h2>Campaign Rules</h2>
-					<div class="spacing-15"></div>
-					<p class="text-center" style="text-align:justify;max-width:75%;margin:0 auto;">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-					</p>
-				</div>
-			</div>
-			<div class="spacing-25"></div>
-			<div class="row">		
-				<div class="col-md-12">
-					<h2>Specifics</h2>
-					<div class="spacing-15"></div>
-					<div class="row">
-						<div class="col-md-4 col-md-push-4 col-md-pull-4">	
-							<md-input-container>
-								<label>Price per click</label>
-								<md-icon>attach_money</md-icon>
-								<input type="text" ng-model="campaign.price">
-							</md-input-container>
-						</div>
-					</div>
-					<div class="spacing-15"></div>
-					<div class="row">
-						<div class="col-md-4 col-md-push-4 col-md-pull-4">
-							<md-checkbox ng-model="setBudget" aria-label="Set budget">
-								Set a campaign budget?
-							</md-checkbox>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-2 col-md-push-5 col-md-pull-5">
-							<md-input-container layout-fill>
-								<label>Campaign Budget</label>
-								<md-icon>attach_money</md-icon>
-								<input type="text" ng-model="campaign.contributionGoal" ng-disabled="!setBudget">
-							</md-input-container>
-						</div>
-					</div>
-					<div class="spacing-15"></div>
-					<div class="row">
-						<div class="col-md-4 col-md-push-4 col-md-pull-4">
-							<md-checkbox ng-model="setVideoBudget" aria-label="Set video budget">
-								Set a per video budget?
-							</md-checkbox>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-2 col-md-push-5 col-md-pull-5">
-							<md-input-container layout-fill>
-								<label>Per Video Budget</label>
-								<md-icon>attach_money</md-icon>
-								<input type="text" ng-model="campaign.maxContributionPerVideo" ng-disabled="!setVideoBudget">
-							</md-input-container>
-						</div>
-					</div>					
-					<div class="spacing-15"></div>
-					<div class="row">
-						<div class="col-md-4 col-md-push-4 col-md-pull-4">
-							<md-checkbox ng-model="setEndDate" aria-label="Set end">
-								Set an end date?
-							</md-checkbox>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-4 col-md-push-4 col-md-pull-4">
-							<md-datepicker layout-fill ng-model="endDate" ng-disabled="!setEndDate" md-placeholder="End Date"></md-datepicker>
-						</div>
-					</div>
-					<div class="spacing-15"></div>
-					<div class="row">
-						<div class="text-center">
-							<md-button class="md-raised md-accent">Submit</md-button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</md-tab>
-		<md-tab ng-if="campaign.published" label="Overview">
-			<div class="spacing-25"></div>
-			<div class="row">
-				<div class="col-md-12">
-		  		<canvas id="line" class="chart chart-line" style="padding:15px" chart-data="data"
-				    chart-labels="labels" chart-legend="true" chart-series="series"
-				    chart-click="onClick">
-					</canvas>
-				</div>
-			</div>
-			<div class="spacing-25"></div>
-			<div class="row">
-				<div class="spacing-25"></div>
-				<div class="col-md-6" style="margin-top:25px">
-		  		<h2 style="font-weight:bold;color:#FAA93F;text-align:left;">Finance</h2>
-			  	<hr>
-			  	<p><b>Price per click</b>&nbsp;${{ campaign.price | number: 2 }}</p>
-			  	<p><b>Total clicks</b>&nbsp;{{ totalClicks }}</p>
-					<p><b>Total payment</b>&nbsp;${{ totalClicks * campaign.price | number: 2 }}</p>
-					<p ng-show="campaign.maxContributionPerVideo"><b>Max Contribution per Video</b>&nbsp;${{ campaign.maxContributionPerVideo | number : 2 }}</p>
-					<p ng-show="campaign.contributionGoal"><b>Max Contribution per Video</b>&nbsp;${{ campaign.contributionGoal | number: 2 }}</p>
-				</div>
-				<div class="col-md-6" style="margin-top:25px">
-			  	<h2 style="font-weight:bold;color:#FAA93F;text-align:left;">Performance</h2>
-					<hr>
-					<p><b>Top video (by clicks)</b>&nbsp;{{ topClicks.title }}&nbsp;({{ topClicks.clickCount }} clicks)<br></p>
-					<p><b>Top video (by views)</b>&nbsp;{{ topViews.title }}&nbsp;({{ topClicks.clickCount }} views)<br></p>
-					<p><b>Top video (by conversion ratio)</b>&nbsp;{{ topConversion.title }}&nbsp;({{ (topConversion.clickCount / topConversion.viewCount) * 100 | number : 2 }}&nbsp;%)</p>
-					<p><b>Total clicks</b>&nbsp;{{ totalClicks }}<br></p>
-					<p><b>Total views</b>&nbsp;{{ totalViews }}<br></p>
-					<p><b>Average conversion ratio</b>&nbsp;{{ (totalClicks / totalViews) * 100 | number : 2 }}&nbsp;%<br></p>
-				</div>
-			</div>
-			<div class="spacing-25"></div>
-		</md-tab>
-	  <md-tab label="Landing Page">
-	  	<div class="row" style="padding:15px">
-	  		<div class="col-md-6" style="margin-top:25px">
-	    		<md-input-container>
-	    			<md-switch ng-model="campaign.doesRedirect" aria-label="3rd party landing page switch">
-	    			  <h3 class="bidio-orange" style="font-weight:bold;font-size:14px;">Redirect to 3rd-Party Landing Page?</h3>
-	    			</md-switch>
-	    		</md-input-container>
-		    		<md-input-container layout-fill>
-		    			<label>Redirect URL</label>
-		    			<input ng-disabled="!campaign.doesRedirect" type="text" ng-model="campaign.redirectUrl">
-		    		</md-input-container>
-		    		<md-button ng-disabled="!campaign.doesRedirect" ng-click="submitUrl()"><md-icon>check</md-icon>Submit<span>&nbsp;<i class="fa fa-spin fa-spinner" ng-show="urlSaving"></i></span></md-button>
-	    	</div>    	
-	    	<div class="col-md-6" style="margin-top:25px">
-		    		<p class="bidio-orange" style="text-align:center;margin:38px;height:26px;"><b>Click-Through Prompt</b></p>
-		    		<md-input-container layout-fill>
-		    			<textarea aria-label="Campaign prompt" rows="10" ng-model="campaign.prompt"></textarea>
-		    		</md-input-container>
-		    		<md-button ng-disabled="promptSaving" ng-click="promptSave()">
-		    		<span ng-show="promptSaving" class="fa fa-spin fa-spinner">&nbsp;</span><md-icon>check</md-icon>Submit</md-button>
-	    	</div>
-	    </div>
-			<div class="spacing-25"></div>
-			<div class="row">
-				<div class="col-md-6">
-		    	<p class="dash-title-sm"><b>Landing Page Banner</b></p>
-					<div class="edit-container">
-						<div class="edit-btn"><md-button  ng-click="getImage()" class="md-fab md-mini"><md-icon>edit</md-icon></md-button></div>
-						<img style="width:100%" ng-src="{{campaign.bannerUrl}}">
-					</div>
-				</div>				
-				<div class="col-md-6">
-					<p class="dash-title-sm"><b>Landing Page Text</b></p>
-		    	<div ng-show="!editingLanding" class="edit-container">
-		    		<div class="edit-btn"><md-button ng-click="editLandingToggle()" class="md-fab md-mini"><md-icon>edit</md-icon></md-button></div>
-		    		<p>{{campaign.campaignContent}}</p>
-		    	</div>
-		    	<div ng-show="editingLanding">
-		    		<md-input-container layout-fill>
-		    			<textarea aria-label="Campaign Content" rows="10" ng-model="campaign.campaignContent"></textarea>
-		    		</md-input-container>
-		    		<md-progress-circular ng-show="saving" md-mode="indeterminate"></md-progress-circular>
-		    		<md-button ng-disabled="saving" ng-click="landingSave()">Save</md-button>
-		    		<md-button ng-disabled="saving" ng-click="landingUndo()">Undo</md-button>
-		    	</div>
-				</div>
-			</div>
-	  </md-tab>
-		<md-tab label="About">
-			<div class="spacing-25"></div>
-			<div class="row">
-				<div class="col-md-6">
-		    	<p class="dash-title-sm"><b>About Video</b></p>
-		    	<div class="video-container edit-container">
-		    		<div class="edit-btn"><md-button  ng-click="getVideo()" class="md-fab md-mini"><md-icon>edit</md-icon></md-button></div>
-						<video 
-							ng-src="{{campaign.videoUrl}}"
-							class="video-js vjs-default-skin"
-							controls preload="auto" 
-							width="640" 
-							height="264" 
-							fluid="true"
-							poster="images/bidio_logo.png" 
-							vjs-video
-							vjs-media="media"
-							vjs-setup="options"
-							vjs-ratio="16:9">
-						</video>
-					</div>
-				</div>				
-				<div class="col-md-6">
-					<p class="dash-title-sm"><b>About Text</b></p>
-		    	<div ng-hide="editingInfo" class="edit-container">
-		    		<div class="edit-btn"><md-button  ng-click="editInfoToggle()" class="md-fab md-mini"><md-icon>edit</md-icon></md-button></div>
-		    		<p>{{campaign.intro}}</p>
-		    	</div>
-		    	<div ng-show="editingInfo">
-		    		<md-input-container layout-fill>
-		    			<textarea aria-label="Edit Intro" ng-model="campaign.intro" rows="5" md-rows="5"></textarea>
-		    		</md-input-container>
-		    		<md-progress-circular ng-show="infoSaving" md-mode="indeterminate"></md-progress-circular>
-		    		<md-button ng-disabled="infoSaving" ng-click="infoSave()">Save</md-button>
-		    		<md-button ng-disabled="infoSaving" ng-click="infoUndo()">Undo</md-button>
-		    	</div>
-				</div>
-			</div>
-		</md-tab>
-		<md-tab ng-if="campaign.published" label="Videos">
-			<div class="spacing-25"></div>
-			<div class="row">
-				<div class="col-md-12">
-					<md-toolbar>
-						<div class="md-toolbar-tools">
-							<md-button ng-disabled="refreshing" class="md-icon-button" ng-click="refresh()">
-								<md-icon ng-hide="refreshing">refresh</md-icon><md-progress-circular md-mode="indeterminate" ng-show="refreshing"></md-progress-circular>
-							</md-button>
-							<md-input-container>
-								<md-select aria-label="Submussion selector" ng-model="selection.type">
-								  <md-option value="new">New Submissions</md-option>
-								  <md-option value="approved">Approved Submissions</md-option>
-								  <md-option value="unapproved">Unapproved Submissions</md-option>
-								  <md-option value="old">Old Submissions</md-option>
-								</md-select>
-							</md-input-container>
-						</div>
-				  </md-toolbar>
-				</div>
-			</div>
-			<div class="spacing-15"></div>
-			<div class="row">
-				<div class="col-md-12">
-					<md-button ng-click="saveVideo()" ng-disabled="clean == true || saving">
-			    	<md-icon>save</md-icon>
-			    	&nbsp;Save
-			    	<span ng-show="saving">&nbsp;<i class="fa fa-spin fa-spinner"></i></span>
-			    </md-button>
-
-			    <md-button ng-click="undoVideo()" ng-disabled="clean == true || saving">
-			    	<md-icon>undo</md-icon>
-			    	&nbsp;Undo
-			    </md-button>
-				</div>
-			</div>
-			<div class="spacing-25"></div>
-			<div class="container">
-				<div class="row">
-			    <div ng-repeat="bid in selectedBids" style="font-size:18px;text-align: left;padding: 5px;">
-			    	<div class="row">
-							<h3 style="font-weight: bold;">Title</h3>
-			    		{{bid.video.title}}
-			    	</div>	
-						<div class="spacing-15"></div>
-			    	<div class="row">
-							<h3 style="font-weight: bold;">User</h3>
-			    		{{bid.video.user}}
-			    	</div>
-			    	<div class="spacing-15"></div>	    	
-			    	<div class="row">
-							<h3 style="font-weight: bold;">Description</h3>
-							<p>{{bid.video.description}}</p>
-			    	</div>
-						<div class="spacing-15"></div>
-			    	<div class="row">
-							<h3 style="font-weight: bold;">Play Video <md-button style="display:inline-block;padding:5px;font-size:18px;margin-left:0;" ng-click="view($event, bid.video)" class="md-icon-button"><md-icon>play_arrow</md-icon></md-button>	</h3>		    	
-						</div>		
-						<div class="spacing-15"></div>	    	
-						<div class="row">
-							<h3 style="font-weight: bold;">Approved? <md-checkbox style="display:inline-block;padding:5px;margin-left:5px" ng-disabled="selection.type == 'old'" ng-click="dirty(bid)" ng-model="bid.isAccepted" aria-label="Approved"></md-checkbox></h3>
-						</div>
-						<md-divider></md-divider>
-			    	<div class="spacing-25"></div>
-			    </div>
-				</div>
-			</div>
-	  </md-tab>
+<div class="container">
+	<md-content layout-padding>
+		<!--<p class="text-left"><a ui-sref="dashboard.campaigns"><md-icon>chevron_left</md-icon>&nbsp;Back to campaigns</a></p>-->
+		<div class="dashboard-title">
+			<h2 style="font-weight: bold;"><a href="/campaign/{{campaign.urlTitle}}">{{campaign.title}}</a></h2>
+		</div>
 		<div class="spacing-25"></div>
-	  <md-tab ng-if="!campaign.published" label="Publish">
-			<md-content layout-padding>
-				<md-button ng-click="publish()">Publish!</md-button>
-			</md-content>
-		</md-tab>
-  	<div class="spacing-25"></div>
-	</md-tabs>
-</md-content>
+		<md-tabs md-dynamic-height md-border-bottom md-selected="selectedIndex">
+			<md-tab ng-if="campaign.published" label="Overview">
+				<div class="spacing-25"></div>
+				<div class="row">
+					<div class="col-md-12">
+			  		<canvas id="line" class="chart chart-line" style="padding:15px" chart-data="data"
+					    chart-labels="labels" chart-legend="true" chart-series="series"
+					    chart-click="onClick">
+						</canvas>
+					</div>
+				</div>
+				<div class="spacing-25"></div>
+				<div class="row">
+					<div class="spacing-25"></div>
+					<div class="col-md-6" style="margin-top:25px">
+			  		<h2 style="font-weight:bold;color:#FAA93F;text-align:left;">Finance</h2>
+				  	<hr>
+				  	<p><b>Price per click</b>&nbsp;${{ campaign.price | number: 2 }}</p>
+				  	<p><b>Total clicks</b>&nbsp;{{ totalClicks }}</p>
+						<p><b>Total payment</b>&nbsp;${{ totalClicks * campaign.price | number: 2 }}</p>
+						<p ng-show="campaign.maxContributionPerVideo"><b>Max Contribution per Video</b>&nbsp;${{ campaign.maxContributionPerVideo | number : 2 }}</p>
+						<p ng-show="campaign.contributionGoal"><b>Max Contribution per Video</b>&nbsp;${{ campaign.contributionGoal | number: 2 }}</p>
+					</div>
+					<div class="col-md-6" style="margin-top:25px">
+				  	<h2 style="font-weight:bold;color:#FAA93F;text-align:left;">Performance</h2>
+						<hr>
+						<p><b>Top video (by clicks)</b>&nbsp;{{ topClicks.title }}&nbsp;({{ topClicks.clickCount }} clicks)<br></p>
+						<p><b>Top video (by views)</b>&nbsp;{{ topViews.title }}&nbsp;({{ topClicks.clickCount }} views)<br></p>
+						<p><b>Top video (by conversion ratio)</b>&nbsp;{{ topConversion.title }}&nbsp;({{ (topConversion.clickCount / topConversion.viewCount) * 100 | number : 2 }}&nbsp;%)</p>
+						<p><b>Total clicks</b>&nbsp;{{ totalClicks }}<br></p>
+						<p><b>Total views</b>&nbsp;{{ totalViews }}<br></p>
+						<p><b>Average conversion ratio</b>&nbsp;{{ (totalClicks / totalViews) * 100 | number : 2 }}&nbsp;%<br></p>
+					</div>
+				</div>
+				<div class="spacing-25"></div>
+			</md-tab>
+			<md-tab label="About">
+			<!--<div class="row">
+					<div class="col-md-12">
+						<div class="spacing-25"></div>
+						<h2>Campaign Rules</h2>
+						<div class="spacing-15"></div>
+						<p class="text-center" style="text-align:justify;max-width:75%;margin:0 auto;">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+							consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+							cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+							proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+						</p>
+					</div>
+				</div>-->
+				<div class="spacing-25"></div>
+				<div class="row">	
+					<div class="col-md-4">
+				    	<p class="dash-title-sm"><b>Campaign Video</b></p>
+				    	<div class="video-container edit-container" style="width:100%">
+				    		<div class="edit-btn"><md-button  ng-click="getVideo()" class="md-fab md-mini"><md-icon>edit</md-icon></md-button></div>
+							<video 
+								ng-src="{{campaign.videoUrl}}"
+								class="video-js vjs-default-skin"
+								controls preload="auto" 
+								width="640" 
+								height="264" 
+								fluid="true"
+								poster="images/bidio_logo.png" 
+								vjs-video
+								vjs-media="media"
+								vjs-setup="options"
+								vjs-ratio="16:9">
+							</video>
+						</div>
+					</div>	
+					<div class="col-md-4">
+						<p class="dash-title-sm"><b>Description</b></p>
+				    	<div ng-hide="editingInfo" class="edit-container">
+				    		<div class="edit-btn"><md-button  ng-click="editInfoToggle()" class="md-fab md-mini"><md-icon>edit</md-icon></md-button></div>
+				    		<p>{{campaign.intro}}</p>
+				    	</div>
+				    	<div ng-show="editingInfo">
+				    		<md-input-container layout-fill>
+				    			<textarea aria-label="Edit Intro" ng-model="campaign.intro" rows="5" md-rows="5"></textarea>
+				    		</md-input-container>
+				    		<md-progress-circular ng-show="infoSaving" md-mode="indeterminate"></md-progress-circular>
+				    		<md-button ng-disabled="infoSaving" ng-click="infoSave()">Save</md-button>
+				    		<md-button ng-disabled="infoSaving" ng-click="infoUndo()">Undo</md-button>
+				    	</div>
+					</div>	
+					<div class="col-md-4">
+				    	<p class="dash-title-sm"><b>Campaign Image</b></p>
+						<div class="edit-container">
+							<div class="edit-btn"><md-button ng-click="getCampaignImage()" class="md-fab md-mini"><md-icon>edit</md-icon></md-button></div>
+							<img style="max-width:100%" ng-src="{{campaign.campaignImageUrl}}">
+						</div>
+					</div>
+				</div>
+				<div class="spacing-25"></div>
+				<div class="row">		
+					<div class="col-lg-12">
+						<div class="spacing-15"></div>
+						<div class="spacing-15"></div>
+						<div class="row" style="text-align: left;">
+							<div class="col-md-3">	
+								<md-input-container>
+									<label style="font-size: 20px;">Price per click</label>
+									<md-icon>attach_money</md-icon>
+									<input type="text" ng-model="campaign.price">
+								</md-input-container>
+							</div>
+							<div class="col-md-3">
+								<md-checkbox ng-model="setBudget" aria-label="Set budget">
+									Set a Campaign Budget?
+								</md-checkbox>
+								<br>
+								<md-input-container layout-fill>
+									<label>Campaign Budget</label>
+									<md-icon>attach_money</md-icon>
+									<input type="text" ng-model="campaign.contributionGoal" ng-disabled="!setBudget">
+								</md-input-container>
+							</div>
+							<div class="col-md-3">
+								<md-checkbox ng-model="setVideoBudget" aria-label="Set video budget">
+									Set a Per-Video Budget?
+								</md-checkbox>
+								<br>
+								<md-input-container layout-fill>
+									<label>Per Video Budget</label>
+									<md-icon>attach_money</md-icon>
+									<input type="text" ng-model="campaign.maxContributionPerVideo" ng-disabled="!setVideoBudget">
+								</md-input-container>
+							</div>
+							<div class="col-md-3">
+								<md-checkbox ng-model="setEndDate" aria-label="Set end">
+									Set an End-Date?
+								</md-checkbox>
+								<br>
+								<md-datepicker layout-fill ng-model="endDate" ng-disabled="!setEndDate" md-placeholder="End Date"></md-datepicker>
+							</div>
+						</div>
+						<div class="spacing-25"></div>
+						<div class="row">
+							<div class="col-md-12">
+					    		<p class="bidio-orange" style="text-align:center;margin:38px;height:26px;"><b>Click-Through Prompt</b></p>
+					    		<md-input-container layout-fill>
+					    			<textarea aria-label="Campaign prompt" rows="10" ng-model="campaign.prompt"></textarea>
+					    		</md-input-container>
+					    		<md-button ng-disabled="promptSaving" ng-click="promptSave()">
+					    		<span ng-show="promptSaving" class="fa fa-spin fa-spinner">&nbsp;</span><md-icon>check</md-icon>Save Prompt</md-button>
+							</div>
+						</div>
+						<div class="spacing-50"></div>
+				      	<div class="row">
+					        <div class="col-md-6">
+					          	<md-button class="md-raised md-accent">Save</md-button><br>
+					          	<div class="spacing-25"></div>
+					        </div>
+					        <div class="col-md-6">
+					          	<md-button class="md-raised" ng-click="nextTab()">Next</md-button><br>
+					          	<div class="spacing-25"></div>
+					        </div>
+				      	</div>
+					</div>
+				</div>
+				<div class="spacing-25"></div>
+			</md-tab>
+		    <md-tab label="Landing Page">
+			  	<div class="row" style="padding:15px">	
+					<div class="col-md-6">
+						<p class="dash-title-sm"><b>Landing Page Text</b></p>
+				    	<div ng-show="!editingLanding" class="edit-container">
+				    		<div class="edit-btn"><md-button ng-click="editLandingToggle()" class="md-fab md-mini"><md-icon>edit</md-icon></md-button></div>
+				    		<p>{{campaign.campaignContent}}</p>
+				    	</div>
+				    	<div ng-show="editingLanding">
+				    		<md-input-container layout-fill>
+				    			<textarea aria-label="Campaign Content" rows="10" ng-model="campaign.campaignContent"></textarea>
+				    		</md-input-container>
+				    		<md-progress-circular ng-show="saving" md-mode="indeterminate"></md-progress-circular>
+				    		<md-button ng-disabled="saving" ng-click="landingSave()">Save</md-button>
+				    		<md-button ng-disabled="saving" ng-click="landingUndo()">Undo</md-button>
+				    	</div>
+					</div>
+					<div class="col-md-6">
+			    		<p class="dash-title-sm"><b>Landing Page Banner</b></p>
+						<div class="edit-container">
+							<div class="edit-btn"><md-button  ng-click="getBannerImage()" class="md-fab md-mini"><md-icon>edit</md-icon></md-button></div>
+							<img style="width:75%" ng-src="{{campaign.bannerUrl}}">
+						</div>
+					</div>	
+			    </div>
+				<div class="spacing-25"></div>
+				<hr>
+				<div class="spacing-25"></div>
+				<div class="row">
+			  		<div class="col-md-6 col-md-push-3 col-md-pull-3" style="margin-top:25px">
+			    		<md-input-container>
+			    			<md-switch ng-model="campaign.doesRedirect" aria-label="3rd party landing page switch">
+			    			  <h3 class="bidio-orange" style="font-weight:bold;font-size:14px;">Redirect to 3rd-Party Landing Page</h3>
+			    			</md-switch>
+			    		</md-input-container>
+			    		<md-input-container layout-fill>
+			    			<label>Redirect URL</label>
+			    			<input ng-disabled="!campaign.doesRedirect" type="text" ng-model="campaign.redirectUrl">
+			    		</md-input-container>
+			    		<md-button ng-disabled="!campaign.doesRedirect" ng-click="submitUrl()"><md-icon>check</md-icon>Submit<span>&nbsp;<i class="fa fa-spin fa-spinner" ng-show="urlSaving"></i></span></md-button>
+			    	</div>    
+				</div>
+				<div class="spacing-50"></div>			
+				<div class="row">
+					<div class="text-center">
+						<md-button class="md-raised md-accent" ng-click="nextTab()">Save</md-button>
+					</div>
+				</div>
+		  	</md-tab>
+			<md-tab ng-if="campaign.published" label="Videos">
+				<div class="spacing-25"></div>
+				<div class="row">
+					<div class="col-md-12">
+						<md-toolbar>
+							<div class="md-toolbar-tools">
+								<md-button ng-disabled="refreshing" class="md-icon-button" ng-click="refresh()">
+									<md-icon ng-hide="refreshing">refresh</md-icon><md-progress-circular md-mode="indeterminate" ng-show="refreshing"></md-progress-circular>
+								</md-button>
+								<md-input-container>
+									<md-select aria-label="Submussion selector" ng-model="selection.type">
+									  <md-option value="new">New Submissions</md-option>
+									  <md-option value="approved">Approved Submissions</md-option>
+									  <md-option value="unapproved">Unapproved Submissions</md-option>
+									  <md-option value="old">Old Submissions</md-option>
+									</md-select>
+								</md-input-container>
+							</div>
+					  </md-toolbar>
+					</div>
+				</div>
+				<div class="spacing-15"></div>
+				<div class="row">
+					<div class="col-md-12">
+						<md-button ng-click="saveVideo()" ng-disabled="clean == true || saving">
+				    	<md-icon>save</md-icon>
+				    	&nbsp;Save
+				    	<span ng-show="saving">&nbsp;<i class="fa fa-spin fa-spinner"></i></span>
+				    </md-button>
+
+				    <md-button ng-click="undoVideo()" ng-disabled="clean == true || saving">
+				    	<md-icon>undo</md-icon>
+				    	&nbsp;Undo
+				    </md-button>
+					</div>
+				</div>
+				<div class="spacing-25"></div>
+				<div class="container">
+					<div class="row">
+				    <div ng-repeat="bid in selectedBids" style="font-size:18px;text-align: left;padding: 5px;">
+				    	<div class="row">
+								<h3 style="font-weight: bold;">Title</h3>
+				    		{{bid.video.title}}
+				    	</div>	
+							<div class="spacing-15"></div>
+				    	<div class="row">
+								<h3 style="font-weight: bold;">User</h3>
+				    		{{bid.video.user}}
+				    	</div>
+				    	<div class="spacing-15"></div>	    	
+				    	<div class="row">
+								<h3 style="font-weight: bold;">Description</h3>
+								<p>{{bid.video.description}}</p>
+				    	</div>
+							<div class="spacing-15"></div>
+				    	<div class="row">
+								<h3 style="font-weight: bold;">Play Video <md-button style="display:inline-block;padding:5px;font-size:18px;margin-left:0;" ng-click="view($event, bid.video)" class="md-icon-button"><md-icon>play_arrow</md-icon></md-button>	</h3>		    	
+							</div>		
+							<div class="spacing-15"></div>	    	
+							<div class="row">
+								<h3 style="font-weight: bold;">Approved? <md-checkbox style="display:inline-block;padding:5px;margin-left:5px" ng-disabled="selection.type == 'old'" ng-click="dirty(bid)" ng-model="bid.isAccepted" aria-label="Approved"></md-checkbox></h3>
+							</div>
+							<md-divider></md-divider>
+				    	<div class="spacing-25"></div>
+				    </div>
+					</div>
+				</div>
+			</md-tab>
+			<div class="spacing-25"></div>
+		  	<md-tab ng-if="!campaign.published" label="Publish">
+		  		<div class="spacing-25"></div>
+				<md-content layout-padding>
+					<md-button class="md-raised md-accent" ng-click="publish()">Publish Live Campaign?</md-button>
+				</md-content>
+			</md-tab>
+	  	<div class="spacing-25"></div>
+		</md-tabs>
+	</md-content>
+</div>

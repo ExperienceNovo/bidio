@@ -8,7 +8,7 @@
 			<div ng-repeat="campaign in campaigns" style="text-align:left;">
 				<div class="col-md-6">		
 						<div class="spacing-15"></div>	
-						<a ui-sref="dashboard.campaignEdit({id: campaign.id})" class="md-primary"
+						<a ui-sref="dashboard.campaign({id: campaign.id})" class="md-primary"
 						style="	width: 100%;
 							    float: none;
 							    display: block;
@@ -21,9 +21,6 @@
 						<br>
 						<div><strong style="font-weight: bold;">Updated:</strong> {{campaign.updatedAt | date : "short"}}</div>
 						<div class="spacing-15"></div>	
-
-						<a ui-sref="dashboard.campaignEdit({id: campaign.id})" style="cursor: pointer;">Edit <md-icon>mode_edit</md-icon></a>
-						<a ng-click="delete(user.id)" style="margin-left: 25px;cursor: pointer;">Delete <md-icon>delete</md-icon></a>
 					<hr>
 				</div>
 			</div>

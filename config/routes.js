@@ -68,7 +68,6 @@ module.exports.routes = {
   'get /auth/:provider/callback': 'AuthController.callback',
   'delete /auth/providers/:provider': 'UserController.removePassport',
 
-
   /**
    * Bid routes
    */
@@ -80,26 +79,20 @@ module.exports.routes = {
   'post /api/bid/:id': 'BidController.update',
   'delete /api/bid/:id': 'BidController.destroy',
 
-
   /**
   *	Campaign Routes
   */
   'get /api/campaign': 'CampaignController.getAll',
   'get /api/campaign/me': 'CampaignController.getMine',
+  'get /api/campaign/featured': 'CampaignController.getFeatured',
   'get /api/campaign/:id': 'CampaignController.getOne',
   'get /api/campaign/member/:id': 'CampaignController.getByMember',
   'get /api/campaign/url/:path': 'CampaignController.getByUrlTitle',
-  // 'get /api/campaign/:id': 'CampaignController.getSubmittedVideos',
+   //'get /api/campaign/:id': 'CampaignController.getSubmittedVideos',
   'post /api/campaign': 'CampaignController.create',
   'post /api/campaign/check': 'CampaignController.check',
   'post /api/campaign/:id': 'CampaignController.update',
   'delete /api/campaign/:id': 'CampaignController.destroy',
-
-  'post /api/profile/:id': 'ProfileController.update',
-
-  /**
-   * Profile routes
-   */
   'post /api/profile/:id': 'ProfileController.update',
 
 
@@ -108,6 +101,16 @@ module.exports.routes = {
    */
   'get /api/click/video/:id': 'ClickController.getByVideo',
   'post /api/click': 'ClickController.create',
+
+  /**
+   * Profile routes
+   */
+  'post /api/profile/:id': 'ProfileController.update',
+
+  /**
+   * Search routes
+   */
+  'get /api/search/:searchQuery/:limit/:skip': 'SearchController.search',
 
   /**
    * Share routes
@@ -131,6 +134,7 @@ module.exports.routes = {
   'get /api/video': 'VideoController.getAll',
   'get /api/video/me': 'VideoController.getMine',
   'get /api/video/:id': 'VideoController.getOne',
+  //'get /api/video/:limit/:skip': 'VideoController.getSome',
   'get /api/video/member/:id': 'VideoController.getByMember',
   //'get /api/video/url/:path': 'VideoController.getByUrlTitle',
   'post /api/video/upload': 'VideoController.upload',

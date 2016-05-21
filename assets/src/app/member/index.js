@@ -24,21 +24,11 @@ angular.module( 'bidio.member', [
 	});
 })
 
-.controller( 'MemberCtrl', function MemberCtrl( $scope, config, member, campaigns, videos ) {
-
-		// if (!config.currentUser){
-		// 	console.log(config.currentUser)
-		// 		$location.path('/login')
-		// }
-
-		$scope.member = member;
-		if(typeof($scope.member)=="undefined"){$location.path('/')}
-
-		console.log(campaigns);
-		console.log('hi')
-		console.log($scope.member)
-
-		$scope.profile = member.profile[0];
-		$scope.campaigns = campaigns;
-		$scope.videos = videos;
+.controller( 'MemberCtrl', function MemberCtrl( $scope, titleService, config, member, campaigns, videos ) {
+	$scope.member = member;
+	if(typeof($scope.member)=="undefined"){$location.path('/')}
+	titleService.setTitle(member.username);
+	$scope.profile = member.profile[0];
+	$scope.campaigns = campaigns;
+	$scope.videos = videos;
 });

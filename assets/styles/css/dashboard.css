@@ -1,3 +1,17 @@
+.modal-title {
+  font-size: 2.5em;
+  font-weight: 500; 
+}
+
+.modal-label {
+  font-size:20px;
+}
+
+.dashboard-modal {
+  width:500px;
+  max-width:100%
+}
+
 .wrap {
   height: auto;
   margin: 0 auto;
@@ -317,6 +331,31 @@ div[class^="icon"] {
   cursor: pointer;
 }
 
+.bidio-profile img.bidio-image-lg {
+    z-index: 0;
+    width: 100%;  
+    margin-bottom: 10px;
+}
+
+.bidio-image-profile {
+    margin: -90px 10px 0px 50px;
+    z-index: 9;
+    width: 20%; 
+}
+@media (max-width:768px) {
+  .bidio-profile-text>h1{
+      font-weight: 700;
+      font-size:16px;
+  }
+
+  .bidio-image-profile {
+      margin: -45px 10px 0px 25px;
+      z-index: 9;
+      width: 20%; 
+  }
+}
+
+
 .accordion .section {
   width: 100%;
 }
@@ -502,13 +541,6 @@ div[class^="icon"] {
 .sidebar-nav > .sidebar-brand a:hover {
     color: #fff;
     background: none;
-}
-
-
-@media(min-width:991px) {
-  .chart.chart-line {
-    zoom:0.65;
-  }
 }
 
 @media(min-width:768px) {

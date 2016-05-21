@@ -18,6 +18,7 @@ angular.module('models.video', ['lodash', 'services', 'sails.io',])
 
     this.getByMember = function(model) {
         var url = utils.prepareUrl('video/member/' + model);
+        console.log(url)
         return $sailsSocket.get(url).then(success, error);
     };
 
@@ -25,6 +26,11 @@ angular.module('models.video', ['lodash', 'services', 'sails.io',])
 		var url = utils.prepareUrl('video/' + model);
 		return $sailsSocket.get(url).then(success, error);
 	};
+
+    this.getSome = function(limit, skip){
+        var url = utils.prepareUrl('video/' + limit + '/' + skip);
+        return $sailsSocket.get(url).then(success, error);
+    };
 
     this.create = function(newModel) {
         var url = utils.prepareUrl('video');

@@ -1,62 +1,67 @@
-<link href="http://vjs.zencdn.net/5.8.0/video-js.css" rel="stylesheet">
 <uib-tabset active="active">
 	<uib-tab heading="Profile">
-		<div id="main-container">
-		  <div class="dashboard-title col-xs-12 col-sm-6 col-sm-push-2">
-		  	<div class="row">
-		  		<div class="col-xs-12 col-sm-5">
-		  			<img style="width:75%;" ng-src="{{profile.picture}}">
-		  		</div>
-		  		<div class="spacing-25"></div>
-		  		<div class="col-xs-12 col-sm-7">
-		  			<p class="profile-title">{{member.username}}</p>
-		  			<p class="profile-description">{{profile.description}}</p>
-		  		</div>
-		  	</div>
+		<div class="container">
+		  <div class="dashboard-title">
+			<div class="spacing-50"></div>
+		    <div class="bidio-profile">
+		        <img align="left" class="bidio-image-lg" src="http://www.placehold.it/1500x500?text=profile banner" alt="Profile Banner"/>
+		        <img align="left" class="bidio-image-profile thumbnail" src="{{profile.picture}}" alt="Profile Pic"/>
+				<div class="tabs-profile">
+					<label for="tab1" title="Member">Subscribers</label>
+					<label for="tab2" title="View Count">Views</label>
+				</div>
+		        <div class="bidio-profile-text">
+		            <h2 align="left" class="bidio-orange" style="font-weight: bold;">{{member.username}}</h2>
+		            <hr>
+		            <div class="spacing-15"></div>
+		            <p>{{profile.description}}</p>
+		        </div>
+		    </div>
+		    <div class="spacing-50"></div>
 		  	<div class="row">
 		  		<div class="col-xs-12">
 		  			<div>
 			  			<ul>
-								<li ng-if="profile.firstName">
-								  <p><b>First Name</b>&nbsp;{{profile.firstName}}</p>
-								</li>
-								<hr>
-								<li ng-if="profile.lastName">
-								  <p><b>Last Name</b>&nbsp;{{profile.lastName}}</p>
-								</li>
-								<hr>
-								<li ng-if="profile.companyName && profile.companyUrl">
-								  <p><b>Company</b>&nbsp;<a target="_blank" href="{{profile.companyUrl}}">{{profile.companyName}}</a></p>
-								</li>
-								<li ng-if="member.socialAccounts.facebook.profileUrl">
-									<a href="{{member.socialAccounts.facebook.profileUrl}}">
-										<div class="md-whiteframe-4dp" style="background-color: #3b5998; text-align:left; padding:5px; font-size:20px; color: #fff">
-											<i class="fa fa-facebook"></i>
-											<img style="border-radius:50%" ng-src="{{member.socialAccounts.facebook.profilePic}}">
-											{{member.socialAccounts.facebook.displayName}}
-										</div>
+							<li ng-if="profile.firstName">
+							  <p><b>First Name</b>&nbsp;{{profile.firstName}}</p>
+							</li>
+							<hr>
+							<li ng-if="profile.lastName">
+							  <p><b>Last Name</b>&nbsp;{{profile.lastName}}</p>
+							</li>
+							<hr>
+							<li ng-if="profile.companyName && profile.companyUrl">
+							  <p><b>Company</b>&nbsp;<a target="_blank" href="{{profile.companyUrl}}">{{profile.companyName}}</a></p>
+							</li>
+							<li ng-if="member.socialAccounts.facebook.profileUrl">
+								<a href="{{member.socialAccounts.facebook.profileUrl}}">
+									<div class="md-whiteframe-4dp" style="background-color: #3b5998; text-align:left; padding:5px; font-size:20px; color: #fff">
+										<i class="fa fa-facebook"></i>
+										<img style="border-radius:50%" ng-src="{{member.socialAccounts.facebook.profilePic}}">
+										{{member.socialAccounts.facebook.displayName}}
+									</div>
+								</a>
+							</li>
+							<br>
+							<li ng-if="member.socialAccounts.google.profileUrl">
+								<a href="{{member.socialAccounts.google.profileUrl}}">
+									<div class="md-whiteframe-4dp" style="background-color:#dd4b39; text-align:left; padding:5px; font-size:20px; color: #fff">
+										<i class="fa fa-google-plus"></i>
+										<img style="border-radius:50%" ng-src="{{member.socialAccounts.google.profilePic}}">
+										{{member.socialAccounts.google.displayName}}
+									</div>
 									</a>
-								</li>
-								<br>
-								<li ng-if="member.socialAccounts.google.profileUrl">
-									<a href="{{member.socialAccounts.google.profileUrl}}">
-										<div class="md-whiteframe-4dp" style="background-color:#dd4b39; text-align:left; padding:5px; font-size:20px; color: #fff">
-											<i class="fa fa-google-plus"></i>
-											<img style="border-radius:50%" ng-src="{{member.socialAccounts.google.profilePic}}">
-											{{member.socialAccounts.google.displayName}}
-										</div>
-										</a>
-								</li>
-								<br>
-								<li ng-if="member.socialAccounts.twitter.profileUrl">
-									<a href="{{member.socialAccounts.twitter.profileUrl}}">
-										<div class="md-whiteframe-4dp" style="background-color: #55acee; text-align:left; padding:5px; font-size:20px; color: #f5f8fa">
-											<i class="fa fa-twitter"></i>
-											<img style="border-radius:50%" ng-src="{{member.socialAccounts.twitter.profilePic}}">
-											{{member.socialAccounts.twitter.displayName}}
-										</div>
-										</a>
-								</li>
+							</li>
+							<br>
+							<li ng-if="member.socialAccounts.twitter.profileUrl">
+								<a href="{{member.socialAccounts.twitter.profileUrl}}">
+									<div class="md-whiteframe-4dp" style="background-color: #55acee; text-align:left; padding:5px; font-size:20px; color: #f5f8fa">
+										<i class="fa fa-twitter"></i>
+										<img style="border-radius:50%" ng-src="{{member.socialAccounts.twitter.profilePic}}">
+										{{member.socialAccounts.twitter.displayName}}
+									</div>
+									</a>
+							</li>
 			  			</ul>
 			  		</div>
 		  		</div>

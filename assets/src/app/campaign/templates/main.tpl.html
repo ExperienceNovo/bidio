@@ -19,6 +19,7 @@
 					vjs-setup="options"
 					vjs-ratio="16:9">
 				</video>
+				<a href="#" ng-show="campaign.campaignImageUrl" class="vid-clickthrough"><img src="{{campaign.campaignImageUrl}}"></a>
 			</div>
 		</div>
 		<div class="spacing-25"></div>
@@ -37,19 +38,27 @@
 		</div>
 	</div>
 	<div class="row">
-		<h2 ng-show="campaign.bids.length > 0" style="font-weight:bold;color:#FAA93F;font-size:4.2em;">Submissions</h2>
+		<h2 ng-show="campaign.bids.length > 0" style="font-weight:bold;color:#FAA93F;font-size:4.2em;">Campaign Videos</h2>
 		<div class="spacing-25"></div>
 		<div class="campaignVideos col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-repeat="bid in campaign.bids">
-			<h2 style="font-size: 2.5em;margin-bottom: 15px;"><a ui-sref="video({id: bid.video.id})">{{bid.video.title}}</a></h2>
+			<h2 style="font-size: 2.5em;margin-bottom: 15px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"><a ui-sref="video({id: bid.video.id})">{{bid.video.title}}</a></h2>
 			<h3>By <b><a href="/member/{{bid.video.user.username}}">{{bid.video.user.username}}</a></b> on {{bid.video.createdAt | date: "shortDate"}}</h3>
 			<br>
 			<video 
-				style="margin:auto" 
 				ng-src="{{bid.video.amazonUrl}}" 
-				class="video-js vjs-default-skin" 
-				controls preload="auto" height="205" 
-				vjs-video>
+				class="video-js vjs-default-skin"
+				controls preload="auto" 
+				width="640" 
+				height="264" 
+				fluid="true"
+				poster="{{campaign.poster}}" 
+				vjs-video
+				vjs-media="media"
+				vjs-setup="options"
+				vjs-ratio="16:9">
 			</video>
+			<a href="#" ng-show="campaign.campaignImageUrl" class="vid-clickthrough"><img src="{{campaign.campaignImageUrl}}"></a>
+
 		</div>
 	</div>
 </div>

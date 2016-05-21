@@ -27,7 +27,7 @@ module.exports = {
             type: 'string'
         },
 
-        imageUrl: {
+        campaignImageUrl: {
             type: 'string',
             // required: true
         },
