@@ -101,6 +101,68 @@
           transform: translateX(-50%) translateY(0);
 }
 
+.tabs-profile {
+  margin: 0 auto;
+  float: right;
+  padding: 0;
+}
+
+.tabs-profile input {
+  display: none;
+}
+
+.tabs-profile label {
+  display: inline-block;
+  margin: 0 0 -1px;
+  padding: 15px 25px;
+  font-weight: 600;
+  text-align: center;
+  color: #4c4c4c;
+  border: 1px solid #ddd;
+  background: #f1f1f1;
+  border-radius: 3px 3px 0 0;
+}
+
+.tabs-profile label:before {
+  font-family: fontawesome;
+  font-weight: normal;
+  margin-right: 10px;
+  color: #FE9A2E
+}
+
+.tabs-profile label[for*="1"]:before {
+  content: "\f007";
+}
+
+.tabs-profile label[for*="2"]:before {
+  content: "\f04b";
+}
+
+.tabs-profile label[for*="3"]:before {
+  content: "\f155";
+}
+
+.tabs-profile label[for*="4"]:before {
+  content: "\f1e0";
+}
+
+.tabs-profile label[for*="5"]:before {
+  content: "\f0d6";
+}
+
+.tabs-profile label:hover {
+  color: #888;
+  cursor: pointer;
+}
+
+.tabs-profile input:checked + label {
+  color: #555;
+  border: 1px solid #ddd;
+  border-top: 1px solid #009933;
+  border-bottom: 1px solid #fff;
+  background: #fff;
+}
+
 .clearfix:after {
   visibility: hidden;
   display: block;
