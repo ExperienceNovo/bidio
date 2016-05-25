@@ -4,6 +4,7 @@ angular.module('models', [
 	'models.campaign',
 	'models.click',
 	'models.post',
+	'models.share',
 	'models.user',
 	'models.profile',
 	'models.search',

@@ -48,6 +48,7 @@ angular.module( 'bidio.video', [
 	}
 
 	console.log($scope.video.bids)
+	console.log($scope.user)
 
 	var activeBid = video.bids.filter(function(bid){ return bid.isActive });
 	$scope.highestBid = activeBid.length ? activeBid[0] : {value: "0.01"};
@@ -91,12 +92,17 @@ angular.module( 'bidio.video', [
 	$scope.share = function(ev) {
     // var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
     $mdDialog.show({
-      controller: ShareDialogController,
+      controller: "ShareDialogCtrl",
       templateUrl: 'video/templates/shareDialog.tpl.html',
       parent: angular.element(document.body),
       targetEvent: ev,
-      clickOutsideToClose: true
+      clickOutsideToClose: true,
       // fullscreen: useFullScreen
+			resolve: {
+				user: function(UserModel){
+						return UserModel.getMine();
+				}
+			}
     })
 
     // $scope.$watch(function() {
@@ -157,11 +163,30 @@ angular.module( 'bidio.video', [
 
 .controller('ShareCtrl', function ($scope, video ) {
 	$scope.video = video;
-});
+})
 
-function ShareDialogController($scope, $mdDialog, ezfb) {
+.controller('ShareDialogCtrl', function ($scope, $location, $mdDialog, ezfb, user, UserModel, ShareModel, localStorageService ) {
+
+	localStorageService.set('shareUrl', $location.absUrl());
+	$scope.user = user;
+
+	var shareUrl = localStorageService.get('shareUrl');
+	$scope.tweeting = false;
+
+	$scope.tweetCompPadding = shareUrl.length + ' @cre8bidio '.length;
+	console.log($scope.tweetCompPadding)
+
 	$scope.shareFacebook = function() {
 		console.log('share facebook')
+		$mdDialog.cancel();
+
+		// shareService.facebookShare();
+
+		// window.location = "https://www.facebook.com/dialog/share?app_id=629279003894718"
+		// 	+ "&display=popup"
+		// 	+ "&href=" + encodeURIComponent(shareUrl)
+		// 	+ "&redirect_uri=" + encodeURIComponent(shareUrl);
+
 		ezfb.ui(
       {
         method: 'share',
@@ -171,7 +196,7 @@ function ShareDialogController($scope, $mdDialog, ezfb) {
         // picture: 'file:///Users/sueserene/projects/bidio/assets/images/video-overlay.png',
 				picture: 'https://2static1.fjcdn.com/comments/Haven+t+slept+well+lately+so+sleep+tight+pupper+may+flights+_f76daa893b0a5921705ff727db77b2dc.jpg',
         description: 'description',
-				hashtag: '#ohshootwaddup'
+				hashtag: '#ohshootwaddup',
 
       },
       function (res) {
@@ -179,11 +204,55 @@ function ShareDialogController($scope, $mdDialog, ezfb) {
         // res: FB.ui response
       }
     );
+
+
 	};
+
 	$scope.shareTwitter = function() {
-		console.log('share twitter')
+
+		if ($scope.tweeting) {
+			console.log('share twitter')
+			console.log('user' + $scope.user)
+
+			var composition = $scope.share.composition //+ ' ' + shareUrl + ' @cre8bidio';
+
+			// COMPOSISTION MUST LEAVE ROOM FOR LINK TO WEBSITE: localstorage url length etc
+			// AND MUST LEAVE ROOM FOR @cre8bidio (10 chars)
+
+			if ($scope.user === undefined) {
+				var webIntentURL = 'https://twitter.com/intent/tweet?text='
+	      window.open(webIntentURL + encodeURIComponent(composition)
+					+ '&url=' + encodeURIComponent(shareUrl)
+					+ '&via=cre8bidio')
+			}
+			else {
+
+				ShareModel.shareTwitter(composition)
+			}
+		}
+		else {
+			$scope.tweeting = !$scope.tweeting;
+		}
+
+		// var composition = 'test composition';
+		// var tokens;
+
+		// for (var i in $scope.user.passports) {
+		// 	if ($scope.user.passports[i].provider === 'twitter')
+		// 		tokens = $scope.user.passports[i].tokens;
+		// }
+
+		// if (tokens)
+		// 	ShareModel.shareTwitter()
+		// 	// shareService.tweetVideo(composition, tokens)
+		// else {
+		// 	console.log('no tokens')
+		// }
+
+
 	};
+
 	$scope.cancel = function() {
     $mdDialog.cancel();
   };
-};
+});

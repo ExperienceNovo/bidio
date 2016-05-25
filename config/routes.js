@@ -113,6 +113,11 @@ module.exports.routes = {
   'get /api/search/:searchQuery/:limit/:skip': 'SearchController.search',
 
   /**
+   * Share routes
+   */
+  'post /api/share/twitter/:composition': 'ShareController.shareTwitter',
+
+  /**
    * User routes
    */
   'get /api/user': 'UserController.getAll',

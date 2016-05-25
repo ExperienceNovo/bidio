@@ -29,6 +29,7 @@ module.exports = {
 
         campaignImageUrl: {
             type: 'string',
+            // required: true
         },
 
         videoUrl: {
@@ -106,14 +107,18 @@ module.exports = {
         });
     },
 
-    /*afterCreate: function (post, next) {
+
+
+    /*
+    afterCreate: function (post, next) {
         // set message.user = to appropriate user model
         User.getOne(post.user)
         .spread(function(user) {
             post.user = user;
             next(null, post);
         });
-    },*/
+    },
+    */
 
     getAll: function() {
         return Campaign.find({published: true})
