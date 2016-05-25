@@ -174,8 +174,29 @@ angular.module( 'bidio.dashboard', [
         $scope.editingInfo = !$scope.editingInfo;
     }
 
-    $scope.onClick = function (points, evt) {
-        console.log(points, evt);
+    function videoSave(){
+        $scope.saving = true;
+        var toUpdate = {
+            id: $scope.video.id,
+            title: $scope.video.title,
+            title: $scope.video.description,
+        };
+        return VideoModel.update(toUpdate)
+    }
+
+    $scope.infoSave = function(){
+        videoSave()
+        .then(function(video){
+            $scope.infoSaving = false;
+            $scope.editInfoToggle();
+        })
+        .catch(function(err){
+            $scope.infoSaving = false;
+        });
+    };
+
+    $scope.infoUndo = function(){
+        $scope.editInfoToggle();
     };
 
     $scope.videoDelete = function () {

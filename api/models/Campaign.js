@@ -90,24 +90,30 @@ module.exports = {
         }
     },
 
-    //beforeValidate: function(values, cb) {
-        //Campaign.findOne({urlTitle: values.urlTitle}).exec(function (err, record) {
-            //if already url title, add an iterator to the end to make it unique. 
-            //if (record){
-                //record.urlTitle
-            //}
-            //else{cb();}
-        //});
-    //}
+    beforeValidate: function(values, cb) {
+        var urlTitle = values.title.replace(/ /g,"-").toLowerCase();
+        values.urlTitle = urlTitle
+        console.log(values.urlTitle)
+        Campaign.findOne({urlTitle: urlTitle}).exec(function (err, record) {
+            console.log(record)
+            if (typeof(record) != "undefined"){
+                values.urlTitle = record.urlTitle + '.8';
+                cb();
+            }
+            else{
+                cb();
+            }
+        });
+    },
 
-    afterCreate: function (post, next) {
+    /*afterCreate: function (post, next) {
         // set message.user = to appropriate user model
         User.getOne(post.user)
         .spread(function(user) {
             post.user = user;
             next(null, post);
         });
-    },
+    },*/
 
     getAll: function() {
         return Campaign.find({published: true})
