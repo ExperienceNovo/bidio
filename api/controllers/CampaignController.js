@@ -94,7 +94,6 @@ module.exports = {
 		.populate('user')
 		.populate('bids', {where: {isActive: true}})
 		.then(function(campaign){
-
 			if (!campaign.published){
 				//error handling here
 				return res.redirect("/campaigns")

@@ -92,19 +92,20 @@ module.exports = {
     },
 
     beforeValidate: function(values, cb) {
-        var urlTitle = values.title.replace(/ /g,"-").toLowerCase();
-        values.urlTitle = urlTitle
-        console.log(values.urlTitle)
-        Campaign.findOne({urlTitle: urlTitle}).exec(function (err, record) {
-            console.log(record)
-            if (typeof(record) != "undefined"){
-                values.urlTitle = record.urlTitle + '.8';
-                cb();
-            }
-            else{
-                cb();
-            }
-        });
+        if (typeof(values) != "undefined"){
+            var urlTitle = values.title.replace(/ /g,"-").toLowerCase();
+            values.urlTitle = urlTitle
+            console.log(values.urlTitle)
+            Campaign.findOne({urlTitle: urlTitle}).exec(function (err, record) {
+                if (typeof(record) != "undefined"){
+                    values.urlTitle = record.urlTitle + '.8';
+                    cb();
+                }
+                else{
+                    cb();
+                }
+            });
+        }
     },
 
 

@@ -70,17 +70,19 @@ module.exports = {
     },
 
     beforeValidate: function(values, cb) {
-        var urlTitle = values.title.replace(/ /g,"-").toLowerCase();
-        values.urlTitle = urlTitle
-        Video.findOne({urlTitle: urlTitle}).exec(function (err, record) {
-            if (record){
-                values.urlTitle = urlTitle + '.8'
-                cb();
-            }
-            else{
-                cb();
-            }
-        });
+        if (typeof(values) != "undefined"){
+            var urlTitle = values.title.replace(/ /g,"-").toLowerCase();
+            values.urlTitle = urlTitle
+            Video.findOne({urlTitle: urlTitle}).exec(function (err, record) {
+                if (record){
+                    values.urlTitle = urlTitle + '.8'
+                    cb();
+                }
+                else{
+                    cb();
+                }
+            });
+        }
     },
 
     getAll: function() {
