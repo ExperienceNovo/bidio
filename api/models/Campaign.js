@@ -92,7 +92,7 @@ module.exports = {
     },
 
     beforeValidate: function(values, cb) {
-        if (typeof(values) != "undefined"){
+        if (typeof(values.title) != "undefined"){
             var urlTitle = values.title.replace(/ /g,"-").toLowerCase();
             values.urlTitle = urlTitle
             console.log(values.urlTitle)

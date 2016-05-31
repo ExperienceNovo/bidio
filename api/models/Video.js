@@ -70,9 +70,7 @@ module.exports = {
     },
 
     beforeValidate: function(values, cb) {
-        console.log(values)
-        console.log(typeof(values))
-        if (typeof(values) != "undefined"){
+        if (typeof(values.title) != "undefined"){
             var urlTitle = values.title.replace(/ /g,"-").toLowerCase();
             values.urlTitle = urlTitle
             Video.findOne({urlTitle: urlTitle}).exec(function (err, record) {

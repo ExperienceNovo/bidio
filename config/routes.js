@@ -88,7 +88,6 @@ module.exports.routes = {
   'get /api/campaign/:id': 'CampaignController.getOne',
   'get /api/campaign/member/:id': 'CampaignController.getByMember',
   'get /api/campaign/url/:path': 'CampaignController.getByUrlTitle',
-   //'get /api/campaign/:id': 'CampaignController.getSubmittedVideos',
   'post /api/campaign': 'CampaignController.create',
   'post /api/campaign/check': 'CampaignController.check',
   'post /api/campaign/:id': 'CampaignController.update',
