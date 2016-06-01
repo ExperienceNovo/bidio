@@ -614,13 +614,18 @@ angular.module( 'bidio.dashboard', [
     });
 
     $scope.totalClicks = $scope.campaign.bids.reduce(function(val,item){
-        val += item.video.clickCount;
-        return val;
+        console.log(item)
+        if (item){
+            val += item.video.clickCount;
+            return val;
+        }
     },0);
 
     $scope.totalViews = $scope.campaign.bids.reduce(function(val,item){
-        val += item.video.viewCount;
-        return val;
+        if (item){
+            val += item.video.viewCount;
+            return val;
+        }
     },0);
 
     $scope.topViews = $scope.campaign.bids.sort(function(a,b){
