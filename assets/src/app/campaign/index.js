@@ -47,12 +47,11 @@ angular.module( 'bidio.campaign', [
 	titleService.setTitle('campaign - bidio');
 	$scope.currentUser = config.currentUser;
 	$scope.campaign = campaign;
-  //$scope.campaign.poster = 'images/zaxbys.png'
+  console.log(campaign)
   $scope.campaign.poster = 'images/video-overlay.png'
 	$scope.updateCampaign = function(campaign){
 		CampaignModel.update(campaign);
 	}
-
 	$scope.apply = function(){
 		$uibModal.open({
 			animation: true,

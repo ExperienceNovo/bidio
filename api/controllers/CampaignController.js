@@ -88,12 +88,12 @@ module.exports = {
 		});
 	},
 
-
 	getByUrlTitle: function(req, res) {
 		Campaign.findOne({urlTitle: req.param('path')})
 		.populate('user')
 		.populate('bids', {where: {isActive: true}})
 		.then(function(campaign){
+			console.log(campaign.bids)
 			if (!campaign.published){
 				//error handling here
 				return res.redirect("/campaigns")
@@ -106,6 +106,7 @@ module.exports = {
 			)];
 
 		})
+		//gotta work on this -->
 		.spread(function(campaign, videos){
 			campaign = campaign.toObject();
 			campaign.bids.forEach(function(bid,i){
@@ -136,6 +137,7 @@ module.exports = {
 			)]
 		})
 		.spread(function(campaign, users){
+			console.log(campaign.bids)
 			campaign.bids.forEach(function(bid,i){
 				bid.video.user = users[i]
 			});
