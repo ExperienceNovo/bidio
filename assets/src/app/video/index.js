@@ -188,19 +188,18 @@ angular.module( 'bidio.video', [
 		// 	+ "&redirect_uri=" + encodeURIComponent(shareUrl);
 
 		ezfb.ui(
-      {
+     	{
         method: 'share',
-				// href: 'www.google.com',
-				href: 'www.bidio.co',
-				name: 'name',
-        // picture: 'file:///Users/sueserene/projects/bidio/assets/images/video-overlay.png',
-				picture: 'https://2static1.fjcdn.com/comments/Haven+t+slept+well+lately+so+sleep+tight+pupper+may+flights+_f76daa893b0a5921705ff727db77b2dc.jpg',
-        description: 'description',
-				hashtag: '#ohshootwaddup',
-
+			// href: 'www.google.com',
+			href: 'www.bidio.co',
+			name: 'name',
+        	// picture: 'file:///Users/sueserene/projects/bidio/assets/images/video-overlay.png',
+			picture: 'https://2static1.fjcdn.com/comments/Haven+t+slept+well+lately+so+sleep+tight+pupper+may+flights+_f76daa893b0a5921705ff727db77b2dc.jpg',
+        	description: 'description',
+			hashtag: '#ohshootwaddup',
       },
       function (res) {
-				console.log(res);
+		console.log(res);
         // res: FB.ui response
       }
     );
@@ -221,12 +220,11 @@ angular.module( 'bidio.video', [
 
 			if ($scope.user === undefined) {
 				var webIntentURL = 'https://twitter.com/intent/tweet?text='
-	      window.open(webIntentURL + encodeURIComponent(composition)
+	      		window.open(webIntentURL + encodeURIComponent(composition)
 					+ '&url=' + encodeURIComponent(shareUrl)
 					+ '&via=cre8bidio')
-			}
+				}
 			else {
-
 				ShareModel.shareTwitter(composition)
 			}
 		}

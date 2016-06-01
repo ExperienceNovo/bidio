@@ -107,7 +107,9 @@ module.exports = {
             return next(null,model);
         }
 
-        Bid.find({isActive: true})
+        Bid.find()
+        .where({isActive: true})
+        .where({video: model.video})
         .then(function(bids){
 
             if (!bids.length){
@@ -143,23 +145,23 @@ module.exports = {
         }
 
         Bid.find({isActive: true, video: model.video})
-            .then(function(bid){
+        .then(function(bid){
 
-                if (!bid.length){
-                    return true;
-                }
+            if (!bid.length){
+                return true;
+            }
 
-                if (bid.length == 1){
-                    bid[0].isActive = false;
-                    return Bid.update({id: bid[0].id}, bid[0]);
-                }
-            })
-            .then(function(){
-                return next(null,model);
-            })
-            .catch(function(err){
-                next(err, null);
-            })
+            if (bid.length == 1){
+                bid[0].isActive = false;
+                return Bid.update({id: bid[0].id}, bid[0]);
+            }
+        })
+        .then(function(){
+            return next(null,model);
+        })
+        .catch(function(err){
+            next(err, null);
+        })
 
     },
 
