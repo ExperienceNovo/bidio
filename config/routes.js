@@ -140,7 +140,6 @@ module.exports.routes = {
   'post /api/video': 'VideoController.create',
   'post /api/video/:id': 'VideoController.update',
   'delete /api/video/:id': 'VideoController.destroy',
-  'get /videos/:path': 'VideoController.download',
 
    /**
    * View routes

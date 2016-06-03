@@ -18,7 +18,7 @@ angular.module( 'bidio.home', [
 				return CampaignModel.getFeatured();
 			},
 			campaign: function(CampaignModel){
-				return CampaignModel.getByUrl("zaxbys-railhawks");
+				return CampaignModel.getByUrl("railhawks-tryouts.8");
 			}
 		}
 	});

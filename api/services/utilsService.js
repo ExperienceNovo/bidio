@@ -16,18 +16,6 @@ module.exports = {
 		});
 	},
 
-	randomVid: function(){
-		var that = this;
-
-		return that.promisify(fs.readdir, "./seedvids")
-			.then(function(fileNames){
-
-				var fileName = fileNames[Math.floor(Math.random() * fileNames.length)];
-
-				return that.promisify(fs.readFile, "./seedvids/" + fileName);
-			})
-	},
-
 	guid: function() {
 	  function s4() {
 	    return Math.floor((1 + Math.random()) * 0x10000)
