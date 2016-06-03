@@ -675,7 +675,7 @@ div[class^="icon"] {
 #content-slider .inset {
   width: 500%;
   line-height: 0;
-  -webkit-animation: 30s slidy infinite;
+  /*-webkit-animation: 30s slidy infinite;
   -moz-animation: 30s slidy infinite;
   -ms-animation: 30s slidy infinite;
   -o-animation: 30s slidy infinite;
@@ -684,7 +684,7 @@ div[class^="icon"] {
   -moz-transition: all 2s ease-in-out;
   -ms-transition: all 2s ease-in-out;
   -o-transition: all 2s ease-in-out;
-  transition: all 2s ease-in-out;
+  transition: all 2s ease-in-out;*/
 }
 
 #content-slider h1.main-title {
