@@ -175,6 +175,7 @@ module.exports = {
 			title: req.param('title'),
 			videoUrl: req.param('videoUrl'),
 			bannerUrl: req.param('bannerUrl'),
+			campaignImageUrl: req.param('campaignImageUrl'),
 			published: req.param('published'),
 			price: req.param('price'),
 			intro: req.param('intro'),

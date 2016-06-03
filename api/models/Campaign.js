@@ -29,7 +29,10 @@ module.exports = {
 
         campaignImageUrl: {
             type: 'string',
-            // required: true
+        },
+
+        bannerUrl: {
+            type: 'string',
         },
 
         videoUrl: {
