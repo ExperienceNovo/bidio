@@ -192,6 +192,18 @@ a:hover {
   padding:50px;
 }
 
+.spacing-75 {
+  padding:75px;
+}
+
+.spacing-100 {
+  padding:100px;
+}
+
+.spacing-125 {
+  padding:125px;
+}
+
 .spacing-150 {
   padding:150px;
 }
