@@ -615,14 +615,14 @@ angular.module( 'bidio.dashboard', [
 
     $scope.totalClicks = $scope.campaign.bids.reduce(function(val,item){
         console.log(item)
-        if (item){
+        if (item.video){
             val += item.video.clickCount;
             return val;
         }
     },0);
 
     $scope.totalViews = $scope.campaign.bids.reduce(function(val,item){
-        if (item){
+        if (item.video){
             val += item.video.viewCount;
             return val;
         }
