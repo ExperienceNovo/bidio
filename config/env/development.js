@@ -17,10 +17,6 @@ module.exports = {
    * environment (see config/connections.js and config/models.js )           *
    ***************************************************************************/
 
-  // models: {
-  //   connection: 'someMongodbServer'
-  // }
-
   hookTimeout: 180000,
 
   orm: {
@@ -28,19 +24,19 @@ module.exports = {
   },
 
   models: {
-    connection: 'localDiskDb',
-    migrate: 'drop'
+    connection: 'productionMongoHqDb',
+    migrate: 'safe'
   },
 
-  /*for seeding the production DB*/
-  // models: {
-  //   connection: 'productionMongoHqDb',
-  //   migrate: 'safe'
-  // },
+  session: {
+    adapter: 'mongo',
+    url: 'mongodb://heroku_wds9j5tq:i54cta42llqeu518u7s5o6gnl4@ds011790.mlab.com:11790/heroku_wds9j5tq',
+    collection: 'sessions'
+  },
 
   mailgun: {
     key: 'key-4e1b43d98f37e10fc6d350d8ec21518c',
-    domain: 'sandbox1a81c426c68447c1a945123722386e88.mailgun.org'
+    domain: 'bidio.co'
   }
 
 };
