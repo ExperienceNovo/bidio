@@ -629,7 +629,7 @@ angular.module( 'bidio.dashboard', [
     },0);
 
     $scope.topViews = $scope.campaign.bids.sort(function(a,b){
-        if (a.video){
+        if (a.video && b.video){
             if (a.video.viewCount < b.video.viewCount){
                 return 1
             }
@@ -643,7 +643,7 @@ angular.module( 'bidio.dashboard', [
     })[0];
 
     $scope.topClicks = $scope.campaign.bids.sort(function(a,b){
-        if (a.video){
+        if (a.video && b.video){
             if (a.video.clickCount < b.video.clickCount){
                 return 1
             }
@@ -657,7 +657,7 @@ angular.module( 'bidio.dashboard', [
     })[0];
 
     $scope.topConversion = $scope.campaign.bids.sort(function(a,b){
-        if (a.video){
+        if (a.video && b.video){
             if ((a.video.clickCount / a.video.viewCount) < (b.video.clickCount / b.video.viewCount)){
                 return 1;
             }
