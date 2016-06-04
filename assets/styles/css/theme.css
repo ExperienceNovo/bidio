@@ -3024,3 +3024,9 @@ ul.nav.nav-tabs {
   /* Otherwise we'll rely on stacked opacities */
   background: rgba(115, 133, 159, 0.75);
 }
+
+/*Pradeep CSS*/
+
+.height_100Pre{
+  height:100%;
+}
