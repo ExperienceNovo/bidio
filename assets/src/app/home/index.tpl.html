@@ -273,6 +273,22 @@
                               <div class="zaxbys-cover">
                                 <h3><img src="images/zaxbys2.png" style="display:inline;height:35px"> Sponsors <strong>Railhawks</strong> Tryouts</h3>
                                 <br>
+                                <div class="video-container" style="width:100%">
+                                   <video 
+                                    ng-src="{{campaign.videoUrl}}"
+                                    class="video-js vjs-default-skin"
+                                    controls preload="auto" 
+                                    width="640" 
+                                    height="264" 
+                                    fluid="true"
+                                    poster="{{campaign.poster}}" 
+                                    vjs-video
+                                    vjs-media="media"
+                                    vjs-setup="options"
+                                    vjs-ratio="16:9">
+                                  </video>
+                                </div>
+                                <div class="spacing-25"></div>
                                 <a href="/campaign/{{campaign.urlTitle}}" class="btn anim-button fl-l" style="float:none"><span>Learn More</span><i class="fa fa-long-arrow-right"></i></a>
                               </div>
                             <!-- <div class="parallax-item left-direction">

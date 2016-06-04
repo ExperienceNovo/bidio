@@ -341,7 +341,9 @@ div[class^="icon"] {
     margin: -90px 10px 0px 50px;
     z-index: 9;
     width: 20%; 
+    padding:5px;
 }
+
 @media (max-width:768px) {
   .bidio-profile-text>h1{
       font-weight: 700;
