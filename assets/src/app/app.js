@@ -46,8 +46,8 @@ angular.module( 'bidio', [
 
     $urlRouterProvider.when('/about/', '/about');
     $urlRouterProvider.when('/campaigns/', '/campaigns');
-    $urlRouterProvider.when('/zaxbys', '/campaign/zaxbys-railhawks');
-    $urlRouterProvider.when('/zaxbys/', '/campaign/zaxbys-railhawks');
+    $urlRouterProvider.when('/zaxbys', '/campaign/railhawks-tryouts.8');
+    $urlRouterProvider.when('/zaxbys/', '/campaign/railhawks-tryouts.8');
 
 
     $urlRouterProvider.otherwise(function ($injector, $location) {
