@@ -1,5 +1,5 @@
 module.exports = {
-  shareTwitter: function(req, res) {
+  shareTwitter:(['req','res'], function(req, res) {
 
     composition = req.param("composition")
 
@@ -20,5 +20,5 @@ module.exports = {
       console.log('no user logged in')
 
     }
-  }
+  })
 }

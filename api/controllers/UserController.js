@@ -1,5 +1,5 @@
 module.exports = {
-	getAll: function(req, res) {
+	getAll: (['req','res'],function(req, res) {
 		User.getAll()
 		.spread(function(models) {
 			User.watch(req);
@@ -8,9 +8,9 @@ module.exports = {
 		.fail(function(err) {
 			// An error occured
 		});
-	},
+	}),
 
-	getPassports: function(req,res){
+	getPassports: (['req','res'],function(req,res){
 		/*
 			getPassports
 			user must be logged in, id is taken from session
@@ -29,9 +29,9 @@ module.exports = {
 
 				return res.json( err );
 			})
-	},
+	}),
 
-	removePassport: function(req,res){
+	removePassport: (['req','res'], function(req,res){
 		id = req.user.id;
 		provider = req.param("provider");
 
@@ -42,9 +42,9 @@ module.exports = {
 			.fail(function(err){
 				res.json(err);
 			});
-	},
+	}),
 
-	getMine: function(req,res){
+	getMine: (['req','res'], function(req,res){
 
 		var me = req.user.id;
 
@@ -60,9 +60,9 @@ module.exports = {
 				return res.negotiate(err);
 			});
 
-	},
+	}),
 
-	getSome: function(req,res){
+	getSome: (['req','res'], function(req,res){
 
 		var limiting = req.param('limiting');
 		var skipping = req.param('skipping');
@@ -75,9 +75,9 @@ module.exports = {
 			.catch(function(err){
 				return res.negotiate(err);
 			})
-	},
+	}),
 
-	getByUsername: function(req, res) {
+	getByUsername:(['req','res'], function(req, res) {
 		User.find()
 		.populate('profile')
 		.where({username: req.param('path')})
@@ -88,9 +88,9 @@ module.exports = {
 		.fail(function(err) {
 			res.send(404);
 		});
-	},
+	}),
 
-	getOne: function(req, res) {
+	getOne:(['req','res'], function(req, res) {
 		User.getOne(req.param('id'))
 		.spread(function(model) {
 			res.json(model);
@@ -98,9 +98,9 @@ module.exports = {
 		.fail(function(err) {
 			// res.send(404);
 		});
-	},
+	}),
 
-	create: function (req, res) {
+	create: (['req','res'], function (req, res) {
 		var model = {
 			username: req.param('username'),
 			email: req.param('email'),
@@ -118,9 +118,9 @@ module.exports = {
 				res.json(model);
 			}
 		});
-	},
+	}),
 
-	update: function(req,res){
+	update: (['req','res'], function(req,res){
 		var id = req.param('id');
 		var model = {
 			email: req.param('email'),
@@ -135,9 +135,9 @@ module.exports = {
 		});
 
 
-	},
+	}),
 
-	destroy: function(res,res){
+	destroy: (['req','res'], function(res,res){
 		var id = req.param("id");
 		User.destroy(id)
 			.then(function(){
@@ -146,5 +146,5 @@ module.exports = {
 			.catch(function(err){
 				return res.negotiate(err);
 			})
-	}
+	})
 };

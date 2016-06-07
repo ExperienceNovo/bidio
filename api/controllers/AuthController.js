@@ -7,7 +7,7 @@
  */
 var AuthController = {
 
-  login: function (req, res) {
+  login:(['req','res'], function (req, res) {
     var strategies = sails.config.passport
       , providers  = {};
     // Get a list of available providers for use in your templates.
@@ -25,24 +25,24 @@ var AuthController = {
       providers : providers
     , errors    : req.flash('error')
     });
-  },
+  }),
 
-  logout: function (req, res) {
+  logout:(['req','res'], function (req, res) {
     req.logout();
     res.redirect('/');
-  },
+  }),
 
-  register: function (req, res) {
+  register: (['req','res'],function (req, res) {
     res.view({
       errors: req.flash('error')
     });
-  },
+  }),
 
-  provider: function (req, res) {
+  provider: (['req', 'res'] , function (req, res) {
     passport.endpoint(req, res);
-  },
+    }),
 
-  callback: function (req, res) {
+  callback: (['req','res'],function (req, res) {
     passport.callback(req, res, function (err, user) {
       req.login(user, function (err) {
         // If an error was thrown, redirect the user to the login which should
@@ -57,7 +57,7 @@ var AuthController = {
         }
       });
     });
-  }
+  })
 };
 
 module.exports = AuthController;

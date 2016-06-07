@@ -7,7 +7,7 @@
 
 module.exports = {
 
-	getByVideo: function(req, res) {
+	getByVideo:(['req','res'], function(req, res) {
 		Click.find()
 		.where({video:req.param('id')})
 		.then(function(model) {
@@ -18,9 +18,9 @@ module.exports = {
 		.catch(function(err) {
 			res.send(404);
 		});
-	},
+	}),
 
-	create: function (req, res) {
+	create:(['req','res'], function (req, res) {
 
 		var model = {
 			user: req.param('user'),
@@ -48,5 +48,5 @@ module.exports = {
 				res.json(model);
 			}
 		});
-	}
+	})
 };

@@ -8,7 +8,7 @@ var _ = require('lodash');
 
 module.exports = {
 
-	check: function(req,res){
+	check:(['req','res'], function(req,res){
 
 		var params = req.params.all();
 
@@ -24,9 +24,9 @@ module.exports = {
 				return res.negotiate(err);
 			})
 
-	},
+	}),
 
-	getAll: function(req, res) {
+	getAll: (['req','res'],function(req, res) {
 		Campaign.getAll()
 		.spread(function(models) {
 			Campaign.watch(req);
@@ -37,9 +37,9 @@ module.exports = {
 			console.log(err);
 			return res.negotiate(err);			
 		});
-	},
+	}),
 
-	getMine: function(req, res) {
+	getMine: (['req','res'],function(req, res) {
 
 		var id = req.user.id;
 
@@ -53,9 +53,9 @@ module.exports = {
 			console.log(err);
 			return res.negotiate(err);
 		});
-	},
+	}),
 
-	getOne: function(req, res) {
+	getOne:(['req','res'], function(req, res) {
 		Campaign.getOne(req.param('id'))
 		.spread(function(model) {
 			Campaign.subscribe(req, model);
@@ -64,9 +64,9 @@ module.exports = {
 		.catch(function(err) {
 			res.send(404);
 		});
-	},
+	}),
 
-	getFeatured: function(req, res) {
+	getFeatured:(['req','res'], function(req, res) {
 		Campaign.find({isFeatured:true})
 		.then(function(model) {
 			Campaign.subscribe(req, model);
@@ -75,9 +75,9 @@ module.exports = {
 		.catch(function(err) {
 			res.send(404);
 		});
-	},
+	}),
 
-	getByMember: function(req, res) {
+	getByMember:(['req','res'], function(req, res) {
 		Campaign.find({user:req.param('id')})
 		.then(function(model) {
 			Campaign.subscribe(req, model);
@@ -86,9 +86,9 @@ module.exports = {
 		.catch(function(err) {
 			res.send(404);
 		});
-	},
+	}),
 
-	getByUrlTitle: function(req, res) {
+	getByUrlTitle:(['req','res'], function(req, res) {
 		Campaign.findOne({urlTitle: req.param('path')})
 		.populate('user')
 		.populate('bids', {where: {isActive: true}})
@@ -151,7 +151,7 @@ module.exports = {
 		.catch(function(err) {
 			res.negotiate(err);
 		});
-	},
+	}),
 
 	// getSubmittedVideos: function(req, res) {
 	// 	Campaign.findOne(req.param('id'))
@@ -165,7 +165,7 @@ module.exports = {
 	// 	});
 	// },
 
-	create: function (req, res) {
+	create:(['req','res'], function (req, res) {
 
 		if (req.user.id != req.param("user")){
 			return res.send(400, "Wrong User");
@@ -195,9 +195,9 @@ module.exports = {
 				res.json(campaign);
 			}
 		});
-	},
+	}),
 
-	update: function(req,res){
+	update: (['req','res'],function(req,res){
 
 		var id = req.param('id');
 
@@ -235,9 +235,9 @@ module.exports = {
 		});
 
 
-	},
+	}),
 
-	destroy: function (req, res) {
+	destroy: (['req','res'],function (req, res) {
 		var id = req.param('id');
 		if (!id) {
 			return res.badRequest('No id provided.');
@@ -262,6 +262,6 @@ module.exports = {
 				return res.json(model);
 			});
 		});
-	}
+	})
 
 };

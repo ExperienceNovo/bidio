@@ -7,7 +7,7 @@
 
 module.exports = {
 
-	search: function (req, res) {
+	search: (['req','res'],function (req, res) {
 		var searchQuery = req.param('searchQuery');
 		var limit = req.param('limit');
 		var skip = req.param('skip');
@@ -28,5 +28,5 @@ module.exports = {
 		.fail(function(err) {
 			// An error occured
 		});
-	},
+	}),
 };

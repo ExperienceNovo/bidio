@@ -7,7 +7,7 @@
 
 module.exports = {
 
-	update: function(req,res){
+	update:(['req','res'], function(req,res){
 
 		var id = req.param('id');
 
@@ -61,6 +61,6 @@ module.exports = {
 				res.negotiate(err);
 			});
 
-	}
+	})
 
 };

@@ -7,7 +7,7 @@
 
 module.exports = {
 	
-	getMine: function(req, res) {
+	getMine: (['req','res'],function(req, res) {
 		//only session user == req.param.id
 		Credit.find()
 		.where({user: req.param('id')})
@@ -20,10 +20,10 @@ module.exports = {
 			console.log(err);
 			return res.negotiate(err);
 		});
-	},
+	}),
 
 
-	create: function (req, res) {
+	create:(['req','res'], function (req, res) {
 
 		var model = {
 			amount: req.param('value'),
@@ -40,6 +40,6 @@ module.exports = {
 				res.json(bid);
 			}
 		});
-	},
+	}),
 };
 

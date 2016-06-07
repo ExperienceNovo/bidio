@@ -8,7 +8,7 @@ var _ = require('lodash');
 
 module.exports = {
 
-	getAll: function(req, res) {
+	getAll: (['req','res'],function(req, res) {
 		Bid.getAll()
 		.spread(function(models) {
 			Bid.watch(req);
@@ -19,9 +19,9 @@ module.exports = {
 			console.log(err);
 			return res.negotiate(err);			
 		});
-	},
+	}),
 
-	getMine: function(req, res) {
+	getMine:(['req','res'], function(req, res) {
 		var id = req.user.id;
 		Bid.find({user: id})
 		.then(function(models) {
@@ -33,9 +33,9 @@ module.exports = {
 			console.log(err);
 			return res.negotiate(err);
 		});
-	},
+	}),
 
-	getOne: function(req, res) {
+	getOne: (['req','res'],function(req, res) {
 		Bid.getOne(req.param('id'))
 		.spread(function(model) {
 			Bid.watch(req);
@@ -45,9 +45,9 @@ module.exports = {
 		.catch(function(err) {
 			res.send(404);
 		});
-	},
+	}),
 
-	getByMember: function(req, res) {
+	getByMember: (['req','res'], function(req, res) {
 		Bid.find()
 		.populate('video')
 		.where({user:req.param('id')})
@@ -60,9 +60,9 @@ module.exports = {
 		.catch(function(err) {
 			res.send(404);
 		});
-	},
+	}),
 
-	getByVideo: function(req, res) {
+	getByVideo: (['req','res'],function(req, res) {
 		Bid.find()
 		.populate('user')
 		.where({video:req.param('id')})
@@ -75,9 +75,9 @@ module.exports = {
 		.catch(function(err) {
 			res.send(404);
 		});
-	},
+	}),
 
-	create: function (req, res) {
+	create: (['req','res'],function (req, res) {
 
 		var model = {
 			value: req.param('value'),
@@ -123,9 +123,9 @@ module.exports = {
 				res.json(bid);
 			}
 		});
-	},
+	}),
 
-	update: function(req,res){
+	update: (['req','res'],function(req,res){
 
 		var id = req.param('id');
 
@@ -174,9 +174,9 @@ module.exports = {
 			return res.negotiate(err);
 		});
 
-	},
+	}),
 
-	destroy: function (req, res) {
+	destroy: (['req','res'], function (req, res) {
 		var id = req.param('id');
 		if (!id) {
 			return res.badRequest('No id provided.');
@@ -198,6 +198,6 @@ module.exports = {
 				return res.json(model);
 			});
 		});
-	}
+	})
 
 };

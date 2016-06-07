@@ -9,7 +9,8 @@ var fs = require("fs");
 
 module.exports = {
 
-	getAll: function(req, res) {
+	getAll:(['req','res'],
+		function(req, res) {
 		Video.getAll()
 		.spread(function(models) {
 			Video.watch(req);
@@ -20,9 +21,9 @@ module.exports = {
 			console.log(err);
 			return res.negotiate(err);
 		});
-	},
+	}),
 
-	getMine: function(req,res){
+	getMine:(['req','res'], function(req,res){
 		var me = req.user.id || req.user._id;
 
 		Video.find({user: me})
@@ -36,9 +37,10 @@ module.exports = {
 				console.log(err);
 				res.negotiate(err);
 			})
-	},
+	}),
 
-	getByMember: function(req, res) {
+	getByMember: (['req','res'],
+		function(req, res) {
 		Video.find()
 		.where({user:req.param('id')})
 		.then(function(model) {
@@ -48,9 +50,10 @@ module.exports = {
 		.catch(function(err) {
 			res.send(404);
 		});
-	},
+	}),
 
-	getSome: function(req, res) {
+	getSome:(['req','res'],
+		function(req, res) {
 		var limit = req.param('limit');
 		var skip = req.param('skip');
 
@@ -67,9 +70,10 @@ module.exports = {
 		.fail(function(err) {
 			// An error occured
 		});
-	},
+	}),
 
-	getTrending: function(req, res) {
+	getTrending: (['req','res'],
+		function(req, res) {
 		Video.getAll()
 		.spread(function(models) {
 			Video.watch(req);
@@ -79,9 +83,10 @@ module.exports = {
 		.fail(function(err) {
 			// An error occured
 		});
-	},
+	}),
 
-	getRelated: function(req, res) {
+	getRelated:(['req','res'],
+		function(req, res) {
 
 		var limit = 6;
 		var skip = 1;
@@ -111,9 +116,10 @@ module.exports = {
 			res.send(404);
 		});
 
-	},
+	}),
 
-	getOne: function(req, res) {
+	getOne: (['req','res'],
+		function(req, res) {
 		Video.getOne(req.param('id'))
 		.spread(function(model) {
 			Video.subscribe(req, model);
@@ -122,9 +128,10 @@ module.exports = {
 		.fail(function(err) {
 			res.send(404);
 		});
-	},
+	}),
 
-	upload: function(req,res){
+	upload:(['req','res'],
+		function(req,res){
 
 		/*uncomment this if you want to save to a particular folder*/
 		//var filename = req.file('video')._files[0].stream.filename;
@@ -181,9 +188,10 @@ module.exports = {
 		    return res.json({amazonUrl: amazonUrl});
 		});
 
-	},
+	}),
 
-	create: function (req, res) {
+	create:(['req','res'],
+		function (req, res) {
 
 		var model = {
 			title: req.param("title"),
@@ -207,9 +215,10 @@ module.exports = {
 				res.negotiate(err);
 			});
 
-	},
+	}),
 
-	update: function(req, res) {
+	update: (['req','res'],
+		function(req, res) {
 
 		var id = req.param('id');
 
@@ -243,9 +252,10 @@ module.exports = {
 			.catch(function(err){
 				return res.negotiate(err);
 			})
-	},
+	}),
 
-	destroy: function (req, res) {
+	destroy:(['req','res'],
+		function (req, res) {
 		var id = req.param('id');
 		if (!id) {
 			return res.badRequest('No id provided.');
@@ -269,7 +279,7 @@ module.exports = {
 				return res.json(model);
 			});
 		});
-	}
+	})
 	
 };
 

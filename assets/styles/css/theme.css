@@ -3030,3 +3030,69 @@ ul.nav.nav-tabs {
 .height_100Pre{
   height:100%;
 }
+.text_align_center{
+  text-align: center;
+}
+
+.bidio_color_campaigns{
+  color:#FE9A2E;
+}
+.width_margin_margintop{
+  width: 170px;margin: 0 auto;margin-top: 25px;
+}
+.new_campaign{
+  float:none;margin-bottom:75px;
+}
+.campaign_image_wrapper{
+  text-align:left;margin-bottom:50px;
+}
+.height_50{
+  height:50px;
+}
+.font_size_2em{
+  font-size:2em
+}
+.campign_url_title{
+  text-transform:capitalize;color:#FE9A2E;font-weight:bold;
+}
+.sponsored_by{
+  font-weight: bold;
+}
+.advertising_revenue{
+  color:#FE9A2E;font-weight:700;
+}
+.bidio_creator{
+  text-align:left;text-transform:uppercase;font-weight:400
+}
+.padding_top_20_padding_bottom_50{
+  padding-top:20px;padding-bottom:50px
+}
+.display_inline_block{
+  display: inline-block;
+}
+.get_started{
+  padding-top:15px;padding-bottom:15px;
+}
+.padding_top_127_padding_bottom_127{
+  padding-top:127px;padding-bottom:127px;
+}
+.cost_effective{
+  color:#FE9A2E;font-weight:700;
+}
+.font_weight_bold
+{
+  font-weight: bold;
+}
+.bottom_15px
+{
+  bottom:15px;
+}
+
+.inline_block_padding_10_font_size_20
+{
+  display:inline-block;padding:10px;font-size:20px;
+}
+.font_size_15
+{
+  font-size:15px;
+}

@@ -1,5 +1,5 @@
 module.exports = {
-    index: function(req, res) {
+    index: (['req','res'],function(req, res) {
         var navItems = [
             {url: '/post', cssClass: 'fa fa-comments', title: 'Messages'},
             {url: '/messages', cssClass: 'fa fa-comments', title: 'Messages'},
@@ -19,5 +19,5 @@ module.exports = {
             navItems: navItems,
             currentUser: req.user
         });
-    }
+    })
 };
