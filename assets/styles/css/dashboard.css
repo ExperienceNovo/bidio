@@ -1335,3 +1335,49 @@ span#b-5:focus ~ .slider .inset {
     margin-top: 12%;
   }
 }
+.your_dashboard{
+    text-align: center !important;padding-bottom: 25px;
+}
+.your_dashboard_textcolor{
+    color:#FE9A2E;
+}
+.dashboard_separation_line{
+    width: 170px;margin: 0 auto;margin-top: 25px;
+}
+.yourvideos_upper_wrapper{
+    background: rgba(0,0,0,0.65);
+    position: absolute;
+    height: 95px;
+    width: 200px;
+    left: -2px;
+    top: -2px;
+}
+.yourvideos_wrapper {
+    top: 35%;
+    padding: 20%;
+    margin: 0 auto;
+}
+.your_videos
+{
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+}
+.dashboard_text{
+    color:#252525;
+    font-weight: bold;
+    font-size: 14px;
+}
+.upper_wrapper_upload
+{
+    background: #252525;
+}
+.wrapper_upload
+{
+    color: #FE9A2E;
+}
+.upload
+{
+    font-weight: bold;
+    font-size: 14px;
+}

@@ -3030,7 +3030,7 @@ ul.nav.nav-tabs {
 .height_100Pre{
   height:100%;
 }
-.text_align_center{
+.bidio_title{
   text-align: center;
 }
 
@@ -3064,35 +3064,35 @@ ul.nav.nav-tabs {
 .bidio_creator{
   text-align:left;text-transform:uppercase;font-weight:400
 }
-.padding_top_20_padding_bottom_50{
+.bidio_wrapper{
   padding-top:20px;padding-bottom:50px
 }
-.display_inline_block{
+.bidio_display_block{
   display: inline-block;
 }
 .get_started{
   padding-top:15px;padding-bottom:15px;
 }
-.padding_top_127_padding_bottom_127{
+.bidio_sponsors{
   padding-top:127px;padding-bottom:127px;
 }
 .cost_effective{
   color:#FE9A2E;font-weight:700;
 }
-.font_weight_bold
+.welcome
 {
   font-weight: bold;
 }
-.bottom_15px
+.link_wrapper
 {
   bottom:15px;
 }
 
-.inline_block_padding_10_font_size_20
+.social_icon
 {
   display:inline-block;padding:10px;font-size:20px;
 }
-.font_size_15
+.account_message
 {
   font-size:15px;
 }
