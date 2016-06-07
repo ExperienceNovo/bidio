@@ -532,7 +532,7 @@ angular.module( 'bidio.dashboard', [
                 campaignImageUrl: "http://placehold.it/250x250?text=image",
                 bannerUrl: "http://placehold.it/1000x400?text=banner",
                 /*placeholder here*/
-                videoUrl: "/videos/blah",
+                videoUrl: "/videos/video.mp4",
                 published: false,
                 title: result.title,
                 price: "0.10",
