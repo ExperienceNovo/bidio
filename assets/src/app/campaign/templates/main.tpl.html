@@ -1,7 +1,7 @@
 <div class="container campaignContainer">
 	<div class="row">
 		<div class="sponsoredByContainer col-md-4 col-lg-3">
-			<p class="sponsorText sponsorTitle" style="display:block!important" >Sponsored By</p>
+			<p class="sponsorText sponsorTitle sponsored_by_text">Sponsored By</p>
 			<a href="/member/{{campaign.user.username}}"><img class="sponsorPicLarge" src="{{campaign.user.profile.picture}}"></a>
 		</div>
 		<div class="row video-align-query">
@@ -38,10 +38,10 @@
 		</div>
 	</div>
 	<div class="row">
-		<h2 ng-show="campaign.bids.length > 0" style="font-weight:bold;color:#FAA93F;font-size:4.2em;">Campaign Videos</h2>
+		<h2 ng-show="campaign.bids.length > 0" class="compaign_videos_text">Campaign Videos</h2>
 		<div class="spacing-25"></div>
 		<div class="campaignVideos col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-repeat="bid in campaign.bids">
-			<h2 style="font-size: 2.5em;margin-bottom: 15px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"><a ui-sref="video({id: bid.video.id})">{{bid.video.title}}</a></h2>
+			<h2 class="compaign_videos_username_text"><a ui-sref="video({id: bid.video.id})">{{bid.video.title}}</a></h2>
 			<h3>By <b><a href="/member/{{bid.video.user.username}}">{{bid.video.user.username}}</a></b> on {{bid.video.createdAt | date: "shortDate"}}</h3>
 			<br>
 			<video 
