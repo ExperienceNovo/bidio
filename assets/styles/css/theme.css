@@ -3025,15 +3025,11 @@ ul.nav.nav-tabs {
   background: rgba(115, 133, 159, 0.75);
 }
 
-/*Pradeep CSS*/
+/*Anjali CSS*/
 
 .height_100Pre{
   height:100%;
 }
-.bidio_title{
-  text-align: center;
-}
-
 .bidio_color_campaigns{
   color:#FE9A2E;
 }
@@ -3054,9 +3050,6 @@ ul.nav.nav-tabs {
 }
 .campign_url_title{
   text-transform:capitalize;color:#FE9A2E;font-weight:bold;
-}
-.sponsored_by{
-  font-weight: bold;
 }
 .advertising_revenue{
   color:#FE9A2E;font-weight:700;
@@ -3079,7 +3072,7 @@ ul.nav.nav-tabs {
 .cost_effective{
   color:#FE9A2E;font-weight:700;
 }
-.welcome
+.font_weight_bold
 {
   font-weight: bold;
 }
@@ -3087,7 +3080,6 @@ ul.nav.nav-tabs {
 {
   bottom:15px;
 }
-
 .social_icon
 {
   display:inline-block;padding:10px;font-size:20px;
@@ -3095,4 +3087,150 @@ ul.nav.nav-tabs {
 .account_message
 {
   font-size:15px;
+}
+.profile_minheight
+{
+  min-height:500px;
+}
+.margin_top_25
+{
+  margin-top:25px
+}
+.profile_picture_width
+{
+  width:50%;
+}
+.profile_description_padding
+{
+  padding: 25px;
+}
+.profile_message
+{
+  font-size:2em;
+}
+.profile_margin
+{
+  margin-bottom:25px;
+}
+.profile_margin_bottom
+{
+  margin-bottom:50px;
+}
+.width_100per
+{
+  width:100%;
+}
+.profile_description_scroll
+{
+  overflow-y:scroll;
+}
+.description_wrapper
+{
+  text-align:left;margin-bottom:50px;
+}
+.space_description{
+  white-space:nowrap;
+}
+.bidio_text_align
+{
+  text-align: center;
+}
+.connect_social_accounts
+{
+  background-color:#3b5998;text-align:left;padding:5px;margin:15px;font-size:20px;color:#fff;
+}
+.profile_url_color
+{
+  color: #fff;
+}
+.profile_pic_border
+{
+  border-radius:50%
+}
+.google_plus
+{
+  background-color:#dd4b39; text-align:left; padding:5px;margin:15px; font-size:20px;color:#fff;
+}
+.twitter_button
+{
+  background-color:#55acee;text-align:left;padding:5px;margin:15px;font-size:20px;color:#f5f8fa;
+}
+.twitter_profileUrl_color
+{
+  color: #f5f8fa;
+}
+.add_profilepic_error
+{
+  text-align:center;color:#ff664c;font-weight:700;
+}
+.add_profilepic_head
+{
+  width:500px;
+}
+.bidio_text_align_left
+{
+  text-align:left;
+}
+.dashboard_campaign_title
+{
+  width: 100%;
+  float: none;
+  display: block;
+  font-weight: bold;
+  font-size: 20px;
+}
+.dashboard_campaign_subtitles
+{
+  font-weight:bold;color:#FAA93F;text-align:left;
+}
+.max_width_100per
+{
+  max-width:100%;
+}
+.font_size_20px
+{
+  font-size: 20px;
+}
+.click_through_prompt
+{
+  text-align:center;margin:38px;height:26px;
+}
+.width_75per
+{
+  width:75%;
+}
+.bidio_video_title_wrapper
+{
+  font-size:18px;text-align: left;padding: 5px;
+}
+.dashboard_campaign_play_video
+{
+  display:inline-block;padding:5px;font-size:18px;margin-left:0;
+}
+.dashboard_campaign_approved_checkbox{
+  display:inline-block;padding:5px;margin-left:5px;
+}
+.Redirect_3rd_Party_LandingPage
+{
+  font-weight:bold;font-size:14px;
+}
+.padding_top_50px
+{
+  padding-top: 50px
+}
+.padding_top_25px
+{
+  padding-top: 25px
+}
+.addvideo_viewing
+{
+  width:500px;min-height:350px
+}
+.addvideo_wrapper
+{
+  height:1.4em;overflow-y:hidden;
+}
+.select_video_margin
+{
+  margin-bottom:0;
 }

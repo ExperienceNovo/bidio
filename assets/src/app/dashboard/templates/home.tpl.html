@@ -1,7 +1,7 @@
 <div id="main-container">
 	<div class="surface-container home-pad">
 		<div class="spacing-50"></div>
-	    <h2 class="section-title dec-title your_dashboard"><strong class="your_dashboard_textcolor">Your Dashboard</strong>
+	    <h2 class="section-title dec-title dashboard_subtitles"><strong class="dashboard_textcolor">Your Dashboard</strong>
 	    <hr class="dashboard_separation_line"></h2>
 		<div class="spacing-50"></div>
 		<div class="container bidio_title">
@@ -12,7 +12,7 @@
 					<img src="http://lorempixel.com/200/95/animals" class="img-delay-1" />
 					<a ui-sref="dashboard.videos" href="/dashboard/videos" 
 					class="yourvideos_wrapper">
-					 	<span class="your_videos" >Your Videos</span>
+					 	<span class="yourvideos" >Your Videos</span>
 					</a>
 				</div>
 				<div class="metro-big store">
@@ -38,8 +38,8 @@
 			</div>
 		</div>
 		<div class="spacing-75"></div>
-	    <h2 class="section-title dec-title" style="text-align: center;padding-bottom: 25px;"><strong  style="color:#FE9A2E">Featured Campaign</strong>
-	    <hr style="width: 170px;margin: 0 auto;margin-top: 25px;"></h2>
+	    <h2 class="section-title dec-title dashboard_subtitles"><strong class="color_featuredcampaign">Featured Campaign</strong>
+	    <hr class="separator_featuredcampaign"></h2>
 		<div class="spacing-50"></div>
 		<div class="container">
 			<div class="spacing-25"></div>
@@ -60,7 +60,7 @@
 						</div>
 					</span>
 					<div class="slider" ng-repeat="featuredCampaign in featuredCampaigns">
-						<div class="inset" style="padding:0!important">
+						<div class="inset padding_0">
 							<figure>
 								<figcaption class="title-1">
 								  <h1>{{featuredCampaign.title}}</h1>

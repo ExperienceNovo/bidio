@@ -1335,10 +1335,11 @@ span#b-5:focus ~ .slider .inset {
     margin-top: 12%;
   }
 }
-.your_dashboard{
+/*Anjali CSS*/
+.dashboard_subtitles{
     text-align: center !important;padding-bottom: 25px;
 }
-.your_dashboard_textcolor{
+.dashboard_textcolor{
     color:#FE9A2E;
 }
 .dashboard_separation_line{
@@ -1357,7 +1358,7 @@ span#b-5:focus ~ .slider .inset {
     padding: 20%;
     margin: 0 auto;
 }
-.your_videos
+.yourvideos
 {
     font-size: 20px;
     font-weight: bold;
@@ -1380,4 +1381,24 @@ span#b-5:focus ~ .slider .inset {
 {
     font-weight: bold;
     font-size: 14px;
+}
+.color_featuredcampaign
+{
+    color:#FE9A2E;
+}
+.separator_featuredcampaign
+{
+    width: 170px;margin: 0 auto;margin-top: 25px;
+}
+.padding_0
+{
+    padding:0!important;
+}
+.summary
+{
+    margin:10px;font-weight:bold;
+}
+.analytics_padding
+{
+    padding:15px
 }
