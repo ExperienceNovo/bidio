@@ -1,5 +1,5 @@
-<div style="height:100%;margin-botton:150px;">
-	<div style="background:#000;width:100%;border-bottom: 5px solid #FE9A2E;">
+<div class="video_name_display">
+	<div class="video_display">
 		<div class="spacing-25"></div>
 		<div class="video-container">
 			<video 
@@ -19,10 +19,10 @@
 			<div class="spacing-15"></div>
 		</div>
 	</div>
-	<div id="video-details" style="float:left;width:100%;">
-		<div class="aboutTxt" style="width:100%;margin:0 auto;padding-bottom:65px!important">
-			<h3 style="text-transform:capitalize;padding-top:50px;color:#252525;font-weight:bold;font-size:2em;padding-bottom:15px;">{{video.title}}</h3> 
-			<hr style="width:50%;margin:20px auto;border-top: 1px solid #c5c5c5;">
+	<div id="video-details" class="video_detail">
+		<div class="aboutTxt video_abouttext_f">
+			<h3 class="video_text">{{video.title}}</h3>
+			<hr class="video_text_separator">
 			<div class="tabs">
 				<label for="tab1" title="Member"><a href="/member/{{video.user.username}}">{{video.user.username}}</a></label>
 				<label for="tab2" title="View Count">{{video.viewCount}}</label>
@@ -32,7 +32,7 @@
 				<label ng-show="video.campaign" for="tab4" title="{{video.campaign.prompt}}" ng-click="clickThrough()"><a>{{video.campaign.prompt}}</a></label>				
 
 			</div>
-			<p style="padding: 25px;text-align:center;">{{video.description}}</p>
+			<p class="padding_25 text_center_f">{{video.description}}</p>
 		</div>
 	</div>
 </div>
