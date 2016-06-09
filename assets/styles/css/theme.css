@@ -3378,50 +3378,62 @@ ul.nav.nav-tabs {
     margin-left: 10%;
     margin-right: 10%;
 }
-.video_amazone_url{
-    font-size: 2.5em;margin-bottom: 15px;font-weight: bold;
+
+.video_amazone_url {
+    font-size: 2.5em;
+    margin-bottom: 15px;
+    font-weight: bold;
 }
+
 .video-footer {
     width: 100%;
     height: 150px;
     background: #101010;
     border-top: 5px solid #FE9A2E;
 }
+
 .footer-mobile {
     display: none
 }
+
 @media screen and (max-width: 991px) {
     .footer-desk {
         display: none
     }
+
     .footer-mobile {
         display: block
     }
 }
-.margin_top_150px{
+
+.margin_top_150px {
     margin-top: 150px;
 }
-.float_left{
-    float:left;
+
+.float_left {
+    float: left;
 }
-.bottom_0{
+
+.bottom_0 {
     bottom: 0;
 }
-.edit-btn{
+
+.edit-btn {
     position: absolute;
     left: 15px;
     opacity: 0;
     transition: opacity 0.3s !important;
 }
 
-.edit-container:hover .edit-btn{
+.edit-container:hover .edit-btn {
     opacity: 1.0;
 }
 
-.edit-container{
+.edit-container {
     position: relative;
 }
-.edit-btn_profile_edit{
+
+.edit-btn_profile_edit {
     position: absolute;
     left: 15px;
 }
