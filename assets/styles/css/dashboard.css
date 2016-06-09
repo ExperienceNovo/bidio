@@ -1461,7 +1461,26 @@ span#b-5:focus ~ .slider .inset {
     float: none !important;
     display: inline-block !important;
 }
-.text_center_f
-{
+
+.text_center_f {
     text-align: center !important;
 }
+
+.dashboard-page-wrapper-mobile {
+    display: none;
+}
+
+@media (max-width: 1080px) {
+    .dashboard-page-wrapper {
+        display: none;
+    }
+
+    .dashboard-page-wrapper-mobile {
+        display: block;
+    }
+}
+
+.dashboard-page-wrapper {
+    min-height: 100%;
+}
+
