@@ -3,12 +3,12 @@
 			<md-icon>add</md-icon>
 			&nbsp;Add campaign
   	</md-button>
-	<md-list class="bidio_text_align_left">
+	<md-list class="text-left">
 		<div class="container">			
-			<div ng-repeat="campaign in campaigns" class="bidio_text_align_left">
+			<div ng-repeat="campaign in campaigns" class="text-left">
 				<div class="col-md-6">		
 						<div class="spacing-15"></div>	
-						<a ui-sref="dashboard.campaign({id: campaign.id})" class="md-primary dashboard_campaign_title"
+						<a ui-sref="dashboard.campaign({id: campaign.id})" class="md-primary campaigns_title"
 						>{{campaign.title}}</a>
 						<div class="spacing-15"></div>
 

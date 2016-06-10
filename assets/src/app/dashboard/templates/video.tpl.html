@@ -3,7 +3,7 @@
   <div class="dashboard-title">
    <h2><a ui-sref="video({id: video.id})">{{video.title}}</a></h2>
   </div>
-  <video class="video-js vjs-default-skin bidio_display_block" src={{video.amazonUrl}} controls preload="none" width="640" height="264" poster="poster.jpg" vjs-video>
+  <video class="video-js vjs-default-skin display_block" src={{video.amazonUrl}} controls preload="none" width="640" height="264" poster="poster.jpg" vjs-video>
   </video>
 
   <md-tabs md-dynamic-height md-border-bottom>
@@ -29,7 +29,7 @@
       <div class="row">
         <div class="spacing-25"></div>
         <div class="col-md-6 margin_top_25">
-          <h2 class="dashboard_campaign_subtitles">Finance</h2>
+          <h2 class="campaign_subtitles">Finance</h2>
           <hr>
           <p><b>Price per click</b>&nbsp;${{ campaign.price | number: 2 }}</p>
           <p><b>Total clicks</b>&nbsp;{{ totalClicks }}</p>
@@ -38,7 +38,7 @@
           <p ng-show="campaign.contributionGoal"><b>Max Contribution per Video</b>&nbsp;${{ campaign.contributionGoal | number: 2 }}</p>
         </div>
         <div class="col-md-6 margin_top_25">
-          <h2 class="dashboard_campaign_subtitles">Performance</h2>
+          <h2 class="campaign_subtitles">Performance</h2>
           <hr>
           <p><b>Top video (by clicks)</b>&nbsp;{{ topClicks.title }}&nbsp;({{ topClicks.clickCount }} clicks)<br></p>
           <p><b>Top video (by views)</b>&nbsp;{{ topViews.title }}&nbsp;({{ topClicks.clickCount }} views)<br></p>

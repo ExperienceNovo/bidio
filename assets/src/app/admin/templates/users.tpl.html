@@ -10,13 +10,13 @@
 		<h1>Users</h1>
 		<br><br>
 
-		<p class="bidio_text_align">
+		<p class="text-center">
 			<md-button ng-disabled="page == 0 || isLoading" class="md-icon-button" ng-click="pageDown()"><md-icon>chevron_left</md-icon></md-button>
 			Page&nbsp;{{page + 1}}&nbsp;<i class="fa fa-spinner fa-spin" ng-show="isLoading"></i>
 			<md-button ng-disabled="isMax || isLoading" class="md-icon-button" ng-click="pageUp()"><md-icon>chevron_right</md-icon></md-button>
 		</p>
 
-		<md-list class="bidio_text_align_left">
+		<md-list class="text-left">
 			<md-list-item layout="row">
 				<div flex="20">ID</div>
 				<div flex="30">username</div>

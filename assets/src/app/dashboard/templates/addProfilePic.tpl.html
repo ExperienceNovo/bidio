@@ -1,16 +1,16 @@
-<md-content layout-padding class="add_profilepic_head">
+<md-content layout-padding class="width_500px">
 	<h3>Update profile pic</h3>
-  <div ng-hide="profilePicUrl || photoLoading" ngf-accept="'image/*'" ngf-drop ngf-select="upload($file)" ng-model="file" class="drop-box width_100per" ngf-drag-over-class="dragover" ngf-allow-dir="true">
+  <div ng-hide="profilePicUrl || photoLoading" ngf-accept="'image/*'" ngf-drop ngf-select="upload($file)" ng-model="file" class="drop-box width_100_p" ngf-drag-over-class="dragover" ngf-allow-dir="true">
     <div>Drag photos or click here to upload.</div>
     <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>  
   </div>
-  <p ng-show="photoLoading" class="bidio_text_align"><i class="fa fa-spin fa-spinner"></i>&nbsp;{{pp}}%</p>
+  <p ng-show="photoLoading" class="text-center"><i class="fa fa-spin fa-spinner"></i>&nbsp;{{pp}}%</p>
   <div ng-show="photoLoading" class="progress">
     <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{pp}}%;">
     </div>
   </div>
   <div ng-show="error">
-    <p class="add_profilepic_error">{{error}}</p>
+    <p class="profilepic_error">{{error}}</p>
   </div>
   <md-button class="md-raised md-accent" ng-disabled="!profilePicUrl" ng-click="submit()">Submit</md-button>
   <md-button class="md-raised md-warn" ng-click="cancel()">Cancel</md-button>

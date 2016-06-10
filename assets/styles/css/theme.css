@@ -3036,20 +3036,13 @@ ul.nav.nav-tabs {
 
 /*Inline CSS converted to classes used below*/
 
-.height_100Per {
+.height_100_p {
     height: 100%;
 }
 
-.bidio_color_campaigns {
+.campaigns_color {
     color: #FE9A2E;
 }
-
-.width_margin_margintop {
-    width: 170px;
-    margin: 0 auto;
-    margin-top: 25px;
-}
-
 .new_campaign {
     float: none;
     margin-bottom: 75px;
@@ -3074,37 +3067,37 @@ ul.nav.nav-tabs {
     font-weight: bold;
 }
 
-.advertising_revenue {
+.revenue {
     color: #FE9A2E;
     font-weight: 700;
 }
 
-.bidio_creator {
+.creator_title {
     text-align: left;
     text-transform: uppercase;
     font-weight: 400
 }
 
-.bidio_wrapper {
+.block {
     padding-top: 20px;
     padding-bottom: 50px
 }
 
-.bidio_display_block {
+.display_block {
     display: inline-block;
 }
 
-.get_started {
+.register {
     padding-top: 15px;
     padding-bottom: 15px;
 }
 
-.bidio_sponsors {
+.sponsors {
     padding-top: 127px;
     padding-bottom: 127px;
 }
 
-.cost_effective {
+.cost {
     color: #FE9A2E;
     font-weight: 700;
 }
@@ -3113,7 +3106,7 @@ ul.nav.nav-tabs {
     font-weight: bold;
 }
 
-.link_wrapper {
+.links {
     bottom: 15px;
 }
 
@@ -3127,7 +3120,7 @@ ul.nav.nav-tabs {
     font-size: 15px;
 }
 
-.profile_minheight {
+.minheight_500px {
     min-height: 500px;
 }
 
@@ -3135,31 +3128,27 @@ ul.nav.nav-tabs {
     margin-top: 25px
 }
 
-.profile_picture_width {
+.width_50_p{
     width: 50%;
 }
 
-.padding_25 {
-    padding: 25px;
-}
-
-.profile_message {
+.message {
     font-size: 2em;
 }
 
-.profile_margin {
+.margin_bottom_25px {
     margin-bottom: 25px;
 }
 
-.profile_margin_bottom {
+.margin_bottom_50px  {
     margin-bottom: 50px;
 }
 
-.width_100per {
+.width_100_p {
     width: 100%;
 }
 
-.profile_description_scroll {
+.description_scroll {
     overflow-y: scroll;
 }
 
@@ -3170,10 +3159,6 @@ ul.nav.nav-tabs {
 
 .space_description {
     white-space: nowrap;
-}
-
-.bidio_text_align {
-    text-align: center;
 }
 
 .connect_social_accounts {
@@ -3215,35 +3200,18 @@ ul.nav.nav-tabs {
     color: #f5f8fa;
 }
 
-.add_profilepic_error {
+.profilepic_error {
     text-align: center;
     color: #ff664c;
     font-weight: 700;
 }
 
-.add_profilepic_head {
+.width_500px {
     width: 500px;
 }
 
-.bidio_text_align_left {
-    text-align: left;
-}
 
-.dashboard_campaign_title {
-    width: 100%;
-    float: none;
-    display: block;
-    font-weight: bold;
-    font-size: 20px;
-}
-
-.dashboard_campaign_subtitles {
-    font-weight: bold;
-    color: #FAA93F;
-    text-align: left;
-}
-
-.max_width_100per {
+.max_width_100_p {
     max-width: 100%;
 }
 
@@ -3265,24 +3233,6 @@ ul.nav.nav-tabs {
     font-size: 18px;
     text-align: left;
     padding: 5px;
-}
-
-.dashboard_campaign_play_video {
-    display: inline-block;
-    padding: 5px;
-    font-size: 18px;
-    margin-left: 0;
-}
-
-.dashboard_campaign_approved_checkbox {
-    display: inline-block;
-    padding: 5px;
-    margin-left: 5px;
-}
-
-.Redirect_3rd_Party_LandingPage {
-    font-weight: bold;
-    font-size: 14px;
 }
 
 .padding_top_50px {
@@ -3307,7 +3257,7 @@ ul.nav.nav-tabs {
     margin-bottom: 0;
 }
 
-.sponsored_by_text {
+.sponsoredby_text {
     display: block !important;
 }
 
@@ -3317,18 +3267,13 @@ ul.nav.nav-tabs {
     font-size: 4.2em;
 }
 
-.compaign_videos_username_text {
+.compaign_videos_username {
     font-size: 2.5em;
     margin-bottom: 15px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-
-.bidio_text_align_right {
-    text-align: right;
-}
-
 .select_video_btn {
     display: inline-block;
     margin-bottom: 15px;
@@ -3338,24 +3283,19 @@ ul.nav.nav-tabs {
 .padding_bottom_25px {
     padding-bottom: 25px;
 }
-
-.padding_50_px_0 {
-    padding: 50px 0;
-}
-
 .padding_50px {
     padding: 50px;
 }
 
-.padding_0px_0 {
-    padding: 0px 0;
+.padding_0px {
+    padding: 0px ;
 }
 
 .discover_text_color {
     color: #FE9A2E;
 }
 
-.discover_video_titletext {
+.discover_video_title {
     font-size: 1.75em;
     padding-bottom: 5px;
     margin-bottom: 15px;
@@ -3366,7 +3306,7 @@ ul.nav.nav-tabs {
     white-space: nowrap;
 }
 
-.nav_background_color {
+.background_color {
     background: #101010;
 }
 
@@ -3379,7 +3319,7 @@ ul.nav.nav-tabs {
     margin-right: 10%;
 }
 
-.video_amazone_url {
+.video_amazon_url {
     font-size: 2.5em;
     margin-bottom: 15px;
     font-weight: bold;

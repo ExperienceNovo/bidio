@@ -76,8 +76,8 @@
 			{{member.username}} doesn't have any videos
 		</div>
 		<div class="dashboardVideos col-xs-12 col-sm-12 col-md-6 col-lg-6 margin_top_25" ng-repeat="video in videos">
-	    	<h2 class="bidio-orange video_amazone_url"><a ui-sref="video({id: video.id})">{{video.title}}</a></h2>
-	    	<video class="video-js vjs-default-skin padding_25 bidio_display_block" src="{{video.amazonUrl}}" controls preload="none" width="640" height="264" poster="{{video.poster}}" vjs-video>
+	    	<h2 class="bidio-orange video_amazon_url"><a ui-sref="video({id: video.id})">{{video.title}}</a></h2>
+	    	<video class="video-js vjs-default-skin spacing-15 display_block" src="{{video.amazonUrl}}" controls preload="none" width="640" height="264" poster="{{video.poster}}" vjs-video>
 	    	</video>
 	  	</div>
 	</uib-tab>

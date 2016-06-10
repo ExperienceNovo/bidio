@@ -1383,13 +1383,7 @@ span#b-5:focus ~ .slider .inset {
     color: #FE9A2E;
 }
 
-.dashboard_separation_line {
-    width: 170px;
-    margin: 0 auto;
-    margin-top: 25px;
-}
-
-.yourvideos_upper_wrapper {
+.videos_wrapper {
     background: rgba(0, 0, 0, 0.65);
     position: absolute;
     height: 95px;
@@ -1398,13 +1392,13 @@ span#b-5:focus ~ .slider .inset {
     top: -2px;
 }
 
-.yourvideos_wrapper {
+.videos_block {
     top: 35%;
     padding: 20%;
     margin: 0 auto;
 }
 
-.yourvideos {
+.videos_text {
     font-size: 20px;
     font-weight: bold;
     color: #fff;
@@ -1416,11 +1410,11 @@ span#b-5:focus ~ .slider .inset {
     font-size: 14px;
 }
 
-.upper_wrapper_upload {
+.upload_block {
     background: #252525;
 }
 
-.wrapper_upload {
+.upload_wrapper {
     color: #FE9A2E;
 }
 
@@ -1452,12 +1446,12 @@ span#b-5:focus ~ .slider .inset {
     padding: 15px
 }
 
-.dashboard_menu_wrapper {
+.menu_wrapper {
     width: 100%;
     background: #fff
 }
 
-.dashboard_menu_items_f {
+.menu_items_f {
     float: none !important;
     display: inline-block !important;
 }
@@ -1484,3 +1478,32 @@ span#b-5:focus ~ .slider .inset {
     min-height: 100%;
 }
 
+.campaigns_title {
+    width: 100%;
+    float: none;
+    display: block;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.campaign_subtitles {
+    font-weight: bold;
+    color: #FAA93F;
+    text-align: left;
+}
+
+.campaign_play_video {
+    display: inline-block;
+    padding: 5px;
+    font-size: 18px;
+    margin-left: 0;
+}
+.campaign_checkbox {
+    display: inline-block;
+    padding: 5px;
+    margin-left: 5px;
+}
+.LandingPage {
+    font-weight: bold;
+    font-size: 14px;
+}
