@@ -7,8 +7,7 @@
 
 module.exports = {
 
-	getByVideo:(['req','res'],
-		function(req, res) {
+	getByVideo:(['req','res'], function(req, res) {
 		View.find()
 		.where({video:req.param('id')})
 		.then(function(model) {
@@ -21,8 +20,7 @@ module.exports = {
 		});
 	}),
 
-	create:(['req','res'],
-		function (req, res) {
+	create:(['req','res'], function (req, res) {
 		var model = {
 			user: req.param('user'),
 			video: req.param('video'),

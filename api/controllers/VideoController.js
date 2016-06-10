@@ -9,8 +9,7 @@ var fs = require("fs");
 
 module.exports = {
 
-	getAll:(['req','res'],
-		function(req, res) {
+	getAll:(['req','res'], function(req, res) {
 		Video.getAll()
 		.spread(function(models) {
 			Video.watch(req);
@@ -39,8 +38,7 @@ module.exports = {
 			})
 	}),
 
-	getByMember: (['req','res'],
-		function(req, res) {
+	getByMember: (['req','res'], function(req, res) {
 		Video.find()
 		.where({user:req.param('id')})
 		.then(function(model) {
@@ -52,8 +50,7 @@ module.exports = {
 		});
 	}),
 
-	getSome:(['req','res'],
-		function(req, res) {
+	getSome:(['req','res'], function(req, res) {
 		var limit = req.param('limit');
 		var skip = req.param('skip');
 
@@ -72,8 +69,7 @@ module.exports = {
 		});
 	}),
 
-	getTrending: (['req','res'],
-		function(req, res) {
+	getTrending: (['req','res'], function(req, res) {
 		Video.getAll()
 		.spread(function(models) {
 			Video.watch(req);
@@ -85,8 +81,7 @@ module.exports = {
 		});
 	}),
 
-	getRelated:(['req','res'],
-		function(req, res) {
+	getRelated:(['req','res'], function(req, res) {
 
 		var limit = 6;
 		var skip = 1;
@@ -118,8 +113,7 @@ module.exports = {
 
 	}),
 
-	getOne: (['req','res'],
-		function(req, res) {
+	getOne: (['req','res'], function(req, res) {
 		Video.getOne(req.param('id'))
 		.spread(function(model) {
 			Video.subscribe(req, model);
@@ -130,8 +124,7 @@ module.exports = {
 		});
 	}),
 
-	upload:(['req','res'],
-		function(req,res){
+	upload:(['req','res'], function(req,res){
 
 		/*uncomment this if you want to save to a particular folder*/
 		//var filename = req.file('video')._files[0].stream.filename;
@@ -190,8 +183,7 @@ module.exports = {
 
 	}),
 
-	create:(['req','res'],
-		function (req, res) {
+	create:(['req','res'], function (req, res) {
 
 		var model = {
 			title: req.param("title"),
@@ -217,8 +209,7 @@ module.exports = {
 
 	}),
 
-	update: (['req','res'],
-		function(req, res) {
+	update: (['req','res'], function(req, res) {
 
 		var id = req.param('id');
 
@@ -254,8 +245,7 @@ module.exports = {
 			})
 	}),
 
-	destroy:(['req','res'],
-		function (req, res) {
+	destroy:(['req','res'], function (req, res) {
 		var id = req.param('id');
 		if (!id) {
 			return res.badRequest('No id provided.');
