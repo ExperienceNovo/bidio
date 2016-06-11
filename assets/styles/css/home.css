@@ -848,7 +848,7 @@ input:focus {
 }
 
 /*Pradeep CSS*/
-.sponsored_wrapper{
+.fontSize{
     font-size:2.75em;
 }
 .sponsored_wrapper > span {
@@ -857,25 +857,22 @@ input:focus {
 .creator_font{
     font-size:.75em;
 }
-.z_index_999{
+.zIndex{
     z-index: 999;
 }
-.bidio_color{
-    color:#FE9A2E;
-}
-.list-inline.social_button{
+.list-inline.social-button{
     text-align:left;position:relative;top:25px
 }
-.margin_bottom_15{
+.marginBottom15{
     margin-bottom: 15px !important;
 }
-.margin_bottom_75{
+.marginBottom75{
     margin-bottom: 75px !important;
 }
-.bidio_provides{
+.provides{
     font-size:16px;padding-top:25px;
 }
-.text_align_right{
+.align-right-f{
     text-align: right !important;
 }
 .zaxbys{

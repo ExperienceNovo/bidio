@@ -1374,16 +1374,16 @@ span#b-5:focus ~ .slider .inset {
 }
 
 /*dashboard css*/
-.dashboard_subtitles {
+.dashboardSubtitles {
     text-align: center !important;
     padding-bottom: 25px;
 }
 
-.dashboard_textcolor {
+.textColor {
     color: #FE9A2E;
 }
 
-.videos_wrapper {
+.videosWrapper {
     background: rgba(0, 0, 0, 0.65);
     position: absolute;
     height: 95px;
@@ -1392,29 +1392,29 @@ span#b-5:focus ~ .slider .inset {
     top: -2px;
 }
 
-.videos_block {
+.videosBlock {
     top: 35%;
     padding: 20%;
     margin: 0 auto;
 }
 
-.videos_text {
+.videoText {
     font-size: 20px;
     font-weight: bold;
     color: #fff;
 }
 
-.dashboard_text {
+.dashboardText {
     color: #252525;
     font-weight: bold;
     font-size: 14px;
 }
 
-.upload_block {
+.uploadBlock {
     background: #252525;
 }
 
-.upload_wrapper {
+.uploadWrapper {
     color: #FE9A2E;
 }
 
@@ -1427,13 +1427,13 @@ span#b-5:focus ~ .slider .inset {
     color: #FE9A2E;
 }
 
-.heading_separator {
+.headingSeparator {
     width: 170px;
     margin: 0 auto;
     margin-top: 25px;
 }
 
-.padding_0 {
+.padding0 {
     padding: 0 !important;
 }
 
@@ -1442,21 +1442,17 @@ span#b-5:focus ~ .slider .inset {
     font-weight: bold;
 }
 
-.analytics_padding {
-    padding: 15px
-}
-
-.menu_wrapper {
+.menuWrapper {
     width: 100%;
     background: #fff
 }
 
-.menu_items_f {
+.menuItems-f {
     float: none !important;
     display: inline-block !important;
 }
 
-.text_center_f {
+.textCenterF {
     text-align: center !important;
 }
 
@@ -1478,7 +1474,7 @@ span#b-5:focus ~ .slider .inset {
     min-height: 100%;
 }
 
-.campaigns_title {
+.campaignsTitle {
     width: 100%;
     float: none;
     display: block;
@@ -1492,18 +1488,18 @@ span#b-5:focus ~ .slider .inset {
     text-align: left;
 }
 
-.campaign_play_video {
+.playVideo {
     display: inline-block;
     padding: 5px;
     font-size: 18px;
     margin-left: 0;
 }
-.campaign_checkbox {
+.checkBox {
     display: inline-block;
     padding: 5px;
     margin-left: 5px;
 }
-.LandingPage {
+.landingPage {
     font-weight: bold;
     font-size: 14px;
 }

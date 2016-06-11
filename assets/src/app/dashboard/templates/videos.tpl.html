@@ -5,7 +5,7 @@
   <div class="dashboardVideos col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-repeat="video in videos">
     <h2><a href="dashboard/video/{{video.id}}">{{video.title}}</a></h2>
     <br>
-    <video class="video-js vjs-default-skin display_block" src={{video.amazonUrl}} controls preload="none" width="640" height="264" poster="" vjs-video>
+    <video class="video-js vjs-default-skin inlineBlock" src={{video.amazonUrl}} controls preload="none" width="640" height="264" poster="" vjs-video>
     </video>
     <br>
   </div>

@@ -11,7 +11,7 @@
 					<label for="tab2" title="View Count">Views</label>
 				</div>
 		        <div class="bidio-profile-text">
-		            <h2 align="left" class="bidio-orange font_weight_bold">{{member.username}}</h2>
+		            <h2 align="left" class="bidio-orange fontWeightBold">{{member.username}}</h2>
 		            <hr>
 		            <div class="spacing-15"></div>
 		            <p>{{profile.description}}</p>
@@ -35,9 +35,9 @@
 							</li>
 							<li ng-if="member.socialAccounts.facebook.profileUrl">
 								<a href="{{member.socialAccounts.facebook.profileUrl}}">
-									<div class="md-whiteframe-4dp connect_social_accounts">
+									<div class="md-whiteframe-4dp socialAccount">
 										<i class="fa fa-facebook"></i>
-										<img class="profile_pic_border" ng-src="{{member.socialAccounts.facebook.profilePic}}">
+										<img class="borderRadius" ng-src="{{member.socialAccounts.facebook.profilePic}}">
 										{{member.socialAccounts.facebook.displayName}}
 									</div>
 								</a>
@@ -45,9 +45,9 @@
 							<br>
 							<li ng-if="member.socialAccounts.google.profileUrl">
 								<a href="{{member.socialAccounts.google.profileUrl}}">
-									<div class="md-whiteframe-4dp google_plus">
+									<div class="md-whiteframe-4dp googlePlus">
 										<i class="fa fa-google-plus"></i>
-										<img class="profile_pic_border" ng-src="{{member.socialAccounts.google.profilePic}}">
+										<img class="borderRadius" ng-src="{{member.socialAccounts.google.profilePic}}">
 										{{member.socialAccounts.google.displayName}}
 									</div>
 									</a>
@@ -55,9 +55,9 @@
 							<br>
 							<li ng-if="member.socialAccounts.twitter.profileUrl">
 								<a href="{{member.socialAccounts.twitter.profileUrl}}">
-									<div class="md-whiteframe-4dp twitter_button">
+									<div class="md-whiteframe-4dp twitterBtn">
 										<i class="fa fa-twitter"></i>
-										<img class="profile_pic_border" ng-src="{{member.socialAccounts.twitter.profilePic}}">
+										<img class="borderRadius" ng-src="{{member.socialAccounts.twitter.profilePic}}">
 										{{member.socialAccounts.twitter.displayName}}
 									</div>
 									</a>
@@ -75,9 +75,9 @@
 		<div ng-show="videos.length == 0">
 			{{member.username}} doesn't have any videos
 		</div>
-		<div class="dashboardVideos col-xs-12 col-sm-12 col-md-6 col-lg-6 margin_top_25" ng-repeat="video in videos">
+		<div class="dashboardVideos col-xs-12 col-sm-12 col-md-6 col-lg-6 marginTop25" ng-repeat="video in videos">
 	    	<h2 class="bidio-orange video_amazon_url"><a ui-sref="video({id: video.id})">{{video.title}}</a></h2>
-	    	<video class="video-js vjs-default-skin spacing-15 display_block" src="{{video.amazonUrl}}" controls preload="none" width="640" height="264" poster="{{video.poster}}" vjs-video>
+	    	<video class="video-js vjs-default-skin spacing-15 inlineBlock" src="{{video.amazonUrl}}" controls preload="none" width="640" height="264" poster="{{video.poster}}" vjs-video>
 	    	</video>
 	  	</div>
 	</uib-tab>

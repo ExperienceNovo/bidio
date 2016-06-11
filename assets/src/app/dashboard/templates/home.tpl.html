@@ -1,45 +1,45 @@
 <div id="main-container">
 	<div class="surface-container home-pad">
 		<div class="spacing-50"></div>
-	    <h2 class="section-title dec-title dashboard_subtitles"><strong class="dashboard_textcolor">Your Dashboard</strong>
-	    <hr class="heading_separator"></h2>
+	    <h2 class="section-title dec-title dashboardSubtitles"><strong class="textColor">Your Dashboard</strong>
+	    <hr class="headingSeparator"></h2>
 		<div class="spacing-50"></div>
-		<div class="container bidio_title">
-			<div class="display_block">
+		<div class="container text-center">
+			<div class="inlineBlock">
 				<div class="metro-big photo">
-					<span class="videos_wrapper">
+					<span class="videosWrapper">
 					</span>
 					<img src="http://lorempixel.com/200/95/animals" class="img-delay-1" />
 					<a ui-sref="dashboard.videos" href="/dashboard/videos" 
-					class="videos_block">
-					 	<span class="videos_text" >Your Videos</span>
+					class="videosBlock">
+					 	<span class="videoText" >Your Videos</span>
 					</a>
 				</div>
 				<div class="metro-big store">
 					<a ui-sref="dashboard.analytics">
 						<i class="fa fa-credit-card logout-icon"></i>
-						<span class="logout  dashboard_text">Earnings</li>
+						<span class="logout  dashboardText">Earnings</li>
 						</span>
 					</a>
 				</div>
-				<div class="metro-big upload_block">
+				<div class="metro-big uploadBlock">
 					<a ui-sref="dashboard.videos" href="/dashboard/videos" >
-						<i class="fa fa-play-circle-o logout-icon upload_wrapper"></i>
+						<i class="fa fa-play-circle-o logout-icon uploadWrapper"></i>
 						<span class="logout upload">Upload</li></span>
 					</a> 
 				</div>
 				<div class="metro-big store">
 					<a href="/logout">
 						<i class="fa fa-power-off logout-icon"></i>
-						<span class="logout dashboard_text">Logout</li>
+						<span class="logout dashboardText">Logout</li>
 						</span>
 					</a>
 				</div>
 			</div>
 		</div>
 		<div class="spacing-75"></div>
-	    <h2 class="section-title dec-title dashboard_subtitles"><strong class="color_featuredcampaign">Featured Campaign</strong>
-	    <hr class="heading_separator"></h2>
+	    <h2 class="section-title dec-title dashboardSubtitles"><strong class="color_featuredcampaign">Featured Campaign</strong>
+	    <hr class="headingSeparator"></h2>
 		<div class="spacing-50"></div>
 		<div class="container">
 			<div class="spacing-25"></div>
@@ -60,7 +60,7 @@
 						</div>
 					</span>
 					<div class="slider" ng-repeat="featuredCampaign in featuredCampaigns">
-						<div class="inset padding_0">
+						<div class="inset padding0">
 							<figure>
 								<figcaption class="title-1">
 								  <h1>{{featuredCampaign.title}}</h1>

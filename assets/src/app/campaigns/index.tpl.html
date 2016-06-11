@@ -1,29 +1,29 @@
-<div class="surface-container home-pad height_100_p">
+<div class="surface-container home-pad height100p">
 	<div class="spacing-25"></div>
-    <h2 class="section-title dec-title text_center_f"><strong class="campaigns_color">Campaigns</strong>
-    <hr class="heading_separator"></h2>
+    <h2 class="section-title dec-title textCenterF"><strong class="campaignsColor">Campaigns</strong>
+    <hr class="headingSeparator"></h2>
 	<div class="clearfix">
-		<a ng-show="currentUser" ui-sref="dashboard.campaigns" class="new_campaign text-center btn anim-button fl-l">
+		<a ng-show="currentUser" ui-sref="dashboard.campaigns" class="newCampaign text-center btn anim-button fl-l">
 			<span class="network-name">New Campaign</span>
 			<i class="fa fa-long-arrow-right fa-fw"></i>
 		</a>
 	</div>
 	<div class="container">			
-		<div class="col-md-6 campaign_image_wrapper" ng-repeat="campaign in campaigns"  >
+		<div class="col-md-6 campaignImage" ng-repeat="campaign in campaigns"  >
 			<div class="col-md-2">	
-				<img class="height_50" src="{{campaign.campaignImageUrl}}">
+				<img class="height50" src="{{campaign.campaignImageUrl}}">
 			</div>
 			<div class="col-md-10">			
-				<h2 class="font_size_2em">
-					<a href="/campaign/{{campaign.urlTitle}}" class="campign_url_title">{{campaign.title}}</a>
+				<h2 class="fontSize2">
+					<a href="/campaign/{{campaign.urlTitle}}" class="campignUrl">{{campaign.title}}</a>
 				</h2>	
 				<br>
-				<h3>Sponsored By <span><a href="/member/{{campaign.user.username}}">{{campaign.user.username}}</a></span></h3>
+				<h3>Sponsored By <span class="fontWeightBold"><a href="/member/{{campaign.user.username}}">{{campaign.user.username}}</a></span></h3>
 				<hr>
 			</div>
 		</div>
 	</div>
-	<div ng-include="'footer/index.tpl.html'" class="video-footer bottom_0 footer-mobile"></div>
+	<div ng-include="'footer/index.tpl.html'" class="video-footer bottom0 footer-mobile"></div>
 </div>
 <div class="spacing-25"></div>
-<div ng-include="'footer/index.tpl.html'" class="video-footer  bottom_0 footer-desk"></div>
+<div ng-include="'footer/index.tpl.html'" class="video-footer  bottom0 footer-desk"></div>

@@ -3,7 +3,7 @@
   <div class="dashboard-title">
    <h2><a ui-sref="video({id: video.id})">{{video.title}}</a></h2>
   </div>
-  <video class="video-js vjs-default-skin display_block" src={{video.amazonUrl}} controls preload="none" width="640" height="264" poster="poster.jpg" vjs-video>
+  <video class="video-js vjs-default-skin inlineBlock" src={{video.amazonUrl}} controls preload="none" width="640" height="264" poster="poster.jpg" vjs-video>
   </video>
 
   <md-tabs md-dynamic-height md-border-bottom>
@@ -11,7 +11,7 @@
       <div class="spacing-25"></div>
       <div class="row">
         <div class="col-md-12">
-          <canvas id="line" class="chart chart-line analytics_padding"chart-data="data"
+          <canvas id="line" class="chart chart-line spacing-15"chart-data="data"
             chart-labels="labels" chart-legend="true" chart-series="series"
             chart-click="onClick">
           </canvas>
@@ -28,8 +28,8 @@
       </canvas> 
       <div class="row">
         <div class="spacing-25"></div>
-        <div class="col-md-6 margin_top_25">
-          <h2 class="campaign_subtitles">Finance</h2>
+        <div class="col-md-6 marginTop25">
+          <h2 class="subTitles">Finance</h2>
           <hr>
           <p><b>Price per click</b>&nbsp;${{ campaign.price | number: 2 }}</p>
           <p><b>Total clicks</b>&nbsp;{{ totalClicks }}</p>
@@ -37,8 +37,8 @@
           <p ng-show="campaign.maxContributionPerVideo"><b>Max Contribution per Video</b>&nbsp;${{ campaign.maxContributionPerVideo | number : 2 }}</p>
           <p ng-show="campaign.contributionGoal"><b>Max Contribution per Video</b>&nbsp;${{ campaign.contributionGoal | number: 2 }}</p>
         </div>
-        <div class="col-md-6 margin_top_25">
-          <h2 class="campaign_subtitles">Performance</h2>
+        <div class="col-md-6 marginTop25">
+          <h2 class="subTitles">Performance</h2>
           <hr>
           <p><b>Top video (by clicks)</b>&nbsp;{{ topClicks.title }}&nbsp;({{ topClicks.clickCount }} clicks)<br></p>
           <p><b>Top video (by views)</b>&nbsp;{{ topViews.title }}&nbsp;({{ topClicks.clickCount }} views)<br></p>

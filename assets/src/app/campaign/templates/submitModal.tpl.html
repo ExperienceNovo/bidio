@@ -1,7 +1,7 @@
-<div class="container padding_50px">
+<div class="container padding50">
 	<div ng-hide="videoSelecting && !finished" class="row">
 		<div ng-show="!currentUser">
-			<div class="col-xs-12 col-sm-8 col-sm-push-2 padding_0px">
+			<div class="col-xs-12 col-sm-8 col-sm-push-2 padding0">
 				<h3>Before you continue</h3>
 				<p class="text-center"><b>You will need to log in to proceed.</b></p>
 				<p>If you all ready have an account:</p>
@@ -10,7 +10,7 @@
 				<p class="clearfix"><a class="btn anim-button fl-l btn-default" ng-click="cancel()" ui-sref="register">Register</a></p>
 			</div>
 		</div>
-		<div ng-show="currentUser && !finished" class="modal-footer width_100_p display_block" >
+		<div ng-show="currentUser && !finished" class="modal-footer width100p inlineBlock" >
 				
 				<div class="col-xs-12">
 					<form class="text-left" action="" method="POST" role="form">
@@ -32,7 +32,7 @@
 							<textarea ng-model="video.description" name="description" id="description" class="form-control" rows="3"></textarea>
 						</div>
 
-						<div ng-hide="video.amazonUrl || videoLoading" class="width_100_p" ngf-accept="'video/*'" ngf-drop ngf-select="upload($file)" ng-model="file" class="drop-box" ngf-drag-over-class="dragover" ngf-allow-dir="true">
+						<div ng-hide="video.amazonUrl || videoLoading" class="width100p" ngf-accept="'video/*'" ngf-drop ngf-select="upload($file)" ng-model="file" class="drop-box" ngf-drag-over-class="dragover" ngf-allow-dir="true">
 					    <div>Drag videos or click here to upload.</div>
 					    <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>  
 					  </div>
@@ -54,12 +54,12 @@
 					  </div>
 					  	<div class="container">
 					  		<div class="row text-right">
-					  			<div class="select_video_btn">
+					  			<div class="selectVideoBtn">
 						  			<a type="button" class="btn anim-button fl-l" ng-click="videoSelect()">Select existing video</a>
 						  		</div>
 							</div>
 							<div class="row text-right">
-								<div class="display_block">
+								<div class="inlineBlock">
 									<a ng-disabled="videoLoading || loading || !video.amazonUrl" ng-click="submit(video)" type="button" class="btn anim-button fl-l btn-primary">
 										Submit&nbsp;<i ng-show="loading" class="fa fa-spin fa-spinner"></i>
 									</a>
@@ -72,7 +72,7 @@
 				</div>
 		</div>
 		<div ng-show="finished">
-			<div class="col-xs-12 col-sm-8 col-sm-push-2 padding_50px">
+			<div class="col-xs-12 col-sm-8 col-sm-push-2 padding50">
 				<h2>Submission completed!</h2>
 				<p>You will be notified when {{campaign.user.username}} decides to accept or decline your submission.</p>
 				<a ng-click="cancel()" type="button" class="btn anim-button fl-l btn-primary">Dismiss</a>
@@ -82,8 +82,8 @@
 	<div ng-show="videoSelecting && !viewing && !finished" class="row">
 		<div class="col-xs-12">
 
-			<div class="clearfix padding_bottom_25px">
-				<a href=""></a> class="btn anim-button fl-l pull-left" ng-click="videoSelectToggle()"><i class="fa fa-caret-left"></i>&nbsp;Back</a>
+			<div class="clearfix paddingBottom25">
+				<a class="btn anim-button fl-l pull-left" ng-click="videoSelectToggle()"><i class="fa fa-caret-left"></i>&nbsp;Back</a>
 				<a class="btn anim-button fl-l pull-right" ng-click="submitPrev(selectedVideo.video)" ng-disabled="!selectedVideo.video">
 					<span ng-show="prevLoading"><i class="fa fa-spin fa-spinner"></i>&nbsp;</span>
 					<i class="fa fa-check"></i>&nbsp;Submit

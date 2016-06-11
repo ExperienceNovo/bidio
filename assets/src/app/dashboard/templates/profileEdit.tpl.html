@@ -1,43 +1,43 @@
 
 <div class="container">
-  <div class="minheight_500px">
+  <div class="minHeight500">
   	<div class="spacing-25"></div>
     <div class="row">
-      <div class="col-md-6 margin_bottom_25px">
+      <div class="col-md-6 marginBottom25">
         <md-button ui-sref="dashboard.profileMain" class="md-raised" layout-fill><md-icon>chevron_left</md-icon>Cancel</md-button><br>
       </div>
-      <div class="col-md-6 margin_bottom_25px">
+      <div class="col-md-6 marginBottom25">
         <md-button ng-click="submit(profile)" class="md-raised" layout-fill><md-icon>check</md-icon>Save Changes</md-button><br>
       </div>
     </div>
     <div class="spacing-50"></div>
   	<div class="row">
-  		<div class="col-md-4 margin_bottom_50px">
-				<div class="edit-btn_profile_edit"><md-button ng-click="addProfilePic($event)" class="md-fab md-mini"><md-icon>edit</md-icon></md-button></div>
-				<img class="width_100_p" ng-src="{{profile.picture}}">
+  		<div class="col-md-4 marginBottom50">
+				<div class="edit-btn-profile"><md-button ng-click="addProfilePic($event)" class="md-fab md-mini"><md-icon>edit</md-icon></md-button></div>
+				<img class="width100p" ng-src="{{profile.picture}}">
   		</div>  		
-  		<div class="col-md-4 margin_bottom_50px">
+  		<div class="col-md-4 marginBottom50">
   			<h2 class="bidio-orange">Profile Description</h2>
   			<div class="spacing-25"></div>
   			<md-input-container layout-fill>
   				<label>About</label>
-  				<textarea aria-label="Profile Description" rows="5" ng-model="profile.description" class="description_scroll"></textarea>
+  				<textarea aria-label="Profile Description" rows="5" ng-model="profile.description" class="scroll"></textarea>
   			</md-input-container>
   		</div>  		
-  		<div class="col-md-4 description_wrapper">
-				<div class="space_description"><b>First Name</b></div>
+  		<div class="col-md-4 descriptionWrapper">
+				<div class="spaceDescription"><b>First Name</b></div>
 		  	<md-input-container layout-fill>
 		  		<input aria-label="Profile First Name" type="text" ng-model="profile.firstName">
 			  </md-input-container>
-				<div class="space_description"><b>Last Name</b></div>
+				<div class="spaceDescription"><b>Last Name</b></div>
 		  	<md-input-container layout-fill>
 		  		<input aria-label="Profile Last Name" type="text" ng-model="profile.lastName">
 			  </md-input-container>
-				<div class="space_description"><b>Company (name)</b></div>
+				<div class="spaceDescription"><b>Company (name)</b></div>
 		  	<md-input-container layout-fill>
 		  		<input aria-label="Profile Company Name" type="text" ng-model="profile.companyName">
 			  </md-input-container>
-				<div class="space_description"><b>Company (url)</b></div>
+				<div class="spaceDescription"><b>Company (url)</b></div>
 		  	<md-input-container layout-fill>
 		  		<input aria-label="Profile Company Url" type="text" ng-model="profile.companyUrl">
 			  </md-input-container>
@@ -47,8 +47,8 @@
   		<h2 class="bidio-orange">Connect Social Accounts</h2>
   		<div class="spacing-25"></div>
   		<ul class="text-center">
-  			<li class="display_block">
-					<div class="md-whiteframe-4dp connect_social_accounts">
+  			<li class="inlineBlock">
+					<div class="md-whiteframe-4dp socialAccount">
 						<i class="fa fa-facebook"></i>
 						<!-- case 1: call to activate -->
 						<md-button class="primary md-raised"
@@ -59,7 +59,7 @@
 						<!-- case 2: activated, show profile and remove button -->
 						<span ng-if="passportRegistered('facebook')">
 							<a href="{{user.socialAccounts.facebook.profileUrl}}" class="profile_url_color">
-								<img class="profile_pic_border" ng-src="{{user.socialAccounts.facebook.profilePic}}">
+								<img class="borderRadius" ng-src="{{user.socialAccounts.facebook.profilePic}}">
 								{{user.socialAccounts.facebook.displayName}}
 							</a>
 							<md-button class='primary md-raised'
@@ -69,8 +69,8 @@
 						</span>
 					</div>
   			</li>
-  			<li class="display_block">
-	  			<div class="md-whiteframe-4dp google_plus">
+  			<li class="inlineBlock">
+	  			<div class="md-whiteframe-4dp googlePlus">
 						<i class="fa fa-google-plus"></i>
 						<!-- case 1: call to activate -->
 						<md-button class="primary md-raised"
@@ -81,7 +81,7 @@
 						<!-- case 2: activated, show profile and remove button -->
 						<span ng-if="passportRegistered('google')">
 							<a href="{{user.socialAccounts.google.profileUrl}}" class="profile_url_color">
-								<img class="profile_pic_border" ng-src="{{user.socialAccounts.google.profilePic}}">
+								<img class="borderRadius" ng-src="{{user.socialAccounts.google.profilePic}}">
 								{{user.socialAccounts.google.displayName}}
 							</a>
 							<md-button class='primary md-raised'
@@ -91,8 +91,8 @@
 						</span>
 					</div>
   			</li>
-  			<li class="display_block">
-					<div class="md-whiteframe-4dp twitter_button">
+  			<li class="inlineBlock">
+					<div class="md-whiteframe-4dp twitterBtn">
 						<i class="fa fa-twitter"></i>						<!-- case 1: call to activate -->
 						<md-button class="primary md-raised"
 		          ng-click="go('/auth/twitter')"
@@ -102,7 +102,7 @@
 						<!-- case 2: activated, show profile and remove button -->
 						<span ng-if="passportRegistered('twitter')">
 							<a href="{{user.socialAccounts.twitter.profileUrl}}" class="twitter_profileUrl_color">
-								<img class="profile_pic_border" ng-src="{{user.socialAccounts.twitter.profilePic}}">
+								<img class="borderRadius" ng-src="{{user.socialAccounts.twitter.profilePic}}">
 								{{user.socialAccounts.twitter.displayName}}
 							</a>
 							<md-button class='primary md-raised'

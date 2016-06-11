@@ -1,7 +1,7 @@
-<div class="surface-container height_100_p">
+<div class="surface-container height100p">
 	<div class="spacing-25"></div>
-    <h2 class="text_center_f section-title dec-title"><strong  class="discover_text_color">Discover</strong>
-    <hr class="heading_separator"></h2>
+    <h2 class="textCenterF section-title dec-title"><strong>Discover</strong>
+    <hr class="headingSeparator"></h2>
    <div class="discover-search">
         <div class="input-group">
 			<input ng-keyup="keyPress(searchValue)" class="search-query form-control" ng-model="searchValue" id="search-link" size="40" type="text" placeholder="Search">
@@ -12,14 +12,14 @@
             </span>
         </div>
     </div>
-    <div class="margin_top_25" ng-show="videos.length == 0">
+    <div class="marginTop25" ng-show="videos.length == 0">
     	<h2 class="text-center">zero results</h2>
     	<h2 class="text-center">zero results</h2>
     </div>
     <div class="container">
-		<div class="dashboardVideos col-xs-12 col-sm-12 col-md-4 col-lg-4 margin_top_25" ng-repeat="video in videos" >
+		<div class="dashboardVideos col-xs-12 col-sm-12 col-md-4 col-lg-4 marginTop25" ng-repeat="video in videos" >
 			<div class="spacing-25"></div>
-			<h2 class="bidio-orange discover_video_title">
+			<h2 class="bidio-orange videoTitle">
 				<a ui-sref="video({id: video.id})">{{video.title}}</a>
 			</h2>
 			<video

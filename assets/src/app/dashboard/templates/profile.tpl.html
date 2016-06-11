@@ -1,6 +1,6 @@
 <div id="main-container">
-  <div class="minheight_500px" layout="column" layout-padding>
-    <div class="container margin_top_25">
+  <div class="minHeight500" layout="column" layout-padding>
+    <div class="container marginTop25">
       <div class="row">
         <div class="col-md-6">
           <md-button ui-sref="dashboard.profileEdit" class="md-raised" layout-fill><md-icon>edit</md-icon>Edit</md-button><br>
@@ -14,15 +14,15 @@
         <div class="col-md-6">
           <h2 class="bidio-orange">Profile Picture</h2>
           <div class="spacing-15"></div>
-          <img class="width_50_p" ng-src="{{profile.picture}}">
+          <img class="width50p" ng-src="{{profile.picture}}">
           <div class="spacing-25"></div>
         </div>
         <div class="col-md-6">
           <h2 class="bidio-orange">Profile Description</h2>
           <div class="spacing-15"></div>
-          <p class="profile-description spacing-15">{{profile.description}}</p>
+          <p class="profile-description spacing-25">{{profile.description}}</p>
           <div ng-show="!profile.description.length">
-            <h3 class="message">You haven't added a description yet! <br>Use the "Edit" button above to write one.</h3>
+            <h3 class="fontSize2">You haven't added a description yet! <br>Use the "Edit" button above to write one.</h3>
           </div>
           <div class="spacing-25"></div>
         </div>

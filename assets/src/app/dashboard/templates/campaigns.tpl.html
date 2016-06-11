@@ -8,13 +8,13 @@
 			<div ng-repeat="campaign in campaigns" class="text-left">
 				<div class="col-md-6">		
 						<div class="spacing-15"></div>	
-						<a ui-sref="dashboard.campaign({id: campaign.id})" class="md-primary campaigns_title"
+						<a ui-sref="dashboard.campaign({id: campaign.id})" class="md-primary campaignsTitle"
 						>{{campaign.title}}</a>
 						<div class="spacing-15"></div>
 
-						<div><strong class="font_weight_bold">Created:</strong> {{campaign.createdAt | date : "short"}}</div>
+						<div><strong class="fontWeightBold">Created:</strong> {{campaign.createdAt | date : "short"}}</div>
 						<br>
-						<div><strong class="font_weight_bold">Updated:</strong> {{campaign.updatedAt | date : "short"}}</div>
+						<div><strong class="fontWeightBold">Updated:</strong> {{campaign.updatedAt | date : "short"}}</div>
 						<div class="spacing-15"></div>	
 					<hr>
 				</div>

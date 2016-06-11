@@ -1,6 +1,6 @@
 <md-content layout-padding class="width_500px">
 	<h3>Update photo</h3>
-  <div ng-hide="bannerUrl" class="width_100_p" ngf-accept="'image/*'" ngf-drop ngf-select="upload($file)" ng-model="file" class="drop-box" ngf-drag-over-class="dragover" ngf-allow-dir="true">
+  <div ng-hide="bannerUrl" class="width100p" ngf-accept="'image/*'" ngf-drop ngf-select="upload($file)" ng-model="file" class="drop-box" ngf-drag-over-class="dragover" ngf-allow-dir="true">
     <div>Drag photos or click here to upload.</div>
     <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>  
   </div>
@@ -10,7 +10,7 @@
     </div>
   </div>
   <div ng-show="error">
-    <p class="profilepic_error">{{error}}</p>
+    <p class="pictureError">{{error}}</p>
   </div>
   <md-button class="md-raised md-accent" ng-disabled="!bannerUrl" ng-click="submit(video)">Submit</md-button>
   <md-button class="md-raised md-warn" ng-click="cancel()">Cancel</md-button>
