@@ -857,10 +857,7 @@ input:focus {
 .creatorFont{
     font-size:.75em;
 }
-.zIndex{
-    z-index: 999;
-}
-.list-inline.social-button{
+.list-inline.socialButton{
     text-align:left;position:relative;top:25px
 }
 .marginBottom15{
@@ -879,6 +876,6 @@ input:focus {
     display: inline;
     height: 35px;
 }
-.float_none{
+.floatNone{
     float:none !important;
 }

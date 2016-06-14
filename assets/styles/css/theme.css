@@ -3122,7 +3122,7 @@ ul.nav.nav-tabs {
     font-weight: 700;
 }
 
-.fontWeightBold {
+.fontBold {
     font-weight: bold;
 }
 
@@ -3231,7 +3231,7 @@ ul.nav.nav-tabs {
     font-weight: 700;
 }
 
-.width_500px {
+.width500 {
     width: 500px;
 }
 
@@ -3280,11 +3280,6 @@ ul.nav.nav-tabs {
 .marginBottom0 {
     margin-bottom: 0;
 }
-
-.sponsoredby_text {
-    display: block !important;
-}
-
 .compaign_videos_text {
     font-weight: bold;
     color: #FAA93F;
