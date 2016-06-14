@@ -311,29 +311,29 @@
     }
 }
 /* video CSS*/
-.video_name_display {
+.videoName{
     height: 100%;
     margin-bottom: 150px;
 }
 
-.video_display {
+.videoDisplay {
     background: #000;
     width: 100%;
     border-bottom: 5px solid #FE9A2E;
 }
 
-.video_detail {
+.videoDetail {
     float: left;
     width: 100%;
 }
 
-.video_abouttext_f {
+.videoAbout-f {
     width: 100%;
     margin: 0 auto;
     padding-bottom: 65px !important;
 }
 
-.video_text {
+.videoTitle {
     text-transform: capitalize;
     padding-top: 50px;
     color: #252525;
@@ -342,7 +342,7 @@
     padding-bottom: 15px;
 }
 
-.video_text_separator {
+.videoSeparator {
     width: 50%;
     margin: 20px auto;
     border-top: 1px solid #c5c5c5;

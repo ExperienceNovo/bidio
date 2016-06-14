@@ -3130,13 +3130,13 @@ ul.nav.nav-tabs {
     bottom: 15px;
 }
 
-.social_icon {
+.socialIcon {
     display: inline-block;
     padding: 10px;
     font-size: 20px;
 }
 
-.account_message {
+.fontSize15 {
     font-size: 15px;
 }
 
@@ -3311,23 +3311,20 @@ ul.nav.nav-tabs {
     padding: 0px ;
 }
 
-
-
-
-.background_color {
+.backColor {
     background: #101010;
 }
 
-.clear_both {
+.clearBoth {
     clear: both;
 }
 
-.campaigns_margins {
+.campaignMargin {
     margin-left: 10%;
     margin-right: 10%;
 }
 
-.video_amazon_url {
+.videoAmazon {
     font-size: 2.5em;
     margin-bottom: 15px;
     font-weight: bold;
@@ -3354,11 +3351,11 @@ ul.nav.nav-tabs {
     }
 }
 
-.margin_top_150px {
+.marginTop150 {
     margin-top: 150px;
 }
 
-.float_left {
+.floatLeft {
     float: left;
 }
 
@@ -3387,4 +3384,7 @@ ul.nav.nav-tabs {
 }
 .padding10 {
     padding: 10px;
+}
+.sponsorCreator {
+    text-align:left;text-transform:uppercase;font-weight:400;
 }

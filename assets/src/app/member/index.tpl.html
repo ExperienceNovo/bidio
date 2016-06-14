@@ -76,7 +76,7 @@
 			{{member.username}} doesn't have any videos
 		</div>
 		<div class="dashboardVideos col-xs-12 col-sm-12 col-md-6 col-lg-6 marginTop25" ng-repeat="video in videos">
-	    	<h2 class="bidio-orange video_amazon_url"><a ui-sref="video({id: video.id})">{{video.title}}</a></h2>
+	    	<h2 class="bidio-orange videoAmazon"><a ui-sref="video({id: video.id})">{{video.title}}</a></h2>
 	    	<video class="video-js vjs-default-skin spacing-15 inlineBlock" src="{{video.amazonUrl}}" controls preload="none" width="640" height="264" poster="{{video.poster}}" vjs-video>
 	    	</video>
 	  	</div>
@@ -84,7 +84,7 @@
 
 	<uib-tab heading="Campaigns">
 		<div class="spacing-25"></div>
-		<div class="campaigns_margins">
+		<div class="campaignMargin">
 			<div ng-show="campaigns.length == 0">
 				{{member.username}} doesn't have any campaigns
 			</div>
@@ -97,5 +97,5 @@
 
 </uib-tabset>
 <div class="spacing-50"></div>
-<div class="clear_both"></div>
+<div class="clearBoth"></div>
 <div class="spacing-50"></div>
