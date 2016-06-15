@@ -2,7 +2,7 @@ angular.module( 'bidio.blogPost', [
 ])
 
 .config(function config( $stateProvider ) {
-	$stateProvider.state( 'discover', {
+	$stateProvider.state( 'blogPost', {
 		url: '/blog/:id',
 		views: {
 			"main": {
