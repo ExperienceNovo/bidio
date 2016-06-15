@@ -15,6 +15,8 @@ angular.module( 'bidio', [
     'ngFileUpload',
     'ngMaterial',
     'ngAnimate',
+    'bidio.blog',
+    'bidio.blogPost',
     'bidio.creators',
 	'bidio.campaign',
     'bidio.campaigns',
