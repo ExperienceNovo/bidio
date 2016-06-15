@@ -20,4 +20,5 @@ angular.module( 'bidio.blog', [
 
 .controller( 'BlogCtrl', function DiscoverCtrl( $scope, config, titleService, $sce, posts ) {
 	titleService.setTitle('Blog - bidio');
+   	$scope.date = new Date();
 });
