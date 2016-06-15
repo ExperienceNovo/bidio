@@ -4,6 +4,12 @@
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800);
 
+*, *:after, *:before {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 html {
   height: 100%;
   overflow-x: hidden !important;
@@ -30,6 +36,10 @@ body {
 
 @viewport {
   width: device-width;
+}
+
+strong {
+  font-weight: bold
 }
 
 .no-select {
@@ -557,43 +567,6 @@ form[role=search] .form-group {
   background-position: center;
   background-repeat: repeat;
   background-origin: content-box;
-}
-
-.full-height-parallax {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: 2;
-}
-
-.respimg {
-  width: 100%;
-  height: auto;
-}
-
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #000;
-  opacity: .2;
-}
-
-section {
-  float: left;
-  width: 100%;
-  position: relative;
-  padding: 120px 0;
-  overflow: hidden;
-}
-
-.parallax-section {
-  padding: 250px 0;
 }
 
 .align-text {
