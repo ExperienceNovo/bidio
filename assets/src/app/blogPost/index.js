@@ -3,11 +3,11 @@ angular.module( 'bidio.blogPost', [
 
 .config(function config( $stateProvider ) {
 	$stateProvider.state( 'blogPost', {
-		url: '/blog/:id',
+		url: '/blog/:path',
 		views: {
 			"main": {
 				controller: 'BlogPostCtrl',
-				templateUrl: 'BlogPost/index.tpl.html'
+				templateUrl: 'blogPost/index.tpl.html'
 			}
 		},
 		resolve:{
@@ -18,6 +18,7 @@ angular.module( 'bidio.blogPost', [
 	});
 })
 
-.controller( 'BlogPostCtrl', function DiscoverCtrl( $scope, config, titleService, $sce, post ) {
+.controller( 'BlogPostCtrl', function BlogPostCtrl( $scope, config, titleService, $sce, post ) {
 	titleService.setTitle('Blog - bidio');
+	console.log('OKOKOKOOK')
 });
