@@ -50,6 +50,10 @@
   outline: thin dotted;
 }
 
+section.section-container {
+  padding: 0 !important
+}
+
 .section-container {
   -moz-transition: 0.4s all;
   -webkit-transition: 0.4s all;
@@ -73,7 +77,7 @@
   margin: auto;
   max-width: 800px;
   padding: 20px;
-  margin-top: 5%;
+  padding-top: 5%;
   opacity: 0;
   visibility: hidden;
   text-align: right;
@@ -118,12 +122,13 @@
 :checked + .section-container .section-info {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
   height: 100%;
-  overflow: hidden;
+  overflow: auto;
+  overflow-x: hidden;
 }
 
 
 .section-one:hover {
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(/images/panel-1bg.jpg);
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(https://s3.amazonaws.com/bidio8/marketing+images/panel-1bg.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -136,14 +141,14 @@
   -o-transform: translate(0%, 0%);
   -webkit-transform: translate(0%, 0%);
   transform: translate(0%, 0%);
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(/images/panel-1bg.jpg);
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://s3.amazonaws.com/bidio8/marketing+images/panel-1bg.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .section-two:hover {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/images/panel-3bg.jpg);
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://s3.amazonaws.com/bidio8/marketing+images/panel-3bg.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -156,14 +161,14 @@
   -o-transform: translate(0%, 100%);
   -webkit-transform: translate(0%, 100%);
   transform: translate(0%, 100%);
-  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(/images/panel-3bg.jpg);
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(https://s3.amazonaws.com/bidio8/marketing+images/panel-3bg.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .section-three:hover {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/images/panel-2bg.jpg);
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://s3.amazonaws.com/bidio8/marketing+images/panel-2bg.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -176,14 +181,14 @@
   -o-transform: translate(100%, 0%);
   -webkit-transform: translate(100%, 0%);
   transform: translate(100%, 0%);
-  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(/images/panel-2bg.jpg);
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(https://s3.amazonaws.com/bidio8/marketing+images/panel-2bg.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .section-four:hover {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/images/panel-4bg.jpg);
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://s3.amazonaws.com/bidio8/marketing+images/panel-4bg.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -196,14 +201,14 @@
   -o-transform: translate(100%, 100%);
   -webkit-transform: translate(100%, 100%);
   transform: translate(100%, 100%);
-  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(/images/panel-4bg.jpg);
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(https://s3.amazonaws.com/bidio8/marketing+images/panel-4bg.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .section-onesec-creators:hover {
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(/images/panel-1bg2.jpg);
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(https://s3.amazonaws.com/bidio8/marketing+images/panel-1bg2.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -216,14 +221,14 @@
   -o-transform: translate(0%, 0%);
   -webkit-transform: translate(0%, 0%);
   transform: translate(0%, 0%);
-  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(/images/panel-1bg2.jpg);
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(https://s3.amazonaws.com/bidio8/marketing+images/panel-1bg2.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .section-twosec-creators:hover {
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(/images/panel-3bg2.jpg);
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(https://s3.amazonaws.com/bidio8/marketing+images/panel-3bg2.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -236,14 +241,14 @@
   -o-transform: translate(0%, 100%);
   -webkit-transform: translate(0%, 100%);
   transform: translate(0%, 100%);
-  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(/images/panel-3bg2.jpg);
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(https://s3.amazonaws.com/bidio8/marketing+images/panel-3bg2.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .section-threesec-creators:hover {
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(/images/panel-2bg2.jpg);
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(https://s3.amazonaws.com/bidio8/marketing+images/panel-2bg2.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -256,14 +261,14 @@
   -o-transform: translate(100%, 0%);
   -webkit-transform: translate(100%, 0%);
   transform: translate(100%, 0%);
-  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(/images/panel-2bg2.jpg);
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(https://s3.amazonaws.com/bidio8/marketing+images/panel-2bg2.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .section-foursec-creators:hover {
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(/images/panel-4bg2.jpg);
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(https://s3.amazonaws.com/bidio8/marketing+images/panel-4bg2.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -276,7 +281,7 @@
   -o-transform: translate(100%, 100%);
   -webkit-transform: translate(100%, 100%);
   transform: translate(100%, 100%);
-  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(/images/panel-4bg2.jpg);
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(https://s3.amazonaws.com/bidio8/marketing+images/panel-4bg2.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -324,6 +329,9 @@
 @media only screen and (max-width:425px) {
   .home-content h2 {
     font-size: 21px;
+  }
+  .section-content p {
+    text-align: center;
   }
 }
 
