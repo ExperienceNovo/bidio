@@ -838,6 +838,13 @@ p.under-tagline {
 h2 {
 	font-size:35px
 }
+.home-buttons {
+    display: block;
+    margin-top: 5px;
+    float: none!important;
+    max-width: 75%!important;
+    margin: 0 auto;
+}
 }
 
 @media only screen and (max-width: 450px) {
