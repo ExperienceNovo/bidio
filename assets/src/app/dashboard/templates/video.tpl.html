@@ -8,44 +8,44 @@
 
   <md-tabs md-dynamic-height md-border-bottom>
     <md-tab label="Overview">
-      <div class="spacing-25"></div>
-      <div class="row">
-        <div class="col-md-12">
-          <canvas id="line" class="chart chart-line" style="padding:15px" chart-data="data"
-            chart-labels="labels" chart-legend="true" chart-series="series"
-            chart-click="onClick">
-          </canvas>
-        </div>
+      <div class="spacing-15"></div>
+
+      <div id="video-graph-filter">
+        <h2>video activity</h2>
+        <div class="spacing-15"></div>
+
+        <md-datepicker ng-model="startDate" md-placeholder="Start date" md-min-date="startDate" md-max-date="endDate"></md-datepicker>
+
+        <md-datepicker ng-model="endDate" md-placeholder="End date" md-min-date="startDate" md-max-date="endDate"></md-datepicker>
+
       </div>
+
       <div class="spacing-25"></div>
       <canvas id="line" class="chart chart-line" chart-data="viewData"
             chart-labels="viewLabels" chart-legend="true" chart-series="viewSeries"
             chart-click="onClick">
       </canvas> 
-      <canvas id="line" class="chart chart-line" chart-data="clickData"
+      <!--<canvas id="line" class="chart chart-line" chart-data="clickData"
             chart-labels="clickLabels" chart-legend="true" chart-series="clickSeries"
             chart-click="onClick">
-      </canvas> 
+      </canvas>-->
       <div class="row">
         <div class="spacing-25"></div>
         <div class="col-md-6" style="margin-top:25px">
           <h2 style="font-weight:bold;color:#FAA93F;text-align:left;">Finance</h2>
           <hr>
-          <p><b>Price per click</b>&nbsp;${{ campaign.price | number: 2 }}</p>
-          <p><b>Total clicks</b>&nbsp;{{ totalClicks }}</p>
-          <p><b>Total payment</b>&nbsp;${{ totalClicks * campaign.price | number: 2 }}</p>
-          <p ng-show="campaign.maxContributionPerVideo"><b>Max Contribution per Video</b>&nbsp;${{ campaign.maxContributionPerVideo | number : 2 }}</p>
-          <p ng-show="campaign.contributionGoal"><b>Max Contribution per Video</b>&nbsp;${{ campaign.contributionGoal | number: 2 }}</p>
+          <!--{{video}}-->
+          <p><b>Campaign</b>: <a href="/campaign/{{video.campaign.urlTitle}}">{{video.campaign.title}}</a></p>
+          <p><b>Views</b>: {{video.clickCount}}</p>
+          <p><b>Clicks</b>: {{video.clickCount}}</p>
+          <p><b>Price per click</b>: ${{video.campaign.price | number: 2}}</p>
+          <p><b>Total payment</b>: ${{video.clickCount * campaign.price | number: 2}}</p>
+
         </div>
         <div class="col-md-6" style="margin-top:25px">
           <h2 style="font-weight:bold;color:#FAA93F;text-align:left;">Performance</h2>
           <hr>
-          <p><b>Top video (by clicks)</b>&nbsp;{{ topClicks.title }}&nbsp;({{ topClicks.clickCount }} clicks)<br></p>
-          <p><b>Top video (by views)</b>&nbsp;{{ topViews.title }}&nbsp;({{ topClicks.clickCount }} views)<br></p>
-          <p><b>Top video (by conversion ratio)</b>&nbsp;{{ topConversion.title }}&nbsp;({{ (topConversion.clickCount / topConversion.viewCount) * 100 | number : 2 }}&nbsp;%)</p>
-          <p><b>Total clicks</b>&nbsp;{{ totalClicks }}<br></p>
-          <p><b>Total views</b>&nbsp;{{ totalViews }}<br></p>
-          <p><b>Average conversion ratio</b>&nbsp;{{ (totalClicks / totalViews) * 100 | number : 2 }}&nbsp;%<br></p>
+          <p><b>Average conversion ratio</b>: {{(totalClicks / totalViews) * 100 | number : 2}}%<br></p>
         </div>
       </div>
       <div class="spacing-25"></div>

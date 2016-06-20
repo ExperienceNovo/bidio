@@ -207,15 +207,45 @@ angular.module( 'bidio.dashboard', [
 
         $scope.viewLabels = [];
         $scope.viewSeries = [];
-        $scope.viewData = [[]];
+        $scope.viewData = [[],[]];
+
+        $scope.startDate = new Date($scope.views[0].createdAt);
+        $scope.endDate = new Date($scope.views[$scope.views.length-1].createdAt);
+        $scope.dayCount = Math.floor(( Date.parse($scope.endDate) - Date.parse($scope.startDate)) / 86400000);
+
+
+        //this is tricky
+        var currentDate = new Date($scope.startDate.getTime());
+        var currentDate1 = new Date(currentDate.getTime());
+        for(var i = 0; i < $scope.dayCount; i++) {
+            var currentDate1 = new Date(currentDate1.getTime());
+            currentDate1.setDate(currentDate1.getDate() + 1);
+            $scope.viewLabels.push(new Date(currentDate1.getTime()).toISOString().slice(5, 10));
+
+            //find set of views with dates between sertain amount here.
+            //l8rr
+            //if($scope.viewLabels[i]> && <$scope.viewLabels[i+1]){
+            //}
+
+            console.log(currentDate1)
+
+        }
+
+
+
 
         if($scope.views){
-            $scope.viewSeries = ['Views']
+            $scope.viewSeries = ['Views', 'Clicks']
             for (x in $scope.views){
-                $scope.viewLabels.push($scope.views[x].createdAt);
+                var dateObj = new Date($scope.views[x].createdAt);
+                //$scope.viewLabels.push(dateObj);
                 $scope.viewData[0].push(x);
             }
+            for (x in $scope.clicks){
+                $scope.viewData[1].push(x);
+            }
         }
+
         else{
             $scope.viewLabels = ["January", "February", "March", "April", "May", "June", "July"];
             $scope.viewSeries = ['Views', 'Click Throughs'];
@@ -224,6 +254,7 @@ angular.module( 'bidio.dashboard', [
                 [28, 48, 40, 19, 86, 27, 90]
             ];
         }
+
     };
     $scope.updateViews()
 
@@ -240,6 +271,7 @@ angular.module( 'bidio.dashboard', [
                 $scope.clickData[0].push(x);
             }
         }
+
         else{
             $scope.clickLabels = ["January", "February", "March", "April", "May", "June", "July"];
             $scope.clickSeries = ['Clicks', 'Click Throughs'];
@@ -248,6 +280,7 @@ angular.module( 'bidio.dashboard', [
                 [28, 48, 40, 19, 86, 27, 90]
             ];
         }
+
     };
     $scope.updateClicks()
 
