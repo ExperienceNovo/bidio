@@ -2768,8 +2768,19 @@ article .section-title {
     padding-left: 6px;
     padding-right: 6px;
   }
-}
 
+  #sec1 {
+    padding-bottom:0!important;
+    padding-top:60px!important;
+  }
+  #sec2 {
+    margin-bottom: 0;
+    padding-bottom:50px!important;
+  }
+}
+#sec2 {
+  margin-bottom: 50px;
+}
 @media only screen and (max-width: 640px) {
   .num {
     font-size: 30px;
