@@ -62,6 +62,7 @@ module.exports.routes = {
   'get /video/:id': 'HomeController.index',
 
   'get /zaxbys': 'HomeController.index',
+  'get /questions': 'HomeController.index',
 
   'post /auth/local': 'AuthController.callback',
   'post /auth/local/:action': 'AuthController.callback',
