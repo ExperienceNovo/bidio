@@ -1,6 +1,4 @@
 angular.module( 'bidio.campaign', [
-	'ui.bootstrap',
-	'ngAnimate'
 ])
 
 .config(function config( $stateProvider ) {
@@ -46,7 +44,34 @@ angular.module( 'bidio.campaign', [
 	titleService.setTitle('campaign - bidio');
 	$scope.currentUser = config.currentUser;
 	$scope.campaign = campaign;
+
+    $scope.campaign.media = {
+        sources: [
+            {
+                src: $scope.campaign.videoUrl,
+                type: 'video/mp4'
+            }
+        ],
+        poster: $scope.campaign.poster
+    };
+
+    for (x in $scope.campaign.bids){
+        $scope.campaign.bids[x].media = {
+            sources: [
+                {
+                    src: $scope.campaign.bids[x].video.amazonUrl,
+                    type: 'video/mp4'
+                }
+            ],
+            poster: $scope.campaign.poster
+        }
+    }
+
+
   console.log(campaign)
+
+
+
   $scope.campaign.poster = 'images/video-overlay.png'
 	$scope.updateCampaign = function(campaign){
 		CampaignModel.update(campaign);
@@ -66,19 +91,19 @@ angular.module( 'bidio.campaign', [
 
 .controller('submitVideoCtrl', function (BidModel, $scope, campaign, config, $uibModalInstance, Upload, VideoModel) {
 
-		$scope.campaign = campaign;
+	$scope.campaign = campaign;
 
-		$scope.currentUser = config.currentUser;
-		$scope.video = {campaign: campaign.id};
-		$scope.pp = 0;
-		$scope.error = null;
-		$scope.loading = false;
-		$scope.videoLoading = false;
-		$scope.finished = false;
-		$scope.fileName = null;
+	$scope.currentUser = config.currentUser;
+	$scope.video = {campaign: campaign.id};
+	$scope.pp = 0;
+	$scope.error = null;
+	$scope.loading = false;
+	$scope.videoLoading = false;
+	$scope.finished = false;
+	$scope.fileName = null;
 
-		/*new page*/
-		$scope.videoLoading2 = false;
+	/*new page*/
+	$scope.videoLoading2 = false;
     $scope.videoSelecting = false;
     $scope.videos = [];
     $scope.viewing = false;
@@ -86,12 +111,12 @@ angular.module( 'bidio.campaign', [
     $scope.viewLoading = false;
     $scope.selectedVideo = {video: null};
 
-		$scope.clear = function(){
-			$scope.fileName = null;
-			$scope.video.amazonUrl = null;
-		}
+	$scope.clear = function(){
+		$scope.fileName = null;
+		$scope.video.amazonUrl = null;
+	}
 
-		$scope.videoSelectToggle = function(){
+	$scope.videoSelectToggle = function(){
         $scope.videoSelecting = !$scope.videoSelecting;
         if (!$scope.videoSelecting){$scope.videoUrl = null;}
     }
@@ -145,7 +170,7 @@ angular.module( 'bidio.campaign', [
         $scope.viewingVideo = null;
     }
 
-		$scope.upload = function(file){
+	$scope.upload = function(file){
       $scope.videoLoading = true;
       Upload.upload({
         url: '/api/video/upload',

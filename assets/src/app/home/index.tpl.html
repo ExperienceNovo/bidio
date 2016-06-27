@@ -279,7 +279,6 @@
                                 <h3 style="margin-bottom:15px"><img src="images/zaxbys2.png" style="display:inline;height:35px"> Sponsors <strong>Railhawks</strong> Tryouts</h3>
                                 <div class="video-container" style="width:100%">
                                    <video 
-                                    ng-src="{{campaign.videoUrl}}"
                                     class="video-js vjs-default-skin"
                                     controls preload="auto" 
                                     width="640" 
@@ -287,7 +286,7 @@
                                     fluid="true"
                                     poster="{{campaign.poster}}" 
                                     vjs-video
-                                    vjs-media="media"
+                                    vjs-media="campaign.media"
                                     vjs-setup="options"
                                     vjs-ratio="16:9">
                                   </video>

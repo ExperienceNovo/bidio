@@ -30,5 +30,14 @@ angular.module( 'bidio.home', [
 	$scope.trendingVideos = trendingVideos;
 	campaign.title = $sce.trustAsHtml(campaign.title)
 	$scope.campaign = campaign;
+	$scope.campaign.media = {
+        sources: [
+            {
+                src: $scope.campaign.videoUrl,
+                type: 'video/mp4'
+            }
+        ],
+        poster: $scope.campaign.poster
+    }
 	$scope.featuredCampaigns = featuredCampaigns;
 });

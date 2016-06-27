@@ -22,7 +22,6 @@
 				<a ui-sref="video({id: video.id})">{{video.title}}</a>
 			</h2>
 			<video 
-				src="{{video.amazonUrl}}"
 				class="video-js vjs-default-skin"
 				controls preload="auto" 
 				width="640" 
@@ -30,8 +29,7 @@
 				fluid="true"
 				poster="{{defaultposter}}"
 				vjs-video
-				vjs-media="media"
-				vjs-setup="options"
+				vjs-media="video.media"
 				vjs-ratio="16:9">
 			</video>
 			<a ng-show="video.campaign.campaignImageUrl" class="vid-clickthrough" ng-click="clickThrough()"><img src="{{video.campaign.campaignImageUrl}}"></a>

@@ -40,6 +40,16 @@ angular.module( 'bidio.video', [
 	titleService.setTitle(video.title + ' - bidio');
 	$scope.viewModel = {};
 
+	$scope.media = {
+	    sources: [
+	        {
+	            src: $scope.video.amazonUrl,
+	            type: 'video/mp4'
+	        }
+	    ],
+	    poster: $scope.video.poster
+	};
+
 	if ($scope.currentUser){
 		$scope.viewModel.user = $scope.currentUser.id;
 	    $scope.viewModel.video = $scope.video.id;
@@ -52,7 +62,6 @@ angular.module( 'bidio.video', [
 
 	var activeBid = video.bids.filter(function(bid){ return bid.isActive });
 	$scope.highestBid = activeBid.length ? activeBid[0] : {value: "0.01"};
-
 
 	$scope.bidPerView = Math.floor(Math.random() * (100 - 1 + 1)) + 1;
 
