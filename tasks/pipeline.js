@@ -43,7 +43,6 @@ var jsFilesToInject = [
   'bower_components/vjs-video/dist/vjs-video.js',
   'bower_components/Chart.js/Chart.min.js',
   'bower_components/angular-chart.js/dist/angular-chart.js',
-  'bower_components/angular-chart.js/dist/angular-chart.js',
   'bower_components/angular-animate/angular-animate.min.js',
   'bower_components/angular-aria/angular-aria.min.js',
   'bower_components/angular-messages/angular-messages.min.js',

@@ -43,14 +43,14 @@
 			<h3>By <b><a href="/member/{{bid.video.user.username}}">{{bid.video.user.username}}</a></b> on {{bid.video.createdAt | date: "shortDate"}}</h3>
 			<br>
 			<video 
+				vjs-video
+				vjs-media="bid.media"
 				class="video-js vjs-default-skin"
 				controls preload="auto" 
 				width="640" 
 				height="264" 
 				fluid="true"
-				vjs-video
-				poster="{{campaign.poster}}" 
-				vjs-media="bid.media"
+				poster="campaign.poster" 
 				vjs-ratio="16:9">
 			</video>
 			<a href="#" ng-show="campaign.campaignImageUrl" class="vid-clickthrough"><img src="{{campaign.campaignImageUrl}}"></a>
