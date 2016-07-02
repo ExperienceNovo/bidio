@@ -35,7 +35,10 @@ angular.module( 'bidio.video', [
 
 	$scope.currentUser = config.currentUser;
 	$scope.video = video;
-    $scope.video.poster = 'images/video-overlay.png'
+  $scope.video.poster = 'images/video-overlay.png'
+
+	console.log($scope.video)
+
 	if(typeof($scope.video)=="undefined"){$location.path('/')}
 	titleService.setTitle(video.title + ' - bidio');
 	$scope.viewModel = {};
@@ -200,12 +203,13 @@ angular.module( 'bidio.video', [
      	{
         method: 'share',
 			// href: 'www.google.com',
-			href: 'www.bidio.co',
-			name: 'name',
+				href: 'www.bidio.co',
+				name: 'name',
         	// picture: 'file:///Users/sueserene/projects/bidio/assets/images/video-overlay.png',
-			picture: 'https://2static1.fjcdn.com/comments/Haven+t+slept+well+lately+so+sleep+tight+pupper+may+flights+_f76daa893b0a5921705ff727db77b2dc.jpg',
-        	description: 'description',
-			hashtag: '#ohshootwaddup',
+					// picture: 'file:///Users/sueserene/projects/bidio/assets/images/test-img.png',
+				picture: 'https://pbs.twimg.com/profile_images/743123913496891392/6k6q5pg-_400x400.jpg',
+        description: 'description',
+				hashtag: '#bidio',
       },
       function (res) {
 		console.log(res);
