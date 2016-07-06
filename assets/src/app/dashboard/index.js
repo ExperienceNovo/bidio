@@ -472,6 +472,7 @@ angular.module( 'bidio.dashboard', [
     }
 
 	$scope.passportRegistered = function(provider) {
+		console.log(user)
 		for (i in $scope.passports) {
 				if ($scope.passports[i].provider === provider)
 						return true;
@@ -491,6 +492,10 @@ angular.module( 'bidio.dashboard', [
 				UserModel.update(user)
 
 			})
+	}
+
+	$scope.hasSinglePassport = function() {
+		return $scope.passports.length <= 1;
 	}
 
 	$scope.go = function(path) {

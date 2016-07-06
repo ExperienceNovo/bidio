@@ -23,7 +23,7 @@
   		<div class="col-md-4" style="margin-bottom:50px">
 				<div class="edit-btn"><md-button ng-click="addProfilePic($event)" class="md-fab md-mini"><md-icon>edit</md-icon></md-button></div>
 				<img style="width:100%" ng-src="{{profile.picture}}">
-  		</div>  		
+  		</div>
   		<div class="col-md-4" style="margin-bottom:50px">
   			<h2 class="bidio-orange">Profile Description</h2>
   			<div class="spacing-25"></div>
@@ -31,7 +31,7 @@
   				<label>About</label>
   				<textarea aria-label="Profile Description" rows="5" ng-model="profile.description" style="overflow-y:scroll"></textarea>
   			</md-input-container>
-  		</div>  		
+  		</div>
   		<div class="col-md-4" style="text-align:left;margin-bottom:50px">
 				<div style="white-space:nowrap;"><b>First Name</b></div>
 		  	<md-input-container layout-fill>
@@ -71,7 +71,8 @@
 								{{user.socialAccounts.facebook.displayName}}
 							</a>
 							<md-button class='primary md-raised'
-			          ng-click="removePassport('facebook')">
+			          ng-click="removePassport('facebook')"
+								ng-disabled="hasSinglePassport()">
 			          remove
 			        </md-button>
 						</span>
@@ -93,7 +94,8 @@
 								{{user.socialAccounts.google.displayName}}
 							</a>
 							<md-button class='primary md-raised'
-			          ng-click="removePassport('google')">
+			          ng-click="removePassport('google')"
+								ng-disabled="hasSinglePassport()">
 			          remove
 			        </md-button>
 						</span>
@@ -115,7 +117,8 @@
 								{{user.socialAccounts.twitter.displayName}}
 							</a>
 							<md-button class='primary md-raised'
-			          ng-click="removePassport('twitter')">
+			          ng-click="removePassport('twitter')"
+								ng-disabled="hasSinglePassport()">
 			          remove
 			        </md-button>
 						</span>
@@ -125,4 +128,3 @@
   	</div>
   </div>
 </div>
-
