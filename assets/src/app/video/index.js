@@ -28,19 +28,15 @@ angular.module( 'bidio.video', [
 		resolve: {
 			video: function(VideoModel, $stateParams){
 				return VideoModel.getOne($stateParams.id);
-			},
-			clicks: function(ClickModel, video){
-                return ClickModel.getByVideo(video.id);
-            }
+			}
 		}
 	});
 })
 
-.controller( 'VideoCtrl', function VideoCtrl( $scope, lodash, config, titleService, $sailsSocket, video, $location, $mdDialog, $uibModal, ViewModel, VideoModel, ClickModel, clicks, ezfb ) {
+.controller( 'VideoCtrl', function VideoCtrl( $scope, lodash, config, titleService, $sailsSocket, video, $location, $mdDialog, $uibModal, ViewModel, VideoModel, ClickModel, ezfb ) {
 
 	$scope.currentUser = config.currentUser;
 	$scope.video = video;
-	$scope.clicks = clicks;
     $scope.video.poster = 'images/video-overlay.png'
 	console.log($scope.video)
 

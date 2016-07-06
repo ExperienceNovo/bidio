@@ -24,8 +24,9 @@
 			<hr style="width:50%;margin:20px auto;border-top: 1px solid #c5c5c5;">
 			<div class="tabs">
 				<label for="tab1" title="Member"><a href="/member/{{video.user.username}}">{{video.user.username}}</a></label>
-				<label for="tab2" title="View Count">{{video.viewCount}}</label>
-				<label class="tooltip--bottom" data-tooltip="Prize Per Click" for="tab3"><!--{{video.campaign.price | number: 2 }}-->{{video.value}}</label>
+				<label for="tab2" class="tooltip--bottom" data-tooltip="View Count">{{video.viewCount}}</label>
+				<label class="tooltip--bottom" data-tooltip="Click Count" for="tab2" title="Click Count">{{video.clickCount}}</label>
+				<label class="tooltip--bottom" data-tooltip="Prize Per Click" for="tab3"><!--{{video.campaign.price | number: 2 }}-->{{video.campaign.price | number: 2 }}</label>
 				<label for="tab4" title="Share" ng-click="share()"><a>Share</a></label>				
 				<label class="tooltip--bottom" data-tooltip="Sponsor Video?" for="tab5" ng-click="bid()" ng-hide="!currentUser">Make Bid</label>
 				<label ng-show="video.campaign" for="tab4" title="{{video.campaign.prompt}}" ng-click="clickThrough()"><a>{{video.campaign.prompt}}</a></label>				
