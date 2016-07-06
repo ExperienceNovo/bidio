@@ -875,7 +875,7 @@ h2 {
     transition: none!important;
 }
 
-html *,html :before,html :after {
+html :before,html :after {
     box-sizing: border-box;
     -webkit-transition: .5s;
     transition: .5s;
