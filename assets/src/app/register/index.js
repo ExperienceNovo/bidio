@@ -13,15 +13,13 @@ angular.module( 'bidio.register', [
 	});
 })
 
-.controller( 'RegisterCtrl', function RegisterController( $scope, titleService, config ) {
+.controller( 'RegisterCtrl', function RegisterController( $scope, titleService, config, $location ) {
 	titleService.setTitle('register');
 	$scope.currentUser = config.currentUser;
-	//if ($scope.currentUser){
-		//$location.path('/');
-	//};
-
+	if ($scope.currentUser){
+		$location.path('/');
+	};
 	$scope.go = function(path) {
 	  	$location.path(path);
 	};
-
 });

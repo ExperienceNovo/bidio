@@ -11,30 +11,37 @@ angular.module( 'bidio.video', [
 			}
 
 		},
-		//onExit: function($state, video, VideoModel){
-			//if(video.campaign && video.campaign.doesRedirect){
-			//	return window.open(
-			//		video.campaign.redirectUrl,
-			//		"_blank"
-			//	)
-			//}
-			//$state.transition.then(function(toState){
-			//	video.clicked = true;
-			//	return VideoModel.update(video);
-			//});
-		//},
+		/*
+		onExit: function($state, video, VideoModel){
+			if(video.campaign && video.campaign.doesRedirect){
+				return window.open(
+					video.campaign.redirectUrl,
+					"_blank"
+				)
+			}
+			$state.transition.then(function(toState){
+				video.clicked = true;
+				return VideoModel.update(video);
+			});
+		},
+		*/
 		resolve: {
 			video: function(VideoModel, $stateParams){
 				return VideoModel.getOne($stateParams.id);
-			}
+			},
+			clicks: function(ClickModel, video){
+                return ClickModel.getByVideo(video.id);
+            }
 		}
 	});
 })
 
-.controller( 'VideoCtrl', function VideoCtrl( $scope, lodash, config, titleService, $sailsSocket, video, $location, $mdDialog, $uibModal, ViewModel, VideoModel, ClickModel, ezfb ) {
+.controller( 'VideoCtrl', function VideoCtrl( $scope, lodash, config, titleService, $sailsSocket, video, $location, $mdDialog, $uibModal, ViewModel, VideoModel, ClickModel, clicks, ezfb ) {
 
 	$scope.currentUser = config.currentUser;
 	$scope.video = video;
+	$scope.clicks = clicks;
+
     $scope.video.poster = 'images/video-overlay.png'
 	if(typeof($scope.video)=="undefined"){$location.path('/')}
 	titleService.setTitle(video.title + ' - bidio');
@@ -62,7 +69,6 @@ angular.module( 'bidio.video', [
 
 	var activeBid = video.bids.filter(function(bid){ return bid.isActive });
 	$scope.highestBid = activeBid.length ? activeBid[0] : {value: "0.01"};
-
 	$scope.bidPerView = Math.floor(Math.random() * (100 - 1 + 1)) + 1;
 
 
@@ -85,19 +91,6 @@ angular.module( 'bidio.video', [
 		});
 	};
 
-	// $scope.share = function(){
-	// 	$uibModal.open({
-	// 		animation: true,
-	// 		templateUrl: "video/templates/share.tpl.html",
-	// 		controller: "ShareCtrl",
-	// 		resolve: {
-	// 			video: function(){
-	// 				return video
-	// 			}
-	// 		}
-	// 	});
-	// };
-
 	$scope.share = function(ev) {
     // var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
     $mdDialog.show({
@@ -107,11 +100,11 @@ angular.module( 'bidio.video', [
       targetEvent: ev,
       clickOutsideToClose: true,
       // fullscreen: useFullScreen
-			resolve: {
-				user: function(UserModel){
-						return UserModel.getMine();
-				}
+		resolve: {
+			user: function(UserModel){
+					return UserModel.getMine();
 			}
+		}
     })
 
     // $scope.$watch(function() {
@@ -168,10 +161,6 @@ angular.module( 'bidio.video', [
 		});
 	}
 
-})
-
-.controller('ShareCtrl', function ($scope, video ) {
-	$scope.video = video;
 })
 
 .controller('ShareDialogCtrl', function ($scope, $location, $mdDialog, ezfb, user, UserModel, ShareModel, localStorageService ) {
