@@ -49,7 +49,7 @@ angular.module( 'bidio.campaign', [
         sources: [
             {
                 src: $scope.campaign.videoUrl,
-                type: 'video/mp4'
+                type: 'video/webm'
             }
         ],
         poster: $scope.campaign.poster
@@ -60,7 +60,7 @@ angular.module( 'bidio.campaign', [
             sources: [
                 {
                     src: $scope.campaign.bids[x].video.amazonUrl,
-                    type: 'video/mp4'
+                    type: 'video/webm'
                 }
             ],
             poster: $scope.campaign.poster

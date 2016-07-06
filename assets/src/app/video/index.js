@@ -52,7 +52,7 @@ angular.module( 'bidio.video', [
 	    sources: [
 	        {
 	            src: $scope.video.amazonUrl,
-	            type: 'video/mp4'
+	            type: 'video/webm'
 	        }
 	    ],
 	    poster: $scope.video.poster
