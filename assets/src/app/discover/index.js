@@ -28,7 +28,7 @@ angular.module( 'bidio.discover', [
 		        {
 		            src: $scope.videos[x].amazonUrl,
 		            //type: 'video/'+$scope.videos[x].amazonUrl.split('.').pop().toLowerCase()
-					type: "video/webm"
+					type: "video/mp4"
 
 		        }
     		],
@@ -45,7 +45,7 @@ angular.module( 'bidio.discover', [
 	        		sources: [
 				        {
 				            src: $scope.videos[x].amazonUrl,
-				            type: "video/webm"
+				            type: "video/mp4"
 				        }
 		    		],
 		    		poster: $scope.defaultposter
