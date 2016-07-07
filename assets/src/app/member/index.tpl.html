@@ -83,12 +83,19 @@
 
 	<uib-tab heading="Campaigns">
 		<div class="spacing-25"></div>
-		<div style="margin-left:10%;margin-right:10%;">
+		<div class="container">	
 			<div ng-show="campaigns.length == 0">
 				{{member.username}} doesn't have any campaigns
 			</div>
-			<div ng-repeat="campaign in campaigns" class="col-md-12">
-				<h2><a href="/campaign/{{campaign.urlTitle}}">{{campaign.title}}</a></h2>
+			<div class="col-md-6" ng-repeat="campaign in campaigns" style="text-align:left;margin-bottom:50px;">
+				<div class="col-md-2">	
+					<img style="height:50px;" src="{{campaign.campaignImageUrl}}">
+				</div>
+				<div class="col-md-10">			
+					<h2 style="font-size:2em">
+						<a href="/campaign/{{campaign.urlTitle}}/about">{{campaign.title}}</a>
+					</h2>
+				</div>
 			</div>
 		</div>
 	</uib-tab>
