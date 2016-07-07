@@ -20,35 +20,35 @@
           </div>
           <div class="overlay"></div>
           <div class="container">
-        <!--<section class="rw-wrapper" style="width: 75%;">
-              <h2 class="rw-sentence" style="font-size: 2.25em;">
-                <span style="color:#fff">Sponsored</span>
-                <div class="rw-words rw-words-1">
-                  <span>Creators</span>
-                  <span>Artists</span>
-                  <span>Vloggers</span>
-                  <span>Producers</span>
-                  <span>Musicians</span>
-                  <span>Journalists</span>
-                </div>
-              </h2>
-            </section> -->
-            <div class="mobile-intro">
-		        <section class="rw-wrapper">
-		          <h2 class="rw-sentence" style="font-size:2.75em;">
-		            <span style="color:#fff">Sponsored...</span>
-		            <br>
-		            <div class="rw-words rw-words-1" style="font-size:.75em;">
-		              <span>Creators</span>
-		              <span>Artists</span>
-		              <span>Vloggers</span>
-		              <span>Producers</span>
-		              <span>Musicians</span>
-		              <span>Journalists</span>
-		            </div>
-		          </h2>
-		        </section>
-		    </div>
+            <div class="box on" ng-show="toggle" ng-animate="'box'">
+              <div class="mobile-intro">
+                <section class="rw-wrapper">
+                  <h2 class="rw-sentence" style="font-size:2.75em;">
+                    <span style="color:#fff">Sponsored...</span>
+                    <br>
+                    <div class="rw-words rw-words-1" style="font-size:.75em;">
+                      <span>Creators</span>
+                      <span>Artists</span>
+                      <span>Vloggers</span>
+                      <span>Producers</span>
+                      <span>Musicians</span>
+                      <span>Journalists</span>
+                    </div>
+                  </h2>
+                </section>
+              </div>
+              <div class="spacing-25"></div>
+              <button class="btn-5" style="background:transparent;" ng-click="toggle = !toggle">Watch Video!</button>
+            </div>
+            <div class="box off" ng-hide="toggle" ng-animate="'box'">
+              <section class="vid-wrap">
+                <video controls poster="https://s3.amazonaws.com/bidio8/marketing+images/vbg.jpg">
+                  <source src="https://s3.amazonaws.com/bidio8/marketing+images/Bidio_intro_3.20.mov">
+                  Your browser doesn't support HTML5 video tag.
+                </video>
+              </section>
+              <button class="btn-5" style="background:transparent;" ng-click="toggle = !toggle">back</button>
+            </div>
           </div>
         </div>
       </div>
@@ -281,7 +281,8 @@
                                    <video 
                                     vjs-video
                                     class="video-js vjs-default-skin"
-                                    controls preload="true" 
+                                    controls 
+                                    preload="true" 
                                     vjs-media="campaign.media"
                                     width="640" 
                                     height="264" 

@@ -40,4 +40,5 @@ angular.module( 'bidio.home', [
         poster: $scope.campaign.poster
     }
 	$scope.featuredCampaigns = featuredCampaigns;
+    $scope.toggle = true;
 });
