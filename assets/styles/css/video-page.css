@@ -256,6 +256,10 @@
   background: #FE9A2E;
 }
 
+.cs-share-this-product.facebook:hover {
+  background: #527EBF;
+}
+
 @media screen and (max-width: 1900px) {
   .video-container {
     width: 50%
