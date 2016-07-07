@@ -795,6 +795,15 @@ input:focus {
 }
 
 @media only screen and (max-width: 900px) {
+.form-control {
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.form-control:focus {
+  width: 150%;
+  margin-left: -25%;
+}
 
 .mobile-pad {
 	margin-bottom: 5%;
