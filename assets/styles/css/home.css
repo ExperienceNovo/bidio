@@ -886,10 +886,6 @@ html i,html em,html b,html strong,html span {
     transition: none;
 }
 
-:before,:after {
-    z-index: -1;
-}
-
 .wrap {
     width: 50%;
     float: left;
@@ -915,6 +911,7 @@ html i,html em,html b,html strong,html span {
 }
 
 .btn-5:after {
+    z-index: -1;
     content: '';
     width: 0;
     height: 0;
@@ -928,6 +925,7 @@ html i,html em,html b,html strong,html span {
 }
 
 .btn-5:before {
+    z-index: -1;
     content: '';
     width: 0;
     height: 0;
