@@ -11,6 +11,11 @@ angular.module('models.post', ['lodash', 'services', 'sails.io',])
         return $sailsSocket.post(url, newModel).then(success, error);
     };
 
+    this.getByUrl = function(model) {
+        var url = utils.prepareUrl('post/url/' + model);
+        return $sailsSocket.get(url).then(success, error);
+    };
+
     this.delete = function(model) {
         var url = utils.prepareUrl('post/' + model.id);
         return $sailsSocket.delete(url).then(success, error);

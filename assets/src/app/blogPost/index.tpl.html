@@ -1,8 +1,10 @@
 <div class="container" style="text-align: left;">
+	<!--{{post.title}}
+	{{post.postContent}}-->
 	<div class="spacing-25"></div>
     <h2 class="section-title" style="text-align: left;">Say Hello to <strong style="color:#FE9A2E"> BIDIO</strong></h2>
     <br>
-    <h3 style="font-size:16px;text-align: left;">Posted:  {{date | date:'MM/dd/yyyy @ h:mma'}}</h3>
+    <h3 style="font-size:16px;text-align: left;">Posted:  {{post.createdAt | date:'MM/dd/yyyy @ h:mma'}}</h3>
     <div class="spacing-25"></div>
     <p>
     The rapidly evolving digital media space has introduced so many ways for people to consume and share content. As a result, publishers have divided into true creators and simple curators, who are often paid by brands to develop sponsored content.
@@ -26,7 +28,16 @@
 	<div class="spacing-25"></div>
 </div>
 
-
+<style type="text/css">
+  .video-footer {
+    float: left;
+    width: 100%;
+    height: 150px;
+    background: #101010;
+    border-top: 5px solid #FE9A2E;
+  }
+</style>
+<div ng-include="'footer/index.tpl.html'" class="video-footer"></div>
 
 
 
