@@ -95,7 +95,6 @@ module.exports.routes = {
   'post /api/campaign/check': 'CampaignController.check',
   'post /api/campaign/:id': 'CampaignController.update',
   'delete /api/campaign/:id': 'CampaignController.destroy',
-  'post /api/profile/:id': 'ProfileController.update',
 
 
   /**
@@ -103,6 +102,12 @@ module.exports.routes = {
    */
   'get /api/click/video/:id': 'ClickController.getByVideo',
   'post /api/click': 'ClickController.create',
+
+  /**
+   * Post routes
+   */
+  'get /api/post': 'PostController.getAll',
+  'get /api/post/url/:path': 'PostController.getByUrlTitle',
 
   /**
    * Profile routes

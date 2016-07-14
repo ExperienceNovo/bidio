@@ -11,8 +11,8 @@ angular.module( 'bidio.blog', [
 			}
 		},
 		resolve:{
-			posts: function(){
-				return null;
+			posts: function(PostModel){
+				return PostModel.getAll();
 			}
 		}
 	});
@@ -20,5 +20,5 @@ angular.module( 'bidio.blog', [
 
 .controller( 'BlogCtrl', function DiscoverCtrl( $scope, config, titleService, $sce, posts ) {
 	titleService.setTitle('Blog - bidio');
-   	$scope.date = new Date();
+	$scope.posts = posts;
 });

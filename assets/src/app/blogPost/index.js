@@ -11,14 +11,14 @@ angular.module( 'bidio.blogPost', [
 			}
 		},
 		resolve:{
-			post: function(){
-				return null;
+			post: function(PostModel, $stateParams){
+				return PostModel.getByUrl($stateParams.path);
 			}
 		}
 	});
 })
 
 .controller( 'BlogPostCtrl', function BlogPostCtrl( $scope, config, titleService, $sce, post ) {
-	titleService.setTitle('Blog - bidio');
-	console.log('OKOKOKOOK')
+	$scope.post = post;
+	titleService.setTitle($scope.post.title);
 });

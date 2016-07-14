@@ -31,6 +31,18 @@ module.exports = {
 		});
 	},
 
+	getByUrlTitle: function(req, res) {
+		Post.find()
+		.where({urlTitle: req.param('path')})
+		.spread(function(model) {
+			Post.subscribe(req, model);
+			res.json(model);
+		})
+		.fail(function(err) {
+			res.send(404);
+		});
+	},
+
 	update: function(req, res) {
 		var id = req.param('id');
 		var userId = req.param('user');
@@ -46,18 +58,6 @@ module.exports = {
 		  if (err) {
 		    return;
 		  }
-		});
-	},
-
-	getByUrlTitle: function(req, res) {
-		Post.find()
-		.where({url_title: req.param('path')})
-		.spread(function(model) {
-			Post.subscribe(req, model);
-			res.json(model);
-		})
-		.fail(function(err) {
-			res.send(404);
 		});
 	},
 
