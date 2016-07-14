@@ -795,6 +795,15 @@ input:focus {
 }
 
 @media only screen and (max-width: 900px) {
+.form-control {
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.form-control:focus {
+  width: 150%;
+  margin-left: -25%;
+}
 
 .mobile-pad {
 	margin-bottom: 5%;
@@ -886,10 +895,6 @@ html i,html em,html b,html strong,html span {
     transition: none;
 }
 
-:before,:after {
-    z-index: -1;
-}
-
 .wrap {
     width: 50%;
     float: left;
@@ -915,6 +920,7 @@ html i,html em,html b,html strong,html span {
 }
 
 .btn-5:after {
+    z-index: -1;
     content: '';
     width: 0;
     height: 0;
@@ -928,6 +934,7 @@ html i,html em,html b,html strong,html span {
 }
 
 .btn-5:before {
+    z-index: -1;
     content: '';
     width: 0;
     height: 0;
