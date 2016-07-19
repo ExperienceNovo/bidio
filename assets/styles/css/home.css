@@ -189,6 +189,30 @@ h6 {
     margin:0 auto;
 }
 
+@media(max-width:991px) {
+    .home-video {
+        max-width: 100%!important;
+        max-height: 100%!important;
+        padding-top: 50px;
+    }
+}
+
+.home-video {
+    position: relative;
+    min-width: auto;
+    min-height: auto;
+    max-width: 50%;
+    max-height: 50%;
+}
+
+.vid-wrap {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding: 10px;
+    text-align: center;
+    overflow: visible;
+}
 
 .lead {
     font-size: 18px;
@@ -864,19 +888,6 @@ h2 {
 .section-head h3 {
 	font-size:35px
 }
-}
-
-.vid-wrap {
-    width: 100%;
-    max-width: 750px;
-    position: relative;
-    padding: 10px;
-    text-align: center;
-    overflow: visible;
-    margin-top: 35vh;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 50px;
 }
 
 .box {

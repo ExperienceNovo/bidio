@@ -279,3 +279,15 @@ ul.campaign-listinfo {
 .delete-btn ~ p {
     transition: color 0.3s;
 }
+
+.login-popup {
+    padding:0;
+}
+
+.login-popup p {
+    text-align:center;
+}
+
+.login-popup .btn {
+    float: none;
+}
