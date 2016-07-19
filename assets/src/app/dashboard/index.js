@@ -124,10 +124,9 @@ angular.module( 'bidio.dashboard', [
         $location.path('/login')
     }
 
-	if (localStorageService.get('redirectTo') === '/dashboard/profile/edit') {
-		$location.path('/dashboard/profile/edit');
+	if (localStorageService.get('redirectTo')) {
+		$location.path(localStorageService.get('redirectTo'));
 		localStorageService.remove('redirectTo');
-		console.log(localStorageService.get('redirectTo'));
 	}
 
 	if (window.location.hash && window.location.hash == '#_=_') {
@@ -472,7 +471,6 @@ angular.module( 'bidio.dashboard', [
     }
 
 	$scope.passportRegistered = function(provider) {
-		console.log(user)
 		for (i in $scope.passports) {
 				if ($scope.passports[i].provider === provider)
 						return true;

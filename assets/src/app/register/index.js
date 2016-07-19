@@ -19,6 +19,11 @@ angular.module( 'bidio.register', [
 	if ($scope.currentUser){
 		$location.path('/');
 	};
+
+	// remove fb's appended hash
+	if (window.location.hash && window.location.hash == '#_=_')
+		window.location.hash = '';
+
 	$scope.go = function(path) {
 	  	$location.path(path);
 	};
