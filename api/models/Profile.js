@@ -8,10 +8,14 @@
 module.exports = {
 
   attributes: {
-  	picture: {
+  	pictureUrl: {
   		type: "string",
   		defaultsTo: "/images/silhouette_orange.jpg"
   	},
+    bannerUrl: {
+      type: "string",
+      defaultsTo: "/images/banner.jpg"
+    },
     balance: {
       type: "float",
       defaultsTo: 0
