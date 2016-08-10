@@ -338,25 +338,70 @@ div[class^="icon"] {
 }
 
 .bidio-image-profile {
-    margin: -90px 10px 0px 50px;
+    float: left;
     z-index: 9;
     width: 20%; 
-    padding:5px;
+    padding:25px;
+}
+
+.bidio-profile {
+  max-height: 35vh;
+  overflow: hidden;
+}
+
+.prof-desc {
+  float: left;
+  padding:25px;
+  max-width: 80%;
+}
+
+.prof-desc h2 {
+  font-weight: bold;
+}
+
+.desc-inner {
+  height: 100%;
+  width: 100%;
+}
+
+.desc-inner p {
+  display: inline-block;
+  font-size: 16px;
+}
+
+.prof-vid {
+  text-transform: capitalize;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 20px;
+  margin-bottom: 15px;
+  font-weight: bold;
 }
 
 @media (max-width:768px) {
-  .bidio-profile-text>h1{
-      font-weight: 700;
-      font-size:16px;
-  }
-
   .bidio-image-profile {
-      margin: -45px 10px 0px 25px;
-      z-index: 9;
-      width: 20%; 
+    z-index: 9;
+    width: 45%;
+    margin: 0 auto;
+    float: none;
+  }
+  .prof-desc {
+    max-width: 100%;
+}
+}
+
+@media (max-width:568px) {
+  .bidio-image-profile {
+    width: 55%;
   }
 }
 
+@media (max-width:468px) {
+  .bidio-image-profile {
+    width: 65%;
+  }
+}
 
 .accordion .section {
   width: 100%;

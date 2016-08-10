@@ -399,8 +399,8 @@ angular.module( 'bidio.dashboard', [
     $scope.username = user.username;
     $scope.submitLoading = false;
     $scope.profile = user.profile[0];
-		$scope.passports = user.passports;
-		$scope.user = user;
+	$scope.passports = user.passports;
+	$scope.user = user;
 
     $scope.submit = function(profile){
 
@@ -408,8 +408,12 @@ angular.module( 'bidio.dashboard', [
 
         var toUpdate = {id: profile.id};
 
-        if (profile.picture){
-            toUpdate.picture = profile.picture;
+        if (profile.pictureUrl){
+            toUpdate.pictureUrl = profile.pictureUrl;
+        }
+
+        if (profile.bannerUrl){
+            toUpdate.bannerUrl = profile.bannerUrl;
         }
 
         if (profile.firstName){
@@ -466,16 +470,31 @@ angular.module( 'bidio.dashboard', [
           fullscreen: false
         })
         .then(function(result){
-            $scope.profile.picture = result;
+            $scope.profile.pictureUrl = result;
+        })
+    }
+
+    $scope.addBannerPic = function(ev){
+
+        $mdDialog.show({
+          controller: 'ProfilePicCtrl',
+          templateUrl: 'dashboard/templates/addProfilePic.tpl.html',
+          parent: angular.element(document.body),
+          targetEvent: ev,
+          clickOutsideToClose:true,
+          fullscreen: false
+        })
+        .then(function(result){
+            $scope.profile.bannerUrl = result;
         })
     }
 
 	$scope.passportRegistered = function(provider) {
-		for (i in $scope.passports) {
-				if ($scope.passports[i].provider === provider)
-						return true;
-		}
-		return false;
+        for (i in $scope.passports) {
+            if ($scope.passports[i].provider === provider)
+                return true;
+            }
+        return false;
 	}
 
 	$scope.removePassport = function(provider) {
@@ -497,8 +516,8 @@ angular.module( 'bidio.dashboard', [
 	}
 
 	$scope.go = function(path) {
-			localStorageService.set('redirectTo', $location.path());
-			console.log(localStorageService.get('redirectTo'))
+		localStorageService.set('redirectTo', $location.path());
+		console.log(localStorageService.get('redirectTo'))
 	  	$location.path(path);
 	};
 
@@ -512,16 +531,13 @@ angular.module( 'bidio.dashboard', [
 
     //TODO: refactor backend so that videos and images are uploaded through separate endpoints (separation of concerns)
     $scope.upload = function(file){
-
         $scope.photoLoading = true;
-
         Upload.upload({
             url: '/api/video/upload',
             method: 'POST',
             data: {video: file}
         })
         .then(function(response){
-
             $scope.videoLoading = false;
             $scope.profilePicUrl = response.data.amazonUrl;
         },
@@ -533,7 +549,6 @@ angular.module( 'bidio.dashboard', [
             var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
             $scope.pp = progressPercentage;
         })
-
     };
 
     $scope.submit = function(){
