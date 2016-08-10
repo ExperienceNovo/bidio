@@ -37,6 +37,34 @@ module.exports = {
   mailgun: {
     key: 'key-4e1b43d98f37e10fc6d350d8ec21518c',
     domain: 'bidio.co'
+  },
+
+  passport: {
+
+    twitter: {
+      options: {
+        consumerKey: 'RRDoR201amNPNU7RVyjShSuSw',
+        consumerSecret: 'LkO0Rh2hj9lQc3N2JDof1X9fMAirfSIGY1XrYgdKQvRdulfTO6'
+      }
+    },
+
+    facebook: {
+      options: {
+        clientID: '681990038623614',
+        clientSecret: '618cb0659b1d06ee73ed9cc30b157bc4',
+        //callbackURL: 'http://localhost:1337/dashboard/profile',
+        scope: ['email'], /* email is necessary for login behavior */
+        profileFields: ['displayName', 'email', 'link', 'picture.type(small)']
+      }
+    },
+
+    google: {
+      options: {
+        clientID: '339413134115-lf714so29eoj2oqoai24hrshit2pfit0.apps.googleusercontent.com',
+        clientSecret: 'dD8ortnHOe8SxBReatNjKNOP',
+        scope: ['email'] /* email is necessary for login behavior */
+      }
+    }
   }
 
 };
