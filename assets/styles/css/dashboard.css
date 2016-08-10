@@ -338,10 +338,39 @@ div[class^="icon"] {
 }
 
 .bidio-image-profile {
-    margin: -90px 10px 0px 50px;
+    float: left;
     z-index: 9;
     width: 20%; 
-    padding:5px;
+    padding:25px;
+}
+
+.prof-desc {
+  float: left;
+  padding:25px;
+  max-width: 80%;
+}
+
+.prof-desc h2 {
+  font-weight: bold;
+}
+
+.desc-inner {
+  height: 100%;
+  width: 100%;
+}
+
+.desc-inner p {
+  display: inline-block;
+}
+
+.prof-vid {
+  text-transform: capitalize;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 20px;
+  margin-bottom: 15px;
+  font-weight: bold;
 }
 
 @media (max-width:768px) {
