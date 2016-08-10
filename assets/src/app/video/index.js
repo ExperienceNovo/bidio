@@ -207,7 +207,7 @@ angular.module( 'bidio.video', [
 
 		if ($scope.tweeting) {
 			console.log('share twitter')
-			console.log('user' + $scope.user)
+			console.log('user: ', $scope.user)
 
 			var composition = $scope.share.composition //+ ' ' + shareUrl + ' @cre8bidio';
 
