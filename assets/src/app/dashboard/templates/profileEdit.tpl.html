@@ -20,10 +20,17 @@
     </div>
     <div class="spacing-50"></div>
   	<div class="row">
+
   		<div class="col-md-4" style="margin-bottom:50px">
-				<div class="edit-btn"><md-button ng-click="addProfilePic($event)" class="md-fab md-mini"><md-icon>edit</md-icon></md-button></div>
-				<img style="width:100%" ng-src="{{profile.picture}}">
+			<div class="edit-btn"><md-button ng-click="addProfilePic($event)" class="md-fab md-mini"><md-icon>edit</md-icon></md-button></div>
+			<img style="width:100%" ng-src="{{profile.pictureUrl}}">
   		</div>
+
+  		<div class="col-md-4" style="margin-bottom:50px">
+			<div class="edit-btn"><md-button ng-click="addBannerPic($event)" class="md-fab md-mini"><md-icon>edit</md-icon></md-button></div>
+			<img style="width:100%" ng-src="{{profile.bannerUrl}}">
+  		</div>
+
   		<div class="col-md-4" style="margin-bottom:50px">
   			<h2 class="bidio-orange">Profile Description</h2>
   			<div class="spacing-25"></div>

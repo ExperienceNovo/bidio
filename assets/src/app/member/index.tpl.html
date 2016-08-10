@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="bidio-profile">
-	    <img align="left" class="bidio-image-lg" src="http://www.placehold.it/1500x500?text=profile banner" alt="Profile Banner"/>
-	    <img align="left" class="bidio-image-profile thumbnail" src="{{profile.picture}}" alt="Profile Pic"/>
+	    <img align="left" class="bidio-image-lg" src="{{profile.bannerUrl}}" alt="Profile Banner"/>
+	    <img align="left" class="bidio-image-profile thumbnail" src="{{profile.pictureUrl}}" alt="Profile Pic"/>
 		<div class="tabs-profile">
 			<label for="tab1" title="Member">Subscribers</label>
 			<label for="tab2" title="View Count">Views</label>
@@ -51,7 +51,7 @@
 											<img style="border-radius:50%" ng-src="{{member.socialAccounts.google.profilePic}}">
 											{{member.socialAccounts.google.displayName}}
 										</div>
-										</a>
+									</a>
 								</li>
 								<br>
 								<li ng-if="member.socialAccounts.twitter.profileUrl">
@@ -61,7 +61,7 @@
 											<img style="border-radius:50%" ng-src="{{member.socialAccounts.twitter.profilePic}}">
 											{{member.socialAccounts.twitter.displayName}}
 										</div>
-										</a>
+									</a>
 								</li>
 				  			</ul>
 				  		</div>
