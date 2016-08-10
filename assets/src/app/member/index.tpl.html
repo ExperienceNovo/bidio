@@ -21,6 +21,8 @@
 		  		<div class="col-xs-12">
 		  			<div>
 			  			<ul>
+
+			  				<!--lol-->
 							<li ng-if="profile.firstName">
 							  <p><b>First Name</b>&nbsp;{{profile.firstName}}</p>
 							</li>
@@ -32,6 +34,10 @@
 							<li ng-if="profile.companyName && profile.companyUrl">
 							  <p><b>Company</b>&nbsp;<a target="_blank" href="{{profile.companyUrl}}">{{profile.companyName}}</a></p>
 							</li>
+							<!--lol-->
+
+
+							<!--connected in social accounts-->
 							<li ng-if="member.socialAccounts.facebook.profileUrl">
 								<a href="{{member.socialAccounts.facebook.profileUrl}}">
 									<div class="md-whiteframe-4dp" style="background-color: #3b5998; text-align:left; padding:5px; font-size:20px; color: #fff">
@@ -61,6 +67,8 @@
 									</div>
 								</a>
 							</li>
+
+
 			  			</ul>
 			  		</div>
 		  		</div>
