@@ -353,6 +353,8 @@ div[class^="icon"] {
   float: left;
   padding:25px;
   max-width: 80%;
+  width: 80%;
+
 }
 
 .prof-desc h2 {
@@ -379,6 +381,16 @@ div[class^="icon"] {
   font-weight: bold;
 }
 
+.editview {
+  display: inline-block;
+  padding:25px;
+  width: 100%;
+}
+
+.editview a {
+  width: 100%;
+  font-size: 20px
+}
 @media (max-width:768px) {
   .bidio-image-profile {
     z-index: 9;
