@@ -99,11 +99,11 @@ module.exports = {
         .populate('bids')
         .then(function(model){
 
-            console.log("MODEL",model);
+            //console.log("MODEL",model);
 
             var active = model.bids.filter(function(bid){ return bid.isActive });
 
-            console.log("ACTIVE",active)
+            //console.log("ACTIVE",active)
 
             if (!active.length){
                 return [model,null]
@@ -118,7 +118,7 @@ module.exports = {
         })
         .spread(function(model,campaign){
 
-            console.log(model,campaign);
+            //console.log(model,campaign);
 
             if (campaign){
                 model = model.toObject();
