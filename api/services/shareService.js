@@ -2,6 +2,7 @@ var Twit = require('twit');                        //might not be able to put se
 // var ezfb = require('angular-easyfb');
 var fs = require('fs');
 var Q = require('q');
+var path = require('path');
 
 module.exports = {
 
@@ -22,7 +23,7 @@ module.exports = {
       // timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
     })
 
-    var b64image = fs.readFileSync('/Users/sueserene/projects/bidio/assets/images/video-overlay.png', { encoding: 'base64' })
+    var b64image = fs.readFileSync(path.join(__dirname, '../../assets') + '/images/video-overlay.png', { encoding: 'base64' })
 
     var deferred = Q.defer();
 
