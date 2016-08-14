@@ -110,7 +110,9 @@ module.exports = {
         scope: ['email'] /* email is necessary for login behavior */
       }
     }
-  }
+  },
+
+  baseUrl: 'http://www.bidio.co'
 
 
 };

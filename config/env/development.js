@@ -45,6 +45,8 @@ module.exports = {
   // comment out for production
   //////////////////////////////////////////////
 
+  // baseUrl: 'http://localhost:1337',
+  //
   // passport: {
   //
   //   twitter: {
@@ -79,6 +81,8 @@ module.exports = {
   // comment out for development
   ////////////////////////////////////////
 
+  baseUrl: 'http://www.bidio.co',
+
   passport: {
 
     twitter: {
@@ -106,8 +110,6 @@ module.exports = {
       }
     }
   }
-
-
 
 
 };
