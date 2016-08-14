@@ -3,7 +3,6 @@ module.exports = {
 
     composition = req.param("composition")
 
-    // if user is logged in
     if (req.user) {
       User.findOne(req.user.id)
         .populate('passports')
@@ -11,14 +10,18 @@ module.exports = {
           console.log(user)
 
           shareService.tweetVideo(composition, user)
+            .then(function(value) {
+              res.send(value);
+            }, function(reason) {
+              console.log(reason)
+            })
         })
         .catch(function(err){
           console.log(err)
         })
     }
     else {
-      console.log('no user logged in')
-
+      console.log('no user')
     }
   }
 }

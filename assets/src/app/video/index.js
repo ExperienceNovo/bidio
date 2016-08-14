@@ -90,6 +90,7 @@ angular.module( 'bidio.video', [
 
 	$scope.share = function(ev) {
     // var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
+
     $mdDialog.show({
       controller: "ShareDialogCtrl",
       templateUrl: 'video/templates/shareDialog.tpl.html',
@@ -165,6 +166,8 @@ angular.module( 'bidio.video', [
 	localStorageService.set('shareUrl', $location.absUrl());
 	$scope.user = user;
 
+	$scope.shareComplete = false;
+
 	var shareUrl = localStorageService.get('shareUrl');
 	$scope.tweeting = false;
 
@@ -205,48 +208,71 @@ angular.module( 'bidio.video', [
 
 	$scope.shareTwitter = function() {
 
+		// $scope.share.completed = false;
+
 		if ($scope.tweeting) {
 			console.log('share twitter')
 			console.log('user: ', $scope.user)
 
-			var composition = $scope.share.composition //+ ' ' + shareUrl + ' @cre8bidio';
-
 			// COMPOSISTION MUST LEAVE ROOM FOR LINK TO WEBSITE: localstorage url length etc
 			// AND MUST LEAVE ROOM FOR @cre8bidio (10 chars)
+			var composition = $scope.share.composition //+ ' ' + shareUrl + ' @cre8bidio';
 
-			if ($scope.user === undefined) {
+			if (!$scope.user) {
 				var webIntentURL = 'https://twitter.com/intent/tweet?text='
 	      		window.open(webIntentURL + encodeURIComponent(composition)
 					+ '&url=' + encodeURIComponent(shareUrl)
 					+ '&via=cre8bidio')
+
+				//change dialog content -> success?
+				$scope.shareComplete = true;
+
+			} else {
+
+				for (var i in $scope.user.passports) {
+					if ($scope.user.passports[i].provider === 'twitter')
+						var tokens = $scope.user.passports[i].tokens;
 				}
-			else {
-				ShareModel.shareTwitter(composition)
+
+				if (!tokens) {
+					var webIntentURL = 'https://twitter.com/intent/tweet?text='
+		      		window.open(webIntentURL + encodeURIComponent(composition)
+						+ '&url=' + encodeURIComponent(shareUrl)
+						+ '&via=cre8bidio')
+
+					//change dialog content -> success?
+					$scope.shareComplete = true;
+
+				} else {
+
+					$scope.shareWorking = true;
+
+					ShareModel.shareTwitter(composition)
+						.then(function(tweetData) {
+							console.log(tweetData)
+							$scope.tweetUsername = tweetData.username;
+							$scope.tweetId = tweetData.tweetId;
+							$scope.shareWorking = false;
+							$scope.shareComplete = true;
+							$scope.sharedInHouse = true;
+						}, function(err) {
+							console.log(err)
+						})
+
+				}
 			}
 		}
 		else {
 			$scope.tweeting = !$scope.tweeting;
 		}
 
-		// var composition = 'test composition';
-		// var tokens;
-
-		// for (var i in $scope.user.passports) {
-		// 	if ($scope.user.passports[i].provider === 'twitter')
-		// 		tokens = $scope.user.passports[i].tokens;
-		// }
-
-		// if (tokens)
-		// 	ShareModel.shareTwitter()
-		// 	// shareService.tweetVideo(composition, tokens)
-		// else {
-		// 	console.log('no tokens')
-		// }
-
-
 	};
 
 	$scope.cancel = function() {
     $mdDialog.cancel();
   };
+
+	$scope.viewTweet = function() {
+		window.open('https://twitter.com/' + $scope.tweetUsername + '/status' + $scope.tweetId)
+	}
 });

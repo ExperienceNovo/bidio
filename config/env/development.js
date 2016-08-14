@@ -43,8 +43,8 @@ module.exports = {
 
     twitter: {
       options: {
-        consumerKey: 'RRDoR201amNPNU7RVyjShSuSw',
-        consumerSecret: 'LkO0Rh2hj9lQc3N2JDof1X9fMAirfSIGY1XrYgdKQvRdulfTO6'
+        consumerKey: 'KuCamyJMPULGv1IbLVzo8R3cZ',
+        consumerSecret: 'hoAuYeieYnPyCljJ2yesZpJCAtDcjpyd5fVeuRRK3bhuSw40mK'
       }
     },
 
