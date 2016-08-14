@@ -7,7 +7,7 @@ module.exports = {
 
   tweetVideo: function(composition, user) {
 
-    var toReturn;
+    var toReturn = {}
 
     for (var i in user.passports) {
 			if (user.passports[i].provider === 'twitter')
