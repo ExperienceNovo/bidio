@@ -212,18 +212,24 @@ module.exports = {
 	update: function(req, res) {
 
 		var id = req.param('id');
-
 		var model = {
 			id: id,
-			title: req.param("title"),
-			urlTitle: req.param("urlTitle"),
-			amazonUrl: req.param("amazonUrl"),
-			approved: req.param("approved"),
-			clickCount: req.body.clickCount,
-			viewCount: req.body.viewCount,
-			isNew: req.param("isNew"),
-			description: req.param("description"),
+			//amazonUrl: req.param("amazonUrl"),
+			//clickCount: req.body.clickCount,
+			//viewCount: req.body.viewCount,
+			//isNew: req.param("isNew"),
 		};
+
+		if (req.param("title")){
+			model.title = req.param("title");
+		}
+		if (req.param("description")){
+			model.description = req.param("description");
+		}
+
+		if (req.param("approved")){
+			model.approved = req.param("approved");
+		}
 
 		if (req.param("minimumPrice")){
 			model.minimumPrice = req.param("minimumPrice");
@@ -234,15 +240,19 @@ module.exports = {
 			if (req.user){
 				model.click.user = req.user.id;
 			}
+			console.log('CLICK')
 		}
 
+		console.log(model)
+
 		Video.update({id: id}, model)
-			.then(function(result){
-				return res.json(result);
-			})
-			.catch(function(err){
-				return res.negotiate(err);
-			})
+		.then(function(result){
+			console.log(result)
+			return res.json(result);
+		})
+		.catch(function(err){
+			return res.negotiate(err);
+		})
 	},
 
 	destroy: function (req, res) {
@@ -250,7 +260,8 @@ module.exports = {
 		if (!id) {
 			return res.badRequest('No id provided.');
 		}
-
+		console.log('DELETE')
+		//delete associated bids etc
 		// Otherwise, find and destroy the model in question
 		Video.findOne(id).exec(function(err, model) {
 			if (err) {

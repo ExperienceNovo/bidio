@@ -33,18 +33,26 @@ module.exports = {
 			else {
 				View.count().where({video: req.param('video')})
 				.exec(function(err, viewCount) {
-					Video.update({id: req.param('video')}, {viewCount:viewCount}).exec(function afterwards(err, updated){
-					  if (err) {return;}
-					  //else{Video.publishUpdate(updated.toJSON())}
-					});
-					Bid.update({id: req.param('bid')}, {viewCount:viewCount}).exec(function afterwards(err, updated){
-						if (err) {return;}
+					Video.update({id: req.param('video')}, {viewCount: viewCount})
+					.then(function(result){
+						Video.getOne(result[0].id)
+						.then(function(video){
+							if (err) return res.json(err, 400);
+							Video.publishUpdate(video[0].id, video[0]);
+						});
+					})
+					.catch(function(err){
+						return res.negotiate(err);
+					})
+
+					//Bid.update({id: req.param('bid')}, {viewCount:viewCount}).exec(function afterwards(err, updated){
+						//if (err) {return;}
 						//else{Bid.publishUpdate(updated.toJSON())}
-					});
+					//});
 				});
-				View.watch(req);
-				View.publishCreate(model.toJSON());
-				res.json(model);
+				//View.watch(req);
+				//View.publishCreate(model.toJSON());
+				//res.json(model);
 			}
 		});
 	}

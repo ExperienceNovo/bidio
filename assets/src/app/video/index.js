@@ -11,20 +11,6 @@ angular.module( 'bidio.video', [
 			}
 
 		},
-		/*
-		onExit: function($state, video, VideoModel){
-			if(video.campaign && video.campaign.doesRedirect){
-				return window.open(
-					video.campaign.redirectUrl,
-					"_blank"
-				)
-			}
-			$state.transition.then(function(toState){
-				video.clicked = true;
-				return VideoModel.update(video);
-			});
-		},
-		*/
 		resolve: {
 			video: function(VideoModel, $stateParams){
 				return VideoModel.getOne($stateParams.id);
@@ -38,12 +24,9 @@ angular.module( 'bidio.video', [
 	$scope.currentUser = config.currentUser;
 	$scope.video = video;
     $scope.video.poster = 'images/video-overlay.png'
-	console.log($scope.video)
-
 	if(typeof($scope.video)=="undefined"){$location.path('/')}
 	titleService.setTitle(video.title + ' - bidio');
 	$scope.viewModel = {};
-
 	$scope.media = {
 	    sources: [
 	        {
@@ -54,6 +37,11 @@ angular.module( 'bidio.video', [
 	    poster: $scope.video.poster
 	};
 
+	console.log($scope.video);
+
+	//console.log($scope.video.bids)
+	//console.log($scope.user)
+
 	if ($scope.currentUser){
 		$scope.viewModel.user = $scope.currentUser.id;
 	    $scope.viewModel.video = $scope.video.id;
@@ -61,13 +49,8 @@ angular.module( 'bidio.video', [
 	    ViewModel.create($scope.viewModel);
 	}
 
-	console.log($scope.video.bids)
-	console.log($scope.user)
-
 	var activeBid = video.bids.filter(function(bid){ return bid.isActive });
 	$scope.highestBid = activeBid.length ? activeBid[0] : {value: "0.01"};
-	$scope.bidPerView = Math.floor(Math.random() * (100 - 1 + 1)) + 1;
-
 
 	$scope.bid = function(){
 		$uibModal.open({
@@ -89,7 +72,6 @@ angular.module( 'bidio.video', [
 	};
 
 	$scope.share = function(ev) {
-    // var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
 
     $mdDialog.show({
       controller: "ShareDialogCtrl",
@@ -97,19 +79,12 @@ angular.module( 'bidio.video', [
       parent: angular.element(document.body),
       targetEvent: ev,
       clickOutsideToClose: true,
-      // fullscreen: useFullScreen
 		resolve: {
 			user: function(UserModel){
 					return UserModel.getMine();
 			}
 		}
-    })
-
-    // $scope.$watch(function() {
-    //   return $mdMedia('xs') || $mdMedia('sm');
-    // }, function(wantsFullScreen) {
-    //   $scope.customFullscreen = (wantsFullScreen === true);
-    // });
+    });
   };
 
 	$scope.clickThrough = function(){
@@ -118,8 +93,9 @@ angular.module( 'bidio.video', [
 			//$location.path(/campaign/+video.campaign.urlTitle)
 		//});
 		VideoModel.update($scope.video).then(function(){
-			$location.path(/campaign/+video.campaign.urlTitle)
+			$location.path(/campaign/+video.campaign.urlTitle);
 		});
+		$location.path(/campaign/+video.campaign.urlTitle);
 
 
 	};
@@ -131,6 +107,14 @@ angular.module( 'bidio.video', [
                 break;
             case 'destroyed':
                 lodash.remove($scope.video.bids, {id: envelope.id});
+                break;
+        }
+    });
+
+    $sailsSocket.subscribe('video', function (envelope) {
+        switch(envelope.verb) {
+            case 'updated':
+            	$scope.video = envelope.data;
                 break;
         }
     });
@@ -179,7 +163,6 @@ angular.module( 'bidio.video', [
 		$mdDialog.cancel();
 
 		// shareService.facebookShare();
-
 		// window.location = "https://www.facebook.com/dialog/share?app_id=629279003894718"
 		// 	+ "&display=popup"
 		// 	+ "&href=" + encodeURIComponent(shareUrl)
@@ -188,11 +171,8 @@ angular.module( 'bidio.video', [
 		ezfb.ui(
      	{
         method: 'share',
-			// href: 'www.google.com',
 				href: 'www.bidio.co',
 				name: 'name',
-        	// picture: 'file:///Users/sueserene/projects/bidio/assets/images/video-overlay.png',
-					// picture: 'file:///Users/sueserene/projects/bidio/assets/images/test-img.png',
 				picture: 'https://pbs.twimg.com/profile_images/743123913496891392/6k6q5pg-_400x400.jpg',
         description: 'description',
 				hashtag: '#bidio',

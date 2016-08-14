@@ -83,6 +83,7 @@ module.exports = {
                 }
             });
         }
+        else{cb();}
     },
 
     getAll: function() {
@@ -97,34 +98,24 @@ module.exports = {
         return Video.findOne(id)
         .populate('user')
         .populate('bids')
+        .populate('views')
         .then(function(model){
 
-            console.log("MODEL",model);
-
             var active = model.bids.filter(function(bid){ return bid.isActive });
-
-            console.log("ACTIVE",active)
-
             if (!active.length){
                 return [model,null]
             }
-
             if(active.length > 1){
                 throw new Error("More than one active bid found, aborting request");
             }
-
             return [model,Campaign.findOne(active[0].campaign)]
 
         })
         .spread(function(model,campaign){
-
-            console.log(model,campaign);
-
             if (campaign){
                 model = model.toObject();
                 model.campaign = campaign;
             }
-
             return [model];
         });
     },
@@ -158,54 +149,38 @@ module.exports = {
     },
 
     beforeUpdate: function(model, next){
-
         /*if no click or view continue*/
+        console.log('BEFOREUPDATE')
         if(!(model.click || model.view)){
             return next(null,model);
         }
-
         /*adjust click count*/
         if (model.click){
             model.clickCount++;
         }
-
         /*adjust view count*/
         if (model.view){
             model.viewCount++;
         }
-
         /*cycle through all posible updates*/
         Promise.resolve()
         .then(function(){
-
             return model.click ? Click.create(model.click) : true;
-
         })
         .then(function(){
-
             return (model.click && model.click.bid) ? Bid.click(model.click.bid) : true;
-
         })
         .then(function(){
-
             return model.view ? View.create(model.view) : true;
-
         })
         .then(function(){
-
             return (model.view && model.view.bid) ? Bid.view(model.view.bid) : true;
-
         })
         .then(function(){
-
             return next(null,model);
-
         })
         .catch(function(err){
-
             return next(err,null);
-
         });
-
     }
 };

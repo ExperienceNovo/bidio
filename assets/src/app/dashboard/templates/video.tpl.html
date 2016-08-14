@@ -31,7 +31,6 @@
         <div class="col-md-6" style="margin-top:25px">
           <h2 style="font-weight:bold;color:#FAA93F;text-align:left;">Finance</h2>
           <hr>
-          <!--{{video}}-->
           <p><b>Campaign</b>: <a href="/campaign/{{video.campaign.urlTitle}}">{{video.campaign.title}}</a></p>
           <p><b>Views</b>: {{video.clickCount}}</p>
           <p><b>Clicks</b>: {{video.clickCount}}</p>
@@ -51,12 +50,15 @@
       <div class="spacing-25"></div>
       <div class="row">    
         <div class="col-md-6">
-          <div ng-hide="editingInfo" class="edit-container">
+          <div ng-hide="editingInfo" class="edit-container" style="padding:30px;">
             <p class="dash-title-sm"><b>{{video.title}}</b></p>
-            <p class=""><b>{{video.description}}</b></p>
+            <p class="" style="text-align:center"><b>{{video.description}}</b></p>
             <md-button ng-click="editInfoToggle()">Edit</md-button>
           </div>
           <div ng-show="editingInfo">
+            <md-input-container layout-fill>
+              <input ng-model="video.title" type="text">
+            </md-input-container>
             <md-input-container layout-fill>
               <textarea aria-label="Edit Description" ng-model="video.description" rows="5" md-rows="5"></textarea>
             </md-input-container>

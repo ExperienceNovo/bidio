@@ -55,7 +55,7 @@ module.exports = {
 			Bid.watch(req);
 			Bid.subscribe(req, model);
 			res.json(model);
-			console.log(model)
+			//console.log(model)
 		})
 		.catch(function(err) {
 			res.send(404);

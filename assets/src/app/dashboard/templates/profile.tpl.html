@@ -3,52 +3,39 @@
     <div class="container" style="margin-top:25px">
       <div class="row">
         <div class="col-md-6">
-          <md-button ui-sref="dashboard.profileEdit" class="md-raised" layout-fill><md-icon>edit</md-icon>Edit</md-button><br>
+          <div class="editview">
+            <a ui-sref="dashboard.profileEdit" class="btn anim-button fl-l home-buttons"><i class="fa fa-pencil"></i> <span>Edit</span></a>
+          </div>          
         </div>
         <div class="col-md-6">
-          <md-button ui-sref="member({path: username})" class="md-raised" layout-fill><md-icon>person</md-icon>View</md-button><br>
+          <div class="editview">
+            <a ui-sref="member({path: username})" class="btn anim-button fl-l home-buttons"><i class="fa fa-eye"></i> <span>View</span></a>
+          </div>
         </div>
       </div>
       <div class="spacing-25"></div>
-      <div class="row">
-        <div class="col-md-6">
-          <h2 class="bidio-orange">Profile Picture</h2>
-          <div class="spacing-15"></div>
-          <img style="width:50%" ng-src="{{profile.pictureUrl}}">
-          <div class="spacing-25"></div>
-        </div>
-        <div class="col-md-6">
-          <h2 class="bidio-orange">Profile Banner</h2>
-          <div class="spacing-15"></div>
-          <img style="width:50%" ng-src="{{profile.bannerUrl}}">
-          <div class="spacing-25"></div>
-        </div>
-        <div class="col-md-6">
-          <h2 class="bidio-orange">Profile Description</h2>
-          <div class="spacing-15"></div>
-          <p class="profile-description" style="padding: 25px;">{{profile.description}}</p>
-          <div ng-show="!profile.description.length">
-            <h3 style="font-size:2em">You haven't added a description yet! <br>Use the "Edit" button above to write one.</h3>
-          </div>
-          <div class="spacing-25"></div>
-        </div>
+      <div class="bidio-profile">
+          <img align="left" class="bidio-image-lg" src="{{profile.bannerUrl}}" alt="Profile Banner"/>
       </div>
       <div class="row">
-        <md-content>
-          <md-list>
-            <md-list-item ng-if="profile.firstName">
-              <p><b>First Name</b>&nbsp;{{profile.firstName}}</p>
-            </md-list-item>
-            <md-divider></md-divider>
-            <md-list-item ng-if="profile.lastName">
-              <p><b>Last Name</b>&nbsp;{{profile.lastName}}</p>
-            </md-list-item>
-            <md-divider></md-divider>
-            <md-list-item ng-if="profile.companyName && profile.companyUrl">
-              <p><b>Company</b>&nbsp;<a target="_blank" href="{{profile.companyUrl}}">{{profile.companyName}}</a></p>
-            </md-list-item>
-          </md-list>
-        </md-content>
+        <div class="col-xs-12">
+          <div style="text-align: left;">
+              <div class="bidio-image-profile">
+              <img style="max-width: 100%;padding:10px" class="thumbnail" src="{{profile.pictureUrl}}" alt="Profile Pic"/>  
+            </div>
+            <div class="prof-desc">   
+              <h2>{{user.username}}</h2>
+              <hr>
+              <div class="desc-inner">
+              <p ng-if="profile.firstName && profile.lastName"><b>Name:</b></p> <p ng-if="profile.firstName">{{profile.firstName}}</p> <p ng-if="profile.lastName">{{profile.lastName}}</p>
+              <br>
+              <p ng-if="profile.companyName && profile.companyUrl"><a target="_blank" href="{{profile.companyUrl}}"><b>Company:</b> {{profile.companyName}}</a></p>
+              <br>
+              <p>{{profile.description}}</p>
+              </div>
+            </div>          
+          </div>
+        </div>
       </div>
     </div>
   </div>

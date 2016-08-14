@@ -43,6 +43,7 @@ angular.module('models.video', ['lodash', 'services', 'sails.io',])
     };
 	
     this.delete = function(model) {
+        console.log(model)
         var url = utils.prepareUrl('video/' + model.id);
         return $sailsSocket.delete(url).then(success, error);
     };
