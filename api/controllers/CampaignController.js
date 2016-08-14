@@ -201,20 +201,51 @@ module.exports = {
 
 		var id = req.param('id');
 
-		var model = {
-			title: req.param('title'),
-			videoUrl: req.param('videoUrl'),
-			doesRedirect: req.param('doesRedirect'),
-			bannerUrl: req.param('bannerUrl'),
-			campaignImageUrl: req.param('campaignImageUrl'),
-			published: req.param('published'),
-			price: req.param('price'),
-			intro: req.param('intro'),
-			prompt: req.param('prompt'),
-			urlTitle: req.param('urlTitle'),
-			campaignContent: req.param('campaignContent'),
-			user: req.param('user')
-		};
+		var model = {};
+
+		if(req.param('title')){
+	    	model.title = req.param('title');
+	    }
+
+		if(req.param('doesRedirect')){
+	    	model.doesRedirect = req.param('doesRedirect');
+	    }
+
+		if(req.param('price')){
+	    	model.price = req.param('price');
+	    }
+
+		if(req.param('intro')){
+	    	model.intro = req.param('intro');
+	    }
+
+		if(req.param('prompt')){
+	    	model.prompt = req.param('prompt');
+	    }
+		
+		if(req.param('campaignContent')){
+	    	model.campaignContent = req.param('campaignContent');
+	    }
+
+		if(req.param('videoUrl')){
+	    	model.videoUrl = req.param('videoUrl');
+	    }
+
+		if(req.param('published')){
+	    	model.published = req.param('published');
+	    }
+
+		if(req.param('bannerUrl')){
+	    	model.bannerUrl = req.param('bannerUrl');
+	    }
+
+		if(req.param('campaignImageUrl')){
+	    	model.campaignImageUrl = req.param('campaignImageUrl');
+	    }
+
+		if(req.param('user')){
+	    	model.user = req.param('user');
+	    }
 
 		if(req.param('redirectUrl')){
 	    	model.redirectUrl = req.param('redirectUrl');

@@ -170,13 +170,13 @@ angular.module( 'bidio.dashboard', [
         [65, 59, 80, 81, 56, 55, 40],
         [28, 48, 40, 19, 86, 27, 90]
     ];
-    
+
     $scope.onClick = function (points, evt) {
         console.log(points, evt);
     };
 })
 
-.controller( 'DashboardVideoCtrl', function DashboardVideosCtrl( $scope, titleService, video, views, VideoModel, clicks, $sailsSocket ) {
+.controller( 'DashboardVideoCtrl', function DashboardVideosCtrl( $scope, titleService, video, views, VideoModel, clicks, $sailsSocket, $location ) {
     $scope.video = video;
     titleService.setTitle(video.title);
     $scope.views = views;
@@ -188,11 +188,11 @@ angular.module( 'bidio.dashboard', [
     }
 
     function videoSave(){
-        $scope.saving = true;
+        $scope.infoSaving = true;
         var toUpdate = {
             id: $scope.video.id,
             title: $scope.video.title,
-            title: $scope.video.description,
+            description: $scope.video.description,
         };
         return VideoModel.update(toUpdate)
     }
@@ -213,7 +213,11 @@ angular.module( 'bidio.dashboard', [
     };
 
     $scope.videoDelete = function () {
-        VideoModel.delete(video.id);
+        //confirmation modal here
+        VideoModel.delete($scope.video).then(function(){
+            $location.path('/dashboard/videos')
+        });
+
     };
 
     $scope.updateViews = function(){
@@ -635,6 +639,7 @@ angular.module( 'bidio.dashboard', [
     $scope.clean = true;
     $scope.saving = false;
     $scope.editingLanding = false;
+    $scope.editingTitle = false;
     $scope.editingInfo = false;
     $scope.editingPrompt = false;
     $scope.contentHolder = null;
@@ -881,6 +886,12 @@ angular.module( 'bidio.dashboard', [
         $scope.editingInfo = !$scope.editingInfo;
     }
 
+    $scope.editTitleToggle = function(){
+        $scope.infoHolder = lodash.clone($scope.campaign.title);
+        $scope.editingTitle = !$scope.editingTitle;
+        console.log($scope.editingTitle)
+    }
+
     $scope.editLandingToggle = function(){
         $scope.contentHolder = lodash.clone($scope.campaign.campaignContent);
         $scope.editingLanding = !$scope.editingLanding;
@@ -949,43 +960,57 @@ angular.module( 'bidio.dashboard', [
             toUpdate.maxContributionPerVideo = $scope.campaign.maxContributionPerVideo;
         }
 
-        return CampaignModel.update(toUpdate)
+        return CampaignModel.update(toUpdate);
     }
 
     $scope.landingSave = function(){
 
         campaignSave()
-            .then(function(campaign){
-                $scope.saving = false;
-                $scope.editLandingToggle();
-            })
-            .catch(function(err){
-                $scope.saving = false;
-            });
+        .then(function(campaign){
+            $scope.saving = false;
+            $scope.editLandingToggle();
+        })
+        .catch(function(err){
+            $scope.saving = false;
+        });
     }
+
+    $scope.titleSave = function(){
+        campaignSave()
+        .then(function(campaign){
+            $scope.campaign = campaign[0];
+            $scope.infoSaving = false;
+            $scope.editTitleToggle();
+        })
+        .catch(function(err){
+            $scope.infoSaving = false;
+            $scope.editTitleToggle();
+        });
+    }
+
 
     $scope.infoSave = function(){
 
         campaignSave()
-            .then(function(campaign){
-                $scope.infoSaving = false;
-                $scope.editInfoToggle();
-            })
-            .catch(function(err){
-                $scope.infoSaving = false;
-            });
+        .then(function(campaign){
+            $scope.infoSaving = false;
+            $scope.editInfoToggle();
+        })
+        .catch(function(err){
+            $scope.infoSaving = false;
+        });
     }
 
     $scope.promptSave = function(){
 
         campaignSave()
-            .then(function(campaign){
-                $scope.promptSaving = false;
-                $scope.editPromptToggle();
-            })
-            .catch(function(err){
-                $scope.promptSaving = false;
-            });
+        .then(function(campaign){
+            $scope.promptSaving = false;
+            $scope.editPromptToggle();
+        })
+        .catch(function(err){
+            $scope.promptSaving = false;
+        });
     }
 
     $scope.landingUndo = function(){
@@ -996,6 +1021,11 @@ angular.module( 'bidio.dashboard', [
     $scope.infoUndo = function(){
         $scope.campaign.info = $scope.infoHolder;
         $scope.editInfoToggle();
+    }
+
+    $scope.titleUndo = function(){
+        $scope.campaign.title = $scope.infoHolder;
+        $scope.editTitleToggle();
     }
 
     $scope.promptUndo = function(){
