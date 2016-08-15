@@ -253,6 +253,6 @@ angular.module( 'bidio.video', [
   };
 
 	$scope.viewTweet = function() {
-		window.open('https://twitter.com/' + $scope.tweetUsername + '/status' + $scope.tweetId)
+		window.open('https://twitter.com/' + $scope.tweetUsername + '/status/' + $scope.tweetId)
 	}
 });
