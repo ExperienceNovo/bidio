@@ -9,7 +9,7 @@
         </md-button>
       </div>
     </md-toolbar>
-    <div class="md-dialog-content">
+    <div ng-show="!shareComplete" class="md-dialog-content">
       <md-input-container ng-show="tweeting" class="md-block" md-autofocus>
           <label>Personalize!</label>
           <textarea ng-model="share.composition" md-maxlength="{{140 - tweetCompPadding}}" rows="3" md-select-on-focus></textarea>
@@ -18,10 +18,23 @@
         <md-button ng-show="!tweeting" ng-click='shareFacebook()' aria-label="Share on facebook!">
           <i class="fa fa-facebook"></i>
         </md-button>
-        <md-button ng-click='shareTwitter()' aria-label="Tweet about it!">
+        <!-- <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script> -->
+        <md-button ng-show="!shareWorking" ng-click='shareTwitter()' aria-label="Tweet about it!">
           <i class="fa fa-twitter"></i>
         </md-button>
+        <!-- Loading spinner? -->
+        <md-progress-circular ng-show="shareWorking" md-mode="indeterminate"></md-progress-circular>
       </md-dialog-actions>
+    </div>
+    <div ng-show="shareComplete" class="md-dialog-content">
+      <h2 class="md-headline">
+        Thanks for sharing!
+      </h2>
+      <div ng-show="sharedInHouse">
+        <a href="#" ng-click="viewTweet()">
+          View tweet!
+        </h2>
+      </div>
     </div>
   </form>
 </md-dialog>
