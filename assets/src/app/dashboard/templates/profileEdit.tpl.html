@@ -65,8 +65,8 @@
 							<!-- case 1: call to activate -->
 							<md-button class="primary md-raised" style="background-color:#3b5998;color: #fff;padding: 0 10px;" ng-click="go('/auth/facebook')" ng-if="!passportRegistered('facebook')"><i class="fa fa-facebook"></i> activate</md-button>
 							<!-- case 2: activated, show profile and remove button -->
-							<md-button class='primary md-raised' ng-click="removePassport('facebook')" ng-disabled="hasSinglePassport()">remove</md-button>
 							<span ng-if="passportRegistered('facebook')">
+								<md-button class='primary md-raised' ng-click="removePassport('facebook')" ng-disabled="hasSinglePassport()">remove</md-button>
 								<a href="{{user.socialAccounts.facebook.profileUrl}}" style="">
 									<img style="border-radius:50%" ng-src="{{user.socialAccounts.facebook.profilePic}}">
 									{{user.socialAccounts.facebook.displayName}}
