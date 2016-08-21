@@ -18,39 +18,39 @@
 						<p ng-if="profile.companyName && profile.companyUrl"><a target="_blank" href="{{profile.companyUrl}}"><b>Company:</b> {{profile.companyName}}</a></p>
 						<br>
 						<p>{{profile.description}}</p>
+						<ul>
+							<li ng-if="member.socialAccounts.facebook.profileUrl">
+								<a href="{{member.socialAccounts.facebook.profileUrl}}">
+									<div class="md-whiteframe-4dp" style="background-color: #3b5998; text-align:left; padding:5px; font-size:20px; color: #fff">
+										<i class="fa fa-facebook"></i>
+										<img style="border-radius:50%" ng-src="{{member.socialAccounts.facebook.profilePic}}">
+										{{member.socialAccounts.facebook.displayName}}
+									</div>
+								</a>
+							</li>
+							<br>
+							<li ng-if="member.socialAccounts.google.profileUrl">
+								<a href="{{member.socialAccounts.google.profileUrl}}">
+									<div class="md-whiteframe-4dp" style="background-color:#dd4b39; text-align:left; padding:5px; font-size:20px; color: #fff">
+										<i class="fa fa-google-plus"></i>
+										<img style="border-radius:50%" ng-src="{{member.socialAccounts.google.profilePic}}">
+										{{member.socialAccounts.google.displayName}}
+									</div>
+								</a>
+							</li>
+							<br>
+							<li ng-if="member.socialAccounts.twitter.profileUrl">
+								<a href="{{member.socialAccounts.twitter.profileUrl}}">
+									<div class="md-whiteframe-4dp" style="background-color: #55acee; text-align:left; padding:5px; font-size:20px; color: #f5f8fa">
+										<i class="fa fa-twitter"></i>
+										<img style="border-radius:50%" ng-src="{{member.socialAccounts.twitter.profilePic}}">
+										{{member.socialAccounts.twitter.displayName}}
+									</div>
+								</a>
+							</li>
+		  				</ul>
 					</div>
 	    		</div>        	
-	  			<ul>
-					<li ng-if="member.socialAccounts.facebook.profileUrl">
-						<a href="{{member.socialAccounts.facebook.profileUrl}}">
-							<div class="md-whiteframe-4dp" style="background-color: #3b5998; text-align:left; padding:5px; font-size:20px; color: #fff">
-								<i class="fa fa-facebook"></i>
-								<img style="border-radius:50%" ng-src="{{member.socialAccounts.facebook.profilePic}}">
-								{{member.socialAccounts.facebook.displayName}}
-							</div>
-						</a>
-					</li>
-					<br>
-					<li ng-if="member.socialAccounts.google.profileUrl">
-						<a href="{{member.socialAccounts.google.profileUrl}}">
-							<div class="md-whiteframe-4dp" style="background-color:#dd4b39; text-align:left; padding:5px; font-size:20px; color: #fff">
-								<i class="fa fa-google-plus"></i>
-								<img style="border-radius:50%" ng-src="{{member.socialAccounts.google.profilePic}}">
-								{{member.socialAccounts.google.displayName}}
-							</div>
-						</a>
-					</li>
-					<br>
-					<li ng-if="member.socialAccounts.twitter.profileUrl">
-						<a href="{{member.socialAccounts.twitter.profileUrl}}">
-							<div class="md-whiteframe-4dp" style="background-color: #55acee; text-align:left; padding:5px; font-size:20px; color: #f5f8fa">
-								<i class="fa fa-twitter"></i>
-								<img style="border-radius:50%" ng-src="{{member.socialAccounts.twitter.profilePic}}">
-								{{member.socialAccounts.twitter.displayName}}
-							</div>
-						</a>
-					</li>
-	  			</ul>
 	  		</div>
   		</div>
   	</div>
