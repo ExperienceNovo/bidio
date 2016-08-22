@@ -26,6 +26,15 @@ body {
   text-align: center;
 }
 
+.footer {
+  float:left;
+  margin-top:50px;
+  width: 100%;
+  height: 150px;
+  background: #000000;
+  border-top: 5px solid #FE9A2E;          
+}
+
 @-o-viewport {
   width: device-width;
 }
@@ -448,33 +457,14 @@ form[role=search] .form-group {
 #main {
   height: 100%;
   width: 100%;
-  position: absolute;
-  float: left;
-  top: 0;
-  left: 0;
-  z-index: 2;
-  opacity: 1;
 }
 
 #wrapper {
   height: 100%;
-  margin-left: 0;
-  vertical-align: top;
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  z-index: 2;
   width: 100%;
 }
 
 .content-holder {
-  vertical-align: top;
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  z-index: 2;
   height: 100%;
   -webkit-transition: all 400ms linear;
   -moz-transition: all 400ms linear;
