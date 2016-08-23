@@ -206,6 +206,14 @@ a:hover {
   transition: color 0.3s;
 }
 
+.spacing-5 {
+  padding:5px;
+}
+
+.spacing-10 {
+  padding:10px;
+}
+
 .spacing-15 {
   padding:15px;
 }
