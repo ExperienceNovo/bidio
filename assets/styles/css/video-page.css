@@ -208,7 +208,22 @@
 
 .cs-share-this-product:hover i {
   left: 25%;
-  transform: scale(1);
+  transform: scale(1.5);
+}
+
+.cs-share-this-product:hover i.less-right {
+  left: 15%;
+  transform: scale(1.5);
+}
+
+.cs-share-this-product:hover i.little-right {
+  left: 23%;
+  transform: scale(1.5);
+}
+
+.cs-share-this-product:hover i.tiny-right {
+  left: 20%;
+  transform: scale(1.5);
 }
 
 .cs-share-this-product:hover span.share-text {

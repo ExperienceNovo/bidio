@@ -14,7 +14,7 @@ module.exports = {
   	},
     bannerUrl: {
       type: "string",
-      defaultsTo: "/images/banner.jpg"
+      defaultsTo: "/images/banner.png"
     },
     balance: {
       type: "float",
