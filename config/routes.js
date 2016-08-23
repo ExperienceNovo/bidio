@@ -122,7 +122,7 @@ module.exports.routes = {
   /**
    * Share routes
    */
-  'post /api/share/twitter/:composition': 'ShareController.shareTwitter',
+  'post /api/share/twitter/:composition/:shareUrl': 'ShareController.shareTwitter',
 
   /**
    * User routes

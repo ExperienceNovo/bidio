@@ -6,7 +6,7 @@ var path = require('path');
 
 module.exports = {
 
-  tweetVideo: function(composition, user) {
+  tweetVideo: function(composition, user, shareUrl) {
 
     var toReturn = {}
 
@@ -37,7 +37,8 @@ module.exports = {
         if (!err) {
           // now we can reference the media and post a tweet (media will attach to the tweet)
           console.log(composition)
-          var params = { status: composition, media_ids: [mediaIdStr] }
+          var params = { status: composition + ' ' + shareUrl, media_ids: [mediaIdStr] }//' @cre8bidio', media_ids: [mediaIdStr] }
+          console.log(params.status, 'and length: ', params.status.length)
 
           T.post('statuses/update', params, function (err, data, response) {
             if (!err) {

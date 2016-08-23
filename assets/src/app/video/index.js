@@ -150,13 +150,15 @@ angular.module( 'bidio.video', [
 	localStorageService.set('shareUrl', $location.absUrl());
 	$scope.user = user;
 
-	$scope.shareComplete = false;
+	$scope.shareComplete, $scope.shareSuccess, $scope.shareFailed = false;
 
 	var shareUrl = localStorageService.get('shareUrl');
 	$scope.tweeting = false;
 
-	$scope.tweetCompPadding = shareUrl.length + ' @cre8bidio '.length;
-	console.log($scope.tweetCompPadding)
+	$scope.share = {};
+	$scope.share.composition = '';
+	const MEDIA_CHAR_LENGTH = 24;
+	$scope.tweetCompPadding = shareUrl.length + MEDIA_CHAR_LENGTH; //' @cre8bidio '.length
 
 	$scope.shareFacebook = function() {
 		console.log('share facebook')
@@ -178,7 +180,7 @@ angular.module( 'bidio.video', [
 				hashtag: '#bidio',
       },
       function (res) {
-		console.log(res);
+				console.log(res);
         // res: FB.ui response
       }
     );
@@ -187,8 +189,6 @@ angular.module( 'bidio.video', [
 	};
 
 	$scope.shareTwitter = function() {
-
-		// $scope.share.completed = false;
 
 		if ($scope.tweeting) {
 			console.log('share twitter')
@@ -201,12 +201,12 @@ angular.module( 'bidio.video', [
 			if (!$scope.user) {
 				var webIntentURL = 'https://twitter.com/intent/tweet?text='
 	      		window.open(webIntentURL + encodeURIComponent(composition)
-					+ '&url=' + encodeURIComponent(shareUrl)
-					+ '&via=cre8bidio')
+					+ '&url=' + encodeURIComponent(shareUrl))
+					// + '&via=cre8bidio')
 
 				//change dialog content -> success?
 				$scope.shareComplete = true;
-
+				$scope.shareSuccess = true;
 			} else {
 
 				for (var i in $scope.user.passports) {
@@ -217,26 +217,31 @@ angular.module( 'bidio.video', [
 				if (!tokens) {
 					var webIntentURL = 'https://twitter.com/intent/tweet?text='
 		      		window.open(webIntentURL + encodeURIComponent(composition)
-						+ '&url=' + encodeURIComponent(shareUrl)
-						+ '&via=cre8bidio')
+						+ '&url=' + encodeURIComponent(shareUrl))
+						// + '&via=cre8bidio')
 
 					//change dialog content -> success?
 					$scope.shareComplete = true;
+					$scope.shareSuccess = true;
 
 				} else {
 
 					$scope.shareWorking = true;
 
-					ShareModel.shareTwitter(composition)
+					ShareModel.shareTwitter(encodeURIComponent(composition), encodeURIComponent(shareUrl))
 						.then(function(tweetData) {
-							console.log(tweetData)
+							console.log('tweetData: ', tweetData)
 							$scope.tweetUsername = tweetData.username;
 							$scope.tweetId = tweetData.tweetId;
 							$scope.shareWorking = false;
 							$scope.shareComplete = true;
+							$scope.shareSuccess = true;
 							$scope.sharedInHouse = true;
 						}, function(err) {
 							console.log(err)
+							$scope.shareComplete = true;
+							$scope.shareFailed = true;
+							$scope.shareSuccess = false;
 						})
 
 				}

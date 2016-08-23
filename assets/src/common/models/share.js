@@ -2,20 +2,20 @@ angular.module('models.share', ['services', 'sails.io'])
 
 .service('ShareModel', function($q, utils, $sailsSocket) {
 
-    var deferred = $q.defer();
-
-    this.shareTwitter = function(composition) {
-        var url = utils.prepareUrl('share/twitter/' + composition);
+    this.shareTwitter = function(composition, shareUrl) {
+        console.log(shareUrl)
+        var url = utils.prepareUrl('share/twitter/' + composition + '/' + shareUrl);
         return $sailsSocket.post(url).then(success, error);
     };
 
     var success = function(response) {
-        deferred.resolve(response.data)
-        return deferred.promise;
+        console.log('shareModel: ', response)
+        return response.data;
     };
 
     var error = function(error) {
-        console.log(error);
+        console.log('shareModel', error);
+        return error;
     };
 
 });
