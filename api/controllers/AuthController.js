@@ -43,12 +43,15 @@ var AuthController = {
   },
 
   callback: function (req, res) {
+
+    action = req.param('action');
+
     passport.callback(req, res, function (err, user) {
       req.login(user, function (err) {
         // If an error was thrown, redirect the user to the login which should
         // take care of rendering the error messages.
         if (err) {
-          res.redirect('/login');
+          res.redirect(action === 'register' ? '/register' : '/login');
         }
         // Upon successful login, send the user to the homepage were req.user
         // will available.
