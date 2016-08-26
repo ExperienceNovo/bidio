@@ -1,3 +1,9 @@
+<style type="text/css">
+  section {
+    padding:120px 0;
+  }
+</style>
+
 <div id="main">
   <div id="wrapper">
     <div class="content-holder">
@@ -7,26 +13,42 @@
             <div class="video-mask"></div>
             <div class="video-holder">
                 <div class="background-vimeo"> 
-                <video src="/videos/video.mp4" autoplay loop muted></video>
+                <video class="intro-video" src="/videos/video.mp4" autoplay loop muted></video>
                 </div>
                 <div class="intro-mobile bg"></div>
             </div>
           </div>
           <div class="overlay"></div>
           <div class="container">
-            <section class="rw-wrapper">
-              <h2 class="rw-sentence">
-                <span style="color:#fff">Sponsored</span>
-                <div class="rw-words rw-words-1">
-                  <span>Creators</span>
-                  <span>Artists</span>
-                  <span>Vloggers</span>
-                  <span>Producers</span>
-                  <span>Musicians</span>
-                  <span>Journalists</span>
-                </div>
-              </h2>
-            </section>
+            <div class="box on" ng-show="toggle" ng-animate="'box'" style="padding-bottom:100px;">
+              <div class="mobile-intro">
+                <section class="rw-wrapper">
+                  <h2 class="rw-sentence" style="font-size:2.75em;">
+                    <span style="color:#fff">Sponsored...</span>
+                    <br>
+                    <div class="rw-words rw-words-1" style="font-size:.75em;">
+                      <span>Creators</span>
+                      <span>Artists</span>
+                      <span>Vloggers</span>
+                      <span>Producers</span>
+                      <span>Musicians</span>
+                      <span>Journalists</span>
+                    </div>
+                  </h2>
+                </section>
+              </div>
+              <div class="spacing-25"></div>
+              <button class="btn-5" style="background:transparent;" ng-click="toggle = !toggle">Watch Video!</button>
+            </div>
+            <div class="box off" ng-hide="toggle" ng-animate="'box'" style="padding-bottom:50px;padding-top:50px;">
+              <section class="vid-wrap">
+                <video class="home-video vjs-default-skin" controls poster="https://s3.amazonaws.com/bidio8/marketing+images/vbg.jpg">
+                  <source src="https://s3.amazonaws.com/bidio8/marketing+images/Bidio_intro_3.20.mov">
+                  Your browser doesn't support HTML5 video tag.
+                </video>
+              </section>
+              <button class="btn-5" style="background:transparent;" ng-click="toggle = !toggle">back</button>
+            </div>
           </div>
         </div>
       </div>
@@ -161,16 +183,18 @@
               </div>
               <div class="col-md-7">
                 <h2 class="section-title">Say Hello to <strong style="color:#FE9A2E"> BIDIO</strong></h2>
-                <p>Our video-hosting platform’s real-time auction system facilitates crowdsourced digital marketing. Bidio never interrupts media viewers, and we promote passive, retroactive content sponsorship.</p><!--let's work here-->
-                <p>If marketers want to design a campaign around Bidio, they can sponsor a creative video campaign. This allows them to upload a video or written strategy statement, then establish a maximum budget and “prize-per-click.”</p>
+                <p>Our video platform’s real-time auction system facilitates crowdsourced digital marketing. Bidio never interrupts media viewers, and we promote passive, retroactive content sponsorship. Sponsors can create unique video campaigns, which allow them to establish creative guidelines, an overall budget, and a “prize-per-click.”</p>
                 <div class="process-box">
                   <h3>Let's Get Started</h3>
                   <ul class="list-inline intro-social-buttons" style="text-align:left;position:relative;top:25px">
                     <li>
-                        <a href="/creators" class="btn anim-button fl-l" style="margin-bottom: 15px;"><i class="fa fa-long-arrow-left fa-fw"></i> <span class="network-name">Video Producers</span></a>
+                        <a href="/creators" class="btn anim-button fl-l home-buttons" style="margin-bottom: 15px;"><i class="fa fa-long-arrow-left fa-fw"></i> <span class="network-name">Creators</span></a>
                     </li>
                     <li>
-                        <a href="/sponsors" class="btn anim-button fl-l" style="margin-bottom: 15px;"><span class="network-name">Digital Marketers</span> <i class="fa fa-long-arrow-right fa-fw"></i></a>
+                        <a href="/sponsors" class="btn anim-button fl-l home-buttons" style="margin-bottom: 15px;">
+                          <span class="network-name">Sponsors</span> 
+                          <i class="fa fa-long-arrow-right fa-fw"></i>
+                        </a>
                     </li>
                   </ul>
                 </div>
@@ -194,7 +218,7 @@
                     <h2 class="section-title">The Numbers<br><strong style="color: #FE9A2E;"> Don't Lie</strong></h2>
                 </div>
                 <div class="col-md-8">
-                  <p style="font-size:16px;padding-top:25px;">Bidio provides perfectly cost-effective, user-generated content, which people really want to watch. Brands get recognition for supporting creators and delighting viewers, without forcing any messages. </p>
+                  <p style="font-size:16px;padding-top:25px;">Traditional influencers often accept indirect payments, such as gifts or product samples. Many video producers are willing to accept fame over fortune, but brands oughta pay up! However, both creators and sponsors must clarify when money is involved. Bidio’s revolutionary system enables automatic disclosure, so our users and customers always stay honest.</p>
                 </div>
                 <br>
               </div>
@@ -208,9 +232,9 @@
                             <div class="num">$22 Billion</div>
                         </div>
                       </div>
-                      <h6 style="margin-bottom: 15px;">cost of ad-blocking to publishers in 2015</h6>
+                      <h6 style="margin-bottom: 15px;">Cost of ad-blocking to publishers in 2015</h6>
                       <br><br><br>
-                      <a href="http://www.iab.com/insights/ad-blocking/">Source</a>
+                      <a style="color:#9a9a9a" href="http://www.iab.com/insights/ad-blocking/">Source</a>
                     </div>
                     <div class="inline-facts col-md-4">
                       <div class="milestone-counter">
@@ -218,9 +242,9 @@
                             <div class="num">$6.3 Billion</div>
                         </div>
                       </div>
-                      <h6 style="margin-bottom: 15px;">cost of click fraud to advertisers in 2015</h6>
+                      <h6 style="margin-bottom: 15px;">Cost of click fraud to advertisers in 2015</h6>
                       <br><br><br>
-                      <a href="http://www.whiteops.com/botfraud">Source</a>
+                      <a style="color:#9a9a9a" href="http://www.whiteops.com/botfraud">Source</a>
                     </div>
                     <div class="inline-facts col-md-4">
                       <div class="milestone-counter">
@@ -228,9 +252,9 @@
                             <div class="num">$0</div>
                         </div>
                       </div>
-                      <h6 style="margin-bottom: 15px;">fines imposed by the FTC against dishonest influencer marketing</h6>
+                      <h6 style="margin-bottom: 15px;">Fines imposed by the FTC against dishonest influencer marketing</h6>
                       <br><br><br>
-                      <a href="https://www.ftc.gov/enforcement/cases-proceedings/closing-letters/machinima-inc">Source</a>
+                      <a style="color:#9a9a9a" href="https://www.ftc.gov/enforcement/cases-proceedings/closing-letters/machinima-inc">Source</a>
                     </div>
                   </div>
                 </div>
@@ -239,7 +263,7 @@
           </section>
         </div>      
         <div class="content">
-            <section>
+            <section id="sec2">
             <!--<div class="sect-subtitle right-align-dec" data-top-bottom="transform: translateY(200px);" data-bottom-top="transform: translateY(-200px);">
                     <span>03</span>
                 </div>-->
@@ -250,10 +274,25 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-8 col-md-push-2 col-md-pull-2 zaxbys">
+                        <div class="col-md-8 col-md-push-2 col-md-pull-2">
                               <div class="zaxbys-cover">
-                                <h3 ng-bind-html="campaign.title"></h3><br>
-                                <a href="/campaign/{{campaign.urlTitle}}/about" class="btn anim-button fl-l"><span>Learn More</span><i class="fa fa-long-arrow-right"></i></a>
+                                <h3 style="margin-bottom:15px"><img src="images/zaxbys2.png" style="display:inline;height:35px"> Sponsors <strong>Railhawks</strong> Tryouts</h3>
+                                <div class="video-container" style="width:100%">
+                                   <video 
+                                    vjs-video
+                                    class="video-js vjs-default-skin"
+                                    controls 
+                                    preload="true" 
+                                    vjs-media="campaign.media"
+                                    width="640" 
+                                    height="264" 
+                                    fluid="true"
+                                    poster="{{campaign.poster}}" 
+                                    vjs-ratio="16:9">
+                                  </video>
+                                </div>
+                                <div class="spacing-25"></div>
+                                <a href="/campaign/{{campaign.urlTitle}}/about" class="btn anim-button fl-l" style="float:none"><span>Learn More</span><i class="fa fa-long-arrow-right"></i></a>
                               </div>
                             <!-- <div class="parallax-item left-direction">
                                 <div class="paralax-media">
@@ -326,8 +365,6 @@
                 </div>
             </section>
         </div>
-        <div ng-include="'footer/index.tpl.html'"></div>
-        <div class="height-emulator"></div>
     </div>
   </div>
 </div>

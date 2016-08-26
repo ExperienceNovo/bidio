@@ -1,36 +1,12 @@
-<!--<p ng-bind-html="campaign.campaignContent"></p>-->
 <div class="container"> 
-	<div class="row">
-		<div class="col-md-12">
-			<div class="spacing-25"></div>
-			<img style="width:100%;" ng-src="{{campaign.bannerUrl}}">
-		</div>
+    <div class="bidio-profile">
+        <img align="left" class="bidio-image-lg" src="{{campaign.bannerUrl}}" alt="Profile Banner"/>
+        <img align="left" class="bidio-image-profile thumbnail" src="{{campaign.user.profile.picture}}" alt="Profile Pic"/>
+        <div class="bidio-profile-text">
+        <!--<h2 align="left" class="bidio-orange" style="font-weight: bold;">{{campaign.user.username}}</h2>-->
+            <hr>
+        </div>
+    </div>
+    <div ng-bind-html="campaignContent">
 	</div>
-	<div class="row">
-		<div class="spacing-25"></div>
-		<div class="sponsor-container">
-			<div class="col-md-4">
-				<img class="sponsorPicLarge" ng-src="{{ campaign.user.profile.picture }}">			
-			</div>
-			<div class="col-md-8">
-				<div class="aboutTxt">
-					<p>{{campaign.campaignContent}}</p>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- <div class="row">
-		<div class="col-md-3">
-			<img src="http://placehold.it/200x200">
-		</div>		
-		<div class="col-md-3">
-			<img src="http://placehold.it/200x200">
-		</div>		
-		<div class="col-md-3">
-			<img src="http://placehold.it/200x200">
-		</div>		
-		<div class="col-md-3">
-			<img src="http://placehold.it/200x200">
-		</div>
-	</div> -->
 </div>

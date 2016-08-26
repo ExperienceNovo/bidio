@@ -1,46 +1,37 @@
-<link href="http://vjs.zencdn.net/5.8.0/video-js.css" rel="stylesheet">
-<div class="campaignsTitleContainer">
-	<h1 class="contentTitleLetters">{{video.title}}</h1>
-</div>
-<div class="campaign-desc clearfix" ng-show="video.campaign">
-	<p>{{video.campaign.title}}</p>
-	<a ng-click="clickThrough()">{{video.campaign.prompt}}&nbsp;<i class="fa fa-caret-right"></i></a>
-</div>
-
-<div class="video-container">
-	<video 
-		src={{video.amazonUrl}}
-		class="video-js vjs-default-skin"
-		controls preload="auto" 
-		width="640" 
-		height="264" 
-		fluid="true"
-		poster="images/bidio_logo.png" 
-		vjs-video
-		vjs-media="media"
-		vjs-setup="options"
-		vjs-ratio="16:9">
-	</video>
-</div>
-
-<div id="video-details" class="container" style="padding-top:25px"> 
-	<div class="row">
-		<div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
-			<p><b>Posted by</b>: <a href="member/{{video.user.username}}">{{video.user.username}}</a></p>
-			<p><b>Views</b>: {{video.viewCount}}</p>
-
-		<!--<p ng-show="video.campaign"><b>$/click</b>: ${{video.campaign.price | number: 2 }}</h3>
-			<p><b>bid: $/click</b>: ${{highestBid.value}}-->
+<div style="height:100%;margin-botton:150px;">
+	<div style="background:#000;width:100%;border-bottom: 5px solid #FE9A2E;">
+		<div class="spacing-25"></div>
+		<div class="video-container">
+			<video 
+				class="video-js vjs-default-skin"
+				controls preload="auto" 
+				width="640" 
+				height="264" 
+				fluid="true"
+				poster="{{video.poster}}" 
+				vjs-media="media"
+				vjs-ratio="16:9"
+				vjs-video
+				>
+			</video>
+			<a ng-show="video.campaign.campaignImageUrl" class="vid-clickthrough" ng-click="clickThrough()"><img src="{{video.campaign.campaignImageUrl}}"></a>
+			<div class="spacing-15"></div>
 		</div>
-		<div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
-			<p>{{video.description}}</p>
-			<div class="spacing-50"></div>
-			<button ng-hide="!currentUser" class="btn" ng-click="bid()" style="float:left">Make Bid</button>
-			<a href="#" class="btn anim-button fl-l" style="float:right">share</a>
+	</div>
+	<div id="video-details" style="float:left;width:100%;">
+		<div class="aboutTxt" style="width:100%;margin:0 auto;padding-bottom:65px!important">
+			<h3 style="text-transform:capitalize;padding-top:50px;color:#252525;font-weight:bold;font-size:2em;padding-bottom:15px;">{{video.title}}</h3> 
+			<hr style="width:50%;margin:20px auto;border-top: 1px solid #c5c5c5;">
+			<div class="tabs">
+				<label for="tab1" title="Member"><a href="/member/{{video.user.username}}">{{video.user.username}}</a></label>
+				<label for="tab2" class="tooltip--bottom" data-tooltip="View Count">{{video.viewCount}}</label>
+				<label for="tab2" class="tooltip--bottom" data-tooltip="Click Count" title="Click Count">{{video.clickCount}}</label>
+				<label for="tab3" class="tooltip--bottom" data-tooltip="Price Per Click" ng-show="{{video.campaign.price}}">{{video.campaign.price | number: 2 }}</label>
+				<label for="tab4" title="Share" ng-click="share()"><a>Share</a></label>				
+				<label class="tooltip--bottom" data-tooltip="Sponsor Video?" for="tab5" ng-click="bid()" ng-hide="!currentUser">Make Bid</label>
+				<label ng-show="video.campaign" for="tab4" title="{{video.campaign.prompt}}" ng-click="clickThrough()"><a>{{video.campaign.prompt}}</a></label>				
+			</div>
+			<p style="padding: 25px;text-align:center;">{{video.description}}</p>
 		</div>
-	</div>	
-
-	<p>show public bids?</p>
-
-	
+	</div>
 </div>

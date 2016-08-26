@@ -18,8 +18,21 @@ module.exports = {
             defaultsTo: true
         },
 
+        isFeatured: {
+            type: 'boolean',
+            defaultsTo: false
+        },
+
         redirectUrl: {
             type: 'string'
+        },
+
+        campaignImageUrl: {
+            type: 'string',
+        },
+
+        bannerUrl: {
+            type: 'string',
         },
 
         videoUrl: {
@@ -74,12 +87,32 @@ module.exports = {
             type: 'string',
             required: true
         },
+
         intro: {
             type: 'string',
             required: true
         }
     },
 
+    beforeValidate: function(values, cb) {
+        if (typeof(values.title) != "undefined"){
+            var urlTitle = values.title.replace(/ /g,"-").toLowerCase();
+            values.urlTitle = urlTitle
+            Campaign.findOne({urlTitle: urlTitle}).exec(function (err, record) {
+                if (typeof(record) != "undefined"){
+                    values.urlTitle = record.urlTitle + '.8';
+                    cb();
+                }
+                else{
+                    cb();
+                }
+            });
+        }
+    },
+
+
+
+    /*
     afterCreate: function (post, next) {
         // set message.user = to appropriate user model
         User.getOne(post.user)
@@ -88,6 +121,7 @@ module.exports = {
             next(null, post);
         });
     },
+    */
 
     getAll: function() {
         return Campaign.find({published: true})

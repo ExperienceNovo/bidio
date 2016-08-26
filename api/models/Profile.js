@@ -8,10 +8,14 @@
 module.exports = {
 
   attributes: {
-  	picture: {
+  	pictureUrl: {
   		type: "string",
   		defaultsTo: "/images/silhouette_orange.jpg"
   	},
+    bannerUrl: {
+      type: "string",
+      defaultsTo: "/images/banner.png"
+    },
     balance: {
       type: "float",
       defaultsTo: 0
@@ -43,7 +47,10 @@ module.exports = {
   		model: "user",
   		required: true,
   		unique: true
-  	}
+  	},
+    socialAccounts: {
+      type: 'json',
+      defaultsTo: {}
+    }
   }
 };
-

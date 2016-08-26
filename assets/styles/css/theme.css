@@ -1,6 +1,14 @@
+.video-js {background-color:#fff!important;}
+
 @charset  "utf-8";
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800);
+
+*, *:after, *:before {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
 
 html {
   height: 100%;
@@ -18,6 +26,15 @@ body {
   text-align: center;
 }
 
+.footer {
+  float:left;
+  margin-top:50px;
+  width: 100%;
+  height: 150px;
+  background: #000000;
+  border-top: 5px solid #FE9A2E;          
+}
+
 @-o-viewport {
   width: device-width;
 }
@@ -28,6 +45,133 @@ body {
 
 @viewport {
   width: device-width;
+}
+
+strong {
+  font-weight: bold
+}
+
+.no-select {
+  -webkit-user-select: none; 
+  -moz-user-select: none;  
+  -ms-user-select: none;    
+  user-select: none; 
+}
+
+.footer-p {
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center
+}
+
+@media only screen and (max-width: 1050px) {
+  .aboutdrop-mobile {
+    display: block!important;
+  }
+  .aboutdrop-desk {
+    display: none!important;
+  }
+}
+
+@media only screen and (min-width: 1051px) {
+  .aboutdrop-mobile {
+    display: none!important;
+  }
+  .aboutdrop-desk {
+    display: block!important;
+  }
+}
+
+@media only screen and (min-width: 1051px) {
+  li.desk-li {
+    margin-left:15px;
+    margin-right:15px;
+    margin-top:1px;
+  }
+}
+
+@media only screen and (max-width: 1036px) {
+  .nav-float {
+      float: left!important;
+  }
+}
+
+@media only screen and (max-width:992px) {
+  .sidenav-display-none {
+    display:none!important;
+  }
+  .market-icon {
+    float: left!important;
+  }
+  .creators-about {
+    float:left!important;
+    margin-top:15px!important;
+  }
+} 
+
+@media only screen and (max-width:920px){
+  div[class^="metro"] {
+    float: none!important;
+  }
+}
+
+@media only screen and (max-width:768px){
+  #sidenav {
+      display:none;
+  }
+  ul .mobile-dashboard-nav {
+      padding-left:5em;
+  }
+}
+
+@media only screen and (min-width:769px) {
+  .mobile-dashboard-nav {
+      display:none;
+  }
+}
+
+.navbar-nav li.active a {
+  color:#FE9A2E!important;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: #eee;
+}
+
+a.navbar-brand {
+  height: 30px;
+  width: 100px;
+  margin-top: 10px;
+  background: url(https://s3.amazonaws.com/bidio8/bidio_logo_texty.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+a.navbar-brand:hover {
+  height: 30px;
+  width: 100px;
+  margin-top: 10px;
+  background: url(https://s3.amazonaws.com/bidio8/bidio_logo_textw.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+a.vid-clickthrough {
+  position: relative;
+  top: -75px;
+  right: 25px;
+  float: right;
+  cursor: pointer;
+  opacity: 0.25;
+}
+
+a.vid-clickthrough:hover {
+  opacity: 0.85;
+}
+
+.vid-clickthrough img {
+  height: 50px;
 }
 
 h1 {
@@ -62,6 +206,14 @@ a:hover {
   transition: color 0.3s;
 }
 
+.spacing-5 {
+  padding:5px;
+}
+
+.spacing-10 {
+  padding:10px;
+}
+
 .spacing-15 {
   padding:15px;
 }
@@ -72,6 +224,18 @@ a:hover {
 
 .spacing-50 {
   padding:50px;
+}
+
+.spacing-75 {
+  padding:75px;
+}
+
+.spacing-100 {
+  padding:100px;
+}
+
+.spacing-125 {
+  padding:125px;
 }
 
 .spacing-150 {
@@ -116,6 +280,7 @@ p {
   line-height: 24px;
   padding-bottom: 10px;
 }
+
 
 .service-desc p {
   padding:25px;
@@ -300,33 +465,14 @@ form[role=search] .form-group {
 #main {
   height: 100%;
   width: 100%;
-  position: absolute;
-  float: left;
-  top: 0;
-  left: 0;
-  z-index: 2;
-  opacity: 1;
 }
 
 #wrapper {
   height: 100%;
-  margin-left: 0;
-  vertical-align: top;
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  z-index: 2;
   width: 100%;
 }
 
 .content-holder {
-  vertical-align: top;
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  z-index: 2;
   height: 100%;
   -webkit-transition: all 400ms linear;
   -moz-transition: all 400ms linear;
@@ -351,20 +497,13 @@ form[role=search] .form-group {
   background: #fff;
 }
 
-.video-container {
-  max-width: 50%;
-  width: 500px;
-  display: inline-block;
-  padding-right: 15px;
-}
-
 .intro-sec {
   width: 100%;
   position: relative;
   z-index: 3;
   float: left;
   background: #fff;
-  height: 60%;
+  height: 65%;
 }
 
 .pad-con {
@@ -427,43 +566,6 @@ form[role=search] .form-group {
   background-position: center;
   background-repeat: repeat;
   background-origin: content-box;
-}
-
-.full-height-parallax {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: 2;
-}
-
-.respimg {
-  width: 100%;
-  height: auto;
-}
-
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #000;
-  opacity: .2;
-}
-
-section {
-  float: left;
-  width: 100%;
-  position: relative;
-  padding: 120px 0;
-  overflow: hidden;
-}
-
-.parallax-section {
-  padding: 250px 0;
 }
 
 .align-text {
@@ -542,7 +644,7 @@ section {
   height: 100%;
   line-height: 40px;
   text-align: center !important;
-  font-size: 16px;
+  font-size: 25px;
 }
 
 #creators-span:before {
@@ -709,7 +811,6 @@ section {
 }
 
 .section-title.dec-title {
-  padding-bottom: 50px;
 }
 
 .section-title.dec-title span {
@@ -724,6 +825,18 @@ section {
   width: 80px;
   height: 8px;
   background: #000;
+}
+
+.section-title.dec-title span:before {
+  content: '';
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  width: 80px;
+  height: 8px;
+  background: #000;
+  margin: 0;
+  right: 0;
 }
 
 .algn-right {
@@ -748,7 +861,6 @@ section {
   display: none;
 }
 
-/* ---------responsive iframes--------------------------------------*/
 .resp-video {
   position: relative;
   padding-bottom: 56.25%;
@@ -766,7 +878,6 @@ section {
   height: 100%;
 }
 
-/*------item hover ------------------------------------------------*/
 .box-item {
   float: left;
   width: 100%;
@@ -806,6 +917,50 @@ section {
   -webkit-transform: scale(1.05);
   -moz-transform: scale(1.05);
   transform: scale(1.05);
+}
+
+.discover-search {
+  margin:0 auto;
+  margin-top: 10px;
+  padding: 0;
+  width: 50%
+}
+ 
+.discover-search .search-query {
+  padding-right: 3px;
+  padding-right: 4px \9;
+  padding-left: 3px;
+  padding-left: 4px \9;
+  margin-bottom: 0;
+  padding: 15px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.form-control:focus {
+  border-color: #FE9A2E;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(254,154,46,.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(254,154,46,.6);
+}
+
+.discover-search button {
+  border: 0;
+  background: none;
+  padding: 2px 5px;
+  margin-top: 2px;
+  position: relative;
+  left: -28px;
+  margin-bottom: 0;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  color:#FE9A2E;
+}
+
+.search-query:focus + button {
+  z-index: 3;   
 }
 
 header {
@@ -1589,7 +1744,7 @@ article {
 
 .num {
   float: right;
-  font-size: 35px;
+  font-size: 25px;
   text-align: right;
   text-transform: uppercase;
   width: 100%;
@@ -2612,11 +2767,22 @@ article .section-title {
     padding-left: 6px;
     padding-right: 6px;
   }
-}
 
+  #sec1 {
+    padding-bottom:0!important;
+    padding-top:60px!important;
+  }
+  #sec2 {
+    margin-bottom: 0;
+    padding-bottom:50px!important;
+  }
+}
+#sec2 {
+  margin-bottom: 50px;
+}
 @media only screen and (max-width: 640px) {
   .num {
-    font-size: 62px;
+    font-size: 30px;
   }
 
   .page-title h2 {
@@ -2733,19 +2899,17 @@ ul.nav.nav-tabs {
   background: url(/images/zaxbys.png);
   background-size: cover;
   background-position: top center;
+  padding: 0;
 }
 
 .zaxbys-cover{
-  background: rgba(255,255,255,0.85);
-  padding: 200px 0;
+  padding: 50px 0;
 }
 
 .zaxbys-cover h3 {
-  font-size: 50px;
+  font-size: 35px;
   line-height: 64px;
   text-transform: uppercase;
-  float: left;
-  text-align: left;
   width: 100%;
   color: #000;
   font-weight: 300;
@@ -2758,4 +2922,95 @@ ul.nav.nav-tabs {
 
 .zaxbys-cover strong {
   font-weight: 700;
+}
+
+/*
+  Player Skin Designer for Video.js
+  http://videojs.com
+
+  To customize the player skin edit 
+  the CSS below. Click "details" 
+  below to add comments or questions.
+  This file uses some SCSS. Learn more  
+  at http://sass-lang.com/guide)
+
+  This designer can be linked to at:
+  http://codepen.io/heff/pen/EarCt/left/?editors=010
+*/
+.video-js {
+  /* The base font size controls the size of everything, not just text.
+     All dimensions use em-based sizes so that the scale along with the font size.
+     Try increasing it to 15px and see what happens. */
+  font-size: 10px;
+  /* The main font color changes the ICON COLORS as well as the text */
+  color: #fff;
+  margin:0 auto;
+}
+
+/* The "Big Play Button" is the play button that shows before the video plays.
+   To center it set the align values to center and middle. The typical location
+   of the button is the center, but there is trend towards moving it to a corner
+   where it gets out of the way of valuable content in the poster image.*/
+.vjs-default-skin .vjs-big-play-button {
+  /* The font size is what makes the big play button...big. 
+     All width/height values use ems, which are a multiple of the font size.
+     If the .video-js font-size is 10px, then 3em equals 30px.*/
+  font-size: 3em;
+  /* We're using SCSS vars here because the values are used in multiple places.
+     Now that font size is set, the following em values will be a multiple of the
+     new font size. If the font-size is 3em (30px), then setting any of
+     the following values to 3em would equal 30px. 3 * font-size. */
+  /* 1.5em = 45px default */
+  line-height: 1.5em;
+  height: 1.5em;
+  width: 3em;
+  /* 0.06666em = 2px default */
+  border: 0.06666em solid #fff;
+  /* 0.3em = 9px default */
+  border-radius: 0.3em;
+  /* Align top left. 0.5em = 15px default */
+  left: 0.5em;
+  top: 0.5em;
+}
+
+/* The default color of control backgrounds is mostly black but with a little
+   bit of blue so it can still be seen on all-black video frames, which are common. */
+.video-js .vjs-control-bar,
+.video-js .vjs-big-play-button,
+.video-js .vjs-menu-button .vjs-menu-content {
+  /* IE8 - has no alpha support */
+  background-color: #2B333F;
+  /* Opacity: 1.0 = 100%, 0.0 = 0% */
+  background-color: rgba(43, 51, 63, 0.7);
+}
+
+/* Slider - used for Volume bar and Progress bar */
+.video-js .vjs-slider {
+  background-color: #73859f;
+  background-color: rgba(115, 133, 159, 0.5);
+}
+
+/* The slider bar color is used for the progress bar and the volume bar
+   (the first two can be removed after a fix that's coming) */
+.video-js .vjs-volume-level,
+.video-js .vjs-play-progress,
+.video-js .vjs-slider-bar {
+  background: #fff;
+}
+
+/* The main progress bar also has a bar that shows how much has been loaded. */
+.video-js .vjs-load-progress {
+  /* For IE8 we'll lighten the color */
+  background: ligthen(#73859f, 25%);
+  /* Otherwise we'll rely on stacked opacities */
+  background: rgba(115, 133, 159, 0.5);
+}
+
+/* The load progress bar also has internal divs that represent
+   smaller disconnected loaded time ranges */
+.video-js .vjs-load-progress div {
+  /* For IE8 we'll lighten the color */
+  background: ligthen(#73859f, 50%);
+  /* Otherwise we'll rely on stacked opacities */
+  background: rgba(115, 133, 159, 0.75);
 }

@@ -3,12 +3,75 @@
   <div class="dashboard-title">
    <h2><a ui-sref="video({id: video.id})">{{video.title}}</a></h2>
   </div>
-  <p>{{video.description}}</p>
   <video style="display:inline-block;" class="video-js vjs-default-skin" src={{video.amazonUrl}} controls preload="none" width="640" height="264" poster="poster.jpg" vjs-video>
   </video>
-  <canvas id="line" class="chart chart-line" chart-data="data"
-        chart-labels="labels" chart-legend="true" chart-series="series"
-        chart-click="onClick">
-  </canvas> 
+
+  <md-tabs md-dynamic-height md-border-bottom>
+    <md-tab label="Overview">
+      <div class="spacing-15"></div>
+
+      <div id="video-graph-filter">
+        <h2>video activity</h2>
+        <div class="spacing-15"></div>
+        <md-datepicker ng-model="startDate" md-placeholder="Start date" md-min-date="startDate" md-max-date="endDate"></md-datepicker>
+        <md-datepicker ng-model="endDate" md-placeholder="End date" md-min-date="startDate" md-max-date="endDate"></md-datepicker>
+      </div>
+
+      <div class="spacing-25"></div>
+      <canvas id="line" class="chart chart-line" chart-data="viewData"
+            chart-labels="viewLabels" chart-legend="true" chart-series="viewSeries"
+            chart-click="onClick">
+      </canvas> 
+      <!--<canvas id="line" class="chart chart-line" chart-data="clickData"
+            chart-labels="clickLabels" chart-legend="true" chart-series="clickSeries"
+            chart-click="onClick">
+      </canvas>-->
+      <div class="row">
+        <div class="spacing-25"></div>
+        <div class="col-md-6" style="margin-top:25px">
+          <h2 style="font-weight:bold;color:#FAA93F;text-align:left;">Finance</h2>
+          <hr>
+          <p><b>Campaign</b>: <a href="/campaign/{{video.campaign.urlTitle}}">{{video.campaign.title}}</a></p>
+          <p><b>Views</b>: {{video.clickCount}}</p>
+          <p><b>Clicks</b>: {{video.clickCount}}</p>
+          <p><b>Price per click</b>: ${{video.campaign.price | number: 2}}</p>
+          <p><b>Total payment</b>: ${{video.clickCount * campaign.price | number: 2}}</p>
+
+        </div>
+        <div class="col-md-6" style="margin-top:25px">
+          <h2 style="font-weight:bold;color:#FAA93F;text-align:left;">Performance</h2>
+          <hr>
+          <p><b>Average conversion ratio</b>: {{(totalClicks / totalViews) * 100 | number : 2}}%<br></p>
+        </div>
+      </div>
+      <div class="spacing-25"></div>
+    </md-tab>
+    <md-tab label="About">
+      <div class="spacing-25"></div>
+      <div class="row">    
+        <div class="col-md-6">
+          <div ng-hide="editingInfo" class="edit-container" style="padding:30px;">
+            <p class="dash-title-sm"><b>{{video.title}}</b></p>
+            <p class="" style="text-align:center"><b>{{video.description}}</b></p>
+            <md-button ng-click="editInfoToggle()">Edit</md-button>
+          </div>
+          <div ng-show="editingInfo">
+            <md-input-container layout-fill>
+              <input ng-model="video.title" type="text">
+            </md-input-container>
+            <md-input-container layout-fill>
+              <textarea aria-label="Edit Description" ng-model="video.description" rows="5" md-rows="5"></textarea>
+            </md-input-container>
+            <md-progress-circular ng-show="infoSaving" md-mode="indeterminate"></md-progress-circular>
+            <md-button ng-disabled="infoSaving" ng-click="infoSave()">Save</md-button>
+            <md-button ng-disabled="infoSaving" ng-click="infoUndo()">Undo</md-button>
+            <md-button ng-click="videoDelete()">Delete</md-button>
+          </div>
+
+        </div>
+      </div>
+    </md-tab>
+  </md-tabs>
+
 
 </md-content>

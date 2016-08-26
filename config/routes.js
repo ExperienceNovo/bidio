@@ -38,6 +38,8 @@ module.exports.routes = {
   'get /admin': 'HomeController.index',
   'get /admin/:path': 'HomeController.index',
   'get /account': 'HomeController.index',
+  'get /blog': 'HomeController.index',
+  'get /blog/:path': 'HomeController.index',
   'get /browse': 'HomeController.index',
   'get /campaigns': 'HomeController.index',
   'get /campaign/:path': 'HomeController.index',
@@ -51,6 +53,7 @@ module.exports.routes = {
   'get /login': 'HomeController.index',
   'get /logout': 'AuthController.logout',
   'get /member/:path': 'HomeController.index',
+  'get /privacy': 'HomeController.index',
   'get /register': 'HomeController.index',
   'get /search': 'HomeController.index',
   'get /search/:path': 'HomeController.index',
@@ -58,13 +61,68 @@ module.exports.routes = {
   'get /upload': 'HomeController.index',
   'get /video/:id': 'HomeController.index',
 
+  'get /zaxbys': 'HomeController.index',
+  'get /questions': 'HomeController.index',
+
   'post /auth/local': 'AuthController.callback',
   'post /auth/local/:action': 'AuthController.callback',
   'get /auth/providers': 'UserController.getPassports',
-  '/auth/:provider': 'AuthController.provider',
-  '/auth/:provider/callback': 'AuthController.callback',
+  'get /auth/:provider': 'AuthController.provider',
+  'get /auth/:provider/callback': 'AuthController.callback',
   'delete /auth/providers/:provider': 'UserController.removePassport',
 
+  /**
+   * Bid routes
+   */
+  'get /api/bid/:id': 'BidController.getOne',
+  'get /api/bid/me': 'BidController.getMine',
+  'get /api/bid/member/:id': 'BidController.getByMember',
+  'get /api/bid/video/:id': 'BidController.getByVideo',
+  'post /api/bid': 'BidController.create',
+  'post /api/bid/:id': 'BidController.update',
+  'delete /api/bid/:id': 'BidController.destroy',
+
+  /**
+  *	Campaign Routes
+  */
+  'get /api/campaign': 'CampaignController.getAll',
+  'get /api/campaign/me': 'CampaignController.getMine',
+  'get /api/campaign/featured': 'CampaignController.getFeatured',
+  'get /api/campaign/:id': 'CampaignController.getOne',
+  'get /api/campaign/member/:id': 'CampaignController.getByMember',
+  'get /api/campaign/url/:path': 'CampaignController.getByUrlTitle',
+  'post /api/campaign': 'CampaignController.create',
+  'post /api/campaign/check': 'CampaignController.check',
+  'post /api/campaign/:id': 'CampaignController.update',
+  'delete /api/campaign/:id': 'CampaignController.destroy',
+
+
+  /**
+   * Click routes
+   */
+  'get /api/click/video/:id': 'ClickController.getByVideo',
+  'post /api/click': 'ClickController.create',
+
+  /**
+   * Post routes
+   */
+  'get /api/post': 'PostController.getAll',
+  'get /api/post/url/:path': 'PostController.getByUrlTitle',
+
+  /**
+   * Profile routes
+   */
+  'post /api/profile/:id': 'ProfileController.update',
+
+  /**
+   * Search routes
+   */
+  'get /api/search/:searchQuery/:limit/:skip': 'SearchController.search',
+
+  /**
+   * Share routes
+   */
+  'post /api/share/twitter/:composition/:shareUrl': 'ShareController.shareTwitter',
 
   /**
    * User routes
@@ -78,56 +136,18 @@ module.exports.routes = {
   'delete /api/user/:id': 'UserController.destroy',
 
   /**
-   * Post routes
-   */
-  'get /api/post': 'PostController.getAll',
-  'get /api/post/:id': 'PostController.getOne',
-  'get /api/post/url/:path': 'PostController.getByUrlTitle',
-  'post /api/post': 'PostController.create',
-  'delete /api/post/:id': 'PostController.destroy',
-
-
-  /**
-   * Bid routes
-   */
-  'get /api/bid/:id': 'BidController.getOne',
-  'get /api/bid/me': 'BidController.getMine',
-  'get /api/bid/member/:id': 'BidController.getByMember',
-  'get /api/bid/video/:id': 'BidController.getByVideo',
-  'post /api/bid': 'BidController.create',
-  'post /api/bid/:id': 'BidController.update',
-  'delete /api/bid/:id': 'BidController.destroy',
-
-
-  /**
-  *	Campaign Routes
-  */
-  'get /api/campaign': 'CampaignController.getAll',
-  'get /api/campaign/me': 'CampaignController.getMine',
-  'get /api/campaign/:id': 'CampaignController.getOne',
-  'get /api/campaign/member/:id': 'CampaignController.getByMember',
-  'get /api/campaign/url/:path': 'CampaignController.getByUrlTitle',
-  // 'get /api/campaign/:id': 'CampaignController.getSubmittedVideos',
-  'post /api/campaign': 'CampaignController.create',
-  'post /api/campaign/check': 'CampaignController.check',
-  'post /api/campaign/:id': 'CampaignController.update',
-  'delete /api/campaign/:id': 'CampaignController.destroy',
-
-  'post /api/profile/:id': 'ProfileController.update',
-
-  /**
   *	Video Routes
   */
   'get /api/video': 'VideoController.getAll',
   'get /api/video/me': 'VideoController.getMine',
   'get /api/video/:id': 'VideoController.getOne',
+  //'get /api/video/:limit/:skip': 'VideoController.getSome',
   'get /api/video/member/:id': 'VideoController.getByMember',
   //'get /api/video/url/:path': 'VideoController.getByUrlTitle',
   'post /api/video/upload': 'VideoController.upload',
   'post /api/video': 'VideoController.create',
   'post /api/video/:id': 'VideoController.update',
   'delete /api/video/:id': 'VideoController.destroy',
-  'get /videos/:path': 'VideoController.download',
 
    /**
    * View routes

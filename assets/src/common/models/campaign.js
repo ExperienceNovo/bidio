@@ -13,9 +13,13 @@ angular.module('models.campaign', ['lodash', 'services', 'sails.io',])
 
     this.check = function(model){
         var url = utils.prepareUrl('campaign/check');
-
         return $sailsSocket.post(url, model).then(success,error);
     }
+
+    this.getFeatured = function(){
+        var url = utils.prepareUrl('campaign/featured');
+        return $sailsSocket.get(url).then(success,error);
+    };
 
     this.getMine = function(){
         var url = utils.prepareUrl('campaign/me');
@@ -29,7 +33,6 @@ angular.module('models.campaign', ['lodash', 'services', 'sails.io',])
 
 	this.getOne = function(model) {
         var url = utils.prepareUrl('campaign/' + model);
-
         return $sailsSocket.get(url).then(success, error);
     };
 

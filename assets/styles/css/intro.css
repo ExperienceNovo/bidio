@@ -32,9 +32,8 @@
 }
 
 .rw-wrapper{
-  width: 70%;
+  width: 100%;
   position: relative;
-  margin: 110px auto 0 auto;
   padding: 10px;
   text-align: center;
   overflow: visible;
@@ -47,15 +46,10 @@
 
 .rw-sentence span{
   color: #FE9A2E;
-  font-size: 200%;
   font-weight: normal;
   text-transform: uppercase;
 }
 
-.rw-words{
-  display: inline;
-  text-indent: 10px;
-}
 
 .rw-words-1 span{
   position: absolute;
@@ -139,6 +133,8 @@
   padding: 1em;
   position: relative;
   height:250px;
+  margin-bottom: 10%;
+  zoom: 0.75;
 }
 
 @media screen and (min-width: 38em) {
@@ -807,7 +803,7 @@ svg {
 
 /* media queries */
 @media only screen and (max-width: 1024px) {
-	video {
+	.intro-video {
 		display:none
 	}
 

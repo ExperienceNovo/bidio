@@ -15,12 +15,27 @@ angular.module( 'bidio.dashboard', [
     .state( 'dashboard.home', {
         url: '',
         controller: 'DashboardHomeCtrl',
-        templateUrl: 'dashboard/templates/home.tpl.html'
+        templateUrl: 'dashboard/templates/home.tpl.html',
+        resolve: {
+            featuredCampaigns: function(CampaignModel){
+                return CampaignModel.getFeatured();
+            }
+        }
     })
     .state( 'dashboard.analytics', {
         url: '/analytics',
         controller: 'DashboardAnalyticsCtrl',
-        templateUrl: 'dashboard/templates/analytics.tpl.html'
+        templateUrl: 'dashboard/templates/analytics.tpl.html',
+        resolve: {
+            CampaignModel: "CampaignModel",
+            campaigns: function(CampaignModel){
+                return CampaignModel.getMine();
+            },
+            VideoModel: 'VideoModel',
+            videos: function(VideoModel){
+                return VideoModel.getMine();
+            }
+        }
     })
     .state( 'dashboard.video', {
         url: '/video/:id',
@@ -30,6 +45,9 @@ angular.module( 'bidio.dashboard', [
             VideoModel: 'VideoModel',
             video: function(VideoModel, $stateParams){
                 return VideoModel.getOne($stateParams.id);
+            },
+            clicks: function(ClickModel, video){
+                return ClickModel.getByVideo(video.id);
             },
             views: function(ViewModel, video){
                 return ViewModel.getByVideo(video.id);
@@ -80,10 +98,10 @@ angular.module( 'bidio.dashboard', [
             }
         }
     })
-    .state( 'dashboard.campaignEdit', {
+    .state( 'dashboard.campaign', {
         url: '/campaign/:id',
-        controller: 'DashboardCampaignEditCtrl',
-        templateUrl: 'dashboard/templates/campaignEdit.tpl.html',
+        controller: 'DashboardCampaignCtrl',
+        templateUrl: 'dashboard/templates/campaign.tpl.html',
         resolve: {
             CampaignModel: "CampaignModel",
             config: "config",
@@ -94,11 +112,38 @@ angular.module( 'bidio.dashboard', [
     })
 })
 
-.controller( 'DashboardCtrl', function DashboardCtrl( $scope, $location, config ) {
+.controller ('ResponsiveDashNav', function ResponsiveDashNav($scope, $window){
+
+    $scope.updateWidth = function() {
+        $scope.width = $window.innerWidth;
+    }
+
+    $scope.sideNavHide = function (){
+        if ($scope.width <768){
+            $scope.sideNav = false;
+        }
+        else{
+            $scope.sideNav = true;
+        }
+    };
+})
+
+.controller( 'DashboardCtrl', function DashboardCtrl( $scope, $location, config, localStorageService ) {
 
     if (!config.currentUser){
         $location.path('/login')
     }
+
+	if (localStorageService.get('redirectTo')) {
+		$location.path(localStorageService.get('redirectTo'));
+		localStorageService.remove('redirectTo');
+	}
+
+	if (window.location.hash && window.location.hash == '#_=_') {
+		console.log('removing hash stuff');
+		window.location.hash = '';
+		console.log(window.location)
+	}
 
     $scope.changePath = function (path) {
         $location.path('/dashboard' + path);
@@ -107,61 +152,155 @@ angular.module( 'bidio.dashboard', [
 
 })
 
-.controller( 'DashboardHomeCtrl', function DashboardHomeCtrl( $scope, titleService, lodash, config ) {
+.controller( 'DashboardHomeCtrl', function DashboardHomeCtrl( $scope, titleService, lodash, config, featuredCampaigns ) {
     titleService.setTitle('dashboard');
     $scope.currentUser = config.currentUser;
+    $scope.featuredCampaigns = featuredCampaigns;
 })
 
-.controller( 'DashboardAnalyticsCtrl', function DashboardAnalyticsCtrl( $scope, titleService, config ) {
+.controller( 'DashboardAnalyticsCtrl', function DashboardAnalyticsCtrl( $scope, titleService, config, campaigns, videos ) {
 	titleService.setTitle('analytics');
     $scope.currentUser = config.currentUser;
+    $scope.campaigns = campaigns;
+    $scope.videos = videos;
+
     $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
     $scope.series = ['Series A', 'Series B'];
     $scope.data = [
         [65, 59, 80, 81, 56, 55, 40],
         [28, 48, 40, 19, 86, 27, 90]
     ];
+
     $scope.onClick = function (points, evt) {
         console.log(points, evt);
     };
 })
 
-.controller( 'DashboardVideoCtrl', function DashboardVideosCtrl( $scope, titleService, video, views, VideoModel, $sailsSocket ) {
-    titleService.setTitle('video');
+.controller( 'DashboardVideoCtrl', function DashboardVideosCtrl( $scope, titleService, video, views, VideoModel, clicks, $sailsSocket, $location ) {
     $scope.video = video;
+    titleService.setTitle(video.title);
     $scope.views = views;
+    $scope.clicks = clicks;
+    $scope.editingInfo= false
 
-    //could populate.. --> hm. 
-    //$scope.views = video.views
+    $scope.editInfoToggle = function(){
+        $scope.editingInfo = !$scope.editingInfo;
+    }
 
-    console.log(views);
+    function videoSave(){
+        $scope.infoSaving = true;
+        var toUpdate = {
+            id: $scope.video.id,
+            title: $scope.video.title,
+            description: $scope.video.description,
+        };
+        return VideoModel.update(toUpdate)
+    }
+
+    $scope.infoSave = function(){
+        videoSave()
+        .then(function(video){
+            $scope.infoSaving = false;
+            $scope.editInfoToggle();
+        })
+        .catch(function(err){
+            $scope.infoSaving = false;
+        });
+    };
+
+    $scope.infoUndo = function(){
+        $scope.editInfoToggle();
+    };
+
+    $scope.videoDelete = function () {
+        //confirmation modal here
+        VideoModel.delete($scope.video).then(function(){
+            $location.path('/dashboard/videos')
+        });
+
+    };
+
     $scope.updateViews = function(){
 
-        $scope.labels = [];
-        $scope.series = [];
-        $scope.data = [[]];
+        $scope.viewLabels = [];
+        $scope.viewSeries = [];
+        $scope.viewData = [[],[]];
+
+        $scope.startDate = new Date($scope.views[0].createdAt);
+        $scope.endDate = new Date($scope.views[$scope.views.length-1].createdAt);
+        $scope.dayCount = Math.floor(( Date.parse($scope.endDate) - Date.parse($scope.startDate)) / 86400000);
+
+
+        //this is tricky
+        var currentDate = new Date($scope.startDate.getTime());
+        var currentDate1 = new Date(currentDate.getTime());
+        for(var i = 0; i < $scope.dayCount; i++) {
+            var currentDate1 = new Date(currentDate1.getTime());
+            currentDate1.setDate(currentDate1.getDate() + 1);
+            $scope.viewLabels.push(new Date(currentDate1.getTime()).toISOString().slice(5, 10));
+
+            //find set of views with dates between sertain amount here.
+            //l8rr
+            //if($scope.viewLabels[i]> && <$scope.viewLabels[i+1]){
+            //}
+
+            console.log(currentDate1)
+
+        }
+
+
+
 
         if($scope.views){
-            $scope.series = ['Views']
+            $scope.viewSeries = ['Views', 'Clicks']
             for (x in $scope.views){
-                $scope.labels.push($scope.views[x].createdAt);
-                $scope.data[0].push(x);
+                var dateObj = new Date($scope.views[x].createdAt);
+                //$scope.viewLabels.push(dateObj);
+                $scope.viewData[0].push(x);
+            }
+            for (x in $scope.clicks){
+                $scope.viewData[1].push(x);
             }
         }
+
         else{
-            $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
-            $scope.series = ['Views', 'Click Throughs'];
-            $scope.data = [
+            $scope.viewLabels = ["January", "February", "March", "April", "May", "June", "July"];
+            $scope.viewSeries = ['Views', 'Click Throughs'];
+            $scope.viewData = [
                 [65, 59, 80, 81, 56, 55, 40],
                 [28, 48, 40, 19, 86, 27, 90]
             ];
         }
+
     };
     $scope.updateViews()
-    
-    $scope.onClick = function (points, evt) {
-        console.log(points, evt);
+
+    $scope.updateClicks = function(){
+
+        $scope.clickLabels = [];
+        $scope.clickSeries = [];
+        $scope.clickData = [[]];
+
+        if($scope.clicks){
+            $scope.clickSeries = ['Clicks']
+            for (x in $scope.clicks){
+                $scope.clickLabels.push($scope.clicks[x].createdAt);
+                $scope.clickData[0].push(x);
+            }
+        }
+
+        else{
+            $scope.clickLabels = ["January", "February", "March", "April", "May", "June", "July"];
+            $scope.clickSeries = ['Clicks', 'Click Throughs'];
+            $scope.clickData = [
+                [65, 59, 80, 81, 56, 55, 40],
+                [28, 48, 40, 19, 86, 27, 90]
+            ];
+        }
+
     };
+    $scope.updateClicks()
+
 
     $sailsSocket.subscribe('view', function (envelope) {
         switch(envelope.verb) {
@@ -169,6 +308,18 @@ angular.module( 'bidio.dashboard', [
                 if (envelope.data.video == $scope.video.id){
                     $scope.views.unshift(envelope.data);
                     $scope.updateViews();
+                    break;
+                }
+                else{break;}
+        }
+    });
+
+    $sailsSocket.subscribe('click', function (envelope) {
+        switch(envelope.verb) {
+            case 'created':
+                if (envelope.data.video == $scope.video.id){
+                    $scope.clicks.unshift(envelope.data);
+                    $scope.updateClicks();
                     break;
                 }
                 else{break;}
@@ -205,9 +356,7 @@ angular.module( 'bidio.dashboard', [
     $scope.fileName = null;
 
     $scope.upload = function(file){
-
         $scope.videoLoading = true;
-
         Upload.upload({
             url: '/api/video/upload',
             method: 'POST',
@@ -223,7 +372,6 @@ angular.module( 'bidio.dashboard', [
             var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
             $scope.pp = progressPercentage;
         })
-
     };
 
     $scope.submit = function(video){
@@ -263,14 +411,14 @@ angular.module( 'bidio.dashboard', [
     }
 })
 
-.controller('DashboardProfileCtrl', function ($state, $scope, user, ProfileModel, UserModel, $mdDialog, $location) {
+.controller('DashboardProfileCtrl', function ($state, titleService, $scope, user, ProfileModel, UserModel, $mdDialog, $location, localStorageService) {
+    titleService.setTitle('profile');
 
     $scope.username = user.username;
     $scope.submitLoading = false;
     $scope.profile = user.profile[0];
-		$scope.passports = user.passports;
-		console.log($scope.passports[0].provider)
-		// console.log('profile : ' + profile)
+	$scope.passports = user.passports;
+	$scope.user = user;
 
     $scope.submit = function(profile){
 
@@ -278,8 +426,12 @@ angular.module( 'bidio.dashboard', [
 
         var toUpdate = {id: profile.id};
 
-        if (profile.picture){
-            toUpdate.picture = profile.picture;
+        if (profile.pictureUrl){
+            toUpdate.pictureUrl = profile.pictureUrl;
+        }
+
+        if (profile.bannerUrl){
+            toUpdate.bannerUrl = profile.bannerUrl;
         }
 
         if (profile.firstName){
@@ -336,25 +488,56 @@ angular.module( 'bidio.dashboard', [
           fullscreen: false
         })
         .then(function(result){
-            $scope.profile.picture = result;
+            $scope.profile.pictureUrl = result;
         })
     }
 
-		$scope.passportRegistered = function(provider) {
-				for (i in $scope.passports) {
-						if ($scope.passports[i].provider === provider)
-								return true;
-				}
-				return false;
-		}
+    $scope.addBannerPic = function(ev){
 
-		$scope.removePassport = function(provider) {
-				UserModel.removePassport(provider);
-		}
+        $mdDialog.show({
+          controller: 'ProfilePicCtrl',
+          templateUrl: 'dashboard/templates/addProfilePic.tpl.html',
+          parent: angular.element(document.body),
+          targetEvent: ev,
+          clickOutsideToClose:true,
+          fullscreen: false
+        })
+        .then(function(result){
+            $scope.profile.bannerUrl = result;
+        })
+    }
 
-		$scope.go = function(path) {
-		  	$location.path(path);
-		};
+	$scope.passportRegistered = function(provider) {
+        for (i in $scope.passports) {
+            if ($scope.passports[i].provider === provider)
+                return true;
+            }
+        return false;
+	}
+
+	$scope.removePassport = function(provider) {
+		UserModel.removePassport(provider)
+			.then(function(result) {
+				console.log(result)
+				$scope.passports = $scope.passports.filter(function(val, ind, arr) {
+					return !(arr[ind].identifier === result[0].identifier);
+				})
+
+				user.socialAccounts[(result[0].provider).toString()] = {}
+				UserModel.update(user)
+
+			})
+	}
+
+	$scope.hasSinglePassport = function() {
+		return $scope.passports.length <= 1;
+	}
+
+	$scope.go = function(path) {
+		localStorageService.set('redirectTo', $location.path());
+		console.log(localStorageService.get('redirectTo'))
+	  	$location.path(path);
+	};
 
 })
 
@@ -366,16 +549,13 @@ angular.module( 'bidio.dashboard', [
 
     //TODO: refactor backend so that videos and images are uploaded through separate endpoints (separation of concerns)
     $scope.upload = function(file){
-
         $scope.photoLoading = true;
-
         Upload.upload({
             url: '/api/video/upload',
             method: 'POST',
             data: {video: file}
         })
         .then(function(response){
-
             $scope.videoLoading = false;
             $scope.profilePicUrl = response.data.amazonUrl;
         },
@@ -387,7 +567,6 @@ angular.module( 'bidio.dashboard', [
             var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
             $scope.pp = progressPercentage;
         })
-
     };
 
     $scope.submit = function(){
@@ -400,7 +579,8 @@ angular.module( 'bidio.dashboard', [
 
 })
 
-.controller('DashboardCampaignsCtrl', function (config, $state, $scope, campaigns, CampaignModel, $mdDialog) {
+.controller('DashboardCampaignsCtrl', function (config, titleService, $state, $scope, campaigns, CampaignModel, $mdDialog) {
+    titleService.setTitle('campaigns');
 
     $scope.campaigns = campaigns;
     $scope.addCampaign = function(ev){
@@ -418,26 +598,27 @@ angular.module( 'bidio.dashboard', [
 
             return CampaignModel.create({
                 /*placeholder here*/
-                bannerUrl: "http://placehold.it/1000x400?name=banner",
+                campaignImageUrl: "http://placehold.it/250x250?text=image",
+                bannerUrl: "http://placehold.it/1000x400?text=banner",
                 /*placeholder here*/
-                videoUrl: "/videos/blah",
+                videoUrl: "/videos/video.mp4",
                 published: false,
                 title: result.title,
                 price: "0.10",
                 user: config.currentUser.id,
                 urlTitle: result.urlTitle,
-                prompt: "Write and exciting prompt here",
+                prompt: "This will be the message that encourages click-throughs to the sponsor",
                 intro: "Write an exiciting intro here",
                 campaignContent: "Write exciting content here"
             });
 
         }).then(function(model){
-            $state.go("dashboard.campaignEdit", {id: model.id});
+            $state.go("dashboard.campaign", {id: model.id});
         });
     }
 })
 
-.controller('DashboardCampaignEditCtrl', function ($state, $mdMenu, $scope, campaign, CampaignModel, $mdDialog, VideoModel, lodash, $q, BidModel) {
+.controller('DashboardCampaignCtrl', function ($state, titleService, $mdMenu, $scope, campaign, CampaignModel, $mdDialog, VideoModel, lodash, $q, BidModel) {
 
     $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
     $scope.series = ['Series A', 'Series B'];
@@ -452,10 +633,13 @@ angular.module( 'bidio.dashboard', [
     var originals = lodash.cloneDeep(campaign.bids);
 
     $scope.campaign = campaign;
+    titleService.setTitle(campaign.title);
+
     $scope.selection = {type: "new"};
     $scope.clean = true;
     $scope.saving = false;
     $scope.editingLanding = false;
+    $scope.editingTitle = false;
     $scope.editingInfo = false;
     $scope.editingPrompt = false;
     $scope.contentHolder = null;
@@ -464,6 +648,12 @@ angular.module( 'bidio.dashboard', [
     $scope.urlSaving = null;
     $scope.refreshing = false;
     $scope.endDate = new Date();
+    $scope.max = 3;
+    $scope.selectedIndex = 0;
+    $scope.nextTab = function() {
+        var index = ($scope.selectedIndex == $scope.max) ? 0 : $scope.selectedIndex + 1;
+        $scope.selectedIndex = index;
+    };
 
     function sort(bid){
 
@@ -494,74 +684,74 @@ angular.module( 'bidio.dashboard', [
     });
 
     $scope.totalClicks = $scope.campaign.bids.reduce(function(val,item){
-        val += item.video.clickCount;
-        return val;
+        console.log(item)
+        if (item.video){
+            val += item.video.clickCount;
+            return val;
+        }
     },0);
 
     $scope.totalViews = $scope.campaign.bids.reduce(function(val,item){
-        val += item.video.viewCount;
-        return val;
+        if (item.video){
+            val += item.video.viewCount;
+            return val;
+        }
     },0);
 
     $scope.topViews = $scope.campaign.bids.sort(function(a,b){
-        if (a.video.viewCount < b.video.viewCount){
-            return 1
-        }
-
-        if (a.video.viewCount == b.video.viewCount){
-            return 0;
-        }
-
-        if (a.video.viewCount > b.video.viewCount){
-            return -1
+        if (a.video && b.video){
+            if (a.video.viewCount < b.video.viewCount){
+                return 1
+            }
+            if (a.video.viewCount == b.video.viewCount){
+                return 0;
+            }
+            if (a.video.viewCount > b.video.viewCount){
+                return -1
+            }
         }
     })[0];
 
     $scope.topClicks = $scope.campaign.bids.sort(function(a,b){
-        if (a.video.clickCount < b.video.clickCount){
-            return 1
-        }
-
-        if (a.video.clickCount == b.video.clickCount){
-            return 0;
-        }
-
-        if (a.video.clickCount > b.video.clickCount){
-            return -1
+        if (a.video && b.video){
+            if (a.video.clickCount < b.video.clickCount){
+                return 1
+            }
+            if (a.video.clickCount == b.video.clickCount){
+                return 0;
+            }
+            if (a.video.clickCount > b.video.clickCount){
+                return -1
+            }
         }
     })[0];
 
     $scope.topConversion = $scope.campaign.bids.sort(function(a,b){
-        if ((a.video.clickCount / a.video.viewCount) < (b.video.clickCount / b.video.viewCount)){
-            return 1;
-        }
-
-        if ((a.video.clickCount / a.video.viewCount) == (b.video.clickCount / b.video.viewCount)){
-            return 0;
-        }
-
-        if ((a.video.clickCount / a.video.viewCount) > (b.video.clickCount / b.video.viewCount)){
-            return -1;
+        if (a.video && b.video){
+            if ((a.video.clickCount / a.video.viewCount) < (b.video.clickCount / b.video.viewCount)){
+                return 1;
+            }
+            if ((a.video.clickCount / a.video.viewCount) == (b.video.clickCount / b.video.viewCount)){
+                return 0;
+            }
+            if ((a.video.clickCount / a.video.viewCount) > (b.video.clickCount / b.video.viewCount)){
+                return -1;
+            }
         }
     })[0];
 
     var bidWatches = $scope.campaign.bids.map(function(bid){
-
         return $scope.$watch(function($scope){
             return bid;
         }, function(newVal, oldVal){
-
             if (newVal.isAccepted == oldVal.isAccepted){
                 return;
             }
-
             if (oldVal.isNewEntry){
                 newVal.isNewEntry = false;
                 newVal.isActive = true;
             }
-
         },true);
-
     });
 
     $scope.refresh = function(){
@@ -637,11 +827,29 @@ angular.module( 'bidio.dashboard', [
         return false;
     }
 
-    $scope.getImage = function(ev){
+    $scope.getBannerImage = function(ev){
 
         $mdDialog.show({
-            controller: 'AddPhotoCtrl',
-            templateUrl: 'dashboard/templates/addPhoto.tpl.html',
+            controller: 'AddBannerPhotoCtrl',
+            templateUrl: 'dashboard/templates/addBannerPhoto.tpl.html',
+            parent: angular.element(document.body),
+            resolve: {
+                campaign: function(){
+                    return campaign;
+                }
+            },
+            targetEvent: ev,
+            clickOutsideToClose:true,
+            fullscreen: false
+        })
+
+    }
+
+    $scope.getCampaignImage = function(ev){
+
+        $mdDialog.show({
+            controller: 'AddCampaignPhotoCtrl',
+            templateUrl: 'dashboard/templates/addCampaignPhoto.tpl.html',
             parent: angular.element(document.body),
             resolve: {
                 campaign: function(){
@@ -676,6 +884,12 @@ angular.module( 'bidio.dashboard', [
     $scope.editInfoToggle = function(){
         $scope.infoHolder = lodash.clone($scope.campaign.campaignContent);
         $scope.editingInfo = !$scope.editingInfo;
+    }
+
+    $scope.editTitleToggle = function(){
+        $scope.infoHolder = lodash.clone($scope.campaign.title);
+        $scope.editingTitle = !$scope.editingTitle;
+        console.log($scope.editingTitle)
     }
 
     $scope.editLandingToggle = function(){
@@ -746,68 +960,75 @@ angular.module( 'bidio.dashboard', [
             toUpdate.maxContributionPerVideo = $scope.campaign.maxContributionPerVideo;
         }
 
-        return CampaignModel.update(toUpdate)
+        return CampaignModel.update(toUpdate);
     }
 
     $scope.landingSave = function(){
 
         campaignSave()
-            .then(function(campaign){
-                $scope.saving = false;
-                $scope.editLandingToggle();
-
-            })
-            .catch(function(err){
-                $scope.saving = false;
-            });
+        .then(function(campaign){
+            $scope.saving = false;
+            $scope.editLandingToggle();
+        })
+        .catch(function(err){
+            $scope.saving = false;
+        });
     }
+
+    $scope.titleSave = function(){
+        campaignSave()
+        .then(function(campaign){
+            $scope.campaign = campaign[0];
+            $scope.infoSaving = false;
+            $scope.editTitleToggle();
+        })
+        .catch(function(err){
+            $scope.infoSaving = false;
+            $scope.editTitleToggle();
+        });
+    }
+
 
     $scope.infoSave = function(){
 
         campaignSave()
-            .then(function(campaign){
-
-                $scope.infoSaving = false;
-                $scope.editInfoToggle();
-
-            })
-            .catch(function(err){
-
-                $scope.infoSaving = false;
-
-            });
+        .then(function(campaign){
+            $scope.infoSaving = false;
+            $scope.editInfoToggle();
+        })
+        .catch(function(err){
+            $scope.infoSaving = false;
+        });
     }
 
     $scope.promptSave = function(){
 
         campaignSave()
-            .then(function(campaign){
-
-                $scope.promptSaving = false;
-                $scope.editPromptToggle();
-
-            })
-            .catch(function(err){
-
-                $scope.promptSaving = false;
-
-            });
+        .then(function(campaign){
+            $scope.promptSaving = false;
+            $scope.editPromptToggle();
+        })
+        .catch(function(err){
+            $scope.promptSaving = false;
+        });
     }
 
     $scope.landingUndo = function(){
-
         $scope.campaign.campaignContent = $scope.contentHolder;
         $scope.editLandingToggle();
     }
 
     $scope.infoUndo = function(){
-
         $scope.campaign.info = $scope.infoHolder;
         $scope.editInfoToggle();
     }
 
-    $scope.promptUndo = function(){
+    $scope.titleUndo = function(){
+        $scope.campaign.title = $scope.infoHolder;
+        $scope.editTitleToggle();
+    }
 
+    $scope.promptUndo = function(){
         $scope.campaign.prompt = $scope.promptHolder;
         $scope.editPromptToggle();
     }
@@ -829,12 +1050,9 @@ angular.module( 'bidio.dashboard', [
     }
 
     $scope.saveVideo = function(){
-
         //get all entries that have been modified
         var toSave = $scope.selectedBids.filter(function(bid){
-
             return bid.dirty;
-
         })
         .map(function(bid){
 
@@ -929,12 +1147,11 @@ angular.module( 'bidio.dashboard', [
         });
 
         originals = lodash.cloneDeep($scope.campaign.bids);
-
         $scope.selectedBids = sorted[$scope.selection.type];
     }
 })
 
-.controller('AddPhotoCtrl', function ($scope, $mdDialog, Upload, campaign, CampaignModel) {
+.controller('AddBannerPhotoCtrl', function ($scope, $mdDialog, Upload, campaign, CampaignModel) {
 
     $scope.pp = 0;
     $scope.bannerUrl = null;
@@ -993,6 +1210,71 @@ angular.module( 'bidio.dashboard', [
         .then(function(response){
             $scope.photoLoading = false;
             $scope.bannerUrl = response.data.amazonUrl;
+        },
+        null,
+        function (evt) {
+            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+            $scope.pp = progressPercentage;
+        })
+
+    };
+
+})
+
+.controller('AddCampaignPhotoCtrl', function ($scope, $mdDialog, Upload, campaign, CampaignModel) {
+
+    $scope.pp = 0;
+    $scope.campaignImageUrl = null;
+    $scope.photoLoading = false;
+    $scope.error = null;
+
+    $scope.submit = function(){
+        campaign.campaignImageUrl = $scope.campaignImageUrl;
+        var toUpdate = {
+            id: campaign.id,
+            bannerUrl: campaign.bannerUrl,
+            campaignImageUrl: campaign.campaignImageUrl,
+            videoUrl: campaign.videoUrl,
+            published: campaign.published,
+            title: campaign.title,
+            price: campaign.price,
+            user: campaign.user.id,
+            urlTitle: campaign.urlTitle,
+            prompt: campaign.prompt,
+            intro: campaign.intro,
+            campaignContent: campaign.campaignContent
+        };
+        if(campaign.contributionGoal){
+            toUpdate.contributionGoal = campaign.contributionGoal;
+        }
+        if(campaign.maxContributionPerVideo){
+            toUpdate.maxContributionPerVideo = campaign.maxContributionPerVideo;
+        }
+        CampaignModel.update(toUpdate)
+        .then(function(){
+            $mdDialog.hide();
+        })
+        .catch(function(err){
+            $scope.error = err.message;
+        })
+    }
+
+    $scope.cancel = function(){
+        $mdDialog.cancel();
+    }
+
+    //TODO: refactor backend so that videos and images are uploaded through separate endpoints (separation of concerns)
+    $scope.upload = function(file){
+
+        $scope.photoLoading = true;
+        Upload.upload({
+            url: '/api/video/upload',
+            method: 'POST',
+            data: {video: file}
+        })
+        .then(function(response){
+            $scope.photoLoading = false;
+            $scope.campaignImageUrl = response.data.amazonUrl;
         },
         null,
         function (evt) {

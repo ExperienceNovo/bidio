@@ -1,35 +1,56 @@
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller="NavCtrl">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller="NavCtrl" style="background:#101010">
   <div class="container">
     <div class="container-fluid">
       <div class="navbar-header">
-        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+        <button class="navbar-toggle" ng-click="isCollapsed = !isCollapsed" type="button" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/" style="color: #fff;letter-spacing: 1px"><img src="/images/bidio_logo.png" style="max-height:20px;float:left">
-          <span style="margin-left:10px">bidio</span>
-        </a>    
+        <a class="navbar-brand" href="/"></a>    
       </div>
-      <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav nav-float">
+      <div class="collapse navbar-collapse" nav-collapse="">
+          <ul class="nav navbar-nav nav-float">
           <!--<li><a href="/search">Search</a></li>-->
-          <li ng-show="currentUser"><a href="/discover">Discover</a></li>
-          <li ng-show="currentUser"><a href="/campaigns">Campaigns</a></li>
-          <li ng-show="currentUser"><a href="/dashboard">Dashboard</a></li>
-
-          <!--<li ng-show="currentUser"><a href="/upload">Upload</a></li>-->
-          <!--<li ng-show="currentUser"><a href="/account">Account</a></li>-->
-          <li ng-show="currentUser"><a href="/logout">Signout</a></li>
-
-          <li ng-show="!currentUser"><a href="/discover">Discover</a></li>
-          <li ng-show="!currentUser"><a href="/campaigns">Campaigns</a></li>
-          <!--<li ng-show="!currentUser"><a href="/dashboard">Videos</a></li>-->
-          <li ng-show="!currentUser"><a class="bidio-nav" href="/creators">Creators</a></li>
-          <li ng-show="!currentUser"><a class="bidio-nav" href="/sponsors">Sponsors</a></li>
-          <li ng-show="!currentUser"><a href="/login">Login</a></li>
-          <li ng-show="!currentUser"><a href="/register">Register</a></li>
+          <li ng-class="{ active: isActive('/discover')}" ng-show="currentUser"><a href="/discover">Discover</a></li>
+          <li ng-class="{ active: isActive('/campaigns')}" ng-show="currentUser"><a href="/campaigns">Campaigns</a></li>
+          <li ng-class="{ active: isActive('/dashboard')}" ng-show="currentUser"><a href="/dashboard">Dashboard</a></li>
+          <li ng-show="currentUser"><a href="/logout">Logout</a></li>
+          <!--
+          <li class="ng-scope no-select desk-li " ui-sref-active="active" ng-show="currentUser">
+            <div class="aboutdrop-desk" style="padding:7.5px;"></div>
+            <span class="dropdown-toggle no-select aboutdrop-desk" type="button" data-toggle="dropdown" style="cursor: pointer;">About
+              <span class="caret"></span>
+            </span>
+            <ul class="dropdown-menu aboutdrop-desk">
+              <li ui-sref-active="active" class="ng-scope no-select" ng-show="currentUser"><a href="/">Home</a></li>
+              <li ui-sref-active="active" class="ng-scope no-select" ng-show="currentUser"><a href="/creators">Creators</a></li>
+              <li ui-sref-active="active" class="ng-scope no-select" ng-show="currentUser"><a href="/sponsors">Sponsors</a></li>
+            </ul>
+            <div class="accordion aboutdrop-mobile">
+              <div class="section">
+                <input type="checkbox" name="accordion-1" id="section-2" value="toggle"/>
+                <label for="section-2"><span>Home</span></label>
+                <div class="content">
+                    <a href="/" style="text-indent:15px">Home</a>
+                </div>                
+                <div class="content">
+                    <a href="/creators" style="text-indent:15px">Creators</a>
+                </div>               
+                 <div class="content">
+                    <a href="/sponsors" style="text-indent:15px">Sponsors</a>
+                </div>
+              </div>
+            </div>     
+          </li>
+          -->
+          <li ng-class="{ active: isActive('/discover')}" ng-show="!currentUser"><a href="/discover">Discover</a></li>
+          <li ng-class="{ active: isActive('/campaigns')}" ng-show="!currentUser"><a href="/campaigns">Campaigns</a></li>
+          <li ng-class="{ active: isActive('/creators')}" ng-show="!currentUser"><a class="bidio-nav" href="/creators">Creators</a></li>
+          <li ng-class="{ active: isActive('/sponsors')}" ng-show="!currentUser"><a class="bidio-nav" href="/sponsors">Sponsors</a></li>
+          <li ng-class="{ active: isActive('/login')}" ng-show="!currentUser"><a href="/login">Login</a></li>
+          <li ng-class="{ active: isActive('/register')}" ng-show="!currentUser"><a href="/register">Register</a></li>
         </ul>
       </div>
     </div>

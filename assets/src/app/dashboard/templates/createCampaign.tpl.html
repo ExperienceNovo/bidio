@@ -1,19 +1,22 @@
-<md-content layout-padding style="width:500px">
-	<h3>Create Campaign</h3>
-	<md-input-container>
-    <label>Title</label>
+<md-content layout-padding class="dashboard-modal">
+  <h2 class="bidio-orange modal-title">Create Campaign</h2>
+  <hr>
+  <md-input-container>
+    <label class="modal-label">Title</label>
     <input ng-model="campaign.title" type="text">
   </md-input-container>
   <br>
-  <md-input-container>
+  <!--<md-input-container>
     <label>URL Title</label>
     <input ng-model="campaign.urlTitle" type="text">
-  </md-input-container>
-  <br>
+  </md-input-container>-->
   <div ng-show="error">
     <p class="errorTxt">{{error}}</p>
   </div>
-  <md-button ng-click="submit(campaign)">Submit</md-button>
-  <br>
-  <md-button ng-click="cancel()">Cancel</md-button>
+  <div class="col-md-6">
+    <md-button ng-click="submit(campaign)">Submit</md-button>
+  </div>    
+  <div class="col-md-6">
+    <md-button ng-click="cancel()">Cancel</md-button>
+  </div>
 </md-content>

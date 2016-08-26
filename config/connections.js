@@ -23,10 +23,6 @@ module.exports.connections = {
 		adapter: 'sails-mongo',
 		url: 'mongodb://heroku_wds9j5tq:i54cta42llqeu518u7s5o6gnl4@ds011790.mlab.com:11790/heroku_wds9j5tq'
 		//url: process.env.MONGOLAB_URI
-	},
-
-  localDiskDb: {
-  	adapter: 'sails-disk'
-  }
+	}
 };
 

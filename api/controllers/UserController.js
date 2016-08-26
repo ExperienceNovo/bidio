@@ -16,7 +16,6 @@ module.exports = {
 			user must be logged in, id is taken from session
 			returns all passports of user associated w/ id
 		*/
-
 		id = req.user.id;
 
 		User.findOne( id )
@@ -33,14 +32,11 @@ module.exports = {
 	},
 
 	removePassport: function(req,res){
-		console.log('why can I not get to here?')
 		id = req.user.id;
 		provider = req.param("provider");
-		console.log(provider);
 
 		Passport.destroy({user: id, provider: provider})
 			.then(function(passport){
-				console.log(passport);
 				res.json(passport);
 			})
 			.fail(function(err){
@@ -105,7 +101,6 @@ module.exports = {
 	},
 
 	create: function (req, res) {
-		// console.log(req)
 		var model = {
 			username: req.param('username'),
 			email: req.param('email'),
@@ -124,17 +119,14 @@ module.exports = {
 			}
 		});
 	},
+
 	update: function(req,res){
 		var id = req.param('id');
 		var model = {
 			email: req.param('email'),
-			username : req.param('username')
+			username : req.param('username'),
+			socialAccounts: req.param('socialAccounts')
 		};
-
-		console.log("model in controller is: " + model);
-		console.log("model.email in controller is: " + model.email);
-		console.log("model.username in controller is: " + model.username);
-
 
 		User.update({id: id}, model)
 		.then(function(model){

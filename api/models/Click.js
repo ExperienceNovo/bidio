@@ -7,21 +7,35 @@
 
 module.exports = {
 
-  attributes: {
-  	
+    attributes: {
         video: {
             model: 'video',
             required: true
         },
-
         user: {
             model: 'user'
         },
-
         bid: {
         	model: 'bid'
         }
-    }
+    },
+
+    beforeValidate: function(values, cb) {
+        /*if (typeof(values.title) != "undefined"){
+            var urlTitle = values.title.replace(/ /g,"-").toLowerCase();
+            values.urlTitle = urlTitle
+            console.log(values.urlTitle)
+            Campaign.findOne({urlTitle: urlTitle}).exec(function (err, record) {
+                if (typeof(record) != "undefined"){
+                    values.urlTitle = record.urlTitle + '.8';
+                    cb();
+                }
+                else{
+                    cb();
+                }
+            });
+        }*/
+    },
 
 };
 

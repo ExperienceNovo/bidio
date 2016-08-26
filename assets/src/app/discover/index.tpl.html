@@ -1,3 +1,38 @@
-<div class="surface-container home-pad">
-<h1>discover</h1>
+<div class="surface-container" style="height:100%">
+	<div class="spacing-25"></div>
+    <h2 class="section-title dec-title" style="text-align: center;"><strong  style="color:#FE9A2E">Discover</strong>
+    <hr style="width: 170px;margin: 0 auto;margin-top: 25px;"></h2>
+   <div class="discover-search">
+        <div class="input-group">
+			<input ng-keyup="keyPress(searchValue)" class="search-query form-control" ng-model="searchValue" id="search-link" size="40" type="text" placeholder="Search">
+            <span class="input-group-btn">
+                <button class="btn" type="button">
+                    <span class="fa fa-search"></span>
+                </button>
+            </span>
+        </div>
+    </div>
+    <div style="margin-top: 25px;" ng-show="videos.length == 0">
+    	<h2 style="text-align:center">zero results</h2>
+    </div>
+    <div class="container">
+		<div class="dashboardVideos col-xs-12 col-sm-12 col-md-4 col-lg-4" ng-repeat="video in videos" style="margin-top: 25px;">
+			<div class="spacing-25"></div>
+			<h2 class="bidio-orange" style="font-size:20px;padding-bottom: 5px;margin-bottom: 15px;font-weight: bold;text-transform:capitalize;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+				<a ui-sref="video({id: video.id})">{{video.title}}</a>
+			</h2>
+			<video 
+				class="video-js vjs-default-skin"
+				controls preload="true" 
+				width="640" 
+				height="264" 
+				fluid="true"
+				poster="{{defaultposter}}"
+				vjs-video
+				vjs-media="video.media"
+				vjs-ratio="16:9">
+			</video>
+			<a ng-show="video.campaign.campaignImageUrl" class="vid-clickthrough" ng-click="clickThrough()"><img src="{{video.campaign.campaignImageUrl}}"></a>
+		</div>
+	</div>
 </div>

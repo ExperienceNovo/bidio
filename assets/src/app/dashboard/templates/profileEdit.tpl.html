@@ -1,83 +1,110 @@
 <style type="text/css">
-
 	.edit-btn{
 		position: absolute;
 		left: 15px;
 	}
-
 	.edit-container{
 		position: relative;
 	}
-
 </style>
-
 <div id="main-container">
-  <div class="dashboard-title" style="min-height:500px" layout="column" layout-padding>
-  	<div flex="40" layout="row" layout-padding>
-  		<div flex="45">
-  			<div class="edit-container">
-  				<div class="edit-btn"><md-button ng-click="addProfilePic($event)" class="md-fab md-mini"><md-icon>edit</md-icon></md-button></div>
-  				<img style="width:100%" ng-src="{{profile.picture}}">
-  			</div>
-  		</div>
-  		<div flex="55">
-  			<md-input-container layout-fill>
-  				<label>About</label>
-  				<textarea aria-label="Profile Description" rows="5" ng-model="profile.description"></textarea>
-  			</md-input-container>
-  		</div>
-  	</div>
-  	<div flex="60" layout="row" layout-padding>
-  		<div flex="40" layout="column">
-  			<md-card flex="100" layout="column">
-  				<md-card-content flex="100" layout="row">
-						<div flex="20"></div>
-						<div flex="60" layout="column">
-							<div layout="row">
-								<md-button ng-click="submit(profile)" class="md-raised" layout-fill><md-icon>check</md-icon>Submit</md-button><br>
-							</div>
-							<div flex="100"></div>
-							<div layout="row">
-								<md-button ui-sref="dashboard.profileMain" class="md-raised" layout-fill><md-icon>chevron_left</md-icon>Back</md-button>
-							</div>
-						</div>
-						<div flex="20"></div>
-  				</md-card-content>
-  			</md-card>
-  		</div>
-  		<div flex="60">
-  			<md-content layout-padding layout-fill>
-	  			<md-list>
-						<md-list-item>
-							<div style="white-space:nowrap;padding:20px;"><b>First Name</b></div>
-					  	<md-input-container layout-fill>
-					  		<input aria-label="Profile First Name" type="text" ng-model="profile.firstName">
-						  </md-input-container>
-						</md-list-item>
-						<md-divider></md-divider>
-						<md-list-item>
-							<div style="white-space:nowrap;padding:20px;"><b>Last Name</b></div>
-					  	<md-input-container layout-fill>
-					  		<input aria-label="Profile Last Name" type="text" ng-model="profile.lastName">
-						  </md-input-container>
-						</md-list-item>
-						<md-divider></md-divider>
-						<md-list-item>
-							<div style="white-space:nowrap;padding:20px;"><b>Company (name)</b></div>
-					  	<md-input-container layout-fill>
-					  		<input aria-label="Profile Company Name" type="text" ng-model="profile.companyName">
-						  </md-input-container>
-						</md-list-item>
-						<md-divider></md-divider>
-						<md-list-item>
-							<div style="white-space:nowrap;padding:20px;"><b>Company (url)</b></div>
-					  	<md-input-container layout-fill>
-					  		<input aria-label="Profile Company Url" type="text" ng-model="profile.companyUrl">
-						  </md-input-container>
-						</md-list-item>
-	  			</md-list>
-	  		</md-content>
-  		</div>
-  	</div>
+  <div style="min-height:500px" layout="column" layout-padding>
+    <div class="container" style="margin-top:25px">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="editview">
+            <a ui-sref="dashboard.profileMain" class="btn anim-button fl-l home-buttons"><i class="fa fa-chevron-left"></i> <span>Cancel</span></a>
+          </div>          
+        </div>
+        <div class="col-md-6">
+          <div class="editview">
+            <a ng-click="submit(profile)" class="btn anim-button fl-l home-buttons"><i class="fa fa-floppy-o"></i> <span>Save Changes</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="spacing-25"></div>
+      <div class="bidio-profile">
+      		<div class="edit-btn"><md-button ng-click="addBannerPic($event)" class="md-fab md-mini"><md-icon>edit</md-icon></md-button></div>
+            <img align="left" class="bidio-image-lg" src="{{profile.bannerUrl}}" alt="Profile Banner"/>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div style="text-align: left;">
+         	<div class="bidio-image-profile">
+              	<div class="edit-btn"><md-button ng-click="addProfilePic($event)" class="md-fab md-mini"><md-icon>edit</md-icon></md-button></div>
+                <img style="max-width: 100%;padding:10px" class="thumbnail" src="{{profile.pictureUrl}}" alt="Profile Pic"/>  
+        	</div>
+            <div class="prof-desc">   
+              <div class="desc-inner">
+  	  			  <md-input-container layout-fill>
+	              	<p><b>First Name:</b></p> <input aria-label="Profile First Name" type="text" ng-model="profile.firstName">
+				  </md-input-container>
+	              <br>
+  	  			  <md-input-container layout-fill>
+	              	<p><b>Last Name:</b></p> <input aria-label="Profile Last Name" type="text" ng-model="profile.lastName">
+				  </md-input-container>
+				  <br>
+  	  			  <md-input-container layout-fill>
+	              	<p><b>Company:</b></p> <input aria-label="Profile Company Name" type="text" ng-model="profile.companyName">
+				  </md-input-container>
+	              <br>
+	  			  <md-input-container layout-fill>
+			  		<p><b>Company URL:</b></p> <input aria-label="Profile Company Url" type="text" ng-model="profile.companyUrl">
+				  </md-input-container>
+				  <br>
+	  			  <md-input-container layout-fill>
+			  		<p><b>Description</b></p>
+			  		<br>
+			  		<p style="width: 100%;"><textarea aria-label="Profile Description" rows="5" ng-model="profile.description" style="overflow-y:scroll;width: 100%;"></textarea></p>
+				  </md-input-container>
+	  			  <br>
+			  		<p class="bidio-orange"><b>Connect Social Accounts</b></p>
+			  		<div class="spacing-15"></div>
+			  		<ul>
+			  			<li style="display: inline-block;">
+							<!-- case 1: call to activate -->
+							<md-button class="primary md-raised" style="background-color:#3b5998;color: #fff;padding: 0 10px;" ng-click="go('/auth/facebook')" ng-if="!passportRegistered('facebook')"><i class="fa fa-facebook"></i> activate</md-button>
+							<!-- case 2: activated, show profile and remove button -->
+							<span ng-if="passportRegistered('facebook')">
+								<md-button class='primary md-raised' ng-click="removePassport('facebook')" ng-disabled="hasSinglePassport()">remove</md-button>
+								<a href="{{user.socialAccounts.facebook.profileUrl}}" style="">
+									<img style="border-radius:50%" ng-src="{{user.socialAccounts.facebook.profilePic}}">
+									{{user.socialAccounts.facebook.displayName}}
+								</a>
+							</span>
+			  			</li>
+			  			<li style="display: inline-block;">
+							<!-- case 1: call to activate -->
+							<md-button class="primary md-raised" style="background-color:#dd4b39;color: #fff;padding: 0 10px;" ng-click="go('/auth/google')" ng-if="!passportRegistered('google')"><i class="fa fa-google-plus"></i> activate</md-button>
+							<!-- case 2: activated, show profile and remove button -->
+							<span ng-if="passportRegistered('google')">
+								<md-button class='primary md-raised' ng-click="removePassport('google')" ng-disabled="hasSinglePassport()">remove</md-button>
+								<a href="{{user.socialAccounts.google.profileUrl}}" style="">
+									<img style="border-radius:50%" ng-src="{{user.socialAccounts.google.profilePic}}">
+									{{user.socialAccounts.google.displayName}}
+								</a>
+							</span>
+			  			</li>
+			  			<li style="display: inline-block;">
+							<!-- case 1: call to activate -->
+							<md-button class="primary md-raised" style="background-color:#55acee;color: #fff;padding: 0 10px;" ng-click="go('/auth/twitter')" ng-if="!passportRegistered('twitter')"><i class="fa fa-twitter"></i> activate</md-button>
+							<!-- case 2: activated, show profile and remove button -->
+							<span ng-if="passportRegistered('twitter')">
+								<md-button class='primary md-raised' ng-click="removePassport('twitter')" ng-disabled="hasSinglePassport()">remove</md-button>
+								<a href="{{user.socialAccounts.twitter.profileUrl}}" style="">
+									<img style="border-radius:50%" ng-src="{{user.socialAccounts.twitter.profilePic}}">
+									{{user.socialAccounts.twitter.displayName}}
+								</a>
+							</span>
+			  			</li>
+			  		</ul>
+              </div>
+            </div>  
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+<div class="spacing-50"></div>
+

@@ -8,34 +8,36 @@ angular.module( 'bidio', [
     'ui.bootstrap',
     'uiGmapgoogle-maps',
     'templates-app',
+    'offClick',
     'services',
     'vjs.video',
     'models',
     'ngFileUpload',
     'ngMaterial',
     'ngAnimate',
-    'bidio.home',
-    'bidio.about',
-    'bidio.account',
+    'bidio.blog',
+    'bidio.blogPost',
     'bidio.creators',
 	'bidio.campaign',
     'bidio.campaigns',
     'bidio.dashboard',
     'bidio.discover',
     'bidio.footer',
-    'bidio.intro',
+    'bidio.home',
     'bidio.login',
     'bidio.member',
     'bidio.nav',
+    'bidio.privacy',
     'bidio.register',
     'bidio.search',
     'bidio.sponsors',
-    'bidio.upload',
     'bidio.video',
-    'bidio.admin'
+    'bidio.admin',
+    'LocalStorageModule',
+    'ezfb'
 ])
 
-.config( function myAppConfig ( $sceDelegateProvider, $mdThemingProvider, $urlRouterProvider, $locationProvider ) {
+.config( function myAppConfig ( $sceDelegateProvider, $mdThemingProvider, $urlRouterProvider, $locationProvider, ezfbProvider ) {
 
     $sceDelegateProvider.resourceUrlWhitelist([
         // Allow same origin resource loads.
@@ -46,6 +48,12 @@ angular.module( 'bidio', [
 
     $urlRouterProvider.when('/about/', '/about');
     $urlRouterProvider.when('/campaigns/', '/campaigns');
+    $urlRouterProvider.when('/questions', '/campaign/questions-about-bidio');
+    $urlRouterProvider.when('/questions/', '/campaign/questions-about-bidio');
+
+    $urlRouterProvider.when('/zaxbys', '/campaign/railhawks-tryouts.8');
+    $urlRouterProvider.when('/zaxbys/', '/campaign/railhawks-tryouts.8');
+
 
     $urlRouterProvider.otherwise(function ($injector, $location) {
         if ($location.$$url === '/') {
@@ -63,6 +71,9 @@ angular.module( 'bidio', [
         .primaryPalette('grey')
         .accentPalette('orange');
 
+    ezfbProvider.setInitParams({
+      appId: '629279003894718'
+    });
 })
 
 .run( function run () {

@@ -5,6 +5,8 @@
 .contentTitleLetters{
 	color:white;
     font-weight:700;
+    font-size: 3vw;
+
 }
 p.campaignsInfoText{
 	padding-bottom: 25px;
@@ -34,7 +36,7 @@ img.sponsorPic{
 }
 
 img.sponsorPicLarge{
-    width: 100%;
+    width: 80%;
 }
 .campaignContainer {
     padding-top: 50px;
@@ -105,7 +107,6 @@ button.updateCampaignButton {
 }
 
 .aboutTxt{
-    margin-bottom: 150px;
     line-height:2;
     padding: 0!important;
 }
@@ -114,7 +115,104 @@ button.updateCampaignButton {
     font-size: 19px;
     line-height: 2;
     text-align: justify;
-    padding: 0;
+    padding-left: 50px;
+}
+
+.camp-about-title {
+    font-weight: bold;
+    text-align: right;
+    font-size: 4.2em;
+    padding: 15px;
+}
+
+.video-container {
+    width: 35%;
+    display: inline-block;
+    padding-right: 15px;
+}
+
+.video-align-query {
+    text-align: right;
+}
+
+.campaign-submit {
+    display: inline-block!important;
+    margin-bottom: 50px!important;
+    float:none!important;
+}
+
+@media only screen and (max-width: 992px) {
+    .video-container {
+        width: 95%!important;
+        margin-top:25px;
+        margin-bottom:25px;
+        display: inline-block;
+        padding:15px;   
+        float:none!important;
+    }
+    .aboutTxt p {
+        font-size: 19px;
+        line-height: 2;
+        text-align: justify;
+        padding: 0; 
+    }
+    img.sponsorPicLarge {
+        width: 25%;
+    }
+    .camp-about-title {
+        font-weight: bold;
+        font-size: 4.2em;
+        text-align: left;
+        margin-top: 50px;
+    }
+    .video-align-query {
+        text-align: center;
+    }
+    .sidenav-display-none {
+        display:none!important;
+    }
+    .mobile-dashboard-nav {
+        display: block!important;
+    }
+    .admin-page-wrapper {
+        display: none!important;
+    }
+    .admin-page-wrapper-mobile {
+        display: block!important;
+    }
+}
+
+@media only screen and (min-width: 993px) {
+    .mobile-dashboard-nav {
+        display: none!important;
+    }
+    .admin-page-wrapper {
+        display: block!important;
+    }
+    .admin-page-wrapper-mobile {
+        display: none!important;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .aboutTxt p {
+        padding:15px;
+        width: 100%;
+        float: none!important;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .contentTitleLetters {
+        font-size: 6vw;
+    }
+    img.sponsorPicLarge {
+        width: 50%;
+    }
+}
+
+.video-js {
+    max-width: 100%!important;
 }
 
 .campaign-desc{
@@ -180,4 +278,16 @@ ul.campaign-listinfo {
 
 .delete-btn ~ p {
     transition: color 0.3s;
+}
+
+.login-popup {
+    padding:0;
+}
+
+.login-popup p {
+    text-align:center;
+}
+
+.login-popup .btn {
+    float: none;
 }
