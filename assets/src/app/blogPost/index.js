@@ -18,7 +18,10 @@ angular.module( 'bidio.blogPost', [
 	});
 })
 
-.controller( 'BlogPostCtrl', function BlogPostCtrl( $scope, config, titleService, $sce, post ) {
+.controller( 'BlogPostCtrl', function BlogPostCtrl( $sce, $scope, config, titleService, $sce, post ) {
 	$scope.post = post;
 	titleService.setTitle($scope.post.title);
+	$scope.renderHtml = function (htmlCode) {
+	    return $sce.trustAsHtml(htmlCode);
+	};
 });

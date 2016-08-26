@@ -18,7 +18,10 @@ angular.module( 'bidio.blog', [
 	});
 })
 
-.controller( 'BlogCtrl', function DiscoverCtrl( $scope, config, titleService, $sce, posts ) {
+.controller( 'BlogCtrl', function DiscoverCtrl( $sce, $scope, config, titleService, $sce, posts ) {
 	titleService.setTitle('Blog - bidio');
 	$scope.posts = posts;
+	$scope.renderHtml = function (htmlCode) {
+	    return $sce.trustAsHtml(htmlCode);
+	};
 });

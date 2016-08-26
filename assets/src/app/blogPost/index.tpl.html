@@ -1,31 +1,10 @@
 <div class="container blog-container">
-	<!--{{post.title}}
-	{{post.postContent}}-->
 	<div class="spacing-50"></div>
-	<h3 style="font-size:16px;text-align: left;">{{post.createdAt | date:'MM/dd/yyyy @ h:mma'}}</h3>
 	<div class="spacing-5"></div>
-    <h2 class="section-title" style="text-align: left;">Say Hello to <strong style="color:#FE9A2E"> BIDIO</strong></h2>
+	<h2 class="section-title" style="text-align: left;"><div ng-bind-html="renderHtml(post.title)"></div></h2>
     <br>
     <div class="spacing-25"></div>
-    <p>
-    The rapidly evolving digital media space has introduced so many ways for people to consume and share content. As a result, publishers have divided into true creators and simple curators, who are often paid by brands to develop sponsored content.
-    <br><br>
-	<span style="font-style: italic;">Disclosure should be automatic!</span>
-	<br><br>
-	Advertisers should always be clear and conspicuous when paying to associate their brands with content anywhere online. Recently, the FTC released <a target="_blank" href="https://www.ftc.gov/tips-advice/business-center/guidance/native-advertising-guide-businesses">guidelines for native advertising</a>, along with an <a target="_blank" href="https://www.ftc.gov/system/files/documents/public_statements/896923/151222deceptiveenforcement.pdf">enforcement policy statement</a> (<a target="_blank" href="http://adage.com/article/media/iab-concerned-ftc-s-native-advertising-rules/301948/">IAB Response</a> - via AdAge). Previously, the <a href="http://www.iab.com/">IAB</a> had introduced their <a href="http://www.iab.net/media/file/IAB-Native-Advertising-Playbook2.pdf">“Native Advertising Playbook,”</a>  which defines six categories of native ads and recommends principles of disclosure. Overall, the <a href="http://www.aboutads.info/">DAA</a> maintains seven basic principles of online behavioral advertising, which are upheld by the <a href="https://www.networkadvertising.org/">NAI,</a> <a href="http://www.easa-alliance.org/">EASA</a>, <a href="https://www.aaaa.org/">4A’s</a>, <a href="http://www.ana.net/">ANA</a><a href="http://www.aaf.org/">AAF</a>, <a href="https://www.bbb.org/">BBB</a>,  and <a href="http://thedma.org/">DMA</a>.
-	<br><br>
-	Ad blocking and click fraud are killing programmatic display advertising. Just last year, nearly $8 billion was spent on non-human traffic (bots), and $22 billion was lost to ad blockers.
-	<br><br>
-	Native advertising platforms pretend to offer the solution. However, their “in-feed” and “in-stream” inventory is far from invulnerable to ad blocking. Currently, mobile devices don’t support “in-app” ad blockers, but it’s certainly possible in the future. In fact, Been Choice blocks ads in mobile applications, but it was <a href="http://adexchanger.com/data-exchanges/apple-boots-been-choice-again-but-the-in-app-ad-blocker-is-already-planning-its-next-move/">removed from the App Store</a> (via AdExchanger)… Still, the company continues to push for complete consumer control and privacy, along with Bidio.
-	<br><br>
-	Whereas traditional native ad formats match the FORM and FUNCTION of their surroundings, truly native advertising aligns with any publisher’s PURPOSE.
-	<br><br>
-	Facebook’s business model is both unsustainable and unethical. Their hyper-social media company has been cannibalizing digital publishers. The News Feed algorithms depend on monetary influence, a.k.a. boosted posts, which ultimately suppresses creators and constricts freedom of the press, not to mention freedom of expression.
-	<br><br>
-	YouTube continues to rely on its notorious TrueView ad format, which interrupts/annoys viewers and sucks 45 percent of advertising revenue from creators. Google’s walled garden has flattened the Header Bidding market by opening Dynamic Allocation to third-party exchanges. However, they have realized the growing value of original content. Their ‘YouTube Red’ subscription service includes several exclusive web series, and ‘Google Preferred’ advertisers just gained access to trending videos. Still, nobody offers pay-per-click content sponsorship. Until now...
-	<br><br>
-	...and the original creators get paid, without sacrificing authenticity! Bidio helps brands get publicity/credit for supporting true artists and journalists. We only get 8 percent of their overall revenue, while promoting engaging video contests that help creators find sponsors.
-	</p>
+    <div ng-bind-html="renderHtml(post.postContent)"></div>
 	<div class="spacing-25"></div>
 </div>
 
