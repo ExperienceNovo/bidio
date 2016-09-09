@@ -93,7 +93,6 @@ module.exports = {
 		.populate('user')
 		.populate('bids', {where: {isActive: true}})
 		.then(function(campaign){
-			//console.log(campaign.bids)
 			if (!campaign.published){
 				//error handling here
 				return res.redirect("/campaigns")
@@ -130,8 +129,10 @@ module.exports = {
 		.then(function(campaign){
 
 			/*add users to videos*/
+			//return [campaign]
 			return [campaign, Promise.all(
 				campaign.bids.map(function(bid){
+					console.log(bid)
 					return User.findOne({id: bid.video.user});
 				})
 			)]

@@ -30,6 +30,7 @@ angular.module( 'bidio.home', [
 	$scope.trendingVideos = trendingVideos;
 	campaign.title = $sce.trustAsHtml(campaign.title)
 	$scope.campaign = campaign;
+	console.log(campaign)
 	$scope.campaign.media = {
         sources: [
             {

@@ -181,7 +181,10 @@ angular.module( 'bidio.dashboard', [
     titleService.setTitle(video.title);
     $scope.views = views;
     $scope.clicks = clicks;
-    $scope.editingInfo= false
+    $scope.editingInfo = false;
+    $scope.viewLabels = [];
+    $scope.viewSeries = ['Views', 'Clicks']
+    $scope.viewData = [[],[]];
 
     $scope.editInfoToggle = function(){
         $scope.editingInfo = !$scope.editingInfo;
@@ -222,41 +225,40 @@ angular.module( 'bidio.dashboard', [
 
     $scope.updateViews = function(){
 
-        $scope.viewLabels = [];
-        $scope.viewSeries = [];
-        $scope.viewData = [[],[]];
-
         $scope.startDate = new Date($scope.views[0].createdAt);
         $scope.endDate = new Date($scope.views[$scope.views.length-1].createdAt);
         $scope.dayCount = Math.floor(( Date.parse($scope.endDate) - Date.parse($scope.startDate)) / 86400000);
 
-
         //this is tricky
         var currentDate = new Date($scope.startDate.getTime());
-        var currentDate1 = new Date(currentDate.getTime());
+        var newDate = new Date(currentDate.getTime());
+        var newDate2 = new Date(currentDate.getTime());
+        var viewArray = _.pluck($scope.views, 'createdAt').map(function(a) {return new Date(a);});
+        console.log(viewArray)
+
+        function sliced(array,min,max){
+            return array.slice(_.sortedIndex(array, min),_.sortedIndex(array, max)+1);
+        }
+
         for(var i = 0; i < $scope.dayCount; i++) {
-            var currentDate1 = new Date(currentDate1.getTime());
-            currentDate1.setDate(currentDate1.getDate() + 1);
-            $scope.viewLabels.push(new Date(currentDate1.getTime()).toISOString().slice(5, 10));
+            var newDate = new Date(newDate.getTime());
+            newDate.setDate(newDate.getDate() + 1);
+            var newDate2 = new Date(newDate.getTime());
+            newDate.setDate(newDate.getDate() + 2);
 
-            //find set of views with dates between sertain amount here.
-            //l8rr
-            //if($scope.viewLabels[i]> && <$scope.viewLabels[i+1]){
-            //}
+            $scope.viewLabels.push(new Date(newDate.getTime()).toISOString().slice(5, 10));
+            var slicedArray = sliced(viewArray, newDate, newDate2)
+            //console.log(slicedArray);
 
-            console.log(currentDate1)
+            $scope.viewData[0].push(sliced(viewArray, newDate, newDate2).length)
+  
 
         }
 
-
-
-
         if($scope.views){
-            $scope.viewSeries = ['Views', 'Clicks']
             for (x in $scope.views){
                 var dateObj = new Date($scope.views[x].createdAt);
-                //$scope.viewLabels.push(dateObj);
-                $scope.viewData[0].push(x);
+                //$scope.viewData[0].push(x);
             }
             for (x in $scope.clicks){
                 $scope.viewData[1].push(x);
