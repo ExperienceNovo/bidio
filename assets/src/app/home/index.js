@@ -39,6 +39,14 @@ angular.module( 'bidio.home', [
             }
         ],
         poster: $scope.campaign.poster
+    }	
+    $scope.campaign.matt = {
+        sources: [
+            {
+                src: 'https://bidio8.s3.amazonaws.com/2057b5ee-6c67-498e-a6cc-963d26ede0a7.mp4',
+                type: 'video/mp4'
+            }
+        ]    
     }
 	$scope.featuredCampaigns = featuredCampaigns;
     $scope.toggle = true;

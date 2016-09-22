@@ -1,370 +1,233 @@
 <style type="text/css">
+  #sec1 {
+    padding-bottom: 0;
+  }
   section {
     padding:120px 0;
   }
 </style>
-
 <div id="main">
-  <div id="wrapper">
-    <div class="content-holder">
-      <div class="content intro-sec">
-        <div class="hero-wrap">
-          <div class="media-container" data-top-bottom="transform: translateY(300px);" data-bottom-top="transform: translateY(-300px);">
-            <div class="video-mask"></div>
-            <div class="video-holder">
-                <div class="background-vimeo"> 
-                <video class="intro-video" src="/videos/video.mp4" autoplay loop muted></video>
-                </div>
-                <div class="intro-mobile bg"></div>
-            </div>
-          </div>
-          <div class="overlay"></div>
-          <div class="container">
-            <div class="box on" ng-show="toggle" ng-animate="'box'" style="padding-bottom:100px;">
-              <div class="mobile-intro">
-                <section class="rw-wrapper">
-                  <h2 class="rw-sentence" style="font-size:2.75em;">
-                    <span style="color:#fff">Sponsored...</span>
-                    <br>
-                    <div class="rw-words rw-words-1" style="font-size:.75em;">
-                      <span>Creators</span>
-                      <span>Artists</span>
-                      <span>Vloggers</span>
-                      <span>Producers</span>
-                      <span>Musicians</span>
-                      <span>Journalists</span>
+    <div id="wrapper">
+        <div class="content-holder">
+            <div class="content intro-sec">
+                <div class="hero-wrap">
+                    <div class="media-container" data-bottom-top="transform: translateY(-300px);" data-top-bottom="transform: translateY(300px);">
+                        <div class="video-mask"></div>
+                        <div class="video-holder">
+                            <div class="background-vimeo">
+                                <video autoplay="" class="intro-video" loop="" muted="" src="/videos/video.mp4"></video>
+                            </div>
+                            <div class="intro-mobile bg"></div>
+                        </div>
                     </div>
-                  </h2>
+                    <div class="overlay"></div>
+                    <div class="container" style="min-height:50vh">
+                        <div class="box on" ng-animate="'box'" ng-show="toggle" style="padding-bottom:100px;">
+                            <div class="mobile-intro">
+                                <section class="rw-wrapper">
+                                    <h2 class="rw-sentence" style="font-size:2.75em;"><span style="color:#fff">Sponsored...</span><br></h2>
+                                    <div class="rw-words rw-words-1" style="font-size:.75em;">
+                                        <h2 class="rw-sentence" style="font-size:2.75em;"><span>Creators</span> <span>Artists</span> <span>Vloggers</span> <span>Producers</span>
+                                        <span>Musicians</span> <span>Journalists</span></h2>
+                                    </div>
+                                </section>
+                            </div>
+                            <div class="spacing-25"></div><button class="btn-5" ng-click="toggle = !toggle" style="background:transparent;">Watch Video!</button>
+                        </div>
+                        <div class="box off" ng-animate="'box'" ng-hide="toggle" style="padding-bottom:50px;padding-top:100px;">
+                            <section class="vid-wrap">
+                                <video class="home-video vjs-default-skin" controls="" poster="https://s3.amazonaws.com/bidio8/marketing+images/vbg.jpg">
+                                <source src="https://s3.amazonaws.com/bidio8/marketing+images/Bidio_intro_3.20.mov"> Your browser doesn't support HTML5 video tag.</video>
+                            </section>
+                            <button class="btn-5" ng-click="toggle = !toggle" style="background:transparent;">back</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <section id="sec1">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="service-graphic sg2">
+                                    <div class="screen monitor">
+                                        <div class="content">
+                                            <div class="browser">
+                                                <ul class="btns">
+                                                    <li></li>
+                                                    <li></li>
+                                                    <li></li>
+                                                </ul>
+                                                <div class="browser-content">
+                                                    <ul class="txt">
+                                                        <li></li>
+                                                        <li class="big"></li>
+                                                        <li class="third"></li>
+                                                        <li class="third"></li>
+                                                        <li class="third"></li>
+                                                        <li></li>
+                                                        <li></li>
+                                                        <li class="third"></li>
+                                                        <li class="third"></li>
+                                                        <li class="third"></li>
+                                                        <li class="third"></li>
+                                                        <li class="third"></li>
+                                                        <li class="third"></li>
+                                                        <li></li>
+                                                        <li class="big"></li>
+                                                        <li class="third"></li>
+                                                        <li class="third"></li>
+                                                        <li class="third"></li>
+                                                        <li class="third"></li>
+                                                        <li class="third"></li>
+                                                        <li class="third"></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="base">
+                                            <div class="grey-shadow"></div>
+                                            <div class="foot top"></div>
+                                            <div class="foot bottom"></div>
+                                        </div>
+                                    </div>
+                                    <div class="laptop">
+                                        <div class="screen">
+                                            <ul class="txt">
+                                                <li></li>
+                                                <li class="big"></li>
+                                                <li class="third"></li>
+                                                <li class="third"></li>
+                                                <li class="third"></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li class="third"></li>
+                                                <li class="third"></li>
+                                                <li class="third"></li>
+                                                <li class="third"></li>
+                                                <li class="third"></li>
+                                                <li class="third"></li>
+                                                <li></li>
+                                                <li class="big"></li>
+                                                <li class="third"></li>
+                                                <li class="third"></li>
+                                                <li class="third"></li>
+                                                <li class="third"></li>
+                                                <li class="third"></li>
+                                                <li class="third"></li>
+                                            </ul>
+                                        </div>
+                                        <div class="btm"></div>
+                                    </div>
+                                    <div class="phone">
+                                        <div class="screen">
+                                            <ul class="txt">
+                                                <li></li>
+                                                <li></li>
+                                                <li class="txt-half"></li>
+                                                <li class="txt-half"></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li class="txt-half"></li>
+                                                <li class="txt-half"></li>
+                                                <li class="txt-half"></li>
+                                                <li class="txt-half"></li>
+                                                <li></li>
+                                                <li></li>
+                                            </ul>
+                                        </div>
+                                        <div class="shadow"></div>
+                                    </div>
+                                    <div class="ipad" style="z-index: 999;">
+                                        <div class="screen">
+                                            <ul class="txt">
+                                                <li></li>
+                                                <li class="big"></li>
+                                                <li class="txt-half"></li>
+                                                <li class="txt-half"></li>
+                                                <li class="txt-half"></li>
+                                                <li class="txt-half"></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li class="txt-half"></li>
+                                                <li class="txt-half"></li>
+                                                <li class="txt-half"></li>
+                                                <li class="txt-half"></li>
+                                                <li class="txt-half"></li>
+                                                <li class="txt-half"></li>
+                                                <li class="txt-half"></li>
+                                                <li class="txt-half"></li>
+                                                <li></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-7 home-desc">
+                                <h2 class="section-title">Say Hello to <strong style="color:#FE9A2E">BIDIO</strong></h2>
+                                <p>Our unique system helps creators get sponsored without sacrificing authenticity. Using Bidio, independent video producers can upload original content and set minimum bids, then brands compete for the exclusive sponsorship rights.</p>
+                                <div class="spacing-10"></div>
+                                <p>Bidio promotes <a class="desc-link" href="http://www.bidio.co/blog/say-hello-to-bidio">truly native advertising</a>, which matches the purpose of surrounding media. Simply upload your original content, and our team will make sponsorship deals happen.</p>
+                                <div class="process-box">
+                                    <h3>Let's Get Started</h3>
+                                    <ul class="list-inline intro-social-buttons" style="text-align:left;position:relative;top:25px">
+                                        <li>
+                                            <a class="btn anim-button fl-l home-buttons" href="/creators" style="margin-bottom: 15px;">
+                                              <i class="fa fa-long-arrow-left fa-fw"></i> 
+                                              <span class="network-name">Creators</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="btn anim-button fl-l home-buttons" href="/sponsors" style="margin-bottom: 15px;">
+                                              <span class="network-name">Sponsors</span> 
+                                              <i class="fa fa-long-arrow-right fa-fw"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </section>
-              </div>
-              <div class="spacing-25"></div>
-              <button class="btn-5" style="background:transparent;" ng-click="toggle = !toggle">Watch Video!</button>
             </div>
-            <div class="box off" ng-hide="toggle" ng-animate="'box'" style="padding-bottom:50px;padding-top:50px;">
-              <section class="vid-wrap">
-                <video class="home-video vjs-default-skin" controls poster="https://s3.amazonaws.com/bidio8/marketing+images/vbg.jpg">
-                  <source src="https://s3.amazonaws.com/bidio8/marketing+images/Bidio_intro_3.20.mov">
-                  Your browser doesn't support HTML5 video tag.
-                </video>
-              </section>
-              <button class="btn-5" style="background:transparent;" ng-click="toggle = !toggle">back</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="content">
-        <section id="sec1">
-        <!--<div class="sect-subtitle right-align-dec" data-top-bottom="transform: translateY(200px);" data-bottom-top="transform: translateY(-200px);">
-                <span>01</span>
-            </div>-->
-          <div class="container">
-            <div class="row">
-              <div class="col-md-5">
-                <div class="service-graphic sg2">
-                  <div class="screen monitor">
-                    <div class="content">
-                      <div class="browser">
-                        <ul class="btns">
-                          <li></li>
-                          <li></li>
-                          <li></li>
-                        </ul>
-                        <div class="browser-content">
-                          <ul class="txt">
-                            <li></li>
-                            <li class="big"></li>
-                            <li class="third"></li>
-                            <li class="third"></li>
-                            <li class="third"></li>
-                            <li></li>
-                            <li></li>
-                            <li class="third"></li>
-                            <li class="third"></li>
-                            <li class="third"></li>
-                            <li class="third"></li>
-                            <li class="third"></li>
-                            <li class="third"></li>
-                            <li></li>
-                            <li class="big"></li>
-                            <li class="third"></li>
-                            <li class="third"></li>
-                            <li class="third"></li>
-                            <li class="third"></li>
-                            <li class="third"></li>
-                            <li class="third"></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="base">
-                      <div class="grey-shadow"></div>
-                      <div class="foot top"></div>
-                      <div class="foot bottom"></div>
-                    </div>
-                  </div>
-
-                  <div class="laptop">
-                    <div class="screen">
-                      <ul class="txt">
-                        <li></li>
-                        <li class="big"></li>
-                        <li class="third"></li>
-                        <li class="third"></li>
-                        <li class="third"></li>
-                        <li></li>
-                        <li></li>
-                        <li class="third"></li>
-                        <li class="third"></li>
-                        <li class="third"></li>
-                        <li class="third"></li>
-                        <li class="third"></li>
-                        <li class="third"></li>
-                        <li></li>
-                        <li class="big"></li>
-                        <li class="third"></li>
-                        <li class="third"></li>
-                        <li class="third"></li>
-                        <li class="third"></li>
-                        <li class="third"></li>
-                        <li class="third"></li>
-                      </ul>
-                    </div>
-                    <div class="btm"></div>
-                  </div>
-
-                  <div class="phone">
-                    <div class="screen">
-                      <ul class="txt">
-                        <li></li>
-                        <li></li>
-                        <li class="txt-half"></li>
-                        <li class="txt-half"></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li class="txt-half"></li>
-                        <li class="txt-half"></li>
-                        <li class="txt-half"></li>
-                        <li class="txt-half"></li>
-                        <li></li>
-                        <li></li>
-                      </ul>
-                    </div>
-                    <div class="shadow"></div>
-                  </div>
-
-                  <div class="ipad" style="z-index: 999;">
-                    <div class="screen">
-                      <ul class="txt">
-                        <li></li>
-                        <li class="big"></li>
-                        <li class="txt-half"></li>
-                        <li class="txt-half"></li>
-                        <li class="txt-half"></li>
-                        <li class="txt-half"></li>
-                        <li></li>
-                        <li></li>
-                        <li class="txt-half"></li>
-                        <li class="txt-half"></li>
-                        <li class="txt-half"></li>
-                        <li class="txt-half"></li>
-                        <li class="txt-half"></li>
-                        <li class="txt-half"></li>
-                        <li class="txt-half"></li>
-                        <li class="txt-half"></li>
-                        <li></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-7">
-                <h2 class="section-title">Say Hello to <strong style="color:#FE9A2E"> BIDIO</strong></h2>
-                <p>Our video platform’s real-time auction system facilitates crowdsourced digital marketing. Bidio never interrupts media viewers, and we promote passive, retroactive content sponsorship. Sponsors can create unique video campaigns, which allow them to establish creative guidelines, an overall budget, and a “prize-per-click.”</p>
-                <div class="process-box">
-                  <h3>Let's Get Started</h3>
-                  <ul class="list-inline intro-social-buttons" style="text-align:left;position:relative;top:25px">
-                    <li>
-                        <a href="/creators" class="btn anim-button fl-l home-buttons" style="margin-bottom: 15px;"><i class="fa fa-long-arrow-left fa-fw"></i> <span class="network-name">Creators</span></a>
-                    </li>
-                    <li>
-                        <a href="/sponsors" class="btn anim-button fl-l home-buttons" style="margin-bottom: 15px;">
-                          <span class="network-name">Sponsors</span> 
-                          <i class="fa fa-long-arrow-right fa-fw"></i>
-                        </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-        <div class="content dark-bg">
-      <!--<div class="sect-subtitle left-align-dec" data-top-bottom="transform: translateY(-200px);" data-bottom-top="transform: translateY(200px);">
-              <span>02</span>
-          </div>-->                  
-          <div class="parallax-inner">
-              <div class="bg" data-bg="images/bg/1.jpg" data-top-bottom="transform: translateY(300px);" data-bottom-top="transform: translateY(-300px);"></div>
-              <div class="overlay"></div>
-          </div>
-          <section>
-            <div class="container">
-              <div class="row">
-                <div class="col-md-4">
-                    <h2 class="section-title">The Numbers<br><strong style="color: #FE9A2E;"> Don't Lie</strong></h2>
-                </div>
-                <div class="col-md-8">
-                  <p style="font-size:16px;padding-top:25px;">Traditional influencers often accept indirect payments, such as gifts or product samples. Many video producers are willing to accept fame over fortune, but brands oughta pay up! However, both creators and sponsors must clarify when money is involved. Bidio’s revolutionary system enables automatic disclosure, so our users and customers always stay honest.</p>
-                </div>
-                <br>
-              </div>
-              <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-8">
-                  <div class="inline-facts-holder row" style="text-align: right;">
-                    <div class="inline-facts col-md-4 ">
-                      <div class="milestone-counter">
-                        <div class="stats animaper">
-                            <div class="num">$22 Billion</div>
-                        </div>
-                      </div>
-                      <h6 style="margin-bottom: 15px;">Cost of ad-blocking to publishers in 2015</h6>
-                      <br><br><br>
-                      <a style="color:#9a9a9a" href="http://www.iab.com/insights/ad-blocking/">Source</a>
-                    </div>
-                    <div class="inline-facts col-md-4">
-                      <div class="milestone-counter">
-                        <div class="stats animaper">
-                            <div class="num">$6.3 Billion</div>
-                        </div>
-                      </div>
-                      <h6 style="margin-bottom: 15px;">Cost of click fraud to advertisers in 2015</h6>
-                      <br><br><br>
-                      <a style="color:#9a9a9a" href="http://www.whiteops.com/botfraud">Source</a>
-                    </div>
-                    <div class="inline-facts col-md-4">
-                      <div class="milestone-counter">
-                        <div class="stats animaper">
-                            <div class="num">$0</div>
-                        </div>
-                      </div>
-                      <h6 style="margin-bottom: 15px;">Fines imposed by the FTC against dishonest influencer marketing</h6>
-                      <br><br><br>
-                      <a style="color:#9a9a9a" href="https://www.ftc.gov/enforcement/cases-proceedings/closing-letters/machinima-inc">Source</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>      
-        <div class="content">
-            <section id="sec2">
-            <!--<div class="sect-subtitle right-align-dec" data-top-bottom="transform: translateY(200px);" data-bottom-top="transform: translateY(-200px);">
-                    <span>03</span>
-                </div>-->
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-8 col-md-push-2 col-md-pull-2">
-                            <h2 class="section-title algn-right dec-title"><span>featured  <strong  style="color:#FE9A2E"> Campaigns</strong></span></h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-8 col-md-push-2 col-md-pull-2">
-                              <div class="zaxbys-cover">
-                                <h3 style="margin-bottom:15px"><img src="images/zaxbys2.png" style="display:inline;height:35px"> Sponsors <strong>Railhawks</strong> Tryouts</h3>
-                                <div class="video-container" style="width:100%">
-                                   <video 
-                                    vjs-video
-                                    class="video-js vjs-default-skin"
-                                    controls 
-                                    preload="true" 
-                                    vjs-media="campaign.media"
-                                    width="640" 
-                                    height="264" 
-                                    fluid="true"
-                                    poster="{{campaign.poster}}" 
-                                    vjs-ratio="16:9">
-                                  </video>
-                                </div>
-                                <div class="spacing-25"></div>
-                                <a href="/campaign/{{campaign.urlTitle}}/about" class="btn anim-button fl-l" style="float:none"><span>Learn More</span><i class="fa fa-long-arrow-right"></i></a>
-                              </div>
-                            <!-- <div class="parallax-item left-direction">
-                                <div class="paralax-media">
-                                    <ul class="creat-list">
-                                        <li><a href="/campaigns">Food</a></li>
-                                        <li><a href="/campaigns">Lifestyle</a></li>
-                                        <li><a href="/campaigns">Health</a></li>
-                                    </ul>
-                                    <div class="paralax-wrap" style="opacity: .35;">
-                                        <img src="{{campaign.user.profile.picture}}" class="respimg" alt="">
-                                    </div>
-                                </div>
-                                <div class="parallax-deck" data-top-bottom="transform: translateY(-200px);" data-bottom-top="transform: translateY(200px);">
-                                    <div class="parallax-deck-item">
-                                        <h3 ng-bind-html="campaign.title"><br></h3>
-                                        <a href="/campaign/{{campaign.urlTitle}}" class="btn anim-button fl-l"><span>Learn More</span><i class="fa fa-long-arrow-right"></i></a>
-
-                                    </div>
-                                </div>
-                            </div> -->
-                        </div>
-                        <div class="col-md-5"></div>
-                    </div>
-                <!--<div class="row">
-                        <div class="col-md-5"></div>
-                        <div class="col-md-7">
-                            <div class="parallax-item right-direction">
-                                <div class="paralax-media">
-                                    <ul class="creat-list">
-                                        <li><a href="#">Tutorials</a></li>
-                                        <li><a href="#">Code</a></li>
-                                        <li><a href="#">Technology</a></li>
-                                    </ul>
-                                    <div class="paralax-wrap">  
-                                        <img src="images/folio/thumbs/1.jpg" class="respimg" alt="">
-                                    </div>
-                                </div>
-                                <div class="parallax-deck" data-top-bottom="transform: translateY(-200px);" data-bottom-top="transform: translateY(200px);">
-                                    <div class="parallax-deck-item">
-                                        <h3>Sed ut perspiciatis <strong>unde this</strong></h3>
-                                        <a href="portfolio-single.html" class="btn anim-button fl-l"><span>Watch Now</span><i class="fa fa-long-arrow-right"></i></a>                                                                
-                                    </div>
-                                </div>
+            <div class="content">
+                <section id="sec2">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8 col-md-push-2 col-md-pull-2">
+                                <h2 class="section-title algn-left dec-title"><span>featured <strong style="color:#FE9A2E">Creators</strong></span></h2>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-7">
-                            <div class="parallax-item left-direction">
-                                <div class="paralax-media">
-                                    <ul class="creat-list">
-                                        <li><a href="#">Humor</a></li>
-                                        <li><a href="#">Stand-up</a></li>
-                                        <li><a href="#">NYC</a></li>
-                                    </ul>
-                                    <div class="paralax-wrap"> 
-                                        <img src="images/folio/thumbs/1.jpg" class="respimg" alt="">
+                        <div class="row">
+                            <div class="col-md-8 col-md-push-2 col-md-pull-2">
+                                <div class="featured-cover">
+                                    <h3 style="margin-bottom:15px"><strong>MOTHER</strong> by Matt Phillips</h3>
+                                    <div class="video-container" style="width:100%">
+                                        <video class="video-js vjs-default-skin" controls="" fluid="true" height="264" poster="https://s3.amazonaws.com/bidio8/marketing+images/mattposter.jpg" preload="true" vjs-media="campaign.matt"
+                                        vjs-ratio="16:9" vjs-video="" width="640"></video>
                                     </div>
-                                </div>
-                                <div class="parallax-deck" data-top-bottom="transform: translateY(-200px);" data-bottom-top="transform: translateY(200px);">
-                                    <div class="parallax-deck-item">
-                                        <h3>Sed ut perspiciatis <strong>unde this</strong></h3>
-                                        <a href="portfolio-single.html" class="btn anim-button fl-l"><span>Watch Now</span><i class="fa fa-long-arrow-right"></i></a>                                                                
+                                    <div class="spacing-25"></div>
+                                    <!--
+                                    <div class="video-container" style="width:100%">
+                                        <video class="video-js vjs-default-skin" controls="" fluid="true" height="264" poster="{{campaign.poster}}" preload="true" vjs-media="campaign.media"
+                                        vjs-ratio="16:9" vjs-video="" width="640"></video>
                                     </div>
+                                    <div class="spacing-25"></div>
+                                    <a class="btn anim-button fl-l" href="/campaign/{{campaign.urlTitle}}/about" style="float:none">
+                                      <span>Learn More</span>
+                                      <i class="fa fa-long-arrow-right"></i>
+                                    </a>-->
                                 </div>
                             </div>
+                            <div class="col-md-5"></div>
                         </div>
-                        <div class="col-md-5"></div>
-                    </div>-->
-                </div>
-            </section>
+                    </div>
+                </section>
+            </div>
         </div>
     </div>
-  </div>
 </div>

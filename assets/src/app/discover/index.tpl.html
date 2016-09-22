@@ -18,21 +18,22 @@
     <div class="container">
 		<div class="dashboardVideos col-xs-12 col-sm-12 col-md-4 col-lg-4" ng-repeat="video in videos" style="margin-top: 25px;">
 			<div class="spacing-25"></div>
-			<h2 class="bidio-orange" style="font-size:20px;padding-bottom: 5px;margin-bottom: 15px;font-weight: bold;text-transform:capitalize;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
-				<a ui-sref="video({id: video.id})">{{video.title}}</a>
-			</h2>
-			<video 
-				class="video-js vjs-default-skin"
-				controls preload="true" 
-				width="640" 
-				height="264" 
-				fluid="true"
-				poster="{{defaultposter}}"
-				vjs-video
-				vjs-media="video.media"
-				vjs-ratio="16:9">
-			</video>
-			<a ng-show="video.campaign.campaignImageUrl" class="vid-clickthrough" ng-click="clickThrough()"><img src="{{video.campaign.campaignImageUrl}}"></a>
+	    	<a ui-sref="video({id: video.id})">
+				<h2 class="discover-title">
+					{{video.title}}
+				</h2>
+				<video 
+					class="video-js vjs-default-skin"
+					preload="true" 
+					width="640" 
+					height="264" 
+					fluid="true"
+					poster="{{defaultposter}}"
+					vjs-video
+					vjs-media="video.media"
+					vjs-ratio="16:9">
+				</video>
+			</a>
 		</div>
 	</div>
 </div>
