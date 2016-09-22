@@ -1,8 +1,10 @@
+<div class="spacing-25"></div>
 <md-content layout-padding>
-  	<md-button ng-click="addCampaign()">
-			<md-icon>add</md-icon>
-			&nbsp;Add campaign
-  	</md-button>
+	<ul class="list-inline intro-social-buttons" style="position:relative;top:25px">
+	  <li>
+	      <a class="btn anim-button fl-l home-buttons" ng-click="addCampaign()"><i class="fa fa-video-camera fa-fw"></i> <span class="network-name">Add Campaign</span></a>
+	  </li>
+	</ul>
 	<md-list style="text-align:left">
 		<div class="container">			
 			<div ng-repeat="campaign in campaigns" style="text-align:left;">

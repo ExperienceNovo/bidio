@@ -1,14 +1,15 @@
 <div class="spacing-25"></div>
 <md-content layout-padding>
-  <div>
-  	<md-button ng-click="addVideo($event)"><md-icon>add</md-icon>&nbsp;Add video</md-button>
-  </div>
+  <ul class="list-inline intro-social-buttons" style="position:relative;top:25px">
+      <li>
+          <a class="btn anim-button fl-l home-buttons" ng-click="addVideo($event)"><i class="fa fa-file-video-o fa-fw"></i> <span class="network-name">Add Video</span></a>
+      </li>
+  </ul>
   <div style="padding:35px"></div>
   <div class="dashboardVideos col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-repeat="video in videos">
-    <h2><a href="dashboard/video/{{video.id}}">{{video.title}}</a></h2>
-    <div style="padding:15px"></div>
-    <video style="display:inline-block;" class="video-js vjs-default-skin" src={{video.amazonUrl}} controls preload="none" width="640" height="264" poster="" vjs-video>
-    </video>
-    <br>
+      <h2 class="discover-title"><a href="dashboard/video/{{video.id}}">{{video.title}}</a></h2>
+      <div class="spacing-15"></div>
+      <video class="video-js vjs-default-skin" controls="" height="264" poster="" preload="none" src="{{video.amazonUrl}}" style="display:inline-block;" vjs-video=""width="640"></video>
+      <div class="spacing-15"></div>
   </div>
 </md-content>

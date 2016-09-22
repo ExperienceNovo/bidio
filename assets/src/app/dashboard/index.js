@@ -2,7 +2,7 @@ angular.module( 'bidio.dashboard', [
 ])
 
 .config(function config( $stateProvider ) {
-	$stateProvider.state( 'dashboard', {
+    $stateProvider.state( 'dashboard', {
         abstract: true,
         url: '/dashboard',
         views: {
@@ -15,10 +15,11 @@ angular.module( 'bidio.dashboard', [
     .state( 'dashboard.home', {
         url: '',
         controller: 'DashboardHomeCtrl',
-        templateUrl: 'dashboard/templates/home.tpl.html',
+        templateUrl: 'dashboard/templates/profile.tpl.html',
         resolve: {
-            featuredCampaigns: function(CampaignModel){
-                return CampaignModel.getFeatured();
+            UserModel: 'UserModel',
+            user: function(UserModel){
+                return UserModel.getMine();
             }
         }
     })
@@ -134,16 +135,16 @@ angular.module( 'bidio.dashboard', [
         $location.path('/login')
     }
 
-	if (localStorageService.get('redirectTo')) {
-		$location.path(localStorageService.get('redirectTo'));
-		localStorageService.remove('redirectTo');
-	}
+    if (localStorageService.get('redirectTo')) {
+        $location.path(localStorageService.get('redirectTo'));
+        localStorageService.remove('redirectTo');
+    }
 
-	if (window.location.hash && window.location.hash == '#_=_') {
-		console.log('removing hash stuff');
-		window.location.hash = '';
-		console.log(window.location)
-	}
+    if (window.location.hash && window.location.hash == '#_=_') {
+        console.log('removing hash stuff');
+        window.location.hash = '';
+        console.log(window.location)
+    }
 
     $scope.changePath = function (path) {
         $location.path('/dashboard' + path);
@@ -152,14 +153,137 @@ angular.module( 'bidio.dashboard', [
 
 })
 
-.controller( 'DashboardHomeCtrl', function DashboardHomeCtrl( $scope, titleService, lodash, config, featuredCampaigns ) {
+.controller( 'DashboardHomeCtrl', function DashboardHomeCtrl( $scope, titleService, lodash, config, $state, user, ProfileModel, UserModel, $mdDialog, $location, localStorageService ) {
     titleService.setTitle('dashboard');
     $scope.currentUser = config.currentUser;
-    $scope.featuredCampaigns = featuredCampaigns;
+    $scope.username = user.username;
+    $scope.submitLoading = false;
+    $scope.profile = user.profile[0];
+    $scope.passports = user.passports;
+    $scope.user = user;
+
+    $scope.submit = function(profile){
+
+        $scope.submitLoading = true;
+
+        var toUpdate = {id: profile.id};
+
+        if (profile.pictureUrl){
+            toUpdate.pictureUrl = profile.pictureUrl;
+        }
+
+        if (profile.bannerUrl){
+            toUpdate.bannerUrl = profile.bannerUrl;
+        }
+
+        if (profile.firstName){
+            toUpdate.firstName = profile.firstName;
+        }
+
+        if (profile.lastName){
+            toUpdate.lastName = profile.lastName;
+        }
+
+        if (profile.description){
+            toUpdate.description = profile.description;
+        }
+
+        if (profile.companyName){
+            toUpdate.companyName = profile.companyName;
+        }
+
+        if (profile.companyUrl){
+            toUpdate.companyUrl = profile.companyUrl;
+        }
+
+        if (profile.isSponsor){
+            toUpdate.isSponsor = profile.isSponsor;
+        }
+
+        if (profile.isTrusted){
+            toUpdate.isTrusted = profile.isTrusted;
+        }
+
+        if (profile.user){
+            toUpdate.user = profile.user;
+        }
+
+        ProfileModel.update(toUpdate)
+            .then(function(){
+                $scope.submitLoading = false;
+                $state.go('dashboard.profileMain')
+            })
+            .catch(function(err){
+                console.log(err);
+                $scope.submitLoading = false;
+            })
+    }
+
+    $scope.addProfilePic = function(ev){
+
+        $mdDialog.show({
+          controller: 'ProfilePicCtrl',
+          templateUrl: 'dashboard/templates/addProfilePic.tpl.html',
+          parent: angular.element(document.body),
+          targetEvent: ev,
+          clickOutsideToClose:true,
+          fullscreen: false
+        })
+        .then(function(result){
+            $scope.profile.pictureUrl = result;
+        })
+    }
+
+    $scope.addBannerPic = function(ev){
+
+        $mdDialog.show({
+          controller: 'ProfilePicCtrl',
+          templateUrl: 'dashboard/templates/addProfilePic.tpl.html',
+          parent: angular.element(document.body),
+          targetEvent: ev,
+          clickOutsideToClose:true,
+          fullscreen: false
+        })
+        .then(function(result){
+            $scope.profile.bannerUrl = result;
+        })
+    }
+
+    $scope.passportRegistered = function(provider) {
+        for (i in $scope.passports) {
+            if ($scope.passports[i].provider === provider)
+                return true;
+            }
+        return false;
+    }
+
+    $scope.removePassport = function(provider) {
+        UserModel.removePassport(provider)
+            .then(function(result) {
+                console.log(result)
+                $scope.passports = $scope.passports.filter(function(val, ind, arr) {
+                    return !(arr[ind].identifier === result[0].identifier);
+                })
+
+                user.socialAccounts[(result[0].provider).toString()] = {}
+                UserModel.update(user)
+
+            })
+    }
+
+    $scope.hasSinglePassport = function() {
+        return $scope.passports.length <= 1;
+    }
+
+    $scope.go = function(path) {
+        localStorageService.set('redirectTo', $location.path());
+        console.log(localStorageService.get('redirectTo'))
+        $location.path(path);
+    };
 })
 
 .controller( 'DashboardAnalyticsCtrl', function DashboardAnalyticsCtrl( $scope, titleService, config, campaigns, videos ) {
-	titleService.setTitle('analytics');
+    titleService.setTitle('analytics');
     $scope.currentUser = config.currentUser;
     $scope.campaigns = campaigns;
     $scope.videos = videos;
@@ -419,8 +543,8 @@ angular.module( 'bidio.dashboard', [
     $scope.username = user.username;
     $scope.submitLoading = false;
     $scope.profile = user.profile[0];
-	$scope.passports = user.passports;
-	$scope.user = user;
+    $scope.passports = user.passports;
+    $scope.user = user;
 
     $scope.submit = function(profile){
 
@@ -509,37 +633,37 @@ angular.module( 'bidio.dashboard', [
         })
     }
 
-	$scope.passportRegistered = function(provider) {
+    $scope.passportRegistered = function(provider) {
         for (i in $scope.passports) {
             if ($scope.passports[i].provider === provider)
                 return true;
             }
         return false;
-	}
+    }
 
-	$scope.removePassport = function(provider) {
-		UserModel.removePassport(provider)
-			.then(function(result) {
-				console.log(result)
-				$scope.passports = $scope.passports.filter(function(val, ind, arr) {
-					return !(arr[ind].identifier === result[0].identifier);
-				})
+    $scope.removePassport = function(provider) {
+        UserModel.removePassport(provider)
+            .then(function(result) {
+                console.log(result)
+                $scope.passports = $scope.passports.filter(function(val, ind, arr) {
+                    return !(arr[ind].identifier === result[0].identifier);
+                })
 
-				user.socialAccounts[(result[0].provider).toString()] = {}
-				UserModel.update(user)
+                user.socialAccounts[(result[0].provider).toString()] = {}
+                UserModel.update(user)
 
-			})
-	}
+            })
+    }
 
-	$scope.hasSinglePassport = function() {
-		return $scope.passports.length <= 1;
-	}
+    $scope.hasSinglePassport = function() {
+        return $scope.passports.length <= 1;
+    }
 
-	$scope.go = function(path) {
-		localStorageService.set('redirectTo', $location.path());
-		console.log(localStorageService.get('redirectTo'))
-	  	$location.path(path);
-	};
+    $scope.go = function(path) {
+        localStorageService.set('redirectTo', $location.path());
+        console.log(localStorageService.get('redirectTo'))
+        $location.path(path);
+    };
 
 })
 
