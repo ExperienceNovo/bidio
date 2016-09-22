@@ -306,9 +306,10 @@ angular.module( 'bidio.dashboard', [
     $scope.views = views;
     $scope.clicks = clicks;
     $scope.editingInfo = false;
-    $scope.viewLabels = [];
-    $scope.viewSeries = ['Views', 'Clicks']
-    $scope.viewData = [[],[]];
+    $scope.videoLabels = [];
+    $scope.videoSeries = ['Views', 'Clicks']
+    $scope.videoData = [[],[]];
+
 
     $scope.editInfoToggle = function(){
         $scope.editingInfo = !$scope.editingInfo;
@@ -351,51 +352,39 @@ angular.module( 'bidio.dashboard', [
 
         $scope.startDate = new Date($scope.views[0].createdAt);
         $scope.endDate = new Date($scope.views[$scope.views.length-1].createdAt);
+        console.log($scope.endDate - $scope.startDate)
         $scope.dayCount = Math.floor(( Date.parse($scope.endDate) - Date.parse($scope.startDate)) / 86400000);
+        console.log($scope.endDate - $scope.startDate)
+
 
         //this is tricky
         var currentDate = new Date($scope.startDate.getTime());
         var newDate = new Date(currentDate.getTime());
         var newDate2 = new Date(currentDate.getTime());
         var viewArray = _.pluck($scope.views, 'createdAt').map(function(a) {return new Date(a);});
-        console.log(viewArray)
+        //console.log(viewArray)
 
         function sliced(array,min,max){
             return array.slice(_.sortedIndex(array, min),_.sortedIndex(array, max)+1);
         }
 
-        for(var i = 0; i < $scope.dayCount; i++) {
+        for(var i = 0; i < $scope.dayCount/2; i++) {
+
             var newDate = new Date(newDate.getTime());
             newDate.setDate(newDate.getDate() + 1);
             var newDate2 = new Date(newDate.getTime());
-            newDate.setDate(newDate.getDate() + 2);
+            newDate.setDate(newDate.getDate() + 1);
 
-            $scope.viewLabels.push(new Date(newDate.getTime()).toISOString().slice(5, 10));
-            var slicedArray = sliced(viewArray, newDate, newDate2)
-            //console.log(slicedArray);
+            $scope.videoLabels.push(new Date(newDate.getTime()).toISOString().slice(5, 10));
+            var slicedArray = sliced(viewArray, newDate2, newDate);
 
-            $scope.viewData[0].push(sliced(viewArray, newDate, newDate2).length)
+            console.log(newDate)
+            console.log(slicedArray)
+            console.log(newDate2)
+            console.log('----------------------')
+
+            $scope.videoData[0].push(sliced(viewArray, newDate2, newDate).length);
   
-
-        }
-
-        if($scope.views){
-            for (x in $scope.views){
-                var dateObj = new Date($scope.views[x].createdAt);
-                //$scope.viewData[0].push(x);
-            }
-            for (x in $scope.clicks){
-                $scope.viewData[1].push(x);
-            }
-        }
-
-        else{
-            $scope.viewLabels = ["January", "February", "March", "April", "May", "June", "July"];
-            $scope.viewSeries = ['Views', 'Click Throughs'];
-            $scope.viewData = [
-                [65, 59, 80, 81, 56, 55, 40],
-                [28, 48, 40, 19, 86, 27, 90]
-            ];
         }
 
     };
@@ -403,25 +392,39 @@ angular.module( 'bidio.dashboard', [
 
     $scope.updateClicks = function(){
 
-        $scope.clickLabels = [];
-        $scope.clickSeries = [];
-        $scope.clickData = [[]];
+        $scope.startDateClick = new Date($scope.views[0].createdAt);
+        $scope.endDateClick = new Date($scope.views[$scope.views.length-1].createdAt);
+        $scope.dayCountClick = Math.floor(( Date.parse($scope.endDate) - Date.parse($scope.startDate)) / 86400000);
 
-        if($scope.clicks){
-            $scope.clickSeries = ['Clicks']
-            for (x in $scope.clicks){
-                $scope.clickLabels.push($scope.clicks[x].createdAt);
-                $scope.clickData[0].push(x);
-            }
+
+        //this is tricky
+        var currentDateClick = new Date($scope.startDateClick.getTime());
+        var newDateClick = new Date(currentDateClick.getTime());
+        var newDateClick2 = new Date(currentDateClick.getTime());
+        var clickArray = _.pluck($scope.clicks, 'createdAt').map(function(a) {return new Date(a);});
+        //console.log(viewArray)
+
+        function sliced(array,min,max){
+            return array.slice(_.sortedIndex(array, min),_.sortedIndex(array, max)+1);
         }
 
-        else{
-            $scope.clickLabels = ["January", "February", "March", "April", "May", "June", "July"];
-            $scope.clickSeries = ['Clicks', 'Click Throughs'];
-            $scope.clickData = [
-                [65, 59, 80, 81, 56, 55, 40],
-                [28, 48, 40, 19, 86, 27, 90]
-            ];
+        for(var i = 0; i < $scope.dayCountClick/2; i++) {
+
+            var newDateClick = new Date(newDateClick.getTime());
+            newDateClick.setDate(newDateClick.getDate() + 1);
+            var newDateClick2 = new Date(newDateClick.getTime());
+            newDateClick.setDate(newDateClick.getDate() + 1);
+
+            //$scope.clickLabels.push(new Date(newDateClick.getTime()).toISOString().slice(5, 10));
+            var slicedArray = sliced(clickArray, newDateClick2, newDateClick);
+
+            //console.log(newDate)
+            //console.log(slicedArray)
+            //console.log(newDate2)
+            //console.log('----------------------')
+
+            $scope.videoData[1].push(sliced(clickArray, newDateClick2, newDateClick).length);
+  
         }
 
     };
