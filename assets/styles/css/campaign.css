@@ -1,12 +1,10 @@
 .campaignsTitleContainer {
-    padding: 50px;
-    background-color: #faa93f;
+    text-align: left;
+    padding: 50px 0px;
 }
 .contentTitleLetters{
-	color:white;
-    font-weight:700;
-    font-size: 3vw;
-
+    font-weight: 700;
+    font-size: 2vw;
 }
 p.campaignsInfoText{
 	padding-bottom: 25px;
@@ -36,7 +34,7 @@ img.sponsorPic{
 }
 
 img.sponsorPicLarge{
-    width: 80%;
+    width: 50%;
 }
 .campaignContainer {
     padding-top: 50px;

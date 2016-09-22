@@ -1,26 +1,17 @@
-<div class="surface-container home-pad">
-	<div class="campaignsTitleContainer">
-		<h2 class="contentTitleLetters">{{campaign.title}}</h2>
+<div class="container">
+	<div class="spacing-25"></div>
+	<uib-tabset active="active" class="campaign-tabs">
+		<li ui-sref-active="active">
+			<a ui-sref="campaign.about({path: campaign.urlTitle})">Campaign</a>
+		</li>
+		<li ui-sref-active="active">
+			<a ui-sref="campaign.main({path: campaign.urlTitle})">Sponsor</a>
+		</li>
+	</uib-tabset>
+	<div class="surface-container home-pad">
+		<div class="campaignsTitleContainer">
+			<h2 class="contentTitleLetters">{{campaign.title}}</h2>
+		</div>
 	</div>
+	<div ui-view style="height: 100%;"></div>
 </div>
-<uib-tabset active="active" class="campaign-tabs">
-	<li ui-sref-active="active">
-		<a ui-sref="campaign.about({path: campaign.urlTitle})">Campaign</a>
-	</li>
-	<li ui-sref-active="active">
-		<a ui-sref="campaign.main({path: campaign.urlTitle})">Sponsor</a>
-	</li>
-</uib-tabset>
-
-<div ui-view style="height: 100%;"></div>
-<!--<style type="text/css">
-	.video-footer {
-	    float: left;
-	    margin-top: 100px;
-	    width: 100%;
-	    height: 150px;
-	    background: #101010;
-	    border-top: 5px solid #FE9A2E;
-	}
-</style>
-<div ng-include="'footer/index.tpl.html'"class="video-footer"></div>-->

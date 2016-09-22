@@ -1,12 +1,10 @@
 <div class="container"> 
     <div class="bidio-profile">
-        <img align="left" class="bidio-image-lg" src="{{campaign.bannerUrl}}" alt="Profile Banner"/>
-        <img align="left" class="bidio-image-profile thumbnail" src="{{campaign.user.profile.picture}}" alt="Profile Pic"/>
-        <div class="bidio-profile-text">
-        <!--<h2 align="left" class="bidio-orange" style="font-weight: bold;">{{campaign.user.username}}</h2>-->
-            <hr>
+        <img align="left" class="bidio-image-lg" src="{{campaign.bannerUrl}}" alt="Campaign Banner"/>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div ng-bind-html="campaignContent"></div>
         </div>
     </div>
-    <div ng-bind-html="campaignContent">
-	</div>
 </div>
