@@ -18,24 +18,20 @@
       </div>
 
       <div class="spacing-25"></div>
-      <canvas id="line" class="chart chart-line" chart-data="viewData"
-            chart-labels="viewLabels" chart-legend="true" chart-series="viewSeries"
+      <canvas id="line" class="chart chart-line" chart-data="videoData"
+            chart-labels="videoLabels" chart-legend="true" chart-series="videoSeries"
             chart-click="onClick">
       </canvas> 
-      <!--<canvas id="line" class="chart chart-line" chart-data="clickData"
-            chart-labels="clickLabels" chart-legend="true" chart-series="clickSeries"
-            chart-click="onClick">
-      </canvas>-->
       <div class="row">
         <div class="spacing-25"></div>
         <div class="col-md-6" style="margin-top:25px">
           <h2 style="font-weight:bold;color:#FAA93F;text-align:left;">Finance</h2>
           <hr>
           <p><b>Campaign</b>: <a href="/campaign/{{video.campaign.urlTitle}}">{{video.campaign.title}}</a></p>
-          <p><b>Views</b>: {{video.clickCount}}</p>
+          <p><b>Views</b>: {{video.viewCount}}</p>
           <p><b>Clicks</b>: {{video.clickCount}}</p>
           <p><b>Price per click</b>: ${{video.campaign.price | number: 2}}</p>
-          <p><b>Total payment</b>: ${{video.clickCount * campaign.price | number: 2}}</p>
+          <p><b>Total payment</b>: ${{video.clickCount * video.campaign.price | number: 2}}</p>
 
         </div>
         <div class="col-md-6" style="margin-top:25px">
