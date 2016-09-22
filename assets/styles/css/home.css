@@ -1,5 +1,16 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800);
 
+html :before,html :after {
+    box-sizing: border-box;
+    -webkit-transition: .5s;
+    transition: .5s;
+}
+
+html i,html em,html b,html strong,html span {
+    -webkit-transition: none;
+    transition: none;
+}
+
 body,
 html {
     width: 100%;
@@ -117,15 +128,28 @@ h2 {
     transition: none!important;
 }
 
-html :before,html :after {
-    box-sizing: border-box;
-    -webkit-transition: .5s;
-    transition: .5s;
-}
+@media(max-width:767px) {
+    .intro-message {
+        padding-bottom: 15%;
+    }
 
-html i,html em,html b,html strong,html span {
-    -webkit-transition: none;
-    transition: none;
+    .intro-message > h1 {
+        font-size: 3em;
+    }
+
+    ul.intro-social-buttons > li {
+        display: block;
+        margin-bottom: 20px;
+        padding: 0;
+    }
+
+    ul.intro-social-buttons > li:last-child {
+        margin-bottom: 0;
+    }
+
+    .intro-divider {
+        width: 100%;
+    }
 }
 
 [class^="btn-"] {
