@@ -25,7 +25,6 @@ body {
 
 .footer {
     float: left;
-    margin-top: 50px;
     width: 100%;
     height: 150px;
     background: #000;
@@ -540,7 +539,7 @@ form[role=search] .form-group {
 }
 
 .dark-bg {
-    background: #1B1B1B;
+    background: rgba(0,0,0,0.87);
 }
 
 .dark-bg .overlay {

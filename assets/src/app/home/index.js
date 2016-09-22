@@ -19,13 +19,17 @@ angular.module( 'bidio.home', [
 			},
 			campaign: function(CampaignModel){
 				return CampaignModel.getByUrl("railhawks-tryouts.8");
+			},
+			videos: function(VideoModel){
+				return VideoModel.getAll();
 			}
 		}
 	});
 })
 
-.controller( 'HomeCtrl', function HomeController( $scope, titleService, config, trendingVideos, campaign, featuredCampaigns, $sce ) {
+.controller( 'HomeCtrl', function HomeController( $scope, titleService, config, trendingVideos, campaign, featuredCampaigns, videos, $sce ) {
 	titleService.setTitle('bidio');
+	$scope.videos = videos;
 	$scope.currentUser = config.currentUser;
 	$scope.trendingVideos = trendingVideos;
 	campaign.title = $sce.trustAsHtml(campaign.title)
