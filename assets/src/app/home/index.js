@@ -17,6 +17,9 @@ angular.module( 'bidio.home', [
 			featuredCampaigns: function(CampaignModel){
 				return CampaignModel.getFeatured();
 			},
+			featuredVideos: function(CampaignModel){
+				return CampaignModel.getFeatured();
+			},
 			campaign: function(CampaignModel){
 				return CampaignModel.getByUrl("railhawks-tryouts.8");
 			},
@@ -27,14 +30,28 @@ angular.module( 'bidio.home', [
 	});
 })
 
-.controller( 'HomeCtrl', function HomeController( $scope, titleService, config, trendingVideos, campaign, featuredCampaigns, videos, $sce ) {
+.controller( 'HomeCtrl', function HomeController( $scope, titleService, config, trendingVideos, campaign, featuredCampaigns, videos, featuredVideos, $sce ) {
 	titleService.setTitle('bidio');
 	$scope.videos = videos;
 	$scope.currentUser = config.currentUser;
 	$scope.trendingVideos = trendingVideos;
 	campaign.title = $sce.trustAsHtml(campaign.title)
 	$scope.campaign = campaign;
-	console.log(campaign)
+	$scope.featuredCampaigns = featuredCampaigns;
+    $scope.toggle = true;
+
+	console.log(campaign);
+	$scope.intro = {
+        sources: [
+            {
+                src: 'https://s3.amazonaws.com/bidio8/marketing+images/Bidio_intro_3.20.mov',
+                type: 'video/mp4'
+            }
+        ],
+        poster: $scope.campaign.poster
+    }	
+
+
 	$scope.campaign.media = {
         sources: [
             {
@@ -52,6 +69,5 @@ angular.module( 'bidio.home', [
             }
         ]    
     }
-	$scope.featuredCampaigns = featuredCampaigns;
-    $scope.toggle = true;
+
 });

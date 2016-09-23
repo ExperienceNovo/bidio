@@ -134,6 +134,9 @@ angular.module( 'bidio.dashboard', [
     if (!config.currentUser){
         $location.path('/login')
     }
+    else{
+        $location.path('/dashboard/profile')
+    }
 
     if (localStorageService.get('redirectTo')) {
         $location.path(localStorageService.get('redirectTo'));

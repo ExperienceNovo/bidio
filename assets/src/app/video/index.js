@@ -70,26 +70,23 @@ angular.module( 'bidio.video', [
 			}
 		});
 	};
-
-    $scope.cancel = function(){
-        $mdDialog.cancel();
-    };
     
 	$scope.share = function(ev) {
 
-    $mdDialog.show({
-      controller: "ShareDialogCtrl",
-      templateUrl: 'video/templates/shareDialog.tpl.html',
-      parent: angular.element(document.body),
-      targetEvent: ev,
-      clickOutsideToClose: true,
-		resolve: {
-			user: function(UserModel){
-					return UserModel.getMine();
+	    $mdDialog.show({
+	      controller: "ShareDialogCtrl",
+	      templateUrl: 'video/templates/shareDialog.tpl.html',
+	      parent: angular.element(document.body),
+	      targetEvent: ev,
+	      clickOutsideToClose: true,
+			resolve: {
+				user: function(UserModel){
+						return UserModel.getMine();
+				}
 			}
-		}
-    });
-  };
+	    });
+
+	};
 
 	$scope.clickThrough = function(){
 		$scope.video.clicked = true;
@@ -125,7 +122,7 @@ angular.module( 'bidio.video', [
 
 })
 
-.controller('BidCtrl', function ($scope, highestBid, video, config, campaigns, BidModel, $uibModalInstance ) {
+.controller('BidCtrl', function ($scope, highestBid, video, config, campaigns, BidModel, $uibModalInstance, $mdDialog ) {
 
 	$scope.campaigns = campaigns;
 	$scope.video = video;
@@ -147,6 +144,10 @@ angular.module( 'bidio.video', [
 		});
 	}
 
+	$scope.cancel = function() {
+		$uibModalInstance.dismiss();
+	};
+
 })
 
 .controller('ShareDialogCtrl', function ($scope, $location, $mdDialog, ezfb, user, UserModel, ShareModel, localStorageService ) {
@@ -167,13 +168,6 @@ angular.module( 'bidio.video', [
 	$scope.shareFacebook = function() {
 		console.log('share facebook')
 		$mdDialog.cancel();
-
-		// shareService.facebookShare();
-		// window.location = "https://www.facebook.com/dialog/share?app_id=629279003894718"
-		// 	+ "&display=popup"
-		// 	+ "&href=" + encodeURIComponent(shareUrl)
-		// 	+ "&redirect_uri=" + encodeURIComponent(shareUrl);
-
 		ezfb.ui(
      	{
         method: 'share',
@@ -184,8 +178,7 @@ angular.module( 'bidio.video', [
 				hashtag: '#bidio',
       },
       function (res) {
-				console.log(res);
-        // res: FB.ui response
+			console.log(res);
       }
     );
 
@@ -258,8 +251,8 @@ angular.module( 'bidio.video', [
 	};
 
 	$scope.cancel = function() {
-    $mdDialog.cancel();
-  };
+		$mdDialog.cancel();
+	};
 
 	$scope.viewTweet = function() {
 		window.open('https://twitter.com/' + $scope.tweetUsername + '/status/' + $scope.tweetId)
