@@ -60,6 +60,14 @@
     content: "\f0d6";
 }
 
+.tabs label.sponsored-by-label:before {
+    content: "\f25b"
+}
+
+.tabs label.clickCountLabel:before {
+    content: "\f245"
+}
+
 .tabs label:hover {
     color: #888;
     cursor: pointer;
