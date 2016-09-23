@@ -71,6 +71,10 @@ angular.module( 'bidio.video', [
 		});
 	};
 
+    $scope.cancel = function(){
+        $mdDialog.cancel();
+    };
+    
 	$scope.share = function(ev) {
 
     $mdDialog.show({

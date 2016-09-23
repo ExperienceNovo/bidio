@@ -1,18 +1,32 @@
-<div class="row" style="padding:25px;">
-	<h2>Bid on {{video.title}}</h2>
-	<br>
-	<p>Current price per click: ${{highestBid.value | number : 2}}</p>
-	<div class="form-group">
-		<label for="bid-price">Price</label>
-		<input type="text" class="form-control" ng-model="bid.value" id="bid-price" placeholder="Input field">
-	</div>
-	<p>upload logo, insert link options, or select campaign</p>
-	<div class="form-group">
-		<label for="bid-campaign">Select Campaign</label>
-		<select name="bid-campaign" ng-model="bid.campaign" id="bid-campaign" class="form-control" required="required">
-			<option value="">Select Campaign</option>
-			<option ng-repeat="campaign in campaigns" ng-value="campaign.id">{{campaign.title}}</option>
-		</select>
-	</div>
-	<md-button ng-disabled="bid.value <= highestBid.value || !bid.campaign" ng-click="createBid(bid)">Submit</md-button>
-</div>
+<md-content layout-padding>
+    <div class="spacing-15"></div>
+    <div class="container create-modal">
+        <h2><span class="bidio-orange">Bid on </span>{{video.title}}</h2>
+        <div class="spacing-25"></div>
+        <p>Current price per click: ${{highestBid.value | number : 2}}</p>
+        <div class="spacing-15"></div>
+        <md-input-container layout-fill>
+            <label>Price</label>
+            <input ng-model="bid.value" type="text">
+        </md-input-container>
+        <div class="spacing-15"></div>
+        <md-input-container layout-fill>
+        	<!--where's this UX? -->
+			<p>upload logo, insert link options, or select campaign</p>
+        </md-input-container>
+        <div class="spacing-15"></div>
+        <div layout="row">
+            <div class="text-left" flex="100">
+				<select name="bid-campaign" ng-model="bid.campaign" id="bid-campaign" class="form-control" required="required">
+					<option value="">Select Campaign</option>
+					<option ng-repeat="campaign in campaigns" ng-value="campaign.id">{{campaign.title}}</option>
+				</select>
+            </div>
+        </div>
+        <div class="spacing-15"></div>
+        <md-button class="md-raised md-accent" ng-disabled="bid.value <= highestBid.value || !bid.campaign" ng-click="createBid(bid)">Submit</md-button>
+        <md-button class="md-raised" ng-click="cancel()">Cancel</md-button>
+        <div style="width:500px;max-width:100%"></div>
+    </div>
+    <div class="spacing-15"></div>
+</md-content>
