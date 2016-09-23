@@ -359,6 +359,9 @@ angular.module( 'bidio.dashboard', [
         $scope.updateData();
     });
 
+    $scope.startDateMin = new Date($scope.views[0].createdAt);
+    $scope.endDateMax = new Date($scope.views[$scope.views.length-1].createdAt);
+
     $scope.startDate = new Date($scope.views[0].createdAt);
     $scope.endDate = new Date($scope.views[$scope.views.length-1].createdAt);
 

@@ -169,18 +169,18 @@ angular.module( 'bidio.video', [
 		console.log('share facebook')
 		$mdDialog.cancel();
 		ezfb.ui(
-     	{
-        method: 'share',
-				href: 'www.bidio.co',
-				name: 'name',
-				picture: 'https://pbs.twimg.com/profile_images/743123913496891392/6k6q5pg-_400x400.jpg',
-        description: 'description',
-				hashtag: '#bidio',
-      },
-      function (res) {
-			console.log(res);
-      }
-    );
+	     	{
+	        method: 'share',
+					href: 'www.bidio.co',
+					name: 'name',
+					picture: 'https://pbs.twimg.com/profile_images/743123913496891392/6k6q5pg-_400x400.jpg',
+	        description: 'description',
+					hashtag: '#bidio',
+	      },
+	      function (res) {
+				console.log(res);
+	      }
+	    );
 
 
 	};
