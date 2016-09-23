@@ -314,7 +314,6 @@ angular.module( 'bidio.dashboard', [
     $scope.videoSeries = ['Views', 'Clicks']
     $scope.videoData = [[],[]];
 
-
     $scope.editInfoToggle = function(){
         $scope.editingInfo = !$scope.editingInfo;
     }
@@ -352,20 +351,35 @@ angular.module( 'bidio.dashboard', [
 
     };
 
-    $scope.updateViews = function(){
+    $scope.$watch('startDate', function() {
+        $scope.updateData();
+    });
 
-        $scope.startDate = new Date($scope.views[0].createdAt);
-        $scope.endDate = new Date($scope.views[$scope.views.length-1].createdAt);
-        console.log($scope.endDate - $scope.startDate)
-        $scope.dayCount = Math.floor(( Date.parse($scope.endDate) - Date.parse($scope.startDate)) / 86400000);
-        console.log($scope.endDate - $scope.startDate)
+    $scope.$watch('endDate', function() {
+        $scope.updateData();
+    });
 
+    $scope.startDate = new Date($scope.views[0].createdAt);
+    $scope.endDate = new Date($scope.views[$scope.views.length-1].createdAt);
+
+    $scope.updateData = function(){
+        $scope.videoData = [[],[]];
+        $scope.videoLabels = [];
+
+        var startDate = new Date($scope.startDate.getTime());
+        var endDate = new Date($scope.endDate.getTime());
+
+        $scope.dayCount = Math.floor(( Date.parse(endDate) - Date.parse(startDate)) / 86400000);
+        console.log(endDate - startDate);
+        console.log($scope.dayCount)
 
         //this is tricky
-        var currentDate = new Date($scope.startDate.getTime());
+        var currentDate = new Date(startDate.getTime());
         var newDate = new Date(currentDate.getTime());
         var newDate2 = new Date(currentDate.getTime());
         var viewArray = _.pluck($scope.views, 'createdAt').map(function(a) {return new Date(a);});
+        var clickArray = _.pluck($scope.clicks, 'createdAt').map(function(a) {return new Date(a);});
+
         //console.log(viewArray)
 
         function sliced(array,min,max){
@@ -382,58 +396,18 @@ angular.module( 'bidio.dashboard', [
             $scope.videoLabels.push(new Date(newDate.getTime()).toISOString().slice(5, 10));
             var slicedArray = sliced(viewArray, newDate2, newDate);
 
-            console.log(newDate)
-            console.log(slicedArray)
-            console.log(newDate2)
-            console.log('----------------------')
-
-            $scope.videoData[0].push(sliced(viewArray, newDate2, newDate).length);
-  
-        }
-
-    };
-    $scope.updateViews()
-
-    $scope.updateClicks = function(){
-
-        $scope.startDateClick = new Date($scope.views[0].createdAt);
-        $scope.endDateClick = new Date($scope.views[$scope.views.length-1].createdAt);
-        $scope.dayCountClick = Math.floor(( Date.parse($scope.endDate) - Date.parse($scope.startDate)) / 86400000);
-
-
-        //this is tricky
-        var currentDateClick = new Date($scope.startDateClick.getTime());
-        var newDateClick = new Date(currentDateClick.getTime());
-        var newDateClick2 = new Date(currentDateClick.getTime());
-        var clickArray = _.pluck($scope.clicks, 'createdAt').map(function(a) {return new Date(a);});
-        //console.log(viewArray)
-
-        function sliced(array,min,max){
-            return array.slice(_.sortedIndex(array, min),_.sortedIndex(array, max)+1);
-        }
-
-        for(var i = 0; i < $scope.dayCountClick/2; i++) {
-
-            var newDateClick = new Date(newDateClick.getTime());
-            newDateClick.setDate(newDateClick.getDate() + 1);
-            var newDateClick2 = new Date(newDateClick.getTime());
-            newDateClick.setDate(newDateClick.getDate() + 1);
-
-            //$scope.clickLabels.push(new Date(newDateClick.getTime()).toISOString().slice(5, 10));
-            var slicedArray = sliced(clickArray, newDateClick2, newDateClick);
-
             //console.log(newDate)
             //console.log(slicedArray)
             //console.log(newDate2)
             //console.log('----------------------')
 
-            $scope.videoData[1].push(sliced(clickArray, newDateClick2, newDateClick).length);
-  
+            $scope.videoData[0].push(sliced(viewArray, newDate2, newDate).length);
+            $scope.videoData[1].push(sliced(clickArray, newDate2, newDate).length);
+
         }
 
     };
-    $scope.updateClicks()
-
+    $scope.updateData()
 
     $sailsSocket.subscribe('view', function (envelope) {
         switch(envelope.verb) {
