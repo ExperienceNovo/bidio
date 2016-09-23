@@ -21,7 +21,7 @@ angular.module( 'bidio.home', [
 				return CampaignModel.getFeatured();
 			},
 			campaign: function(CampaignModel){
-				return CampaignModel.getByUrl("railhawks-tryouts.8");
+				return CampaignModel.getByUrl("railhawks-tryouts");
 			},
 			videos: function(VideoModel){
 				return VideoModel.getAll();
@@ -35,7 +35,7 @@ angular.module( 'bidio.home', [
 	$scope.videos = videos;
 	$scope.currentUser = config.currentUser;
 	$scope.trendingVideos = trendingVideos;
-	campaign.title = $sce.trustAsHtml(campaign.title)
+	//campaign.title = $sce.trustAsHtml(campaign.title)
 	$scope.campaign = campaign;
 	$scope.featuredCampaigns = featuredCampaigns;
     $scope.toggle = true;
