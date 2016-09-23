@@ -39,8 +39,21 @@
                         </div>
                         <div class="box off" ng-animate="'box'" ng-hide="toggle" style="padding-bottom:50px;padding-top:100px;">
                             <section class="vid-wrap">
-                                <video class="home-video vjs-default-skin" controls="" poster="https://s3.amazonaws.com/bidio8/marketing+images/vbg.jpg">
-                                <source src="https://s3.amazonaws.com/bidio8/marketing+images/Bidio_intro_3.20.mov"> Your browser doesn't support HTML5 video tag.</video>
+                                
+                                <video 
+                                    class="video-js vjs-default-skin" 
+                                    controls="" 
+                                    fluid="true" 
+                                    height="264" 
+                                    poster="https://s3.amazonaws.com/bidio8/marketing+images/vbg.jpg" 
+                                    preload="true" 
+                                    vjs-media="intro"
+                                    vjs-ratio="16:9" 
+                                    vjs-video=""
+                                    width="640">
+                                </video>
+
+
                             </section>
                             <button class="btn-5" ng-click="toggle = !toggle" style="background:transparent;">back</button>
                         </div>
@@ -208,7 +221,7 @@
                         <div class="row">
                             <div class="col-md-8 col-md-push-2 col-md-pull-2">
                                 <div class="featured-cover">
-                                    <a ui-sref="video({id: video.id})"><h3 style="margin-bottom:15px"><strong>MOTHER</strong> by Matt Phillips</h3></a>
+                                    <a ui-sref="video({id: '57e145a21332ce0300731bf7'})"><h3 style="margin-bottom:15px"><strong>MOTHER</strong> by Matt Phillips</h3></a>
                                     <div class="video-container" style="width:100%">
                                         <video class="video-js vjs-default-skin" controls="" fluid="true" height="264" poster="https://s3.amazonaws.com/bidio8/marketing+images/mattposter.jpg" preload="true" vjs-media="campaign.matt"
                                         vjs-ratio="16:9" vjs-video="" width="640"></video>
