@@ -134,7 +134,8 @@ angular.module( 'bidio.dashboard', [
     if (!config.currentUser){
         $location.path('/login')
     }
-    else{
+
+    if($location.path() == '/dashboard'){
         $location.path('/dashboard/profile')
     }
 
