@@ -14,7 +14,6 @@
 				vjs-video
 				>
 			</video>
-			<a ng-show="video.campaign.campaignImageUrl" class="vid-clickthrough" ng-click="clickThrough()"><img src="{{video.campaign.campaignImageUrl}}"></a>
 			<div class="spacing-15"></div>
 		</div>
 	</div>
@@ -25,11 +24,12 @@
 			<div class="tabs">
 				<label for="tab1" title="Member"><a href="/member/{{video.user.username}}">{{video.user.username}}</a></label>
 				<label for="tab2" class="tooltip--bottom" data-tooltip="View Count">{{video.viewCount}}</label>
-				<label for="tab2" class="tooltip--bottom" data-tooltip="Click Count" title="Click Count">{{video.clickCount}}</label>
+				<label for="tab2" class="tooltip--bottom clickCountLabel" data-tooltip="Click Count" title="Click Count">{{video.clickCount}}</label>
 				<label for="tab3" class="tooltip--bottom" data-tooltip="Price Per Click" ng-show="{{video.campaign.price}}">{{video.campaign.price | number: 2 }}</label>
 				<label for="tab4" title="Share" ng-click="share()"><a>Share</a></label>				
 				<label class="tooltip--bottom" data-tooltip="Sponsor Video?" for="tab5" ng-click="bid()" ng-hide="!currentUser">Make Bid</label>
-				<label ng-show="video.campaign" for="tab4" title="{{video.campaign.prompt}}" ng-click="clickThrough()"><a>{{video.campaign.prompt}}</a></label>				
+				<div class="spacing-5"></div>
+				<label ng-show="video.campaign" for="tab4" title="{{video.campaign.prompt}}" ng-click="clickThrough()" class="sponsored-by-label"><a>Sponsored by {{video.campaign.prompt}}</a></label>				
 			</div>
 			<p class="container" style="padding: 25px;text-align:justify;">{{video.description}}</p>
 		</div>
