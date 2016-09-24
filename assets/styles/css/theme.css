@@ -1038,6 +1038,7 @@ nav {
     position: relative;
     float: left;
     width: 100%;
+    z-index: 99999;
 }
 
 @media only screen and (max-width: 1049px) {
