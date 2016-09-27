@@ -15,6 +15,9 @@ angular.module( 'bidio', [
     'ngFileUpload',
     'ngMaterial',
     'ngAnimate',
+    'LocalStorageModule',
+    'ezfb',
+    'bidio.admin',
     'bidio.blog',
     'bidio.blogPost',
     'bidio.creators',
@@ -32,9 +35,7 @@ angular.module( 'bidio', [
     'bidio.search',
     'bidio.sponsors',
     'bidio.video',
-    'bidio.admin',
-    'LocalStorageModule',
-    'ezfb'
+    'bidio.videoEmbed',
 ])
 
 .config( function myAppConfig ( $sceDelegateProvider, $mdThemingProvider, $urlRouterProvider, $locationProvider, ezfbProvider ) {

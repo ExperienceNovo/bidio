@@ -60,6 +60,7 @@ module.exports.routes = {
   'get /sponsors': 'HomeController.index',
   'get /upload': 'HomeController.index',
   'get /video/:id': 'HomeController.index',
+  'get /v/:id': 'HomeController.index',
 
   'get /zaxbys': 'HomeController.index',
   'get /questions': 'HomeController.index',
