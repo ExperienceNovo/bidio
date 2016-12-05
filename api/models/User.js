@@ -25,6 +25,12 @@ module.exports = {
         passports: {
           collection: 'Passport',
           via: 'user'
+        },
+        passwordResetToken: {
+            type: 'string'
+        },
+        resetTokenExpiresAfter: {
+            type: 'integer'
         }
     },
 
@@ -33,46 +39,34 @@ module.exports = {
           user: model.id,
           socialAccounts: model.socialAccounts
         })
-            .then(function(profile){
-
-                if (!profile){
-                    return next(new Error("Error creating user profile"), null);
-                }
-
-                model.profile = profile;
-
-                /*in case of seeding before templates are created*/
-
-                // if (!emailService.templates.hasOwnProperty('welcome')){
-                //
-                //     return Promise.resolve();
-                // }
-                //
-                // return emailService.sendTemplate('welcome', model.email, 'Welcome To Bidio!', {username: model.username});
-
-            })
-            .then(function(){
-
-                return next(null, model);
-
-            })
-            .catch(function(err){
-
-                return next(err, null);
-
-            });
+        .then(function(profile){
+            if (!profile){
+                return next(new Error("Error creating user profile"), null);
+            }
+            model.profile = profile;
+            /*in case of seeding before templates are created*/
+            if (!emailService.templates.hasOwnProperty('welcome')){
+                return Promise.resolve();
+            }
+            return emailService.sendTemplate('welcome', model.email, 'Welcome To Bidio!', {username: model.username});
+        })
+        .then(function(){
+            return next(null, model);
+        })
+        .catch(function(err){
+            return next(err, null);
+        });
 
     },
 
     getSome: function(limiting, skipping) {
-
         return User.find()
-            .limit(limiting)
-            .skip(skipping)
-            .then(function (models) {
-                return models;
-            });
-        },
+        .limit(limiting)
+        .skip(skipping)
+        .then(function (models) {
+            return models;
+        });
+    },
 
     getAll: function() {
         return User.find()

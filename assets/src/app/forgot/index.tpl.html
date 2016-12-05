@@ -1,0 +1,20 @@
+<div class="row" style="text-align:center;">
+    <div class="col-md-12">
+        <h2 class="section-heading">Forgot your password?</h2>
+        <div class="underbox-parent">
+            <div class="underbox-outter2">
+                <span class="underbox"></span>
+            </div>
+        </div>
+        
+        <div class="alert alert-danger" ng-if="globalErr">{{ globalErr }}</div>
+
+        <form action="/api/user/forgot" id="msform" method="post" name="msform" style="height:350px; margin-bottom:15px">
+            <fieldset style="height:300px; margin-top: 100px;">
+                <p>Let us know the email address for your account and we will send you instructions resetting your password (valid for one hour).</p>
+                <input name="email" placeholder="Email" style="margin-top:2.5%" type="text">
+                <button class="next action-button" style="margin-top: 30px;" type="submit">Send</button>
+            </fieldset>
+        </form>
+    </div>
+</div>
