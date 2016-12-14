@@ -13,14 +13,14 @@ module.exports = {
 
 		var templateFileNames
 
-		return utilsService.promisify(fs.readdir, "./mail-templates")
+		return utilsService.promisify(fs.readdir, "./views/email/")
 			.then(function(fileNames){
 
 				templateFileNames = fileNames.map(function(fileName){return fileName.split(".").shift()});
 
 				return Promise.all(
 					fileNames.map(function(fileName){
-						return utilsService.promisify(fs.readFile, "./mail-templates/" + fileName);
+						return utilsService.promisify(fs.readFile, "./views/email/" + fileName);
 					})
 				)
 
@@ -39,6 +39,8 @@ module.exports = {
 	sendTemplate: function(template, email, subject, data){
 
 		var that = this;
+
+		console.log(that.templates[template](data))
 
 		var sendData = {
 			from: "no-reply@" + sails.config.mailgun.domain,

@@ -1,3 +1,5 @@
+var crypto = require("crypto");
+
 module.exports = {
 	getAll: function(req, res) {
 		User.getAll()
@@ -175,7 +177,6 @@ module.exports = {
 				}
 				token = buf.toString('hex');
 				var now = Date.now() + 3600000;
-
 				User.update({email: email},{
 					passwordResetToken: token,
 					resetTokenExpiresAfter: now
@@ -183,15 +184,13 @@ module.exports = {
 				.then(function(user){
 					var tokenUrl = 'https://www.bidio.co' + '/reset/' + token;
 					var data = {tokenUrl: tokenUrl, username: user.firstName || user.email};
-					if (!emailService.templates.hasOwnProperty('welcome')){
-		                return Promise.resolve();
-		            }
+					console.log(data);
 		            return emailService.sendTemplate('reset', user[0].email, 'Reset Password', data);
 				})
 				.then(function(response){
-					if (response[0].status != "sent"){
-						return res.negotiate(response[0].reject_reason);
-					}
+					//if (response[0].status != "sent"){
+					//	return res.negotiate(response[0].reject_reason);
+					//}
 					/*send success message here*/
 					return res.redirect("/forgot/success");
 				})

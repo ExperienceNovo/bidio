@@ -1,4 +1,4 @@
-angular.module( 'countertools.forgotSuccess', [
+angular.module( 'bidio.forgotSuccess', [
 ])
 
 .config(function config( $stateProvider ) {
@@ -16,7 +16,7 @@ angular.module( 'countertools.forgotSuccess', [
 .controller( 'ForgotSuccessCtrl',['$scope','config', 'titleService' , function ForgotSuccessController( $scope, config, titleService ) {
  
 	$scope.globalErr = config.globalErr;
-	titleService.setTitle('countertools');
+	titleService.setTitle('bidio');
 	$scope.currentUser = config.currentUser;
 
 }]);

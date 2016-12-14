@@ -10,6 +10,7 @@ module.exports = {
 
 		return new Promise(function(resolve,reject){
 			prePromise.apply(that, args.concat(function(err,result){
+				console.log(result)
 				if (err) reject(err);
 				else resolve(result);
 			}));

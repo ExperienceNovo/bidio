@@ -35,8 +35,8 @@ module.exports = {
   },
 
   mailgun: {
-    key: 'key-4e1b43d98f37e10fc6d350d8ec21518c',
-    domain: 'bidio.co'
+    key: 'key-397bc08f8c25719e64559f3fdb6a8743',
+    domain: 'mail.bidio.co'
   },
 
 

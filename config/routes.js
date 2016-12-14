@@ -50,11 +50,15 @@ module.exports.routes = {
   'get /dashboard/:path': 'HomeController.index',
   'get /dashboard/:path/:path': 'HomeController.index',
   'get /discover': 'HomeController.index',
+  'get /forgot': 'HomeController.index',
+  'get /forgot/success': 'HomeController.index',
   'get /login': 'HomeController.index',
   'get /logout': 'AuthController.logout',
   'get /member/:path': 'HomeController.index',
   'get /privacy': 'HomeController.index',
   'get /register': 'HomeController.index',
+  'get /reset/:token': 'HomeController.index',
+  'get /reset-success': 'HomeController.index',
   'get /search': 'HomeController.index',
   'get /search/:path': 'HomeController.index',
   'get /sponsors': 'HomeController.index',
@@ -64,6 +68,7 @@ module.exports.routes = {
 
   'get /zaxbys': 'HomeController.index',
   'get /questions': 'HomeController.index',
+
 
   'post /auth/local': 'AuthController.callback',
   'post /auth/local/:action': 'AuthController.callback',
@@ -133,6 +138,8 @@ module.exports.routes = {
   'get /api/user/username/:path': 'UserController.getByUsername',
   'get /api/user/:id': 'UserController.getOne',
   'post /api/user': 'UserController.create',
+  'post /api/user/forgot': 'UserController.forgot',
+  'post /api/user/reset/:token': 'UserController.reset',
   'post /api/user/:id': 'UserController.update',
   'delete /api/user/:id': 'UserController.destroy',
 

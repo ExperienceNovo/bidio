@@ -132,7 +132,6 @@ module.exports = {
 			//return [campaign]
 			return [campaign, Promise.all(
 				campaign.bids.map(function(bid){
-					console.log(bid)
 					return User.findOne({id: bid.video.user});
 				})
 			)]

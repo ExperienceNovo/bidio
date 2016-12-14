@@ -81,7 +81,7 @@ angular.module( 'bidio.video', [
 	      clickOutsideToClose: true,
 			resolve: {
 				user: function(UserModel){
-						return UserModel.getMine();
+					return UserModel.getMine();
 				}
 			}
 	    });
@@ -90,12 +90,12 @@ angular.module( 'bidio.video', [
 
 	$scope.clickThrough = function(){
 		$scope.video.clicked = true;
-		//ClickModel.create().then(function(){
-			//$location.path(/campaign/+video.campaign.urlTitle)
-		//});
-		VideoModel.update($scope.video).then(function(){
-			$location.path(/campaign/+video.campaign.urlTitle);
+		ClickModel.create($scope.viewModel).then(function(){
+			$location.path(/campaign/+video.campaign.urlTitle)
 		});
+		//VideoModel.update($scope.video).then(function(){
+		//	$location.path(/campaign/+video.campaign.urlTitle);
+		//});
 		$location.path(/campaign/+video.campaign.urlTitle);
 
 

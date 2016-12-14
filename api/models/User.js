@@ -7,8 +7,8 @@ module.exports = {
         },
         email: {
             type: 'email',
-            // required: true,
-            // unique: true
+            required: true,
+            unique: true
         },
         videos: {
             collection: 'video',
@@ -44,11 +44,11 @@ module.exports = {
                 return next(new Error("Error creating user profile"), null);
             }
             model.profile = profile;
-            /*in case of seeding before templates are created*/
+            //in case of seeding before templates are created
             if (!emailService.templates.hasOwnProperty('welcome')){
                 return Promise.resolve();
             }
-            return emailService.sendTemplate('welcome', model.email, 'Welcome To Bidio!', {username: model.username});
+            emailService.sendTemplate('welcome', model.email, 'Welcome To Bidio!', {username: model.username});
         })
         .then(function(){
             return next(null, model);

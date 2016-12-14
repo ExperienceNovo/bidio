@@ -3,7 +3,7 @@ angular.module('models.click', ['lodash', 'services', 'sails.io',])
 .service('ClickModel', function(lodash, utils, $sailsSocket) {
 
     this.create = function(newModel) {
-        var url = utils.prepareUrl('click/');
+        var url = utils.prepareUrl('click');
         return $sailsSocket.post(url, newModel).then(success, error);
     };
 

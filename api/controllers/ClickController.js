@@ -21,19 +21,22 @@ module.exports = {
 	},
 
 	create: function (req, res) {
-
+		console.log('CLICK!')
 		var model = {
 			user: req.param('user'),
 			video: req.param('video'),
 			bid: req.param('bid'),
 		};
+		console.log(model)
 
 		Click.create(model)
 		.exec(function(err, model) {
 			if (err) {return console.log(err)}
 			else {
+				console.log(model)
 				Click.count().where({video: req.param('video')})
-				.exec(function(err, viewCount) {
+				.exec(function(err, clickCount) {
+					console.log(clickCount)
 					Video.update({id: req.param('video')}, {clickCount:clickCount}).exec(function afterwards(err, updated){
 						if (err) {return}
 						//else{Video.publishUpdate(updated.toJSON())}
