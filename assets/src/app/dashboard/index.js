@@ -530,6 +530,27 @@ angular.module( 'bidio.dashboard', [
     $scope.passports = user.passports;
     $scope.user = user;
 
+    //STRIPE HERE
+    $scope.getToken = function(status, response) {
+        console.log(response);
+        var token = { token: response.id }
+        $scope.token = token;
+        console.log($scope.token)
+        $scope.order({});
+    };
+
+    /*
+    <form stripe:form="getToken">
+      <fieldset>
+        <input type="text" size="20" data-stripe="number"/>
+        <input type="text" size="4" data-stripe="cvc"/>
+        <input type="text" size="2" data-stripe="exp-month"/>
+        <input type="text" size="4" data-stripe="exp-year"/>
+      </fieldset>
+      <button type="submit">Save</button>
+    </form>
+    */
+
     $scope.submit = function(profile){
 
         $scope.submitLoading = true;
