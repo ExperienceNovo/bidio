@@ -533,10 +533,8 @@ angular.module( 'bidio.dashboard', [
     //STRIPE HERE
     $scope.getToken = function(status, response) {
         console.log(response);
-        var token = { token: response.id }
-        $scope.token = token;
-        console.log($scope.token)
-        $scope.order({});
+        $scope.token = { token: response.id };
+        //-->then go to add credit function, etc etc
     };
 
     /*
