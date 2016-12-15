@@ -37,7 +37,6 @@
     "commit": "1deb8a05d737e5cb9224096378ebe949586cf570"
   },
   "_source": "https://github.com/balderdashy/angularSails.git",
-  "_target": "0.12",
-  "_originalSource": "angularSails",
-  "_direct": true
+  "_target": "~0.12.1",
+  "_originalSource": "angularSails"
 }

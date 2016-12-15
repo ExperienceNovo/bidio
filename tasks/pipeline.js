@@ -50,6 +50,7 @@ var jsFilesToInject = [
   'bower_components/angular-local-storage/dist/angular-local-storage.js',
   'bower_components/angular-off-click/offClick.js',
   'bower_components/angular-easyfb/build/angular-easyfb.min.js',
+  'bower_components/stripe-angular/stripe-angular.js',
 
   //
   // *->    you might put other dependencies like jQuery or Angular here   <-*
