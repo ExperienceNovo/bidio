@@ -8,6 +8,7 @@
     "angular-easyfb": "^1.4.4",
     "bcryptjs": "~2.1.0",
     "connect-mongo": "^0.8.2",
+    "crypto": "0.0.3",
     "ejs": "~0.8.4",
     "grunt": "0.4.2",
     "grunt-contrib-clean": "~0.5.0",
@@ -42,6 +43,7 @@
     "skipper": "balderdashy/skipper",
     "skipper-s3": "^0.5.6",
     "sprintf-js": "^1.0.3",
+    "stripe": "^4.14.0",
     "twit": "^2.2.4",
     "validator": "~3.28.0"
   },
