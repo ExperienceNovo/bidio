@@ -5,7 +5,6 @@ module.exports = {
 	promisify: function(){
 		var args = Array.prototype.slice.call(arguments);
 		var prePromise = args.shift();
-
 		var that = this;
 
 		return new Promise(function(resolve,reject){

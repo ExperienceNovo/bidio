@@ -19,41 +19,23 @@ module.exports = {
         }
     },
 
-    /*beforeCreate: function(model, next){
-        //if negative.. etc
-        Credit.find({user: model.user})
-        .then(function(credits){
-            var creditSum = parseFloat(0);
-            for (x in credits){
-                if (!isNaN(credits[x].value)){
-                    creditSum += parseFloat(credits[x].value);
-                }
-            }
-            if (creditSum > 0){
-                next(model, null);
-            }
-            else{return 'NOT ENOUGH CREDIT'}
-           
-        })
-    },*/
-
     afterCreate: function(model, next){
         Credit.find({user: model.user})
         .then(function(credits){
             var creditSum = parseFloat(0);
             for (x in credits){
-                if (!isNaN(credits[x].value)){
+                if (!isNaN(credits[x].value) && credits[x].value!==null){
                     creditSum += parseFloat(credits[x].value);
                 }
             }
             var newModel = {
                 creditSum: creditSum
             };
+            console.log(newModel);
             User.update({id: model.user}, newModel).then(function(user){
-                //User.PublishUpdate(user)
+                //User.publishUpdate(user);
+                next(null, model)
             });
-            console.log(model)
-            //next(model, null);
         })
     },
 

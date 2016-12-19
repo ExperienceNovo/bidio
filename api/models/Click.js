@@ -20,7 +20,6 @@ module.exports = {
     },
 
     beforeCreate: function(model, next) {
-
         Bid.find({id:model.bid}).then(function(bid){
             Credit.find({user: model.user})
             .then(function(credits){
@@ -31,40 +30,42 @@ module.exports = {
                     }
                 }
                 creditSum = creditSum + parseFloat(-1*bid[0].value);
-                var newModel = {
-                    user: bid[0].user,
-                    value: parseFloat(-1*bid[0].value),
-                };
-
-                //Sponsor has enough credit..
                 if (creditSum > 0){
                     next();
-                    //callback updates needed........--->Credit.js
-                    //subtract credit from sponsor
-                    /*Credit.create(newModel).then(function(credit){
-                        //Credit.PublishUpdate(credit);
-                        console.log('credit created, next...')
-                        var newModel = {
-                            user: model.user,
-                            value: bid[0].value,
-                        };
-                        console.log(newModel);
-                        next();
-
-                        //give credit to creator
-                        //Credit.create(newModel).then(function(credit){
-                            //Credit.PublishUpdate(credit);
-                        //});
-                    });*/
                 }
-                else{console.log('NOT ENOUGH CREDIT.... REMOVE THE BID.. this prob coulb be a dif thing..')}
-               
+                else{
+                    //remove bid here
+                    console.log('NOT ENOUGH CREDIT...')
+                }
+            });
+        });
+    },
 
+    afterCreate: function(model, next) {
+        Bid.find({id:model.bid}).then(function(bid){
+            var newModel = {
+                user: bid[0].user,
+                value: parseFloat(-1*bid[0].value),
+            };
+            console.log(newModel);
+
+            //subtract credit from sponsor
+            Credit.create(newModel).then(function(credit){
+                //Credit.publishUpdate(credit);
+                var newModel = {
+                    user: model.user,
+                    value: bid[0].value,
+                };
+                console.log(newModel);
+                //give credit to creator
+                Credit.create(newModel).then(function(credit){
+                    //Credit.publishUpdate(credit);
+                    next(null, model);
+                });
             });
 
         });
-        
-    },
+    }
 
 };
 

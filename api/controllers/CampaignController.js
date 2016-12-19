@@ -13,17 +13,15 @@ module.exports = {
 		var params = req.params.all();
 
 		Campaign.find(params)
-			.then(function(result){
-				if (result.length){
-					return res.send(400, "Record already exists");
-				}
-
-				return res.send(200);
-			})
-			.catch(function(err){
-				return res.negotiate(err);
-			})
-
+		.then(function(result){
+			if (result.length){
+				return res.send(400, "Record already exists");
+			}
+			return res.send(200);
+		})
+		.catch(function(err){
+			return res.negotiate(err);
+		})
 	},
 
 	getAll: function(req, res) {
@@ -40,9 +38,7 @@ module.exports = {
 	},
 
 	getMine: function(req, res) {
-
 		var id = req.user.id;
-
 		Campaign.find({user: id})
 		.then(function(models) {
 			Campaign.watch(req);
@@ -114,7 +110,6 @@ module.exports = {
 			return campaign;
 		})
 		.then(function(campaign){
-
 			/*get profile*/
 			return [campaign, Profile.findOne({user: campaign.user.id || campaign.user._id})]
 		})
@@ -122,12 +117,10 @@ module.exports = {
 			if (!profile){
 				return campaign;
 			}
-			
 			campaign.user.profile = profile;
 			return campaign;
 		})
 		.then(function(campaign){
-
 			/*add users to videos*/
 			//return [campaign]
 			return [campaign, Promise.all(
