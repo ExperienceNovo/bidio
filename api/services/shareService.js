@@ -1,5 +1,4 @@
 var Twit = require('twit');                        //might not be able to put service because needs require()???
-// var ezfb = require('angular-easyfb');
 var fs = require('fs');
 var Q = require('q');
 var path = require('path');

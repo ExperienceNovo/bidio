@@ -19,10 +19,25 @@ module.exports = {
         }
     },
 
-    //beforeCreate...? if negative.. etc
-    //recalulate the credit sum with the new model, store for the user,
-    //check validates if click events etc. etc.
-    afterCreate: function(model,next){
+    /*beforeCreate: function(model, next){
+        //if negative.. etc
+        Credit.find({user: model.user})
+        .then(function(credits){
+            var creditSum = parseFloat(0);
+            for (x in credits){
+                if (!isNaN(credits[x].value)){
+                    creditSum += parseFloat(credits[x].value);
+                }
+            }
+            if (creditSum > 0){
+                next(model, null);
+            }
+            else{return 'NOT ENOUGH CREDIT'}
+           
+        })
+    },*/
+
+    afterCreate: function(model, next){
         Credit.find({user: model.user})
         .then(function(credits){
             var creditSum = parseFloat(0);
@@ -34,11 +49,11 @@ module.exports = {
             var newModel = {
                 creditSum: creditSum
             };
-            console.log(newModel)
             User.update({id: model.user}, newModel).then(function(user){
-                console.log('UPDATED')
                 //User.PublishUpdate(user)
             });
+            console.log(model)
+            //next(model, null);
         })
     },
 

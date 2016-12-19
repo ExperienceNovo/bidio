@@ -52,7 +52,7 @@ module.exports = {
 		console.log(req.body)
 
 		var transaction = {
-			amount: Math.round(amount * 100),
+			amount: Math.round(amount * 100 * 0.88),
 		 	currency: "usd",
 		  	source: req.param("token"),
 		 	description: "Bidio -- Stripe -- email: " + email,

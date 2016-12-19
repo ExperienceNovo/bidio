@@ -10,31 +10,60 @@ module.exports = {
     attributes: {
         video: {
             model: 'video',
-            required: true
         },
         user: {
-            model: 'user'
+            model: 'user',
         },
         bid: {
-        	model: 'bid'
+        	model: 'bid',
         }
     },
 
-    beforeValidate: function(values, cb) {
-        /*if (typeof(values.title) != "undefined"){
-            var urlTitle = values.title.replace(/ /g,"-").toLowerCase();
-            values.urlTitle = urlTitle
-            console.log(values.urlTitle)
-            Campaign.findOne({urlTitle: urlTitle}).exec(function (err, record) {
-                if (typeof(record) != "undefined"){
-                    values.urlTitle = record.urlTitle + '.8';
-                    cb();
+    beforeCreate: function(model, next) {
+
+        Bid.find({id:model.bid}).then(function(bid){
+            Credit.find({user: model.user})
+            .then(function(credits){
+                var creditSum = parseFloat(0);
+                for (x in credits){
+                    if (!isNaN(credits[x].value) && credits[x].value!==null){
+                        creditSum += parseFloat(credits[x].value);
+                    }
                 }
-                else{
-                    cb();
+                creditSum = creditSum + parseFloat(-1*bid[0].value);
+                var newModel = {
+                    user: bid[0].user,
+                    value: parseFloat(-1*bid[0].value),
+                };
+
+                //Sponsor has enough credit..
+                if (creditSum > 0){
+                    next();
+                    //callback updates needed........--->Credit.js
+                    //subtract credit from sponsor
+                    /*Credit.create(newModel).then(function(credit){
+                        //Credit.PublishUpdate(credit);
+                        console.log('credit created, next...')
+                        var newModel = {
+                            user: model.user,
+                            value: bid[0].value,
+                        };
+                        console.log(newModel);
+                        next();
+
+                        //give credit to creator
+                        //Credit.create(newModel).then(function(credit){
+                            //Credit.PublishUpdate(credit);
+                        //});
+                    });*/
                 }
+                else{console.log('NOT ENOUGH CREDIT.... REMOVE THE BID.. this prob coulb be a dif thing..')}
+               
+
             });
-        }*/
+
+        });
+        
     },
 
 };

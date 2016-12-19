@@ -39,18 +39,16 @@ angular.module( 'bidio.video', [
 
 	console.log($scope.video);
 
-	//console.log($scope.video.bids)
-	//console.log($scope.user)
-
-	if ($scope.currentUser){
-		$scope.viewModel.user = $scope.currentUser.id;
-	    $scope.viewModel.video = $scope.video.id;
-		$scope.viewModel.bid = $scope.video.id;
-	    ViewModel.create($scope.viewModel);
-	}
-
 	var activeBid = video.bids.filter(function(bid){ return bid.isActive });
 	$scope.highestBid = activeBid.length ? activeBid[0] : {value: "0.01"};
+	console.log($scope.highestBid)
+
+	if ($scope.currentUser && $scope.video.bids){
+		$scope.viewModel.user = $scope.currentUser.id;
+	    $scope.viewModel.video = $scope.video.id;
+		$scope.viewModel.bid = $scope.highestBid.id;
+	    ViewModel.create($scope.viewModel);
+	}
 
 	$scope.bid = function(){
 		$uibModal.open({
@@ -59,7 +57,7 @@ angular.module( 'bidio.video', [
 			controller: "BidCtrl",
 			resolve: {
 				video: function(){
-					return video
+					return video;
 				},
 				campaigns: function(CampaignModel){
 					return CampaignModel.getMine();
@@ -93,11 +91,7 @@ angular.module( 'bidio.video', [
 		ClickModel.create($scope.viewModel).then(function(){
 			$location.path(/campaign/+video.campaign.urlTitle)
 		});
-		//VideoModel.update($scope.video).then(function(){
-		//	$location.path(/campaign/+video.campaign.urlTitle);
-		//});
 		$location.path(/campaign/+video.campaign.urlTitle);
-
 
 	};
 

@@ -11,6 +11,7 @@ module.exports = {
 		Click.find()
 		.where({video:req.param('id')})
 		.then(function(model) {
+			console.log(model)
 			Click.watch(req);
 			Click.subscribe(req, model);
 			res.json(model);
@@ -27,16 +28,13 @@ module.exports = {
 			video: req.param('video'),
 			bid: req.param('bid'),
 		};
-		console.log(model)
 
 		Click.create(model)
-		.exec(function(err, model) {
+		.exec(function(err, click) {
 			if (err) {return console.log(err)}
 			else {
-				console.log(model)
 				Click.count().where({video: req.param('video')})
 				.exec(function(err, clickCount) {
-					console.log(clickCount)
 					Video.update({id: req.param('video')}, {clickCount:clickCount}).exec(function afterwards(err, updated){
 						if (err) {return}
 						//else{Video.publishUpdate(updated.toJSON())}
@@ -47,8 +45,8 @@ module.exports = {
 					});
 				});
 				Click.watch(req);
-				Click.publishCreate(model.toJSON());
-				res.json(model);
+				Click.publishCreate(click.toJSON());
+				res.json(click);
 			}
 		});
 	}
