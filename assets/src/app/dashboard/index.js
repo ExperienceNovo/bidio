@@ -74,6 +74,10 @@ angular.module( 'bidio.dashboard', [
             UserModel: 'UserModel',
             user: function(UserModel){
                 return UserModel.getMine();
+            },
+            CreditModel: 'CreditModel',
+            credit: function(CreditModel){
+                return CreditModel.getMine();
             }
         }
     })
@@ -85,6 +89,10 @@ angular.module( 'bidio.dashboard', [
             UserModel: 'UserModel',
             user: function(UserModel){
                 return UserModel.getMine();
+            },
+            CreditModel: 'CreditModel',
+            credit: function(CreditModel){
+                return CreditModel.getMine();
             }
         }
     })
@@ -521,7 +529,7 @@ angular.module( 'bidio.dashboard', [
     }
 })
 
-.controller('DashboardProfileCtrl', function ($state, titleService, $scope, user, ProfileModel, UserModel, $mdDialog, $location, localStorageService) {
+.controller('DashboardProfileCtrl', function ($state, titleService, $scope, user, ProfileModel, UserModel, $mdDialog, $location, localStorageService, credit, CreditModel) {
     titleService.setTitle('profile');
 
     $scope.username = user.username;
@@ -529,25 +537,14 @@ angular.module( 'bidio.dashboard', [
     $scope.profile = user.profile[0];
     $scope.passports = user.passports;
     $scope.user = user;
+    console.log(user);
 
     //STRIPE HERE
     $scope.getToken = function(status, response) {
-        console.log(response);
         $scope.token = { token: response.id };
-        //-->then go to add credit function, etc etc
+        $scope.newCredit.token = $scope.token.token;
+        CreditModel.create($scope.newCredit)
     };
-
-    /*
-    <form stripe:form="getToken">
-      <fieldset>
-        <input type="text" size="20" data-stripe="number"/>
-        <input type="text" size="4" data-stripe="cvc"/>
-        <input type="text" size="2" data-stripe="exp-month"/>
-        <input type="text" size="4" data-stripe="exp-year"/>
-      </fieldset>
-      <button type="submit">Save</button>
-    </form>
-    */
 
     $scope.submit = function(profile){
 

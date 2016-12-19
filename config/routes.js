@@ -110,6 +110,12 @@ module.exports.routes = {
   'post /api/click': 'ClickController.create',
 
   /**
+   * Credit routes
+   */
+  'get /api/credit/me': 'CreditController.getMine',
+  'post /api/credit': 'CreditController.stripe',
+
+  /**
    * Post routes
    */
   'get /api/post': 'PostController.getAll',

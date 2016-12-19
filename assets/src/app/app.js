@@ -18,6 +18,7 @@ angular.module( 'bidio', [
     'LocalStorageModule',
     'ezfb',
     'stripe',
+    'gavruk.card',
     'bidio.admin',
     'bidio.blog',
     'bidio.blogPost',

@@ -57,7 +57,67 @@
 			  		<br>
 			  		<p style="width: 100%;"><textarea aria-label="Profile Description" rows="5" ng-model="profile.description" style="overflow-y:scroll;width: 100%;"></textarea></p>
 				  </md-input-container>
-	  			  <br>
+
+
+
+					<div class="spacing-15"></div>
+			 		<p class="bidio-orange"><b>Credit and Payment Info</b></p>
+			 		<br>
+			  		<p><b>{{user.creditSum}} credits</b></p><br>
+		      		<md-button class="btn anim-button fl-l home-buttons">Add Credit</md-button>
+		      		<md-button ng-show="user.creditSum > 0" class="btn anim-button fl-l home-buttons">Cash Out</md-button>
+		      		<!--toggle if user has credit-->
+		      		<!--check if stripeId"-->
+					<div class="spacing-25"></div>
+					<form stripe:form="getToken">
+						<md-input-container>
+			        		<p><b>Credit Card Number:</b></p> <input aria-label="Credit Card Number" type="text" data-stripe="number">
+						</md-input-container>
+						<md-input-container>
+			        		<p><b>CVC:</b></p> <input aria-label="CVC" type="text" data-stripe="cvc">
+						</md-input-container>
+						<md-input-container>
+			        		<p><b>Expiration Month</b></p> <input aria-label="Expiration Month" type="text" data-stripe="exp-month">
+						</md-input-container>
+						<md-input-container>
+			        		<p><b>Expiration Year</b></p> <input aria-label="Expiration Year" type="text" data-stripe="exp-year">
+						</md-input-container>
+						<md-input-container>
+			        		<p><b>Credit Amount</b></p> <input aria-label="Credit Amount" type="text" ng-model="newCredit.amount">
+						</md-input-container>
+						<md-input-container>
+					    	<md-button class="btn anim-button" type="submit">Submit</md-button>
+						</md-input-container>
+				    </form>
+					<div class="spacing-25"></div>
+
+				    <!--<form action="#"
+				      name="cardForm"
+				      data-card
+				      data-width="500"
+				      data-card-container="#card-container"
+				      data-placeholders="cardPlaceholders"
+				      data-options="cardOptions"
+				      data-messages="cardMessages"
+				      >
+				      <div>
+				          <input placeholder="Card number" type="text" name="CardNumber" card-number data-ng-model="card.number" />
+
+				          <input placeholder="Full name" type="text" name="CardName" card-name data-ng-model="card.name" />
+				      </div>
+				      <div>
+				          <input placeholder="MM / YYYY" type="text" name="CardExpiry" card-expiry data-ng-model="card.expiry" />
+
+				          <input placeholder="CVC" type="text" name="CardCvc" card-cvc data-ng-model="card.cvc" />
+				      </div>
+				    </form>
+				    <br><br>
+				    <div id="card-container"></div>-->
+
+
+
+	  			    <br>
+	  			    <br>
 			  		<p class="bidio-orange"><b>Connect Social Accounts</b></p>
 			  		<div class="spacing-15"></div>
 			  		<ul>

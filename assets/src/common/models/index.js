@@ -3,6 +3,7 @@ angular.module('models', [
 	'models.bid',
 	'models.campaign',
 	'models.click',
+	'models.credit',
 	'models.post',
 	'models.share',
 	'models.user',

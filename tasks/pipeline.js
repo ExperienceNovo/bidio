@@ -51,6 +51,9 @@ var jsFilesToInject = [
   'bower_components/angular-off-click/offClick.js',
   'bower_components/angular-easyfb/build/angular-easyfb.min.js',
   'bower_components/stripe-angular/stripe-angular.js',
+  'bower_components/card/lib/js/card.js',
+  'bower_components/angular-card/src/card-angular.js',
+
 
   //
   // *->    you might put other dependencies like jQuery or Angular here   <-*

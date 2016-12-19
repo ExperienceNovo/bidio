@@ -20,18 +20,20 @@
       <div class="row">
         <div class="col-xs-12">
           <div style="text-align: left;">
-              <div class="bidio-image-profile">
+            <div class="bidio-image-profile">
               <img style="max-width: 100%;padding:10px" class="thumbnail" src="{{profile.pictureUrl}}" alt="Profile Pic"/>  
             </div>
             <div class="prof-desc">   
               <h2>{{user.username}}</h2>
               <hr>
               <div class="desc-inner">
-              <p ng-if="profile.firstName && profile.lastName"><b>Name:</b></p> <p ng-if="profile.firstName">{{profile.firstName}}</p> <p ng-if="profile.lastName">{{profile.lastName}}</p>
-              <br>
-              <p ng-if="profile.companyName && profile.companyUrl"><a target="_blank" href="{{profile.companyUrl}}"><b>Company:</b> {{profile.companyName}}</a></p>
-              <br>
-              <p>{{profile.description}}</p>
+                <p ng-if="profile.firstName && profile.lastName"><b>Name:</b></p> <p ng-if="profile.firstName">{{profile.firstName}}</p> <p ng-if="profile.lastName">{{profile.lastName}}</p>
+                <br>
+                <p ng-if="profile.companyName && profile.companyUrl"><a target="_blank" href="{{profile.companyUrl}}"><b>Company:</b> {{profile.companyName}}</a></p>
+                <br>
+                <p>{{profile.description}}</p>
+                <br>
+                <p>{{user.creditSum}} credits</p>
               </div>
             </div>          
           </div>

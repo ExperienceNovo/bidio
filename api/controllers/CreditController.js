@@ -1,19 +1,21 @@
 /**
- * ProfileController
+ * CreditController
  *
  * @description :: Server-side logic for managing profiles
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
+var stripe = require('stripe');
 module.exports = {
 	
 	getMine: function(req, res) {
 		//only session user == req.param.id
+		var me = req.user.id;
 		Credit.find()
-		.where({user: req.param('id')})
+		.where({user: me})
 		.then(function(models) {
-			Bid.watch(req);
-			Bid.subscribe(req, models);
+			Credit.watch(req);
+			Credit.subscribe(req, models);
 			res.json(models);
 		})
 		.catch(function(err) {
@@ -42,9 +44,9 @@ module.exports = {
 		});
 	},
 
-	siripe: function(req,res){
-		var stripe = require("stripe")("sk_live_cwZWiJ0WBN6dLUh7uoFcq9Kv");
-		var user= req.user.id;
+	stripe: function(req,res){
+		var stripe = require("stripe")("sk_test_7qlDJ93FmNwU7xP4zHRqLKlk");
+		var user = req.user.id;
 		var email = req.param("email");
 		var amount = req.param("amount");
 		console.log(req.body)
@@ -60,7 +62,7 @@ module.exports = {
 		stripe.charges.create(transaction, uniqueKey)
 		.then(function(response){
 			//work on credits here
-			return Credit.create({stripeTransactionId: response.id, user: user, email: email, amount: amount});
+			return Credit.create({stripeTransactionId: response.id, user: user, email: email, value: amount});
 		})
 		.then(function(transaction){
 			return res.ok(transaction);
@@ -69,5 +71,8 @@ module.exports = {
 			return res.send(err.message,400);
 		})
 	},
+
+	cashOut: function(req,res){},
+	
 };
 

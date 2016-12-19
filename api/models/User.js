@@ -22,9 +22,16 @@ module.exports = {
             collection: 'Profile',
             via: 'user'
         },
+        stripeId: {
+            type: 'string'
+        },
+        creditSum: {
+            type: 'float',
+            defaultsTo: 0
+        },
         passports: {
-          collection: 'Passport',
-          via: 'user'
+            collection: 'Passport',
+            via: 'user'
         },
         passwordResetToken: {
             type: 'string'
