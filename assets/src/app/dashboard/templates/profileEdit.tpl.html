@@ -63,7 +63,7 @@
 					<div class="spacing-15"></div>
 			 		<p class="bidio-orange"><b>Credit and Payment Info</b></p>
 			 		<br>
-			  		<p><b>{{user.creditSum}} credits</b></p><br>
+			  		<p><b>{{user.creditSum | number: 2}} credits</b></p><br>
 		      		<md-button class="btn anim-button fl-l home-buttons">Add Credit</md-button>
 		      		<md-button ng-show="user.creditSum > 0" class="btn anim-button fl-l home-buttons">Cash Out</md-button>
 		      		<!--toggle if user has credit-->
