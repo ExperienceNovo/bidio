@@ -49,7 +49,6 @@ module.exports = {
 		var user = req.user.id;
 		var email = req.param("email");
 		var amount = req.param("amount");
-		console.log(req.body)
 
 		var transaction = {
 			amount: Math.round(amount * 100 * 0.88),
@@ -61,8 +60,7 @@ module.exports = {
 		var uniqueKey = {idempotency_key: utilsService.guid()};
 		stripe.charges.create(transaction, uniqueKey)
 		.then(function(response){
-			//work on credits here
-			return Credit.create({stripeTransactionId: response.id, user: user, email: email, value: amount});
+			return Credit.create({stripeTransactionId: response.id, user: user, email: email, value: amount  * 0.88});
 		})
 		.then(function(transaction){
 			return res.ok(transaction);

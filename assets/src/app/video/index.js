@@ -66,11 +66,14 @@ angular.module( 'bidio.video', [
 					return $scope.highestBid;
 				}
 			}
-		});
+		})
+		//.then(function(){
+		//	var activeBid = video.bids.filter(function(bid){ return bid.isActive });
+		//	$scope.highestBid = activeBid.length ? activeBid[0] : {value: "0.01"};
+		//});
 	};
     
 	$scope.share = function(ev) {
-
 	    $mdDialog.show({
 	      controller: "ShareDialogCtrl",
 	      templateUrl: 'video/templates/shareDialog.tpl.html',
@@ -83,16 +86,13 @@ angular.module( 'bidio.video', [
 				}
 			}
 	    });
-
 	};
 
 	$scope.clickThrough = function(){
-		$scope.video.clicked = true;
 		ClickModel.create($scope.viewModel).then(function(){
 			$location.path(/campaign/+video.campaign.urlTitle)
 		});
 		$location.path(/campaign/+video.campaign.urlTitle);
-
 	};
 
 	$sailsSocket.subscribe('bid', function (envelope) {
@@ -164,16 +164,16 @@ angular.module( 'bidio.video', [
 		$mdDialog.cancel();
 		ezfb.ui(
 	     	{
-	        method: 'share',
-					href: 'www.bidio.co',
-					name: 'name',
-					picture: 'https://pbs.twimg.com/profile_images/743123913496891392/6k6q5pg-_400x400.jpg',
-	        description: 'description',
-					hashtag: '#bidio',
-	      },
-	      function (res) {
+	        	method: 'share',
+				href: 'www.bidio.co',
+				name: 'name',
+				picture: 'https://pbs.twimg.com/profile_images/743123913496891392/6k6q5pg-_400x400.jpg',
+	        	description: 'description',
+				hashtag: '#bidio',
+	    	},
+	    	function (res) {
 				console.log(res);
-	      }
+	    	}
 	    );
 
 

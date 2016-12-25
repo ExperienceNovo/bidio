@@ -40,8 +40,6 @@ module.exports = {
 
 		var that = this;
 
-		console.log(that.templates[template](data))
-
 		var sendData = {
 			from: "no-reply@" + sails.config.mailgun.domain,
 			to: email, 

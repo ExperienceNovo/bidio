@@ -34,7 +34,7 @@ module.exports = {
             console.log(newModel);
             User.update({id: model.user}, newModel).then(function(user){
                 //User.publishUpdate(user);
-                next(null, model)
+                next(null, model);
             });
         })
     },
