@@ -31,6 +31,6 @@ angular.module( 'bidio.member', [
 	titleService.setTitle(member.username + ' - bidio');
 	$scope.profile = member.profile[0];
 	console.log($scope.profile)
-	$scope.campaigns = campaigns;
+	$scope.campaigns = campaigns.filter(function(obj){return obj.published == true});
 	$scope.videos = videos;
 });

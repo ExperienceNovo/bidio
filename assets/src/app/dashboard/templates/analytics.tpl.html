@@ -20,7 +20,7 @@
 <div class="container">
 	<div class="spacing-25"></div>
 	<div class="row">
-		<div class="col-md-4">
+		<div class="col-md-6">
 			<md-card>
 				<md-card-content>
 					<p><b>Weekly Statistics</b></p>
@@ -36,7 +36,7 @@
 				</md-card-content>
 			</md-card>
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-6">
 			<md-card>
 				<md-card-content>
 					<p><b>Active Campaigns</b></p>
@@ -47,26 +47,15 @@
 				  	<div flex="20"><p><md-icon>mouse</md-icon></p></div>
 				  </md-content>
 				  <md-divider></md-divider>
-				  <md-content layout="row" layout-fill>
-				  	<div flex="60"><p>Campaign</p></div>
-				  	<div flex="20"><p>50</p></div>
-				  	<div flex="20"><p>10</p></div>
-				  </md-content>
-				  <md-divider></md-divider>
-				  <md-content layout="row" layout-fill>
-				  	<div flex="60"><p>Campaign</p></div>
-				  	<div flex="20"><p>50</p></div>
-				  	<div flex="20"><p>10</p></div>
-				  </md-content>	
-				  <md-divider></md-divider>
-				  <md-content layout="row" layout-fill>
-				  	<div flex="60"><p>Campaign</p></div>
+				  <md-content ng-repeat="campaign in campaigns" layout="row" layout-fill>
+					<div flex="60"><a href="dashboard/{{campaign.z">{{campaign.title}}</a></div>
 				  	<div flex="20"><p>50</p></div>
 				  	<div flex="20"><p>10</p></div>
 				  </md-content>
 				</md-card-content>
 			</md-card>
 		</div>
+		<!--
 		<div class="col-md-4">
 				<md-card>
 					<md-card-content>
@@ -78,10 +67,11 @@
 					</md-card-content>
 				</md-card>
 		</div>
+		-->
 	</div>
 	<div class="spacing-25"></div>
 	<div class="row">	
-		<div class="col-md-6">
+		<div class="col-md-12">
 			<md-card>
 				<md-card-content>
 					<p><b>Cumulative Statistics</b></p>
@@ -98,6 +88,7 @@
 				</md-card-content>
 			</md-card>
 		</div>
+		<!--
 		<div class="col-md-6">
 			<md-card>
 				<md-card-content>
@@ -119,6 +110,7 @@
 				</md-card-content>
 			</md-card>
 		</div>
+		-->
 	</div>
 	<div class="spacing-25"></div>
 </div>

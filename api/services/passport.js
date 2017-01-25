@@ -97,7 +97,10 @@ passport.connect = function (req, query, profile, next) {
   if (!user.username && profile.hasOwnProperty('displayName')) {
     user.username = profile.displayName;
   }
-
+  
+  if (!user.username && profile.hasOwnProperty('screen_name')) {
+    user.username = profile.screen_name;
+  }
   // If new user set socialAccounts to empty object, else set to preexisting
   if (req.user === undefined) {
     user.socialAccounts = {};
@@ -124,7 +127,7 @@ passport.connect = function (req, query, profile, next) {
       user.socialAccounts.twitter.profileUrl = 'http://twitter.com/' + profile.username;
       user.socialAccounts.twitter.displayName = profile.displayName;
       user.socialAccounts.twitter.handle = profile.username;
-      user.socialAccounts.twitter.profilePic = profile.photos[0].value;
+      user.socialAccounts.twitter.profilePic = profile._json.profile_image_url_https;
       break;
     default:
       console.log('provider not caught')
@@ -190,7 +193,6 @@ passport.connect = function (req, query, profile, next) {
           if (err) {
             return next(err);
           }
-
           // Fetch the user associated with the Passport
           User.findOne(passport.user.id, next);
         });

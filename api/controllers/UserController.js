@@ -23,18 +23,15 @@ module.exports = {
 		.populate('passports')
 		.then(function( user ){
 			return res.json( user.passports );
-
 		})
 		.fail(function( err ){
-
 			return res.json( err );
 		})
 	},
 
 	removePassport: function(req,res){
-		id = req.user.id;
-		provider = req.param("provider");
-
+		var id = req.user.id;
+		var provider = req.param("provider");
 		Passport.destroy({user: id, provider: provider})
 		.then(function(passport){
 			res.json(passport);
@@ -45,9 +42,7 @@ module.exports = {
 	},
 
 	getMine: function(req,res){
-
 		var me = req.user.id;
-
 		User.findOne(me)
 		.populate('profile')
 		.populate('passports')
@@ -55,10 +50,8 @@ module.exports = {
 			return res.json(user);
 		})
 		.catch(function(err){
-
 			return res.negotiate(err);
 		});
-
 	},
 
 	getSome: function(req,res){

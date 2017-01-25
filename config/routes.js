@@ -40,7 +40,6 @@ module.exports.routes = {
   'get /account': 'HomeController.index',
   'get /blog': 'HomeController.index',
   'get /blog/:path': 'HomeController.index',
-  'get /browse': 'HomeController.index',
   'get /campaigns': 'HomeController.index',
   'get /campaign/:path': 'HomeController.index',
   'get /campaign/:path/:path': 'HomeController.index',
@@ -65,10 +64,6 @@ module.exports.routes = {
   'get /upload': 'HomeController.index',
   'get /video/:id': 'HomeController.index',
   'get /v/:id': 'HomeController.index',
-
-  'get /zaxbys': 'HomeController.index',
-  'get /questions': 'HomeController.index',
-
 
   'post /auth/local': 'AuthController.callback',
   'post /auth/local/:action': 'AuthController.callback',

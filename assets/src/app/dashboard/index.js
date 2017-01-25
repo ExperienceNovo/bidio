@@ -35,6 +35,16 @@ angular.module( 'bidio.dashboard', [
             VideoModel: 'VideoModel',
             videos: function(VideoModel){
                 return VideoModel.getMine();
+            },
+            clicks: function($q, ClickModel, videos){
+                var clickArray = [];
+                for (x in videos){
+                    clickArray.push(ClickModel.getByVideo(videos[x]).then(function(clicks){
+                        return clicks;
+                    }));
+                }
+                return $q.all(clickArray)
+                //return clickArray;
             }
         }
     })
@@ -121,22 +131,6 @@ angular.module( 'bidio.dashboard', [
     })
 })
 
-.controller ('ResponsiveDashNav', function ResponsiveDashNav($scope, $window){
-
-    $scope.updateWidth = function() {
-        $scope.width = $window.innerWidth;
-    }
-
-    $scope.sideNavHide = function (){
-        if ($scope.width <768){
-            $scope.sideNav = false;
-        }
-        else{
-            $scope.sideNav = true;
-        }
-    };
-})
-
 .controller( 'DashboardCtrl', function DashboardCtrl( $scope, $location, config, localStorageService ) {
 
     if (!config.currentUser){
@@ -221,14 +215,14 @@ angular.module( 'bidio.dashboard', [
         }
 
         ProfileModel.update(toUpdate)
-            .then(function(){
-                $scope.submitLoading = false;
-                $state.go('dashboard.profileMain')
-            })
-            .catch(function(err){
-                console.log(err);
-                $scope.submitLoading = false;
-            })
+        .then(function(){
+            $scope.submitLoading = false;
+            $state.go('dashboard.profileMain')
+        })
+        .catch(function(err){
+            console.log(err);
+            $scope.submitLoading = false;
+        })
     }
 
     $scope.addProfilePic = function(ev){
@@ -263,9 +257,8 @@ angular.module( 'bidio.dashboard', [
 
     $scope.passportRegistered = function(provider) {
         for (i in $scope.passports) {
-            if ($scope.passports[i].provider === provider)
-                return true;
-            }
+            if ($scope.passports[i].provider === provider){return true};
+        }
         return false;
     }
 
@@ -275,12 +268,10 @@ angular.module( 'bidio.dashboard', [
                 console.log(result)
                 $scope.passports = $scope.passports.filter(function(val, ind, arr) {
                     return !(arr[ind].identifier === result[0].identifier);
-                })
-
+                });
                 user.socialAccounts[(result[0].provider).toString()] = {}
                 UserModel.update(user)
-
-            })
+            });
     }
 
     $scope.hasSinglePassport = function() {
@@ -294,11 +285,45 @@ angular.module( 'bidio.dashboard', [
     };
 })
 
-.controller( 'DashboardAnalyticsCtrl', function DashboardAnalyticsCtrl( $scope, titleService, config, campaigns, videos ) {
+.controller( 'DashboardAnalyticsCtrl', function DashboardAnalyticsCtrl( $q, $scope, titleService, config, campaigns, videos, clicks, ClickModel, ViewModel ) {
     titleService.setTitle('analytics');
     $scope.currentUser = config.currentUser;
-    $scope.campaigns = campaigns;
+    $scope.campaigns = campaigns.filter(function(obj){return obj.published == true});
+    console.log(campaigns)
     $scope.videos = videos;
+    $scope.clicks = [];
+    $scope.views = [];
+    console.log(clicks)
+    function doAsyncSeriesClicks(arr) {
+        return arr.reduce(function (promise, item) {
+            return promise.then(function(result) {
+                $scope.clicks = $scope.clicks.concat(result);
+                return ClickModel.getByVideo(item);
+            });
+        }, $q.when($scope.clicks));
+    }
+    function doAsyncSeriesViews(arr) {
+        return arr.reduce(function (promise, item) {
+            return promise.then(function(result) {
+                $scope.views = $scope.views.concat(result);
+                return ViewModel.getByVideo(item);
+            });
+        }, $q.when($scope.clicks));
+    }
+    doAsyncSeriesClicks($scope.videos.map(function(obj){return obj.id})).then(function(model){
+    });
+   // console.log($scope.clicks)
+
+    /*for (x in videos){
+        ClickModel.getByVideo(videos[x].id).then(function(clicks){
+            $scope.clicks = clicks;
+        });
+        ViewModel.getByVideo(videos[x].id).then(function(views){
+            $scope.views.concat(views)
+        });
+    }
+    console.log($scope.clicks);*/
+
 
     $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
     $scope.series = ['Series A', 'Series B'];
@@ -310,6 +335,61 @@ angular.module( 'bidio.dashboard', [
     $scope.onClick = function (points, evt) {
         console.log(points, evt);
     };
+
+    /*
+    $scope.$watch('startDate', function() {
+        $scope.updateData();
+    });
+
+    $scope.$watch('endDate', function() {
+        $scope.updateData();
+    });
+
+    $scope.startDateMin = new Date($scope.views[0].createdAt);
+    $scope.endDateMax = new Date($scope.views[$scope.views.length-1].createdAt);
+
+    $scope.startDate = new Date($scope.views[0].createdAt);
+    $scope.endDate = new Date($scope.views[$scope.views.length-1].createdAt);
+
+    $scope.updateData = function(){
+        $scope.videoData = [[],[]];
+        $scope.videoLabels = [];
+
+        var startDate = new Date($scope.startDate.getTime());
+        var endDate = new Date($scope.endDate.getTime());
+
+        $scope.dayCount = Math.floor(( Date.parse(endDate) - Date.parse(startDate)) / 86400000);
+
+        var currentDate = new Date(startDate.getTime());
+        var newDate = new Date(currentDate.getTime());
+        var newDate2 = new Date(currentDate.getTime());
+        var viewArray = _.pluck($scope.views, 'createdAt').map(function(a) {return new Date(a).getTime();});
+        var clickArray = _.pluck($scope.clicks, 'createdAt').map(function(a) {return new Date(a).getTime();});
+
+        for(var i = 0; i < $scope.dayCount; i++) {
+            var newDate = new Date(newDate.getTime());
+            newDate.setDate(newDate.getDate() + 1);
+            var newDate2 = new Date(newDate.getTime());
+            newDate2.setDate(newDate.getDate() + 1);
+            $scope.videoLabels.push(new Date(newDate.getTime()).toISOString().slice(5, 10));
+            var viewArrayFilter = viewArray.filter(function(value){
+                if (value > newDate.getTime() && value < newDate2.getTime()) {
+                    return true;
+                }
+            });
+            var clickArrayFilter = clickArray.filter(function(value){
+                if (value > newDate.getTime() && value < newDate2.getTime()) {
+                    return true;
+                }
+            });
+            $scope.videoData[0].push(viewArrayFilter.length);
+            $scope.videoData[1].push(clickArrayFilter.length);
+        }
+
+    };
+    $scope.updateData()
+    */
+
 })
 
 .controller( 'DashboardVideoCtrl', function DashboardVideosCtrl( $scope, titleService, video, views, VideoModel, clicks, $sailsSocket, $location ) {
@@ -381,40 +461,31 @@ angular.module( 'bidio.dashboard', [
         var endDate = new Date($scope.endDate.getTime());
 
         $scope.dayCount = Math.floor(( Date.parse(endDate) - Date.parse(startDate)) / 86400000);
-        console.log(endDate - startDate);
-        console.log($scope.dayCount)
 
-        //this is tricky
         var currentDate = new Date(startDate.getTime());
         var newDate = new Date(currentDate.getTime());
         var newDate2 = new Date(currentDate.getTime());
-        var viewArray = _.pluck($scope.views, 'createdAt').map(function(a) {return new Date(a);});
-        var clickArray = _.pluck($scope.clicks, 'createdAt').map(function(a) {return new Date(a);});
+        var viewArray = _.pluck($scope.views, 'createdAt').map(function(a) {return new Date(a).getTime();});
+        var clickArray = _.pluck($scope.clicks, 'createdAt').map(function(a) {return new Date(a).getTime();});
 
-        //console.log(viewArray)
-
-        function sliced(array,min,max){
-            return array.slice(_.sortedIndex(array, min),_.sortedIndex(array, max)+1);
-        }
-
-        for(var i = 0; i < $scope.dayCount/2; i++) {
-
+        for(var i = 0; i < $scope.dayCount; i++) {
             var newDate = new Date(newDate.getTime());
             newDate.setDate(newDate.getDate() + 1);
             var newDate2 = new Date(newDate.getTime());
-            newDate.setDate(newDate.getDate() + 1);
-
+            newDate2.setDate(newDate.getDate() + 1);
             $scope.videoLabels.push(new Date(newDate.getTime()).toISOString().slice(5, 10));
-            var slicedArray = sliced(viewArray, newDate2, newDate);
-
-            //console.log(newDate)
-            //console.log(slicedArray)
-            //console.log(newDate2)
-            //console.log('----------------------')
-
-            $scope.videoData[0].push(sliced(viewArray, newDate2, newDate).length);
-            $scope.videoData[1].push(sliced(clickArray, newDate2, newDate).length);
-
+            var viewArrayFilter = viewArray.filter(function(value){
+                if (value > newDate.getTime() && value < newDate2.getTime()) {
+                    return true;
+                }
+            });
+            var clickArrayFilter = clickArray.filter(function(value){
+                if (value > newDate.getTime() && value < newDate2.getTime()) {
+                    return true;
+                }
+            });
+            $scope.videoData[0].push(viewArrayFilter.length);
+            $scope.videoData[1].push(clickArrayFilter.length);
         }
 
     };
@@ -756,6 +827,49 @@ angular.module( 'bidio.dashboard', [
         console.log(points, evt);
     };
 
+
+    /*$scope.updateData = function(){
+        $scope.videoData = [[],[]];
+        $scope.videoLabels = [];
+
+        var startDate = new Date($scope.startDate.getTime());
+        var endDate = new Date($scope.endDate.getTime());
+
+        $scope.dayCount = Math.floor(( Date.parse(endDate) - Date.parse(startDate)) / 86400000);
+
+        var currentDate = new Date(startDate.getTime());
+        var newDate = new Date(currentDate.getTime());
+        var newDate2 = new Date(currentDate.getTime());
+        var viewArray = _.pluck($scope.views, 'createdAt').map(function(a) {return new Date(a).getTime();});
+        var clickArray = _.pluck($scope.clicks, 'createdAt').map(function(a) {return new Date(a).getTime();});
+
+        for(var i = 0; i < $scope.dayCount; i++) {
+            var newDate = new Date(newDate.getTime());
+            newDate.setDate(newDate.getDate() + 1);
+            var newDate2 = new Date(newDate.getTime());
+            newDate2.setDate(newDate.getDate() + 1);
+            $scope.videoLabels.push(new Date(newDate.getTime()).toISOString().slice(5, 10));
+            var viewArrayFilter = viewArray.filter(function(value){
+                if (value > newDate.getTime() && value < newDate2.getTime()) {
+                    return true;
+                }
+            });
+            var clickArrayFilter = clickArray.filter(function(value){
+                if (value > newDate.getTime() && value < newDate2.getTime()) {
+                    return true;
+                }
+            });
+            $scope.videoData[0].push(viewArrayFilter.length);
+            $scope.videoData[1].push(clickArrayFilter.length);
+        }
+
+    };
+    $scope.updateData()*/
+
+
+
+
+
     var originals = lodash.cloneDeep(campaign.bids);
 
     $scope.campaign = campaign;
@@ -782,27 +896,21 @@ angular.module( 'bidio.dashboard', [
     };
 
     function sort(bid){
-
         if (bid.isNewEntry){
             return "new";
         }
-
         if (!bid.isActive){
             return "old";
         }
-
         if(!bid.isAccepted){
             return "unapproved";
         }
-
         return "approved"
     }
 
     var sorted = $scope.campaign.bids.reduce(function(value,bid){
-
         value[sort(bid)].push(bid);
-                return value;
-
+        return value;
     }, {"new": [],
         "old": [],
         "approved": [],
