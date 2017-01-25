@@ -27,6 +27,9 @@ module.exports = {
 
 		Video.find({user: me})
 			.populate('bids')
+			.populate('views')
+			.populate('clicks')
+
 			.then(function(models){
 				Video.watch(req);
 				Video.subscribe(req, models);

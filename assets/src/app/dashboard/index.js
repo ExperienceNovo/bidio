@@ -35,16 +35,6 @@ angular.module( 'bidio.dashboard', [
             VideoModel: 'VideoModel',
             videos: function(VideoModel){
                 return VideoModel.getMine();
-            },
-            clicks: function($q, ClickModel, videos){
-                var clickArray = [];
-                for (x in videos){
-                    clickArray.push(ClickModel.getByVideo(videos[x]).then(function(clicks){
-                        return clicks;
-                    }));
-                }
-                return $q.all(clickArray)
-                //return clickArray;
             }
         }
     })
@@ -285,65 +275,34 @@ angular.module( 'bidio.dashboard', [
     };
 })
 
-.controller( 'DashboardAnalyticsCtrl', function DashboardAnalyticsCtrl( $q, $scope, titleService, config, campaigns, videos, clicks, ClickModel, ViewModel ) {
+.controller( 'DashboardAnalyticsCtrl', function DashboardAnalyticsCtrl( $q, $scope, titleService, config, campaigns, videos, ClickModel, ViewModel ) {
     titleService.setTitle('analytics');
     $scope.currentUser = config.currentUser;
     $scope.campaigns = campaigns.filter(function(obj){return obj.published == true});
-    console.log(campaigns)
     $scope.videos = videos;
+
+    //console.log(campaigns[0])
+
     $scope.clicks = [];
     $scope.views = [];
-    console.log(clicks)
-    function doAsyncSeriesClicks(arr) {
-        return arr.reduce(function (promise, item) {
-            return promise.then(function(result) {
-                $scope.clicks = $scope.clicks.concat(result);
-                return ClickModel.getByVideo(item);
-            });
-        }, $q.when($scope.clicks));
+    for (x in videos){
+       $scope.clicks = $scope.clicks.concat(videos[x].clicks);
+       $scope.views = $scope.views.concat(videos[x].views);
     }
-    function doAsyncSeriesViews(arr) {
-        return arr.reduce(function (promise, item) {
-            return promise.then(function(result) {
-                $scope.views = $scope.views.concat(result);
-                return ViewModel.getByVideo(item);
-            });
-        }, $q.when($scope.clicks));
-    }
-    doAsyncSeriesClicks($scope.videos.map(function(obj){return obj.id})).then(function(model){
-    });
-   // console.log($scope.clicks)
 
-    /*for (x in videos){
-        ClickModel.getByVideo(videos[x].id).then(function(clicks){
-            $scope.clicks = clicks;
-        });
-        ViewModel.getByVideo(videos[x].id).then(function(views){
-            $scope.views.concat(views)
-        });
-    }
-    console.log($scope.clicks);*/
-
-
-    $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
-    $scope.series = ['Series A', 'Series B'];
-    $scope.data = [
-        [65, 59, 80, 81, 56, 55, 40],
-        [28, 48, 40, 19, 86, 27, 90]
-    ];
+    /*$scope.totalClicks = $scope.campaigns[0].bids.reduce(function(val,item){
+        console.log(item)
+        if (item.video){
+            val += item.video.clickCount;
+            return val;
+        }
+    },0);*/
 
     $scope.onClick = function (points, evt) {
         console.log(points, evt);
     };
 
-    /*
-    $scope.$watch('startDate', function() {
-        $scope.updateData();
-    });
-
-    $scope.$watch('endDate', function() {
-        $scope.updateData();
-    });
+    $scope.videoSeries = ['Views', 'Clicks']
 
     $scope.startDateMin = new Date($scope.views[0].createdAt);
     $scope.endDateMax = new Date($scope.views[$scope.views.length-1].createdAt);
@@ -388,7 +347,14 @@ angular.module( 'bidio.dashboard', [
 
     };
     $scope.updateData()
-    */
+
+    $scope.$watch('startDate', function() {
+        $scope.updateData();
+    });
+
+    $scope.$watch('endDate', function() {
+        $scope.updateData();
+    });
 
 })
 
@@ -780,6 +746,7 @@ angular.module( 'bidio.dashboard', [
     titleService.setTitle('campaigns');
 
     $scope.campaigns = campaigns;
+    console.log(campaigns)
     $scope.addCampaign = function(ev){
         $mdDialog.show({
           controller: 'CampaignDialogCtrl',

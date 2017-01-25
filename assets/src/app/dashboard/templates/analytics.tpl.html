@@ -10,8 +10,8 @@
 		        <md-datepicker ng-model="startDate" md-placeholder="Start date" md-min-date="startDate" md-max-date="endDate"></md-datepicker>
 		        <md-datepicker ng-model="endDate" md-placeholder="End date" md-min-date="startDate" md-max-date="endDate"></md-datepicker>
 		    </div>
-			<canvas id="line" class="chart chart-line" style="padding:15px" chart-data="data"
-			    chart-labels="labels" chart-legend="true" chart-series="series"
+			<canvas id="line" class="chart chart-line" style="padding:15px" chart-data="videoData"
+			    chart-labels="videoLabels" chart-legend="true" chart-series="videoSeries"
 			    chart-click="onClick">
 			</canvas> 
 		</div>
@@ -23,16 +23,19 @@
 		<div class="col-md-6">
 			<md-card>
 				<md-card-content>
-					<p><b>Weekly Statistics</b></p>
-					<div class="spacing-15"></div>
-					<p><b>Clicks</b><span class="pull-right">12345</span></p>
-					<md-divider></md-divider>
-					<p><b>Click-Through Rate</b><span class="pull-right">0.321</span></p>
-					<md-divider></md-divider>
-					<p><b>Expenditure</b><span class="pull-right">5$</span></p>
-					<md-divider></md-divider>
-					<p><b>Top campaign</b></p>
-					<!--<p>Campaign name here</p>-->
+				  <p><b>Videos</b></p>
+				  <div class="spacing-15"></div>
+				  <md-content layout="row" layout-fill>
+				  	<div flex="60"><p><b>Name</b></p></div>
+				  	<div flex="20"><p><md-icon>remove_red_eye</md-icon></p></div>
+				  	<div flex="20"><p><md-icon>mouse</md-icon></p></div>
+				  </md-content>
+				  <md-divider></md-divider>
+				  <md-content ng-repeat="video in videos" layout="row" layout-fill>
+					<div flex="60"><a href="dashboard/video/{{video.id}}">{{video.title}}</a></div>
+				  	<div flex="20"><p>{{video.views.length}}</p></div>
+				  	<div flex="20"><p>{{video.clicks.length}}</p></div>
+				  </md-content>
 				</md-card-content>
 			</md-card>
 		</div>
@@ -48,9 +51,9 @@
 				  </md-content>
 				  <md-divider></md-divider>
 				  <md-content ng-repeat="campaign in campaigns" layout="row" layout-fill>
-					<div flex="60"><a href="dashboard/{{campaign.z">{{campaign.title}}</a></div>
-				  	<div flex="20"><p>50</p></div>
-				  	<div flex="20"><p>10</p></div>
+					<div flex="60"><a href="dashboard/campaign/{{campaign.id}}">{{campaign.title}}</a></div>
+				  	<div flex="20"><p>0</p></div>
+				  	<div flex="20"><p>0</p></div>
 				  </md-content>
 				</md-card-content>
 			</md-card>
@@ -68,6 +71,25 @@
 				</md-card>
 		</div>
 		-->
+	</div>
+	<div class="spacing-25"></div>
+	<div class="row">
+		<div class="col-md-12">
+			<md-card>
+				<md-card-content>
+					<p><b>Weekly Statistics</b></p>
+					<div class="spacing-15"></div>
+					<p><b>Clicks</b><span class="pull-right">12345</span></p>
+					<md-divider></md-divider>
+					<p><b>Click-Through Rate</b><span class="pull-right">0.321</span></p>
+					<md-divider></md-divider>
+					<p><b>Expenditure</b><span class="pull-right">5$</span></p>
+					<md-divider></md-divider>
+					<p><b>Top campaign</b></p>
+					<!--<p>Campaign name here</p>-->
+				</md-card-content>
+			</md-card>
+		</div>
 	</div>
 	<div class="spacing-25"></div>
 	<div class="row">	
