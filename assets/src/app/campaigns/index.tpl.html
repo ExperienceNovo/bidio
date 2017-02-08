@@ -1,14 +1,14 @@
-<div class="surface-container home-pad" style="height: 100%;">
+<div class="container" style="height: 100%;">
 	<div class="spacing-25"></div>
     <h2 class="section-title dec-title" style="text-align: center;"><strong  style="color:#FE9A2E">Campaigns</strong>
-    <hr style="width: 170px;margin: 0 auto;margin-top: 25px;"></h2>
+    <hr style="margin: 0 auto;margin-top: 25px;"></h2>
 	<div class="clearfix">
 		<a ng-show="currentUser" style="float:none;margin-bottom:75px;" ui-sref="dashboard.campaigns" class="text-center btn anim-button fl-l">
 			<span class="network-name">New Campaign</span>
 			<i class="fa fa-long-arrow-right fa-fw"></i>
 		</a>
 	</div>
-	<div class="container">			
+	<div class="">			
 		<div class="col-md-6" ng-repeat="campaign in campaigns" style="text-align:left;margin-bottom:50px;">
 			<div class="col-md-2">	
 				<img style="height:50px;" src="{{campaign.campaignImageUrl}}">
