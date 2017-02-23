@@ -123,13 +123,8 @@ angular.module( 'bidio.dashboard', [
 
 .controller( 'DashboardCtrl', function DashboardCtrl( $scope, $location, config, localStorageService ) {
 
-    if (!config.currentUser){
-        $location.path('/login')
-    }
-
-    if($location.path() == '/dashboard'){
-        $location.path('/dashboard/profile')
-    }
+    if (!config.currentUser){$location.path('/login')}
+    if($location.path() == '/dashboard'){$location.path('/dashboard/profile')}
 
     if (localStorageService.get('redirectTo')) {
         $location.path(localStorageService.get('redirectTo'));
@@ -159,51 +154,18 @@ angular.module( 'bidio.dashboard', [
     $scope.user = user;
 
     $scope.submit = function(profile){
-
         $scope.submitLoading = true;
-
         var toUpdate = {id: profile.id};
-
-        if (profile.pictureUrl){
-            toUpdate.pictureUrl = profile.pictureUrl;
-        }
-
-        if (profile.bannerUrl){
-            toUpdate.bannerUrl = profile.bannerUrl;
-        }
-
-        if (profile.firstName){
-            toUpdate.firstName = profile.firstName;
-        }
-
-        if (profile.lastName){
-            toUpdate.lastName = profile.lastName;
-        }
-
-        if (profile.description){
-            toUpdate.description = profile.description;
-        }
-
-        if (profile.companyName){
-            toUpdate.companyName = profile.companyName;
-        }
-
-        if (profile.companyUrl){
-            toUpdate.companyUrl = profile.companyUrl;
-        }
-
-        if (profile.isSponsor){
-            toUpdate.isSponsor = profile.isSponsor;
-        }
-
-        if (profile.isTrusted){
-            toUpdate.isTrusted = profile.isTrusted;
-        }
-
-        if (profile.user){
-            toUpdate.user = profile.user;
-        }
-
+        if (profile.pictureUrl){toUpdate.pictureUrl = profile.pictureUrl;}
+        if (profile.bannerUrl){toUpdate.bannerUrl = profile.bannerUrl;}
+        if (profile.firstName){toUpdate.firstName = profile.firstName;}
+        if (profile.lastName){toUpdate.lastName = profile.lastName;}
+        if (profile.description){toUpdate.description = profile.description;}
+        if (profile.companyName){toUpdate.companyName = profile.companyName;}
+        if (profile.companyUrl){toUpdate.companyUrl = profile.companyUrl;}
+        if (profile.isSponsor){toUpdate.isSponsor = profile.isSponsor;}
+        if (profile.isTrusted){toUpdate.isTrusted = profile.isTrusted;}
+        if (profile.user){toUpdate.user = profile.user;}
         ProfileModel.update(toUpdate)
         .then(function(){
             $scope.submitLoading = false;
@@ -276,7 +238,7 @@ angular.module( 'bidio.dashboard', [
 })
 
 .controller( 'DashboardAnalyticsCtrl', function DashboardAnalyticsCtrl( $q, $scope, titleService, config, campaigns, videos, ClickModel, ViewModel ) {
-    titleService.setTitle('analytics');
+    titleService.setTitle('dashboard - analytics');
     $scope.currentUser = config.currentUser;
     $scope.campaigns = campaigns.filter(function(obj){return obj.published == true});
     $scope.videos = videos;
@@ -360,7 +322,7 @@ angular.module( 'bidio.dashboard', [
 
 .controller( 'DashboardVideoCtrl', function DashboardVideosCtrl( $scope, titleService, video, views, VideoModel, clicks, $sailsSocket, $location ) {
     $scope.video = video;
-    titleService.setTitle(video.title);
+    titleService.setTitle('dashboard - ' + video.title);
     $scope.views = views;
     $scope.clicks = clicks;
     $scope.editingInfo = false;
@@ -484,7 +446,7 @@ angular.module( 'bidio.dashboard', [
 })
 
 .controller( 'DashboardVideosCtrl', function DashboardVideosCtrl( $scope, titleService, videos, VideoModel, $mdDialog ) {
-    titleService.setTitle('videos');
+    titleService.setTitle('dashboard - videos');
 
     $scope.videos = videos;
 
@@ -567,7 +529,7 @@ angular.module( 'bidio.dashboard', [
 })
 
 .controller('DashboardProfileCtrl', function ($state, titleService, $scope, user, ProfileModel, UserModel, $mdDialog, $location, localStorageService, credit, CreditModel) {
-    titleService.setTitle('profile');
+    titleService.setTitle('dashboard - profile');
 
     $scope.username = user.username;
     $scope.submitLoading = false;
@@ -589,45 +551,16 @@ angular.module( 'bidio.dashboard', [
 
         var toUpdate = {id: profile.id};
 
-        if (profile.pictureUrl){
-            toUpdate.pictureUrl = profile.pictureUrl;
-        }
-
-        if (profile.bannerUrl){
-            toUpdate.bannerUrl = profile.bannerUrl;
-        }
-
-        if (profile.firstName){
-            toUpdate.firstName = profile.firstName;
-        }
-
-        if (profile.lastName){
-            toUpdate.lastName = profile.lastName;
-        }
-
-        if (profile.description){
-            toUpdate.description = profile.description;
-        }
-
-        if (profile.companyName){
-            toUpdate.companyName = profile.companyName;
-        }
-
-        if (profile.companyUrl){
-            toUpdate.companyUrl = profile.companyUrl;
-        }
-
-        if (profile.isSponsor){
-            toUpdate.isSponsor = profile.isSponsor;
-        }
-
-        if (profile.isTrusted){
-            toUpdate.isTrusted = profile.isTrusted;
-        }
-
-        if (profile.user){
-            toUpdate.user = profile.user;
-        }
+        if (profile.pictureUrl){toUpdate.pictureUrl = profile.pictureUrl;}
+        if (profile.bannerUrl){toUpdate.bannerUrl = profile.bannerUrl;}
+        if (profile.firstName){toUpdate.firstName = profile.firstName;}
+        if (profile.lastName){toUpdate.lastName = profile.lastName;}
+        if (profile.description){toUpdate.description = profile.description;}
+        if (profile.companyName){toUpdate.companyName = profile.companyName;}
+        if (profile.companyUrl){toUpdate.companyUrl = profile.companyUrl;}
+        if (profile.isSponsor){toUpdate.isSponsor = profile.isSponsor;}
+        if (profile.isTrusted){toUpdate.isTrusted = profile.isTrusted;}
+        if (profile.user){toUpdate.user = profile.user;}
 
         ProfileModel.update(toUpdate)
             .then(function(){
@@ -743,7 +676,7 @@ angular.module( 'bidio.dashboard', [
 })
 
 .controller('DashboardCampaignsCtrl', function (config, titleService, $state, $scope, campaigns, CampaignModel, $mdDialog) {
-    titleService.setTitle('campaigns');
+    titleService.setTitle('dashboard - campaigns');
 
     $scope.campaigns = campaigns;
     console.log(campaigns)
@@ -840,7 +773,7 @@ angular.module( 'bidio.dashboard', [
     var originals = lodash.cloneDeep(campaign.bids);
 
     $scope.campaign = campaign;
-    titleService.setTitle(campaign.title);
+    titleService.setTitle('dashboard - ' + campaign.title);
 
     $scope.selection = {type: "new"};
     $scope.clean = true;
