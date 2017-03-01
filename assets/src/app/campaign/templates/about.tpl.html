@@ -28,11 +28,12 @@
 	<hr>
 	<div class="row">
 		<div class="spacing-25"></div>
-		<h2 ng-show="campaign.bids.length > 0" style="font-weight:bold;color:#FAA93F;font-size:4.2em;">Campaign Videos</h2>
-		<div class="spacing-25"></div>
 		<div class="row">
-			<div class="campaign-submit">
-				<a class="btn anim-button fl-l" ng-click="apply()">Submit a video</a>
+			<div ng-show="campaign.bids.length > 0" class="col-md-6">
+				<h2 style="font-weight:bold;color:#FAA93F;font-size:3.2em;">Campaign Videos</h2>
+			</div>
+			<div class="col-md-6">
+				<div class="campaign-submit" style="margin-top:10px;"><a class="btn anim-button fl-l" ng-click="apply()">Submit a video</a></div>
 			</div>
 		</div>
 		<div class="campaignVideos col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-repeat="bid in campaign.bids">

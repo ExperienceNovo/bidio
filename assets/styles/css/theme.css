@@ -929,9 +929,8 @@ form[role=search] .form-group {
 
 .discover-search {
     margin: 0 auto;
-    margin-top: 10px;
+    margin-top: 15px;
     padding: 0;
-    width: 50%;
 }
 
 .discover-search .search-query {
