@@ -15,7 +15,7 @@
 	    			<div class="desc-inner">
 						<p ng-if="profile.firstName && profile.lastName"><b>Name:</b></p> <p ng-if="profile.firstName">{{profile.firstName}}</p> <p ng-if="profile.lastName">{{profile.lastName}}</p>
 						<br>
-						<p ng-if="profile.companyName && profile.companyUrl"><a target="_blank" href="{{profile.companyUrl}}"><b>Company:</b> {{profile.companyName}}</a></p>
+						<p ng-if="profile.companyName && profile.companyUrl"><b>Company:</b> <a target="_blank" href="{{profile.companyUrl}}">{{profile.companyName}}</a></p>
 						<br>
 						<p>{{profile.description}}</p>
 						<ul>

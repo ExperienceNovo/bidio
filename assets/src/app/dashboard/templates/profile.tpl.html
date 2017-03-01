@@ -1,6 +1,6 @@
 <div id="main-container">
   <div style="min-height:500px" layout="column" layout-padding>
-    <div class="container" style="margin-top:25px">
+    <div class="container">
       <div class="row">
         <div class="col-xs-6">
           <div class="editview">
@@ -13,7 +13,7 @@
           </div>
         </div>
       </div>
-      <div class="spacing-25"></div>
+      <div class="spacing-15"></div>
       <div class="bidio-profile">
           <img align="left" class="bidio-image-lg" src="{{profile.bannerUrl}}" alt="Profile Banner"/>
       </div>
@@ -29,11 +29,11 @@
               <div class="desc-inner">
                 <p ng-if="profile.firstName && profile.lastName"><b>Name:</b></p> <p ng-if="profile.firstName">{{profile.firstName}}</p> <p ng-if="profile.lastName">{{profile.lastName}}</p>
                 <br>
-                <p ng-if="profile.companyName && profile.companyUrl"><a target="_blank" href="{{profile.companyUrl}}"><b>Company:</b> {{profile.companyName}}</a></p>
+                <p ng-if="profile.companyName && profile.companyUrl"><b>Company:</b> <a target="_blank" href="{{profile.companyUrl}}">{{profile.companyName}}</a></p>
                 <br>
                 <p>{{profile.description}}</p>
                 <br>
-                <p>{{user.creditSum | number: 2}} credits</p>
+                <p>${{user.creditSum | number: 2}} - <a ui-sref="dashboard.profileEdit">add more</a></p>
               </div>
             </div>          
           </div>

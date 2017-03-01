@@ -292,7 +292,6 @@ angular.module( 'bidio.dashboard', [
             newDate.setDate(newDate.getDate() + 1);
             var newDate2 = new Date(newDate.getTime());
             newDate2.setDate(newDate.getDate() + 1);
-            $scope.videoLabels.push(new Date(newDate.getTime()).toISOString().slice(5, 10));
             var viewArrayFilter = viewArray.filter(function(value){
                 if (value > newDate.getTime() && value < newDate2.getTime()) {
                     return true;
@@ -303,6 +302,12 @@ angular.module( 'bidio.dashboard', [
                     return true;
                 }
             });
+            if(viewArrayFilter.length == 0 && clickArrayFilter.length == 0){
+                $scope.videoLabels.push('');
+            }
+            else{
+                $scope.videoLabels.push(new Date(newDate.getTime()).toISOString().slice(5, 10));
+            }
             $scope.videoData[0].push(viewArrayFilter.length);
             $scope.videoData[1].push(clickArrayFilter.length);
         }
@@ -401,7 +406,6 @@ angular.module( 'bidio.dashboard', [
             newDate.setDate(newDate.getDate() + 1);
             var newDate2 = new Date(newDate.getTime());
             newDate2.setDate(newDate.getDate() + 1);
-            $scope.videoLabels.push(new Date(newDate.getTime()).toISOString().slice(5, 10));
             var viewArrayFilter = viewArray.filter(function(value){
                 if (value > newDate.getTime() && value < newDate2.getTime()) {
                     return true;
@@ -412,6 +416,12 @@ angular.module( 'bidio.dashboard', [
                     return true;
                 }
             });
+            if(viewArrayFilter.length == 0 && clickArrayFilter.length == 0){
+                $scope.videoLabels.push('');
+            }
+            else{
+                $scope.videoLabels.push(new Date(newDate.getTime()).toISOString().slice(5, 10));
+            }
             $scope.videoData[0].push(viewArrayFilter.length);
             $scope.videoData[1].push(clickArrayFilter.length);
         }
