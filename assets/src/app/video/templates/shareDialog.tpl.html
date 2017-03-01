@@ -13,18 +13,26 @@
               <textarea name="composition" ng-model="share.composition" md-maxlength="{{140 - tweetCompPadding}}" rows="3" md-select-on-focus md-autofocus></textarea>
           </md-input-container>
           <md-dialog-actions class="share-dialog-action-buttons" layout="row" layout-align="center">
-            <md-button class="primary md-raised" style="background-color:#3b5998;color: #fff;padding: 0 10px;" ng-show="!tweeting" ng-click='shareFacebook()'><i class="fa fa-facebook"></i> Facebook</md-button>
-            <!-- <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script> -->
-            <md-button class="primary md-raised" style="background-color:#55acee;color: #fff;padding: 0 10px;" ng-show="!shareWorking" ng-disabled="shareForm.$invalid" ng-click='shareTwitter()'><i class="fa fa-twitter"></i> Twitter</md-button>
-
-
-            <p>link</p>
-            <p>embed link</p>
-
-
+            <md-button class="primary md-raised" style="background-color:#3b5998;color: #fff;padding: 0 10px;" ng-show="!tweeting" ng-click='shareFacebook()'><i class="fa fa-facebook"></i></md-button>
+            <md-button class="primary md-raised" style="background-color:#55acee;color: #fff;padding: 0 10px;" ng-show="!shareWorking" ng-disabled="shareForm.$invalid" ng-click='shareTwitter()'><i class="fa fa-twitter"></i></md-button>
             <!-- Loading spinner? -->
             <md-progress-circular ng-show="shareWorking" md-mode="indeterminate"></md-progress-circular>
           </md-dialog-actions>
+
+          <div class="spacing-15"></div>
+          <div class="col-md-6">
+            <form>
+              <label for="link">Link</label><br>
+              <input name="link" value="{{shareUrl}}" disabled>
+            </form>
+          </div>
+          <div class="col-md-6">
+            <form>
+              <label for="embed">Embed</label><br>
+              <input name="embed" value="<iframe width='560' height='315' src='{{shareUrl}}' frameborder='0' allowfullscreen></iframe>" disabled>
+            </form>
+          </div>
+
         </div>
         <div ng-show="shareComplete" class="md-dialog-content">
 
@@ -44,7 +52,6 @@
               Error posting tweet... Try again later.
             </h2>
           </div>
-
         </div>
       </form>
       <div style="width:500px;max-width:100%"></div>

@@ -144,23 +144,19 @@ angular.module( 'bidio.video', [
 
 })
 
-.controller('ShareDialogCtrl', function ($scope, $location, $mdDialog, ezfb, user, UserModel, ShareModel, localStorageService ) {
-
+.controller('ShareDialogCtrl', function ($scope, $location, $mdDialog, ezfb, user, ShareModel, localStorageService ) {
 	localStorageService.set('shareUrl', $location.absUrl());
 	$scope.user = user;
-
 	$scope.shareComplete, $scope.shareSuccess, $scope.shareFailed = false;
-
 	var shareUrl = localStorageService.get('shareUrl');
+	$scope.shareUrl = shareUrl;
 	$scope.tweeting = false;
-
 	$scope.share = {};
 	$scope.share.composition = '';
 	const MEDIA_CHAR_LENGTH = 24;
 	$scope.tweetCompPadding = shareUrl.length + MEDIA_CHAR_LENGTH; //' @cre8bidio '.length
 
 	$scope.shareFacebook = function() {
-		console.log('share facebook')
 		$mdDialog.cancel();
 		ezfb.ui(
 	     	{
@@ -175,73 +171,60 @@ angular.module( 'bidio.video', [
 				console.log(res);
 	    	}
 	    );
-
-
 	};
 
 	$scope.shareTwitter = function() {
-
 		if ($scope.tweeting) {
-			console.log('share twitter')
-			console.log('user: ', $scope.user)
-
 			// COMPOSISTION MUST LEAVE ROOM FOR LINK TO WEBSITE: localstorage url length etc
 			// AND MUST LEAVE ROOM FOR @cre8bidio (10 chars)
 			var composition = $scope.share.composition //+ ' ' + shareUrl + ' @cre8bidio';
-
 			if (!$scope.user) {
 				var webIntentURL = 'https://twitter.com/intent/tweet?text='
 	      		window.open(webIntentURL + encodeURIComponent(composition)
 					+ '&url=' + encodeURIComponent(shareUrl))
 					// + '&via=cre8bidio')
-
 				//change dialog content -> success?
 				$scope.shareComplete = true;
 				$scope.shareSuccess = true;
-			} else {
-
+			} 
+			else {
 				for (var i in $scope.user.passports) {
-					if ($scope.user.passports[i].provider === 'twitter')
+					if ($scope.user.passports[i].provider === 'twitter'){
 						var tokens = $scope.user.passports[i].tokens;
+					}
 				}
-
 				if (!tokens) {
 					var webIntentURL = 'https://twitter.com/intent/tweet?text='
 		      		window.open(webIntentURL + encodeURIComponent(composition)
 						+ '&url=' + encodeURIComponent(shareUrl))
 						// + '&via=cre8bidio')
-
 					//change dialog content -> success?
 					$scope.shareComplete = true;
 					$scope.shareSuccess = true;
-
-				} else {
-
+				} 
+				else {
 					$scope.shareWorking = true;
-
 					ShareModel.shareTwitter(encodeURIComponent(composition), encodeURIComponent(shareUrl))
-						.then(function(tweetData) {
-							console.log('tweetData: ', tweetData)
-							$scope.tweetUsername = tweetData.username;
-							$scope.tweetId = tweetData.tweetId;
-							$scope.shareWorking = false;
-							$scope.shareComplete = true;
-							$scope.shareSuccess = true;
-							$scope.sharedInHouse = true;
-						}, function(err) {
-							console.log(err)
-							$scope.shareComplete = true;
-							$scope.shareFailed = true;
-							$scope.shareSuccess = false;
-						})
-
+					.then(function(tweetData) {
+						console.log('tweetData: ', tweetData)
+						$scope.tweetUsername = tweetData.username;
+						$scope.tweetId = tweetData.tweetId;
+						$scope.shareWorking = false;
+						$scope.shareComplete = true;
+						$scope.shareSuccess = true;
+						$scope.sharedInHouse = true;
+					}, function(err) {
+						console.log(err)
+						$scope.shareComplete = true;
+						$scope.shareFailed = true;
+						$scope.shareSuccess = false;
+					});
 				}
 			}
 		}
 		else {
 			$scope.tweeting = !$scope.tweeting;
 		}
-
 	};
 
 	$scope.cancel = function() {
