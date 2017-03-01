@@ -14,54 +14,48 @@ module.exports = {
             required: true,
             unique: true
         },
-
         minimumPrice: {
             type: 'string'
         },
-
         urlTitle: {
             type: 'string',
             required: true,
             unique: true
         },
-
         amazonUrl: {
             type: 'string',
             required: true
         },
-
         description: {
             type: 'string',
             required: true
         },
-
         user: {
             model: 'user',
             required: true
         },
-
+        thumbnailUrl: {
+            type: 'string',
+            defaultsTo: '/images/bidio_logo.png'
+        },
         views: {
             collection: 'view',
             via: 'video'
         },
-
         clicks: {
             collection: 'click',
             via: 'video'
         },
-
         viewCount: {
             type: 'integer',
             required: true,
             defaultsTo: 0
         },
-
         clickCount: {
             type: 'integer',
             required: true,
             defaultsTo: 0
         },
-
         bids: {
             collection: 'bid',
             via: 'video'  

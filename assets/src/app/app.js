@@ -47,6 +47,7 @@ angular.module( 'bidio', [
 .config( function myAppConfig ( $sceDelegateProvider, $mdThemingProvider, $urlRouterProvider, $locationProvider, ezfbProvider ) {
 
     Stripe.setPublishableKey('pk_test_sflpPD96t106qt2QS8xll5up');
+    //live pk_live_9ElLI2wlzytll1udmMwuDyPq
     $sceDelegateProvider.resourceUrlWhitelist([
         // Allow same origin resource loads.
         'self',

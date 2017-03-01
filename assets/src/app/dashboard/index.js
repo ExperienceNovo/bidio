@@ -543,10 +543,21 @@ angular.module( 'bidio.dashboard', [
 
     $scope.username = user.username;
     $scope.submitLoading = false;
+    $scope.addCredit = false;
+    $scope.checkOut = false
     $scope.profile = user.profile[0];
     $scope.passports = user.passports;
     $scope.user = user;
-    console.log(user);
+
+    $scope.toggleAddCredit = function(){
+        $scope.addCredit = true;
+        $scope.checkOut = false;
+    };
+
+    $scope.toggleCheckout = function(){
+        $scope.addCredit = false;
+        $scope.checkOut = true;
+    };
 
     //STRIPE HERE
     $scope.getToken = function(status, response) {
