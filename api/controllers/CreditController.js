@@ -45,8 +45,9 @@ module.exports = {
 	},
 
 	stripe: function(req,res){
-		var stripe = require("stripe")("sk_test_7qlDJ93FmNwU7xP4zHRqLKlk");
+		var stripe = require("stripe")("sk_live_UB02d6uadNaoziMZ0HffmCQw");
 		//live sk_live_UB02d6uadNaoziMZ0HffmCQw
+		//test sk_test_7qlDJ93FmNwU7xP4zHRqLKlk
 		var user = req.user.id;
 		var email = req.param("email");
 		var amount = req.param("amount");

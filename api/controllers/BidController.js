@@ -115,12 +115,13 @@ module.exports = {
 
 		Bid.create(model)
 		.exec(function(err, bid) {
-			if (err) {
-				return console.log(err);
-			}
+			if (err) {return console.log(err);}
 			else {
 				Bid.publishCreate(bid);
-				res.json(bid);
+				Bid.getOne(bid.id)
+				.spread(function(model) {
+					res.json(model);
+				});
 			}
 		});
 	},

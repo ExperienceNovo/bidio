@@ -37,11 +37,10 @@ angular.module( 'bidio.video', [
 	    poster: $scope.video.poster
 	};
 
-	console.log($scope.video);
+	//console.log($scope.video);
 
 	var activeBid = video.bids.filter(function(bid){ return bid.isActive });
 	$scope.highestBid = activeBid.length ? activeBid[0] : {value: "0.01"};
-	console.log($scope.highestBid)
 
 	if ($scope.currentUser && $scope.video.bids){
 		$scope.viewModel.user = $scope.currentUser.id;
@@ -49,6 +48,27 @@ angular.module( 'bidio.video', [
 		$scope.viewModel.bid = $scope.highestBid.id;
 	    ViewModel.create($scope.viewModel);
 	}
+
+	$sailsSocket.subscribe('bid', function (envelope) {
+		console.log(envelope)
+        switch(envelope.verb) {
+            case 'created':
+                $scope.video.bids.unshift(envelope.data);
+                console.log(envelope)
+                break;
+            case 'destroyed':
+                lodash.remove($scope.video.bids, {id: envelope.id});
+                break;
+        }
+    });
+
+    $sailsSocket.subscribe('video', function (envelope) {
+        switch(envelope.verb) {
+            case 'updated':
+            	$scope.video = envelope.data;
+                break;
+        }
+    });
 
 	$scope.bid = function(){
 		$uibModal.open({
@@ -67,10 +87,11 @@ angular.module( 'bidio.video', [
 				}
 			}
 		})
-		//.then(function(){
-		//	var activeBid = video.bids.filter(function(bid){ return bid.isActive });
-		//	$scope.highestBid = activeBid.length ? activeBid[0] : {value: "0.01"};
-		//});
+		.result
+        .then(function(result){
+        	$scope.highestBid = result;
+        	$scope.video.campaign = result.campaign
+        });
 	};
     
 	$scope.share = function(ev) {
@@ -95,25 +116,6 @@ angular.module( 'bidio.video', [
 		$location.path(/campaign/+video.campaign.urlTitle);
 	};
 
-	$sailsSocket.subscribe('bid', function (envelope) {
-        switch(envelope.verb) {
-            case 'created':
-                $scope.video.bids.unshift(envelope.data);
-                break;
-            case 'destroyed':
-                lodash.remove($scope.video.bids, {id: envelope.id});
-                break;
-        }
-    });
-
-    $sailsSocket.subscribe('video', function (envelope) {
-        switch(envelope.verb) {
-            case 'updated':
-            	$scope.video = envelope.data;
-                break;
-        }
-    });
-
 })
 
 .controller('BidCtrl', function ($scope, highestBid, video, config, campaigns, BidModel, $uibModalInstance, $mdDialog ) {
@@ -124,19 +126,19 @@ angular.module( 'bidio.video', [
 	var startingValue = {};
 
 	$scope.bid = {
-		value: String(parseFloat(highestBid.value) + 0.05),
+		//should come from selected campaign..
+		value: String(parseFloat(highestBid.value + 0.05).toFixed(2)),
 		video: video.id,
 		user: config.currentUser.id,
 		isAccepted: true,
 		isActive: true
-	}
+	};
 
 	$scope.createBid = function(bid){
 		BidModel.create(bid).then(function(result){
-			console.log(result);
-			$uibModalInstance.dismiss(result.data)
+			$uibModalInstance.close(result)
 		});
-	}
+	};
 
 	$scope.cancel = function() {
 		$uibModalInstance.dismiss();

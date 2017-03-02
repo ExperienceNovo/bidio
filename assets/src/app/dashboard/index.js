@@ -272,6 +272,15 @@ angular.module( 'bidio.dashboard', [
     $scope.startDate = new Date($scope.views[0].createdAt);
     $scope.endDate = new Date($scope.views[$scope.views.length-1].createdAt);
 
+    $scope.$watch('startDate', function() {
+        $scope.updateData();
+    });
+
+    $scope.$watch('endDate', function() {
+        $scope.updateData();
+    });
+
+
     $scope.updateData = function(){
         $scope.videoData = [[],[]];
         $scope.videoLabels = [];

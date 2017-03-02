@@ -174,6 +174,7 @@ module.exports = {
 
     getOne: function(id) {
         return Bid.findOne(id)
+        .populate('campaign')
         .then(function (model) {
             return [model];
         });

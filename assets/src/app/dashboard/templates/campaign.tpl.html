@@ -151,7 +151,7 @@
 						<div class="row" style="text-align: left;">
 							<div class="col-md-3">	
 								<md-input-container>
-									<label style="font-size: 20px;">Price per click</label>
+									<label style="font-size: 18px;">Price per click</label>
 									<md-icon>attach_money</md-icon>
 									<input type="text" ng-model="campaign.price">
 								</md-input-container>
@@ -189,7 +189,7 @@
 						<div class="spacing-25"></div>
 						<div class="row">
 							<div class="col-md-12">
-					    		<p class="bidio-orange" style="text-align:center;margin:38px;height:26px;"><b>Click-Through Prompt</b></p>
+					    		<p class="bidio-orange"><b>Click-Through Prompt</b></p>
 					    		<md-input-container layout-fill>
 					    			<textarea aria-label="Campaign prompt" rows="10" ng-model="campaign.prompt"></textarea>
 					    		</md-input-container>
@@ -298,12 +298,12 @@
 					<div class="row">
 				    <div ng-repeat="bid in selectedBids" style="font-size:18px;text-align: left;padding: 5px;">
 				    	<div class="row">
-								<h3 style="font-weight: bold;">Title</h3>
+							<h3 style="font-weight: bold;">Title</h3>
 				    		{{bid.video.title}}
 				    	</div>	
-							<div class="spacing-15"></div>
+						<div class="spacing-15"></div>
 				    	<div class="row">
-								<h3 style="font-weight: bold;">User</h3>
+							<h3 style="font-weight: bold;">User</h3>
 				    		{{bid.video.user}}
 				    	</div>
 				    	<div class="spacing-15"></div>	    	

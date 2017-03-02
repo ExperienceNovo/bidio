@@ -82,7 +82,7 @@ module.exports = {
 
     getAll: function() {
         return Video.find()
-        .sort({createdAt: 'asc'})
+        .sort({createdAt: 'desc'})
         .then(function (models) {
             return [models];
         });
