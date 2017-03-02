@@ -14,7 +14,11 @@ angular.module( 'bidio.video', [
 		resolve: {
 			video: function(VideoModel, $stateParams){
 				return VideoModel.getOne($stateParams.id);
-			}
+			},
+			bids: function(BidModel, $stateParams){
+				//FOR SOCKETS
+				return BidModel.getByVideo($stateParams.id);
+			},
 		}
 	});
 })
@@ -49,12 +53,13 @@ angular.module( 'bidio.video', [
 	    ViewModel.create($scope.viewModel);
 	}
 
+
+	//apparently not loading ---~~~
 	$sailsSocket.subscribe('bid', function (envelope) {
-		console.log(envelope)
         switch(envelope.verb) {
             case 'created':
                 $scope.video.bids.unshift(envelope.data);
-                console.log(envelope)
+				$scope.video.campaign = envelope.data.campaign
                 break;
             case 'destroyed':
                 lodash.remove($scope.video.bids, {id: envelope.id});
@@ -67,6 +72,9 @@ angular.module( 'bidio.video', [
             case 'updated':
             	$scope.video = envelope.data;
                 break;
+			//case 'addedTo':
+            //	$scope.video = envelope.data;
+            //    break;
         }
     });
 
@@ -91,6 +99,7 @@ angular.module( 'bidio.video', [
         .then(function(result){
         	$scope.highestBid = result;
         	$scope.video.campaign = result.campaign
+        	console.log($scope.video.campaign)
         });
 	};
     
@@ -110,6 +119,7 @@ angular.module( 'bidio.video', [
 	};
 
 	$scope.clickThrough = function(){
+		console.log(video)
 		ClickModel.create($scope.viewModel).then(function(){
 			$location.path(/campaign/+video.campaign.urlTitle)
 		});

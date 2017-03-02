@@ -42,6 +42,7 @@ angular.module( 'bidio.campaign', [
 
 .controller( 'CampaignCtrl', function CampaignCtrl( $scope, config, titleService, CampaignModel, campaign, $sce, $uibModal ) {
 	$scope.campaign = campaign;
+  console.log(campaign)
   titleService.setTitle($scope.campaign.title + ' - bidio');
 	$scope.currentUser = config.currentUser;
 

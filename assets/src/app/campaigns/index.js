@@ -33,6 +33,7 @@ angular.module( 'bidio.campaigns', [
 	}
 	
 	$sailsSocket.subscribe('campaign', function(envelope){
+		console.log(envelope)
 		switch(envelope.verb){
 			case 'created':
 				$scope.campaigns.unshift(envelope.data);

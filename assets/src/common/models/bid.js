@@ -18,7 +18,7 @@ angular.module('models.bid', ['lodash', 'services', 'sails.io',])
     };
 
     this.getByVideo = function(model) {
-        var url = utils.prepareUrl('bid/video/' + model.id);
+        var url = utils.prepareUrl('bid/video/' + model);
         return $sailsSocket.get(url).then(success, error);
     };
 

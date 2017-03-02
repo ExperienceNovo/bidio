@@ -117,10 +117,10 @@ module.exports = {
 		.exec(function(err, bid) {
 			if (err) {return console.log(err);}
 			else {
-				Bid.publishCreate(bid);
 				Bid.getOne(bid.id)
 				.spread(function(model) {
 					res.json(model);
+					Bid.publishCreate(model);
 				});
 			}
 		});

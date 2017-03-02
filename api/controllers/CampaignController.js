@@ -114,18 +114,17 @@ module.exports = {
 			return [campaign, Profile.findOne({user: campaign.user.id || campaign.user._id})]
 		})
 		.spread(function(campaign,profile){
-			if (!profile){
-				return campaign;
-			}
+			if (!profile){return campaign;}
 			campaign.user.profile = profile;
 			return campaign;
 		})
 		.then(function(campaign){
 			/*add users to videos*/
-			//return [campaign]
 			return [campaign, Promise.all(
 				campaign.bids.map(function(bid){
-					return User.findOne({id: bid.video.user});
+					//console.log(bid)
+					if(bid.video){return User.findOne({id: bid.video.user});}
+					else{return User.findOne({id: 1})}
 				})
 			)]
 		})
