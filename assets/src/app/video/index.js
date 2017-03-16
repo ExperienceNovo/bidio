@@ -122,9 +122,9 @@ angular.module( 'bidio.video', [
 	$scope.clickThrough = function(){
 		console.log(video)
 		ClickModel.create($scope.viewModel).then(function(){
-			$location.path(/campaign/+video.campaign.urlTitle)
+			$location.path(/campaign/+$scope.video.campaign.urlTitle)
 		});
-		$location.path(/campaign/+video.campaign.urlTitle);
+		$location.path(/campaign/+$scope.video.campaign.urlTitle);
 	};
 
 })
