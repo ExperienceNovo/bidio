@@ -1,17 +1,18 @@
 <% if (currentUser !== undefined) { %>
-    <script>
-        var currentUser = {
-            id: '<%= currentUser.id %>',
-            username: '<%= currentUser.username %>',
-            email: '<%= currentUser.email %>',
-            first_name: '<%= currentUser.first_name %>',
-            createdAt: '<%= currentUser.createdAt %>',
-            updatedAt: '<%= currentUser.updatedAt %>',
-            isAdmin: '<%= currentUser.isAdmin %>'
-        };
-    </script>
+<script>
+    var currentUser = {
+        id: '<%= currentUser.id %>',
+        username: '<%= currentUser.username %>',
+        email: '<%= currentUser.email %>',
+        first_name: '<%= currentUser.first_name %>',
+        createdAt: '<%= currentUser.createdAt %>',
+        updatedAt: '<%= currentUser.updatedAt %>',
+        isAdmin: '<%= currentUser.isAdmin %>'
+    };
+</script>
 <% } %>
 
 <div ng-include="'nav/index.tpl.html'"></div>
 <div class="" ui-view="main" style="width:100%;margin-top:50px;min-height:100vh"></div>
 <div ng-include="'footer/index.tpl.html'" style="margin-top:50px;"></div>
+

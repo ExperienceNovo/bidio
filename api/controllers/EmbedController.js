@@ -1,7 +1,7 @@
 module.exports = {
     index: function(req, res) {
         res.view({
-            title: 'Home',
+            title: 'Embed',
             currentUser: req.user
         });
     }

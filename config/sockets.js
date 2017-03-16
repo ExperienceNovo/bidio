@@ -120,10 +120,13 @@ module.exports.sockets = {
   * disconnects                                                              *
   *                                                                          *
   ***************************************************************************/
-  // afterDisconnect: function(session, socket, cb) {
-  //   // By default: do nothing.
-  //   return cb();
-  // },
+   afterDisconnect: function(session, socket, cb) {
+    //console.log('disconnect');
+    //console.log(socket)
+    //sails.sockets.leave(socket, roomName, cb)
+    //By default: do nothing.
+     return cb();
+  },
 
 
 

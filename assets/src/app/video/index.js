@@ -68,6 +68,7 @@ angular.module( 'bidio.video', [
     });
 
     $sailsSocket.subscribe('video', function (envelope) {
+    	console.log(envelope)
         switch(envelope.verb) {
             case 'updated':
             	$scope.video = envelope.data;

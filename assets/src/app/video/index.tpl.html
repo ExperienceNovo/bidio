@@ -25,6 +25,7 @@
 			<div class="tabs">
 				<label for="tab1" title="Member"><a href="/member/{{video.user.username}}">{{video.user.username}}</a></label>
 				<label for="tab2" class="tooltip--bottom" data-tooltip="View Count">{{video.viewCount}}</label>
+				<label for="tab2" class="tooltip--bottom" data-tooltip="Live View Count">{{video.liveViewCount}}</label>
 				<label for="tab2" class="tooltip--bottom clickCountLabel" data-tooltip="Click Count" title="Click Count">{{video.clickCount}}</label>
 				<label for="tab3" class="tooltip--bottom" data-tooltip="Price Per Click" ng-show="{{video.campaign.price}}">{{highestBid.value | number: 2 }}</label>
 				<label for="tab4" title="Share" ng-click="share()"><a>Share</a></label>				

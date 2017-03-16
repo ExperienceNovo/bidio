@@ -63,7 +63,8 @@ module.exports.routes = {
   'get /sponsors': 'HomeController.index',
   'get /upload': 'HomeController.index',
   'get /video/:id': 'HomeController.index',
-  'get /v/:id': 'HomeController.index',
+
+  'get /v/:id': 'EmbedController.index',
 
   'post /auth/local': 'AuthController.callback',
   'post /auth/local/:action': 'AuthController.callback',

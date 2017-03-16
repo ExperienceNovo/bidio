@@ -112,10 +112,12 @@ module.exports = {
 		.then(function(campaign){
 			/*get profile*/
 			return [campaign, Profile.findOne({user: campaign.user.id || campaign.user._id})]
+			//sometimes there are multiple profiles aka bug
 		})
 		.spread(function(campaign,profile){
 			if (!profile){return campaign;}
 			campaign.user.profile = profile;
+			console.log(profile)
 			return campaign;
 		})
 		.then(function(campaign){

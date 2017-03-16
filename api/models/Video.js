@@ -51,6 +51,10 @@ module.exports = {
             required: true,
             defaultsTo: 0
         },
+        liveViewCount:{
+            type: 'integer',
+            defaultsTo: 0
+        },
         clickCount: {
             type: 'integer',
             required: true,
@@ -94,7 +98,6 @@ module.exports = {
         .populate('bids')
         .populate('views')
         .then(function(model){
-
             var active = model.bids.filter(function(bid){ return bid.isActive });
             if (!active.length){
                 return [model,null]
@@ -103,7 +106,6 @@ module.exports = {
                 throw new Error("More than one active bid found, aborting request");
             }
             return [model,Campaign.findOne(active[0].campaign)]
-
         })
         .spread(function(model,campaign){
             if (campaign){

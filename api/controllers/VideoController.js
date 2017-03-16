@@ -119,8 +119,18 @@ module.exports = {
 	getOne: function(req, res) {
 		Video.getOne(req.param('id'))
 		.spread(function(model) {
-			Video.subscribe(req, model);
-			res.json(model);
+
+			sails.sockets.join(req, model.id, function(err) {
+	    		console.log(sails.sockets.subscribers(model.id).length);
+	    		model.liveViewCount = sails.sockets.subscribers(model.id).length;
+				Video.subscribe(req, model);
+				Video.update({id: model.id}, {liveViewCount: model.liveViewCount}).then(function(updatedModel){
+					model.liveViewCount = updatedModel[0].liveViewCount
+					Video.publishUpdate(model.id, model);
+				})
+				res.json(model);
+	    	});
+
 		})
 		.fail(function(err) {
 			res.send(404);
