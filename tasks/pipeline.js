@@ -4,16 +4,9 @@
  * The order in which your css, javascript, and template files should be
  * compiled and linked from your views and static HTML files.
  *
- * (Note that you can take advantage of Grunt-style wildcard/glob/splat expressions
- * for matching multiple files.)
  */
 
-
-
 // CSS files to inject in order
-//
-// (if you're using LESS with the built-in default config, you'll want
-//  to change `assets/styles/importer.less` instead.)
 var cssFilesToInject = [
   'styles/**/*.css',
   'bower_components/angular-material/angular-material.css',
@@ -21,9 +14,11 @@ var cssFilesToInject = [
 
 ];
 
+var embedCssFilesToInject = [
+  'bower_components/video.js/dist/video-js.css',
+];
 
 // Client-side javascript files to inject in order
-// (uses Grunt-style wildcard/glob/splat expressions)
 var jsFilesToInject = [
 
   'bower_components/jquery/dist/jquery.min.js',
@@ -54,15 +49,16 @@ var jsFilesToInject = [
   'bower_components/card/lib/js/card.js',
   'bower_components/angular-card/src/card-angular.js',
 
-
-  //
-  // *->    you might put other dependencies like jQuery or Angular here   <-*
-  //
-
   // All of the rest of your app scripts
   'src/**/*.js',
 
 ];
+
+var embedJsFilesToInject = [
+  'src/app/videoEmbed/app.js',
+  'src/app/videoEmbed/v/index.js',
+];
+
 
 module.exports.jsFilesToInjectNoPathChange = jsFilesToInject;
 
@@ -78,7 +74,13 @@ module.exports.jsFilesToInjectNoPathChange = jsFilesToInject;
 // for information on customizing and installing new tasks.
 var templateFilesToInject = [
   // 'templates/**/*.html'
-  'src/**/*.tpl.html'
+  'src/**/*.tpl.html',
+  'src/app/videoEmbed/v/index.tpl.html',
+
+];
+
+var embedTemplateFilesToInject = [
+  'src/app/videoEmbed/v/index.tpl.html',
 ];
 
 

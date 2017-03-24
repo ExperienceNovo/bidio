@@ -7,7 +7,7 @@ angular.module( 'bidio.videoEmbed', [
 		views: {
 			"main": {
 				controller: 'VideoEmbedCtrl',
-				templateUrl: 'videoEmbed/index.tpl.html'
+				templateUrl: 'videoEmbed/v/index.tpl.html'
 			}
 		},
 		resolve: {
@@ -18,7 +18,8 @@ angular.module( 'bidio.videoEmbed', [
 	});
 })
 
-.controller( 'VideoEmbedCtrl', function VideoEmbedCtrl( $scope, lodash, config, titleService, $sailsSocket, video, $location, $mdDialog, $uibModal, ViewModel, VideoModel, ClickModel, ezfb ) {
+.controller( 'VideoEmbedCtrl', function VideoEmbedCtrl( $location, $sailsSocket, $scope, ClickModel, config, lodash, titleService, video, ViewModel, VideoModel ) {
+	console.log('hello')
 	$scope.currentUser = config.currentUser;
 	$scope.video = video;
     $scope.video.poster = 'images/video-overlay.png'
@@ -47,15 +48,10 @@ angular.module( 'bidio.videoEmbed', [
 
 	$scope.clickThrough = function(){
 		$scope.video.clicked = true;
-		//ClickModel.create().then(function(){
-			//$location.path(/campaign/+video.campaign.urlTitle)
-		//});
 		VideoModel.update($scope.video).then(function(){
 			$location.path(/campaign/+video.campaign.urlTitle);
 		});
 		$location.path(/campaign/+video.campaign.urlTitle);
-
-
 	};
 
 	$sailsSocket.subscribe('bid', function (envelope) {
