@@ -31,40 +31,27 @@ angular.module( 'bidio.videoEmbed', [
 	    poster: $scope.video.poster
 	};
 
-	if ($scope.currentUser){
-		$scope.viewModel.user = $scope.currentUser.id;
-	    $scope.viewModel.video = $scope.video.id;
-		$scope.viewModel.bid = $scope.video.id;
-	    ViewModel.create($scope.viewModel);
-	}
-
 	var activeBid = video.bids.filter(function(bid){ return bid.isActive });
 	$scope.highestBid = activeBid.length ? activeBid[0] : {value: "0.01"};
 
+
+	if ($scope.currentUser){
+		$scope.viewModel.user = $scope.currentUser.id;
+	    $scope.viewModel.video = $scope.video.id;
+		$scope.viewModel.bid = $scope.highestBid;
+	    ViewModel.create($scope.viewModel);
+	}
+
 	$scope.clickThrough = function(){
-		$scope.video.clicked = true;
-		VideoModel.update($scope.video).then(function(){
-			$location.path(/campaign/+video.campaign.urlTitle);
-		});
-		$location.path(/campaign/+video.campaign.urlTitle);
+		ClickModel.create($scope.viewModel);
+		$location.path(/campaign/+$scope.video.campaign.urlTitle);
 	};
 
-	$sailsSocket.subscribe('bid', function (envelope) {
-        switch(envelope.verb) {
-            case 'created':
-                $scope.video.bids.unshift(envelope.data);
-                break;
-            case 'destroyed':
-                lodash.remove($scope.video.bids, {id: envelope.id});
-                break;
-        }
-    });
-
     $sailsSocket.subscribe('video', function (envelope) {
-    	console.log(envelope)
         switch(envelope.verb) {
             case 'updated':
             	$scope.video = envelope.data;
+            	console.log(envelope.data)
                 break;
         }
     });

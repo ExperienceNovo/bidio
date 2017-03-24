@@ -1,0 +1,16 @@
+a.vid-clickthrough {
+    position: relative;
+    top: -75px;
+    right: 25px;
+    float: right;
+    cursor: pointer;
+    opacity: .25;
+}
+
+a.vid-clickthrough:hover {
+    opacity: .85;
+}
+
+.vid-clickthrough img {
+    height: 50px;
+}

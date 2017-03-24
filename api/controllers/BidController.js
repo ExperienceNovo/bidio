@@ -121,6 +121,9 @@ module.exports = {
 				.spread(function(model) {
 					res.json(model);
 					Bid.publishCreate(model);
+					Video.getOne(model.video).then(function(videoModel){
+						Video.publishUpdate(videoModel[0].id, videoModel[0]);
+					});
 				});
 			}
 		});
