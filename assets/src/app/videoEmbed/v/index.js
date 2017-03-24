@@ -27,12 +27,7 @@ angular.module( 'bidio.videoEmbed', [
 	titleService.setTitle(video.title + ' - bidio');
 	$scope.viewModel = {};
 	$scope.media = {
-	    sources: [
-	        {
-	            src: $scope.video.amazonUrl,
-	            type: 'video/webm'
-	        }
-	    ],
+	    sources: [{src: $scope.video.amazonUrl, type: 'video/webm'}],
 	    poster: $scope.video.poster
 	};
 
@@ -66,6 +61,7 @@ angular.module( 'bidio.videoEmbed', [
     });
 
     $sailsSocket.subscribe('video', function (envelope) {
+    	console.log(envelope)
         switch(envelope.verb) {
             case 'updated':
             	$scope.video = envelope.data;
