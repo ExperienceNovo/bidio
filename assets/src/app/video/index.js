@@ -22,13 +22,15 @@ angular.module( 'bidio.video', [
 	});
 }])
 
-.controller( 'VideoCtrl', ['$location', '$mdDialog', '$sailsSocket', '$scope', '$uibModal', 'ClickModel', 'config', 'ezfb', 'lodash', 'titleService', 'video', 'VideoModel', 'ViewModel', function VideoCtrl( $location, $mdDialog, $sailsSocket, $scope, $uibModal, ClickModel, config, ezfb, lodash, titleService, video, VideoModel, ViewModel ) {
+.controller( 'VideoCtrl', ['$location', '$mdDialog', '$sailsSocket', '$scope', '$uibModal', 'ClickModel', 'config', 'ezfb', 'lodash', 'seoService', 'titleService', 'video', 'VideoModel', 'ViewModel', function VideoCtrl( $location, $mdDialog, $sailsSocket, $scope, $uibModal, ClickModel, config, ezfb, lodash, seoService, titleService, video, VideoModel, ViewModel ) {
 
 	$scope.currentUser = config.currentUser;
 	$scope.video = video;
     $scope.video.poster = 'images/video-overlay.png'
 	if(typeof($scope.video)=="undefined"){$location.path('/')}
 	titleService.setTitle(video.title + ' - bidio');
+	seoService.setTags('bidio, video, custom tags')
+	seoService.setDescription(video.description)
 	$scope.viewModel = {};
 	$scope.media = {
 	    sources: [
@@ -37,7 +39,7 @@ angular.module( 'bidio.video', [
 	            type: 'video/webm'
 	        }
 	    ],
-	    poster: $scope.video.poster
+	    poster: $scope.video.poster//thumbnail -----
 	};
 
 	var activeBid = video.bids.filter(function(bid){ return bid.isActive });
@@ -177,10 +179,10 @@ angular.module( 'bidio.video', [
 		ezfb.ui(
 	     	{
 	        	method: 'share',
-				href: 'www.bidio.co',
-				name: 'name',
-				picture: 'https://pbs.twimg.com/profile_images/743123913496891392/6k6q5pg-_400x400.jpg',
-	        	description: 'description',
+				href: $scope.shareUrl,
+				name: $scope.video.title,
+				picture: 'http://www.bidio.co/images/video-overlay.png',
+	        	description: $scope.video.description,
 				hashtag: '#bidio',
 	    	},
 	    	function (res) {
