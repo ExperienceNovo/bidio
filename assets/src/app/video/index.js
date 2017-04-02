@@ -160,8 +160,7 @@ angular.module( 'bidio.video', [
 
 }])
 
-//lol...
-.controller('ShareDialogCtrl', ['$scope', '$location', '$mdDialog', 'ezfb', 'localStorageService', 'ShareModel', 'user' 'video', function ($scope, $location, $mdDialog, ezfb, localStorageService, ShareModel, user, video ) {
+.controller('ShareDialogCtrl', ['$scope', '$location', '$mdDialog', 'ezfb', 'localStorageService', 'ShareModel', 'user', 'video', function ($scope, $location, $mdDialog, ezfb, localStorageService, ShareModel, user, video ) {
 
 	$scope.video = video;
 	$scope.user = user;
