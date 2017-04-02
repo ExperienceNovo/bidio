@@ -166,8 +166,7 @@ angular.module( 'bidio.video', [
 	$scope.video = video;
 	$scope.user = user;
 	$scope.shareComplete, $scope.shareSuccess, $scope.shareFailed = false;
-	var shareUrl = localStorageService.get('shareUrl');
-	$scope.shareUrl = shareUrl;
+	$scope.shareUrl = 'https://www.bidio.co/video/'+video.id;
 	$scope.tweeting = false;
 	$scope.share = {};
 	$scope.share.composition = '';
