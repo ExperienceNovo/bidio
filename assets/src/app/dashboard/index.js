@@ -694,9 +694,7 @@ angular.module( 'bidio.dashboard', [
           fullscreen: false
         })
         .then(function(result){
-
             result.id = "create";
-
             return CampaignModel.create({
                 /*placeholder here*/
                 campaignImageUrl: "http://placehold.it/250x250?text=image",
@@ -712,7 +710,6 @@ angular.module( 'bidio.dashboard', [
                 intro: "Write an exiciting intro here",
                 campaignContent: "Write exciting content here"
             });
-
         }).then(function(model){
             $state.go("dashboard.campaign", {id: model.id});
         });

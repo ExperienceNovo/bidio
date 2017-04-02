@@ -75,11 +75,13 @@ angular.module( 'bidio.video', [
         }
     });
 
-	$scope.bid = function(){
-		$uibModal.open({
-			animation: true,
-			templateUrl: 'video/templates/bid.tpl.html',
+	$scope.bid = function(ev){
+	    $mdDialog.show({
 			controller: 'BidCtrl',
+			templateUrl: 'video/templates/bid.tpl.html',
+			parent: angular.element(document.body),
+			targetEvent: ev,
+			clickOutsideToClose: true,
 			resolve: {
 				video: [function(){
 					return video;
@@ -92,8 +94,8 @@ angular.module( 'bidio.video', [
 				}]
 			}
 		})
-		.result
         .then(function(result){
+        	console.log(result)
         	$scope.highestBid = result;
         	$scope.video.campaign = result.campaign
         	console.log($scope.video.campaign)
@@ -101,7 +103,6 @@ angular.module( 'bidio.video', [
 	};
     
 	$scope.share = function(ev) {
-		console.log(ev)
 	    $mdDialog.show({
 	      controller: 'ShareDialogCtrl',
 	      templateUrl: 'video/templates/shareDialog.tpl.html',
@@ -127,7 +128,7 @@ angular.module( 'bidio.video', [
 
 }])
 
-.controller('BidCtrl', ['$scope', '$mdDialog', '$uibModalInstance', 'BidModel', 'campaigns', 'config', 'highestBid', 'video', function ($scope, $mdDialog, $uibModalInstance, BidModel, campaigns, config, highestBid, video ) {
+.controller('BidCtrl', ['$scope', '$mdDialog', 'BidModel', 'campaigns', 'config', 'highestBid', 'video', function ($scope, $mdDialog, BidModel, campaigns, config, highestBid, video ) {
 
 	$scope.campaigns = campaigns;
 	$scope.video = video;
@@ -145,12 +146,13 @@ angular.module( 'bidio.video', [
 
 	$scope.createBid = function(bid){
 		BidModel.create(bid).then(function(result){
-			$uibModalInstance.close(result)
+			//$uibModalInstance.close(result)
+			$mdDialog.hide(result);
 		});
 	};
 
 	$scope.cancel = function() {
-		$uibModalInstance.dismiss();
+		$mdDialog.cancel();
 	};
 
 }])
