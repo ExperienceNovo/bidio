@@ -81,15 +81,15 @@ angular.module( 'bidio.video', [
 			templateUrl: 'video/templates/bid.tpl.html',
 			controller: 'BidCtrl',
 			resolve: {
-				video: function(){
+				video: [function(){
 					return video;
-				},
-				campaigns: function(CampaignModel){
+				}],
+				campaigns: ['CampaignModel', function(CampaignModel){
 					return CampaignModel.getMine();
-				},
-				highestBid: function(){
+				}],
+				highestBid: [function(){
 					return $scope.highestBid;
-				}
+				}]
 			}
 		})
 		.result
@@ -109,10 +109,10 @@ angular.module( 'bidio.video', [
 	      targetEvent: ev,
 	      clickOutsideToClose: true,
 			resolve: {
-				user: function(UserModel){
+				user: ['UserModel', function(UserModel){
 					if($scope.currentUser){return UserModel.getMine()}
 					else{return null}
-				}
+				}]
 			}
 	    });
 	};
