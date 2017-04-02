@@ -170,7 +170,7 @@ angular.module( 'bidio.video', [
 	$scope.share = {};
 	$scope.share.composition = '';
 	const MEDIA_CHAR_LENGTH = 24;
-	$scope.tweetCompPadding = shareUrl.length + MEDIA_CHAR_LENGTH; //' @cre8bidio '.length
+	$scope.tweetCompPadding = $scope.shareUrl.length + MEDIA_CHAR_LENGTH; //' @cre8bidio '.length
 
 	$scope.shareFacebook = function() {
 		$mdDialog.cancel();
@@ -193,11 +193,11 @@ angular.module( 'bidio.video', [
 		if ($scope.tweeting) {
 			// COMPOSISTION MUST LEAVE ROOM FOR LINK TO WEBSITE: localstorage url length etc
 			// AND MUST LEAVE ROOM FOR @cre8bidio (10 chars)
-			var composition = $scope.share.composition //+ ' ' + shareUrl + ' @cre8bidio';
+			var composition = $scope.share.composition //+ ' ' + $scope.shareUrl + ' @cre8bidio';
 			if (!$scope.user) {
 				var webIntentURL = 'https://twitter.com/intent/tweet?text='
 	      		window.open(webIntentURL + encodeURIComponent(composition)
-					+ '&url=' + encodeURIComponent(shareUrl))
+					+ '&url=' + encodeURIComponent($scope.shareUrl))
 					// + '&via=cre8bidio')
 				//change dialog content -> success?
 				$scope.shareComplete = true;
@@ -212,7 +212,7 @@ angular.module( 'bidio.video', [
 				if (!tokens) {
 					var webIntentURL = 'https://twitter.com/intent/tweet?text='
 		      		window.open(webIntentURL + encodeURIComponent(composition)
-						+ '&url=' + encodeURIComponent(shareUrl))
+						+ '&url=' + encodeURIComponent($scope.shareUrl))
 						// + '&via=cre8bidio')
 					//change dialog content -> success?
 					$scope.shareComplete = true;
@@ -220,7 +220,7 @@ angular.module( 'bidio.video', [
 				} 
 				else {
 					$scope.shareWorking = true;
-					ShareModel.shareTwitter(encodeURIComponent(composition), encodeURIComponent(shareUrl))
+					ShareModel.shareTwitter(encodeURIComponent(composition), encodeURIComponent($scope.shareUrl))
 					.then(function(tweetData) {
 						console.log('tweetData: ', tweetData)
 						$scope.tweetUsername = tweetData.username;
