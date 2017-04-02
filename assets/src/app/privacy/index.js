@@ -6,7 +6,7 @@ angular.module( 'bidio.privacy', [
 		url: '/privacy',
 		views: {
 			"main": {
-				controller: 'CreatorsCtrl',
+				controller: 'PrivacyCtrl',
 				templateUrl: 'privacy/index.tpl.html'
 			}
 		}

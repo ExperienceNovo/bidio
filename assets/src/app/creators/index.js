@@ -14,5 +14,5 @@ angular.module( 'bidio.creators', [
 }])
 
 .controller( 'CreatorsCtrl', ['$scope', 'titleService', function CreatorsController( $scope, titleService ) {
-	titleService.setTitle('Creators - bidio');
+	titleService.setTitle('bidio - creators');
 }]);
