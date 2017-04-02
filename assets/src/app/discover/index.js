@@ -19,7 +19,7 @@ angular.module( 'bidio.discover', [
 }])
 
 .controller( 'DiscoverCtrl', ['$sce', '$scope', 'config', 'SearchModel', 'titleService', 'videos', function DiscoverCtrl( $sce, $scope, config, SearchModel, titleService, videos ) {
-	titleService.setTitle('discover - bidio');
+	titleService.setTitle('bidio - discover');
 	$scope.videos = videos;
  	$scope.defaultposter = 'images/video-overlay.png';
  	for (x in $scope.videos){

@@ -101,6 +101,7 @@ angular.module( 'bidio.video', [
 	};
     
 	$scope.share = function(ev) {
+		console.log(ev)
 	    $mdDialog.show({
 	      controller: "ShareDialogCtrl",
 	      templateUrl: 'video/templates/shareDialog.tpl.html',
@@ -109,7 +110,8 @@ angular.module( 'bidio.video', [
 	      clickOutsideToClose: true,
 			resolve: {
 				user: function(UserModel){
-					return UserModel.getMine();
+					if($scope.currentUser){return UserModel.getMine()}
+					else{return null}
 				}
 			}
 	    });
