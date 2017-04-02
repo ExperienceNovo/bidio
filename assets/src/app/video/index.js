@@ -29,7 +29,7 @@ angular.module( 'bidio.video', [
     $scope.video.poster = 'images/video-overlay.png'
 	if(typeof($scope.video)=="undefined"){$location.path('/')}
 	titleService.setTitle(video.title + ' - bidio');
-	seoService.setTags('bidio, video, custom tags')
+	seoService.setKeywords('bidio, video, custom tags')
 	seoService.setDescription(video.description)
 	$scope.viewModel = {};
 	$scope.media = {
