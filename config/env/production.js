@@ -40,7 +40,8 @@ module.exports = {
   },
 
   policies: {
-    '*': ['enforceSsl', 'passport']
+    //'*': ['enforceSsl', 'passport']
+    '*': ['passport']
   },
 
 
