@@ -518,7 +518,7 @@ form[role=search] .form-group {
     padding-top: 80px;
 }
 
-.content:before {
+/*.content:before {
     content: '';
     position: absolute;
     display: block;
@@ -530,7 +530,7 @@ form[role=search] .form-group {
     background-repeat: repeat-y;
     background-image: url(../images/bg-dec.png);
     opacity: .5;
-}
+}*/
 
 .no-bg-con:before {
     display: none;
