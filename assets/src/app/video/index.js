@@ -157,6 +157,9 @@ angular.module( 'bidio.video', [
 
 //lol...
 .controller('ShareDialogCtrl', ['$scope', '$location', '$mdDialog', 'ezfb', 'localStorageService', 'ShareModel', 'user', function ($scope, $location, $mdDialog, ezfb, localStorageService, ShareModel, user ) {
+
+	console.log('SHARE')
+
 	localStorageService.set('shareUrl', $location.absUrl());
 	$scope.user = user;
 	$scope.shareComplete, $scope.shareSuccess, $scope.shareFailed = false;
