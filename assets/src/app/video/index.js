@@ -78,8 +78,8 @@ angular.module( 'bidio.video', [
 	$scope.bid = function(){
 		$uibModal.open({
 			animation: true,
-			templateUrl: "video/templates/bid.tpl.html",
-			controller: "BidCtrl",
+			templateUrl: 'video/templates/bid.tpl.html',
+			controller: 'BidCtrl',
 			resolve: {
 				video: function(){
 					return video;
@@ -103,7 +103,7 @@ angular.module( 'bidio.video', [
 	$scope.share = function(ev) {
 		console.log(ev)
 	    $mdDialog.show({
-	      controller: "ShareDialogCtrl",
+	      controller: 'ShareDialogCtrl',
 	      templateUrl: 'video/templates/shareDialog.tpl.html',
 	      parent: angular.element(document.body),
 	      targetEvent: ev,

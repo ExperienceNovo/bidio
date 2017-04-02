@@ -684,6 +684,7 @@ angular.module( 'bidio.dashboard', [
     $scope.campaigns = campaigns;
     console.log(campaigns)
     $scope.addCampaign = function(ev){
+        console.log(ev)
         $mdDialog.show({
           controller: 'CampaignDialogCtrl',
           templateUrl: 'dashboard/templates/createCampaign.tpl.html',
