@@ -113,7 +113,10 @@ angular.module( 'bidio.video', [
 				user: ['UserModel', function(UserModel){
 					if($scope.currentUser){return UserModel.getMine()}
 					else{return null}
-				}]
+				}],
+				video: [function(){
+					return video;
+				}],
 			}
 	    });
 	};
@@ -158,11 +161,9 @@ angular.module( 'bidio.video', [
 }])
 
 //lol...
-.controller('ShareDialogCtrl', ['$scope', '$location', '$mdDialog', 'ezfb', 'localStorageService', 'ShareModel', 'user', function ($scope, $location, $mdDialog, ezfb, localStorageService, ShareModel, user ) {
+.controller('ShareDialogCtrl', ['$scope', '$location', '$mdDialog', 'ezfb', 'localStorageService', 'ShareModel', 'user' 'video', function ($scope, $location, $mdDialog, ezfb, localStorageService, ShareModel, user, video ) {
 
-	console.log('SHARE')
-
-	localStorageService.set('shareUrl', $location.absUrl());
+	$scope.video = video;
 	$scope.user = user;
 	$scope.shareComplete, $scope.shareSuccess, $scope.shareFailed = false;
 	var shareUrl = localStorageService.get('shareUrl');
