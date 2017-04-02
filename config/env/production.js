@@ -39,6 +39,10 @@ module.exports = {
     domain: 'mail.bidio.co'
   },
 
+  policies: {
+    '*': ['enforceSsl', 'passport']
+  }
+
 
   //////////////////////////////////////////////
   // DEVELOPMENT KEYS // DOMAIN = LOCALHOST:1337

@@ -1,7 +1,7 @@
 angular.module( 'bidio.videoEmbed', [
 ])
 
-.config(function config( $stateProvider ) {
+.config(['$stateProvider', function config( $stateProvider ) {
 	$stateProvider.state( 'videoEmbed', {
 		url: '/v/:id',
 		views: {
@@ -11,14 +11,14 @@ angular.module( 'bidio.videoEmbed', [
 			}
 		},
 		resolve: {
-			video: function(VideoModel, $stateParams){
+			video: ['$stateParams', 'VideoModel', function($stateParams, VideoModel){
 				return VideoModel.getOne($stateParams.id);
-			}
+			}]
 		}
 	});
-})
+}])
 
-.controller( 'VideoEmbedCtrl', function VideoEmbedCtrl( $location, $sailsSocket, $scope, ClickModel, config, lodash, titleService, video, ViewModel, VideoModel ) {
+.controller( 'VideoEmbedCtrl', ['$location', '$sailsSocket', '$scope', 'ClickModel', 'config', 'lodash', 'titleService', 'video', 'ViewModel', 'VideoModel', function VideoEmbedCtrl( $location, $sailsSocket, $scope, ClickModel, config, lodash, titleService, video, ViewModel, VideoModel ) {
 	console.log('hello')
 	$scope.currentUser = config.currentUser;
 	$scope.video = video;
@@ -33,7 +33,6 @@ angular.module( 'bidio.videoEmbed', [
 
 	var activeBid = video.bids.filter(function(bid){ return bid.isActive });
 	$scope.highestBid = activeBid.length ? activeBid[0] : {value: "0.01"};
-
 
 	if ($scope.currentUser){
 		$scope.viewModel.user = $scope.currentUser.id;
@@ -56,4 +55,4 @@ angular.module( 'bidio.videoEmbed', [
         }
     });
 
-})
+}])

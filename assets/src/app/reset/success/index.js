@@ -1,7 +1,7 @@
 angular.module( 'bidio.resetSuccess', [
 ])
 
-.config(function config( $stateProvider ) {
+.config(['$stateProvider', function config( $stateProvider ) {
 	$stateProvider.state( 'resetSucess', {
 		url: '/reset-success',
 		views: {
@@ -11,12 +11,10 @@ angular.module( 'bidio.resetSuccess', [
 			}
 		}
 	});
-})
+}])
 
-.controller( 'ResetSuccessCtrl', function ResetController( $scope, titleService, config ) {
-
+.controller( 'ResetSuccessCtrl', ['$scope', 'config', 'titleService', function ResetController( $scope, config, titleService ) {
 	$scope.globalErr = config.globalErr;
-	titleService.setTitle('bidio');
+	titleService.setTitle('bidio - success!');
 	$scope.currentUser = config.currentUser;
-
-});
+}]);

@@ -1,7 +1,7 @@
 angular.module( 'bidio.search', [
 ])
 
-.config(function config( $stateProvider ) {
+.config(['$stateProvider', function config( $stateProvider ) {
     $stateProvider.state( 'search', {
         url: '/search',
         views: {
@@ -11,13 +11,13 @@ angular.module( 'bidio.search', [
             }
         }
     });
-})
+}])
 
-.controller( 'SearchCtrl', function SearchCtrl( $scope, titleService ) {
+.controller( 'SearchCtrl', ['$scope', 'titleService', function SearchCtrl( $scope, titleService ) {
     titleService.setTitle('search - bidio');
     /*$scope.keyPress = function(searchValue){
         SearchModel.search(searchValue).then(function(models){
             $scope.searchResults = models;
         });
     }*/
-});
+}]);

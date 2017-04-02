@@ -44,52 +44,37 @@ angular.module( 'bidio', [
     'bidio.videoEmbed',
 ])
 
-.config( function myAppConfig ( $sceDelegateProvider, $mdThemingProvider, $urlRouterProvider, $locationProvider, ezfbProvider ) {
-
-    Stripe.setPublishableKey('pk_live_9ElLI2wlzytll1udmMwuDyPq');
-    //live pk_live_9ElLI2wlzytll1udmMwuDyPq
-    //test pk_test_sflpPD96t106qt2QS8xll5up
-    $sceDelegateProvider.resourceUrlWhitelist([
-        // Allow same origin resource loads.
-        'self',
-        // Allow loading from our assets domain.  Notice the difference between * and **.
-        'https://bidio8.s3.amazonaws.com/**'
-    ]);
-
-    $urlRouterProvider.when('/about/', '/about');
-    $urlRouterProvider.when('/campaigns/', '/campaigns');
-    $urlRouterProvider.when('/questions', '/campaign/questions-about-bidio');
-    $urlRouterProvider.when('/questions/', '/campaign/questions-about-bidio');
-
-    $urlRouterProvider.when('/zaxbys', '/campaign/railhawks-tryouts.8');
-    $urlRouterProvider.when('/zaxbys/', '/campaign/railhawks-tryouts.8');
-
-
+.config(['$locationProvider', '$mdThemingProvider', '$sceDelegateProvider', '$urlRouterProvider', 'ezfbProvider', function myAppConfig ( $locationProvider, $mdThemingProvider, $sceDelegateProvider, $urlRouterProvider, ezfbProvider ) {
+    $urlRouterProvider.rule(function($injector, $location) {
+        var path = $location.path();
+        var hasTrailingSlash = path[path.length-1] === '/';
+        if(hasTrailingSlash) {
+            var newPath = path.substr(0, path.length - 1); 
+            return newPath; 
+        } 
+    });
+    Stripe.setPublishableKey('pk_live_9ElLI2wlzytll1udmMwuDyPq');//live pk_live_9ElLI2wlzytll1udmMwuDyPq //test pk_test_sflpPD96t106qt2QS8xll5up
+    $sceDelegateProvider.resourceUrlWhitelist(['self','https://bidio8.s3.amazonaws.com/**']);
+    if (window.location.hash && window.location.hash == '#_=_') {
+        window.location.hash = '';
+    }
     $urlRouterProvider.otherwise(function ($injector, $location) {
-        if ($location.$$url === '/') {
-            window.location = '/';
-        }
-        else {
-            // pass through to let the web server handle this request
-            window.location = $location.$$absUrl;
-        }
+        if ($location.$$url === '/') {window.location = '/';}
+        else {window.location = $location.$$absUrl;}
     });
-
     $locationProvider.html5Mode(true);
-
-    $mdThemingProvider.theme('default')
-        .primaryPalette('grey')
-        .accentPalette('orange');
-
-    ezfbProvider.setInitParams({
-      appId: '629279003894718'
-    });
-})
-
+    $mdThemingProvider.theme('default').primaryPalette('grey').accentPalette('orange');
+    ezfbProvider.setInitParams({appId: '629279003894718'});
+}])
 .run( function run () {
     moment.locale('en');
 })
-
-.controller( 'AppCtrl', function AppCtrl ( $scope, config ) {
+.controller( 'AppCtrl', ['$rootScope', '$scope', 'config', function AppCtrl ( $rootScope, $scope, config ) {
     config.currentUser = window.currentUser;
-});
+    $rootScope.$on('$stateChangeStart',function(){
+        $rootScope.stateIsLoading = true;
+    });
+    $rootScope.$on('$stateChangeSuccess',function(){
+        $rootScope.stateIsLoading = false;
+    });
+}]);

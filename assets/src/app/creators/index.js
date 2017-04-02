@@ -1,7 +1,7 @@
 angular.module( 'bidio.creators', [
 ])
 
-.config(function config( $stateProvider ) {
+.config(['$stateProvider', function config( $stateProvider ) {
 	$stateProvider.state( 'creators', {
 		url: '/creators',
 		views: {
@@ -11,8 +11,8 @@ angular.module( 'bidio.creators', [
 			}
 		}
 	});
-})
+}])
 
-.controller( 'CreatorsCtrl', function CreatorsController( $scope, titleService ) {
+.controller( 'CreatorsCtrl', ['$scope', 'titleService', function CreatorsController( $scope, titleService ) {
 	titleService.setTitle('Creators - bidio');
-});
+}]);

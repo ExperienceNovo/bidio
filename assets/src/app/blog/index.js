@@ -1,7 +1,7 @@
 angular.module( 'bidio.blog', [
 ])
 
-.config(function config( $stateProvider ) {
+.config(['$stateProvider', function config( $stateProvider ) {
 	$stateProvider.state( 'blog', {
 		url: '/blog',
 		views: {
@@ -16,12 +16,12 @@ angular.module( 'bidio.blog', [
 			}
 		}
 	});
-})
+}])
 
-.controller( 'BlogCtrl', function DiscoverCtrl( $sce, $scope, config, titleService, $sce, posts ) {
-	titleService.setTitle('Blog - bidio');
+.controller( 'BlogCtrl', ['$sce', '$scope', 'config', 'posts', 'titleService', function DiscoverCtrl( $sce, $scope, config, posts, titleService ) {
+	titleService.setTitle('bidio - blog');
 	$scope.posts = posts;
 	$scope.renderHtml = function (htmlCode) {
 	    return $sce.trustAsHtml(htmlCode);
 	};
-});
+}]);

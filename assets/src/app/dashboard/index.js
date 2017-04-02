@@ -1,7 +1,7 @@
 angular.module( 'bidio.dashboard', [
 ])
 
-.config(function config( $stateProvider ) {
+.config(['$stateProvider', function config( $stateProvider ) {
     $stateProvider.state( 'dashboard', {
         abstract: true,
         url: '/dashboard',
@@ -17,10 +17,9 @@ angular.module( 'bidio.dashboard', [
         controller: 'DashboardHomeCtrl',
         templateUrl: 'dashboard/templates/profile.tpl.html',
         resolve: {
-            UserModel: 'UserModel',
-            user: function(UserModel){
+            user: ['UserModel', function(UserModel){
                 return UserModel.getMine();
-            }
+            }]
         }
     })
     .state( 'dashboard.analytics', {
@@ -28,14 +27,12 @@ angular.module( 'bidio.dashboard', [
         controller: 'DashboardAnalyticsCtrl',
         templateUrl: 'dashboard/templates/analytics.tpl.html',
         resolve: {
-            CampaignModel: "CampaignModel",
-            campaigns: function(CampaignModel){
+            campaigns: ['CampaignModel', function(CampaignModel){
                 return CampaignModel.getMine();
-            },
-            VideoModel: 'VideoModel',
-            videos: function(VideoModel){
+            }],
+            videos: ['VideoModel', function(VideoModel){
                 return VideoModel.getMine();
-            }
+            }]
         }
     })
     .state( 'dashboard.video', {
@@ -43,16 +40,15 @@ angular.module( 'bidio.dashboard', [
         controller: 'DashboardVideoCtrl',
         templateUrl: 'dashboard/templates/video.tpl.html',
         resolve: {
-            VideoModel: 'VideoModel',
-            video: function(VideoModel, $stateParams){
-                return VideoModel.getOne($stateParams.id);
-            },
-            clicks: function(ClickModel, video){
+            clicks: ['ClickModel', 'video', function(ClickModel, video){
                 return ClickModel.getByVideo(video.id);
-            },
-            views: function(ViewModel, video){
+            }],
+            video: ['$stateParams', 'VideoModel', function($stateParams, VideoModel){
+                return VideoModel.getOne($stateParams.id);
+            }],
+            views: ['video', 'ViewModel', function(video, ViewModel){
                 return ViewModel.getByVideo(video.id);
-            }
+            }]
         }
     })
     .state( 'dashboard.videos', {
@@ -60,10 +56,9 @@ angular.module( 'bidio.dashboard', [
         controller: 'DashboardVideosCtrl',
         templateUrl: 'dashboard/templates/videos.tpl.html',
         resolve: {
-            VideoModel: 'VideoModel',
-            videos: function(VideoModel){
+            videos: ['VideoModel', function(VideoModel){
                 return VideoModel.getMine();
-            }
+            }]
         }
     })
     .state( 'dashboard.profileMain', {
@@ -71,14 +66,12 @@ angular.module( 'bidio.dashboard', [
         controller: 'DashboardProfileCtrl',
         templateUrl: 'dashboard/templates/profile.tpl.html',
         resolve: {
-            UserModel: 'UserModel',
-            user: function(UserModel){
-                return UserModel.getMine();
-            },
-            CreditModel: 'CreditModel',
-            credit: function(CreditModel){
+            credit: ['CreditModel', function(CreditModel){
                 return CreditModel.getMine();
-            }
+            }],
+            user: ['UserModel', function(UserModel){
+                return UserModel.getMine();
+            }]
         }
     })
     .state( 'dashboard.profileEdit', {
@@ -86,14 +79,12 @@ angular.module( 'bidio.dashboard', [
         controller: 'DashboardProfileCtrl',
         templateUrl: 'dashboard/templates/profileEdit.tpl.html',
         resolve: {
-            UserModel: 'UserModel',
-            user: function(UserModel){
-                return UserModel.getMine();
-            },
-            CreditModel: 'CreditModel',
-            credit: function(CreditModel){
+            credit: ['CreditModel', function(CreditModel){
                 return CreditModel.getMine();
-            }
+            }],
+            user: ['UserModel', function(UserModel){
+                return UserModel.getMine();
+            }]
         }
     })
     .state( 'dashboard.campaigns', {
@@ -101,10 +92,9 @@ angular.module( 'bidio.dashboard', [
         controller: 'DashboardCampaignsCtrl',
         templateUrl: 'dashboard/templates/campaigns.tpl.html',
         resolve: {
-            CampaignModel: "CampaignModel",
-            campaigns: function(CampaignModel){
+            campaigns: ['CampaignModel', function(CampaignModel){
                 return CampaignModel.getMine();
-            }
+            }]
         }
     })
     .state( 'dashboard.campaign', {
@@ -112,39 +102,32 @@ angular.module( 'bidio.dashboard', [
         controller: 'DashboardCampaignCtrl',
         templateUrl: 'dashboard/templates/campaign.tpl.html',
         resolve: {
-            CampaignModel: "CampaignModel",
-            config: "config",
-            campaign: function(config, $stateParams, CampaignModel){
+            campaign: ['$stateParams', 'CampaignModel', function($stateParams, CampaignModel){
                 return CampaignModel.getOne($stateParams.id);
-            }
+            }]
         }
     })
-})
+}])
 
-.controller( 'DashboardCtrl', function DashboardCtrl( $scope, $location, config, localStorageService ) {
-
+.controller( 'DashboardCtrl', ['$location', '$scope', 'config', 'localStorageService', function DashboardCtrl( $location, $scope, config, localStorageService ) {
     if (!config.currentUser){$location.path('/login')}
     if($location.path() == '/dashboard'){$location.path('/dashboard/profile')}
 
+    //why is the necessary?
     if (localStorageService.get('redirectTo')) {
         $location.path(localStorageService.get('redirectTo'));
         localStorageService.remove('redirectTo');
     }
 
     if (window.location.hash && window.location.hash == '#_=_') {
-        console.log('removing hash stuff');
         window.location.hash = '';
         console.log(window.location)
     }
+    $scope.changePath = function (path) {$location.path('/dashboard' + path);};
 
-    $scope.changePath = function (path) {
-        $location.path('/dashboard' + path);
-    };
+}])
 
-
-})
-
-.controller( 'DashboardHomeCtrl', function DashboardHomeCtrl( $scope, titleService, lodash, config, $state, user, ProfileModel, UserModel, $mdDialog, $location, localStorageService ) {
+.controller( 'DashboardHomeCtrl', ['$location', '$mdDialog', '$scope', '$state', 'config', 'localStorageService', 'lodash', 'ProfileModel', 'titleService', 'user', 'UserModel', function DashboardHomeCtrl( $location, $mdDialog, $scope, $state, config, localStorageService, lodash, ProfileModel, titleService, user, UserModel ) {
     titleService.setTitle('dashboard');
     $scope.currentUser = config.currentUser;
     $scope.username = user.username;
@@ -178,7 +161,6 @@ angular.module( 'bidio.dashboard', [
     }
 
     $scope.addProfilePic = function(ev){
-
         $mdDialog.show({
           controller: 'ProfilePicCtrl',
           templateUrl: 'dashboard/templates/addProfilePic.tpl.html',
@@ -193,7 +175,6 @@ angular.module( 'bidio.dashboard', [
     }
 
     $scope.addBannerPic = function(ev){
-
         $mdDialog.show({
           controller: 'ProfilePicCtrl',
           templateUrl: 'dashboard/templates/addProfilePic.tpl.html',
@@ -215,35 +196,30 @@ angular.module( 'bidio.dashboard', [
     }
 
     $scope.removePassport = function(provider) {
-        UserModel.removePassport(provider)
-            .then(function(result) {
-                console.log(result)
-                $scope.passports = $scope.passports.filter(function(val, ind, arr) {
-                    return !(arr[ind].identifier === result[0].identifier);
-                });
-                user.socialAccounts[(result[0].provider).toString()] = {}
-                UserModel.update(user)
+        UserModel.removePassport(provider).then(function(result) {
+            console.log(result)
+            $scope.passports = $scope.passports.filter(function(val, ind, arr) {
+                return !(arr[ind].identifier === result[0].identifier);
             });
+            user.socialAccounts[(result[0].provider).toString()] = {}
+            UserModel.update(user)
+        });
     }
 
-    $scope.hasSinglePassport = function() {
-        return $scope.passports.length <= 1;
-    }
+    $scope.hasSinglePassport = function() {return $scope.passports.length <= 1;}
 
+    //why use local storage?
     $scope.go = function(path) {
         localStorageService.set('redirectTo', $location.path());
-        console.log(localStorageService.get('redirectTo'))
         $location.path(path);
     };
-})
+}])
 
-.controller( 'DashboardAnalyticsCtrl', function DashboardAnalyticsCtrl( $q, $scope, titleService, config, campaigns, videos, ClickModel, ViewModel ) {
+.controller( 'DashboardAnalyticsCtrl', ['$scope', 'campaigns', 'ClickModel', 'config', 'titleService', 'videos', 'ViewModel', function DashboardAnalyticsCtrl( $scope, campaigns, ClickModel, config, titleService, videos, ViewModel ) {
     titleService.setTitle('dashboard - analytics');
     $scope.currentUser = config.currentUser;
     $scope.campaigns = campaigns.filter(function(obj){return obj.published == true});
     $scope.videos = videos;
-
-    //console.log(campaigns[0])
 
     $scope.clicks = [];
     $scope.views = [];
@@ -279,7 +255,6 @@ angular.module( 'bidio.dashboard', [
     $scope.$watch('endDate', function() {
         $scope.updateData();
     });
-
 
     $scope.updateData = function(){
         $scope.videoData = [[],[]];
@@ -332,9 +307,9 @@ angular.module( 'bidio.dashboard', [
         $scope.updateData();
     });
 
-})
+}])
 
-.controller( 'DashboardVideoCtrl', function DashboardVideosCtrl( $scope, titleService, video, views, VideoModel, clicks, $sailsSocket, $location ) {
+.controller( 'DashboardVideoCtrl', ['$location', '$sailsSocket', '$scope', 'clicks', 'titleService', 'video', 'VideoModel', 'views', function DashboardVideosCtrl( $location, $sailsSocket, $scope, clicks, titleService, video, VideoModel, views ) {
     $scope.video = video;
     titleService.setTitle('dashboard - ' + video.title);
     $scope.views = views;
@@ -462,13 +437,11 @@ angular.module( 'bidio.dashboard', [
         }
     });
 
-})
+}])
 
-.controller( 'DashboardVideosCtrl', function DashboardVideosCtrl( $scope, titleService, videos, VideoModel, $mdDialog ) {
+.controller( 'DashboardVideosCtrl', ['$mdDialog', '$scope', 'titleService', 'videos', 'VideoModel', function DashboardVideosCtrl( $mdDialog, $scope, titleService, videos, VideoModel ) {
     titleService.setTitle('dashboard - videos');
-
     $scope.videos = videos;
-
     $scope.addVideo = function(ev){
         $mdDialog.show({
           controller: 'VideoDialogCtrl',
@@ -482,9 +455,9 @@ angular.module( 'bidio.dashboard', [
             $scope.videos.push(result);
         })
     }
-})
+}])
 
-.controller('VideoDialogCtrl', function DialogCtrl($scope, $mdDialog, Upload, VideoModel) {
+.controller('VideoDialogCtrl', ['$mdDialog', '$scope', 'Upload', 'VideoModel', function DialogCtrl( $mdDialog, $scope, Upload, VideoModel ) {
     $scope.video = {};
     $scope.loading = $scope.videoLoading = false;
     $scope.error = null;
@@ -545,9 +518,9 @@ angular.module( 'bidio.dashboard', [
         $scope.fileName = null;
         $scope.video.amazonUrl = null;
     }
-})
+}])
 
-.controller('DashboardProfileCtrl', function ($state, titleService, $scope, user, ProfileModel, UserModel, $mdDialog, $location, localStorageService, credit, CreditModel) {
+.controller('DashboardProfileCtrl', ['$location', '$mdDialog', '$scope', '$state', 'credit', 'CreditModel', 'localStorageService', 'ProfileModel', 'titleService', 'user', 'UserModel', function ($location, $mdDialog, $scope, $state, credit, CreditModel, localStorageService, ProfileModel, titleService, user, UserModel) {
     titleService.setTitle('dashboard - profile');
 
     $scope.username = user.username;
@@ -665,9 +638,9 @@ angular.module( 'bidio.dashboard', [
         $location.path(path);
     };
 
-})
+}])
 
-.controller('ProfilePicCtrl', function ($scope, Upload, $mdDialog) {
+.controller('ProfilePicCtrl', ['$mdDialog', '$scope', 'Upload', function ($mdDialog, $scope, Upload) {
 
     $scope.photoLoading = false;
     $scope.pp = 0;
@@ -703,9 +676,9 @@ angular.module( 'bidio.dashboard', [
         $mdDialog.cancel();
     }
 
-})
+}])
 
-.controller('DashboardCampaignsCtrl', function (config, titleService, $state, $scope, campaigns, CampaignModel, $mdDialog) {
+.controller('DashboardCampaignsCtrl', ['$mdDialog', '$scope', '$state', 'CampaignModel', 'campaigns', 'config', 'titleService', function ($mdDialog, $scope, $state, CampaignModel, campaigns, config, titleService) {
     titleService.setTitle('dashboard - campaigns');
 
     $scope.campaigns = campaigns;
@@ -743,9 +716,9 @@ angular.module( 'bidio.dashboard', [
             $state.go("dashboard.campaign", {id: model.id});
         });
     }
-})
+}])
 
-.controller('DashboardCampaignCtrl', function ($state, titleService, $mdMenu, $scope, campaign, CampaignModel, $mdDialog, VideoModel, lodash, $q, BidModel) {
+.controller('DashboardCampaignCtrl', ['$mdDialog', '$mdMenu', '$q', '$state', '$scope', 'BidModel', 'campaign', 'CampaignModel', 'lodash', 'titleService', 'VideoModel', function ($mdDialog, $mdMenu, $q, $state, $scope, BidModel, campaign, CampaignModel, lodash, titleService, VideoModel) {
 
     $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
     $scope.series = ['Series A', 'Series B'];
@@ -795,9 +768,6 @@ angular.module( 'bidio.dashboard', [
 
     };
     $scope.updateData()*/
-
-
-
 
 
     var originals = lodash.cloneDeep(campaign.bids);
@@ -1313,9 +1283,9 @@ angular.module( 'bidio.dashboard', [
         originals = lodash.cloneDeep($scope.campaign.bids);
         $scope.selectedBids = sorted[$scope.selection.type];
     }
-})
+}])
 
-.controller('AddBannerPhotoCtrl', function ($scope, $mdDialog, Upload, campaign, CampaignModel) {
+.controller('AddBannerPhotoCtrl', ['$mdDialog', '$scope', 'campaign', 'CampaignModel', 'Upload', function ($mdDialog, $scope, campaign, CampaignModel, Upload) {
 
     $scope.pp = 0;
     $scope.bannerUrl = null;
@@ -1323,9 +1293,7 @@ angular.module( 'bidio.dashboard', [
     $scope.error = null;
 
     $scope.submit = function(){
-
         campaign.bannerUrl = $scope.bannerUrl;
-
         var toUpdate = {
             id: campaign.id,
             bannerUrl: campaign.bannerUrl,
@@ -1339,33 +1307,27 @@ angular.module( 'bidio.dashboard', [
             intro: campaign.intro,
             campaignContent: campaign.campaignContent
         };
-
         if(campaign.contributionGoal){
             toUpdate.contributionGoal = campaign.contributionGoal;
         }
-
         if(campaign.maxContributionPerVideo){
             toUpdate.maxContributionPerVideo = campaign.maxContributionPerVideo;
         }
-
-        CampaignModel.update(toUpdate)
-            .then(function(){
-                $mdDialog.hide();
-            })
-            .catch(function(err){
-                $scope.error = err.message;
-            })
+        CampaignModel.update(toUpdate).then(function(){
+            $mdDialog.hide();
+        })
+        .catch(function(err){
+            $scope.error = err.message;
+        });
     }
 
     $scope.cancel = function(){
         $mdDialog.cancel();
-    }
+    };
 
     //TODO: refactor backend so that videos and images are uploaded through separate endpoints (separation of concerns)
     $scope.upload = function(file){
-
         $scope.photoLoading = true;
-
         Upload.upload({
             url: '/api/video/upload',
             method: 'POST',
@@ -1379,13 +1341,12 @@ angular.module( 'bidio.dashboard', [
         function (evt) {
             var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
             $scope.pp = progressPercentage;
-        })
-
+        });
     };
 
-})
+}])
 
-.controller('AddCampaignPhotoCtrl', function ($scope, $mdDialog, Upload, campaign, CampaignModel) {
+.controller('AddCampaignPhotoCtrl', ['$scope', '$mdDialog', 'campaign', 'CampaignModel', 'Upload', function ($scope, $mdDialog, campaign, CampaignModel, Upload) {
 
     $scope.pp = 0;
     $scope.campaignImageUrl = null;
@@ -1448,9 +1409,9 @@ angular.module( 'bidio.dashboard', [
 
     };
 
-})
+}])
 
-.controller('AddVideoCtrl', function ($scope, $mdDialog, Upload, campaign, CampaignModel, VideoModel) {
+.controller('AddVideoCtrl', ['$mdDialog', '$scope', 'campaign', 'CampaignModel', 'Upload', 'VideoModel', function ($mdDialog, $scope, campaign, CampaignModel, Upload, VideoModel) {
 
     $scope.pp = 0;
     $scope.videoUrl = null;
@@ -1464,9 +1425,7 @@ angular.module( 'bidio.dashboard', [
     $scope.viewLoading = false;
 
     $scope.submit = function(){
-
         campaign.videoUrl = $scope.videoUrl;
-
         var toUpdate = {
             id: campaign.id,
             bannerUrl: campaign.bannerUrl,
@@ -1480,40 +1439,33 @@ angular.module( 'bidio.dashboard', [
             intro: campaign.intro,
             campaignContent: campaign.campaignContent
         };
-
         if(campaign.contributionGoal){
             toUpdate.contributionGoal = campaign.contributionGoal;
         }
-
         if(campaign.maxContributionPerVideo){
             toUpdate.maxContributionPerVideo = campaign.maxContributionPerVideo;
         }
-
-        CampaignModel.update(toUpdate)
-            .then(function(){
-                $mdDialog.hide();
-            })
-            .catch(function(err){
-                $scope.error = err.message;
-            })
-    }
+        CampaignModel.update(toUpdate).then(function(){
+            $mdDialog.hide();
+        })
+        .catch(function(err){
+            $scope.error = err.message;
+        });
+    };
 
     $scope.cancel = function(){
         $mdDialog.cancel();
-    }
+    };
 
     //TODO: refactor backend so that videos and images are uploaded through separate endpoints (separation of concerns)
     $scope.upload = function(file){
-
         $scope.videoLoading = true;
-
         Upload.upload({
             url: '/api/video/upload',
             method: 'POST',
             data: {video: file}
         })
         .then(function(response){
-
             $scope.videoLoading = false;
             $scope.videoUrl = response.data.amazonUrl;
         },
@@ -1524,89 +1476,76 @@ angular.module( 'bidio.dashboard', [
         function (evt) {
             var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
             $scope.pp = progressPercentage;
-        })
-
+        });
     };
 
     $scope.videoSelectToggle = function(){
         $scope.videoSelecting = !$scope.videoSelecting;
-
         if (!$scope.videoSelecting){$scope.videoUrl = null;}
-    }
+    };
 
     $scope.videoSelect  = function(){
-
         if ($scope.videos.length){
             $scope.videoSelectToggle();
             return;
         }
-
         $scope.videoLoading2 = true;
+        VideoModel.getMine().then(function(videos){
+            $scope.videoLoading2 = false;
+            if (!videos.length){
+                $scope.error = "You have not uploaded any videos yet"
+                return;
+            }
 
-        VideoModel.getMine()
-            .then(function(videos){
-
-                $scope.videoLoading2 = false;
-
-                if (!videos.length){
-                    $scope.error = "You have not uploaded any videos yet"
-                    return;
-                }
-
-                $scope.videos = videos;
-                $scope.videoSelectToggle();
-            })
-            .catch(function(err){
-                $scope.videoLoading2 = false;
-                $scope.error = err.message;
-            })
-
-    }
+            $scope.videos = videos;
+            $scope.videoSelectToggle();
+        })
+        .catch(function(err){
+            $scope.videoLoading2 = false;
+            $scope.error = err.message;
+        })
+    };
 
     $scope.view = function(video){
-
         $scope.viewLoading = true;
         $scope.viewingVideo = video;
         $scope.viewing = true;
-    }
+    };
 
     $scope.dismissView = function(){
         $scope.viewLoading = false;
         $scope.viewing = false;
         $scope.viewingVideo = null;
-    }
+    };
 
-})
+}])
 
-.controller('ViewDialogCtrl', function DialogCtrl($scope, $mdDialog, bid) {
+.controller('ViewDialogCtrl', ['$mdDialog', '$scope', 'bid', function DialogCtrl($mdDialog, $scope, bid) {
     $scope.bid = bid;
     $scope.dismiss = function(){
         $mdDialog.hide();
-    }
-})
+    };
+}])
 
-.controller('CampaignDialogCtrl', function DialogCtrl($scope, $mdDialog, Upload, CampaignModel) {
+.controller('CampaignDialogCtrl', ['$mdDialog', '$scope', 'CampaignModel', 'Upload', function DialogCtrl($mdDialog, $scope, CampaignModel, Upload) {
     $scope.campaign = {};
     $scope.error = null;
 
     $scope.submit = function(campaign){
-
         if (!campaign.title || !campaign.urlTitle){
             $scope.error = "Title and URL Title required"
         }
-
-        CampaignModel.check(campaign)
-            .then(function(){
-                $mdDialog.hide(campaign);
-            })
-            .catch(function(err){
-                console.log(err);
-                $scope.error = "Title or URL Title is not unique";
-            });
-
-    }
+        CampaignModel.check(campaign).then(function(){
+            $mdDialog.hide(campaign);
+        })
+        .catch(function(err){
+            console.log(err);
+            $scope.error = "Title or URL Title is not unique";
+        });
+    };
 
     $scope.cancel = function(){
         $mdDialog.cancel();
-    }
-})
+    };
+
+}])

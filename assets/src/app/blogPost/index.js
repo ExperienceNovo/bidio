@@ -1,7 +1,7 @@
 angular.module( 'bidio.blogPost', [
 ])
 
-.config(function config( $stateProvider ) {
+.config(['$stateProvider', function config( $stateProvider ) {
 	$stateProvider.state( 'blogPost', {
 		url: '/blog/:path',
 		views: {
@@ -11,17 +11,17 @@ angular.module( 'bidio.blogPost', [
 			}
 		},
 		resolve:{
-			post: function(PostModel, $stateParams){
+			post: ['$stateParams', 'PostModel', function($stateParams, PostModel){
 				return PostModel.getByUrl($stateParams.path);
-			}
+			}]
 		}
 	});
-})
+}])
 
-.controller( 'BlogPostCtrl', function BlogPostCtrl( $sce, $scope, config, titleService, $sce, post ) {
+.controller( 'BlogPostCtrl', ['$sce', '$scope', 'config', 'post', 'titleService', function BlogPostCtrl( $sce, $scope, config, post, titleService ) {
 	$scope.post = post;
-	titleService.setTitle($scope.post.title);
+	titleService.setTitle('bidio - '+$scope.post.title);
 	$scope.renderHtml = function (htmlCode) {
 	    return $sce.trustAsHtml(htmlCode);
 	};
-});
+}]);

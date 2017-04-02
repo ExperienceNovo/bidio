@@ -19,26 +19,7 @@
         <!-- Viewport mobile tag for sensible mobile support -->
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-        <!--STYLES-->
-        <link rel="stylesheet" href="/styles/css/blog.css">
-        <link rel="stylesheet" href="/styles/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/styles/css/campaign.css">
-        <link rel="stylesheet" href="/styles/css/dashboard.css">
-        <link rel="stylesheet" href="/styles/css/embed.css">
-        <link rel="stylesheet" href="/styles/css/font-awesome.min.css">
-        <link rel="stylesheet" href="/styles/css/home.css">
-        <link rel="stylesheet" href="/styles/css/intro.css">
-        <link rel="stylesheet" href="/styles/css/plugins.css">
-        <link rel="stylesheet" href="/styles/css/reset.css">
-        <link rel="stylesheet" href="/styles/css/responsive.css">
-        <link rel="stylesheet" href="/styles/css/share-dialog.css">
-        <link rel="stylesheet" href="/styles/css/sponsor.css">
-        <link rel="stylesheet" href="/styles/css/theme.css">
-        <link rel="stylesheet" href="/styles/css/upload.css">
-        <link rel="stylesheet" href="/styles/css/video-page.css">
-        <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
-        <link rel="stylesheet" href="/bower_components/video.js/dist/video-js.css">
-        <!--STYLES END-->
+        <!--FAVICON-->
         <link rel="apple-touch-icon" sizes="57x57" href="/images/favicon/apple-touch-icon-57x57.png">
         <link rel="apple-touch-icon" sizes="60x60" href="/images/favicon/apple-touch-icon-60x60.png">
         <link rel="apple-touch-icon" sizes="72x72" href="/images/favicon/apple-touch-icon-72x72.png">
@@ -59,6 +40,29 @@
         <meta name="msapplication-TileImage" content="/images/favicon/mstile-144x144.png">
         <meta name="msapplication-config" content="/images/favicon/browserconfig.xml">
         <meta name="theme-color" content="#ffffff">
+        <!--FAVICON END-->
+
+        <!--STYLES-->
+        <link rel="stylesheet" href="/styles/css/blog.css">
+        <link rel="stylesheet" href="/styles/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/styles/css/campaign.css">
+        <link rel="stylesheet" href="/styles/css/dashboard.css">
+        <link rel="stylesheet" href="/styles/css/embed.css">
+        <link rel="stylesheet" href="/styles/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/styles/css/home.css">
+        <link rel="stylesheet" href="/styles/css/intro.css">
+        <link rel="stylesheet" href="/styles/css/plugins.css">
+        <link rel="stylesheet" href="/styles/css/reset.css">
+        <link rel="stylesheet" href="/styles/css/responsive.css">
+        <link rel="stylesheet" href="/styles/css/share-dialog.css">
+        <link rel="stylesheet" href="/styles/css/sponsor.css">
+        <link rel="stylesheet" href="/styles/css/theme.css">
+        <link rel="stylesheet" href="/styles/css/upload.css">
+        <link rel="stylesheet" href="/styles/css/video-page.css">
+        <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
+        <link rel="stylesheet" href="/bower_components/video.js/dist/video-js.css">
+        <!--STYLES END-->
+
         <!--FONTS-->
         <link href='http://fonts.googleapis.com/css?family=Lato:400,100,300,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800,600,300,200' rel='stylesheet' type='text/css'>
@@ -151,7 +155,6 @@
     <script src="/src/common/models/index.js"></script>
     <script src="/src/common/models/post.js"></script>
     <script src="/src/common/models/profile.js"></script>
-    <script src="/src/common/models/seach.js"></script>
     <script src="/src/common/models/search.js"></script>
     <script src="/src/common/models/share.js"></script>
     <script src="/src/common/models/user.js"></script>
@@ -160,6 +163,7 @@
     <script src="/src/common/services/config.js"></script>
     <script src="/src/common/services/index.js"></script>
     <script src="/src/common/services/lodash.js"></script>
+    <script src="/src/common/services/seo.js"></script>
     <script src="/src/common/services/title.js"></script>
     <script src="/src/common/services/utils.js"></script>
     <!--SCRIPTS END-->
@@ -167,6 +171,7 @@
     <!--TEMPLATES-->
     <script type="text/javascript" src="/templates.js"></script>
     <!--TEMPLATES END-->
+    
     <!--need to save these files for production-->
     <script src="http://pc035860.github.io/angular-easyfb/angular-easyfb.min.js"></script>
     <script src="https://js.stripe.com/v2/"></script>

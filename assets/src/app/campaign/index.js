@@ -1,7 +1,7 @@
 angular.module( 'bidio.campaign', [
 ])
 
-.config(function config( $stateProvider ) {
+.config(['$stateProvider', function config( $stateProvider ) {
 	$stateProvider.state( 'campaign', {
 		abstract: true,
 		url: '/campaign/:path',
@@ -12,38 +12,25 @@ angular.module( 'bidio.campaign', [
 			}
 		},
 		resolve: {
-			CampaignModel: "CampaignModel",
-			$stateParams: "$stateParams",
-			campaign: function(CampaignModel, $stateParams){
+			campaign: ['$stateParams', 'CampaignModel', function($stateParams, CampaignModel){
 				return CampaignModel.getByUrl($stateParams.path)
-				.catch(function(err){
-					console.log(err);
-				});
-			}
+			}]
 		}
 	})
 	.state( 'campaign.main', {
 		url: "",
-		templateUrl: "campaign/templates/main.tpl.html",
-    onEnter: function(campaign){
-      if(campaign.doesRedirect){
-        window.open(
-          campaign.redirectUrl,
-          "_blank"
-        )
-      }
-    }
+		templateUrl: "campaign/templates/main.tpl.html"
 	})
 	.state( 'campaign.about', {
 		url: "/about",
 		templateUrl: "campaign/templates/about.tpl.html"
 	});
-})
+}])
 
-.controller( 'CampaignCtrl', function CampaignCtrl( $scope, config, titleService, CampaignModel, campaign, $sce, $uibModal ) {
+.controller( 'CampaignCtrl', ['$sce', '$scope', '$uibModal', 'config', 'campaign', 'CampaignModel', 'titleService', function CampaignCtrl( $sce, $scope, $uibModal, config, campaign, CampaignModel, titleService ) {
 	$scope.campaign = campaign;
   console.log(campaign)
-  titleService.setTitle($scope.campaign.title + ' - bidio');
+  titleService.setTitle('bidio - ' + $scope.campaign.title);
 	$scope.currentUser = config.currentUser;
 
   $scope.campaignContent = $sce.trustAsHtml($scope.campaign.campaignContent);
@@ -87,9 +74,9 @@ angular.module( 'bidio.campaign', [
 		});
 	}
 
-})
+}])
 
-.controller('submitVideoCtrl', function (BidModel, $scope, $sce, campaign, config, $uibModalInstance, Upload, VideoModel) {
+.controller('submitVideoCtrl', ['$sce', '$scope', '$uibModalInstance', 'BidModel', 'campaign', 'config', 'Upload', 'VideoModel', function ($sce, $scope, $uibModalInstance, BidModel, campaign, config, Upload, VideoModel) {
 
 	$scope.campaign = campaign;
 
@@ -187,7 +174,7 @@ angular.module( 'bidio.campaign', [
         var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
         $scope.pp = progressPercentage;
       })
-    };
+  };
 
   $scope.submit = function(video){
     if (!video.urlTitle, !video.title, !video.amazonUrl, !video.description){
@@ -249,4 +236,4 @@ angular.module( 'bidio.campaign', [
 		$uibModalInstance.close();
   };
 
-});
+}]);

@@ -1,7 +1,7 @@
 angular.module( 'bidio.reset', [
 ])
 
-.config(function config( $stateProvider ) {
+.config(['$stateProvider', function config( $stateProvider ) {
 	$stateProvider.state( 'reset', {
 		url: '/reset/:token',
 		views: {
@@ -11,15 +11,12 @@ angular.module( 'bidio.reset', [
 			}
 		}
 	});
-})
+}])
 
-.controller( 'ResetCtrl', function ResetController( $scope, titleService, config, $stateParams ) {
-
+.controller( 'ResetCtrl', ['$scope', '$stateParams', 'config', 'titleService', function ResetController( $scope, $stateParams, config, titleService ) {
 	$scope.globalErr = config.globalErr;
-	titleService.setTitle('bidio');
+	titleService.setTitle('bidio - reset');
 	$scope.currentUser = config.currentUser;
-
 	/*setup token validation or nah??*/
 	$scope.actionUrl = "/api/user/reset/" + $stateParams.token;
-
-});
+}]);

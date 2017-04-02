@@ -1,7 +1,7 @@
 angular.module( 'bidio.discover', [
 ])
 
-.config(function config( $stateProvider ) {
+.config(['$stateProvider', function config( $stateProvider ) {
 	$stateProvider.state( 'discover', {
 		url: '/discover',
 		views: {
@@ -11,14 +11,14 @@ angular.module( 'bidio.discover', [
 			}
 		},
 		resolve:{
-			videos: function(VideoModel){
+			videos: ['VideoModel', function(VideoModel){
 				return VideoModel.getAll();
-			}
+			}]
 		}
 	});
-})
+}])
 
-.controller( 'DiscoverCtrl', function DiscoverCtrl( $scope, config, titleService, $sce, videos, SearchModel ) {
+.controller( 'DiscoverCtrl', ['$sce', '$scope', 'config', 'SearchModel', 'titleService', 'videos', function DiscoverCtrl( $sce, $scope, config, SearchModel, titleService, videos ) {
 	titleService.setTitle('discover - bidio');
 	$scope.videos = videos;
  	$scope.defaultposter = 'images/video-overlay.png';
@@ -54,4 +54,4 @@ angular.module( 'bidio.discover', [
 	        }
     	}
     }
-});
+}]);

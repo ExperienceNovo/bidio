@@ -1,6 +1,6 @@
 angular.module('models.bid', ['lodash', 'services', 'sails.io',])
 
-.service('BidModel', function(lodash, utils, $sailsSocket) {
+.service('BidModel', ['$sailsSocket', 'utils', function($sailsSocket, utils) {
 
     this.create = function(newModel) {
         var url = utils.prepareUrl('bid');
@@ -37,7 +37,7 @@ angular.module('models.bid', ['lodash', 'services', 'sails.io',])
     };
 
     var error = function(error) {
-        console.log(error);
         return error;
     };
-});
+
+}]);

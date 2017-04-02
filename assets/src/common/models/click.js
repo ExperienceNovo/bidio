@@ -1,6 +1,6 @@
 angular.module('models.click', ['lodash', 'services', 'sails.io',])
 
-.service('ClickModel', function(lodash, utils, $sailsSocket) {
+.service('ClickModel', ['$sailsSocket', 'utils', function($sailsSocket, utils) {
 
     this.create = function(newModel) {
         var url = utils.prepareUrl('click');
@@ -20,4 +20,4 @@ angular.module('models.click', ['lodash', 'services', 'sails.io',])
         console.log(error);
     };
 
-});
+}]);

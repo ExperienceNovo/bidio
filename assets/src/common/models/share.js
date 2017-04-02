@@ -1,9 +1,8 @@
 angular.module('models.share', ['services', 'sails.io'])
 
-.service('ShareModel', function($q, utils, $sailsSocket) {
+.service('ShareModel', ['$sailsSocket', 'utils', function($sailsSocket, utils) {
 
     this.shareTwitter = function(composition, shareUrl) {
-        console.log(shareUrl)
         var url = utils.prepareUrl('share/twitter/' + composition + '/' + shareUrl);
         return $sailsSocket.post(url).then(success, error);
     };
@@ -18,4 +17,4 @@ angular.module('models.share', ['services', 'sails.io'])
         return error;
     };
 
-});
+}]);

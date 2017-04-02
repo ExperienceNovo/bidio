@@ -165,6 +165,8 @@ module.exports.routes = {
   'get /api/view/video/:id': 'ViewController.getByVideo',
   'post /api/view': 'ViewController.create',
 
+  '/.well-known/acme-challenge/cV2kFOb-PA_snEp6iR9udCIa1XFiJ8tm3JZkYOouqmw': 'HomeController.ssl',
+
 
   // If a request to a URL doesn't match any of the custom routes above, it is matched
   // against Sails route blueprints.  See `config/blueprints.js` for configuration options

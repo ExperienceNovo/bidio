@@ -1,6 +1,6 @@
 angular.module('models.view', ['lodash', 'services', 'sails.io',])
 
-.service('ViewModel', function(lodash, utils, $sailsSocket) {
+.service('ViewModel', ['$sailsSocket', 'utils', function($sailsSocket, utils) {
 
     this.create = function(newModel) {
         var url = utils.prepareUrl('view/');
@@ -20,4 +20,4 @@ angular.module('models.view', ['lodash', 'services', 'sails.io',])
         console.log(error);
     };
 
-});
+}]);

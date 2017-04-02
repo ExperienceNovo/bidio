@@ -1,7 +1,7 @@
 angular.module( 'bidio.video', [
 ])
 
-.config(function config( $stateProvider ) {
+.config(['$stateProvider', function config( $stateProvider ) {
 	$stateProvider.state( 'video', {
 		url: '/video/:id',
 		views: {
@@ -9,21 +9,20 @@ angular.module( 'bidio.video', [
 				controller: 'VideoCtrl',
 				templateUrl: 'video/index.tpl.html'
 			}
-
 		},
 		resolve: {
-			video: function(VideoModel, $stateParams){
-				return VideoModel.getOne($stateParams.id);
-			},
-			bids: function(BidModel, $stateParams){
+			bids: ['$stateParams', 'BidModel', function($stateParams, BidModel){
 				//FOR SOCKETS
 				return BidModel.getByVideo($stateParams.id);
-			},
+			}],
+			video: ['$stateParams', 'VideoModel', function($stateParams, VideoModel){
+				return VideoModel.getOne($stateParams.id);
+			}],
 		}
 	});
-})
+}])
 
-.controller( 'VideoCtrl', function VideoCtrl( $scope, lodash, config, titleService, $sailsSocket, video, $location, $mdDialog, $uibModal, ViewModel, VideoModel, ClickModel, ezfb ) {
+.controller( 'VideoCtrl', ['$location', '$mdDialog', '$sailsSocket', '$scope', '$uibModal', 'ClickModel', 'config', 'ezfb', 'lodash', 'titleService', 'video', 'VideoModel', 'ViewModel', function VideoCtrl( $location, $mdDialog, $sailsSocket, $scope, $uibModal, ClickModel, config, ezfb, lodash, titleService, video, VideoModel, ViewModel ) {
 
 	$scope.currentUser = config.currentUser;
 	$scope.video = video;
@@ -41,8 +40,6 @@ angular.module( 'bidio.video', [
 	    poster: $scope.video.poster
 	};
 
-	//console.log($scope.video);
-
 	var activeBid = video.bids.filter(function(bid){ return bid.isActive });
 	$scope.highestBid = activeBid.length ? activeBid[0] : {value: "0.01"};
 
@@ -52,7 +49,6 @@ angular.module( 'bidio.video', [
 		$scope.viewModel.bid = $scope.highestBid.id;
 	    ViewModel.create($scope.viewModel);
 	}
-
 
 	//apparently not loading ---~~~
 	$sailsSocket.subscribe('bid', function (envelope) {
@@ -127,9 +123,9 @@ angular.module( 'bidio.video', [
 		$location.path(/campaign/+$scope.video.campaign.urlTitle);
 	};
 
-})
+}])
 
-.controller('BidCtrl', function ($scope, highestBid, video, config, campaigns, BidModel, $uibModalInstance, $mdDialog ) {
+.controller('BidCtrl', ['$scope', '$mdDialog', '$uibModalInstance', 'BidModel', 'campaigns', 'config', 'highestBid', 'video', function ($scope, $mdDialog, $uibModalInstance, BidModel, campaigns, config, highestBid, video ) {
 
 	$scope.campaigns = campaigns;
 	$scope.video = video;
@@ -155,9 +151,10 @@ angular.module( 'bidio.video', [
 		$uibModalInstance.dismiss();
 	};
 
-})
+}])
 
-.controller('ShareDialogCtrl', function ($scope, $location, $mdDialog, ezfb, user, ShareModel, localStorageService ) {
+//lol...
+.controller('ShareDialogCtrl', ['$scope', '$location', '$mdDialog', 'ezfb', 'localStorageService', 'ShareModel', 'user', function ($scope, $location, $mdDialog, ezfb, localStorageService, ShareModel, user ) {
 	localStorageService.set('shareUrl', $location.absUrl());
 	$scope.user = user;
 	$scope.shareComplete, $scope.shareSuccess, $scope.shareFailed = false;
@@ -247,4 +244,4 @@ angular.module( 'bidio.video', [
 	$scope.viewTweet = function() {
 		window.open('https://twitter.com/' + $scope.tweetUsername + '/status/' + $scope.tweetId)
 	}
-});
+}]);

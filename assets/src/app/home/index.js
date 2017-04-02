@@ -1,7 +1,7 @@
 angular.module( 'bidio.home', [
 ])
 
-.config(function config( $stateProvider ) {
+.config(['$stateProvider', function config( $stateProvider ) {
 	$stateProvider.state( 'home', {
 		url: '/',
 		views: {
@@ -11,36 +11,31 @@ angular.module( 'bidio.home', [
 			}
 		},
 		resolve: {
-			trendingVideos: function(VideoModel){
+			trendingVideos: ['VideoModel', function(VideoModel){
 				return VideoModel.getAll();
-			},
-			featuredCampaigns: function(CampaignModel){
+			}],
+			featuredCampaigns:['CampaignModel', function(CampaignModel){
 				return CampaignModel.getFeatured();
-			},
-			featuredVideos: function(CampaignModel){
+			}],
+			featuredVideos: ['CampaignModel', function(CampaignModel){
 				return CampaignModel.getFeatured();
-			},
-			campaign: function(CampaignModel){
-				return CampaignModel.getByUrl("railhawks-tryouts");
-			},
-			videos: function(VideoModel){
+			}],
+			videos: ['VideoModel', function(VideoModel){
 				return VideoModel.getAll();
-			}
+			}]
 		}
 	});
-})
+}])
 
-.controller( 'HomeCtrl', function HomeController( $scope, titleService, config, trendingVideos, campaign, featuredCampaigns, videos, featuredVideos, $sce ) {
+.controller( 'HomeCtrl', ['$scope', 'config', 'featuredCampaigns', 'featuredVideos', 'titleService', 'trendingVideos', 'videos', function HomeController( $scope, config, featuredCampaigns, featuredVideos, titleService, trendingVideos, videos ) {
 	titleService.setTitle('bidio');
 	$scope.videos = videos;
 	$scope.currentUser = config.currentUser;
 	$scope.trendingVideos = trendingVideos;
-	//campaign.title = $sce.trustAsHtml(campaign.title)
-	$scope.campaign = campaign;
 	$scope.featuredCampaigns = featuredCampaigns;
     $scope.toggle = true;
+    $scope.campaign = {};
 
-	console.log(campaign);
 	$scope.intro = {
         sources: [
             {
@@ -48,11 +43,10 @@ angular.module( 'bidio.home', [
                 type: 'video/mp4'
             }
         ],
-        poster: $scope.campaign.poster
-    }	
+        //poster: $scope.campaign.poster
+    };
 
-
-	$scope.campaign.media = {
+	/*$scope.campaign.media = {
         sources: [
             {
                 src: $scope.campaign.videoUrl,
@@ -60,7 +54,8 @@ angular.module( 'bidio.home', [
             }
         ],
         poster: $scope.campaign.poster
-    }	
+    };*/
+
     $scope.campaign.matt = {
         sources: [
             {
@@ -68,6 +63,6 @@ angular.module( 'bidio.home', [
                 type: 'video/mp4'
             }
         ]    
-    }
+    };
 
-});
+}]);

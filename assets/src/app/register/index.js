@@ -1,7 +1,7 @@
 angular.module( 'bidio.register', [
 ])
 
-.config(function config( $stateProvider ) {
+.config(['$stateProvider', function config( $stateProvider ) {
 	$stateProvider.state( 'register', {
 		url: '/register',
 		views: {
@@ -11,20 +11,12 @@ angular.module( 'bidio.register', [
 			}
 		}
 	});
-})
+}])
 
-.controller( 'RegisterCtrl', function RegisterController( $scope, titleService, config, $location ) {
+.controller( 'RegisterCtrl', ['$location', '$scope', 'config', 'titleService', function RegisterController( $location, $scope, config, titleService ) {
 	titleService.setTitle('register');
 	$scope.currentUser = config.currentUser;
-	if ($scope.currentUser){
-		$location.path('/');
-	};
-
-	// remove fb's appended hash
-	if (window.location.hash && window.location.hash == '#_=_')
-		window.location.hash = '';
-
-	$scope.go = function(path) {
-	  	$location.path(path);
-	};
-});
+	if ($scope.currentUser){$location.path('/')};
+	if (window.location.hash && window.location.hash == '#_=_'){window.location.hash = ''}
+	$scope.go = function(path) {$location.path(path)};
+}]);

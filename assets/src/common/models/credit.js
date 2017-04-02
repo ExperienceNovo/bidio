@@ -1,6 +1,6 @@
 angular.module('models.credit', ['lodash', 'services', 'sails.io',])
 
-.service('CreditModel', function(lodash, utils, $sailsSocket) {
+.service('CreditModel', ['$sailsSocket', 'utils', function($sailsSocket, utils) {
 
     this.create = function(newModel) {
         var url = utils.prepareUrl('credit');
@@ -20,4 +20,4 @@ angular.module('models.credit', ['lodash', 'services', 'sails.io',])
         console.log(error);
     };
 
-});
+}]);

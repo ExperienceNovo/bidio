@@ -1,7 +1,7 @@
 angular.module( 'bidio.forgot', [
 ])
 
-.config(function config( $stateProvider ) {
+.config(['$stateProvider', function config( $stateProvider ) {
 	$stateProvider.state( 'forgot', {
 		url: '/forgot',
 		views: {
@@ -11,12 +11,10 @@ angular.module( 'bidio.forgot', [
 			}
 		}
 	});
-})
+}])
 
-.controller( 'ForgotCtrl',['$scope', 'config', 'titleService',  function LoginController( $scope, config, titleService) {
-
+.controller( 'ForgotCtrl', ['$scope', 'config', 'titleService',  function LoginController( $scope, config, titleService) {
 	$scope.globalErr = config.globalErr;
-	titleService.setTitle('bidio');
+	titleService.setTitle('bidio - forgot?');
 	$scope.currentUser = config.currentUser;
-
 }]);

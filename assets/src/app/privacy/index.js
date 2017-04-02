@@ -1,7 +1,7 @@
 angular.module( 'bidio.privacy', [
 ])
 
-.config(function config( $stateProvider ) {
+.config(['$stateProvider', function config( $stateProvider ) {
 	$stateProvider.state( 'privacy', {
 		url: '/privacy',
 		views: {
@@ -11,8 +11,8 @@ angular.module( 'bidio.privacy', [
 			}
 		}
 	});
-})
+}])
 
-.controller( 'PrivacyCtrl', function PrivacyController( $scope, titleService ) {
-	titleService.setTitle('Privacy - bidio');
-});
+.controller( 'PrivacyCtrl', ['$scope', 'titleService', function PrivacyController( $scope, titleService ) {
+	titleService.setTitle('bidio - privacy');
+}]);

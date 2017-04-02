@@ -1,7 +1,7 @@
 angular.module( 'bidio.forgotSuccess', [
 ])
 
-.config(function config( $stateProvider ) {
+.config(['$stateProvider', function config( $stateProvider ) {
 	$stateProvider.state( 'forgotSuccess', {
 		url: '/forgot/success',
 		views: {
@@ -11,12 +11,10 @@ angular.module( 'bidio.forgotSuccess', [
 			}
 		}
 	});
-})
+}])
 
 .controller( 'ForgotSuccessCtrl',['$scope','config', 'titleService' , function ForgotSuccessController( $scope, config, titleService ) {
- 
 	$scope.globalErr = config.globalErr;
-	titleService.setTitle('bidio');
+	titleService.setTitle('bidio - success!');
 	$scope.currentUser = config.currentUser;
-
 }]);

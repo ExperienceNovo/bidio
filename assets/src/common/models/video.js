@@ -1,6 +1,6 @@
 angular.module('models.video', ['lodash', 'services', 'sails.io',])
 
-.service('VideoModel', function(lodash, utils, $sailsSocket) {
+.service('VideoModel', ['$sailsSocket', 'utils', function($sailsSocket, utils) {
     this.getAll = function() {
         var url = utils.prepareUrl('video');
         return $sailsSocket.get(url).then(success, error);
@@ -57,4 +57,4 @@ angular.module('models.video', ['lodash', 'services', 'sails.io',])
         throw error;
     };
 	
-});
+}]);

@@ -1,6 +1,7 @@
 angular.module('models.auth', ['lodash', 'services', 'sails.io',])
 
-.service('AuthModel', function(lodash, utils, $sailsSocket) {
+.service('AuthModel', ['$sailsSocket', 'utils', function($sailsSocket, utils) {
+
     this.login = function(newModel) {
         var url = '/auth/' + newModel.type;
         return $sailsSocket.post(url, newModel).then(success, error);
@@ -14,4 +15,4 @@ angular.module('models.auth', ['lodash', 'services', 'sails.io',])
         console.log(error);
     };
 
-});
+}]);

@@ -1,7 +1,7 @@
 angular.module( 'bidio.sponsors', [
 ])
 
-.config(function config( $stateProvider ) {
+.config(['$stateProvider', function config( $stateProvider ) {
 	$stateProvider.state( 'sponsors', {
 		url: '/sponsors',
 		views: {
@@ -11,8 +11,8 @@ angular.module( 'bidio.sponsors', [
 			}
 		}
 	});
-})
+}])
 
-.controller( 'SponsorsCtrl', function SponsorsController( $scope, titleService ) {
-	titleService.setTitle('Sponsors - bidio');
-});
+.controller( 'SponsorsCtrl', ['$scope', 'titleService', function SponsorsController( $scope, titleService ) {
+	titleService.setTitle('bidio - sponsors');
+}]);

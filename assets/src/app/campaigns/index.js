@@ -1,7 +1,7 @@
 angular.module( 'bidio.campaigns', [
 ])
 
-.config(function config( $stateProvider ) {
+.config(['$stateProvider', function config( $stateProvider ) {
 	$stateProvider.state( 'campaigns', {
 		url: '/campaigns',
 		views: {
@@ -11,26 +11,17 @@ angular.module( 'bidio.campaigns', [
 			}
 		},
 		resolve: {
-			campaigns: function(CampaignModel){
+			campaigns: ['CampaignModel', function(CampaignModel){
 				return CampaignModel.getAll();
-			}
+			}]
 		}
 	});
-})
+}])
 
-.controller( 'CampaignsCtrl', function CampaignsCtrl( $scope, config, titleService, CampaignModel, campaigns, $sailsSocket, $sce) {
+.controller( 'CampaignsCtrl', ['$sailsSocket', '$sce', '$scope', 'CampaignModel', 'campaigns', 'config', 'titleService', function CampaignsCtrl( $sailsSocket, $sce, $scope, CampaignModel, campaigns, config, titleService) {
 	titleService.setTitle('campaigns - bidio');
 	$scope.currentUser = config.currentUser;
-	$scope.campaigns = campaigns.map(function(campaign){
-		campaign.title = $sce.trustAsHtml(campaign.title);
-		return campaign;
-	});
-
-	$scope.createCampaign = function(newCampaign){
-		newCampaign.user = $scope.currentUser.id;
-		console.log(newCampaign);
-		CampaignModel.create(newCampaign);
-	}
+	$scope.campaigns = campaigns;
 	
 	$sailsSocket.subscribe('campaign', function(envelope){
 		console.log(envelope)
@@ -47,8 +38,4 @@ angular.module( 'bidio.campaigns', [
 		}
 	});
 	
-	
-	
-	
-	
-});
+}]);

@@ -1,6 +1,7 @@
 angular.module('models.campaign', ['lodash', 'services', 'sails.io',])
 
-.service('CampaignModel', function(lodash, utils, $sailsSocket) {
+.service('CampaignModel', ['$sailsSocket', 'utils', function($sailsSocket, utils) {
+
     this.getAll = function() {
         var url = utils.prepareUrl('campaign');
         return $sailsSocket.get(url).then(success, error);
@@ -64,5 +65,4 @@ angular.module('models.campaign', ['lodash', 'services', 'sails.io',])
         console.log(error);
     };
 
-
-});
+}]);

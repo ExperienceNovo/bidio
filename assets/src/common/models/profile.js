@@ -1,6 +1,7 @@
 angular.module('models.profile', ['lodash', 'services', 'sails.io',])
 
-.service('ProfileModel', function(lodash, utils, $sailsSocket) {
+.service('ProfileModel', ['$sailsSocket', 'utils', function($sailsSocket, utils) {
+
     this.update = function(model) {
         var url = utils.prepareUrl('profile/' + model.id);
         return $sailsSocket.post(url,model).then(success, error);
@@ -11,7 +12,7 @@ angular.module('models.profile', ['lodash', 'services', 'sails.io',])
     };
 
     var error = function(error) {
-        console.log(error);
         return error;
     };
-});
+
+}]);

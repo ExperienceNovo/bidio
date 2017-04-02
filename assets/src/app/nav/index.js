@@ -1,7 +1,7 @@
 angular.module( 'bidio.nav', [
 ])
 
-.controller( 'NavCtrl', function NavCtrl( $scope, $state, config, $rootScope, $location ) {
+.controller( 'NavCtrl', ['$location', '$rootScope', '$scope', '$state', 'config', function NavCtrl( $location, $rootScope, $scope, $state, config ) {
    	$scope.currentUser = config.currentUser;
    	$scope.date = new Date();
    	$rootScope.$on("$stateChangeSuccess", function() {
@@ -10,7 +10,7 @@ angular.module( 'bidio.nav', [
     $scope.isActive = function (viewLocation) { 
         return viewLocation === $location.path();
     };
-})
+}])
 
 .directive('navCollapse', function () {
     return {
