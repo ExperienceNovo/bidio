@@ -137,10 +137,9 @@ angular.module( 'bidio.video', [
 	$scope.video = video;
 	$scope.highestBid = highestBid;
 	var startingValue = {};
-
 	$scope.bid = {
 		//should come from selected campaign..
-		value: String(parseFloat(highestBid.value + 0.05).toFixed(2)),
+		value: String(((parseFloat(highestBid.value) + 0.05)).toFixed(2)),
 		video: video.id,
 		user: config.currentUser.id,
 		isAccepted: true,

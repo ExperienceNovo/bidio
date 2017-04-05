@@ -1,13 +1,13 @@
 <div class="container">
 	<div class="spacing-25"></div>
 	<div class="bidio-profile">
-	    <img align="left" class="bidio-image-lg" src="{{profile.bannerUrl}}" alt="Profile Banner"/>
+	    <img align="left" class="bidio-image-lg" ng-src="{{profile.bannerUrl}}" alt="Profile Banner"/>
 	</div>
   	<div class="row">
   		<div class="col-xs-12">
   			<div style="text-align: left;">
 		        <div class="bidio-image-profile">
-	    			<img style="max-width: 100%;padding:10px" class="thumbnail" src="{{profile.pictureUrl}}" alt="Profile Pic"/>	
+	    			<img style="max-width: 100%;padding:10px" class="thumbnail" ng-src="{{profile.pictureUrl}}" alt="Profile Pic"/>	
 	    		</div>
 	    		<div class="prof-desc">		
 	    			<h2>{{member.username}}</h2>
@@ -70,7 +70,7 @@
 			</div>
 			<div class="dashboardVideos col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-repeat="video in videos" style="margin-top: 25px;">
 		    	<h2 class="bidio-orange prof-vid"><a ui-sref="video({id: video.id})">{{video.title}}</a></h2>
-		    	<video style="display:inline-block;padding: 25px;" class="video-js vjs-default-skin" src="{{video.amazonUrl}}" controls preload="none" width="640" height="264" poster="{{video.poster}}" vjs-video>
+		    	<video style="display:inline-block;padding: 25px;" class="video-js vjs-default-skin" ng-src="{{video.amazonUrl}}" controls preload="none" width="640" height="264" poster="{{video.poster}}" vjs-video>
 		    	</video>
 		  	</div>
 		</uib-tab>
@@ -90,7 +90,7 @@
 				</div>
 				<div class="col-md-6" ng-repeat="campaign in campaigns" style="text-align:left;margin-bottom:50px;">
 					<div class="col-md-2">	
-						<img style="height:50px;" src="{{campaign.campaignImageUrl}}">
+						<img style="height:50px;" ng-src="{{campaign.campaignImageUrl}}">
 					</div>
 					<div class="col-md-10">			
 						<h2 style="font-size:2em">

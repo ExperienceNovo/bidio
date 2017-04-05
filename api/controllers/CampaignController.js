@@ -131,7 +131,7 @@ module.exports = {
 			)]
 		})
 		.spread(function(campaign, users){
-			//console.log(campaign.bids)
+			console.log(campaign.bids);
 			campaign.bids.forEach(function(bid,i){
 				bid.video.user = users[i]
 			});
