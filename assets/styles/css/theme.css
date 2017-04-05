@@ -140,6 +140,15 @@ strong {
     color: #eee;
 }
 
+
+md-progress-linear .md-container {
+  background-color: rgba(36,36,46, 1)!important;
+}
+
+md-progress-linear.md-default-theme .md-bar, md-progress-linear .md-bar {
+ background-color: #FE9A2E!important;
+}
+
 a.navbar-brand {
     height: 30px;
     width: 100px;
