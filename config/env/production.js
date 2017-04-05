@@ -17,11 +17,7 @@ module.exports = {
    * environment (see config/connections.js and config/models.js )           *
    ***************************************************************************/
 
-  hookTimeout: 160000,
-
-  orm: {
-  	_hookTimeout: 60000
-  },
+  hookTimeout: 10000000,
 
   models: {
     connection: 'productionMongoHqDb',
