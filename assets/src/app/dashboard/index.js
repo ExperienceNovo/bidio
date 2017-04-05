@@ -24,7 +24,7 @@ angular.module( 'bidio.dashboard', [
     })
     .state( 'dashboard.analytics', {
         url: '/analytics',
-        controller: '',
+        controller: 'DashboardAnalyticsCtrl',
         templateUrl: 'dashboard/templates/analytics.tpl.html',
         resolve: {
             campaigns: ['CampaignModel', function(CampaignModel){
