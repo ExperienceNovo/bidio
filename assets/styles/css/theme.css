@@ -142,7 +142,7 @@ strong {
 
 
 md-progress-linear .md-container {
-  background-color: rgba(36,36,46, 1)!important;
+  background-color: #101010!important;
 }
 
 md-progress-linear.md-default-theme .md-bar, md-progress-linear .md-bar {

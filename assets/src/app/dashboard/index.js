@@ -250,7 +250,7 @@ angular.module( 'bidio.dashboard', [
 
     //past month default analytic selection
     var newDate = new Date( $scope.endDate );
-    newDate.setMonth( newDate.getMonth() - 1, d.getDate());
+    newDate.setMonth( newDate.getMonth() - 1, newDate.getDate());
     $scope.startDate = newDate;
 
 

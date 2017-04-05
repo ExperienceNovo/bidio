@@ -124,11 +124,9 @@ angular.module( 'bidio.video', [
 	};
 
 	$scope.clickThrough = function(){
-		console.log(video)
-		ClickModel.create($scope.viewModel).then(function(){
-			$location.path(/campaign/+$scope.video.campaign.urlTitle)
-		});
-		$location.path(/campaign/+$scope.video.campaign.urlTitle);
+		ClickModel.create($scope.viewModel)
+		//$location.path(/campaign/+$scope.video.campaign.urlTitle);
+		window.open(/campaign/+$scope.video.campaign.urlTitle, '_blank');
 	};
 
 }])

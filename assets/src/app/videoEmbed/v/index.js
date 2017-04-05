@@ -19,7 +19,6 @@ angular.module( 'bidio.videoEmbed', [
 }])
 
 .controller( 'VideoEmbedCtrl', ['$location', '$sailsSocket', '$scope', 'ClickModel', 'config', 'lodash', 'titleService', 'video', 'ViewModel', 'VideoModel', function VideoEmbedCtrl( $location, $sailsSocket, $scope, ClickModel, config, lodash, titleService, video, ViewModel, VideoModel ) {
-	console.log('hello')
 	$scope.currentUser = config.currentUser;
 	$scope.video = video;
     $scope.video.poster = 'images/video-overlay.png'
@@ -43,14 +42,15 @@ angular.module( 'bidio.videoEmbed', [
 
 	$scope.clickThrough = function(){
 		ClickModel.create($scope.viewModel);
-		$location.path(/campaign/+$scope.video.campaign.urlTitle);
+		//$location.path(/campaign/+$scope.video.campaign.urlTitle);
+		window.open(/campaign/+$scope.video.campaign.urlTitle, '_blank');
 	};
 
     $sailsSocket.subscribe('video', function (envelope) {
         switch(envelope.verb) {
             case 'updated':
             	$scope.video = envelope.data;
-            	console.log(envelope.data)
+            	//console.log(envelope.data)
                 break;
         }
     });
