@@ -117,22 +117,20 @@ module.exports = {
 		.spread(function(campaign,profile){
 			if (!profile){return campaign;}
 			campaign.user.profile = profile;
-			console.log(profile)
 			return campaign;
 		})
 		.then(function(campaign){
 			/*add users to videos*/
 			return [campaign, Promise.all(
 				campaign.bids.map(function(bid){
-					//console.log(bid)
 					if(bid.video){return User.findOne({id: bid.video.user});}
 					else{return User.findOne({id: 1})}
 				})
 			)]
 		})
 		.spread(function(campaign, users){
-			console.log(campaign.bids);
 			campaign.bids.forEach(function(bid,i){
+				console.log(bid)
 				bid.video.user = users[i]
 			});
 

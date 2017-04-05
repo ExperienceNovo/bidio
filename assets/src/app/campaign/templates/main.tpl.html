@@ -1,10 +1,7 @@
 <div class="container"> 
     <div class="bidio-profile">
-        <img align="left" class="bidio-image-lg" src="{{campaign.bannerUrl}}" alt="Campaign Banner"/>
+        <img align="left" class="bidio-image-lg" ng-src="{{campaign.bannerUrl}}" alt="Campaign Banner"/>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <p><div ng-bind-html="campaignContent"></div></p>
-        </div>
+    <div ng-bind-html="campaignContent"></div>
     </div>
 </div>
