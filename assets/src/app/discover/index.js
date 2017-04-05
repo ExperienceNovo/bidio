@@ -18,40 +18,33 @@ angular.module( 'bidio.discover', [
 	});
 }])
 
-.controller( 'DiscoverCtrl', ['$sce', '$scope', 'config', 'SearchModel', 'titleService', 'videos', function DiscoverCtrl( $sce, $scope, config, SearchModel, titleService, videos ) {
+.controller( 'DiscoverCtrl', ['$rootScope','$sce', '$scope', 'config', 'SearchModel', 'titleService', 'videos', function DiscoverCtrl( $rootScope, $sce, $scope, config, SearchModel, titleService, videos ) {
 	titleService.setTitle('bidio - discover');
 	$scope.videos = videos;
  	$scope.defaultposter = 'images/video-overlay.png';
  	for (x in $scope.videos){
     	$scope.videos[x].media = {
     		sources: [
-		        {
-		            src: $scope.videos[x].amazonUrl,
-		            //type: 'video/'+$scope.videos[x].amazonUrl.split('.').pop().toLowerCase()
-					type: "video/mp4"
-
-		        }
+		        {src: $scope.videos[x].amazonUrl, type: "video/mp4"}
     		],
     		poster: $scope.defaultposter
     	}
     }
  	$scope.keyPress = function(searchValue){
  		if (searchValue != ''){
+ 			$rootScope.stateIsLoading = true;
 	        SearchModel.search(searchValue, 100, 0).then(function(models){
 	            $scope.videos = models;
+	            $rootScope.stateIsLoading = false;
 	        });
 	        for (x in $scope.videos){
 	        	$scope.videos[x].media = {
 	        		sources: [
-				        {
-				            src: $scope.videos[x].amazonUrl,
-				            type: "video/mp4"
-				        }
+				        {src: $scope.videos[x].amazonUrl, type: "video/mp4"}
 		    		],
-		    		poster: $scope.defaultposter
+		    		poster: $scope.defaultposter//thumbnail
 		    	}
-		    	console.log($scope.videos[x].media)
 	        }
     	}
-    }
+    };
 }]);
