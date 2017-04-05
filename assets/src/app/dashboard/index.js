@@ -248,6 +248,12 @@ angular.module( 'bidio.dashboard', [
     $scope.startDate = new Date($scope.views[0].createdAt);
     $scope.endDate = new Date($scope.views[$scope.views.length-1].createdAt);
 
+    //past month default analytic selection
+    var newDate = new Date( $scope.endDate );
+    newDate.setMonth( newDate.getMonth() - 1, d.getDate());
+    $scope.startDate = newDate;
+
+
     $scope.$watch('startDate', function() {
         $scope.updateData();
     });
