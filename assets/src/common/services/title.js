@@ -1,5 +1,5 @@
 angular.module('services.title', [])
-.factory('titleService',['$document, $window', function($document, $window) {
+.factory('titleService',['$document', '$window', function($document, $window) {
   var title;
   return {
     setTitle: function(t) {

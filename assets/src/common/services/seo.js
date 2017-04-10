@@ -8,7 +8,7 @@ angular.module('services.seo', [])
       $window.document.getElementsByName('twitter:description')[0].content = description;
     },
     setKeywords: function(keywords) {
-      $window.document.getElementsByName('keywords')[0].content = keywords;
+      return $window.document.getElementsByName('keywords')[0].content = keywords;
     }
   };
 }]);
