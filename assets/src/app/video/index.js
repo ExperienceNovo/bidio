@@ -36,7 +36,7 @@ angular.module( 'bidio.video', [
 	    sources: [
 	        {
 	            src: $scope.video.amazonUrl,
-	            type: 'video/webm'
+	            type: 'video/mp4'
 	        }
 	    ],
 	    poster: $scope.video.poster//thumbnail -----
