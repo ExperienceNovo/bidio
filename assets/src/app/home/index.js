@@ -36,16 +36,6 @@ angular.module( 'bidio.home', [
     $scope.toggle = true;
     $scope.campaign = {};
 
-	$scope.intro = {
-        sources: [
-            {
-                src: 'https://s3.amazonaws.com/bidio8/marketing+images/Bidio_intro_3.20.mov',
-                type: 'video/mp4'
-            }
-        ],
-        //poster: $scope.campaign.poster
-    };
-
 	/*$scope.campaign.media = {
         sources: [
             {

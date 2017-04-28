@@ -36,7 +36,7 @@ angular.module( 'bidio.video', [
 	    sources: [
 	        {
 	            src: $scope.video.amazonUrl,
-	            type: 'video/'+$scope.video.amazonUrl.split('.').slice(-1)[0] 
+	            type: 'video/'+$scope.video.amazonUrl.split('.').slice(-1)[0].toLowerCase()
 	        }
 	    ],
 	    poster: $scope.video.poster//thumbnail -----
