@@ -1,6 +1,5 @@
 module.exports = {
 
-
     index: function(req, res) {
         if (req.params.id){
             Video.find({id:req.params.id}).then(function(models){
