@@ -1,10 +1,22 @@
 module.exports = {
-	
+
+
     index: function(req, res) {
-        res.view({
-            title: 'Home',
-            currentUser: req.user
-        });
+        if (req.params.id){
+            Video.find({id:req.params.id}).then(function(models){
+                 res.view({
+                    title: 'Home',
+                    currentUser: req.user,
+                    video: models[0]
+                });
+            })
+        }
+        else{
+            res.view({
+                title: 'Home',
+                currentUser: req.user
+            });
+        }
     },
 
     ssl: function(req, res) {
