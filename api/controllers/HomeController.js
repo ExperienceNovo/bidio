@@ -9,12 +9,15 @@ module.exports = {
                     currentUser: req.user,
                     video: models[0]
                 });
-            })
+            });
         }
         else{
-            res.view({
-                title: 'Home',
-                currentUser: req.user
+            Video.find({id:'5730ea61adfa6d0300a0a22b'}).then(function(models){
+                 res.view({
+                    title: 'Home',
+                    currentUser: req.user,
+                    video: models[0]
+                });
             });
         }
     },
