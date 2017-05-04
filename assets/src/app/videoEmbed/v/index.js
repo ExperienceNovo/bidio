@@ -26,7 +26,7 @@ angular.module( 'bidio.videoEmbed', [
 	titleService.setTitle(video.title + ' - bidio');
 	$scope.viewModel = {};
 	$scope.media = {
-	    sources: [{src: $scope.video.amazonUrl, type: 'video/webm'}],
+	    sources: [{src: $scope.video.amazonUrl, type: 'video/'+$scope.video.amazonUrl.split('.').slice(-1)[0].toLowerCase()}],
 	    poster: $scope.video.poster
 	};
 
