@@ -1,0 +1,17 @@
+
+<div class="video-container">
+	<video 
+		class="video-js vjs-default-skin"
+		controls preload="auto" 
+		width="640" 
+		height="264" 
+		fluid="true"
+		poster="{{video.poster}}" 
+		vjs-media="media"
+		vjs-ratio="16:9"
+		vjs-video
+		playsinline
+		>
+	</video>
+	<a ng-show="video.campaign.campaignImageUrl" class="vid-clickthrough" ng-click="clickThrough()"><img src="{{video.campaign.campaignImageUrl}}"></a>
+</div>
