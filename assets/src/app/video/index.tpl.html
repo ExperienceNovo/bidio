@@ -1,7 +1,8 @@
 <div style="height:100%">
-	<div style="background:#000;width:100%;border-bottom: 5px solid #FE9A2E;">
+	<div style="background:#000;width:100%;border-bottom: 3px solid #FE9A2E;">
 		<div class="spacing-25"></div>
-		<div class="video-container">
+		<!--<div class="video-container">-->
+		<div class="container">
 			<video 
 				class="video-js vjs-default-skin"
 				controls preload="auto" 
@@ -19,11 +20,29 @@
 			<div class="spacing-15"></div>
 		</div>
 	</div>
-	<div id="video-details" style="float:left;width:100%;">
-		<div class="aboutTxt" style="width:100%;margin:0 auto;padding-bottom:65px!important">
-			<h3 style="text-transform:capitalize;padding-top:50px;color:#252525;font-weight:bold;font-size:2em;padding-bottom:15px;">{{video.title}}</h3> 
-			<hr style="width:50%;margin:20px auto;border-top: 1px solid #c5c5c5;">
+	<div class="container" style="text-align:left; min-height:350px">
+		<div>
+			<div class="spacing-15"></div>
+			<div class="row">
+				<div class="col-md-6">
+					<h2>{{video.title}}</h2> 
+				</div>
+				<div class="col-md-6" style="text-align:right">
+					<h3 style="display:inline;margin:10px"><i class="fa fa-play"></i> {{video.viewCount}}</h3>
+					<h3 style="display:inline;margin:10px"><i class="fa fa-play"></i> {{video.liveViewCount}}</h3>
+					<h3 style="display:inline;margin:10px"><i class="fa fa-hand-pointer-o"></i> {{video.clickCount}}</h3>
+					<h3 style="display:inline;margin:10px"><i class="fa fa-money"></i> {{video.campaign.price}}</h3>
+					<h3 style="display:inline;margin:10px" class="" ng-click="share()"><a><i class="fa fa-share"></i>  Share</a></h3>
+					<h3 style="display:inline;margin:10px" class="" ng-click="bid()" ng-hide="!currentUser"><a><i class="fa fa-bar-chart"></i> Bid</a></h3>
+					<h3 style="display:inline;margin:10px" class="" ng-click="clickThrough()"><a><img style="height:24px" src="{{video.campaign.campaignImageUrl}}"> {{video.campaign.prompt}}</a></h3>
+				</div>
+			</div>
+			<div class="spacing-5"></div>
+
+			<hr>
+			<!--
 			<div class="tabs">
+
 				<label for="tab1" title="Member"><a href="/member/{{video.user.username}}">{{video.user.username}}</a></label>
 				<label for="tab2" class="tooltip--bottom" data-tooltip="View Count">{{video.viewCount}}</label>
 				<label for="tab2" class="tooltip--bottom" data-tooltip="Live View Count">{{video.liveViewCount}}</label>
@@ -32,9 +51,15 @@
 				<label for="tab4" title="Share" ng-click="share()"><a>Share</a></label>				
 				<label class="tooltip--bottom" data-tooltip="Sponsor Video?" for="tab5" ng-click="bid()" ng-hide="!currentUser">Make Bid</label>
 				<div class="spacing-5"></div>
-				<label ng-show="video.campaign" title="{{video.campaign.prompt}}" ng-click="clickThrough()"><a><img style="height:24px" src="{{video.campaign.campaignImageUrl}}"> {{video.campaign.prompt}}</a></label>				
+				<label ng-show="video.campaign" title="{{video.campaign.prompt}}" ng-click="clickThrough()"><a><img style="height:24px" src="{{video.campaign.campaignImageUrl}}"> {{video.campaign.prompt}}</a></label>	
+
 			</div>
-			<p class="container" style="padding: 25px;text-align:justify;">{{video.description}}</p>
+			-->
+
+			<h2><a href="/member/{{video.user.username}}"><img src="{{video.user.profile.avatarUrl}}">{{video.user.username}}</a></h2>
+			<div class="spacing-15"></div>
+
+			<p>{{video.description}}</p>
 		</div>
 	</div>
 </div>

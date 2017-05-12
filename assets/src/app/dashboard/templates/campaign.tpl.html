@@ -220,6 +220,16 @@
 				    		<md-input-container layout-fill>
 				    			<textarea aria-label="Campaign Content" rows="10" ng-model="campaign.campaignContent"></textarea>
 				    		</md-input-container>
+
+
+
+
+				    		<text-angular id="faxInputArea" ng-model="newFax.faxContent" ta-toolbar="[['h1','h2','h3', 'p'],['bold','italics','justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', 'indent', 'outdent', 'insertImage']]" placeholder="Are they listening?"></text-angular>
+
+
+
+
+
 				    		<md-progress-circular ng-show="saving" md-mode="indeterminate"></md-progress-circular>
 				    		<md-button ng-disabled="saving" ng-click="landingSave()">Save</md-button>
 				    		<md-button ng-disabled="saving" ng-click="landingUndo()">Undo</md-button>
@@ -282,46 +292,46 @@
 				<div class="row">
 					<div class="col-md-12">
 						<md-button ng-click="saveVideo()" ng-disabled="clean == true || saving">
-				    	<md-icon>save</md-icon>
-				    	&nbsp;Save
-				    	<span ng-show="saving">&nbsp;<i class="fa fa-spin fa-spinner"></i></span>
-				    </md-button>
+					    	<md-icon>save</md-icon>
+					    	&nbsp;Save
+					    	<span ng-show="saving">&nbsp;<i class="fa fa-spin fa-spinner"></i></span>
+					    </md-button>
 
-				    <md-button ng-click="undoVideo()" ng-disabled="clean == true || saving">
-				    	<md-icon>undo</md-icon>
-				    	&nbsp;Undo
-				    </md-button>
+					    <md-button ng-click="undoVideo()" ng-disabled="clean == true || saving">
+					    	<md-icon>undo</md-icon>
+					    	&nbsp;Undo
+					    </md-button>
 					</div>
 				</div>
 				<div class="spacing-25"></div>
 				<div class="container">
 					<div class="row">
-				    <div ng-repeat="bid in selectedBids" style="font-size:18px;text-align: left;padding: 5px;">
-				    	<div class="row">
-							<h3 style="font-weight: bold;">Title</h3>
-				    		{{bid.video.title}}
-				    	</div>	
-						<div class="spacing-15"></div>
-				    	<div class="row">
-							<h3 style="font-weight: bold;">User</h3>
-				    		{{bid.video.user}}
-				    	</div>
-				    	<div class="spacing-15"></div>	    	
-				    	<div class="row">
-								<h3 style="font-weight: bold;">Description</h3>
-								<p>{{bid.video.description}}</p>
-				    	</div>
+					    <div ng-repeat="bid in selectedBids" style="font-size:18px;text-align: left;padding: 5px;">
+					    	<div class="row">
+								<h3 style="font-weight: bold;">Title</h3>
+					    		{{bid.video.title}}
+					    	</div>	
 							<div class="spacing-15"></div>
-				    	<div class="row">
-								<h3 style="font-weight: bold;">Play Video <md-button style="display:inline-block;padding:5px;font-size:18px;margin-left:0;" ng-click="view($event, bid.video)" class="md-icon-button"><md-icon>play_arrow</md-icon></md-button>	</h3>		    	
-							</div>		
-							<div class="spacing-15"></div>	    	
-							<div class="row">
-								<h3 style="font-weight: bold;">Approved? <md-checkbox style="display:inline-block;padding:5px;margin-left:5px" ng-disabled="selection.type == 'old'" ng-click="dirty(bid)" ng-model="bid.isAccepted" aria-label="Approved"></md-checkbox></h3>
-							</div>
-							<md-divider></md-divider>
-				    	<div class="spacing-25"></div>
-				    </div>
+					    	<div class="row">
+								<h3 style="font-weight: bold;">User</h3>
+					    		{{bid.video.user}}
+					    	</div>
+					    	<div class="spacing-15"></div>	    	
+					    	<div class="row">
+									<h3 style="font-weight: bold;">Description</h3>
+									<p>{{bid.video.description}}</p>
+					    	</div>
+							<div class="spacing-15"></div>
+					    	<div class="row">
+									<h3 style="font-weight: bold;">Play Video <md-button style="display:inline-block;padding:5px;font-size:18px;margin-left:0;" ng-click="view($event, bid.video)" class="md-icon-button"><md-icon>play_arrow</md-icon></md-button>	</h3>		    	
+								</div>		
+								<div class="spacing-15"></div>	    	
+								<div class="row">
+									<h3 style="font-weight: bold;">Approved? <md-checkbox style="display:inline-block;padding:5px;margin-left:5px" ng-disabled="selection.type == 'old'" ng-click="dirty(bid)" ng-model="bid.isAccepted" aria-label="Approved"></md-checkbox></h3>
+								</div>
+								<md-divider></md-divider>
+					    	<div class="spacing-25"></div>
+					    </div>
 					</div>
 				</div>
 			</md-tab>

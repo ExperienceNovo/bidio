@@ -24,7 +24,7 @@
 		<div class="dashboardVideos col-xs-12 col-sm-12 col-md-4 col-lg-4" ng-repeat="video in videos" style="margin-top: 25px;">
 			<div class="spacing-25"></div>
 	    	<a ui-sref="video({id: video.id})">
-				<h2 class="discover-title">
+				<h2 class="discover-title" style="text-align:left">
 					{{video.title}}
 				</h2>
 				<video 
@@ -38,6 +38,9 @@
 					vjs-media="video.media"
 					vjs-ratio="16:9">
 				</video>
+				<!--<h2 style="text-align:left; font-size:2em; text-overflow:ellipsis">
+					{{video.title}}
+				</h2>-->
 			</a>
 		</div>
 	</div>
