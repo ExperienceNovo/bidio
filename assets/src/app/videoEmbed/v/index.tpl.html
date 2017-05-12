@@ -1,4 +1,11 @@
-
+<style>
+	video {
+	    left: 50%;
+	    position: absolute;
+	    top: 50%;
+	    transform: translate(-50%, -50%);
+	}
+</style>
 <div class="video-container">
 	<video 
 		class="video-js vjs-default-skin"
@@ -15,4 +22,3 @@
 	</video>
 	<a ng-show="video.campaign.campaignImageUrl" class="vid-clickthrough" ng-click="clickThrough()"><img src="{{video.campaign.campaignImageUrl}}"></a>
 </div>
-cre8
