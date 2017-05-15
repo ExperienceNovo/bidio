@@ -41,6 +41,7 @@ angular.module( 'bidio.video', [
 	    ],
 	    poster: $scope.video.poster//thumbnail -----
 	};
+	if($scope.media.sources[0].type == 'video/mov'){$scope.media.sources[0].type = 'video/mp4'}
 
 	var activeBid = video.bids.filter(function(bid){ return bid.isActive });
 	$scope.highestBid = activeBid.length ? activeBid[0] : {value: "0.01"};
