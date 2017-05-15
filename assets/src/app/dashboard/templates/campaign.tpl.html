@@ -217,17 +217,12 @@
 				    		<p>{{campaign.campaignContent}}</p>
 				    	</div>
 				    	<div ng-show="editingLanding">
-				    		<md-input-container layout-fill>
+				    		<!--<md-input-container layout-fill>
 				    			<textarea aria-label="Campaign Content" rows="10" ng-model="campaign.campaignContent"></textarea>
-				    		</md-input-container>
+				    		</md-input-container>-->
 
 
-
-
-				    		<text-angular id="faxInputArea" ng-model="newFax.faxContent" ta-toolbar="[['h1','h2','h3', 'p'],['bold','italics','justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', 'indent', 'outdent', 'insertImage']]" placeholder="Are they listening?"></text-angular>
-
-
-
+				    		<text-angular id="faxInputArea" ng-model="campaign.campaignContent" ta-toolbar="[['h1','h2','h3', 'p'],['bold','italics','justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', 'indent', 'outdent', 'insertImage']]" placeholder="Campaign Content"></text-angular>
 
 
 				    		<md-progress-circular ng-show="saving" md-mode="indeterminate"></md-progress-circular>

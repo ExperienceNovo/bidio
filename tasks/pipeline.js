@@ -48,6 +48,9 @@ var jsFilesToInject = [
   'bower_components/stripe-angular/stripe-angular.js',
   'bower_components/card/lib/js/card.js',
   'bower_components/angular-card/src/card-angular.js',
+  'bower_components/textAngular/dist/textAngular-rangy.min.js',
+  'bower_components/textAngular/dist/textAngular-sanitize.min.js',
+  'bower_components/textAngular/dist/textAngular.min.js',
 
   // All of the rest of your app scripts
   'src/**/*.js',

@@ -19,6 +19,7 @@ angular.module( 'bidio', [
     'ezfb',
     'stripe',
     'gavruk.card',
+    'textAngular',
     'bidio.admin',
     'bidio.blog',
     'bidio.blogPost',
