@@ -128,8 +128,7 @@ angular.module( 'bidio.video', [
 
 	$scope.clickThrough = function(){
 		ClickModel.create($scope.viewModel)
-		//$location.path(/campaign/+$scope.video.campaign.urlTitle);
-		if(scope.video.campaign.doesRedirect){window.open($scope.video.campaign.redirectUrl, '_blank');}
+		if($scope.video.campaign.doesRedirect){window.open($scope.video.campaign.redirectUrl, '_blank');}
 		else{window.open(/campaign/+$scope.video.campaign.urlTitle, '_blank');}
 	};
 
