@@ -42,7 +42,7 @@ angular.module( 'bidio.videoEmbed', [
 
 	$scope.clickThrough = function(){
 		ClickModel.create($scope.viewModel);
-		//$location.path(/campaign/+$scope.video.campaign.urlTitle);
+		if(scope.video.campaign.doesRedirect){window.open($scope.video.campaign.redirectUrl, '_blank');}
 		window.open(/campaign/+$scope.video.campaign.urlTitle, '_blank');
 	};
 
