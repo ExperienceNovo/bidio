@@ -1,17 +1,1 @@
-<div class="container">
-	<div class="spacing-25"></div>
-	<uib-tabset active="active" class="campaign-tabs">
-		<li ui-sref-active="active">
-			<a ui-sref="campaign.about({path: campaign.urlTitle})">Campaign</a>
-		</li>
-		<li ui-sref-active="active">
-			<a ui-sref="campaign.main({path: campaign.urlTitle})">Sponsor</a>
-		</li>
-	</uib-tabset>
-	<div class="surface-container home-pad">
-		<div class="campaignsTitleContainer">
-			<h2 class="contentTitleLetters">{{campaign.title}}</h2>
-		</div>
-	</div>
-	<div ui-view style="height: 100%;"></div>
-</div>
+<div ui-view style="height: 100%;"></div>

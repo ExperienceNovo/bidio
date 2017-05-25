@@ -1,1 +1,9 @@
+<uib-tabset active="active" class="campaign-tabs">
+	<li ui-sref-active="active">
+		<a ui-sref="campaign.about({path: campaign.urlTitle})">Campaign</a>
+	</li>
+	<li ui-sref-active="active">
+		<a ui-sref="campaign.main({path: campaign.urlTitle})">Sponsor</a>
+	</li>
+</uib-tabset>
 <div ng-bind-html="campaignContent"></div>
