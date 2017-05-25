@@ -46,7 +46,7 @@
 				<div class="row">
 					<div class="col-md-12">
 
-				      <div id="campaign-graph-filter">
+				      <div id="campaign-graph-filter" style="text-align:left">
 				        <h2 style="text-align:left">Campaign Activity</h2>
 				        <div class="spacing-15"></div>
 				        <md-datepicker ng-model="startDate" md-placeholder="Start date" md-min-date="startDate" md-max-date="endDate"></md-datepicker>
@@ -91,7 +91,7 @@
 				<div class="row">	
 					<div class="col-md-12">
 				    	<p class="dash-title-sm"><b>Campaign Image</b></p>
-						<div class="edit-container">
+						<div class="edit-container" style="text-align:left">
 							<div class="edit-btn"><md-button ng-click="getCampaignImage()" class="md-fab md-mini"><md-icon>edit</md-icon></md-button></div>
 							<img style="max-width:100%" ng-src="{{campaign.campaignImageUrl}}">
 						</div>
@@ -151,6 +151,25 @@
 
 				<div class="row">	
 					<div class="col-md-12">
+						<p class="dash-title-sm"><b>Description</b></p>
+				    	<div ng-hide="editingInfo" class="edit-container">
+				    		<div class="edit-btn"><md-button  ng-click="editInfoToggle()" class="md-fab md-mini"><md-icon>edit</md-icon></md-button></div>
+				    		<p>{{campaign.intro}}</p>
+				    	</div>
+				    	<div ng-show="editingInfo">
+				    		<md-input-container layout-fill>
+				    			<textarea aria-label="Edit Intro" ng-model="campaign.intro" rows="5" md-rows="5"></textarea>
+				    		</md-input-container>
+				    		<md-progress-circular ng-show="infoSaving" md-mode="indeterminate"></md-progress-circular>
+				    		<md-button ng-disabled="infoSaving" ng-click="infoSave()">Save</md-button>
+				    		<md-button ng-disabled="infoSaving" ng-click="infoUndo()">Undo</md-button>
+				    	</div>
+					</div>	
+				</div>
+
+
+				<div class="row">	
+					<div class="col-md-6">
 				    	<p class="dash-title-sm"><b>Campaign Video</b></p>
 				    	<div class="video-container edit-container" style="width:100%">
 				    		<div class="edit-btn"><md-button  ng-click="getVideo()" class="md-fab md-mini"><md-icon>edit</md-icon></md-button></div>
@@ -171,24 +190,6 @@
 					</div>	
 				</div>
 
-
-				<div class="row">	
-					<div class="col-md-12">
-						<p class="dash-title-sm"><b>Description</b></p>
-				    	<div ng-hide="editingInfo" class="edit-container">
-				    		<div class="edit-btn"><md-button  ng-click="editInfoToggle()" class="md-fab md-mini"><md-icon>edit</md-icon></md-button></div>
-				    		<p>{{campaign.intro}}</p>
-				    	</div>
-				    	<div ng-show="editingInfo">
-				    		<md-input-container layout-fill>
-				    			<textarea aria-label="Edit Intro" ng-model="campaign.intro" rows="5" md-rows="5"></textarea>
-				    		</md-input-container>
-				    		<md-progress-circular ng-show="infoSaving" md-mode="indeterminate"></md-progress-circular>
-				    		<md-button ng-disabled="infoSaving" ng-click="infoSave()">Save</md-button>
-				    		<md-button ng-disabled="infoSaving" ng-click="infoUndo()">Undo</md-button>
-				    	</div>
-					</div>	
-				</div>
 
 				<div class="spacing-25"></div>
 		      	<div class="row">
@@ -217,7 +218,7 @@
 					<div class="col-md-12">
 				    	<div ng-show="!editingLanding" class="edit-container">
 				    		<div class="edit-btn"><md-button ng-click="editLandingToggle()" class="md-fab md-mini"><md-icon>edit</md-icon></md-button></div>
-				    		<p>{{campaign.campaignContent}}</p>
+				    		<div ng-bind-html="campaignContent"></div>
 				    	</div>
 				    	<div ng-show="editingLanding">
 

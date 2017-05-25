@@ -728,7 +728,7 @@ angular.module( 'bidio.dashboard', [
     }
 }])
 
-.controller('DashboardCampaignCtrl', ['$mdDialog', '$mdMenu', '$q', '$state', '$scope', 'BidModel', 'campaign', 'CampaignModel', 'lodash', 'titleService', 'VideoModel', function ($mdDialog, $mdMenu, $q, $state, $scope, BidModel, campaign, CampaignModel, lodash, titleService, VideoModel) {
+.controller('DashboardCampaignCtrl', ['$mdDialog', '$mdMenu', '$q', '$sce', '$state', '$scope', 'BidModel', 'campaign', 'CampaignModel', 'lodash', 'titleService', 'VideoModel', function ($mdDialog, $mdMenu, $q, $sce, $state, $scope, BidModel, campaign, CampaignModel, lodash, titleService, VideoModel) {
 
     $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
     $scope.series = ['Series A', 'Series B'];
@@ -739,6 +739,7 @@ angular.module( 'bidio.dashboard', [
     $scope.onClick = function (points, evt) {
         console.log(points, evt);
     };
+
 
 
     /*$scope.updateData = function(){
@@ -784,6 +785,8 @@ angular.module( 'bidio.dashboard', [
 
     $scope.campaign = campaign;
     titleService.setTitle('dashboard - ' + campaign.title);
+
+    $scope.campaignContent = $sce.trustAsHtml($scope.campaign.campaignContent);
 
     $scope.selection = {type: "new"};
     $scope.clean = true;
