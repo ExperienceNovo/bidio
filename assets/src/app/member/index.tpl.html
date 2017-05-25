@@ -1,5 +1,5 @@
 <div class="container">
-	<div class="spacing-25"></div>
+	<div class="spacing-15"></div>
 	<div class="bidio-profile">
 	    <img align="left" class="bidio-image-lg" ng-src="{{profile.bannerUrl}}" alt="Profile Banner"/>
 	</div>
@@ -65,8 +65,8 @@
 				</ul>
 			</div>
 
-			<div ng-show="videos.length == 0">
-				{{member.username}} doesn't have any videos
+			<div ng-show="videos.length == 0" style="font-size:22px;text-align:left;">
+				{{member.username}} has not uploaded any videos
 			</div>
 			<div class="dashboardVideos col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-repeat="video in videos" style="margin-top: 25px;">
 		    	<h2 class="bidio-orange prof-vid" style="text-align:left"><a ui-sref="video({id: video.id})">{{video.title}}</a></h2>
@@ -76,27 +76,25 @@
 		</uib-tab>
 		<uib-tab heading="Campaigns">
 			<div class="spacing-25"></div>
-			<div class="container">	
-				<div ng-show="currentUser.id == member.id">
-					<ul class="list-inline intro-social-buttons" style="position:relative;top:25px;text-align:left">
-						<li>
-							<a class="btn anim-button fl-l home-buttons" ui-sref="dashboard.campaigns"><i class="fa fa-video-camera fa-fw"></i> <span class="network-name">Create Campaign</span></a>
-						</li>
-					</ul>
-				</div>
+			<div ng-show="currentUser.id == member.id">
+				<ul class="list-inline intro-social-buttons" style="position:relative;top:25px;text-align:left">
+					<li>
+						<a class="btn anim-button fl-l home-buttons" ui-sref="dashboard.campaigns"><i class="fa fa-video-camera fa-fw"></i> <span class="network-name">Create Campaign</span></a>
+					</li>
+				</ul>
+			</div>
 
-				<div ng-show="campaigns.length == 0">
-					{{member.username}} doesn't have any campaigns
+			<div ng-show="campaigns.length == 0" style="font-size:22px;text-align:left;">
+				{{member.username}} has not created any campaigns
+			</div>
+			<div class="col-md-6" ng-repeat="campaign in campaigns" style="text-align:left;margin-bottom:50px;">
+				<div class="col-md-2">	
+					<img style="height:50px;" ng-src="{{campaign.campaignImageUrl}}">
 				</div>
-				<div class="col-md-6" ng-repeat="campaign in campaigns" style="text-align:left;margin-bottom:50px;">
-					<div class="col-md-2">	
-						<img style="height:50px;" ng-src="{{campaign.campaignImageUrl}}">
-					</div>
-					<div class="col-md-10">			
-						<h2 style="font-size:2em">
-							<a href="/campaign/{{campaign.urlTitle}}/about">{{campaign.title}}</a>
-						</h2>
-					</div>
+				<div class="col-md-10">			
+					<h2 style="font-size:2em">
+						<a href="/campaign/{{campaign.urlTitle}}/about">{{campaign.title}}</a>
+					</h2>
 				</div>
 			</div>
 		</uib-tab>

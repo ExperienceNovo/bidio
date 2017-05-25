@@ -225,7 +225,7 @@
 								</div>
 							</div>
 
-				    		<text-angular ng-model="campaign.campaignContent" ta-toolbar="[['h1','h2','h3', 'p'],['bold','italics','justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', 'indent', 'outdent', 'insertImage']]" placeholder="Campaign Content"></text-angular>
+				    		<text-angular ta-unsafe-sanitizer ng-model="campaign.campaignContent" ta-toolbar="[['h1','h2','h3', 'p'],['bold','italics','justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', 'indent', 'outdent', 'insertImage', 'html']]" placeholder="Campaign Content"></text-angular>
 
 				    		<md-progress-circular ng-show="saving" md-mode="indeterminate"></md-progress-circular>
 				    		<md-button ng-disabled="saving" ng-click="landingSave()">Save</md-button>
