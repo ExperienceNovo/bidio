@@ -204,15 +204,7 @@
 			</md-tab>
 		    <md-tab label="Landing Page">
 
-		    	<div class="row">
-					<div class="col-md-12">
-						<div class="edit-container">
-							<div class="edit-btn"><md-button  ng-click="getBannerImage()" class="md-fab md-mini"><md-icon>edit</md-icon></md-button></div>
-							<img style="width:75%" ng-src="{{campaign.bannerUrl}}">
-						</div>
-					</div>
-				</div>
-
+		    	
 				<div class="spacing-25"></div>
 			  	<div class="row">	
 					<div class="col-md-12">
@@ -222,14 +214,18 @@
 				    	</div>
 				    	<div ng-show="editingLanding">
 
-
 				    		<!--<md-input-container layout-fill>
 				    			<textarea aria-label="Campaign Content" rows="10" ng-model="campaign.campaignContent"></textarea>
 				    		</md-input-container>-->
 
+							<div class="col-md-12">
+								<div class="edit-container">
+									<div class="edit-btn"><md-button  ng-click="getBannerImage()" class="md-fab md-mini"><md-icon>edit</md-icon></md-button></div>
+									<img style="width:75%" ng-src="{{campaign.bannerUrl}}">
+								</div>
+							</div>
 
 				    		<text-angular ng-model="campaign.campaignContent" ta-toolbar="[['h1','h2','h3', 'p'],['bold','italics','justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', 'indent', 'outdent', 'insertImage']]" placeholder="Campaign Content"></text-angular>
-
 
 				    		<md-progress-circular ng-show="saving" md-mode="indeterminate"></md-progress-circular>
 				    		<md-button ng-disabled="saving" ng-click="landingSave()">Save</md-button>
