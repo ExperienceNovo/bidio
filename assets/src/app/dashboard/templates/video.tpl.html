@@ -1,16 +1,15 @@
-<md-content layout-padding>
-
-  <div class="dashboard-title">
-   <h2><a ui-sref="video({id: video.id})">{{video.title}}</a></h2>
+<div class="contianer">
+  <div class="dashboard-title" style="text-align:left">
+    <h2><a ui-sref="video({id: video.id})">{{video.title}}</a></h2>
   </div>
-  <video style="display:inline-block;" class="video-js vjs-default-skin" src={{video.amazonUrl}} controls preload="none" width="640" height="264" poster="images/video-overlay.png" vjs-video>
+  <video style="display:inline-block;text-align:left" class="video-js vjs-default-skin" src={{video.amazonUrl}} controls preload="none" width="640" height="264" poster="images/video-overlay.png" vjs-video>
   </video>
 
   <md-tabs md-dynamic-height md-border-bottom>
     <md-tab label="Overview">
       <div class="spacing-15"></div>
 
-      <div id="video-graph-filter">
+      <div id="video-graph-filter" style="text-align:left">
         <h2>Performance</h2>
         <div class="spacing-15"></div>
         <md-datepicker ng-model="startDate" md-placeholder="Start date" md-min-date="startDateMin" md-max-date="endDateMax"></md-datepicker>
@@ -68,6 +67,4 @@
       </div>
     </md-tab>
   </md-tabs>
-
-
-</md-content>
+</div>
