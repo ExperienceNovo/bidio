@@ -1,35 +1,31 @@
 <div class="spacing-15"></div>
-<md-content layout-padding>
-	<ul class="list-inline intro-social-buttons" style="position:relative;top:25px">
-	  <li>
-	      <a class="btn anim-button fl-l home-buttons" ng-click="addCampaign()"><i class="fa fa-video-camera fa-fw"></i> <span class="network-name">Add Campaign</span></a>
-	  </li>
-	</ul>
-	<md-list style="text-align:left">
-		<div class="container">			
-			<div ng-repeat="campaign in campaigns" style="text-align:left;">
-				<div class="col-md-6">	
-						<div class="spacing-15"></div>	
-						<div class="col-xs-3">	
-							<img style="height:50px;" src="{{campaign.campaignImageUrl}}">
-						</div>
-						<div class="col-xs-9">			
-							<a ui-sref="dashboard.campaign({id: campaign.id})" class="md-primary"
-							style="	width: 100%;
-								    float: none;
-								    display: block;
-								    font-weight: bold;
-								    font-size: 20px;" 
-							>{{campaign.title}}</a>
-							<div class="spacing-15"></div>
-							<div><strong style="font-weight: bold;">Created:</strong> {{campaign.createdAt | date : "short"}}</div>
-							<br>
-							<div><strong style="font-weight: bold;">Updated:</strong> {{campaign.updatedAt | date : "short"}}</div>
-						</div>
-						<div class="spacing-15"></div>	
-					<hr>
+<div class="container">		
+	<ul class="list-inline intro-social-buttons" style="position:relative;top:25px;text-align:left">
+		<li>
+		 	<a class="btn anim-button fl-l home-buttons" ng-click="addCampaign()"><i class="fa fa-video-camera fa-fw"></i> <span class="network-name">Add Campaign</span></a>
+		</li>
+	</ul>	
+	<div ng-repeat="campaign in campaigns" style="text-align:left;">
+		<div class="col-md-6">	
+				<div class="spacing-15"></div>	
+				<div class="col-xs-3">	
+					<img style="height:50px;" src="{{campaign.campaignImageUrl}}">
 				</div>
-			</div>
+				<div class="col-xs-9">			
+					<a ui-sref="dashboard.campaign({id: campaign.id})" class="md-primary"
+					style="	width: 100%;
+						    float: none;
+						    display: block;
+						    font-weight: bold;
+						    font-size: 20px;" 
+					>{{campaign.title}}</a>
+					<div class="spacing-15"></div>
+					<div><strong style="font-weight: bold;">Created:</strong> {{campaign.createdAt | date : "short"}}</div>
+					<br>
+					<div><strong style="font-weight: bold;">Updated:</strong> {{campaign.updatedAt | date : "short"}}</div>
+				</div>
+				<div class="spacing-15"></div>	
+			<hr>
 		</div>
-	</md-list>
-</md-content>
+	</div>
+</div>
