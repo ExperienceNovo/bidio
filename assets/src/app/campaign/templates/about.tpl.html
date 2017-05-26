@@ -1,15 +1,16 @@
 <div class="spacing-15"></div>
 <div class="container">
-
-	<uib-tabset active="active" class="campaign-tabs">
-		<li ui-sref-active="active">
-			<a ui-sref="campaign.about({path: campaign.urlTitle})">Campaign</a>
-		</li>
-		<li ui-sref-active="active">
-			<a ui-sref="campaign.main({path: campaign.urlTitle})">Sponsor</a>
-		</li>
-	</uib-tabset>
-	<div class="campaignsTitleContainer">
+	<div class="row">
+		<uib-tabset active="active" class="campaign-tabs">
+			<li ui-sref-active="active">
+				<a ui-sref="campaign.about({path: campaign.urlTitle})">Campaign</a>
+			</li>
+			<li ui-sref-active="active">
+				<a ui-sref="campaign.main({path: campaign.urlTitle})">Sponsor</a>
+			</li>
+		</uib-tabset>
+	</div>
+	<div class="campaignsTitleContainer row">
 		<h2 class="contentTitleLetters">{{campaign.title}}</h2>
 	</div>
 
