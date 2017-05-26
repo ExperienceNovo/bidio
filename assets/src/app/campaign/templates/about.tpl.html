@@ -14,8 +14,7 @@
 	</div>
 
 	<div class="row" ng-show="campaign.videoUrl != '/videos/video.mp4'">
-		<div class="spacing-15"></div>
-		<div class="col-md-6">
+		<div class="">
 			<video 
 				class="video-js vjs-default-skin"
 				controls preload="auto" 
@@ -35,7 +34,8 @@
 			<h3 style="font-weight: 500;font-size: 25px;color: #555555;">Sponsored By</h3>
 			<div class="spacing-10"></div>
 			<a href="/member/{{campaign.user.username}}"><img class="sponsorPicLarge" src="{{campaign.user.profile.picture}}"></a>
-			<a href="/member/{{campaign.user.username}}"><h3>{{campaign.user.username}}<h3></a>
+			<br>
+			<a href="/member/{{campaign.user.username}}"><h2>{{campaign.user.username}}<h2></a>
 		</div>
 		<div class="aboutTxt editCampaignContainer col-md-8">
 			<p>{{campaign.intro}}</p>
