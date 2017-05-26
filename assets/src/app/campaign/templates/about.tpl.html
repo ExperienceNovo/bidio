@@ -55,7 +55,7 @@
 		</div>
 		<div class="campaignVideos col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-repeat="bid in campaign.bids">
 			<h2 style="text-align:left;font-size: 2.5em;margin-bottom: 15px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"><a ui-sref="video({id: bid.video.id})">{{bid.video.title}}</a></h2>
-			<h3>By <b><a href="/member/{{bid.video.user.username}}">{{bid.video.user.username}}</a></b> on {{bid.video.createdAt | date: "shortDate"}}</h3>
+			<h3 style="text-align:left;">by <b><a href="/member/{{bid.video.user.username}}">{{bid.video.user.username}}</a></b></h3>
 			<br>
 			<video 
 				vjs-video
