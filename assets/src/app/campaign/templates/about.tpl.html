@@ -15,18 +15,20 @@
 
 	<div class="spacing-15"></div>
 
-	<div class="row">
-		 <video 
-			class="video-js vjs-default-skin"
-			controls preload="auto" 
-			width="640" 
-			height="264" 
-			fluid="true"
-			vjs-video
-			poster="{{campaign.poster}}" 
-			vjs-media="campaign.media"
-			vjs-ratio="16:9">
-		</video>
+	<div class="row" ng-show="campaign.media != '/videos/video.mp4'">
+		<div class="col-md-6">
+			<video 
+				class="video-js vjs-default-skin"
+				controls preload="auto" 
+				width="640" 
+				height="264" 
+				fluid="true"
+				vjs-video
+				poster="{{campaign.poster}}" 
+				vjs-media="campaign.media"
+				vjs-ratio="16:9">
+			</video>
+		</div>
 	</div>
 	<div class="spacing-25"></div>
 	<div class="row">
