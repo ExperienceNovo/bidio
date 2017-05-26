@@ -31,7 +31,7 @@
 					<h3 style="display:inline;margin:10px"><i class="fa fa-play"></i> {{video.viewCount}}</h3>
 					<h3 style="display:inline;margin:10px"><i class="fa fa-play"></i> {{video.liveViewCount}}</h3>
 					<h3 style="display:inline;margin:10px"><i class="fa fa-hand-pointer-o"></i> {{video.clickCount}}</h3>
-					<h3 style="display:inline;margin:10px"><i class="fa fa-money"></i> {{video.campaign.price}}</h3>
+					<h3 style="display:inline;margin:10px"><i class="fa fa-money"></i> {{highestBid.value}}</h3>
 					<h3 style="display:inline;margin:10px" class="" ng-click="share()"><a><i class="fa fa-share"></i>  Share</a></h3>
 					<h3 style="display:inline;margin:10px" class="" ng-click="bid()" ng-hide="!currentUser"><a><i class="fa fa-bar-chart"></i> Bid</a></h3>
 					<h3 style="display:inline;margin:10px" class="" ng-click="clickThrough()"><a><img style="height:24px" src="{{video.campaign.campaignImageUrl}}"> {{video.campaign.prompt}}</a></h3>
@@ -40,21 +40,6 @@
 			<div class="spacing-5"></div>
 
 			<hr>
-			<!--
-			<div class="tabs">
-
-				<label for="tab1" title="Member"><a href="/member/{{video.user.username}}">{{video.user.username}}</a></label>
-				<label for="tab2" class="tooltip--bottom" data-tooltip="View Count">{{video.viewCount}}</label>
-				<label for="tab2" class="tooltip--bottom" data-tooltip="Live View Count">{{video.liveViewCount}}</label>
-				<label for="tab2" class="tooltip--bottom clickCountLabel" data-tooltip="Click Count" title="Click Count">{{video.clickCount}}</label>
-				<label for="tab3" class="tooltip--bottom" data-tooltip="Price Per Click" ng-show="{{video.campaign.price}}">{{highestBid.value | number: 2 }}</label>
-				<label for="tab4" title="Share" ng-click="share()"><a>Share</a></label>				
-				<label class="tooltip--bottom" data-tooltip="Sponsor Video?" for="tab5" ng-click="bid()" ng-hide="!currentUser">Make Bid</label>
-				<div class="spacing-5"></div>
-				<label ng-show="video.campaign" title="{{video.campaign.prompt}}" ng-click="clickThrough()"><a><img style="height:24px" src="{{video.campaign.campaignImageUrl}}"> {{video.campaign.prompt}}</a></label>	
-
-			</div>
-			-->
 
 			<h2><a href="/member/{{video.user.username}}"><img src="{{video.user.profile.avatarUrl}}">{{video.user.username}}</a></h2>
 			<div class="spacing-15"></div>
