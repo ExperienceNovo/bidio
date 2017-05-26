@@ -13,9 +13,8 @@
 		<h2 class="contentTitleLetters">{{campaign.title}}</h2>
 	</div>
 
-	<div class="spacing-15"></div>
-
 	<div class="row" ng-show="campaign.videoUrl != '/videos/video.mp4'">
+		<div class="spacing-15"></div>
 		<div class="col-md-6">
 			<video 
 				class="video-js vjs-default-skin"
@@ -30,30 +29,30 @@
 			</video>
 		</div>
 	</div>
-	<div class="spacing-25"></div>
+	<div class="spacing-15"></div>
 	<div class="row">
 		<div class="sponsoredByContainer col-md-4">
 			<h3 style="font-weight: 500;font-size: 25px;color: #555555;">Sponsored By</h3>
 			<div class="spacing-10"></div>
 			<a href="/member/{{campaign.user.username}}"><img class="sponsorPicLarge" src="{{campaign.user.profile.picture}}"></a>
+			<a href="/member/{{campaign.user.username}}"><h4>{{campaign.user.username}}<h4></a>
 		</div>
 		<div class="aboutTxt editCampaignContainer col-md-8">
 			<p>{{campaign.intro}}</p>
 		</div>
 	</div>
+
 	<div class="spacing-25"></div>
 	<hr>
+	<div class="spacing-25"></div>
+
 	<div class="row">
-		<div class="spacing-25"></div>
-		<div class="row">
-			<div ng-show="campaign.bids.length > 0" class="col-md-6">
-				<h2 style="font-weight:bold;color:#FAA93F;font-size:3.2em;">Campaign Videos</h2>
-			</div>
-			<div class="col-md-6">
-				<div class="campaign-submit" style="margin-top:10px;"><a class="btn anim-button fl-l" ng-click="apply()">Submit a video</a></div>
-			</div>
+		<div class="col-md-6">
+			<div class="campaign-submit" style="margin-top:10px;"><a class="btn anim-button fl-l" ng-click="apply()">Submit A Video</a></div>
 		</div>
-		<div class="campaignVideos col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-repeat="bid in campaign.bids">
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-repeat="bid in campaign.bids">
 			<h2 style="text-align:left;font-size: 2.5em;margin-bottom: 15px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"><a ui-sref="video({id: bid.video.id})">{{bid.video.title}}</a></h2>
 			<h3 style="text-align:left;">by <b><a href="/member/{{bid.video.user.username}}">{{bid.video.user.username}}</a></b></h3>
 			<br>
