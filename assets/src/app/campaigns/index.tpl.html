@@ -12,12 +12,13 @@
 
 	<div class="container">			
 		<div class="col-md-6" ng-repeat="campaign in campaigns" style="text-align:left;margin-bottom:50px;">
-			<div class="col-xs-3">	
-				<img style="height:50px;max-width:100%" ng-src="{{campaign.campaignImageUrl}}">
-			</div>
+
 			<div class="col-xs-9">			
 				<h2 style="font-size:2em">
-					<a href="/campaign/{{campaign.urlTitle}}/about" style="text-transform:capitalize;color:#FE9A2E;font-weight:bold;">{{campaign.title}}</a>
+					<a href="/campaign/{{campaign.urlTitle}}/about">
+						<img style="height:50px;max-width:100%" ng-src="{{campaign.campaignImageUrl}}">
+						<span style="margin-left:15px">{{campaign.title}}</span>	
+					</a>
 				</h2>	
 				<br>
 				<h3>Sponsored by <span style="font-weight: bold;"><a href="/member/{{campaign.user.username}}">{{campaign.user.username}}</a></span></h3>
