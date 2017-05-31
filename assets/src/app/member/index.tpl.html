@@ -87,16 +87,16 @@
 			<div ng-show="campaigns.length == 0" style="font-size:22px;text-align:left;">
 				{{member.username}} has not created any campaigns
 			</div>
+
 			<div class="col-md-6" ng-repeat="campaign in campaigns" style="text-align:left;margin-bottom:50px;">
-				<div class="col-md-2">	
-					<img style="height:50px;" ng-src="{{campaign.campaignImageUrl}}">
-				</div>
-				<div class="col-md-10">			
-					<h2 style="font-size:2em">
-						<a href="/campaign/{{campaign.urlTitle}}/about">{{campaign.title}}</a>
-					</h2>
-				</div>
+				<h2 style="font-size:2em">
+					<a href="/campaign/{{campaign.urlTitle}}/about">
+						<img style="height:50px;max-width:100%" ng-src="{{campaign.campaignImageUrl}}">
+						<span style="margin-left:15px">{{campaign.title}}</span>	
+					</a>
+				</h2>	
 			</div>
+
 		</uib-tab>
 	</uib-tabset>
 </div>
