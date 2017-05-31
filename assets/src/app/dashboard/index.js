@@ -792,6 +792,7 @@ angular.module( 'bidio.dashboard', [
     $scope.clean = true;
     $scope.saving = false;
     $scope.editingLanding = false;
+    $scope.campaignSaving = false;
     $scope.editingTitle = false;
     $scope.editingInfo = false;
     $scope.editingPrompt = false;
@@ -803,10 +804,18 @@ angular.module( 'bidio.dashboard', [
     $scope.endDate = new Date();
     $scope.max = 3;
     $scope.selectedIndex = 0;
+
     $scope.nextTab = function() {
         var index = ($scope.selectedIndex == $scope.max) ? 0 : $scope.selectedIndex + 1;
         $scope.selectedIndex = index;
     };
+
+     $scope.saveCampaign = function(){
+        $scope.campaignSaving = true;
+        campaignSave().then(function(){
+            $scope.campaignSaving = false;
+        });
+    }
 
     function sort(bid){
         if (bid.isNewEntry){
