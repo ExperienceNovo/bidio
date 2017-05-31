@@ -279,8 +279,9 @@
 
 
 				    	<div class="dashboardVideos col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-repeat="bid in selectedBids">
-					     	<h2 class="discover-title" style="text-align:left"><a href="dashboard/video/{{video.id}}">{{bid.video.title}}</a></h2>
+					     	<h2 class="discover-title" style="text-align:left"><a href="video/{{bid.video.id}}">{{bid.video.title}}</a></h2>
 					    	<video class="video-js vjs-default-skin" controls="" height="264" poster="" preload="none" src="{{bid.video.amazonUrl}}" style="display:inline-block;" vjs-video=""width="640"></video>
+					    	<br>
 					    	<h2 class="discover-title" style="text-align:left"><a href="#">{{bid.video.user}}</a></h2>
 							<!--{{bid.video.user.username}}-->
 					    	<h2 class="discover-title" style="text-align:left">Approved? <md-checkbox style="display:inline-block;padding:5px;margin-left:5px" ng-disabled="selection.type == 'old'" ng-click="dirty(bid)" ng-model="bid.isAccepted" aria-label="Approved"></md-checkbox></h2>
