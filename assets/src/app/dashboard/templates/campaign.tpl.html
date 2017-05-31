@@ -108,8 +108,8 @@
 				</div>
 
 				<div class="col-md-12" style="text-align:left">	
+					<p class="bidio-orange"><b>Price per click</b></p>
 					<md-input-container style="width:100%">
-						<label style="font-size: 18px;">Price per click</label>
 						<md-icon>attach_money</md-icon>
 						<input type="text" ng-model="campaign.price">
 					</md-input-container>
@@ -120,7 +120,6 @@
 					</md-checkbox>
 					<br>
 					<md-input-container layout-fill>
-						<label>Campaign Budget</label>
 						<md-icon>attach_money</md-icon>
 						<input type="text" ng-model="campaign.contributionGoal" ng-disabled="!setBudget" style="width:100%">
 					</md-input-container>
@@ -131,7 +130,6 @@
 					</md-checkbox>
 					<br>
 					<md-input-container layout-fill>
-						<label>Per Video Budget</label>
 						<md-icon>attach_money</md-icon>
 						<input type="text" ng-model="campaign.maxContributionPerVideo" ng-disabled="!setVideoBudget">
 					</md-input-container>
