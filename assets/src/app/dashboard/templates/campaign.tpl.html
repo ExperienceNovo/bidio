@@ -96,6 +96,7 @@
 						</div>
 					</div>
 					<div class="col-md-6" style="text-align:left">
+						<div class="spacing-15"></div>
 			    		<p class="bidio-orange"><b>Click-Through Prompt</b></p>
 			    		<md-input-container layout-fill>
 			    			<textarea aria-label="Campaign prompt" rows="10" ng-model="campaign.prompt"></textarea>
@@ -108,9 +109,8 @@
 					</div>
 				</div>
 
-			
 				<div class="col-md-12">
-					<p class="bidio-orange"><b>Campaign Options</b></p>
+				    <p class="dash-title-sm"><b>Campaign Image</b></p>
 				</div>
 
 				<div class="col-md-4" style="text-align:left">
@@ -141,7 +141,6 @@
 					<md-datepicker layout-fill ng-model="endDate" ng-disabled="!setEndDate" md-placeholder="End Date"></md-datepicker>
 				</div>
 
-
 				<div class="row">	
 					<div class="col-md-12">
 						<p class="dash-title-sm"><b>Description</b></p>
@@ -150,7 +149,6 @@
 			    		</md-input-container>
 					</div>	
 				</div>
-
 
 				<div class="row">	
 					<div class="col-md-6">
@@ -174,11 +172,10 @@
 					</div>	
 				</div>
 
-
 				<div class="spacing-25"></div>
 		      	<div class="row">
 			        <div class="col-md-12" style="text-align:left">
-			          	<md-button class="md-raised md-accent" ng-click="nextTab()">Save</md-button><br>
+			          	<md-button class="btn btn-default md-raised md-accent" ng-click="nextTab()">Save</md-button><br>
 						<md-button class="md-raised md-accent" ng-click="nextTab()">Landing Pg</md-button><br>
 			          	<div class="spacing-25"></div>
 			        </div>
@@ -225,9 +222,13 @@
 
 
 				<div class="row">
-					<md-button class="md-raised md-accent" ng-click="nextTab()">Save</md-button>
-					<md-progress-circular ng-show="saving" md-mode="indeterminate"></md-progress-circular>
-				</div>
+ 					<div class="col-md-12" style="text-align:left">
+			          	<md-button class="btn btn-default md-raised md-accent" ng-click="nextTab()">Save</md-button><br>
+						<md-progress-circular ng-show="saving" md-mode="indeterminate"></md-progress-circular>
+			          	<div class="spacing-25"></div>
+			        </div>
+		      	</div>
+
 
 
 		  	</md-tab>
@@ -272,10 +273,21 @@
 				<div class="spacing-25"></div>
 				<div class="container">
 					<div class="row">
-					    <div ng-repeat="bid in selectedBids" style="font-size:18px;text-align: left;padding: 5px;">
+
+
+				    	<div class="dashboardVideos col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-repeat="bid in selectedBids">
+					     	<h2 class="discover-title" style="text-align:left"><a href="dashboard/video/{{video.id}}">{{bid.video.title}}</a></h2>
+					    	<video class="video-js vjs-default-skin" controls="" height="264" poster="" preload="none" src="{{bid.video.amazonUrl}}" style="display:inline-block;" vjs-video=""width="640"></video>
+					    	<h4><a href="#">{{bid.video.user}}</a></h4>
+							<!--{{bid.video.user.username}}-->
+					    	<h3 style="font-weight: bold;">Approved? <md-checkbox style="display:inline-block;padding:5px;margin-left:5px" ng-disabled="selection.type == 'old'" ng-click="dirty(bid)" ng-model="bid.isAccepted" aria-label="Approved"></md-checkbox></h3>
+					      	<div class="spacing-15"></div>
+					  	</div>
 
 
 
+
+					    <!--<div ng-repeat="bid in selectedBids" style="font-size:18px;text-align: left;padding: 5px;">
 
 					    	<div class="row">
 								<h3 style="font-weight: bold;">Title</h3>
@@ -285,7 +297,6 @@
 					    	<div class="row">
 								<h3 style="font-weight: bold;">User</h3>
 					    		{{bid.video.user}}
-								<!--{{bid.video.user.username}}-->
 					    	</div>
 					    	<div class="spacing-15"></div>	    	
 					    	<div class="row">
@@ -303,10 +314,9 @@
 								<md-divider></md-divider>
 					    	<div class="spacing-25"></div>
 
+					    </div>-->
 
 
-
-					    </div>
 					</div>
 				</div>
 			</md-tab>
