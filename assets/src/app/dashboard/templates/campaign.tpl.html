@@ -96,12 +96,11 @@
 						</div>
 					</div>
 					<div class="col-md-6" style="text-align:left">
-						<div class="spacing-15"></div>
-			    		<p class="bidio-orange"><b>Click-Through Prompt</b></p>
+			    		<p class="dash-title-sm"><b>Click-Through Prompt</b></p>
 			    		<md-input-container layout-fill>
 			    			<textarea aria-label="Campaign prompt" rows="10" ng-model="campaign.prompt"></textarea>
 			    		</md-input-container>
-			    		<p class="bidio-orange"><b>Price per click</b></p>
+			    		<p class="dash-title-sm"><b>Price per click</b></p>
 						<md-input-container style="width:100%">
 							<md-icon>attach_money</md-icon>
 							<input type="text" ng-model="campaign.price">
@@ -109,36 +108,40 @@
 					</div>
 				</div>
 
-				<div class="col-md-12">
-				    <p class="dash-title-sm"><b>Campaign Image</b></p>
+				<div class="row">	
+					<div class="col-md-12">
+					    <p class="dash-title-sm"><b>Campaign Options</b></p>
+					</div>
 				</div>
 
-				<div class="col-md-4" style="text-align:left">
-					<md-checkbox ng-model="setBudget" aria-label="Set budget">
-						Set a Campaign Budget?
-					</md-checkbox>
-					<br>
-					<md-input-container layout-fill>
-						<md-icon>attach_money</md-icon>
-						<input type="text" ng-model="campaign.contributionGoal" ng-disabled="!setBudget" style="width:100%">
-					</md-input-container>
-				</div>
-				<div class="col-md-4" style="text-align:left">
-					<md-checkbox ng-model="setVideoBudget" aria-label="Set video budget">
-						Set a Per-Video Budget?
-					</md-checkbox>
-					<br>
-					<md-input-container layout-fill>
-						<md-icon>attach_money</md-icon>
-						<input type="text" ng-model="campaign.maxContributionPerVideo" ng-disabled="!setVideoBudget">
-					</md-input-container>
-				</div>
-				<div class="col-md-4" style="text-align:left">
-					<md-checkbox ng-model="setEndDate" aria-label="Set end">
-						Set an End-Date?
-					</md-checkbox>
-					<br>
-					<md-datepicker layout-fill ng-model="endDate" ng-disabled="!setEndDate" md-placeholder="End Date"></md-datepicker>
+				<div class="row">	
+					<div class="col-md-4" style="text-align:left">
+						<md-checkbox ng-model="setBudget" aria-label="Set budget">
+							Set a Campaign Budget?
+						</md-checkbox>
+						<br>
+						<md-input-container layout-fill>
+							<md-icon>attach_money</md-icon>
+							<input type="text" ng-model="campaign.contributionGoal" ng-disabled="!setBudget" style="width:100%">
+						</md-input-container>
+					</div>
+					<div class="col-md-4" style="text-align:left">
+						<md-checkbox ng-model="setVideoBudget" aria-label="Set video budget">
+							Set a Per-Video Budget?
+						</md-checkbox>
+						<br>
+						<md-input-container layout-fill>
+							<md-icon>attach_money</md-icon>
+							<input type="text" ng-model="campaign.maxContributionPerVideo" ng-disabled="!setVideoBudget">
+						</md-input-container>
+					</div>
+					<div class="col-md-4" style="text-align:left">
+						<md-checkbox ng-model="setEndDate" aria-label="Set end">
+							Set an End-Date?
+						</md-checkbox>
+						<br>
+						<md-datepicker layout-fill ng-model="endDate" ng-disabled="!setEndDate" md-placeholder="End Date"></md-datepicker>
+					</div>
 				</div>
 
 				<div class="row">	
