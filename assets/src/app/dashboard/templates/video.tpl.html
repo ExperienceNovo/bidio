@@ -48,6 +48,11 @@
     </md-tab>
     <md-tab label="About">
       <div class="spacing-25"></div>
+
+
+
+
+      <!--
       <div class="row">    
         <div class="col-md-6">
           <div ng-hide="editingInfo" class="edit-container" style="padding:30px;">
@@ -67,12 +72,57 @@
             <md-button ng-disabled="infoSaving" ng-click="infoUndo()">Undo</md-button>
             <md-button ng-click="videoDelete()">Delete</md-button>
           </div>
-
         </div>
       </div>
+    -->
+
+
+      <div class="row"> 
+        <div class="col-md-12">
+          <p class="dash-title-sm"><b>Title</b></p>
+            <md-input-container layout-fill>
+              <textarea aria-label="Edit Title" ng-model="video.title" rows="5" md-rows="5"></textarea>
+            </md-input-container>
+        </div>  
+      </div>
+
+      <div class="row"> 
+        <div class="col-md-12">
+          <p class="dash-title-sm"><b>Title</b></p>
+            <md-input-container layout-fill>
+              <textarea aria-label="Edit Description" ng-model="video.description" rows="5" md-rows="5"></textarea>
+            </md-input-container>
+        </div>  
+      </div>
+
+      <div class="spacing-25"></div>
+
+      <div class="row" style="padding:15px">
+        <div class="col-xs-10" style="padding:0px">
+          <div class="editview" style="padding:0px">
+            <a ng-click="infoSave()" class="btn anim-button fl-l home-buttons"><i class="fa fa-pencil"></i> <span>Save Changes</span></a>
+          </div>          
+        </div>
+        <div class="col-xs-2" style="padding:0px">
+          <div class="editview" style="padding:0px">
+            <a ng-click="videoDelete()" class="btn anim-button fl-l home-buttons"><i class="fa fa-pencil"></i> <span>Delete Video</span></a>
+          </div>          
+        </div>
+      </div>
+
+
+
+
+
+
     </md-tab>
 
     <md-tab label="Bids">
+
+      <h1>bids here</h1>
+
+
+
     </md-tab>
 
   </md-tabs>
