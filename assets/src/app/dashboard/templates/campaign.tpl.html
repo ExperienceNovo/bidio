@@ -88,32 +88,31 @@
 								
 				<div class="spacing-25"></div>
 				<div class="row">	
-					<div class="col-md-12">
+					<div class="col-md-6">
 				    	<p class="dash-title-sm"><b>Campaign Image</b></p>
 						<div class="edit-container" style="text-align:left">
 							<div class="edit-btn"><md-button ng-click="getCampaignImage()" class="md-fab md-mini"><md-icon>edit</md-icon></md-button></div>
 							<img style="max-width:100%" ng-src="{{campaign.campaignImageUrl}}">
 						</div>
 					</div>
+					<div class="col-md-6" style="text-align:left">
+			    		<p class="bidio-orange"><b>Click-Through Prompt</b></p>
+			    		<md-input-container layout-fill>
+			    			<textarea aria-label="Campaign prompt" rows="10" ng-model="campaign.prompt"></textarea>
+			    		</md-input-container>
+			    		<p class="bidio-orange"><b>Price per click</b></p>
+						<md-input-container style="width:100%">
+							<md-icon>attach_money</md-icon>
+							<input type="text" ng-model="campaign.price">
+						</md-input-container>
+					</div>
 				</div>
 
-				<div class="spacing-25"></div>
+			
 				<div class="col-md-12">
-		    		<p class="bidio-orange"><b>Click-Through Prompt</b></p>
-		    		<md-input-container layout-fill>
-		    			<textarea aria-label="Campaign prompt" rows="10" ng-model="campaign.prompt"></textarea>
-		    		</md-input-container>
-					<div class="spacing-25"></div>
-
+					<p class="bidio-orange"><b>Campaign Options</b></p>
 				</div>
 
-				<div class="col-md-12" style="text-align:left">	
-					<p class="bidio-orange"><b>Price per click</b></p>
-					<md-input-container style="width:100%">
-						<md-icon>attach_money</md-icon>
-						<input type="text" ng-model="campaign.price">
-					</md-input-container>
-				</div>
 				<div class="col-md-4" style="text-align:left">
 					<md-checkbox ng-model="setBudget" aria-label="Set budget">
 						Set a Campaign Budget?
