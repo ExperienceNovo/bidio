@@ -104,9 +104,6 @@
 		    		<md-input-container layout-fill>
 		    			<textarea aria-label="Campaign prompt" rows="10" ng-model="campaign.prompt"></textarea>
 		    		</md-input-container>
-		    		<md-button ng-disabled="promptSaving" ng-click="promptSave()">
-		    			<span  style="text-align:left" ng-show="promptSaving" class="fa fa-spin fa-spinner">&nbsp;</span><md-icon>check</md-icon>Save Prompt
-		    		</md-button>
 					<div class="spacing-25"></div>
 
 				</div>
@@ -152,18 +149,9 @@
 				<div class="row">	
 					<div class="col-md-12">
 						<p class="dash-title-sm"><b>Description</b></p>
-				    	<div ng-hide="editingInfo" class="edit-container">
-				    		<div class="edit-btn"><md-button  ng-click="editInfoToggle()" class="md-fab md-mini"><md-icon>edit</md-icon></md-button></div>
-				    		<p>{{campaign.intro}}</p>
-				    	</div>
-				    	<div ng-show="editingInfo">
-				    		<md-input-container layout-fill>
-				    			<textarea aria-label="Edit Intro" ng-model="campaign.intro" rows="5" md-rows="5"></textarea>
-				    		</md-input-container>
-				    		<md-progress-circular ng-show="infoSaving" md-mode="indeterminate"></md-progress-circular>
-				    		<md-button ng-disabled="infoSaving" ng-click="infoSave()">Save</md-button>
-				    		<md-button ng-disabled="infoSaving" ng-click="infoUndo()">Undo</md-button>
-				    	</div>
+			    		<md-input-container layout-fill>
+			    			<textarea aria-label="Edit Intro" ng-model="campaign.intro" rows="5" md-rows="5"></textarea>
+			    		</md-input-container>
 					</div>	
 				</div>
 
@@ -195,6 +183,7 @@
 		      	<div class="row">
 			        <div class="col-md-12" style="text-align:left">
 			          	<md-button class="md-raised md-accent" ng-click="nextTab()">Save</md-button><br>
+						<md-button class="md-raised md-accent" ng-click="nextTab()">Landing Pg</md-button><br>
 			          	<div class="spacing-25"></div>
 			        </div>
 		      	</div>
@@ -214,27 +203,14 @@
 				    	</div>
 				    	<div ng-show="editingLanding">
 
-				    		<!--<md-input-container layout-fill>
-				    			<textarea aria-label="Campaign Content" rows="10" ng-model="campaign.campaignContent"></textarea>
-				    		</md-input-container>-->
-
-							<div class="col-md-12">
-								<div class="edit-container">
-									<div class="edit-btn"><md-button ng-click="getBannerImage()" class="md-fab md-mini"><md-icon>edit</md-icon></md-button></div>
-									<img style="width:75%" ng-src="{{campaign.bannerUrl}}">
-								</div>
-							</div>
-
 				    		<text-angular ta-unsafe-sanitizer ng-model="campaign.campaignContent" ta-toolbar="[['h1','h2','h3', 'p'],['bold','italics','justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', 'indent', 'outdent', 'insertImage', 'html']]" placeholder="Campaign Content"></text-angular>
 
-				    		<md-progress-circular ng-show="saving" md-mode="indeterminate"></md-progress-circular>
-				    		<md-button ng-disabled="saving" ng-click="landingSave()">Save</md-button>
-				    		<md-button ng-disabled="saving" ng-click="landingUndo()">Undo</md-button>
 				    	</div>
 					</div>	
 			    </div>
 
 				<div class="spacing-25"></div>
+
 				<div class="row">
 			  		<div class="col-md-12" style="text-align:left">
 			    		<md-input-container>
@@ -246,20 +222,21 @@
 			    			<label>Redirect URL</label>
 			    			<input ng-disabled="!campaign.doesRedirect" type="text" ng-model="campaign.redirectUrl">
 			    		</md-input-container>
-			    		<md-button ng-disabled="!campaign.doesRedirect" ng-click="submitUrl()"><md-icon>check</md-icon>Submit<span>&nbsp;<i class="fa fa-spin fa-spinner" ng-show="urlSaving"></i></span></md-button>
 			    	</div>    
 				</div>
-				<div class="spacing-50"></div>			
-				<!--<div class="row">
+
+				<div class="spacing-50"></div>		
+
+
+				<div class="row">
 					<md-button class="md-raised md-accent" ng-click="nextTab()">Save</md-button>
-				</div>-->
-
-
-
-
+					<md-progress-circular ng-show="saving" md-mode="indeterminate"></md-progress-circular>
+				</div>
 
 
 		  	</md-tab>
+
+
 			<md-tab ng-if="campaign.published" label="Videos">
 				<div class="spacing-25"></div>
 				<div class="row">
@@ -300,6 +277,10 @@
 				<div class="container">
 					<div class="row">
 					    <div ng-repeat="bid in selectedBids" style="font-size:18px;text-align: left;padding: 5px;">
+
+
+
+
 					    	<div class="row">
 								<h3 style="font-weight: bold;">Title</h3>
 					    		{{bid.video.title}}
@@ -308,6 +289,7 @@
 					    	<div class="row">
 								<h3 style="font-weight: bold;">User</h3>
 					    		{{bid.video.user}}
+								<!--{{bid.video.user.username}}-->
 					    	</div>
 					    	<div class="spacing-15"></div>	    	
 					    	<div class="row">
@@ -324,6 +306,10 @@
 								</div>
 								<md-divider></md-divider>
 					    	<div class="spacing-25"></div>
+
+
+
+
 					    </div>
 					</div>
 				</div>
