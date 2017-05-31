@@ -152,7 +152,7 @@ h2 {
     }
 }
 
-[class^="btn-"] {
+/*[class^="btn-"] {
     position: relative;
     display: block;
     margin: 20px auto;
@@ -162,7 +162,7 @@ h2 {
     text-transform: uppercase;
     overflow: hidden;
     border: 1px solid currentColor;
-}
+}*/
 
 .btn-5 {
     color: #fff;
