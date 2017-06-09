@@ -45,7 +45,7 @@ angular.module( 'bidio', [
     'bidio.videoEmbed',
 ])
 
-.config(['$locationProvider', '$mdThemingProvider', '$sceDelegateProvider', '$urlRouterProvider', 'ezfbProvider', function myAppConfig ( $locationProvider, $mdThemingProvider, $sceDelegateProvider, $urlRouterProvider, ezfbProvider ) {
+.config(['$locationProvider', '$mdThemingProvider', '$sceDelegateProvider', '$urlRouterProvider', 'ezfbProvider', function myAppConfig ($locationProvider, $mdThemingProvider, $sceDelegateProvider, $urlRouterProvider, ezfbProvider ) {
     $urlRouterProvider.rule(function($injector, $location) {
         var path = $location.path();
         var hasTrailingSlash = path[path.length-1] === '/';
@@ -54,6 +54,7 @@ angular.module( 'bidio', [
             return newPath; 
         } 
     });
+    $urlRouterProvider.when('/zaxbys', '/campaign/supporting-local-musicians/about');
     Stripe.setPublishableKey('pk_live_9ElLI2wlzytll1udmMwuDyPq');//live pk_live_9ElLI2wlzytll1udmMwuDyPq //test pk_test_sflpPD96t106qt2QS8xll5up
     $sceDelegateProvider.resourceUrlWhitelist(['self','https://bidio8.s3.amazonaws.com/**']);
     if (window.location.hash && window.location.hash == '#_=_') {

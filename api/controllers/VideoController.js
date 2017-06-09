@@ -7,6 +7,9 @@
 var _ = require('lodash');
 var fs = require("fs");
 
+var ffmpeg = require('fluent-ffmpeg');
+var command = ffmpeg();
+
 module.exports = {
 
 	getAll: function(req, res) {
@@ -139,16 +142,12 @@ module.exports = {
 
 	upload: function(req,res){
 
-		/*uncomment this if you want to save to a particular folder*/
-		//var filename = req.file('video')._files[0].stream.filename;
 		res.setTimeout(0)
 		var options = {
 			adapter: require("skipper-s3"),
 			key: 'AKIAJZS6F2HWDJWWZE7A',
 		 	secret: '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',
 		 	bucket: 'bidio8',
-		 	/*uncomment this if you want to save to a particular folder*/
-		 	//saveAs: "Event-Pictures/" + utilsService.guid() + filename.split(".").pop()
 		}
 		var byteCount = req.file('video')._files[0].stream.byteCount
 
@@ -157,19 +156,8 @@ module.exports = {
 			options.saveAs = "development/" + utilsService.guid() + "." + filename.split(".").pop();
 		}
 
-		/*
-		File.create({
-	    	state: 'uploading'
-	    }).exec({
-	    	error: res.serverError,
-	    	success: function (newFile) {
-	    		req.file('avatar')
-	        	.on('progress', function (event) {
-	        		File.publishUpdate(newFile.id, percentageUploaded);
-	        	})
-	        }
-	    })
-		*/
+		//console.log(req.file('video')._readableState.buffer)
+
 
 		req.file('video')
 		.on('progress', function (event){
@@ -178,7 +166,6 @@ module.exports = {
 			//need to programatically delete s3 chunks if fail / and on delete
 			var percentageUploaded = event.written/byteCount
 			console.log(percentageUploaded)
-			//File.publishUpdate(newFile.id, event)
 		})
 		.upload(options, function response(err,uploadedFiles){
 			console.log('we are in the code')
@@ -193,6 +180,25 @@ module.exports = {
 		    var amazonUrl = uploadedFiles[0].extra.Location;
 		    return res.json({amazonUrl: amazonUrl});
 		});
+
+		/*var stream  = fs.createWriteStream('outputfile.divx');
+
+		ffmpeg(req.file('video')._readableState.buffer)
+		.on('progress', function(progress) {
+			console.log('Processing: ' + progress.percent + '% done');
+		})
+		.output('outputfile.mp4')
+		.output(stream)
+		.on('end', function() {
+			console.log('Finished processing');
+		})
+		.on('error', function(err, stdout, stderr) {
+		    console.log('Cannot process video: ' + err.message);
+		  })
+		.run();*/
+	
+		//convert(req.file('video').Upstream)
+
 
 	},
 

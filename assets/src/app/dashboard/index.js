@@ -1103,6 +1103,8 @@ angular.module( 'bidio.dashboard', [
             intro: $scope.campaign.intro,
             campaignContent: $scope.campaign.campaignContent
         };
+        
+        console.log(toUpdate)
 
         if($scope.campaign.redirectUrl){
             toUpdate.redirectUrl = $scope.campaign.redirectUrl;

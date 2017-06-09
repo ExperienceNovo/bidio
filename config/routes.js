@@ -64,6 +64,8 @@ module.exports.routes = {
   'get /upload': 'HomeController.index',
   'get /video/:id': 'HomeController.index',
 
+  'get /zaxbys': 'HomeController.index',
+
   'get /v/:id': {controller:'EmbedController', action:'index', view:'embed/index', locals: {layout: 'embed/embed'}},
 
   'post /auth/local': 'AuthController.callback',

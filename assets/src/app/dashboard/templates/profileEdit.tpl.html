@@ -68,6 +68,9 @@
 			      		<md-button ng-show="user.creditSum > 0" class="btn anim-button fl-l home-buttons" ng-click="toggleCheckout()"><i class="fa fa-long-arrow-right fa-fw"></i>Cash Out</md-button>
 			      		<!--toggle if user has credit-->
 			      		<!--check if stripeId"-->
+
+
+
 						<div class="spacing-25"></div>
 						<div ng-show="addCredit">
 							<form stripe:form="getToken">
@@ -87,12 +90,21 @@
 					        		<p><b>Credit Amount</b></p> <input aria-label="Credit Amount" type="text" ng-model="newCredit.amount">
 								</md-input-container>
 								<md-input-container>
-							    	<md-button class="btn anim-button" type="submit">Submit</md-button>
+							    	<md-button style="width:100%" class="btn anim-button" type="submit">Submit</md-button>
 								</md-input-container>
 						    </form>
 						    <p style="color:rgb(225,225,225)">* Bidio takes 12% of your credit purchase.</p>
 
+
+
+
 						</div>
+
+
+
+
+
+
 						<div ng-show="checkOut">
 							<h1>checkout form</h1>
 						</div>
