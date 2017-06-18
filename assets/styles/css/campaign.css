@@ -110,9 +110,9 @@ button.updateCampaignButton {
 }
 
 .aboutTxt p {
+    margin-top:10px;
     font-size: 19px;
     line-height: 2;
-    text-align: justify;
     padding-left: 50px;
 }
 
@@ -149,9 +149,9 @@ button.updateCampaignButton {
         float:none!important;
     }
     .aboutTxt p {
-        font-size: 19px;
+        margin-top:10px;
+        font-size: 15px;
         line-height: 2;
-        text-align: justify;
         padding: 0; 
     }
     img.sponsorPicLarge {
