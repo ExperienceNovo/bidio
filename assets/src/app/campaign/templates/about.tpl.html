@@ -23,7 +23,7 @@
 				height="264" 
 				fluid="true"
 				vjs-video
-				poster="{{campaign.poster}}" 
+				poster="{{campaign.thumbnailUrl}}" 
 				vjs-media="campaign.media"
 				vjs-ratio="16:9">
 			</video>
@@ -65,7 +65,7 @@
 				width="640" 
 				height="264" 
 				fluid="true"
-				poster="campaign.poster" 
+				poster="{{bid.video.thumbnailUrl}}" 
 				vjs-ratio="16:9">
 			</video>
 			<a href="#" ng-show="campaign.campaignImageUrl" class="vid-clickthrough"><img src="{{campaign.campaignImageUrl}}"></a>

@@ -9,7 +9,7 @@
 <div class="container">
   <div class="dashboardVideos col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-repeat="video in videos">
       <h2 class="discover-title" style="text-align:left"><a href="dashboard/video/{{video.id}}">{{video.title}}</a></h2>
-      <video class="video-js vjs-default-skin" controls="" height="264" poster="" preload="none" src="{{video.amazonUrl}}" style="display:inline-block;" vjs-video=""width="640"></video>
+      <video class="video-js vjs-default-skin" controls="" height="264" poster="{{video.thumbnailUrl}}" preload="none" src="{{video.amazonUrl}}" style="display:inline-block;" vjs-video=""width="640"></video>
       <div class="spacing-15"></div>
   </div>
 </div>

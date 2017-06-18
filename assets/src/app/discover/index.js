@@ -21,13 +21,12 @@ angular.module( 'bidio.discover', [
 .controller( 'DiscoverCtrl', ['$rootScope','$sce', '$scope', 'config', 'SearchModel', 'titleService', 'videos', function DiscoverCtrl( $rootScope, $sce, $scope, config, SearchModel, titleService, videos ) {
 	titleService.setTitle('bidio - discover');
 	$scope.videos = videos;
- 	$scope.defaultposter = 'images/video-overlay.png';
  	for (x in $scope.videos){
     	$scope.videos[x].media = {
     		sources: [
 		        {src: $scope.videos[x].amazonUrl, type: "video/mp4"}
     		],
-    		poster: $scope.defaultposter
+    		poster: $scope.videos[x].thumbnailUrl || '/images/video-overlay.png'
     	}
     }
  	$scope.keyPress = function(searchValue){
@@ -42,7 +41,7 @@ angular.module( 'bidio.discover', [
 	        		sources: [
 				        {src: $scope.videos[x].amazonUrl, type: "video/mp4"}
 		    		],
-		    		poster: $scope.defaultposter//thumbnail
+    				poster: $scope.videos[x].thumbnailUrl || '/images/video-overlay.png'
 		    	}
 	        }
     	}

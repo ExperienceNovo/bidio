@@ -43,7 +43,7 @@ angular.module( 'bidio.campaign', [
               type: 'video/mp4'
           }
       ],
-      poster: $scope.campaign.poster
+      poster: $scope.campaign.thumbnailUrl
   };
 
   for (x in $scope.campaign.bids){
@@ -54,12 +54,11 @@ angular.module( 'bidio.campaign', [
                   type: 'video/mp4'
               }
           ],
-          poster: $scope.campaign.poster
+          poster: $scope.campaign.bids[x].video.thumbnailUrl || 'images/video-overlay.png'
       }
   }
 
 
-  $scope.campaign.poster = 'images/video-overlay.png'
 	$scope.updateCampaign = function(campaign){
 		CampaignModel.update(campaign);
 	}

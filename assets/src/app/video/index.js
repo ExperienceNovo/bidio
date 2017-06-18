@@ -26,7 +26,6 @@ angular.module( 'bidio.video', [
 
 	$scope.currentUser = config.currentUser;
 	$scope.video = video;
-    $scope.video.poster = 'images/video-overlay.png'
 	if(typeof($scope.video)=="undefined"){$location.path('/')}
 	titleService.setTitle(video.title + ' - bidio');
 	seoService.setKeywords('bidio, video, custom tags')
@@ -39,7 +38,7 @@ angular.module( 'bidio.video', [
 	            type: 'video/'+$scope.video.amazonUrl.split('.').slice(-1)[0].toLowerCase()
 	        }
 	    ],
-	    poster: $scope.video.poster//thumbnail -----
+	    poster: $scope.video.thumbnailUrl || '/images/video-overlay.png'
 	};
 	if($scope.media.sources[0].type == 'video/mov'){$scope.media.sources[0].type = 'video/mp4'}
 

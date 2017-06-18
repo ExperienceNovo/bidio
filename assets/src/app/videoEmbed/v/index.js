@@ -21,13 +21,12 @@ angular.module( 'bidio.videoEmbed', [
 .controller( 'VideoEmbedCtrl', ['$location', '$sailsSocket', '$scope', 'ClickModel', 'config', 'lodash', 'titleService', 'video', 'ViewModel', 'VideoModel', function VideoEmbedCtrl( $location, $sailsSocket, $scope, ClickModel, config, lodash, titleService, video, ViewModel, VideoModel ) {
 	$scope.currentUser = config.currentUser;
 	$scope.video = video;
-    $scope.video.poster = 'images/video-overlay.png'
 	if(typeof($scope.video)=="undefined"){$location.path('/')}
 	titleService.setTitle(video.title + ' - bidio');
 	$scope.viewModel = {};
 	$scope.media = {
 	    sources: [{src: $scope.video.amazonUrl, type: 'video/'+$scope.video.amazonUrl.split('.').slice(-1)[0].toLowerCase()}],
-	    poster: $scope.video.poster
+	    poster: $scope.video.thumbnailUrl || 'images/video-overlay.png'
 	};
 
 	var activeBid = video.bids.filter(function(bid){ return bid.isActive });

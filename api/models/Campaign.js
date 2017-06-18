@@ -95,11 +95,12 @@ module.exports = {
     },
 
     beforeValidate: function(values, cb) {
+        //if editing own id dont add .8
         if (typeof(values.title) != "undefined"){
             var urlTitle = values.title.replace(/ /g,"-").toLowerCase();
             values.urlTitle = urlTitle
             Campaign.findOne({urlTitle: urlTitle}).exec(function (err, record) {
-                if (typeof(record) != "undefined"){
+                if (typeof(record) != "undefined" && values.id != record.id){
                     values.urlTitle = record.urlTitle + '.8';
                     cb();
                 }
@@ -109,19 +110,6 @@ module.exports = {
             });
         }
     },
-
-
-
-    /*
-    afterCreate: function (post, next) {
-        // set message.user = to appropriate user model
-        User.getOne(post.user)
-        .spread(function(user) {
-            post.user = user;
-            next(null, post);
-        });
-    },
-    */
 
     getAll: function() {
         return Campaign.find({published: true})

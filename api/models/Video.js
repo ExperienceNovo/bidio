@@ -36,7 +36,7 @@ module.exports = {
         },
         thumbnailUrl: {
             type: 'string',
-            defaultsTo: '/images/bidio_logo.png'
+            defaultsTo: '/images/video-overlay.png'
         },
         views: {
             collection: 'view',
