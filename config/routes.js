@@ -167,7 +167,7 @@ module.exports.routes = {
   'get /api/view/video/:id': 'ViewController.getByVideo',
   'post /api/view': 'ViewController.create',
 
-  '/.well-known/acme-challenge/iEMOp7QPc7YUUAMl5rP-Kgauvf-SbR5O6EKPjzwG9eg': 'HomeController.ssl',
+  '/.well-known/acme-challenge/QaNq94icVbQIi3HwabghOsybwHT36XCLVAD4JYJK7oc': 'HomeController.ssl',
 
 
   // If a request to a URL doesn't match any of the custom routes above, it is matched
