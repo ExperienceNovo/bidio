@@ -4,9 +4,21 @@
     <h2><a ui-sref="video({id: video.id})">{{video.title}}</a></h2>
   </div>
   <div class="spacing-15"></div>
-  <div style="text-align:left">
-    <video style="display:inline-block;" class="video-js vjs-default-skin" src="{{video.amazonUrl}}" controls preload="none" width="640" height="264" poster="{{video.thumbnailUrl}}" vjs-video>
+  <div style="">
+    <video 
+      class="video-js vjs-default-skin"
+      controls preload="auto" 
+      width="640" 
+      height="264" 
+      fluid="true"
+      poster="{{video.media.poster}}" 
+      vjs-media="media"
+      vjs-ratio="16:9"
+      vjs-video
+      playsinline
+      >
     </video>
+    <!--<a ng-show="video.campaign.campaignImageUrl" class="vid-clickthrough" ng-click="clickThrough()"><img src="{{video.campaign.campaignImageUrl}}"></a>-->
   </div>
   <div class="spacing-15"></div>
 

@@ -317,6 +317,15 @@ angular.module( 'bidio.dashboard', [
 
 .controller( 'DashboardVideoCtrl', ['$location', '$sailsSocket', '$scope', 'clicks', 'titleService', 'video', 'VideoModel', 'views', function DashboardVideosCtrl( $location, $sailsSocket, $scope, clicks, titleService, video, VideoModel, views ) {
     $scope.video = video;
+    $scope.media = {
+        sources: [
+            {
+                src: $scope.video.amazonUrl,
+                type: 'video/'+$scope.video.amazonUrl.split('.').slice(-1)[0].toLowerCase()
+            }
+        ],
+        poster: $scope.video.thumbnailUrl || '/images/video-overlay.png'
+    };
     titleService.setTitle('dashboard - ' + video.title);
     $scope.views = views;
     $scope.clicks = clicks;
@@ -454,6 +463,14 @@ angular.module( 'bidio.dashboard', [
 .controller( 'DashboardVideosCtrl', ['$mdDialog', '$scope', 'titleService', 'videos', 'VideoModel', function DashboardVideosCtrl( $mdDialog, $scope, titleService, videos, VideoModel ) {
     titleService.setTitle('dashboard - videos');
     $scope.videos = videos;
+    for (x in $scope.videos){
+        $scope.videos[x].media = {
+            sources: [
+                {src: $scope.videos[x].amazonUrl, type: "video/mp4"}
+            ],
+            poster: $scope.videos[x].thumbnailUrl || '/images/video-overlay.png'
+        }
+    };
     $scope.addVideo = function(ev){
         $mdDialog.show({
           controller: 'VideoDialogCtrl',
@@ -954,6 +971,14 @@ angular.module( 'bidio.dashboard', [
                 originals = lodash.cloneDeep($scope.campaign.bids);
 
                 $scope.selectedBids = sorted[$scope.selection.type];
+                for (x in $scope.selectedBids){
+                    $scope.selectedBids[x].video.media = {
+                        sources: [
+                            {src: $scope.selectedBids[x].video.amazonUrl, type: "video/mp4"}
+                        ],
+                        poster: $scope.selectedBids[x].video.thumbnailUrl || '/images/video-overlay.png'
+                    }
+                };
 
             })
             .catch(function(error){
@@ -1192,12 +1217,28 @@ angular.module( 'bidio.dashboard', [
     }
 
     $scope.selectedBids = sorted[$scope.selection.type];
+    for (x in $scope.selectedBids){
+        $scope.selectedBids[x].video.media = {
+            sources: [
+                {src: $scope.selectedBids[x].video.amazonUrl, type: "video/mp4"}
+            ],
+            poster: $scope.selectedBids[x].video.thumbnailUrl || '/images/video-overlay.png'
+        }
+    };
 
     $scope.$watch(
         "selection.type",
         function(newVal, oldVal){
             $scope.clean = true;
-            $scope.selectedBids = sorted[newVal]
+            $scope.selectedBids = sorted[newVal];
+            for (x in $scope.selectedBids){
+                $scope.selectedBids[x].video.media = {
+                    sources: [
+                        {src: $scope.selectedBids[x].video.amazonUrl, type: "video/mp4"}
+                    ],
+                    poster: $scope.selectedBids[x].video.thumbnailUrl || '/images/video-overlay.png'
+                }
+            };
         },
         true
     );
@@ -1279,6 +1320,15 @@ angular.module( 'bidio.dashboard', [
             originals = lodash.cloneDeep($scope.campaign.bids);
 
             $scope.selectedBids = sorted[$scope.selection.type];
+
+            for (x in $scope.selectedBids){
+                $scope.selectedBids[x].video.media = {
+                    sources: [
+                        {src: $scope.selectedBids[x].video.amazonUrl, type: "video/mp4"}
+                    ],
+                    poster: $scope.selectedBids[x].video.thumbnailUrl || '/images/video-overlay.png'
+                }
+            };
         })
         .catch(function(err){
             console.log(err);
@@ -1306,6 +1356,14 @@ angular.module( 'bidio.dashboard', [
 
         originals = lodash.cloneDeep($scope.campaign.bids);
         $scope.selectedBids = sorted[$scope.selection.type];
+        for (x in $scope.selectedBids){
+            $scope.selectedBids[x].video.media = {
+                sources: [
+                    {src: $scope.selectedBids[x].video.amazonUrl, type: "video/mp4"}
+                ],
+                poster: $scope.selectedBids[x].video.thumbnailUrl || '/images/video-overlay.png'
+            }
+        };
     }
 }])
 
