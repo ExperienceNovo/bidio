@@ -54,6 +54,26 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-repeat="bid in campaign.bids">
+
+			<!--
+			<a ui-sref="video({id: video.id})">
+				<h2 class="discover-title" style="text-align:left">
+					{{video.title}}
+				</h2>
+				<video 
+					class="video-js vjs-default-skin"
+					preload="true" 
+					width="640" 
+					height="264" 
+					fluid="true"
+					poster="{{video.media.poster}}"
+					vjs-video
+					vjs-media="video.media"
+					vjs-ratio="16:9">
+				</video>
+			</a>
+			-->
+
 			<h2 style="text-align:left;font-size: 2.5em;margin-bottom: 15px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"><a ui-sref="video({id: bid.video.id})">{{bid.video.title}}</a></h2>
 			<h3 style="text-align:left;">by <b><a href="/member/{{bid.video.user.username}}">{{bid.video.user.username}}</a></b></h3>
 			<br>
@@ -68,7 +88,8 @@
 				poster="{{bid.video.thumbnailUrl}}" 
 				vjs-ratio="16:9">
 			</video>
-			<a href="#" ng-show="campaign.campaignImageUrl" class="vid-clickthrough"><img src="{{campaign.campaignImageUrl}}"></a>
+			<a href="campaign/{{campaign.urlTitle}}" ng-show="campaign.campaignImageUrl" class="vid-clickthrough"><img src="{{campaign.campaignImageUrl}}"></a>
+
 		</div>
 	</div>
 </div>
