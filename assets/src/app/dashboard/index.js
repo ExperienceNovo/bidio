@@ -500,13 +500,17 @@ angular.module( 'bidio.dashboard', [
 
         console.log(video.videoWidth, video.videoHeight)
 
-        canvas.getContext('2d').drawImage(video, 0, 0, 192, 108)//video.videoWidth, video.videoHeight);
-        //var img = canvas.toDataURL("image/png");
+        canvas.getContext('2d').drawImage(video, 0, 0, 300, 210)//video.videoWidth, video.videoHeight);
+
+        //save time ... query backend with time..save stamp. idk
+        var img = canvas.toDataURL("image/png");
+        $scope.thumbnailGeneratedImage = img;
+
         //$scope.media = {
         //    poster: img || '/images/video-overlay.png'
         //};
         //console.log(img);
-        //$scope.uploadThumbnail(img);
+        $scope.uploadThumbnail($scope.thumbnailGeneratedImage);
     }
 
     $scope.upload = function(file){

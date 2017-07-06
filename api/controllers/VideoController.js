@@ -150,17 +150,17 @@ module.exports = {
 		 	bucket: 'bidio8',
 		}
 		console.log(req.file('video'))
-		var byteCount = req.file('video')._files[0].stream.byteCount
+		//var byteCount = req.file('video')._files[0].stream.byteCount
 
-		console.log(req.file('video')._readableState.buffer)
+		//console.log(req.file('video')._readableState.buffer)
 
 		req.file('video')
 		.on('progress', function (event){
 			//why is this doubled
 			//server processing --> to s3. 
 			//need to programatically delete s3 chunks if fail / and on delete
-			var percentageUploaded = event.written/byteCount
-			console.log(percentageUploaded)
+			//var percentageUploaded = event.written/byteCount
+			//console.log(percentageUploaded)
 		})
 		.upload(options, function response(err,uploadedFiles){
 			console.log('we are in the code')
