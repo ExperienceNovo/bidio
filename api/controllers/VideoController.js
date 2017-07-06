@@ -149,15 +149,10 @@ module.exports = {
 		 	secret: 'yDY1E6u2dWw6qdP64zQcn0d9b4oipzmdqToChWGA',
 		 	bucket: 'bidio8',
 		}
+		console.log(req.file('video'))
 		var byteCount = req.file('video')._files[0].stream.byteCount
 
-		if (process.env.NODE_ENV == 'development'){
-			var filename = req.file('video')._files[0].stream.filename;
-			options.saveAs = "development/" + utilsService.guid() + "." + filename.split(".").pop();
-		}
-
-		//console.log(req.file('video')._readableState.buffer)
-
+		console.log(req.file('video')._readableState.buffer)
 
 		req.file('video')
 		.on('progress', function (event){

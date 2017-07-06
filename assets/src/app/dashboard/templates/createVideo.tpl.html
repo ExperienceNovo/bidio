@@ -41,10 +41,34 @@
             <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{pp}}%;"></div>
         </div>
 
-        <div class="clearfix" ng-show="video.amazonUrl">
+        <div class="clearfix" ng-show="video.amazonUrl" id="videoUploadThumbnail">
+
+
             <i ng-click="clear()" class="delete-btn pull-left fa fa-times fa-2x"></i>
             <p class="pull-left"><b>{{fileName}}</b></p>
+            <br><br>
+            <!--<thumbnail file-type="video" source="{{video.amazonUrl}}" max-height="250" max-width="250"></thumbnail>-->
+            <br>
+
+            <video 
+                class="video-js vjs-default-skin"
+                controls preload="auto" 
+                width="640" 
+                height="264" 
+                fluid="true"
+                poster="{{video.media.poster}}" 
+                vjs-media="media"
+                vjs-ratio="16:9"
+                vjs-video
+                playsinline>
+            </video>
+            <md-button class="md-raised pull-left" ng-click="captureThumbnail()">select thumbnail</md-button>
+            <canvas style="width:100%" id="canvas"></canvas>
+            <!--<p>upload thumbnail..</p>-->
+
+
         </div>
+
 
         <div ng-show="error">
             <p style="text-align:center;color:#ff664c;font-weight:700;">{{error}}</p>

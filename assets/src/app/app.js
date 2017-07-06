@@ -20,6 +20,7 @@ angular.module( 'bidio', [
     'stripe',
     'gavruk.card',
     'textAngular',
+    'angular-thumbnails',
     'bidio.admin',
     'bidio.blog',
     'bidio.blogPost',

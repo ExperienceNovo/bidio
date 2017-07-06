@@ -493,6 +493,22 @@ angular.module( 'bidio.dashboard', [
     $scope.pp = 0;
     $scope.fileName = null;
 
+    $scope.captureThumbnail = function(){
+        var canvas = document.getElementById("canvas");
+        var parent = document.getElementById('videoUploadThumbnail');
+        var video = parent.getElementsByTagName('video')[0];
+
+        console.log(video.videoWidth, video.videoHeight)
+
+        canvas.getContext('2d').drawImage(video, 0, 0, 192, 108)//video.videoWidth, video.videoHeight);
+        //var img = canvas.toDataURL("image/png");
+        //$scope.media = {
+        //    poster: img || '/images/video-overlay.png'
+        //};
+        //console.log(img);
+        //$scope.uploadThumbnail(img);
+    }
+
     $scope.upload = function(file){
         $scope.videoLoading = true;
         Upload.upload({
@@ -504,6 +520,25 @@ angular.module( 'bidio.dashboard', [
             $scope.fileName = file.name;
             $scope.videoLoading = false;
             $scope.video.amazonUrl = response.data.amazonUrl;
+            //var canvas = document.getElementsByTagName("canvas")[0];
+            //var img = canvas.toDataURL("image/png");
+            //$scope.thumbnailGeneratedImage = img;
+
+            $scope.media = {
+                sources: [
+                    {
+                        src: $scope.video.amazonUrl,
+                        type: 'video/'+$scope.video.amazonUrl.split('.').slice(-1)[0].toLowerCase()
+                    }
+                ],
+                poster: $scope.video.thumbnailUrl || '/images/video-overlay.png'
+            };
+
+            //$scope.captureThumbnail();
+
+            //$scope.uploadThumbnail($scope.thumbnailGeneratedImage)
+            //this is automated -- in future make it after thumbnial selection... :) --> scroll though frames -- or upload indep.
+
         },
         null,
         function (evt) {
@@ -512,9 +547,28 @@ angular.module( 'bidio.dashboard', [
         })
     };
 
+    $scope.uploadThumbnail = function(file){
+        $scope.videoLoading = true;
+        Upload.upload({
+            url: '/api/video/upload',
+            method: 'POST',
+            data: {video: file}
+        })
+        .then(function(response){
+            $scope.video.thumbnailUrl = response.data.amazonUrl;
+            console.log('DONE!')
+        },
+        null,
+        function (evt) {
+            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+            $scope.pp = progressPercentage;
+        })
+
+    };
+
     $scope.submit = function(video){
 
-        if (!video.urlTitle, !video.title, !video.amazonUrl, !video.description){
+        if (!video.urlTitle, !video.title, !video.amazonUrl, !video.description, !video.thumbnailUrl){
             $scope.error = "Incomplete entry";
             return;
         }
