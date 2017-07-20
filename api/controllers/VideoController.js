@@ -143,26 +143,26 @@ module.exports = {
 	upload: function(req,res){
 
 		res.setTimeout(0);
-		/*var options = {
+		var options = {
 			adapter: require("skipper-s3"),
 			key: 'AKIAJZS6F2HWDJWWZE7A',
 		 	secret: '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',
 		 	bucket: 'bidio8',
-		}*/
+		}
 		//console.log(req.file('video'))
-		//var byteCount = req.file('video')._files[0].stream.byteCount
+		var byteCount = req.file('video')._files[0].stream.byteCount
 
 		//console.log(req.file('video')._readableState.buffer)
 
-		//req.file('video')
-		//.on('progress', function (event){
+		req.file('video')
+		.on('progress', function (event){
 			//why is this doubled
 			//server processing --> to s3. 
 			//need to programatically delete s3 chunks if fail / and on delete
-			//var percentageUploaded = event.written/byteCount
-			//console.log(percentageUploaded)
-		// d})
-		/*.upload(options, function response(err,uploadedFiles){
+			var percentageUploaded = event.written/byteCount
+			console.log(percentageUploaded)
+		})
+		.upload(options, function response(err,uploadedFiles){
 			console.log('we are in the code')
 			if (err) {
 		    	return res.negotiate(err);
@@ -174,11 +174,11 @@ module.exports = {
 		    console.log(uploadedFiles)
 		    var amazonUrl = uploadedFiles[0].extra.Location;
 		    return res.json({amazonUrl: amazonUrl});
-		});*/
+		});
 
 		///*var stream  = fs.createWriteStream('outputfile.divx');
 
-		console.log(req.file('video')._files[0].stream);
+		/*console.log(req.file('video')._files[0].stream);
 		var stream = req.file('video')._files[0].stream;
 		ffmpeg(stream)
 		.on('progress', function(progress) {
@@ -192,7 +192,7 @@ module.exports = {
 		.on('error', function(err, stdout, stderr) {
 		    console.log('Cannot process video: ' + err.message);
 		  })
-		.run();
+		.run();*/
 	
 		//convert(req.file('video').Upstream)
 
