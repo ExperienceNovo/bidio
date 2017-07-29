@@ -54,6 +54,6 @@ function youtubeToS3(youtubeUrl, user){
 
 module.exports.intervalService = function(){
 
-	youtubeToS3('https://www.youtube.com/watch?v=TUEBsOQxA90', {id:'57759e5d61c62215064214a4'});
+	//youtubeToS3('https://www.youtube.com/watch?v=TUEBsOQxA90', {id:'57759e5d61c62215064214a4'});
 	
 };
