@@ -1,4 +1,3 @@
-var fs = require('fs');
 var youtubedl = require('youtube-dl');
 var AWS = require('aws-sdk');
 AWS.config.update({accessKeyId: 'AKIAJ6LR6NCGXZNH4QJQ', secretAccessKey: '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'});
@@ -55,6 +54,6 @@ function youtubeToS3(youtubeUrl, user){
 
 module.exports.intervalService = function(){
 
-	//youtubeToS3('https://www.youtube.com/watch?v=jKkXw2cj9a4', {id:'57759e5d61c62215064214a4'});
+	youtubeToS3('https://www.youtube.com/watch?v=TUEBsOQxA90', {id:'57759e5d61c62215064214a4'});
 	
 };
