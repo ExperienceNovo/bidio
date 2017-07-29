@@ -572,6 +572,8 @@ angular.module( 'bidio.dashboard', [
 
     $scope.submit = function(video){
 
+        console.log(video)
+
         if (!video.urlTitle, !video.title, !video.amazonUrl, !video.description){//, !video.thumbnailUrl){
             $scope.error = "Incomplete entry";
             return;
