@@ -34,10 +34,10 @@ angular.module( 'bidio.videoEmbed', [
 
 	if ($scope.currentUser){
 		$scope.viewModel.user = $scope.currentUser.id;
-	    $scope.viewModel.video = $scope.video.id;
-		$scope.viewModel.bid = $scope.highestBid;
-	    ViewModel.create($scope.viewModel);
 	}
+	$scope.viewModel.video = $scope.video.id;
+	$scope.viewModel.bid = $scope.highestBid;
+	ViewModel.create($scope.viewModel);
 
 	$scope.clickThrough = function(){
 		ClickModel.create($scope.viewModel);

@@ -47,10 +47,10 @@ angular.module( 'bidio.video', [
 
 	if ($scope.currentUser && $scope.video.bids){
 		$scope.viewModel.user = $scope.currentUser.id;
-	    $scope.viewModel.video = $scope.video.id;
-		$scope.viewModel.bid = $scope.highestBid.id;
-	    ViewModel.create($scope.viewModel);
 	}
+	$scope.viewModel.video = $scope.video.id;
+	$scope.viewModel.bid = $scope.highestBid.id;
+    ViewModel.create($scope.viewModel);
 
 	//apparently not loading ---~~~
 	$sailsSocket.subscribe('bid', function (envelope) {
