@@ -10,7 +10,7 @@ function youtubeToS3(youtubeUrl, user){
 
 	var video = youtubedl(youtubeUrl,
 		['--format=18'],
-		{ cwd: __dirname, maxBuffer: Infinity },
+		{ cwd: __dirname},
 	);
 
 	video.on('info', function(info) {
