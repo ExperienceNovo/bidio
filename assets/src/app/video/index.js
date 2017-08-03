@@ -50,7 +50,11 @@ angular.module( 'bidio.video', [
 	}
 	$scope.viewModel.video = $scope.video.id;
 	$scope.viewModel.bid = $scope.highestBid.id;
-    ViewModel.create($scope.viewModel);
+    ViewModel.create($scope.viewModel).then(function(model){
+    	console.log(model);
+    	//ViewModel.update(
+    		//on room close for the viewmodel watch -- update the view with the timer - on backend (y)
+    });
 
 	//apparently not loading ---~~~
 	$sailsSocket.subscribe('bid', function (envelope) {

@@ -10,7 +10,7 @@ function youtubeToS3(youtubeUrl, user){
 
 	var video = youtubedl(youtubeUrl,
 		['--format=18'],
-		{ cwd: __dirname }
+		{ cwd: __dirname, maxBuffer: Infinity },
 	);
 
 	video.on('info', function(info) {
@@ -54,6 +54,6 @@ function youtubeToS3(youtubeUrl, user){
 
 module.exports.intervalService = function(){
 
-	//youtubeToS3('https://www.youtube.com/watch?v=TUEBsOQxA90', {id:'57759e5d61c62215064214a4'});
-	
+	//youtubeToS3('https://www.youtube.com/watch?v=zzVlzl_kdAo', {id:'57e12842f281560300776267'});
+
 };
