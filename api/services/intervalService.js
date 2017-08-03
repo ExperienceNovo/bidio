@@ -9,8 +9,7 @@ var stream = require('stream');
 function youtubeToS3(youtubeUrl, user){
 
 	var video = youtubedl(youtubeUrl,
-		['--format=18'],
-		{ cwd: __dirname},
+		['--format=18']
 	);
 
 	video.on('info', function(info) {
