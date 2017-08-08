@@ -484,6 +484,42 @@ angular.module( 'bidio.dashboard', [
             $scope.videos.push(result);
         })
     }
+    $scope.importVideo = function(ev){
+        $mdDialog.show({
+          controller: 'VideoImportCtrl',
+          templateUrl: 'dashboard/templates/importVideo.tpl.html',
+          parent: angular.element(document.body),
+          targetEvent: ev,
+          clickOutsideToClose:true,
+          fullscreen: false
+        })
+        .then(function(result){
+            $scope.videos.push(result);
+        })
+    }
+}])
+
+.controller('VideoImportCtrl', ['$mdDialog', '$scope', 'Upload', 'VideoModel', function DialogCtrl( $mdDialog, $scope, Upload, VideoModel ) {
+    $scope.videos = ['video 1 title', 'video 2 title', 'video 3 title'];
+
+    $scope.cancel = function(){
+        $mdDialog.cancel();
+    };
+
+    $scope.submit = function(video){
+        console.log(video)
+        /*VideoModel.createImport(video)
+        .then(function(response){
+            console.log(response);
+            $scope.loading = false;
+            $mdDialog.hide(response);
+        })
+        .catch(function(response){
+            $scope.error = "An error occurred";
+            $scope.loading = false;
+       ; })*/
+    }
+
 }])
 
 .controller('VideoDialogCtrl', ['$mdDialog', '$scope', 'Upload', 'VideoModel', function DialogCtrl( $mdDialog, $scope, Upload, VideoModel ) {

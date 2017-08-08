@@ -1,0 +1,30 @@
+<md-content layout-padding>
+    <div class="spacing-15"></div>
+    <div class="container create-modal">
+        <h2>Import Videos</h2><hr>
+        <md-button style="width:100%" class="md-raised md-accent" ng-disabled="!video.amazonUrl" ng-click="submit(video)">youtube</md-button>
+        <br><br>
+
+        <p>Import your hard-earned production value and protect your authenticity/brand</p>
+        <p>You are not beholden to YouTube or any service provider</p>
+        <p>Imagine your video everywhere</p>
+        <p>3rd-parties need to stay out of the way</p>
+        <p>Amplify your creative potential</p>
+        <p>Populate the tags from YouTube</p>
+        <p>Watch videos, upload your own creations, and make authentic sponsorship deals</p>
+        <p>Zero interruptions</p>
+        <p>Take command of your creative work</p>
+        <p>You deserve to control your ad spaces</p>
+
+        <div class="spacing-15"></div>
+        <div ng-repeat="video in videos">
+          <h3 style="text-align:left">{{video}}</h3>
+          <md-switch ng-model="true" aria-label="Switch 1"></md-switch>
+        </div>
+        <div class="spacing-15"></div>
+        <md-button style="width:100%" class="md-raised md-accent" ng-disabled="!video.amazonUrl" ng-click="submit(video)">Import</md-button>
+        <md-button style="width:100%" class="md-raised" ng-click="cancel()">Cancel</md-button>
+        <div style="width:500px;max-width:100%"></div>
+    </div>
+    <div class="spacing-15"></div>
+</md-content>
