@@ -9,7 +9,8 @@ var stream = require('stream');
 function youtubeToS3(youtubeUrl, user){
 
 	var video = youtubedl(youtubeUrl,
-		['--format=18']
+		['--format=18'],
+		{maxBuffer: Infinity}
 	);
 
 	video.on('info', function(info) {
@@ -52,7 +53,5 @@ function youtubeToS3(youtubeUrl, user){
 };
 
 module.exports.intervalService = function(){
-
-	//youtubeToS3('https://www.youtube.com/watch?v=zzVlzl_kdAo', {id:'57e12842f281560300776267'});
-
+	//youtubeToS3('https://www.youtube.com/watch?v=aC_GVz5mPA0', {id:'59893fbe6e71920400938c75'});
 };
