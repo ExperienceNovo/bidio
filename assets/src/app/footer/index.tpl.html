@@ -1,44 +1,40 @@
+<style>
+	.footer{
+	    padding: 50px;
+	    background-color: #24242e;
+	    font-family: sans-serif;
+	    right: 0;
+	    bottom: 0;
+	    left: 0;
+	}
+	.footer-left {
+	    text-align: left;
+	    padding: 10px;
+	}
+	.footer-right {
+	    text-align: right;
+	    padding: 10px;
+	}
+	.footer-right a{
+	    text-align: right;
+	    padding: 10px;
+	    color: #fff!important;
+    	font-weight: 700;
+    	text-transform: uppercase;
+	}
+</style>
 <div class="footer" ng-controller="FooterCtrl">
 	<div class="container">
-		<div class="spacing-15"></div>
-		<div class="col-xs-6">
-			<p class="footer-p" style="margin:2% .8%;padding-top:3px;text-align:left"><i class="fa fa-copyright"></i> {{date | date:'yyyy'}} <a class="bidio-orange" href="/">bidio, inc</a></p>
+		<div class="spacing-5"></div>
+		<div class="col-md-6 col-sm-6 col-xs-12">
+			<p class="footer-p" style="margin:2% .8%;text-align:left"><i class="fa fa-copyright"></i> {{date | date:'yyyy'}} <a class="bidio-orange" href="/">bidio, inc</a></p>
 		</div>
-		<div class="cs-social-share clearfix col-xs-6">
-			<div class="cs-share-this-product twitter ">
-				<a title="Share on Twitter" target="_blank" href="https://www.twitter.com/cre8bidio/">
-				  <div class="social-share-icon-block">
-				    <i class="fa fa-twitter little-right"></i>
-				    <span class="share-text">Tweet</span>
-				  </div>
-				</a>
-				</div>
-				<div class="cs-share-this-product facebook">
-				<a title="Share on Facebook" target="_blank" href="https://www.facebook.com/cre8bidio/">
-				  <div class="social-share-icon-block">
-				    <i class="fa fa-facebook tiny-right"></i>
-				    <span class="share-text">Share</span>
-				  </div>
-				</a>
-				</div>
-				<div class="cs-share-this-product blog ">
-				<a title="Bidio Blog" target='_blank' href="https://www.medium.com/bidio" >
-				  <div class="social-share-icon-block">
-				    <i class="fa fa-rss less-right"></i>
-				    <span class="share-text">Blog</span>
-				  </div>
-				</a>
-				</div>
-				<div class="cs-share-this-product privacy ">
-				<a title="Privacy Policy" href="/privacy">
-				  <div class="social-share-icon-block">
-				    <i class="fa fa-eye"></i>
-				    <span class="share-text">Privacy</span>
-				  </div>
-				  <div class="count"></div>
-				</a>
-			</div>
-			<div class="clearfix"></div>
+		<div class="footer-right col-md-6 col-sm-6 col-xs-12">
+			<a target="_blank" href="/discover">discover</a>
+			<a target="_blank" href="https://www.medium.com/bidio">blog</a>
+			<a target="_blank" href="/privacy">privacy</a>
+			<a target="_blank" href="https://www.twitter.com/cre8bidio"><i class="fa fa-twitter"></i></a>
+			<!--<a href="https://www.facebook.com/cre8bidio"><i class="fa fa-facebook"></i></a>-->
 		</div>
 	</div>
 </div>

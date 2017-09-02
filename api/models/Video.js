@@ -87,6 +87,7 @@ module.exports = {
     getAll: function() {
         return Video.find()
         .sort({createdAt: 'desc'})
+        .populate('user')
         .then(function (models) {
             return [models];
         });

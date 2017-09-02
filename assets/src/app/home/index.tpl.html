@@ -12,7 +12,7 @@
 <div id="main">
     <div id="wrapper">
         <div class="content-holder">
-            <div class="content intro-sec">
+            <div class="content intro-sec" ng-show="!currentUser">
                 <div class="hero-wrap">
                     <div class="media-container" data-bottom-top="transform: translateY(-300px);" data-top-bottom="transform: translateY(300px);">
                         <div class="video-mask"></div>
@@ -42,7 +42,7 @@
                     </div>
                 </div>
             </div>
-            <div class="content">
+            <div class="content" ng-show="!currentUser">
                 <section id="sec1">
                     <div class="container">
                         <div class="row">
@@ -197,18 +197,29 @@
                 <section id="sec2">
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <!--<h2 class="section-title algn-left dec-title"><span>featured <strong style="color:#FE9A2E">Videos</strong></span></h2>-->
-                                <h2 class="section-title algn-left dec-title"><span>discover</span></h2>
+                                <h2 class="section-title algn-left dec-title"><span><a href="/discover">discover</a></span></h2>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="dropdown sort-dropdown noselect" style="float:right">
+                                    <a class="dropdown-toggle noselect" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <h2 class="noselect">{{sortText[sort]}}<span class="caret"></span></h2>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="sort-a" ng-click="selectSort('trendingScore DESC')"><h3>Trending</h3></a></li>
+                                        <hr class="sort-hr">
+                                        <li><a class="sort-a" ng-click="selectSort('viewCount DESC')"><h3>View Count</h3></a></li>
+                                        <hr class="sort-hr">
+                                        <li><a class="sort-a" ng-click="selectSort('createdAt DESC')"><h3>Date Created</h3></a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="dashboardVideos col-xs-12 col-sm-12 col-md-4 col-lg-4" ng-repeat="video in videos" style="margin-top: 25px;">
                                 <div class="spacing-25"></div>
                                 <a ui-sref="video({id: video.id})">
-                                    <h2 class="discover-title" style="text-align:left">
-                                        {{video.title}}
-                                    </h2>
                                     <video 
                                         class="video-js vjs-default-skin"
                                         preload="true" 
@@ -220,7 +231,13 @@
                                         vjs-media="video.media"
                                         vjs-ratio="16:9">
                                     </video>
+                                     <h2 class="discover-title" style="margin-top:10px; text-align:left">
+                                        {{video.title}}
+                                    </h2>
                                 </a>
+                                <p><b><a style="text-align:left" href="member/{{video.user.username}}">{{video.user.username}}</a></b></p>
+                                <p>{{video.viewCount}} views</p>
+                                <!--<p ng-show="video.liveViewCount > 0">{{video.liveViewCount}} live views</p>-->
                             </div>
                         </div>
                     </div>
