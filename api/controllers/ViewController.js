@@ -58,6 +58,7 @@ module.exports = {
 		var viewModel = {
 			watchTime: 60000,
 			video: model.video,
+			//user: model.user,
 			user: '0x9fB168CEbAe474Ccb36a8B5D53Aa56c225B9c579'
 		};
   		blockchainService.createView(viewModel);

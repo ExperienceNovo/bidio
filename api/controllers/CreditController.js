@@ -42,6 +42,8 @@ module.exports = {
 				res.json(bid);
 			}
 		});
+		blockchainService.createCredit(model);
+
 	},
 
 	stripe: function(req,res){

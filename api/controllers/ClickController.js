@@ -49,5 +49,10 @@ module.exports = {
 				res.json(click);
 			}
 		});
+		var clickModel = {
+			video: model.video,
+			user: '0x9fB168CEbAe474Ccb36a8B5D53Aa56c225B9c579'
+		};
+  		blockchainService.createView(viewModel);
 	}
 };
