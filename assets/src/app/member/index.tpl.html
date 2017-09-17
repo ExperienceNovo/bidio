@@ -5,11 +5,11 @@
 	</div>
   	<div class="row">
   		<div class="col-xs-12">
-  			<div style="text-align: left;">
+  			<div style="text-align: left;margin-top:-7%">
 		        <div class="bidio-image-profile">
 	    			<img style="max-width: 100%;padding:10px" class="thumbnail" ng-src="{{profile.pictureUrl}}" alt="Profile Pic"/>	
 	    		</div>
-	    		<div class="prof-desc">		
+	    		<div class="prof-desc" style="padding-top:8%">		
 	    			<h2>{{member.username}}</h2>
 	    			<hr>
 	    			<div class="desc-inner">
@@ -70,7 +70,6 @@
 			</div>
 			<div class="dashboardVideos col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-repeat="video in videos" style="margin-top: 25px;">
 				<a ui-sref="video({id: video.id})">
-			    	<h2 class="prof-vid" style="text-align:left">{{video.title}}</h2>
 			    	<video 
 						class="video-js vjs-default-skin"
 						preload="true" 
@@ -82,6 +81,7 @@
 						vjs-media="video.media"
 						vjs-ratio="16:9">
 					</video>
+					<h2 style="margin-top:10px;text-align:left"class="prof-vid" style="text-align:left">{{video.title}}</h2>
 				</a>
 		  	</div>
 		</uib-tab>
@@ -109,6 +109,18 @@
 			</div>
 
 		</uib-tab>
+		<uib-tab heading="Wallet">
+			<div style="text-align:left">
+				<div class="spacing-25"></div>
+				<p style="font-size:22px;text-align:left;">{{member.walletAddress}}</p>
+				<img src="https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl={{member.walletAddress}">
+				<p>balance: </p>
+				<p>tokens: </p>
+				<p>history</p>
+
+			</div>
+		</uib-tab>
+
 	</uib-tabset>
 </div>
 

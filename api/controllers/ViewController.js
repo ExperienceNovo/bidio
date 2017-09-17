@@ -62,5 +62,20 @@ module.exports = {
 			user: req.user.walletAddress
 		};
   		blockchainService.createView(viewModel);
+
+  		Video.find({id:req.param('video')}).then(function(videoModel){
+
+  			User.find({id:videoModel.user}).then(function(userModel){
+  				var viewModel = {
+					watchTime: 60000,
+					video: model.video,
+					user: userModel.walletAddress
+				};
+  				blockchainService.createView(viewModel);
+  			});
+
+  		});
+
+
 	}
 };

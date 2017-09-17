@@ -39,7 +39,7 @@ angular.module( 'bidio.home', [
 	$scope.selectSort = function(sort){
 		$scope.sort = sort;
 		$rootScope.stateIsLoading = true;
-		VideoModel.getAll().then(function(videos) {//.getSome(50, $scope.skip, $scope.sort).then(function(videos) {
+		VideoModel.getSome(48, $scope.skip, $scope.sort).then(function(videos) {
 			$rootScope.stateIsLoading = false;
 			$scope.videos = videos;
 			for (x in $scope.videos){
@@ -69,6 +69,14 @@ angular.module( 'bidio.home', [
 		VideoModel.getSome(48, $scope.skip, 'viewCount DESC').then(function(videos) {
 			$rootScope.stateIsLoading = false;
 			Array.prototype.push.apply($scope.videos, videos);
+			for (x in $scope.videos){
+		    	$scope.videos[x].media = {
+		    		sources: [
+				        {src: $scope.videos[x].amazonUrl, type: "video/mp4"}
+		    		],
+		    		poster: $scope.videos[x].thumbnailUrl || '/images/video-overlay.png'
+		    	}
+		    }
 		});
     }
 

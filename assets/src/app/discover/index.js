@@ -53,6 +53,14 @@ angular.module( 'bidio.discover', [
 		VideoModel.getSome(48, $scope.skip, 'viewCount DESC').then(function(videos) {
 			$rootScope.stateIsLoading = false;
 			Array.prototype.push.apply($scope.videos, videos);
+			for (x in $scope.videos){
+		    	$scope.videos[x].media = {
+		    		sources: [
+				        {src: $scope.videos[x].amazonUrl, type: "video/mp4"}
+		    		],
+		    		poster: $scope.videos[x].thumbnailUrl || '/images/video-overlay.png'
+		    	}
+		    }
 		});
     };
 }]);

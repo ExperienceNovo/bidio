@@ -6,8 +6,12 @@
         <p style="font-weight:bold">Price per click: ${{highestBid.value | number : 2}}</p>
         <div class="spacing-15"></div>
         <md-input-container layout-fill>
-            <label>Bid Price</label>
+            <label>Price per Click</label>
             <input ng-model="bid.value" type="text">
+        </md-input-container>
+        <md-input-container layout-fill>
+            <label>Price per Second </label>
+            <input ng-model="bid.attention" type="text">
         </md-input-container>
         <div class="spacing-10"></div>
 
