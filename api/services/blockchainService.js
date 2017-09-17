@@ -100,14 +100,14 @@ module.exports = {
 
 	},
 
-	sendCredit: function(model){
+	sendCredit: function(model, amount){
 
 		//model.amount
 		//model.amount
 		web3.eth.sendTransaction({
-			from:'0x3a66bba9c404e66d2863e85041810add03031860',
-			to: '0x9fB168CEbAe474Ccb36a8B5D53Aa56c225B9c579', //model.address
-			value: web3.extend.utils.toWei('888', 'ether')
+			from:'0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609',
+			to: model.walletAddress, //model.address
+			value: web3.extend.utils.toWei(amount, 'ether')
 		}, function(error, result){
 			console.log(error, result)
 		});

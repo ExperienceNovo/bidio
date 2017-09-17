@@ -24,7 +24,7 @@ angular.module( 'bidio.member', [
 	});
 }])
 
-.controller( 'MemberCtrl', ['$scope', 'campaigns', 'config', 'member', 'titleService', 'videos', function MemberCtrl( $scope, campaigns, config, member, titleService, videos ) {
+.controller( 'MemberCtrl', ['$scope', 'campaigns', 'config', 'member', 'titleService', 'UserModel', 'videos', function MemberCtrl( $scope, campaigns, config, member, titleService, UserModel, videos ) {
 	$scope.currentUser = config.currentUser;
 	$scope.member = member;
 	if(typeof($scope.member)=="undefined"){$location.path('/')}
@@ -32,6 +32,9 @@ angular.module( 'bidio.member', [
 	$scope.profile = member.profile[0];
 	$scope.campaigns = campaigns.filter(function(obj){return obj.published == true});
 	$scope.videos = videos;
+    UserModel.getBalance($scope.member.walletAddress).then(function(model){
+        $scope.balance = model;
+    });
 	for (x in $scope.videos){
     	$scope.videos[x].media = {
     		sources: [

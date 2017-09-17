@@ -73,6 +73,18 @@ module.exports.intervalService = function(){
 
 	//var test = blockchainService.createWallet();
 
+	/*User.find().then(function(models){
+		for (x in models){
+			var wallet = blockchainService.createWallet(models[x]);
+            models[x].walletAddress = wallet.address;
+            models[x].walletPrivateKey = wallet.privateKey;
+            //console.log(models[x])
+            User.update({id: models[x].id}, models[x]).then(function(model){
+            	console.log(model)
+            });
+		}
+	});*/
+
 	//web3.eth.getAccounts()
 	//.then(console.log);	
 
