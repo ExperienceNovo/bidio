@@ -7,7 +7,7 @@
     	<div class="col-md-8">
 		    <div class="discover-search">
 		        <div class="input-group">
-					<input ng-submit="keyPress(searchValue)" class="search-query form-control" ng-model="searchValue" id="search-link" size="40" type="text" placeholder="Search">
+					<input ng-keydown="$event.keyCode === 13 && keyPress(searchValue)" class="search-query form-control" ng-model="searchValue" id="search-link" size="40" type="text" placeholder="Search">
 		            <span class="input-group-btn">
 		                <button class="btn" type="button">
 		                    <span class="fa fa-search"></span>
