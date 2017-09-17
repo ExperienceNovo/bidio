@@ -59,7 +59,7 @@ module.exports = {
 			watchTime: 60000,
 			video: model.video,
 			//user: model.user,
-			user: '0x9fB168CEbAe474Ccb36a8B5D53Aa56c225B9c579'
+			user: req.user.walletAddress
 		};
   		blockchainService.createView(viewModel);
 	}

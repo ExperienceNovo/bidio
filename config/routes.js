@@ -146,11 +146,14 @@ module.exports.routes = {
   'post /api/user/reset/:token': 'UserController.reset',
   'post /api/user/:id': 'UserController.update',
   'delete /api/user/:id': 'UserController.destroy',
+  
+  'get /api/wallet/:address': 'UserController.getBalance',
+
 
   /**
   *	Video Routes
   */
-  'get /api/video': 'VideoController.getAll',
+  'get /api/video': 'VideoController.getSome',
   'get /api/video/me': 'VideoController.getMine',
   'get /api/video/:id': 'VideoController.getOne',
   //'get /api/video/:limit/:skip': 'VideoController.getSome',

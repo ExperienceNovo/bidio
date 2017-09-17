@@ -129,12 +129,15 @@ angular.module( 'bidio.dashboard', [
 
 .controller( 'DashboardHomeCtrl', ['$location', '$mdDialog', '$scope', '$state', 'config', 'localStorageService', 'lodash', 'ProfileModel', 'titleService', 'user', 'UserModel', function DashboardHomeCtrl( $location, $mdDialog, $scope, $state, config, localStorageService, lodash, ProfileModel, titleService, user, UserModel ) {
     titleService.setTitle('dashboard');
+    //NOT RUNNING CURRENTLY
+
     $scope.currentUser = config.currentUser;
     $scope.username = user.username;
     $scope.submitLoading = false;
     $scope.profile = user.profile[0];
     $scope.passports = user.passports;
     $scope.user = user;
+
 
     $scope.submit = function(profile){
         $scope.submitLoading = true;
@@ -655,6 +658,11 @@ angular.module( 'bidio.dashboard', [
     $scope.profile = user.profile[0];
     $scope.passports = user.passports;
     $scope.user = user;
+    console.log($scope.user.walletAddress);
+    $scope.cre8coinBalance = 0;
+    UserModel.getBalance($scope.user.walletAddress).then(function(model){
+        $scope.balance = model;
+    });
 
     $scope.toggleAddCredit = function(){
         $scope.addCredit = true;

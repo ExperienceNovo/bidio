@@ -117,10 +117,11 @@ module.exports = {
         });
     },
 
-    getSome: function(limit, skip, sort, filter) {
+    getSome: function(limit, skip, sort) {
         return Video.find()
         .limit(limit)
         .skip(skip)
+        .sort(sort)
         .populate('user')
         .populate('bids')
         .then(function(models){
@@ -134,15 +135,16 @@ module.exports = {
                     throw new Error("More than one active bid found, aborting request");
                 }
             }
-            return [model,Campaign.findOne(active[0].campaign)]*/
+            return [models,Campaign.findOne(active[0].campaign)]*/
+            return models
         })
-        .spread(function(models,campaign){
+        //.spread(function(models,campaign){
             /*if (campaign){
                 model = model.toObject();
                 model.campaign = campaign;
             }*/
-            return [model];
-        });
+            //return [models];
+        //});
     },
 
 };

@@ -38,6 +38,14 @@ module.exports = {
         },
         resetTokenExpiresAfter: {
             type: 'integer'
+        },
+        walletAddress:{
+            type:'string',
+        },
+        //TODO: store hash -- integrate into passport passport--
+        //WARNING: NOT SAFE
+        walletPrivateKey:{
+            type:'string',
         }
     },
 
@@ -55,7 +63,16 @@ module.exports = {
             if (!emailService.templates.hasOwnProperty('welcome')){
                 return Promise.resolve();
             }
-            emailService.sendTemplate('welcome', model.email, 'Welcome To Bidio!', {username: model.username});
+            //TODO: 1 UNVALID ATTRIBUTE ERROR -- type email?
+            var wallet = blockchainService.createWallet(model);
+            model.walletAddress = wallet.address;
+            model.walletPrivateKey = wallet.privateKey;
+            console.log(model)
+            User.update({id: model.id}, model).then(function(model){
+                console.log(model);
+                emailService.sendTemplate('welcome', model.email, 'Welcome To Bidio!', {username: model.username});
+                return next(null, model);
+            });
         })
         .then(function(){
             return next(null, model);

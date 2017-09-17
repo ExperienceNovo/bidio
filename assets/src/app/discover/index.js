@@ -12,15 +12,16 @@ angular.module( 'bidio.discover', [
 		},
 		resolve:{
 			videos: ['VideoModel', function(VideoModel){
-				return VideoModel.getAll();
+				return VideoModel.getSome(48, 0, 'viewCount DESC');
 			}]
 		}
 	});
 }])
 
-.controller( 'DiscoverCtrl', ['$rootScope','$sce', '$scope', 'config', 'SearchModel', 'titleService', 'videos', function DiscoverCtrl( $rootScope, $sce, $scope, config, SearchModel, titleService, videos ) {
+.controller( 'DiscoverCtrl', ['$rootScope','$sce', '$scope', 'config', 'SearchModel', 'titleService', 'VideoModel', 'videos', function DiscoverCtrl( $rootScope, $sce, $scope, config, SearchModel, titleService, VideoModel, videos ) {
 	titleService.setTitle('bidio - discover');
 	$scope.videos = videos;
+	$scope.skip = 48
  	for (x in $scope.videos){
     	$scope.videos[x].media = {
     		sources: [
@@ -45,5 +46,13 @@ angular.module( 'bidio.discover', [
 		    	}
 	        }
     	}
+    };
+    $scope.loadMore = function(){
+    	$rootScope.stateIsLoading = true;
+    	$scope.skip = $scope.skip + 48;
+		VideoModel.getSome(48, $scope.skip, 'viewCount DESC').then(function(videos) {
+			$rootScope.stateIsLoading = false;
+			Array.prototype.push.apply($scope.videos, videos);
+		});
     };
 }]);

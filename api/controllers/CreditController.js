@@ -48,8 +48,10 @@ module.exports = {
 
 	stripe: function(req,res){
 		var stripe = require("stripe")("sk_live_UB02d6uadNaoziMZ0HffmCQw");
+
 		//live sk_live_UB02d6uadNaoziMZ0HffmCQw
 		//test sk_test_7qlDJ93FmNwU7xP4zHRqLKlk
+		
 		var user = req.user.id;
 		var email = req.param("email");
 		var amount = req.param("amount");
@@ -65,6 +67,7 @@ module.exports = {
 		stripe.charges.create(transaction, uniqueKey)
 		.then(function(response){
 			return Credit.create({stripeTransactionId: response.id, user: user, email: email, value: amount  * 0.88});
+			blockchainService.createCredit(amount)
 		})
 		.then(function(transaction){
 			return res.ok(transaction);

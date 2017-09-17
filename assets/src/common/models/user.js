@@ -21,6 +21,11 @@ angular.module('models.user', ['lodash', 'services', 'sails.io'])
         });
     };
 
+    this.getBalance = function(address){
+        var url = utils.prepareUrl('wallet/'+address);
+        return $sailsSocket.get(url).then(success, error);
+    }
+
     this.getByUsername = function(model) {
         var url = utils.prepareUrl('user/username/' + model);
         return $sailsSocket.get(url).then(success, error);

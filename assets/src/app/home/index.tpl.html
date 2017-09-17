@@ -217,7 +217,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="dashboardVideos col-xs-12 col-sm-12 col-md-4 col-lg-4" ng-repeat="video in videos" style="margin-top: 25px;">
+                            <div class="dashboardVideos col-xs-12 col-sm-12 col-md-4 col-lg-4" ng-repeat="video in videos" style="margin-top: 25px;margin-bottom:25px;">
                                 <div class="spacing-25"></div>
                                 <a ui-sref="video({id: video.id})">
                                     <video 
@@ -231,15 +231,17 @@
                                         vjs-media="video.media"
                                         vjs-ratio="16:9">
                                     </video>
-                                     <h2 class="discover-title" style="margin-top:10px; text-align:left">
+                                    <h2 class="discover-title" style="margin-top:10px; text-align:left;margin-bottom:5px;">
                                         {{video.title}}
                                     </h2>
                                 </a>
-                                <p><b><a style="text-align:left" href="member/{{video.user.username}}">{{video.user.username}}</a></b></p>
-                                <p>{{video.viewCount}} views</p>
+                                <p style="padding-bottom:5px;line-height:0;font-size:12px;"><b><a style="text-align:left" href="member/{{video.user.username}}">{{video.user.username}}</a></b></p>
+                                <p style="font-size:10px;color:grey">{{video.viewCount}} views - <span am-time-ago="video.createdAt"></span></p>
                                 <!--<p ng-show="video.liveViewCount > 0">{{video.liveViewCount}} live views</p>-->
                             </div>
+                             <div class="btn btn-default col-xs-12" ng-click="loadMore()">load more</div>
                         </div>
+
                     </div>
                 </section>
             </div>

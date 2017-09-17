@@ -21,12 +21,9 @@
     	<h2 style="text-align:center">zero results</h2>
     </div>
     <div class="container">
-		<div class="dashboardVideos col-xs-12 col-sm-12 col-md-4 col-lg-4" ng-repeat="video in videos" style="margin-top: 25px;">
+		<div class="dashboardVideos col-xs-12 col-sm-12 col-md-4 col-lg-4" ng-repeat="video in videos" style="margin-top: 25px;margin-bottom:25px;">
 			<div class="spacing-25"></div>
 	    	<a ui-sref="video({id: video.id})">
-				<h2 class="discover-title" style="text-align:left">
-					{{video.title}}
-				</h2>
 				<video 
 					class="video-js vjs-default-skin"
 					preload="true" 
@@ -38,11 +35,15 @@
 					vjs-media="video.media"
 					vjs-ratio="16:9">
 				</video>
-				<!--<h2 style="text-align:left; font-size:2em; text-overflow:ellipsis">
+				<h2 class="discover-title" style="margin-top:10px; text-align:left;margin-bottom:5px;">
 					{{video.title}}
-				</h2>-->
+				</h2>
 			</a>
+			<p style="padding-bottom:5px;line-height:0;font-size:12px;"><b><a style="text-align:left" href="member/{{video.user.username}}">{{video.user.username}}</a></b></p>
+            <p style="font-size:10px;color:grey">{{video.viewCount}} views - <span am-time-ago="video.createdAt"></span></p>
 		</div>
+
+		<div class="btn btn-default col-xs-12" ng-click="loadMore()">load more</div>
 	</div>
 	<div class="spacing-25"></div>
 </div>

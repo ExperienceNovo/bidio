@@ -18,14 +18,14 @@ angular.module( 'bidio.home', [
 				return CampaignModel.getFeatured();
 			}],
 			videos: ['VideoModel', function(VideoModel){
-				return VideoModel.getAll();
-				//return VideoModel.getSome(50,0, 'memberCount DESC');
+				//return VideoModel.getAll();
+				return VideoModel.getSome(48, 0, 'viewCount DESC');
 			}]
 		}
 	});
 }])
 
-.controller( 'HomeCtrl', ['$rootScope', '$scope', 'config', 'featuredCampaigns', 'featuredVideos', 'titleService', 'videos', function HomeController( $rootScope, $scope, config, featuredCampaigns, featuredVideos, titleService, videos ) {
+.controller( 'HomeCtrl', ['$rootScope', '$scope', 'config', 'featuredCampaigns', 'featuredVideos', 'titleService', 'VideoModel', 'videos', function HomeController( $rootScope, $scope, config, featuredCampaigns, featuredVideos, titleService, VideoModel, videos ) {
 	titleService.setTitle('bidio');
 	$scope.videos = videos;
 	$scope.currentUser = config.currentUser;
@@ -34,7 +34,8 @@ angular.module( 'bidio.home', [
     $scope.campaign = {};
     $scope.sort = 'viewCount DESC';
 	$scope.sortText = {'trendingScore DESC':'Trending','createdAt DESC':'Date Created', 'viewCount DESC': 'View Count'}
-
+	$scope.skip = 48;
+	
 	$scope.selectSort = function(sort){
 		$scope.sort = sort;
 		$rootScope.stateIsLoading = true;
@@ -60,6 +61,15 @@ angular.module( 'bidio.home', [
     		],
     		poster: $scope.videos[x].thumbnailUrl || '/images/video-overlay.png'
     	}
+    }
+
+    $scope.loadMore = function(){
+    	$rootScope.stateIsLoading = true;
+    	$scope.skip = $scope.skip + 48;
+		VideoModel.getSome(48, $scope.skip, 'viewCount DESC').then(function(videos) {
+			$rootScope.stateIsLoading = false;
+			Array.prototype.push.apply($scope.videos, videos);
+		});
     }
 
 }]);

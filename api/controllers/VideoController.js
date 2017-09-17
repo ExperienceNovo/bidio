@@ -12,36 +12,22 @@ var command = ffmpeg();
 
 module.exports = {
 
-	getAll: function(req, res) {
-		Video.getAll()
-		.spread(function(models) {
-			Video.watch(req);
-			Video.subscribe(req, models);
-			return res.json(models);
-		})
-		.fail(function(err) {
-			console.log(err);
-			return res.negotiate(err);
-		});
-	},
-
 	getMine: function(req,res){
 		var me = req.user.id || req.user._id;
-
 		Video.find({user: me})
-			.populate('bids')
-			.populate('views')
-			.populate('clicks')
+		.populate('bids')
+		.populate('views')
+		.populate('clicks')
 
-			.then(function(models){
-				Video.watch(req);
-				Video.subscribe(req, models);
-				res.json(models);
-			})
-			.catch(function(err){
-				console.log(err);
-				res.negotiate(err);
-			})
+		.then(function(models){
+			Video.watch(req);
+			Video.subscribe(req, models);
+			res.json(models);
+		})
+		.catch(function(err){
+			console.log(err);
+			res.negotiate(err);
+		});
 	},
 
 	getByMember: function(req, res) {
@@ -57,14 +43,10 @@ module.exports = {
 	},
 
 	getSome: function(req, res) {
-		var limit = req.param('limit');
-		var skip = req.param('skip');
-
-		var sort = req.param('sort');
-		var filter = req.param('filter');
-
-
-		Video.getSome(limit, skip, sort, filter)
+		var limit = req.query.limit;
+		var skip = req.query.skip;
+		var sort = req.query.sort;
+		Video.getSome(limit, skip, sort)
 		.then(function(models) {
 			Video.watch(req);
 			Video.subscribe(req, models);
