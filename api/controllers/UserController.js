@@ -14,7 +14,7 @@ module.exports = {
 
 	getBalance: function(req, res) {
 		blockchainService.getBalance(req.param('address')).then(function(cre8coinBalance){
-			blockchainService.getTokenBalance(req.param('address')).then(function(viewTokenBalance){
+			blockchainService.getTokenBalanceNew(req.param('address')).then(function(viewTokenBalance){
 				console.log(cre8coinBalance, viewTokenBalance)
 				res.json({cre8coinBalance: cre8coinBalance, viewTokenBalance: viewTokenBalance})
 				//res.json({balance: cre8coin});

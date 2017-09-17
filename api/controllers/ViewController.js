@@ -62,6 +62,7 @@ module.exports = {
 			user: req.user.walletAddress
 		};
   		blockchainService.createView(viewModel);
+  		blockchainService.createViewNew(viewModel);
 
   		Video.find({id:req.param('video')}).then(function(videoModel){
 
@@ -72,6 +73,7 @@ module.exports = {
 					user: userModel.walletAddress
 				};
   				blockchainService.createView(viewModel);
+  				blockchainService.createViewNew(viewModel);
   			});
 
   		});
