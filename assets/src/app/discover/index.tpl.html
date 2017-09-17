@@ -7,7 +7,7 @@
     	<div class="col-md-8">
 		    <div class="discover-search">
 		        <div class="input-group">
-					<input ng-keyup="keyPress(searchValue)" class="search-query form-control" ng-model="searchValue" id="search-link" size="40" type="text" placeholder="Search">
+					<input ng-submit="keyPress(searchValue)" class="search-query form-control" ng-model="searchValue" id="search-link" size="40" type="text" placeholder="Search">
 		            <span class="input-group-btn">
 		                <button class="btn" type="button">
 		                    <span class="fa fa-search"></span>
@@ -19,6 +19,8 @@
     </div>
     <div style="margin-top: 25px;" ng-show="videos.length == 0">
     	<h2 style="text-align:center">zero results</h2>
+    		<div class="spacing-15"></div>
+
     </div>
     <div class="container">
 		<div class="dashboardVideos col-xs-12 col-sm-12 col-md-4 col-lg-4" ng-repeat="video in videos" style="margin-top: 25px;margin-bottom:25px;">
@@ -43,7 +45,7 @@
             <p style="font-size:12px;color:grey">{{video.viewCount}} views - <span am-time-ago="video.createdAt"></span></p>
 		</div>
 
-		<div class="btn btn-default col-xs-12" ng-click="loadMore()">load more</div>
+		<div class="btn btn-default col-xs-12" ng-click="loadMore()" ng-hide="videos.length < 50">load more</div>
 	</div>
 	<div class="spacing-25"></div>
 </div>
