@@ -5,6 +5,12 @@ var zlib = require('zlib');
 var s3Stream = require('s3-upload-stream')(new AWS.S3());
 var stream = require('stream');
 
+var web3 = require('web3');
+var Web3 = require('web3');
+var web3 = new Web3();
+
+var Personal = require('web3-eth-personal');
+var personal = new Personal('http://cre8wium3.eastus.cloudapp.azure.com:8545');
 
 function youtubeToS3(youtubeUrl, user){
 
@@ -53,17 +59,47 @@ function youtubeToS3(youtubeUrl, user){
 
 };
 
+function getTransactionsByAccount(myaccount, startBlockNumber, endBlockNumber) {
+  if (endBlockNumber == null) {
+    endBlockNumber = web3.eth.blockNumber;
+    console.log("Using endBlockNumber: " + endBlockNumber);
+  }
+  if (startBlockNumber == null) {
+    startBlockNumber = endBlockNumber - 1000;
+    console.log("Using startBlockNumber: " + startBlockNumber);
+  }
+  console.log("Searching for transactions to/from account \"" + myaccount + "\" within blocks "  + startBlockNumber + " and " + endBlockNumber);
+
+  for (var i = startBlockNumber; i <= endBlockNumber; i++) {
+    if (i % 1000 == 0) {
+      console.log("Searching block " + i);
+    }
+    var block = web3.eth.getBlock(i, true);
+    if (block != null && block.transactions != null) {
+      block.transactions.forEach( function(e) {
+        if (myaccount == "*" || myaccount == e.from || myaccount == e.to) {
+          console.log("  tx hash          : " + e.hash + "\n"
+            + "   nonce           : " + e.nonce + "\n"
+            + "   blockHash       : " + e.blockHash + "\n"
+            + "   blockNumber     : " + e.blockNumber + "\n"
+            + "   transactionIndex: " + e.transactionIndex + "\n"
+            + "   from            : " + e.from + "\n" 
+            + "   to              : " + e.to + "\n"
+            + "   value           : " + e.value + "\n"
+            + "   time            : " + block.timestamp + " " + new Date(block.timestamp * 1000).toGMTString() + "\n"
+            + "   gasPrice        : " + e.gasPrice + "\n"
+            + "   gas             : " + e.gas + "\n"
+            + "   input           : " + e.input);
+        }
+      })
+    }
+  }
+}
+
 
 
 module.exports.intervalService = function(){
 
-
-	var web3 = require('web3');
-	var Web3 = require('web3');
-	var web3 = new Web3();
-
-	var Personal = require('web3-eth-personal');
-	var personal = new Personal('http://cre8wium3.eastus.cloudapp.azure.com:8545');
 
 	if (typeof web3 !== 'undefined') {web3 = new Web3(web3.currentProvider);}
 	else {web3 = new Web3(new Web3.providers.HttpProvider("http://cre8wium3.eastus.cloudapp.azure.com:8545"));}
@@ -71,9 +107,15 @@ module.exports.intervalService = function(){
 
 	personal.unlockAccount('0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609', '?><Mtrev77922', 1000000);
 
+	//curl --data '{"method":"trace_filter","params":[{"fromBlock":"0x2ed0c4","toBlock":"0x2ed128","toAddress":["0x8bbB73BCB5d553B5A556358d27625323Fd781D37"]}],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST cre8wium3.eastus.cloudapp.azure.com:8545
+	//blockchainService.getTokens();
+	//cre8wium3.eastus.cloudapp.azure.com
+	//getTransactionsByAccount("*")
+
 	//var test = blockchainService.createWallet();
 
-	/*User.find().then(function(models){
+	/*
+	User.find().then(function(models){
 		for (x in models){
 			var wallet = blockchainService.createWallet(models[x]);
             models[x].walletAddress = wallet.address;
@@ -83,7 +125,8 @@ module.exports.intervalService = function(){
             	console.log(model)
             });
 		}
-	});*/
+	});
+	*/
 
 	//web3.eth.getAccounts()
 	//.then(console.log);	

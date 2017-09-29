@@ -53,31 +53,36 @@ module.exports = {
 				//View.watch(req);
 				//View.publishCreate(model.toJSON());
 				//res.json(model);
-			}
-		});
-		var viewModel = {
-			watchTime: 60000,
-			video: model.video,
-			//user: model.user,
-			user: req.user.walletAddress
-		};
-  		blockchainService.createView(viewModel);
-  		blockchainService.createViewNew(viewModel);
 
-  		Video.find({id:req.param('video')}).then(function(videoModel){
-
-  			User.find({id:videoModel.user}).then(function(userModel){
-  				var viewModel = {
+				var viewModel = {
 					watchTime: 60000,
 					video: model.video,
-					user: userModel.walletAddress
+					//user: model.user,
+					user: req.user.walletAddress
 				};
-  				blockchainService.createView(viewModel);
-  				blockchainService.createViewNew(viewModel);
-  			});
 
-  		});
+				//viewToken viewer
+		  		blockchainService.createView(viewModel);
+		  		blockchainService.createViewNew(viewModel);
+
+		  		//viewToken creator
+		  		Video.find({id:req.param('video')}).then(function(videoModel){
+
+		  			User.find({id:videoModel.user}).then(function(userModel){
+		  				var viewModel = {
+							watchTime: 60000,
+							video: model.video,
+							user: userModel.walletAddress
+						};
+		  				blockchainService.createView(viewModel);
+		  				blockchainService.createViewNew(viewModel);
+		  			});
+
+		  		});
 
 
+			}
+		});
+		
 	}
 };
