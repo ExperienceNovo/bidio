@@ -12,6 +12,11 @@ angular.module('models.view', ['lodash', 'services', 'sails.io',])
         return $sailsSocket.get(url).then(success, error);
     };
 
+    this.pendingTransactions = function(model) {
+        var url = utils.prepareUrl('pendingTransactions');
+        return $sailsSocket.get(url).then(success, error);
+    };
+
     var success = function(response) {
         return response.data;
     };

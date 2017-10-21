@@ -1,4 +1,4 @@
-var youtubedl = require('youtube-dl');
+//var youtubedl = require('youtube-dl');
 var AWS = require('aws-sdk');
 AWS.config.update({accessKeyId: 'AKIAJ6LR6NCGXZNH4QJQ', secretAccessKey: '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'});
 var zlib = require('zlib');
@@ -9,9 +9,10 @@ var web3 = require('web3');
 var Web3 = require('web3');
 var web3 = new Web3();
 
-var Personal = require('web3-eth-personal');
-var personal = new Personal('http://cre8wium3.eastus.cloudapp.azure.com:8545');
+//var Personal = require('web3-eth-personal');
+//var personal = new Personal('http://cre8wium3.eastus.cloudapp.azure.com:8545');
 
+/*
 function youtubeToS3(youtubeUrl, user){
 
 	var video = youtubedl(youtubeUrl,
@@ -56,56 +57,48 @@ function youtubeToS3(youtubeUrl, user){
 		video.pipe(upload);
 
 	});
-
 };
-
-function getTransactionsByAccount(myaccount, startBlockNumber, endBlockNumber) {
-  if (endBlockNumber == null) {
-    endBlockNumber = web3.eth.blockNumber;
-    console.log("Using endBlockNumber: " + endBlockNumber);
-  }
-  if (startBlockNumber == null) {
-    startBlockNumber = endBlockNumber - 1000;
-    console.log("Using startBlockNumber: " + startBlockNumber);
-  }
-  console.log("Searching for transactions to/from account \"" + myaccount + "\" within blocks "  + startBlockNumber + " and " + endBlockNumber);
-
-  for (var i = startBlockNumber; i <= endBlockNumber; i++) {
-    if (i % 1000 == 0) {
-      console.log("Searching block " + i);
-    }
-    var block = web3.eth.getBlock(i, true);
-    if (block != null && block.transactions != null) {
-      block.transactions.forEach( function(e) {
-        if (myaccount == "*" || myaccount == e.from || myaccount == e.to) {
-          console.log("  tx hash          : " + e.hash + "\n"
-            + "   nonce           : " + e.nonce + "\n"
-            + "   blockHash       : " + e.blockHash + "\n"
-            + "   blockNumber     : " + e.blockNumber + "\n"
-            + "   transactionIndex: " + e.transactionIndex + "\n"
-            + "   from            : " + e.from + "\n" 
-            + "   to              : " + e.to + "\n"
-            + "   value           : " + e.value + "\n"
-            + "   time            : " + block.timestamp + " " + new Date(block.timestamp * 1000).toGMTString() + "\n"
-            + "   gasPrice        : " + e.gasPrice + "\n"
-            + "   gas             : " + e.gas + "\n"
-            + "   input           : " + e.input);
-        }
-      })
-    }
-  }
-}
+*/
 
 
 
 module.exports.intervalService = function(){
 
 
-	if (typeof web3 !== 'undefined') {web3 = new Web3(web3.currentProvider);}
-	else {web3 = new Web3(new Web3.providers.HttpProvider("http://cre8wium3.eastus.cloudapp.azure.com:8545"));}
-	web3.setProvider(new Web3.providers.HttpProvider('http://cre8wium3.eastus.cloudapp.azure.com:8545'));
+	//if (typeof web3 !== 'undefined') {web3 = new Web3(web3.currentProvider);}
+	//else {web3 = new Web3(new Web3.providers.HttpProvider("http://cre8wium3.eastus.cloudapp.azure.com:8545"));}
+	//web3.setProvider(new Web3.providers.HttpProvider('http://cre8wium3.eastus.cloudapp.azure.com:8545'));
+	//personal.unlockAccount('0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609', '?><Mtrev77922', 1000000);
 
-	personal.unlockAccount('0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609', '?><Mtrev77922', 1000000);
+	if (typeof web3 !== 'undefined') {web3 = new Web3(web3.currentProvider);}
+	else {web3 = new Web3(new Web3.providers.WebsocketProvider("ws://localhost:8546"));}
+	web3.setProvider(new Web3.providers.WebsocketProvider('ws://localhost:8546'));
+	//else {web3 = new Web3(new Web3.providers.WebsocketProvider("ws://cre8wium3.eastus.cloudapp.azure.com:8546"));}
+	//web3.setProvider(new Web3.providers.WebsocketProvider('ws://cre8wium3.eastus.cloudapp.azure.com:8546'));
+
+	var subscription = web3.eth.subscribe('pendingTransactions', function(error, result){
+	})
+	.on("data", function(transaction){	
+		sails.sockets.broadcast('pendingTransactions', 'pendingTransactions', { transaction: transaction });
+	});
+
+
+	//viewcontract w event - testnet
+	var viewContract = new web3.eth.Contract([{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"balances","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"views","outputs":[{"name":"video","type":"string"},{"name":"watchTime","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"video","type":"string"},{"name":"watchTime","type":"uint256"}],"name":"createView","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_amount","type":"uint256"}],"name":"transfer","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"video","type":"string"},{"indexed":false,"name":"watchTime","type":"uint256"}],"name":"CreateView","type":"event"}]);
+	viewContract.options.address ='0xb835f4b6cb820bf7ff23915db98f734dca603616';
+
+	viewContract.events.CreateView({
+	    fromBlock: 0
+	}, 
+	function(error, event){ console.log(error, 'ERROR');console.log(event, 'HELLO'); })
+	.on('data', function(event){
+	    console.log(event, 'HELLO123'); // same results as the optional callback above
+	});
+
+	viewContract.getPastEvents('CreateView', {fromBlock: 0, toBlock: 'latest'}, function(e,l){console.log(l)})
+
+	//SUBSCRIBE... EVENT IN THE VIEW CONTRACT :)
+
 
 	//curl --data '{"method":"trace_filter","params":[{"fromBlock":"0x2ed0c4","toBlock":"0x2ed128","toAddress":["0x8bbB73BCB5d553B5A556358d27625323Fd781D37"]}],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST cre8wium3.eastus.cloudapp.azure.com:8545
 	//blockchainService.getTokens();
@@ -156,7 +149,6 @@ module.exports.intervalService = function(){
     	console.log(result);
     	console.log(error)
 	});*/
-
 
 	/*
 	pragma solidity ^0.4.0;

@@ -118,7 +118,12 @@
 				<img src="https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl={{member.walletAddress}}">
 				<p>cre8 Balance: {{balance.cre8coinBalance}}</p>
 				<p>Time Balance: {{balance.viewTokenBalance}}</p>
-				<p>history</p>
+				
+				<h2>Transaction History</h2>
+				{{pendingTransactions}}
+				<div ng-repeat="transaction in pendingTransactionsList">
+					{{transaction}}
+				</div>
 
 			</div>
 		</uib-tab>

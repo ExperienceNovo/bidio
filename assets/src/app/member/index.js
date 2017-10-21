@@ -20,11 +20,14 @@ angular.module( 'bidio.member', [
 			videos: ['member', 'VideoModel', function(member, VideoModel){
 				return VideoModel.getByMember(member.id);
 			}],
+			broadcast: ['member', 'ViewModel', function(member, ViewModel){
+				return ViewModel.pendingTransactions();
+			}],
 		}
 	});
 }])
 
-.controller( 'MemberCtrl', ['$scope', 'campaigns', 'config', 'member', 'titleService', 'UserModel', 'videos', function MemberCtrl( $scope, campaigns, config, member, titleService, UserModel, videos ) {
+.controller( 'MemberCtrl', ['$rootScope', '$sailsSocket', '$scope', 'campaigns', 'config', 'member', 'titleService', 'UserModel', 'videos', function MemberCtrl( $rootScope, $sailsSocket, $scope, campaigns, config, member, titleService, UserModel, videos ) {
 	$scope.currentUser = config.currentUser;
 	$scope.member = member;
 	if(typeof($scope.member)=="undefined"){$location.path('/')}
@@ -43,4 +46,26 @@ angular.module( 'bidio.member', [
     		poster: $scope.videos[x].thumbnailUrl || '/images/video-overlay.png'
     	}
     }
+
+    $scope.pendingTransactions = [];
+    $scope.pendingTransactionsList = [];
+    //COULD HAVE web3 on the front end ----....
+	$sailsSocket.subscribe('pendingTransactions', function (envelope) {
+		//console.log(envelope);
+		$scope.pendingTransactions = envelope;
+		$scope.pendingTransactionsList.push(envelope);
+		if ($scope.pendingTransactionsList.length >= 100){
+			$scope.pendingTransactionsList.shift();
+		}
+	});
+
+	//FONTEND WEB3!
+	var filter = $rootScope.cre8web3.eth.filter('pending');
+	//{address: $scope.member.walletAddress}
+    //{address:'0x818c3e3a61a5c2071841df187318e5be2c238201'}
+    filter.watch(function(error, result){
+        console.log(result, error);
+    });
+
+
 }]);

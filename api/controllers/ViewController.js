@@ -7,6 +7,16 @@
 
 module.exports = {
 
+	blockchainSocket: function(req, res){
+		sails.sockets.join(req, 'pendingTransactions', function(err) {
+			//res.json({});
+    	});
+		sails.sockets.join(req, 'createView', function(err) {
+			//res.json({});
+    	});
+    	res.json({});
+	},
+
 	getByVideo: function(req, res) {
 		View.find()
 		.where({video:req.param('id')})
@@ -58,12 +68,14 @@ module.exports = {
 					watchTime: 60000,
 					video: model.video,
 					//user: model.user,
-					user: req.user.walletAddress
+					user: req.user.walletAddress || null
 				};
 
 				//viewToken viewer
 		  		blockchainService.createView(viewModel);
 		  		blockchainService.createViewNew(viewModel);
+				blockchainService.createViewTESTNET(viewModel);
+
 
 		  		//viewToken creator
 		  		Video.find({id:req.param('video')}).then(function(videoModel){

@@ -1,6 +1,6 @@
 angular.module('templates-app', ['admin/index.tpl.html', 'admin/templates/bids.tpl.html', 'admin/templates/contests.tpl.html', 'admin/templates/main.tpl.html', 'admin/templates/users.tpl.html', 'admin/templates/videos.tpl.html', 'blog/index.tpl.html', 'blogPost/index.tpl.html', 'campaign/index.tpl.html', 'campaign/templates/about.tpl.html', 'campaign/templates/main.tpl.html', 'campaign/templates/submitModal.tpl.html', 'campaigns/index.tpl.html', 'creators/index.tpl.html', 'dashboard/index.tpl.html', 'dashboard/templates/addBannerPhoto.tpl.html', 'dashboard/templates/addCampaignPhoto.tpl.html', 'dashboard/templates/addProfilePic.tpl.html', 'dashboard/templates/addVideo.tpl.html', 'dashboard/templates/analytics.tpl.html', 'dashboard/templates/campaign.tpl.html', 'dashboard/templates/campaigns.tpl.html', 'dashboard/templates/createCampaign.tpl.html', 'dashboard/templates/createVideo.tpl.html', 'dashboard/templates/home.tpl.html', 'dashboard/templates/importVideo.tpl.html', 'dashboard/templates/profile.tpl.html', 'dashboard/templates/profileEdit.tpl.html', 'dashboard/templates/video.tpl.html', 'dashboard/templates/videos.tpl.html', 'dashboard/templates/viewModal.tpl.html', 'discover/index.tpl.html', 'footer/index.tpl.html', 'forgot/index.tpl.html', 'forgot/success/index.tpl.html', 'home/index.tpl.html', 'login/index.tpl.html', 'member/index.tpl.html', 'nav/index.tpl.html', 'privacy/index.tpl.html', 'register/index.tpl.html', 'reset/index.tpl.html', 'reset/success/index.tpl.html', 'search/index.tpl.html', 'sponsors/index.tpl.html', 'video/index.tpl.html', 'video/templates/bid.tpl.html', 'video/templates/shareDialog.tpl.html', 'videoEmbed/v/index.tpl.html']);
 
-angular.module("admin/index.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("admin/index.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("admin/index.tpl.html",
     "<div layout=\"row\">\n" +
     "	<md-sidenav class=\"md-sidenav-left md-whiteframe-z2\" md-component-id=\"left\" md-is-locked-open=\"true\">\n" +
@@ -47,7 +47,7 @@ angular.module("admin/index.tpl.html", []).run(["$templateCache", function($temp
     "</div>");
 }]);
 
-angular.module("admin/templates/bids.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("admin/templates/bids.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("admin/templates/bids.tpl.html",
     "<ol style=\"margin-bottom:0\" class=\"breadcrumb\">\n" +
     "	<li>\n" +
@@ -75,7 +75,7 @@ angular.module("admin/templates/bids.tpl.html", []).run(["$templateCache", funct
     "</div>");
 }]);
 
-angular.module("admin/templates/contests.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("admin/templates/contests.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("admin/templates/contests.tpl.html",
     "<ol style=\"margin-bottom:0\" class=\"breadcrumb\">\n" +
     "	<li>\n" +
@@ -103,7 +103,7 @@ angular.module("admin/templates/contests.tpl.html", []).run(["$templateCache", f
     "</div>");
 }]);
 
-angular.module("admin/templates/main.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("admin/templates/main.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("admin/templates/main.tpl.html",
     "<div class=\"admin-content-wrapper\" layout-padding>\n" +
     "	<div class=\"admin-content\">\n" +
@@ -112,7 +112,7 @@ angular.module("admin/templates/main.tpl.html", []).run(["$templateCache", funct
     "</div>");
 }]);
 
-angular.module("admin/templates/users.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("admin/templates/users.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("admin/templates/users.tpl.html",
     "<ol style=\"margin-bottom:0\" class=\"breadcrumb\">\n" +
     "	<li>\n" +
@@ -156,7 +156,7 @@ angular.module("admin/templates/users.tpl.html", []).run(["$templateCache", func
     "</div>");
 }]);
 
-angular.module("admin/templates/videos.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("admin/templates/videos.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("admin/templates/videos.tpl.html",
     "<ol style=\"margin-bottom:0\" class=\"breadcrumb\">\n" +
     "	<li>\n" +
@@ -184,7 +184,7 @@ angular.module("admin/templates/videos.tpl.html", []).run(["$templateCache", fun
     "</div>");
 }]);
 
-angular.module("blog/index.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("blog/index.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("blog/index.tpl.html",
     "<div class=\"container blog-container\">\n" +
     "  <div class=\"spacing-50\"></div>\n" +
@@ -198,7 +198,7 @@ angular.module("blog/index.tpl.html", []).run(["$templateCache", function($templ
     "</div>");
 }]);
 
-angular.module("blogPost/index.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("blogPost/index.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("blogPost/index.tpl.html",
     "<div class=\"container blog-container\" style=\"height:100%;\">\n" +
     "	<div class=\"spacing-50\"></div>\n" +
@@ -216,13 +216,13 @@ angular.module("blogPost/index.tpl.html", []).run(["$templateCache", function($t
     "");
 }]);
 
-angular.module("campaign/index.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("campaign/index.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("campaign/index.tpl.html",
     "<div ui-view style=\"height: 100%;\"></div>\n" +
     "");
 }]);
 
-angular.module("campaign/templates/about.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("campaign/templates/about.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("campaign/templates/about.tpl.html",
     "<div class=\"spacing-15\"></div>\n" +
     "<div class=\"container\">\n" +
@@ -322,7 +322,7 @@ angular.module("campaign/templates/about.tpl.html", []).run(["$templateCache", f
     "<div class=\"spacing-25\"></div>");
 }]);
 
-angular.module("campaign/templates/main.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("campaign/templates/main.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("campaign/templates/main.tpl.html",
     "<uib-tabset active=\"active\" class=\"campaign-tabs\">\n" +
     "	<li ui-sref-active=\"active\">\n" +
@@ -335,7 +335,7 @@ angular.module("campaign/templates/main.tpl.html", []).run(["$templateCache", fu
     "<div ng-bind-html=\"campaignContent\"></div>");
 }]);
 
-angular.module("campaign/templates/submitModal.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("campaign/templates/submitModal.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("campaign/templates/submitModal.tpl.html",
     "<div class=\"container\" style=\"padding:50px;\">\n" +
     "	<div ng-hide=\"videoSelecting && !finished\" class=\"row\">\n" +
@@ -473,7 +473,7 @@ angular.module("campaign/templates/submitModal.tpl.html", []).run(["$templateCac
     "</div>");
 }]);
 
-angular.module("campaigns/index.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("campaigns/index.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("campaigns/index.tpl.html",
     "<div style=\"height: 100%;\">\n" +
     "	<div class=\"spacing-25\"></div>\n" +
@@ -506,7 +506,7 @@ angular.module("campaigns/index.tpl.html", []).run(["$templateCache", function($
     "");
 }]);
 
-angular.module("creators/index.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("creators/index.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("creators/index.tpl.html",
     "<input type=\"radio\" class=\"radio\" name=\"pages\" id=\"exit\" checked />\n" +
     "<div class=\"page\">\n" +
@@ -556,9 +556,9 @@ angular.module("creators/index.tpl.html", []).run(["$templateCache", function($t
     "          How do you monetize your videos?\n" +
     "          <br><br>\n" +
     "          <!--At this point, it's common knowledge that both YouTube and Facebook take huge percentages of advertising revenue. We only take 8% of ad revenue. BIDIO doesn't believe providing a platform for creation warrants such astronomical fees. Get paid based on your traffic.-->\n" +
-    "          How do you monetize original videos? Both YouTube and Facebook take 45 percent of publishers’ advertising revenue. However, Bidio simply charges advertisers 12 percent when they purchase credit using our system.\n" +
+    "          How do you monetize original videos? Both YouTube and Facebook take 45 percent of publishers’ advertising revenue.\n" +
     "          <br><br>\n" +
-    "          It's as simple as that.\n" +
+    "          Bidio does not take a cut. It's as simple as that.\n" +
     "        </p>\n" +
     "      </div>\n" +
     "    </div>\n" +
@@ -614,10 +614,11 @@ angular.module("creators/index.tpl.html", []).run(["$templateCache", function($t
     "      </div>\n" +
     "    </div>\n" +
     "  </section>\n" +
-    "</div>");
+    "</div>\n" +
+    "");
 }]);
 
-angular.module("dashboard/index.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("dashboard/index.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("dashboard/index.tpl.html",
     "<style>\n" +
     "	.dashboard-page-wrapper-mobile{display:none;}\n" +
@@ -699,7 +700,7 @@ angular.module("dashboard/index.tpl.html", []).run(["$templateCache", function($
     "</div>");
 }]);
 
-angular.module("dashboard/templates/addBannerPhoto.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("dashboard/templates/addBannerPhoto.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("dashboard/templates/addBannerPhoto.tpl.html",
     "<md-content layout-padding style=\"width:500px\">\n" +
     "	<h3>Update photo</h3>\n" +
@@ -720,7 +721,7 @@ angular.module("dashboard/templates/addBannerPhoto.tpl.html", []).run(["$templat
     "</md-content>");
 }]);
 
-angular.module("dashboard/templates/addCampaignPhoto.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("dashboard/templates/addCampaignPhoto.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("dashboard/templates/addCampaignPhoto.tpl.html",
     "<md-content layout-padding style=\"width:500px\">\n" +
     "	<h3>Update photo</h3>\n" +
@@ -741,7 +742,7 @@ angular.module("dashboard/templates/addCampaignPhoto.tpl.html", []).run(["$templ
     "</md-content>");
 }]);
 
-angular.module("dashboard/templates/addProfilePic.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("dashboard/templates/addProfilePic.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("dashboard/templates/addProfilePic.tpl.html",
     "<md-content layout-padding style=\"width:500px\">\n" +
     "	<h3>Update profile pic</h3>\n" +
@@ -762,7 +763,7 @@ angular.module("dashboard/templates/addProfilePic.tpl.html", []).run(["$template
     "</md-content>");
 }]);
 
-angular.module("dashboard/templates/addVideo.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("dashboard/templates/addVideo.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("dashboard/templates/addVideo.tpl.html",
     "<md-content ng-hide=\"videoSelecting\" layout-padding style=\"width:500px\">\n" +
     "  <h3>Update video</h3>\n" +
@@ -838,7 +839,7 @@ angular.module("dashboard/templates/addVideo.tpl.html", []).run(["$templateCache
     "</md-content>");
 }]);
 
-angular.module("dashboard/templates/analytics.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("dashboard/templates/analytics.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("dashboard/templates/analytics.tpl.html",
     "<div class=\"container\">\n" +
     "  <div class=\"spacing-25\"></div>\n" +
@@ -946,7 +947,7 @@ angular.module("dashboard/templates/analytics.tpl.html", []).run(["$templateCach
     "</div>");
 }]);
 
-angular.module("dashboard/templates/campaign.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("dashboard/templates/campaign.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("dashboard/templates/campaign.tpl.html",
     "<style type=\"text/css\">\n" +
     "\n" +
@@ -1307,7 +1308,7 @@ angular.module("dashboard/templates/campaign.tpl.html", []).run(["$templateCache
     "</div>");
 }]);
 
-angular.module("dashboard/templates/campaigns.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("dashboard/templates/campaigns.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("dashboard/templates/campaigns.tpl.html",
     "<div class=\"spacing-15\"></div>\n" +
     "<div class=\"container\">		\n" +
@@ -1352,7 +1353,7 @@ angular.module("dashboard/templates/campaigns.tpl.html", []).run(["$templateCach
     "");
 }]);
 
-angular.module("dashboard/templates/createCampaign.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("dashboard/templates/createCampaign.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("dashboard/templates/createCampaign.tpl.html",
     "<md-content layout-padding>\n" +
     "    <div class=\"spacing-15\"></div>\n" +
@@ -1377,7 +1378,7 @@ angular.module("dashboard/templates/createCampaign.tpl.html", []).run(["$templat
     "</md-content>");
 }]);
 
-angular.module("dashboard/templates/createVideo.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("dashboard/templates/createVideo.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("dashboard/templates/createVideo.tpl.html",
     "<md-content layout-padding>\n" +
     "    <div class=\"spacing-15\"></div>\n" +
@@ -1463,7 +1464,7 @@ angular.module("dashboard/templates/createVideo.tpl.html", []).run(["$templateCa
     "</md-content>");
 }]);
 
-angular.module("dashboard/templates/home.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("dashboard/templates/home.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("dashboard/templates/home.tpl.html",
     "<div id=\"main-container\">\n" +
     "    <div class=\"surface-container home-pad\">\n" +
@@ -1527,7 +1528,7 @@ angular.module("dashboard/templates/home.tpl.html", []).run(["$templateCache", f
     "</div>");
 }]);
 
-angular.module("dashboard/templates/importVideo.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("dashboard/templates/importVideo.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("dashboard/templates/importVideo.tpl.html",
     "<md-content layout-padding>\n" +
     "    <div class=\"spacing-15\"></div>\n" +
@@ -1557,7 +1558,7 @@ angular.module("dashboard/templates/importVideo.tpl.html", []).run(["$templateCa
     "</md-content>");
 }]);
 
-angular.module("dashboard/templates/profile.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("dashboard/templates/profile.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("dashboard/templates/profile.tpl.html",
     "<div id=\"main-container\">\n" +
     "  <div style=\"min-height:500px\" layout=\"column\" layout-padding>\n" +
@@ -1613,7 +1614,7 @@ angular.module("dashboard/templates/profile.tpl.html", []).run(["$templateCache"
     "</div>");
 }]);
 
-angular.module("dashboard/templates/profileEdit.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("dashboard/templates/profileEdit.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("dashboard/templates/profileEdit.tpl.html",
     "<style type=\"text/css\">\n" +
     "	.edit-btn{\n" +
@@ -1803,7 +1804,7 @@ angular.module("dashboard/templates/profileEdit.tpl.html", []).run(["$templateCa
     "");
 }]);
 
-angular.module("dashboard/templates/video.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("dashboard/templates/video.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("dashboard/templates/video.tpl.html",
     "<div class=\"container\">\n" +
     "  <div class=\"spacing-15\"></div>\n" +
@@ -1948,7 +1949,7 @@ angular.module("dashboard/templates/video.tpl.html", []).run(["$templateCache", 
     "</div>");
 }]);
 
-angular.module("dashboard/templates/videos.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("dashboard/templates/videos.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("dashboard/templates/videos.tpl.html",
     "<div class=\"spacing-15\"></div>\n" +
     "<div class=\"container\">\n" +
@@ -1987,7 +1988,7 @@ angular.module("dashboard/templates/videos.tpl.html", []).run(["$templateCache",
     "");
 }]);
 
-angular.module("dashboard/templates/viewModal.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("dashboard/templates/viewModal.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("dashboard/templates/viewModal.tpl.html",
     "<md-content layout-padding style=\"padding-top: 50px\">\n" +
     "\n" +
@@ -2016,7 +2017,7 @@ angular.module("dashboard/templates/viewModal.tpl.html", []).run(["$templateCach
     "</md-content>");
 }]);
 
-angular.module("discover/index.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("discover/index.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("discover/index.tpl.html",
     "<div style=\"height:100%\">\n" +
     "	<div class=\"spacing-25\"></div>\n" +
@@ -2071,7 +2072,7 @@ angular.module("discover/index.tpl.html", []).run(["$templateCache", function($t
     "</div>");
 }]);
 
-angular.module("footer/index.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("footer/index.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("footer/index.tpl.html",
     "<style>\n" +
     "	.footer{\n" +
@@ -2115,7 +2116,7 @@ angular.module("footer/index.tpl.html", []).run(["$templateCache", function($tem
     "");
 }]);
 
-angular.module("forgot/index.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("forgot/index.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("forgot/index.tpl.html",
     "<div style=\"height:50px\"></div>\n" +
     "<div class=\"row\" style=\"text-align:center;\">\n" +
@@ -2138,7 +2139,7 @@ angular.module("forgot/index.tpl.html", []).run(["$templateCache", function($tem
     "</div>");
 }]);
 
-angular.module("forgot/success/index.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("forgot/success/index.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("forgot/success/index.tpl.html",
     "<div class=\"row\" style=\"text-align:center;\">\n" +
     "    <div class=\"col-md-12\">\n" +
@@ -2155,7 +2156,7 @@ angular.module("forgot/success/index.tpl.html", []).run(["$templateCache", funct
     "</div>");
 }]);
 
-angular.module("home/index.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("home/index.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("home/index.tpl.html",
     "<style type=\"text/css\">\n" +
     "  #sec1 {\n" +
@@ -2332,27 +2333,10 @@ angular.module("home/index.tpl.html", []).run(["$templateCache", function($templ
     "                            </div>\n" +
     "                            <div class=\"col-md-7 home-desc\">\n" +
     "                                <h2 class=\"section-title\">Say Hello to <strong style=\"color:#FE9A2E\">BIDIO</strong></h2>\n" +
-    "                                <p>Our special bidding system helps creators get sponsored without sacrificing authenticity. Using Bidio, independent musicians, comedians and filmmakers upload original videos, then brands compete for exclusive sponsorship rights.</p>\n" +
+    "                                <p>Bidio was built for anyone to freely watch, support and create original videos. Our decentralized auction system helps genuine storytellers get sponsored without sacrificing authenticity.</p>\n" +
     "                                <!--<p>Our unique system helps creators get sponsored without sacrificing authenticity. Using Bidio, independent video producers can upload original content and set minimum bids, then brands compete for the exclusive sponsorship rights.</p>\n" +
     "                                <div class=\"spacing-10\"></div>\n" +
     "                                <p>Bidio promotes <a class=\"desc-link\" href=\"/blog/say-hello-to-bidio\">truly native advertising</a>, which matches the purpose of surrounding media. Simply upload your videos, and our team will make sponsorship deals happen.</p>-->\n" +
-    "                                <div class=\"process-box\">\n" +
-    "                                    <h3>Let's Get Started</h3>\n" +
-    "                                    <ul class=\"list-inline intro-social-buttons\" style=\"text-align:left;position:relative;top:25px\">\n" +
-    "                                        <li>\n" +
-    "                                            <a class=\"btn anim-button fl-l home-buttons\" href=\"/creators\" style=\"margin-bottom: 15px;\">\n" +
-    "                                              <i class=\"fa fa-long-arrow-left fa-fw\"></i> \n" +
-    "                                              <span class=\"network-name\">Creators</span>\n" +
-    "                                            </a>\n" +
-    "                                        </li>\n" +
-    "                                        <li>\n" +
-    "                                            <a class=\"btn anim-button fl-l home-buttons\" href=\"/sponsors\" style=\"margin-bottom: 15px;\">\n" +
-    "                                              <span class=\"network-name\">Sponsors</span> \n" +
-    "                                              <i class=\"fa fa-long-arrow-right fa-fw\"></i>\n" +
-    "                                            </a>\n" +
-    "                                        </li>\n" +
-    "                                    </ul>\n" +
-    "                                </div>\n" +
     "                            </div>\n" +
     "                        </div>\n" +
     "                    </div>\n" +
@@ -2387,11 +2371,11 @@ angular.module("home/index.tpl.html", []).run(["$templateCache", function($templ
     "                            <div class=\"col-xs-12 col-sm-12 col-md-4 col-lg-4\" ng-repeat=\"video in videos\" style=\"margin-top: 25px;\">\n" +
     "                                <div class=\"videoCard\">\n" +
     "                                    <a ui-sref=\"video({id: video.id})\">\n" +
-    "                                        <video \n" +
+    "                                        <video\n" +
     "                                            class=\"video-js vjs-default-skin\"\n" +
-    "                                            preload=\"true\" \n" +
-    "                                            width=\"640\" \n" +
-    "                                            height=\"264\" \n" +
+    "                                            preload=\"true\"\n" +
+    "                                            width=\"640\"\n" +
+    "                                            height=\"264\"\n" +
     "                                            fluid=\"true\"\n" +
     "                                            poster=\"{{video.media.poster}}\"\n" +
     "                                            vjs-video\n" +
@@ -2418,10 +2402,11 @@ angular.module("home/index.tpl.html", []).run(["$templateCache", function($templ
     "            </div>\n" +
     "        </div>\n" +
     "    </div>\n" +
-    "</div>");
+    "</div>\n" +
+    "");
 }]);
 
-angular.module("login/index.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("login/index.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("login/index.tpl.html",
     "<div class=\"row\" style=\"height: 100vh;\">\n" +
     "    <div class=\"form-wrapper\">\n" +
@@ -2459,7 +2444,7 @@ angular.module("login/index.tpl.html", []).run(["$templateCache", function($temp
     "</div>");
 }]);
 
-angular.module("member/index.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("member/index.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("member/index.tpl.html",
     "<div class=\"container\">\n" +
     "	<div class=\"spacing-15\"></div>\n" +
@@ -2581,7 +2566,12 @@ angular.module("member/index.tpl.html", []).run(["$templateCache", function($tem
     "				<img src=\"https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl={{member.walletAddress}}\">\n" +
     "				<p>cre8 Balance: {{balance.cre8coinBalance}}</p>\n" +
     "				<p>Time Balance: {{balance.viewTokenBalance}}</p>\n" +
-    "				<p>history</p>\n" +
+    "				\n" +
+    "				<h2>Transaction History</h2>\n" +
+    "				{{pendingTransactions}}\n" +
+    "				<div ng-repeat=\"transaction in pendingTransactionsList\">\n" +
+    "					{{transaction}}\n" +
+    "				</div>\n" +
     "\n" +
     "			</div>\n" +
     "		</uib-tab>\n" +
@@ -2595,7 +2585,7 @@ angular.module("member/index.tpl.html", []).run(["$templateCache", function($tem
     "<div class=\"spacing-50\"></div>");
 }]);
 
-angular.module("nav/index.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("nav/index.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("nav/index.tpl.html",
     "<nav class=\"navbar navbar-inverse navbar-fixed-top\" role=\"navigation\" ng-controller=\"NavCtrl\" style=\"background:#101010\">\n" +
     "  <div class=\"container\">\n" +
@@ -2629,7 +2619,7 @@ angular.module("nav/index.tpl.html", []).run(["$templateCache", function($templa
     "</nav>");
 }]);
 
-angular.module("privacy/index.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("privacy/index.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("privacy/index.tpl.html",
     "<div class=\"container\" style=\"text-align: left;\">\n" +
     "    <div class=\"spacing-50\"></div>\n" +
@@ -2655,7 +2645,7 @@ angular.module("privacy/index.tpl.html", []).run(["$templateCache", function($te
     "</div>");
 }]);
 
-angular.module("register/index.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("register/index.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("register/index.tpl.html",
     "<div class=\"row\" style=\"height:100vh\">\n" +
     "    <div class=\"form-wrapper\">\n" +
@@ -2691,7 +2681,7 @@ angular.module("register/index.tpl.html", []).run(["$templateCache", function($t
     "</div>");
 }]);
 
-angular.module("reset/index.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("reset/index.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("reset/index.tpl.html",
     "<div class=\"row\" style=\"text-align:center;\">\n" +
     "    <div class=\"col-md-12\">\n" +
@@ -2716,7 +2706,7 @@ angular.module("reset/index.tpl.html", []).run(["$templateCache", function($temp
     "</div>");
 }]);
 
-angular.module("reset/success/index.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("reset/success/index.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("reset/success/index.tpl.html",
     "<div class=\"row\" style=\"text-align:center;\">\n" +
     "    <div class=\"col-md-12\">\n" +
@@ -2736,14 +2726,14 @@ angular.module("reset/success/index.tpl.html", []).run(["$templateCache", functi
     "</div>");
 }]);
 
-angular.module("search/index.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("search/index.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("search/index.tpl.html",
     "<div class=\"surface-container home-pad\">\n" +
     "	<h1>search</h1>\n" +
     "</div>");
 }]);
 
-angular.module("sponsors/index.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("sponsors/index.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("sponsors/index.tpl.html",
     "<input type=\"radio\" class=\"radio\" name=\"pages\" id=\"exit\" checked />\n" +
     "<div class=\"page\">\n" +
@@ -2862,7 +2852,7 @@ angular.module("sponsors/index.tpl.html", []).run(["$templateCache", function($t
     "</div>");
 }]);
 
-angular.module("video/index.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("video/index.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("video/index.tpl.html",
     "<div style=\"height:100%\">\n" +
     "	<div style=\"background:#000;width:100%;border-bottom: 3px solid #FE9A2E;\">\n" +
@@ -2917,7 +2907,7 @@ angular.module("video/index.tpl.html", []).run(["$templateCache", function($temp
     "</div>");
 }]);
 
-angular.module("video/templates/bid.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("video/templates/bid.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("video/templates/bid.tpl.html",
     "<md-content layout-padding>\n" +
     "    <div class=\"spacing-15\"></div>\n" +
@@ -2960,7 +2950,7 @@ angular.module("video/templates/bid.tpl.html", []).run(["$templateCache", functi
     "</md-content>");
 }]);
 
-angular.module("video/templates/shareDialog.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("video/templates/shareDialog.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("video/templates/shareDialog.tpl.html",
     "<md-content layout-padding>\n" +
     "    <div class=\"spacing-15\"></div>\n" +
@@ -3024,7 +3014,7 @@ angular.module("video/templates/shareDialog.tpl.html", []).run(["$templateCache"
     "</md-content>");
 }]);
 
-angular.module("videoEmbed/v/index.tpl.html", []).run(["$templateCache", function($templateCache) {
+angular.module("videoEmbed/v/index.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("videoEmbed/v/index.tpl.html",
     "<style>\n" +
     "	video{background-color:black;}\n" +

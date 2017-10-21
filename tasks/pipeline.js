@@ -53,6 +53,7 @@ var jsFilesToInject = [
   'bower_components/textAngular/dist/textAngular-sanitize.min.js',
   'bower_components/textAngular/dist/textAngular.min.js',
   'bower_components/angular-thumbnails/dist/angular-thumbnails.min.js',
+  'bower_components/web3/dist/web3.js',
 
   // All of the rest of your app scripts
   'src/**/*.js',

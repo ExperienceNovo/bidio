@@ -80,4 +80,19 @@ angular.module( 'bidio', [
     $rootScope.$on('$stateChangeSuccess',function(){
         $rootScope.stateIsLoading = false;
     });
+
+    //LOCALHOST FRONTEND WEB3 TESTING
+    $rootScope.cre8web3 = new Web3();
+    $rootScope.cre8web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+    $rootScope.cre8web3.eth.getBalance('0x818c3e3a61a5c2071841df187318e5be2c238201', 'latest', function(error, result){
+        console.log(result);
+    });
+
+    var filter = $rootScope.cre8web3.eth.filter('latest');
+    
+    filter.watch(function(error, result){
+        console.log(result);
+    });
+
+
 }]);

@@ -168,6 +168,9 @@ module.exports.routes = {
    * View routes
    */
   'get /api/view/video/:id': 'ViewController.getByVideo',
+
+  'get /api/pendingTransactions': 'ViewController.blockchainSocket',
+
   'post /api/view': 'ViewController.create',
 
   '/.well-known/acme-challenge/QaNq94icVbQIi3HwabghOsybwHT36XCLVAD4JYJK7oc': 'HomeController.ssl',
