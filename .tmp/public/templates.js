@@ -1600,8 +1600,8 @@ angular.module("dashboard/templates/profile.tpl.html", []).run(["$templateCache"
     "                <br>\n" +
     "                <p><b>wallet address:</b> {{user.walletAddress}}</p><br>\n" +
     "                <p><b>wallet secret:</b> <a href=\"#\">click</a></p><br>\n" +
-    "                <p><b>cre8coin:</b> {{balance.cre8coinBalance}}</p><br>\n" +
-    "                <p><b>viewToken:</b> {{balance.viewTokenBalance}}</p>\n" +
+    "                <p><b>cre8coin:</b> {{balance.cre8coinBalance/1000000000000000000}}</p><br>\n" +
+    "                <p><b>viewToken:</b> {{balance.viewTokenBalance/1000}}</p>\n" +
     "                <br><br>\n" +
     "                <a ui-sref=\"dashboard.profileEdit\" class=\"btn anim-button fl-l home-buttons\"><i class=\"fa fa-usd\"></i> purchase coin</a>\n" +
     "              </div>\n" +
@@ -2564,15 +2564,16 @@ angular.module("member/index.tpl.html", []).run(["$templateCache", function ($te
     "				<div class=\"spacing-25\"></div>\n" +
     "				<p style=\"font-size:22px;text-align:left;\">{{member.walletAddress}}</p>\n" +
     "				<img src=\"https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl={{member.walletAddress}}\">\n" +
-    "				<p>cre8 Balance: {{balance.cre8coinBalance / 100000000000000000}}</p>\n" +
+    "				<p>cre8 Balance: {{balance.cre8coinBalance / 1000000000000000000}}</p>\n" +
     "				<p>Time Balance: {{balance.viewTokenBalance / 1000}} seconds</p>\n" +
     "				\n" +
     "				<h2>Transaction History</h2>\n" +
+    "				<br>\n" +
     "\n" +
     "				<!--{{balance.events}}-->\n" +
     "				<!--<h2>total views? {{balance.events.length}}</h2>-->\n" +
     "				<div ng-repeat=\"event in balance.events\">\n" +
-    "					{{event.returnValues._id}}, {{event.returnValues._time}}\n" +
+    "					<p>token: {{event.returnValues._id}}, time: {{event.returnValues._time/1000}}</p>\n" +
     "				</div>\n" +
     "\n" +
     "\n" +

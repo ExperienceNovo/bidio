@@ -85,7 +85,7 @@ module.exports = {
 		  		//blockchainService.createView(viewModel);
 
 				//viewtokens
-				//-->identifer-->video, channel, viewer? 
+				//-->identifer-->video, channel, general, viewer? 
 				//content
 				blockchainService.createMultiDimensionalViewToken(viewModel);
 				//channel
@@ -99,19 +99,25 @@ module.exports = {
 				//blockchainService.createViewTESTNET(viewModel);
 
 		  		//viewToken creator
-		  		/*
+		  		//channel token
 		  		Video.find({id:req.param('video')}).then(function(videoModel){
-		  			User.find({id:videoModel.user}).then(function(userModel){
+		  			User.find({id:videoModel[0].user}).then(function(userModel){
 		  				var viewModel = {
-							watchTime: 60000,
-							video: model.video,
-							user: userModel.walletAddress
+							watchTime: model.watchTime,
+							video: userModel[0].walletAddress,
+							user: req.user.walletAddress
 						};
-		  				blockchainService.createView(viewModel);
-						blockchainService.createViewTESTNET(viewModel);
+						var viewModelCreaterToken = {
+							watchTime: model.watchTime,
+							video: userModel[0].walletAddress,
+							user: userModel[0].walletAddress
+						};
+						//channeltoken
+						blockchainService.createMultiDimensionalViewToken(viewModel);
+						//blockchainService.createMultiDimensionalViewToken(viewModelCreaterToken);
 		  			});
 		  		});
-				*/
+				
 
 			}
 		});

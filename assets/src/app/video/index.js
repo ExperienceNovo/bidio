@@ -58,6 +58,7 @@ angular.module( 'bidio.video', [
 
 
     //security - make server call -- ws connection -- this isnt secure. but ok for now
+    //could spoof watchtime
     //store startTime and endTime? - nah
     $scope.watchTimeInterval = {};
     $scope.viewModel.watchTime = 0;

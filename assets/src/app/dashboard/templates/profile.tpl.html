@@ -38,8 +38,8 @@
                 <br>
                 <p><b>wallet address:</b> {{user.walletAddress}}</p><br>
                 <p><b>wallet secret:</b> <a href="#">click</a></p><br>
-                <p><b>cre8coin:</b> {{balance.cre8coinBalance}}</p><br>
-                <p><b>viewToken:</b> {{balance.viewTokenBalance}}</p>
+                <p><b>cre8coin:</b> {{balance.cre8coinBalance/1000000000000000000}}</p><br>
+                <p><b>viewToken:</b> {{balance.viewTokenBalance/1000}}</p>
                 <br><br>
                 <a ui-sref="dashboard.profileEdit" class="btn anim-button fl-l home-buttons"><i class="fa fa-usd"></i> purchase coin</a>
               </div>

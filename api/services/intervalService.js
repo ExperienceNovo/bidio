@@ -222,7 +222,7 @@ module.exports.intervalService = function(){
 	contract ViewToken {
 	    mapping (address => mapping (string => uint)) balances;
 	    event Transfer(address indexed _from, address indexed _to, uint256 _value);
-	    event CreateViewToken(address _from, address _to, string _id, uint _time);
+	    event CreateViewToken(address indexed _from, address indexed _to, string indexed _id, uint _time);
 	    function balanceOf(address _owner, string _id) constant returns (uint256 balance) {
 	        return balances[_owner][_id];
 	    }
