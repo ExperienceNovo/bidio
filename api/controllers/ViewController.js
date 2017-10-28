@@ -35,6 +35,7 @@ module.exports = {
 			user: req.param('user'),
 			video: req.param('video'),
 			bid: req.param('bid'),
+			watchTime: req.param('watchTime'),
 		};
 
 		View.create(model)
@@ -65,21 +66,41 @@ module.exports = {
 				//res.json(model);
 
 				var viewModel = {
-					watchTime: 60000,
+					//get dynamic milliseconds on close or max of content. 
+					watchTime: model.watchTime,
 					video: model.video,
-					//user: model.user,
 					user: req.user.walletAddress || null
 				};
 
-				//viewToken viewer
-		  		blockchainService.createView(viewModel);
-		  		blockchainService.createViewNew(viewModel);
-				blockchainService.createViewTESTNET(viewModel);
+				//gotta work
+				//this method isnt really effecient ->re general, multidemsional viewtoken..
+				/*viewModel = {
+					watchTime: 60000,
+					content: model.video,
+					channel: model.video,
+				}*/
+				//total viewtoken balance --
 
+				//Legacy viewToken viewer
+		  		//blockchainService.createView(viewModel);
+
+				//viewtokens
+				//-->identifer-->video, channel, viewer? 
+				//content
+				blockchainService.createMultiDimensionalViewToken(viewModel);
+				//channel
+				//blockchainService.createMultiDimensionalViewToken(viewModel);
+				//general
+				viewModel.video = 'general'
+				blockchainService.createMultiDimensionalViewToken(viewModel);
+
+
+				
+				//blockchainService.createViewTESTNET(viewModel);
 
 		  		//viewToken creator
+		  		/*
 		  		Video.find({id:req.param('video')}).then(function(videoModel){
-
 		  			User.find({id:videoModel.user}).then(function(userModel){
 		  				var viewModel = {
 							watchTime: 60000,
@@ -87,11 +108,10 @@ module.exports = {
 							user: userModel.walletAddress
 						};
 		  				blockchainService.createView(viewModel);
-		  				blockchainService.createViewNew(viewModel);
+						blockchainService.createViewTESTNET(viewModel);
 		  			});
-
 		  		});
-
+				*/
 
 			}
 		});

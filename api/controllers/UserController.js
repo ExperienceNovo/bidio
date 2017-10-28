@@ -14,13 +14,21 @@ module.exports = {
 
 	getBalance: function(req, res) {
 		blockchainService.getBalance(req.param('address')).then(function(cre8coinBalance){
-			blockchainService.getTokenBalanceNew(req.param('address')).then(function(viewTokenBalance){
-				console.log(cre8coinBalance, viewTokenBalance)
-				res.json({cre8coinBalance: cre8coinBalance, viewTokenBalance: viewTokenBalance})
+			
+			//blockchainService.getMultiDimensionalTokenEvents({address:req.param('address')}).then(function(results){
+			//TimeBalance as general total?
+			blockchainService.getMultiDimensionalTokenBalance({address:req.param('address'), identifier:'general'}).then(function(results){
+			//blockchainService.getTokenBalanceNew(req.param('address')).then(function(viewTokenBalance){
+				//console.log('cre8coin:',cre8coinBalance, 'viewtoken:', results)
+
+				//res.json({cre8coinBalance: cre8coinBalance, events:results})
+				res.json({cre8coinBalance: cre8coinBalance, viewTokenBalance: results.balance, events:results.events})
+				//res.json({cre8coinBalance: cre8coinBalance, viewTokenBalance: viewTokenBalance})
 				//res.json({balance: cre8coin});
 			});
+
+
 		});
-		
 	},
 
 	getPassports: function(req,res){

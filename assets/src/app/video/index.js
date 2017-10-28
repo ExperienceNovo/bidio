@@ -22,7 +22,7 @@ angular.module( 'bidio.video', [
 	});
 }])
 
-.controller( 'VideoCtrl', ['$location', '$mdDialog', '$sailsSocket', '$scope', '$uibModal', 'ClickModel', 'config', 'ezfb', 'lodash', 'seoService', 'titleService', 'video', 'VideoModel', 'ViewModel', function VideoCtrl( $location, $mdDialog, $sailsSocket, $scope, $uibModal, ClickModel, config, ezfb, lodash, seoService, titleService, video, VideoModel, ViewModel ) {
+.controller( 'VideoCtrl', ['$location', '$mdDialog', '$rootScope', '$sailsSocket', '$scope', '$uibModal', '$window', 'ClickModel', 'config', 'ezfb', 'lodash', 'seoService', 'titleService', 'video', 'VideoModel', 'ViewModel', function VideoCtrl( $location, $mdDialog, $rootScope, $sailsSocket, $scope, $uibModal, $window, ClickModel, config, ezfb, lodash, seoService, titleService, video, VideoModel, ViewModel ) {
 
 	$scope.currentUser = config.currentUser;
 	$scope.video = video;
@@ -50,11 +50,67 @@ angular.module( 'bidio.video', [
 	}
 	$scope.viewModel.video = $scope.video.id;
 	$scope.viewModel.bid = $scope.highestBid.id;
-    ViewModel.create($scope.viewModel).then(function(model){
-    	console.log(model);
+    //ViewModel.create($scope.viewModel).then(function(model){
+    //	console.log(model);
     	//ViewModel.update(
     		//on room close for the viewmodel watch -- update the view with the timer - on backend (y)
-    });
+    //});
+
+
+    //security - make server call -- ws connection -- this isnt secure. but ok for now
+    //store startTime and endTime? - nah
+    $scope.watchTimeInterval = {};
+    $scope.viewModel.watchTime = 0;
+    $scope.timerFunction = function(time){
+    	$scope.viewModel.watchTime = $scope.viewModel.watchTime + time;
+    }
+
+    $scope.videoId = {};
+    $scope.$on('vjsVideoReady', function (e, data) {
+    	$scope.videoId = data.player;
+    	//mb autoplay -- hm 
+	    $scope.videoId.on('play', function (e) {
+	    	console.log('play')
+			$scope.watchTimeInterval = setInterval(function(){$scope.timerFunction(100)}, 100);
+	    });
+	   	$scope.videoId.on('load', function (e) {console.log('load??')})
+
+	    $scope.videoId.on('pause', function (e) {
+	        console.log('pause');
+	    	clearInterval($scope.watchTimeInterval);
+	    	//on pause save time - mb, mbnot
+	    	console.log($scope.viewModel.watchTime)
+	    	//ViewModel.create($scope.viewModel);
+	    	//$scope.viewModel.watchTime = 0;
+	    });
+	});
+
+
+	$rootScope.$on('$stateChangeStart',function(){
+		ViewModel.create($scope.viewModel);
+	});
+
+	$scope.onExit = function() {
+    	return ViewModel.create($scope.viewModel);
+    };
+
+    $window.onbeforeunload = $scope.onExit;
+
+
+    //FONTEND WEB3!
+	/*var viewContract = new $rootScope.cre8web3.eth.Contract([{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"},{"name":"_id","type":"string"}],"name":"transfer","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_id","type":"string"},{"name":"_time","type":"uint256"}],"name":"createView","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"},{"name":"_id","type":"string"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_from","type":"address"},{"indexed":false,"name":"_to","type":"address"},{"indexed":false,"name":"_id","type":"string"},{"indexed":false,"name":"_time","type":"uint256"}],"name":"CreateViewToken","type":"event"}]);
+	viewContract.options.address ='0x13159ad936b157e1e062bd837ed2c0068f4d299a';
+		
+    viewContract.getPastEvents('CreateViewToken', {
+		filter: {_to: $scope.member.address.toString()},
+	    fromBlock: 0,
+	    toBlock: 'latest'
+	})
+	.then(function(events){
+	    console.log(events);
+	});*/
+
+
 
 	//apparently not loading ---~~~
 	$sailsSocket.subscribe('bid', function (envelope) {

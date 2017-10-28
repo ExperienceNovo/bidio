@@ -15,77 +15,53 @@ web3.setProvider(new Web3.providers.HttpProvider('http://cre8wium3.eastus.clouda
 personal.unlockAccount('0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609', '?><Mtrev77922', 1000000);
 
 //TESTNET
-var PersonalTESTNET = new Personal('http://localhost:8545');
-PersonalTESTNET.unlockAccount('0x818c3e3a61a5c2071841df187318e5be2c238201', '7792', 1000000);
+//var PersonalTESTNET = new Personal('http://localhost:8545');
+//PersonalTESTNET.unlockAccount('0x818c3e3a61a5c2071841df187318e5be2c238201', '7792', 1000000);
 
 
 module.exports = {
 
-	getBalance:function(address){
-
-		//web3.eth.getBalance('0x9fB168CEbAe474Ccb36a8B5D53Aa56c225B9c579', 'latest', function(error, result){
-		//	console.log(result);
-		//});
-
-		//console.log(address.toString())
-		var deferred = Q.defer();
-		web3.eth.getBalance(address.toString(), 'latest', function(error, result){
-			deferred.resolve(result)
+	createCredit: function(model){
+		web3.eth.sendTransaction({
+			from:'0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609',
+			to: wallet, //model.address
+			value: web3.extend.utils.toWei(model.amount, 'ether')
+		}, function(error, result){
+			console.log(error, result)
 		});
-		return deferred.promise;
-
-	},
-
-	getTokens: function(){
-
-		//var filter = web3.eth.filter({
-		//  fromBlock: 0,
-		//  toBlock: 'latest',
-		//  address: 0x2822e0ee13eaa47e2ed9ef020a2c5c4b65c6bab4,
-		//  topics: ''//[web3.sha3('newtest(string,uint256,string,string,uint256)')]
-		//});
-
-		//filter.watch((error, result) => {
-		//   console.log(result, error)
-		//});
-		//console.log(web3.eth.filter)
-
-
-	},
-
-	getTokenBalanceNew:function(address){
-		var deferred = Q.defer();
-		var viewContract = new web3.eth.contract([{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_spender","type":"address"},{"name":"_value","type":"uint256"}],"name":"approve","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_from","type":"address"},{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transferFrom","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"views","outputs":[{"name":"content","type":"string"},{"name":"viewer","type":"string"},{"name":"creator","type":"string"},{"name":"watchTime","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"content","type":"string"},{"name":"watchTime","type":"uint256"}],"name":"createView","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transfer","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"},{"name":"_spender","type":"address"}],"name":"allowance","outputs":[{"name":"remaining","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_from","type":"address"},{"indexed":false,"name":"_to","type":"address"},{"indexed":false,"name":"content","type":"string"},{"indexed":false,"name":"watchTime","type":"uint256"}],"name":"CreateViewToken","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_owner","type":"address"},{"indexed":true,"name":"_spender","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Approval","type":"event"}]);
-		viewContract.options.address ='0x2822e0ee13eaa47e2ed9ef020a2c5c4b65c6bab4';
-		viewContract.methods.balances(address.toString()).call({from: '0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609'}, function(error, result){
-			deferred.resolve(result);
-		});
-		return deferred.promise;
-	},
-
-	getTokenBalance:function(address){
-		var deferred = Q.defer();
-		var viewContract = new web3.eth.Contract([{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"balances","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"views","outputs":[{"name":"video","type":"string"},{"name":"watchTime","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"video","type":"string"},{"name":"watchTime","type":"uint256"}],"name":"createView","outputs":[],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_amount","type":"uint256"}],"name":"transfer","outputs":[],"payable":false,"type":"function"},{"inputs":[],"payable":false,"type":"constructor"}]);
-		viewContract.options.address ='0x3a66bba9c404e66d2863e85041810add03031860';
-		viewContract.methods.balances(address.toString()).call({from: '0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609'}, function(error, result){
-			deferred.resolve(result);
-		});
-		return deferred.promise;
 	},
 
 	createWallet: function(model){
 		var wallet = web3.eth.accounts.create();
-	
 		//BOOTSTRAP INIT COINS
 		web3.eth.sendTransaction({
 			from:'0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609',
-			to: wallet, //model.address
+			to: wallet,
 			value: web3.extend.utils.toWei(1, 'ether')
 		}, function(error, result){
 			console.log(error, result)
 		});
-
 		return wallet;
+	},
+
+	createMultiDimensionalViewToken:function(model){
+		var viewContract = new web3.eth.Contract([{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"},{"name":"_id","type":"string"}],"name":"transfer","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_id","type":"string"},{"name":"_time","type":"uint256"}],"name":"createView","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"},{"name":"_id","type":"string"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_from","type":"address"},{"indexed":false,"name":"_to","type":"address"},{"indexed":false,"name":"_id","type":"string"},{"indexed":false,"name":"_time","type":"uint256"}],"name":"CreateViewToken","type":"event"}]);
+		
+		//AZURE
+		viewContract.options.address ='0x13159ad936b157e1e062bd837ed2c0068f4d299a';
+
+		//LOCAL
+		//viewContract.options.address ='0x13159ad936b157e1e062bd837ed2c0068f4d299a';
+
+		//use address vs mongoid
+		//use address vs 'video' re:indetifier
+		console.log(model)
+		viewContract.methods.createView(model.user, model.video, model.watchTime).send({
+			from: '0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609',
+			gas: 88888
+		}, function(error, result){
+			console.log(result)
+		});
 	},
 
 	createViewTESTNET: function(model){
@@ -100,7 +76,8 @@ module.exports = {
 		});
 	},
 
-	createViewNew: function(model){
+	createView: function(model){
+		console.log(model)
 		var viewContract = new web3.eth.Contract([{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_spender","type":"address"},{"name":"_value","type":"uint256"}],"name":"approve","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_from","type":"address"},{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transferFrom","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"views","outputs":[{"name":"content","type":"string"},{"name":"viewer","type":"string"},{"name":"creator","type":"string"},{"name":"watchTime","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"content","type":"string"},{"name":"watchTime","type":"uint256"}],"name":"createView","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transfer","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"},{"name":"_spender","type":"address"}],"name":"allowance","outputs":[{"name":"remaining","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_from","type":"address"},{"indexed":false,"name":"_to","type":"address"},{"indexed":false,"name":"content","type":"string"},{"indexed":false,"name":"watchTime","type":"uint256"}],"name":"CreateViewToken","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_owner","type":"address"},{"indexed":true,"name":"_spender","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Approval","type":"event"}]);
 		viewContract.options.address ='0x2822e0ee13eaa47e2ed9ef020a2c5c4b65c6bab4';
 		viewContract.methods.createView(model.user, model.video, model.watchTime).send({
@@ -111,72 +88,80 @@ module.exports = {
 		});
 	},
 
-	createView: function(model){
-
-		var viewContract = new web3.eth.Contract([{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"balances","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"views","outputs":[{"name":"video","type":"string"},{"name":"watchTime","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"video","type":"string"},{"name":"watchTime","type":"uint256"}],"name":"createView","outputs":[],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_amount","type":"uint256"}],"name":"transfer","outputs":[],"payable":false,"type":"function"},{"inputs":[],"payable":false,"type":"constructor"}]);
-		viewContract.options.address ='0x3a66bba9c404e66d2863e85041810add03031860';
-		viewContract.methods.createView(model.user, model.video, model.watchTime).send({
-			from: '0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609',
-			gas: 88888
-		}, function(error, result){
-			console.log(error, result)
+	getBalance:function(address){
+		var deferred = Q.defer();
+		web3.eth.getBalance(address.toString(), 'latest', function(error, result){
+			console.log(result);
+			deferred.resolve(result);
 		});
-
+		return deferred.promise;
 	},
 
-	createClick: function(model){
-
-		var clickContract = new web3.eth.contract([{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"clicks","outputs":[{"name":"video","type":"string"},{"name":"click","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"balances","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"video","type":"string"}],"name":"createClick","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_amount","type":"uint256"}],"name":"transfer","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"}]);
-		clickContract.options.address ='0x692a70d2e424a56d2c6c27aa97d1a86395877b3a';
-		clickContract.methods.createClick(model.user, model.video, model.watchTime).send({
-			from: '0x5e72914535f202659083db3a02c984188fa26e9f',
-			gas: 88888
-		}, function(error, result){
-			console.log(result)
+	getMultiDimensionalTokenBalance:function(model){
+		var deferred = Q.defer();
+		var viewContract = new web3.eth.Contract([{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"},{"name":"_id","type":"string"}],"name":"transfer","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_id","type":"string"},{"name":"_time","type":"uint256"}],"name":"createView","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"},{"name":"_id","type":"string"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_from","type":"address"},{"indexed":false,"name":"_to","type":"address"},{"indexed":false,"name":"_id","type":"string"},{"indexed":false,"name":"_time","type":"uint256"}],"name":"CreateViewToken","type":"event"}]);
+		viewContract.options.address ='0x13159ad936b157e1e062bd837ed2c0068f4d299a';
+		//I have logged the contract.. --> we could use a watch via socket on frontend
+		console.log('getMultiDimensionalTokenBalance')
+		viewContract.methods.balanceOf(model.address.toString(), model.identifier).call({from: '0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609'}, function(error, result){
+			//deferred.resolve(result);
+			//BLEK
+			viewContract.getPastEvents('CreateViewToken', {
+				filter: {_to: model.address.toString()},
+			    fromBlock: 0,
+			    toBlock: 'latest'
+			})
+			.then(function(events){
+			    console.log(events);
+			    deferred.resolve({balance:result, events:events})
+			});
 		});
-
+		return deferred.promise;
 	},
 
-	createEmbed: function(model){
-
-		var embedContract = new web3.eth.Contract([{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"balances","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"views","outputs":[{"name":"video","type":"string"},{"name":"watchTime","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"video","type":"string"},{"name":"watchTime","type":"uint256"}],"name":"createView","outputs":[],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_amount","type":"uint256"}],"name":"transfer","outputs":[],"payable":false,"type":"function"},{"inputs":[],"payable":false,"type":"constructor"}]);
-		embedContract.options.address ='0x3a66bba9c404e66d2863e85041810add03031860';
-		embedContract.methods.createView(model.user, model.video, model.watchTime).send({
-			from: '0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609',
-			gas: 88888
-		}, function(error, result){
-			console.log(result)
+	getMultiDimensionalTokenEvents:function(model){
+		var deferred = Q.defer();
+		viewContract.getPastEvents('CreateViewToken', {
+			filter: {_to: model.address.toString()},
+		    fromBlock: 0,
+		    toBlock: 'latest'
+		})
+		.then(function(events){
+		    console.log(events);
+		    deferred.resolve(events)
 		});
-
+		return deferred.promise;
 	},
 
-
-	createCredit: function(model){
-
-		var creditContract = new web3.eth.Contract([{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"balances","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"views","outputs":[{"name":"video","type":"string"},{"name":"watchTime","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"video","type":"string"},{"name":"watchTime","type":"uint256"}],"name":"createView","outputs":[],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_amount","type":"uint256"}],"name":"transfer","outputs":[],"payable":false,"type":"function"},{"inputs":[],"payable":false,"type":"constructor"}]);
-		creditContract.options.address ='0x3a66bba9c404e66d2863e85041810add03031860';
-		creditContract.methods.createView(model.user, model.credit).send({
-			from: '0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609',
-			gas: 88888
-		}, function(error, result){
-			console.log(result)
+	getTokenBalanceTESTNET:function(address){
+		var deferred = Q.defer();
+		var viewContract = new web3.eth.Contract([{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"balances","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"views","outputs":[{"name":"video","type":"string"},{"name":"watchTime","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"video","type":"string"},{"name":"watchTime","type":"uint256"}],"name":"createView","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_amount","type":"uint256"}],"name":"transfer","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"video","type":"string"},{"indexed":false,"name":"watchTime","type":"uint256"}],"name":"CreateView","type":"event"}]);
+		viewContract.options.address ='0xb835f4b6cb820bf7ff23915db98f734dca603616';
+		viewContract.methods.balances(address.toString()).call({from: '0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609'}, function(error, result){
+			deferred.resolve(result);
 		});
-
+		return deferred.promise;
 	},
 
+	getTokenBalance:function(address){
+		var deferred = Q.defer();
+		var viewContract = new web3.eth.Contract([{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_spender","type":"address"},{"name":"_value","type":"uint256"}],"name":"approve","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_from","type":"address"},{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transferFrom","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"views","outputs":[{"name":"content","type":"string"},{"name":"viewer","type":"string"},{"name":"creator","type":"string"},{"name":"watchTime","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"content","type":"string"},{"name":"watchTime","type":"uint256"}],"name":"createView","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transfer","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"},{"name":"_spender","type":"address"}],"name":"allowance","outputs":[{"name":"remaining","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_from","type":"address"},{"indexed":false,"name":"_to","type":"address"},{"indexed":false,"name":"content","type":"string"},{"indexed":false,"name":"watchTime","type":"uint256"}],"name":"CreateViewToken","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_owner","type":"address"},{"indexed":true,"name":"_spender","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Approval","type":"event"}]);
+		viewContract.options.address ='0x2822e0ee13eaa47e2ed9ef020a2c5c4b65c6bab4';
+		viewContract.methods.balances(address.toString()).call({from: '0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609'}, function(error, result){
+			deferred.resolve(result);
+		});
+		return deferred.promise;
+	},
+
+	//SOLVE GAS?
 	sendCredit: function(model, amount){
-
-		//model.amount
-		//model.amount
 		web3.eth.sendTransaction({
-			from:'0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609',
-			to: model.walletAddress, //model.address
-			value: web3.extend.utils.toWei(amount, 'ether')
+			from: model.from,
+			to: model.to, //model.address
+			value: web3.extend.utils.toWei(model.amount, 'ether')
 		}, function(error, result){
 			console.log(error, result)
 		});
-
-
 	},
 
 }

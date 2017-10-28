@@ -9,8 +9,8 @@ var web3 = require('web3');
 var Web3 = require('web3');
 var web3 = new Web3();
 
-//var Personal = require('web3-eth-personal');
-//var personal = new Personal('http://cre8wium3.eastus.cloudapp.azure.com:8545');
+var Personal = require('web3-eth-personal');
+var personal = new Personal('http://cre8wium3.eastus.cloudapp.azure.com:8545');
 
 /*
 function youtubeToS3(youtubeUrl, user){
@@ -65,14 +65,14 @@ function youtubeToS3(youtubeUrl, user){
 module.exports.intervalService = function(){
 
 
-	//if (typeof web3 !== 'undefined') {web3 = new Web3(web3.currentProvider);}
-	//else {web3 = new Web3(new Web3.providers.HttpProvider("http://cre8wium3.eastus.cloudapp.azure.com:8545"));}
-	//web3.setProvider(new Web3.providers.HttpProvider('http://cre8wium3.eastus.cloudapp.azure.com:8545'));
-	//personal.unlockAccount('0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609', '?><Mtrev77922', 1000000);
-
 	if (typeof web3 !== 'undefined') {web3 = new Web3(web3.currentProvider);}
-	else {web3 = new Web3(new Web3.providers.WebsocketProvider("ws://localhost:8546"));}
-	web3.setProvider(new Web3.providers.WebsocketProvider('ws://localhost:8546'));
+	else {web3 = new Web3(new Web3.providers.HttpProvider("http://cre8wium3.eastus.cloudapp.azure.com:8545"));}
+	web3.setProvider(new Web3.providers.HttpProvider('http://cre8wium3.eastus.cloudapp.azure.com:8545'));
+	personal.unlockAccount('0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609', '?><Mtrev77922', 1000000);
+
+	//if (typeof web3 !== 'undefined') {web3 = new Web3(web3.currentProvider);}
+	//else {web3 = new Web3(new Web3.providers.WebsocketProvider("ws://localhost:8546"));}
+	//web3.setProvider(new Web3.providers.WebsocketProvider('ws://localhost:8546'));
 	//else {web3 = new Web3(new Web3.providers.WebsocketProvider("ws://cre8wium3.eastus.cloudapp.azure.com:8546"));}
 	//web3.setProvider(new Web3.providers.WebsocketProvider('ws://cre8wium3.eastus.cloudapp.azure.com:8546'));
 
@@ -99,14 +99,6 @@ module.exports.intervalService = function(){
 
 	//SUBSCRIBE... EVENT IN THE VIEW CONTRACT :)
 
-
-	//curl --data '{"method":"trace_filter","params":[{"fromBlock":"0x2ed0c4","toBlock":"0x2ed128","toAddress":["0x8bbB73BCB5d553B5A556358d27625323Fd781D37"]}],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST cre8wium3.eastus.cloudapp.azure.com:8545
-	//blockchainService.getTokens();
-	//cre8wium3.eastus.cloudapp.azure.com
-	//getTransactionsByAccount("*")
-
-	//var test = blockchainService.createWallet();
-
 	/*
 	User.find().then(function(models){
 		for (x in models){
@@ -121,8 +113,6 @@ module.exports.intervalService = function(){
 	});
 	*/
 
-	//web3.eth.getAccounts()
-	//.then(console.log);	
 
 	//web3.eth.getBalance('0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609', 'latest', function(error, result){
 		//console.log(result)
@@ -224,6 +214,30 @@ module.exports.intervalService = function(){
 	        views[_to].video = video;
 	        views[_to].watchTime = watchTime;
 	        balances[_to] += watchTime;
+	    }
+	}
+	*/
+
+	/*
+	contract ViewToken {
+	    mapping (address => mapping (string => uint)) balances;
+	    event Transfer(address indexed _from, address indexed _to, uint256 _value);
+	    event CreateViewToken(address _from, address _to, string _id, uint _time);
+	    function balanceOf(address _owner, string _id) constant returns (uint256 balance) {
+	        return balances[_owner][_id];
+	    }
+	    function transfer(address _to, uint256 _value, string _id) returns (bool success) {
+	        if (balances[msg.sender][_id] >= _value && _value > 0) {
+	            balances[msg.sender][_id] -= _value;
+	            balances[_to][_id] += _value;
+	            Transfer(msg.sender, _to, _value);
+	            return true;
+	        }
+	        else {return false;}
+	    }
+	    function createView(address _to, string _id, uint _time) {
+	        balances[_to][_id] += _time;
+	        CreateViewToken(msg.sender, _to, _id, _time);
 	    }
 	}
 	*/

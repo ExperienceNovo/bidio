@@ -116,10 +116,19 @@
 				<div class="spacing-25"></div>
 				<p style="font-size:22px;text-align:left;">{{member.walletAddress}}</p>
 				<img src="https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl={{member.walletAddress}}">
-				<p>cre8 Balance: {{balance.cre8coinBalance}}</p>
-				<p>Time Balance: {{balance.viewTokenBalance}}</p>
+				<p>cre8 Balance: {{balance.cre8coinBalance / 100000000000000000}}</p>
+				<p>Time Balance: {{balance.viewTokenBalance / 1000}} seconds</p>
 				
 				<h2>Transaction History</h2>
+
+				<!--{{balance.events}}-->
+				<!--<h2>total views? {{balance.events.length}}</h2>-->
+				<div ng-repeat="event in balance.events">
+					{{event.returnValues._id}}, {{event.returnValues._time}}
+				</div>
+
+
+
 				{{pendingTransactions}}
 				<div ng-repeat="transaction in pendingTransactionsList">
 					{{transaction}}

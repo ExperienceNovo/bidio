@@ -2564,10 +2564,19 @@ angular.module("member/index.tpl.html", []).run(["$templateCache", function ($te
     "				<div class=\"spacing-25\"></div>\n" +
     "				<p style=\"font-size:22px;text-align:left;\">{{member.walletAddress}}</p>\n" +
     "				<img src=\"https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl={{member.walletAddress}}\">\n" +
-    "				<p>cre8 Balance: {{balance.cre8coinBalance}}</p>\n" +
-    "				<p>Time Balance: {{balance.viewTokenBalance}}</p>\n" +
+    "				<p>cre8 Balance: {{balance.cre8coinBalance / 100000000000000000}}</p>\n" +
+    "				<p>Time Balance: {{balance.viewTokenBalance / 1000}} seconds</p>\n" +
     "				\n" +
     "				<h2>Transaction History</h2>\n" +
+    "\n" +
+    "				<!--{{balance.events}}-->\n" +
+    "				<!--<h2>total views? {{balance.events.length}}</h2>-->\n" +
+    "				<div ng-repeat=\"event in balance.events\">\n" +
+    "					{{event.returnValues._id}}, {{event.returnValues._time}}\n" +
+    "				</div>\n" +
+    "\n" +
+    "\n" +
+    "\n" +
     "				{{pendingTransactions}}\n" +
     "				<div ng-repeat=\"transaction in pendingTransactionsList\">\n" +
     "					{{transaction}}\n" +

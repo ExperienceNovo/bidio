@@ -37,6 +37,7 @@ angular.module( 'bidio.member', [
 	$scope.videos = videos;
     UserModel.getBalance($scope.member.walletAddress).then(function(model){
         $scope.balance = model;
+        console.log($scope.balance)
     });
 	for (x in $scope.videos){
     	$scope.videos[x].media = {
@@ -66,6 +67,17 @@ angular.module( 'bidio.member', [
     filter.watch(function(error, result){
         console.log(result, error);
     });
+
+	/*var viewContract = new $rootScope.cre8web3.eth.Contract([{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"},{"name":"_id","type":"string"}],"name":"transfer","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_id","type":"string"},{"name":"_time","type":"uint256"}],"name":"createView","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"},{"name":"_id","type":"string"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_from","type":"address"},{"indexed":false,"name":"_to","type":"address"},{"indexed":false,"name":"_id","type":"string"},{"indexed":false,"name":"_time","type":"uint256"}],"name":"CreateViewToken","type":"event"}]);
+	viewContract.options.address ='0x13159ad936b157e1e062bd837ed2c0068f4d299a';
+	    viewContract.getPastEvents('CreateViewToken', {
+		filter: {_to: $scope.member.address.toString()},
+	    fromBlock: 0,
+	    toBlock: 'latest'
+	})
+	.then(function(events){
+	    console.log(events);
+	});*/
 
 
 }]);
