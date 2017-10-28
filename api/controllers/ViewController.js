@@ -38,7 +38,6 @@ module.exports = {
 			watchTime: req.param('watchTime'),
 		};
 
-
 		View.create(model)
 		.exec(function(err, model) {
 			if (err) {return console.log(err)}
@@ -65,8 +64,6 @@ module.exports = {
 				//View.watch(req);
 				//View.publishCreate(model.toJSON());
 				//res.json(model);
-				var 
-				if (req.user){}
 				var viewModel = {
 					watchTime: model.watchTime,
 					video: model.video,
