@@ -85,14 +85,14 @@ module.exports = {
 				//viewtokens
 				//-->identifer-->video, channel, general, viewer? 
 				//content
-				if (viewModel.watchTime != 0){
+				if (viewModel.watchTime != 0 && viewModel.watchTime){
 					blockchainService.createMultiDimensionalViewToken(viewModel);
 				}
 				//channel
 				//blockchainService.createMultiDimensionalViewToken(viewModel);
 				//general
 				viewModel.video = 'general'
-				if (viewModel.watchTime != 0){
+				if (viewModel.watchTime != 0 && viewModel.watchTime){
 					blockchainService.createMultiDimensionalViewToken(viewModel);
 				}
 
@@ -116,7 +116,7 @@ module.exports = {
 						//};
 						//channeltoken
 						console.log(viewModelChannel);
-						if (viewModelChannel.watchTime != 0){
+						if (viewModelChannel.watchTime != 0 && viewModel.watchTime){
 							blockchainService.createMultiDimensionalViewToken(viewModelChannel);
 						}
 						//blockchainService.createMultiDimensionalViewToken(viewModelCreaterToken);
