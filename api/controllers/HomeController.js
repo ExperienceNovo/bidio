@@ -25,4 +25,8 @@ module.exports = {
         res.send('ojGqIlbsHofqbR-HmgJVdoOyqjtbq16YbIljFBkJ2WA.yMz-EAV5agQah1zn-w6Aqp0JVzxv1jmSFH6dh5Ea9uI');
     },
 
+    ssl2: function(req, res) {
+        res.send('Wd3QJxLaf73zK9F9-46blrISyzuic3-p2Q8VHeOLzBc.yMz-EAV5agQah1zn-w6Aqp0JVzxv1jmSFH6dh5Ea9uI');
+    },
+
 };
