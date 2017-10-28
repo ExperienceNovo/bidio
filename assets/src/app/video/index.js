@@ -87,8 +87,9 @@ angular.module( 'bidio.video', [
 	});
 
 
+    //lotta potiental bugz
 	$rootScope.$on('$stateChangeStart',function(){
-		ViewModel.create($scope.viewModel);
+		ViewModel.create($scope.viewModel).then(function(){$scope.viewModel = {};});
 	});
 
 	$scope.onExit = function() {

@@ -543,7 +543,7 @@ angular.module("creators/index.tpl.html", []).run(["$templateCache", function ($
     "      <div class=\"home-content\">\n" +
     "        <h2>\n" +
     "            <!--Earn a fair share of your sponsorship <span class=\"boldio\">revenue.</span>-->\n" +
-    "            Get 100 percent of your sponsorship <span class=\"boldio\">revenue.</span>\n" +
+    "            Get 100 percent of your <span class=\"boldio\">ad revenue.</span>\n" +
     "        </h2>\n" +
     "      </div>\n" +
     "    </label>\n" +
@@ -553,7 +553,7 @@ angular.module("creators/index.tpl.html", []).run(["$templateCache", function ($
     "              X\n" +
     "        </label>\n" +
     "        <p>\n" +
-    "          How do you monetize your videos?\n" +
+    "          What is your <span class=\"boldio\">monetization</span> strategy?\n" +
     "          <br><br>\n" +
     "          <!--At this point, it's common knowledge that both YouTube and Facebook take huge percentages of advertising revenue. We only take 8% of ad revenue. BIDIO doesn't believe providing a platform for creation warrants such astronomical fees. Get paid based on your traffic.-->\n" +
     "          How do you monetize original videos? Both YouTube and Facebook take 45 percent of publishers’ advertising revenue.\n" +
@@ -568,7 +568,7 @@ angular.module("creators/index.tpl.html", []).run(["$templateCache", function ($
     "    <label for=\"page_3\" class=\"page-label check-label\">\n" +
     "      <div class=\"home-content\">\n" +
     "        <h2>\n" +
-    "            Never worry about interrupting your viewers with <span class=\"boldio\">ads.</span>\n" +
+    "            Never worry about interrupting your <span class=\"boldio\">viewers.</span>\n" +
     "        </h2>\n" +
     "      </div>\n" +
     "    </label>\n" +
@@ -583,7 +583,7 @@ angular.module("creators/index.tpl.html", []).run(["$templateCache", function ($
     "        </p>\n" +
     "        -->\n" +
     "        <p>\n" +
-    "          We’re focused on non-intrusive formats, while protecting consumer choice and privacy. Our sponsors attach semi-transparent logo watermarks, linking to their campaign landing page. Bidio will never annoy viewers by forcing impressions or selling user data. That’s a promise!\n" +
+    "          Our clickable ad overlays indicate sponsorship, while protecting consumer choice and privacy. Sponsors attach semi-transparent logo watermarks to select videos, linking to their campaign landing page. Bidio will never annoy viewers by forcing impressions or selling user data. That’s a promise!\n" +
     "        </p>\n" +
     "      </div>\n" +
     "    </div>\n" +
@@ -609,7 +609,7 @@ angular.module("creators/index.tpl.html", []).run(["$templateCache", function ($
     "        </p>\n" +
     "        -->\n" +
     "        <p>\n" +
-    "          Bidio protects authenticity, while helping creators monetize their content. Using our platform, advertisers can support genuine storytellers without controlling their creative process. Top bidders earn clickable logo placements in the corner of select videos.\n" +
+    "          Bidio protects authenticity, while helping creators monetize their content. Using our platform, advertisers can support genuine storytellers without controlling their creative process.\n" +
     "        </p>\n" +
     "      </div>\n" +
     "    </div>\n" +
