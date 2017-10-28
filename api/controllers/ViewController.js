@@ -108,7 +108,7 @@ module.exports = {
 							video: userModel[0].walletAddress,
 						};
 						if (req.user){viewModelChannel.user=req.user.walletAddress}
-						else{viewModelChannel.user='anon'}
+						//else{viewModelChannel.user='0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609'}
 						//var viewModelCreaterToken = {
 						//	watchTime: model.watchTime,
 						//	video: userModel[0].walletAddress,
@@ -116,7 +116,7 @@ module.exports = {
 						//};
 						//channeltoken
 						console.log(viewModelChannel);
-						if (viewModelChannel.watchTime != 0 && viewModel.watchTime){
+						if (viewModelChannel.watchTime != 0 && viewModel.watchTime && req.user){
 							blockchainService.createMultiDimensionalViewToken(viewModelChannel);
 						}
 						//blockchainService.createMultiDimensionalViewToken(viewModelCreaterToken);
