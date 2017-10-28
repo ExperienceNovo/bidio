@@ -1,7 +1,0 @@
-node_modules
-.idea
-*.sublime-*
-.tern-port
-.DS_Store
-bower_components
-coverage

@@ -22,7 +22,7 @@ module.exports = {
     },
 
     ssl: function(req, res) {
-        res.send('QaNq94icVbQIi3HwabghOsybwHT36XCLVAD4JYJK7oc.yMz-EAV5agQah1zn-w6Aqp0JVzxv1jmSFH6dh5Ea9uI');
+        res.send('ojGqIlbsHofqbR-HmgJVdoOyqjtbq16YbIljFBkJ2WA.yMz-EAV5agQah1zn-w6Aqp0JVzxv1jmSFH6dh5Ea9uI');
     },
 
 };

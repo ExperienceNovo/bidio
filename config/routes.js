@@ -173,7 +173,7 @@ module.exports.routes = {
 
   'post /api/view': 'ViewController.create',
 
-  '/.well-known/acme-challenge/QaNq94icVbQIi3HwabghOsybwHT36XCLVAD4JYJK7oc': 'HomeController.ssl',
+  '/.well-known/acme-challenge/ojGqIlbsHofqbR-HmgJVdoOyqjtbq16YbIljFBkJ2WA': 'HomeController.ssl',
 
 
   // If a request to a URL doesn't match any of the custom routes above, it is matched
