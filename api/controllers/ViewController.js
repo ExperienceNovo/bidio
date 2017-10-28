@@ -113,6 +113,7 @@ module.exports = {
 							user: userModel[0].walletAddress
 						};
 						//channeltoken
+						console.log(viewModel);
 						blockchainService.createMultiDimensionalViewToken(viewModel);
 						//blockchainService.createMultiDimensionalViewToken(viewModelCreaterToken);
 		  			});
