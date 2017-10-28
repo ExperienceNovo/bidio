@@ -69,7 +69,7 @@ module.exports = {
 					video: model.video,
 				};
 				if (req.user){viewModel.user=req.user.walletAddress}
-				else{viewModel.user='anon'}
+				else{viewModel.user='0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609'}
 				//gotta work
 				//this method isnt really effecient ->re general, multidemsional viewtoken..
 				/*viewModel = {
