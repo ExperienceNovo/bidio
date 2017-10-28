@@ -117,7 +117,9 @@ module.exports = {
 						//};
 						//channeltoken
 						console.log(viewModelChannel);
-						blockchainService.createMultiDimensionalViewToken(viewModelChannel);
+						if (viewModelChannel.watchTime != 0){
+							blockchainService.createMultiDimensionalViewToken(viewModelChannel);
+						}
 						//blockchainService.createMultiDimensionalViewToken(viewModelCreaterToken);
 		  			});
 		  		});
