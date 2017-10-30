@@ -39,6 +39,12 @@ angular.module( 'bidio.member', [
         $scope.balance = model;
         console.log($scope.balance)
     });
+
+    //TODO: FRONTEND REFACTOR: CALI
+    $rootScope.cre8web3.eth.getBalance($scope.member.walletAddress, 'latest', function(error, result){
+        console.log(result);
+    });
+
 	for (x in $scope.videos){
     	$scope.videos[x].media = {
     		sources: [
@@ -59,6 +65,19 @@ angular.module( 'bidio.member', [
 			$scope.pendingTransactionsList.shift();
 		}
 	});
+
+	$scope.multiDemsionalBalance = 0;
+	//$scope.tokenIdentifer = 'general'
+	$scope.newLookup = {};
+	$scope.tokenLookup = function(){
+		console.log($scope.tokenIdentifier)
+		UserModel.getTokenBalance($scope.member.walletAddress, $scope.newLookup.tokenIdentifier).then(function(model){
+			console.log(model);
+ 			$scope.multiDemsionalBalance = model.viewTokenBalance;
+ 		});
+	};
+
+	//UserModel.getTokenBalanceFrontend($scope.member.walletAddress, $scope.tokenIdentifer);
 
 	//FONTEND WEB3!
 	var filter = $rootScope.cre8web3.eth.filter('pending');

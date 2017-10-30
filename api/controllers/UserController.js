@@ -17,7 +17,7 @@ module.exports = {
 			
 			//blockchainService.getMultiDimensionalTokenEvents({address:req.param('address')}).then(function(results){
 			//TimeBalance as general total?
-			blockchainService.getMultiDimensionalTokenBalance({address:req.param('address'), identifier:'general'}).then(function(results){
+			blockchainService.getMultiDimensionalTokenBalanceLegacy({address:req.param('address'), identifier:'general'}).then(function(results){
 			//blockchainService.getTokenBalanceNew(req.param('address')).then(function(viewTokenBalance){
 				//console.log('cre8coin:',cre8coinBalance, 'viewtoken:', results)
 
@@ -28,6 +28,12 @@ module.exports = {
 			});
 
 
+		});
+	},
+
+	getTokenBalance: function(req, res) {
+		blockchainService.getMultiDimensionalTokenBalance({address:req.query.address, identifier:req.query.identifier}).then(function(results){
+			res.json({viewTokenBalance: results.balance})
 		});
 	},
 
@@ -91,7 +97,11 @@ module.exports = {
 	getByUsername: function(req, res) {
 		User.find()
 		.populate('profile')
-		.where({username: req.param('path')})
+		.where({
+		  or: [
+		    {username: req.param('path')},
+		    {walletAddress: req.param('path')}
+		]})
 		.spread(function(model) {
 			User.subscribe(req, model);
 			res.json(model);

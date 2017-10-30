@@ -2564,20 +2564,29 @@ angular.module("member/index.tpl.html", []).run(["$templateCache", function ($te
     "				<div class=\"spacing-25\"></div>\n" +
     "				<p style=\"font-size:22px;text-align:left;\">{{member.walletAddress}}</p>\n" +
     "				<img src=\"https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl={{member.walletAddress}}\">\n" +
-    "				<p>cre8 Balance: {{balance.cre8coinBalance / 1000000000000000000}}</p>\n" +
-    "				<p>Time Balance: {{balance.viewTokenBalance / 1000}} seconds</p>\n" +
-    "				\n" +
-    "				<h2>Transaction History</h2>\n" +
+    "				<h3 style=\"font-size:22px\">cre8 Balance: {{balance.cre8coinBalance / 1000000000000000000}}</h3>\n" +
+    "				<h3 style=\"font-size:22px\">Time Balance: {{balance.viewTokenBalance / 1000}} seconds</h3>\n" +
+    "				<h3 style=\"font-size:22px\">MultiDimensional Token Balance: {{multiDemsionalBalance / 1000}} seconds</h2>\n" +
     "				<br>\n" +
+    "				<form>\n" +
+    "					<input style=\"float:left;width:25%\" type=\"text\" placeholder=\"Token\" class=\"form-control\" ng-model=\"newLookup.tokenIdentifier\">\n" +
+    "					<button class=\"float:left\" ng-click=\"tokenLookup()\"><span class=\"fa fa-search\"></span></button>\n" +
+    "				</form>\n" +
+    "\n" +
+    "				<div class=\"spacing-25\"></div>\n" +
+    "\n" +
+    "				<h2>Transaction History</h2>\n" +
+    "\n" +
+    "				<div class=\"spacing-25\"></div>\n" +
     "\n" +
     "				<!--{{balance.events}}-->\n" +
     "				<!--<h2>total views? {{balance.events.length}}</h2>-->\n" +
     "				<div ng-repeat=\"event in balance.events\">\n" +
-    "					<p>token: {{event.returnValues._id}}, time: {{event.returnValues._time/1000}}</p>\n" +
+    "					<p>Address: <a href=\"/member/{{event.returnValues._to}}\">{{event.returnValues._to}}</a>, Token: {{event.returnValues._id}}, Time: {{event.returnValues._time/1000}}</p>\n" +
     "				</div>\n" +
     "\n" +
     "\n" +
-    "\n" +
+    "				<!--websocket-->\n" +
     "				{{pendingTransactions}}\n" +
     "				<div ng-repeat=\"transaction in pendingTransactionsList\">\n" +
     "					{{transaction}}\n" +

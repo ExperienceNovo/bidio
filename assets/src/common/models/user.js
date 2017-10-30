@@ -1,6 +1,6 @@
 angular.module('models.user', ['lodash', 'services', 'sails.io'])
 
-.service('UserModel', ['$sailsSocket', 'utils', function($sailsSocket, utils) {
+.service('UserModel', ['$rootScope', '$sailsSocket', 'utils', function($rootScope, $sailsSocket, utils) {
 
     this.getAll = function() {
         var url = utils.prepareUrl('user');
@@ -24,6 +24,27 @@ angular.module('models.user', ['lodash', 'services', 'sails.io'])
     this.getBalance = function(address){
         var url = utils.prepareUrl('wallet/'+address);
         return $sailsSocket.get(url).then(success, error);
+    };
+
+    this.getTokenBalance = function(address, identifier){
+        var query = {params:{address:address, identifier:identifier}};
+        var url = utils.prepareUrl('token');
+        console.log(query)
+        return $sailsSocket.get(url, query).then(success, error);
+    };
+
+    this.getTokenBalanceFrontend = function(address, identifier){
+        //TODO: work on this -- refactor to web3 frontend interaction;
+        //var viewContract = new $rootScope.cre8web3.eth.contract([{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"},{"name":"_id","type":"string"}],"name":"transfer","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_id","type":"string"},{"name":"_time","type":"uint256"}],"name":"createView","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"},{"name":"_id","type":"string"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_from","type":"address"},{"indexed":false,"name":"_to","type":"address"},{"indexed":false,"name":"_id","type":"string"},{"indexed":false,"name":"_time","type":"uint256"}],"name":"CreateViewToken","type":"event"}]);
+        //viewContract.options.address ='0x6c728ed572633d08cbea0e7ed7aadbf2f044788f';
+        //console.log(viewContract)
+        //viewContract.methods.balanceOf(model.address.toString(), model.identifier).call({from: '0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609'}, function(error, result){
+        //    console.log(error, result)
+        //});
+
+        //console.log($rootScope.cre8web3);
+        //var url = utils.prepareUrl('wallet/'+address);
+        //return $sailsSocket.get(url).then(success, error);
     }
 
     this.getByUsername = function(model) {
