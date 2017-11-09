@@ -2563,7 +2563,15 @@ angular.module("member/index.tpl.html", []).run(["$templateCache", function ($te
     "			<div style=\"text-align:left\">\n" +
     "				<div class=\"spacing-25\"></div>\n" +
     "				<p style=\"font-size:22px;text-align:left;\">{{member.walletAddress}}</p>\n" +
+    "\n" +
     "				<img src=\"https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl={{member.walletAddress}}\">\n" +
+    "\n" +
+    "				<!--<p>Send cre8</p>\n" +
+    "				<form>\n" +
+    "					<input style=\"width:25%\" type=\"text\" placeholder=\"amount\" class=\"form-control\">\n" +
+    "					<input style=\"width:25%\" type=\"text\" placeholder=\"Token\" class=\"form-control\">\n" +
+    "				</form>-->\n" +
+    "\n" +
     "				<h3 style=\"font-size:22px\">cre8 Balance: {{balance.cre8coinBalance / 1000000000000000000}}</h3>\n" +
     "				<h3 style=\"font-size:22px\">Time Balance: {{balance.viewTokenBalance / 1000}} seconds</h3>\n" +
     "				<h3 style=\"font-size:22px\">MultiDimensional Token Balance: {{multiDemsionalBalance / 1000}} seconds</h2>\n" +
@@ -2579,18 +2587,30 @@ angular.module("member/index.tpl.html", []).run(["$templateCache", function ($te
     "\n" +
     "				<div class=\"spacing-25\"></div>\n" +
     "\n" +
-    "				<!--{{balance.events}}-->\n" +
     "				<!--<h2>total views? {{balance.events.length}}</h2>-->\n" +
-    "				<div ng-repeat=\"event in balance.events\">\n" +
-    "					<p>Address: <a href=\"/member/{{event.returnValues._to}}\">{{event.returnValues._to}}</a>, Token: {{event.returnValues._id}}, Time: {{event.returnValues._time/1000}}</p>\n" +
-    "				</div>\n" +
     "\n" +
+    "				<table class=\"table table-striped table-hover\">\n" +
+    "				    <thead>\n" +
+    "						<tr>\n" +
+    "							<th>Address</th>\n" +
+    "							<th>Token</th>\n" +
+    "							<th>Time</th>\n" +
+    "						</tr>\n" +
+    "				    </thead>\n" +
+    "				    <tbody>\n" +
+    "						<tr ng-repeat=\"event in balance.events\">\n" +
+    "							<td><a href=\"/member/{{event.returnValues._to}}\">{{event.returnValues._to}}</a></td>\n" +
+    "							<td>{{event.returnValues._id}}</td>\n" +
+    "							<td>{{event.returnValues._time/1000}}</td>\n" +
+    "						</tr>\n" +
+    "				    </tbody>\n" +
+    "				</table>\n" +
     "\n" +
     "				<!--websocket-->\n" +
-    "				{{pendingTransactions}}\n" +
+    "				<!--{{pendingTransactions}}\n" +
     "				<div ng-repeat=\"transaction in pendingTransactionsList\">\n" +
     "					{{transaction}}\n" +
-    "				</div>\n" +
+    "				</div>-->\n" +
     "\n" +
     "			</div>\n" +
     "		</uib-tab>\n" +

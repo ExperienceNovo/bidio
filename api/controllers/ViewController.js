@@ -60,20 +60,21 @@ module.exports = {
 						//if (err) {return;}
 						//else{Bid.publishUpdate(updated.toJSON())}
 					//});
+
 				});
-				//View.watch(req);
-				//View.publishCreate(model.toJSON());
-				//res.json(model);
+
 				var viewModel = {
 					watchTime: model.watchTime,
 					video: model.video,
 				};
+
 				if (req.user){viewModel.user=req.user.walletAddress}
 				else{viewModel.user='0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609'}
+
 				//gotta work
 				//this method isnt really effecient ->re general, multidemsional viewtoken..
 				/*viewModel = {
-					watchTime: 60000,
+					watchTime: model.watchTime,
 					content: model.video,
 					channel: model.video,
 				}*/
@@ -83,11 +84,13 @@ module.exports = {
 		  		//blockchainService.createView(viewModel);
 
 				//viewtokens
-				//-->identifer-->video, channel, general, viewer? 
+				//--> identifer --> video, channel, general, viewer? 
+
 				//content
 				if (viewModel.watchTime != 0 && viewModel.watchTime){
 					blockchainService.createMultiDimensionalViewToken(viewModel);
 				}
+
 				//channel
 				//blockchainService.createMultiDimensionalViewToken(viewModel);
 				//general
@@ -95,10 +98,7 @@ module.exports = {
 				if (viewModel.watchTime != 0 && viewModel.watchTime){
 					blockchainService.createMultiDimensionalViewToken(viewModel);
 				}
-
 				
-				//blockchainService.createViewTESTNET(viewModel);
-
 		  		//viewToken creator
 		  		//channel token
 		  		Video.find({id:req.param('video')}).then(function(videoModel){
