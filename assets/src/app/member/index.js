@@ -66,9 +66,9 @@ angular.module( 'bidio.member', [
     UserModel.getBalance($scope.member.walletAddress);
 
     //TODO: FRONTEND REFACTOR: CALI
-    $rootScope.cre8web3.eth.getBalance($scope.member.walletAddress, 'latest', function(error, result){
-        console.log(result);
-    });
+    //$rootScope.cre8web3.eth.getBalance($scope.member.walletAddress, 'latest', function(error, result){
+    //    console.log(result);
+    //});
 
 
 	$scope.multiDemsionalBalance = 0;
