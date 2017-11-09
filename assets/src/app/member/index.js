@@ -72,7 +72,7 @@ angular.module( 'bidio.member', [
 
 
 	$scope.multiDemsionalBalance = 0;
-	//$scope.tokenIdentifer = 'general'
+	$scope.tokenIdentifer = 'general'
 	$scope.newLookup = {};
 	$scope.tokenLookup = function(){
 		console.log($scope.tokenIdentifier)
