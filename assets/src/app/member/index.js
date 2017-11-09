@@ -63,7 +63,7 @@ angular.module( 'bidio.member', [
         $scope.balance = model;
         console.log($scope.balance)
     });
-    UserModel.getBalance($scope.member.walletAddress);
+    //UserModel.getBalance($scope.member.walletAddress);
 
     //TODO: FRONTEND REFACTOR: CALI
     //$rootScope.cre8web3.eth.getBalance($scope.member.walletAddress, 'latest', function(error, result){
@@ -81,6 +81,8 @@ angular.module( 'bidio.member', [
  			$scope.multiDemsionalBalance = model.viewTokenBalance;
  		});
 	};
+
+	/*
 
 	UserModel.getTokenBalanceFrontend($scope.member.walletAddress, $scope.tokenIdentifer);
 
@@ -108,6 +110,8 @@ angular.module( 'bidio.member', [
 	var myResults = viewContractEvent.get(function(error, logs){
     	console.log(error, logs);
 	});
+
+*/
 
 
 
