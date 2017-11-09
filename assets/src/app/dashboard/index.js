@@ -660,7 +660,7 @@ angular.module( 'bidio.dashboard', [
     $scope.user = user;
     console.log($scope.user.walletAddress);
     $scope.cre8coinBalance = 0;
-    UserModel.getBalance($scope.user.walletAddress).then(function(model){
+    UserModel.getBalanceBackend($scope.user.walletAddress).then(function(model){
         $scope.balance = model;
     });
 
