@@ -156,6 +156,9 @@ passport.connect = function (req, query, profile, next) {
       if (!passport) {
 
         User.create(user, function (err, user) {
+          console.log('hello');
+          console.log(user);
+          console.log(err);
           if (err) {
             if (err.code === 'E_VALIDATION') {
               if (err.invalidAttributes.email) {
@@ -165,7 +168,6 @@ passport.connect = function (req, query, profile, next) {
                 req.flash('error', 'Error.Passport.User.Exists');
               }
             }
-
             return next(err);
           }
           query.user = user.id;

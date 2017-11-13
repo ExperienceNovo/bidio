@@ -34,13 +34,13 @@ module.exports = {
 	createWallet: function(model){
 		var wallet = web3.eth.accounts.create();
 		//BOOTSTRAP INIT COINS
-		web3.eth.sendTransaction({
-			from:'0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609',
-			to: wallet,
-			value: web3.extend.utils.toWei(1, 'ether')
-		}, function(error, result){
-			console.log(error, result)
-		});
+		//web3.eth.sendTransaction({
+		//	from:'0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609',
+		//	to: wallet,
+		//	value: web3.extend.utils.toWei(1, 'ether')
+		//}, function(error, result){
+		//	console.log(error, result)
+		//});
 		return wallet;
 	},
 

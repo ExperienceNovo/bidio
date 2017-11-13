@@ -41,11 +41,17 @@ exports.register = function (req, res, next) {
     req.flash('error', 'Error.Passport.Password.Missing');
     return next(new Error('No password was entered.'));
   }
-
+  console.log('local.js');
+  console.log(email);
   User.create({
     username : username
   , email    : email
   }, function (err, user) {
+
+    console.log('inside')
+    console.log('user', user);
+    console.log('error', err);
+
     if (err) {
       if (err.code === 'E_VALIDATION') {
         if (err.invalidAttributes.email) {
@@ -54,7 +60,6 @@ exports.register = function (req, res, next) {
           req.flash('error', 'Error.Passport.User.Exists');
         }
       }
-
       return next(err);
     }
 
@@ -63,6 +68,8 @@ exports.register = function (req, res, next) {
     , password : password
     , user     : user.id
     }, function (err, passport) {
+      console.log('inside passport');
+      console.log(passport, err);
       if (err) {
         if (err.code === 'E_VALIDATION') {
           req.flash('error', 'Error.Passport.Password.Invalid');

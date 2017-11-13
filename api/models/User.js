@@ -49,7 +49,9 @@ module.exports = {
         }
     },
 
-    afterCreate: function(model,next){
+    afterCreate: function(model, next){
+        console.log('afterCREATE');
+
         Profile.create({
           user: model.id,
           socialAccounts: model.socialAccounts
@@ -59,14 +61,12 @@ module.exports = {
                 return next(new Error("Error creating user profile"), null);
             }
             model.profile = profile;
-            //in case of seeding before templates are created
-            if (!emailService.templates.hasOwnProperty('welcome')){
-                return Promise.resolve();
-            }
+           
             //TODO: 1 UNVALID ATTRIBUTE ERROR -- type email?
-            var wallet = blockchainService.createWallet(model);
+            var wallet = blockchainService.createWallet();
             model.walletAddress = wallet.address;
             model.walletPrivateKey = wallet.privateKey;
+            console.log('HEYYY!!')
             console.log(model)
             User.update({id: model.id}, model).then(function(model){
                 console.log(model);
