@@ -50,8 +50,6 @@ module.exports = {
     },
 
     afterCreate: function(model, next){
-        console.log('afterCREATE');
-
         Profile.create({
           user: model.id,
           socialAccounts: model.socialAccounts
@@ -60,14 +58,12 @@ module.exports = {
             if (!profile){
                 return next(new Error("Error creating user profile"), null);
             }
+            console.log(profile);
             model.profile = profile;
-           
             //TODO: 1 UNVALID ATTRIBUTE ERROR -- type email?
-            var wallet = blockchainService.createWallet();
+            var wallet = blockchainService.createWallet(model);
             model.walletAddress = wallet.address;
             model.walletPrivateKey = wallet.privateKey;
-            console.log('HEYYY!!')
-            console.log(model)
             User.update({id: model.id}, model).then(function(model){
                 console.log(model);
                 emailService.sendTemplate('welcome', model.email, 'Welcome To Bidio!', {username: model.username});

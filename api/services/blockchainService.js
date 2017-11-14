@@ -24,7 +24,7 @@ module.exports = {
 	createCredit: function(model){
 		web3.eth.sendTransaction({
 			from:'0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609',
-			to: wallet, //model.address
+			to: model.address, //wallet, //model.address
 			value: web3.extend.utils.toWei(model.amount, 'ether')
 		}, function(error, result){
 			console.log(error, result)
@@ -61,9 +61,11 @@ module.exports = {
 		console.log(model)
 		viewContract.methods.createView(model.user, model.video, model.watchTime).send({
 			from: '0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609',
-			gas: 88888
+			gas: 888888
 		}, function(error, result){
-			console.log(result)
+			console.log('createMultiDimensionalViewToken');
+			console.log(error);
+			console.log(result);
 		});
 	},
 
@@ -125,12 +127,12 @@ module.exports = {
 			//deferred.resolve(result);
 			//BLEK
 			viewContract.getPastEvents('CreateViewToken', {
-				filter: {_to: model.address.toString()}, //not working --~
+				//filter: {_to: model.address.toString()}, //not working --~
 			    fromBlock: 0,
 			    toBlock: 'latest'
 			})
 			.then(function(events){
-			    console.log(events);
+			    //console.log(events);
 			    deferred.resolve({balance:result, events:events})
 			});
 		});
@@ -142,12 +144,12 @@ module.exports = {
 		var viewContract = new web3.eth.Contract([{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"},{"name":"_id","type":"string"}],"name":"transfer","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_id","type":"string"},{"name":"_time","type":"uint256"}],"name":"createView","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"},{"name":"_id","type":"string"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_from","type":"address"},{"indexed":false,"name":"_to","type":"address"},{"indexed":false,"name":"_id","type":"string"},{"indexed":false,"name":"_time","type":"uint256"}],"name":"CreateViewToken","type":"event"}]);
 		viewContract.options.address ='0x6c728ed572633d08cbea0e7ed7aadbf2f044788f';
 		viewContract.getPastEvents('CreateViewToken', {
-			filter: {_to: model.address.toString()},
+			//filter: {_to: model.address.toString()},
 		    fromBlock: 0,
 		    toBlock: 'latest'
 		})
 		.then(function(events){
-		    console.log(events);
+		    //console.log(events);
 		    deferred.resolve(events)
 		});
 		return deferred.promise;

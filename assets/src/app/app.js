@@ -42,6 +42,7 @@ angular.module( 'bidio', [
     'bidio.resetSuccess',
     'bidio.search',
     'bidio.sponsors',
+    'bidio.token',
     'bidio.video',
     'bidio.videoEmbed',
 ])

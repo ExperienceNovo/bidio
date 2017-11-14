@@ -60,6 +60,7 @@ module.exports.routes = {
   'get /reset-success': 'HomeController.index',
   'get /search': 'HomeController.index',
   'get /search/:path': 'HomeController.index',
+  'get /token': 'HomeController.index',
   'get /sponsors': 'HomeController.index',
   'get /upload': 'HomeController.index',
   'get /video/:id': 'HomeController.index',

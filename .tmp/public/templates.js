@@ -1,4 +1,4 @@
-angular.module('templates-app', ['admin/index.tpl.html', 'admin/templates/bids.tpl.html', 'admin/templates/contests.tpl.html', 'admin/templates/main.tpl.html', 'admin/templates/users.tpl.html', 'admin/templates/videos.tpl.html', 'blog/index.tpl.html', 'blogPost/index.tpl.html', 'campaign/index.tpl.html', 'campaign/templates/about.tpl.html', 'campaign/templates/main.tpl.html', 'campaign/templates/submitModal.tpl.html', 'campaigns/index.tpl.html', 'creators/index.tpl.html', 'dashboard/index.tpl.html', 'dashboard/templates/addBannerPhoto.tpl.html', 'dashboard/templates/addCampaignPhoto.tpl.html', 'dashboard/templates/addProfilePic.tpl.html', 'dashboard/templates/addVideo.tpl.html', 'dashboard/templates/analytics.tpl.html', 'dashboard/templates/campaign.tpl.html', 'dashboard/templates/campaigns.tpl.html', 'dashboard/templates/createCampaign.tpl.html', 'dashboard/templates/createVideo.tpl.html', 'dashboard/templates/home.tpl.html', 'dashboard/templates/importVideo.tpl.html', 'dashboard/templates/profile.tpl.html', 'dashboard/templates/profileEdit.tpl.html', 'dashboard/templates/video.tpl.html', 'dashboard/templates/videos.tpl.html', 'dashboard/templates/viewModal.tpl.html', 'discover/index.tpl.html', 'footer/index.tpl.html', 'forgot/index.tpl.html', 'forgot/success/index.tpl.html', 'home/index.tpl.html', 'login/index.tpl.html', 'member/index.tpl.html', 'nav/index.tpl.html', 'privacy/index.tpl.html', 'register/index.tpl.html', 'reset/index.tpl.html', 'reset/success/index.tpl.html', 'search/index.tpl.html', 'sponsors/index.tpl.html', 'video/index.tpl.html', 'video/templates/bid.tpl.html', 'video/templates/shareDialog.tpl.html', 'videoEmbed/v/index.tpl.html']);
+angular.module('templates-app', ['admin/index.tpl.html', 'admin/templates/bids.tpl.html', 'admin/templates/contests.tpl.html', 'admin/templates/main.tpl.html', 'admin/templates/users.tpl.html', 'admin/templates/videos.tpl.html', 'blog/index.tpl.html', 'blogPost/index.tpl.html', 'campaign/index.tpl.html', 'campaign/templates/about.tpl.html', 'campaign/templates/main.tpl.html', 'campaign/templates/submitModal.tpl.html', 'campaigns/index.tpl.html', 'creators/index.tpl.html', 'dashboard/index.tpl.html', 'dashboard/templates/addBannerPhoto.tpl.html', 'dashboard/templates/addCampaignPhoto.tpl.html', 'dashboard/templates/addProfilePic.tpl.html', 'dashboard/templates/addVideo.tpl.html', 'dashboard/templates/analytics.tpl.html', 'dashboard/templates/campaign.tpl.html', 'dashboard/templates/campaigns.tpl.html', 'dashboard/templates/createCampaign.tpl.html', 'dashboard/templates/createVideo.tpl.html', 'dashboard/templates/home.tpl.html', 'dashboard/templates/importVideo.tpl.html', 'dashboard/templates/profile.tpl.html', 'dashboard/templates/profileEdit.tpl.html', 'dashboard/templates/video.tpl.html', 'dashboard/templates/videos.tpl.html', 'dashboard/templates/viewModal.tpl.html', 'discover/index.tpl.html', 'footer/index.tpl.html', 'forgot/index.tpl.html', 'forgot/success/index.tpl.html', 'home/index.tpl.html', 'login/index.tpl.html', 'member/index.tpl.html', 'nav/index.tpl.html', 'privacy/index.tpl.html', 'register/index.tpl.html', 'reset/index.tpl.html', 'reset/success/index.tpl.html', 'search/index.tpl.html', 'sponsors/index.tpl.html', 'token/index.tpl.html', 'video/index.tpl.html', 'video/templates/bid.tpl.html', 'video/templates/shareDialog.tpl.html', 'videoEmbed/v/index.tpl.html']);
 
 angular.module("admin/index.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("admin/index.tpl.html",
@@ -2889,6 +2889,207 @@ angular.module("sponsors/index.tpl.html", []).run(["$templateCache", function ($
     "    </div>\n" +
     "  </section>\n" +
     "</div>");
+}]);
+
+angular.module("token/index.tpl.html", []).run(["$templateCache", function ($templateCache) {
+  $templateCache.put("token/index.tpl.html",
+    "<style>\n" +
+    "  .header { background:#000; }\n" +
+    "  //h2{color:white;}\n" +
+    "  //.projectLink{color:white;padding:25px;}\n" +
+    "\n" +
+    "  .block\n" +
+    "  {\n" +
+    "    position: relatve;\n" +
+    "    width: 200px;\n" +
+    "    height: 200px;\n" +
+    "    margin: 5% auto;\n" +
+    "  }\n" +
+    "\n" +
+    "  .shape{\n" +
+    "    width: 100px;\n" +
+    "    height: 100px;\n" +
+    "  }\n" +
+    "\n" +
+    "  .cube{\n" +
+    "    position: relative;\n" +
+    "    transition:transform .5s;\n" +
+    "    transform-style: preserve-3d;\n" +
+    "  }\n" +
+    "\n" +
+    "  .cube.outer{\n" +
+    "    width: 200px;\n" +
+    "    height: 200px;\n" +
+    "    transform-style: preserve-3d;\n" +
+    "    animation: spin 4s infinite cubic-bezier(.67,.03,.31,.98);\n" +
+    "  }\n" +
+    "\n" +
+    "  .cube.outer > .cube{\n" +
+    "    width: 100px;\n" +
+    "    height: 100px;\n" +
+    "    transform: translateX(50px) translateY(50px);\n" +
+    "    animation: spin-inner 4s infinite cubic-bezier(.67,.03,.31,.98);\n" +
+    "  }\n" +
+    "\n" +
+    "  .side{\n" +
+    "    position: absolute;\n" +
+    "    width: 100%;\n" +
+    "    height: 100%;\n" +
+    "    /*backface-visibility: hidden;*/\n" +
+    "    \n" +
+    "    font-size: 30px;\n" +
+    "    line-height: 100px;\n" +
+    "    text-align: center;\n" +
+    "    opacity: .9;\n" +
+    "    transition: all .2s linear;\n" +
+    "    border: 3px solid #fff;\n" +
+    "    \n" +
+    "    background: rgba(255,255,255, 0.1);\n" +
+    "    box-shadow: inset 0 0 100% 0 rgba(255, 255, 255, .1);\n" +
+    "    box-sizing: border-box;\n" +
+    "  }\n" +
+    "\n" +
+    "  .outer > .cube .side {  \n" +
+    "    background: rgba(255, 255, 255, 0.05);\n" +
+    "  }\n" +
+    "\n" +
+    "  .side.left{\n" +
+    "    transform: translateX(-50px) rotateY(-90deg);  \n" +
+    "  }\n" +
+    "\n" +
+    "  .cube.outer > .side.left{\n" +
+    "    transform: translateX(-100px) rotateY(-90deg);  \n" +
+    "  }\n" +
+    "\n" +
+    "  .side.right{\n" +
+    "    transform: translateX(50px) rotateY(90deg);  \n" +
+    "  }\n" +
+    "\n" +
+    "  .cube.outer > .side.right{\n" +
+    "    transform: translateX(100px) rotateY(90deg);  \n" +
+    "  }\n" +
+    "\n" +
+    "  .side.top{ \n" +
+    "    transform: translateY(-50px) rotateX(90deg);  \n" +
+    "  }\n" +
+    "\n" +
+    "  .cube.outer > .side.top{\n" +
+    "    transform: translateY(-100px) rotateX(90deg);  \n" +
+    "  }\n" +
+    "\n" +
+    "  .side.bottom{ \n" +
+    "    transform: translateY(50px) rotateX(-90deg);  \n" +
+    "  }\n" +
+    "\n" +
+    "  .cube.outer > .side.bottom{\n" +
+    "    transform: translateY(100px) rotateX(-90deg);  \n" +
+    "  }\n" +
+    "\n" +
+    "  .side.front{\n" +
+    "    transform: translateZ(50px); \n" +
+    "  }\n" +
+    "\n" +
+    "  .cube.outer > .side.front{\n" +
+    "    transform: translateZ(100px);  \n" +
+    "  }\n" +
+    "\n" +
+    "  .side.back{  \n" +
+    "    transform: translateZ(-50px) rotateX(180deg);\n" +
+    "  }\n" +
+    "\n" +
+    "  .cube.outer > .side.back{\n" +
+    "    transform: translateZ(-100px) rotateX(180deg); \n" +
+    "  }\n" +
+    "\n" +
+    "  @keyframes spin {  \n" +
+    "    0% {\n" +
+    "      transform: rotateX(0deg) rotateY(0deg);\n" +
+    "    }\n" +
+    "    33.333% {\n" +
+    "      transform: rotateX(-35deg) rotateY(-45deg);\n" +
+    "    }\n" +
+    "    66.666% {\n" +
+    "      transform: rotateX(-35deg) rotateY(45deg);\n" +
+    "    }  \n" +
+    "    100% {\n" +
+    "      transform: rotateX(0deg) rotateY(0deg);\n" +
+    "    }\n" +
+    "  }\n" +
+    "\n" +
+    "  @keyframes spin-inner {\n" +
+    "    0% {\n" +
+    "      transform: translateX(50px) translateY(50px) rotateY(0deg) rotateX(90deg);\n" +
+    "    }\n" +
+    "    33.333% {\n" +
+    "      transform: translateX(50px) translateY(50px) rotateY(90deg) rotateX(90deg);\n" +
+    "    }\n" +
+    "    66.666% {\n" +
+    "      transform: translateX(50px) translateY(50px) rotateY(-90deg) rotateX(90deg);\n" +
+    "    }\n" +
+    "    100% {\n" +
+    "      transform: translateX(50px) translateY(50px) rotateY(0deg) rotateX(90deg);\n" +
+    "    }\n" +
+    "  }\n" +
+    "</style>\n" +
+    "\n" +
+    "<div class=\"header\">\n" +
+    "  <div class=\"spacing-100\"></div>\n" +
+    "  <div class=\"block\">\n" +
+    "    <div class=\"shape\">\n" +
+    "      <div class=\"cube outer\">\n" +
+    "        <div class=\"side left\"></div>\n" +
+    "        <div class=\"side right\"></div>\n" +
+    "        <div class=\"side top\"></div>\n" +
+    "        <div class=\"side bottom\"></div>\n" +
+    "        <div class=\"side front\"></div>\n" +
+    "        <div class=\"side back\"></div>\n" +
+    "        <div class=\"cube\">\n" +
+    "          <div class=\"side left\"></div>\n" +
+    "          <div class=\"side right\"></div>\n" +
+    "          <div class=\"side top\"></div>\n" +
+    "          <div class=\"side bottom\"></div>\n" +
+    "          <div class=\"side front\"></div>\n" +
+    "          <div class=\"side back\"></div>\n" +
+    "        </div>\n" +
+    "      </div>\n" +
+    "    </div>\n" +
+    "  </div>\n" +
+    "  <div class=\"spacing-10\"></div>\n" +
+    "  <p style=\"color:white;text-align:center;font-family:ubuntu;font-size:22px\">create</p>\n" +
+    "  <div class=\"spacing-100\"></div>\n" +
+    "</div>\n" +
+    "\n" +
+    "<div class=\"container\">\n" +
+    "\n" +
+    "  <div class=\"spacing-50\"></div>\n" +
+    "\n" +
+    "  <h1>create the next wave</h1>\n" +
+    "  <p>universal income</p>\n" +
+    "\n" +
+    "  <iframe width='560' height='315' src='http://www.bidio.co/v/57954ce9dea046030031007a' frameborder='0' allowfullscreen></iframe>\n" +
+    "  <iframe width='560' height='315' src='http://www.bidio.co/v/57958aa3a1ad8f030032230c' frameborder='0' allowfullscreen></iframe>\n" +
+    "\n" +
+    "  <div class=\"spacing-100\"></div>\n" +
+    "\n" +
+    "  <div class=\"\">\n" +
+    "    <h1>contract address: 0x35F8e9dFc3f97fa18CEf166a6099074B5340e843</h1>\n" +
+    "    <h3>5491 ETH recieved</h3>\n" +
+    "  </div>\n" +
+    "\n" +
+    "  <div class=\"spacing-100\"></div>\n" +
+    "\n" +
+    "  <div class=\"\">\n" +
+    "    <h1>The Team</h1>\n" +
+    "    <a class=\"projectLink\" href=\"https://www.experiencenovo.io\">\n" +
+    "      <h2>NOVO</h2>\n" +
+    "      <img src=\"https://www.experiencenovo.io/images/novo/logo.png\">\n" +
+    "    </a>\n" +
+    "  </div>\n" +
+    "\n" +
+    "  <div class=\"spacing-100\"></div>\n" +
+    "\n" +
+    "</div>\n" +
+    "");
 }]);
 
 angular.module("video/index.tpl.html", []).run(["$templateCache", function ($templateCache) {
