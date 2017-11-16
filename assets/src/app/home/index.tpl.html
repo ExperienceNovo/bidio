@@ -1,245 +1,161 @@
-<style type="text/css">
-  #sec1 {
-    padding-bottom: 0;
-  }
-  section {
-    padding:120px 0;
-  }
-  section#sec2 {
-    padding:50px 0;
-  }
-  .videoCard{
-    box-shadow: 2px 2px 10px #999;
-    overflow: hidden;
-    padding-left:0px;padding-right:0px;
-}
-
-</style>
-<div id="main">
-    <div id="wrapper">
-        <div class="content-holder">
-            <div class="content intro-sec" ng-show="!currentUser">
-                <div class="hero-wrap">
-                    <div class="media-container" data-bottom-top="transform: translateY(-300px);" data-top-bottom="transform: translateY(300px);">
-                        <div class="video-mask"></div>
-                        <div class="video-holder">
-                            <div class="background-vimeo">
-                                <video autoplay="" class="intro-video" loop="" muted="" src="/videos/video.mp4"></video>
-                            </div>
-                            <div class="intro-mobile bg"></div>
-                        </div>
-                    </div>
-                    <div class="overlay"></div>
-                    <div class="container" style="min-height:50vh">
-                        <div class="box on" ng-animate="'box'" ng-show="toggle" style="padding-bottom:100px;">
-                            <div class="mobile-intro">
-                                <section class="rw-wrapper">
-                                    <h2 class="rw-sentence" style="font-size:2.75em;"><span style="color:#fff">Sponsored...</span><br></h2>
-                                    <div class="rw-words rw-words-1" style="font-size:.75em;">
-                                        <h2 class="rw-sentence" style="font-size:2.75em;"><span>Creators</span> <span>Artists</span> <span>Vloggers</span> <span>Producers</span>
-                                        <span>Musicians</span> <span>Journalists</span></h2>
-                                    </div>
-                                </section>
-                            </div>
-                            <div class="spacing-25"></div>
-                            <!--<a target="_blank" href="/video/5730ea61adfa6d0300a0a22b"><button class="btn-5 btn-intro" style="background:transparent;">Watch Video!</button></a>-->
-                            <a target="_blank" href="/register"><button class="btn-5 btn-intro" style="background:transparent;">Sign up!</button></a>
-                        </div>
-                    </div>
+<div class="content intro-sec" ng-show="!currentUser">
+    <div class="hero-wrap">
+        <div class="media-container" data-bottom-top="transform: translateY(-300px);" data-top-bottom="transform: translateY(300px);">
+            <div class="video-mask"></div>
+            <div class="video-holder">
+                <div class="background-vimeo">
+                    <video autoplay="" class="intro-video" loop="" muted="" src="/videos/video.mp4"></video>
                 </div>
+                <div class="intro-mobile bg"></div>
             </div>
-            <div class="content" ng-show="!currentUser">
-                <section id="sec1">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-5">
-                                <div class="service-graphic sg2">
-                                    <div class="screen monitor">
-                                        <div class="content">
-                                            <div class="browser">
-                                                <ul class="btns">
-                                                    <li></li>
-                                                    <li></li>
-                                                    <li></li>
-                                                </ul>
-                                                <div class="browser-content">
-                                                    <ul class="txt">
-                                                        <li></li>
-                                                        <li class="big"></li>
-                                                        <li class="third"></li>
-                                                        <li class="third"></li>
-                                                        <li class="third"></li>
-                                                        <li></li>
-                                                        <li></li>
-                                                        <li class="third"></li>
-                                                        <li class="third"></li>
-                                                        <li class="third"></li>
-                                                        <li class="third"></li>
-                                                        <li class="third"></li>
-                                                        <li class="third"></li>
-                                                        <li></li>
-                                                        <li class="big"></li>
-                                                        <li class="third"></li>
-                                                        <li class="third"></li>
-                                                        <li class="third"></li>
-                                                        <li class="third"></li>
-                                                        <li class="third"></li>
-                                                        <li class="third"></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="base">
-                                            <div class="grey-shadow"></div>
-                                            <div class="foot top"></div>
-                                            <div class="foot bottom"></div>
-                                        </div>
-                                    </div>
-                                    <div class="laptop">
-                                        <div class="screen">
-                                            <ul class="txt">
-                                                <li></li>
-                                                <li class="big"></li>
-                                                <li class="third"></li>
-                                                <li class="third"></li>
-                                                <li class="third"></li>
-                                                <li></li>
-                                                <li></li>
-                                                <li class="third"></li>
-                                                <li class="third"></li>
-                                                <li class="third"></li>
-                                                <li class="third"></li>
-                                                <li class="third"></li>
-                                                <li class="third"></li>
-                                                <li></li>
-                                                <li class="big"></li>
-                                                <li class="third"></li>
-                                                <li class="third"></li>
-                                                <li class="third"></li>
-                                                <li class="third"></li>
-                                                <li class="third"></li>
-                                                <li class="third"></li>
-                                            </ul>
-                                        </div>
-                                        <div class="btm"></div>
-                                    </div>
-                                    <div class="phone">
-                                        <div class="screen">
-                                            <ul class="txt">
-                                                <li></li>
-                                                <li></li>
-                                                <li class="txt-half"></li>
-                                                <li class="txt-half"></li>
-                                                <li></li>
-                                                <li></li>
-                                                <li></li>
-                                                <li></li>
-                                                <li></li>
-                                                <li></li>
-                                                <li class="txt-half"></li>
-                                                <li class="txt-half"></li>
-                                                <li class="txt-half"></li>
-                                                <li class="txt-half"></li>
-                                                <li></li>
-                                                <li></li>
-                                            </ul>
-                                        </div>
-                                        <div class="shadow"></div>
-                                    </div>
-                                    <div class="ipad" style="z-index: 999;">
-                                        <div class="screen">
-                                            <ul class="txt">
-                                                <li></li>
-                                                <li class="big"></li>
-                                                <li class="txt-half"></li>
-                                                <li class="txt-half"></li>
-                                                <li class="txt-half"></li>
-                                                <li class="txt-half"></li>
-                                                <li></li>
-                                                <li></li>
-                                                <li class="txt-half"></li>
-                                                <li class="txt-half"></li>
-                                                <li class="txt-half"></li>
-                                                <li class="txt-half"></li>
-                                                <li class="txt-half"></li>
-                                                <li class="txt-half"></li>
-                                                <li class="txt-half"></li>
-                                                <li class="txt-half"></li>
-                                                <li></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-7 home-desc">
-                                <h2 class="section-title">Say Hello to <strong style="color:#FE9A2E">BIDIO</strong></h2>
-                                <p>Bidio was built for anyone to freely watch, support and create original videos. Our decentralized auction system helps genuine storytellers get sponsored without sacrificing authenticity.</p>
-                                <!--<p>Our unique system helps creators get sponsored without sacrificing authenticity. Using Bidio, independent video producers can upload original content and set minimum bids, then brands compete for the exclusive sponsorship rights.</p>
-                                <div class="spacing-10"></div>
-                                <p>Bidio promotes <a class="desc-link" href="/blog/say-hello-to-bidio">truly native advertising</a>, which matches the purpose of surrounding media. Simply upload your videos, and our team will make sponsorship deals happen.</p>-->
-                            </div>
+        </div>
+        <div class="overlay"></div>
+        <div class="container" style="min-height:50vh">
+            <div class="box on" ng-animate="'box'" ng-show="toggle" style="padding-bottom:100px;">
+                <div class="mobile-intro">
+                    <section class="rw-wrapper">
+                        <h2 class="rw-sentence" style="font-size:2.75em;"><span style="color:#fff">Sponsored...</span><br></h2>
+                        <div class="rw-words rw-words-1" style="font-size:.75em;">
+                            <h2 class="rw-sentence" style="font-size:2.75em;"><span>Creators</span> <span>Artists</span> <span>Vloggers</span> <span>Producers</span>
+                            <span>Musicians</span> <span>Journalists</span></h2>
                         </div>
-                    </div>
-                </section>
-            </div>
-            <div class="content">
-                <section id="sec2">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <!--<h2 class="section-title algn-left dec-title"><span>featured <strong style="color:#FE9A2E">Videos</strong></span></h2>-->
-                                <h2 class="section-title algn-left dec-title"><span><a href="/discover">discover</a></span></h2>
-
-                            </div>
-                            <div class="col-md-6">
-                                <div class="dropdown sort-dropdown noselect" style="float:right">
-                                    <a class="dropdown-toggle noselect" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <h2 class="noselect">{{sortText[sort]}}<span class="caret"></span></h2>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="sort-a" ng-click="selectSort('trendingScore DESC')"><h3>Trending</h3></a></li>
-                                        <hr class="sort-hr">
-                                        <li><a class="sort-a" ng-click="selectSort('viewCount DESC')"><h3>View Count</h3></a></li>
-                                        <hr class="sort-hr">
-                                        <li><a class="sort-a" ng-click="selectSort('createdAt DESC')"><h3>Date Created</h3></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="spacing-15"></div>
-                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" ng-repeat="video in videos" style="margin-top: 25px;">
-                                <div class="videoCard">
-                                    <a ui-sref="video({id: video.id})">
-                                        <video
-                                            class="video-js vjs-default-skin"
-                                            preload="true"
-                                            width="640"
-                                            height="264"
-                                            fluid="true"
-                                            poster="{{video.media.poster}}"
-                                            vjs-video
-                                            vjs-media="video.media"
-                                            vjs-ratio="16:9">
-                                        </video>
-                                        <h2 class="discover-title" style="margin-top:10px;margin-left:10px; text-align:left;margin-bottom:5px;">
-                                            {{video.title}}
-                                        </h2>
-                                    </a>
-                                    <p style="margin-left:10px;padding-bottom:5px;line-height:0;font-size:12px;"><b><a style="text-align:left" href="member/{{video.user.username}}">{{video.user.username}}</a></b></p>
-                                    <p style="margin-left:10px;font-size:12px;color:grey">{{video.viewCount}} views - <span am-time-ago="video.createdAt"></span></p>
-                                    <!--<p ng-show="video.liveViewCount > 0">{{video.liveViewCount}} live views</p>-->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="spacing-15"></div>
-                            <div class="btn btn-default col-xs-12" ng-click="loadMore()">load more</div>
-                        </div>
-
-                    </div>
-                </section>
+                    </section>
+                </div>
+                <div class="spacing-25"></div>
+                <a target="_blank" href="/register"><button class="btn-5 btn-intro" style="background:transparent;">Sign up!</button></a>
             </div>
         </div>
     </div>
+</div>
+
+<div class="content" ng-show="!currentUser">
+
+    <div class="spacing-100"></div> 
+    <div class="spacing-25"></div> 
+
+    <section style="padding:0px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                  <img style="height:200px" src="images/bidio_logo.png">
+                  <!--<div class="block">
+                    <div class="shape">
+                      <div class="cube outer">
+                        <div class="side-black left"></div>
+                        <div class="side-black right"></div>
+                        <div class="side-black top"></div>
+                        <div class="side-black bottom"></div>
+                        <div class="side-black front"></div>
+                        <div class="side-black back"></div>
+                        <div class="cube">
+                          <div class="side-black left"></div>
+                          <div class="side-black right"></div>
+                          <div class="side-black top"></div>
+                          <div class="side-black bottom"></div>
+                          <div class="side-black front"></div>
+                          <div class="side-black back"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>-->                    
+                  <div class="spacing-50"></div> 
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-7 home-desc">
+
+
+                    <!--<h2 class="section-title">Say Hello to <strong style="color:#FE9A2E">BIDIO</strong></h2>-->
+                    <h2 class="section-title">Energy is the <strong style="color:#FE9A2E">Imaginary Now</strong></h2>
+                    <p>Pay attention to watch and support original content. The decentralized cre8coin protocol empowers, and monitizes, creation and viewership. Utilitizing Multidimensional Tokenization, attention created though each channel and piece of unique content has market liqidity.</p><!--is a tradable assest with market liqidity.</p>-->
+                    <!--<p>Bidio was built for anyone to freely watch, support and create original videos. Our decentralized auction system helps genuine storytellers get sponsored without sacrificing authenticity.</p>-->
+                    <a target="_blank" href="/register"><button class="btn-6 btn-full" style="background:transparent;">Sign up!</button></a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="spacing-100"></div> 
+    <div class="spacing-25"></div> 
+
+    <section style="padding:0px;background:black">
+        <div class="container">
+            <div class="spacing-50"></div> 
+            <div class="row">
+                <div class="col-md-12">
+                    <!--<h2 class="section-title"><span style="color:#fff">Fund the </span> <strong style="color:#FE9A2E">Creative Revolution</strong></h2>-->
+                    <h2 class="section-title"><span style="color:#fff">support the token sale</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <a target="_blank" href="/token"><button class="btn-5 btn-full" style="background:transparent;">BUY TOKENS</button></a>
+                </div>
+            </div>
+            <div class="spacing-50"></div> 
+        </div>
+    </section>
+
+    <div class="spacing-50"></div>
+
+</div>
+
+<div class="content">
+    <section id="sec2">
+        <div class="spacing-25"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <!--<h2 class="section-title algn-left dec-title"><span>featured <strong style="color:#FE9A2E">Videos</strong></span></h2>-->
+                    <h2 class="section-title algn-left dec-title"><span><a href="/discover">discover</a></span></h2>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="dropdown sort-dropdown noselect" style="float:right">
+                        <a class="dropdown-toggle noselect" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <h2 class="noselect">{{sortText[sort]}}<span class="caret"></span></h2>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="sort-a" ng-click="selectSort('trendingScore DESC')"><h3>Trending</h3></a></li>
+                            <hr class="sort-hr">
+                            <li><a class="sort-a" ng-click="selectSort('viewCount DESC')"><h3>View Count</h3></a></li>
+                            <hr class="sort-hr">
+                            <li><a class="sort-a" ng-click="selectSort('createdAt DESC')"><h3>Date Created</h3></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="spacing-15"></div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" ng-repeat="video in videos" style="margin-top: 25px;">
+                    <div class="videoCard">
+                        <a ui-sref="video({id: video.id})">
+                            <video
+                                class="video-js vjs-default-skin"
+                                preload="true"
+                                width="640"
+                                height="264"
+                                fluid="true"
+                                poster="{{video.media.poster}}"
+                                vjs-video
+                                vjs-media="video.media"
+                                vjs-ratio="16:9">
+                            </video>
+                            <h2 class="discover-title" style="margin-top:10px;margin-left:10px; text-align:left;margin-bottom:5px;">
+                                {{video.title}}
+                            </h2>
+                        </a>
+                        <p style="margin-left:10px;padding-bottom:5px;line-height:0;font-size:12px;"><b><a style="text-align:left" href="member/{{video.user.username}}">{{video.user.username}}</a></b></p>
+                        <p style="margin-left:10px;font-size:12px;color:grey">{{video.viewCount}} views - <span am-time-ago="video.createdAt"></span></p>
+                        <!--<p ng-show="video.liveViewCount > 0">{{video.liveViewCount}} live views</p>-->
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="spacing-15"></div>
+                <div class="col-xs-12" ng-click="loadMore()"><button class="btn-6 btn-full" style="background:transparent;">LOAD MORE</button></div>
+            </div>
+
+        </div>
+    </section>
 </div>

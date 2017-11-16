@@ -2044,29 +2044,37 @@ angular.module("discover/index.tpl.html", []).run(["$templateCache", function ($
     "\n" +
     "    </div>\n" +
     "    <div class=\"container\">\n" +
-    "		<div class=\"dashboardVideos col-xs-12 col-sm-12 col-md-4 col-lg-4\" ng-repeat=\"video in videos\" style=\"margin-top: 25px;margin-bottom:25px;\">\n" +
-    "			<div class=\"spacing-25\"></div>\n" +
-    "	    	<a ui-sref=\"video({id: video.id})\">\n" +
-    "				<video \n" +
-    "					class=\"video-js vjs-default-skin\"\n" +
-    "					preload=\"true\" \n" +
-    "					width=\"640\" \n" +
-    "					height=\"264\" \n" +
-    "					fluid=\"true\"\n" +
-    "					poster=\"{{video.media.poster}}\"\n" +
-    "					vjs-video\n" +
-    "					vjs-media=\"video.media\"\n" +
-    "					vjs-ratio=\"16:9\">\n" +
-    "				</video>\n" +
-    "				<h2 class=\"discover-title\" style=\"margin-top:10px; text-align:left;margin-bottom:5px;\">\n" +
-    "					{{video.title}}\n" +
-    "				</h2>\n" +
-    "			</a>\n" +
-    "			<p style=\"padding-bottom:5px;line-height:0;font-size:12px;\"><b><a style=\"text-align:left\" href=\"member/{{video.user.username}}\">{{video.user.username}}</a></b></p>\n" +
-    "            <p style=\"font-size:12px;color:grey\">{{video.viewCount}} views - <span am-time-ago=\"video.createdAt\"></span></p>\n" +
+    "    	<div class=\"row\">\n" +
+    "			<div class=\"spacing-15\"></div>\n" +
+    "	        <div class=\"col-xs-12 col-sm-12 col-md-4 col-lg-4\" ng-repeat=\"video in videos\" style=\"margin-top: 25px;\">\n" +
+    "	            <div class=\"videoCard\">\n" +
+    "	                <a ui-sref=\"video({id: video.id})\">\n" +
+    "	                    <video\n" +
+    "	                        class=\"video-js vjs-default-skin\"\n" +
+    "	                        preload=\"true\"\n" +
+    "	                        width=\"640\"\n" +
+    "	                        height=\"264\"\n" +
+    "	                        fluid=\"true\"\n" +
+    "	                        poster=\"{{video.media.poster}}\"\n" +
+    "	                        vjs-video\n" +
+    "	                        vjs-media=\"video.media\"\n" +
+    "	                        vjs-ratio=\"16:9\">\n" +
+    "	                    </video>\n" +
+    "	                    <h2 class=\"discover-title\" style=\"margin-top:10px;margin-left:10px; text-align:left;margin-bottom:5px;\">\n" +
+    "	                        {{video.title}}\n" +
+    "	                    </h2>\n" +
+    "	                </a>\n" +
+    "	                <p style=\"margin-left:10px;padding-bottom:5px;line-height:0;font-size:12px;\"><b><a style=\"text-align:left\" href=\"member/{{video.user.username}}\">{{video.user.username}}</a></b></p>\n" +
+    "	                <p style=\"margin-left:10px;font-size:12px;color:grey\">{{video.viewCount}} views - <span am-time-ago=\"video.createdAt\"></span></p>\n" +
+    "	                <!--<p ng-show=\"video.liveViewCount > 0\">{{video.liveViewCount}} live views</p>-->\n" +
+    "	            </div>\n" +
+    "	        </div>\n" +
+    "    	</div>\n" +
+    "		<div class=\"row\" ng-hide=\"videos.length == 0\">\n" +
+    "        	<div class=\"spacing-15\"></div>\n" +
+    "			<div class=\"col-xs-12\" ng-click=\"loadMore()\"><button class=\"btn-6 btn-full\" style=\"background:transparent;\">LOAD MORE</button></div>\n" +
+    "			<!--<div class=\"btn btn-default col-xs-12\" ng-click=\"loadMore()\" ng-hide=\"videos.length < 50\">load more</div>-->\n" +
     "		</div>\n" +
-    "\n" +
-    "		<div class=\"btn btn-default col-xs-12\" ng-click=\"loadMore()\" ng-hide=\"videos.length < 50\">load more</div>\n" +
     "	</div>\n" +
     "	<div class=\"spacing-25\"></div>\n" +
     "</div>");
@@ -2158,250 +2166,166 @@ angular.module("forgot/success/index.tpl.html", []).run(["$templateCache", funct
 
 angular.module("home/index.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("home/index.tpl.html",
-    "<style type=\"text/css\">\n" +
-    "  #sec1 {\n" +
-    "    padding-bottom: 0;\n" +
-    "  }\n" +
-    "  section {\n" +
-    "    padding:120px 0;\n" +
-    "  }\n" +
-    "  section#sec2 {\n" +
-    "    padding:50px 0;\n" +
-    "  }\n" +
-    "  .videoCard{\n" +
-    "    box-shadow: 2px 2px 10px #999;\n" +
-    "    overflow: hidden;\n" +
-    "    padding-left:0px;padding-right:0px;\n" +
-    "}\n" +
-    "\n" +
-    "</style>\n" +
-    "<div id=\"main\">\n" +
-    "    <div id=\"wrapper\">\n" +
-    "        <div class=\"content-holder\">\n" +
-    "            <div class=\"content intro-sec\" ng-show=\"!currentUser\">\n" +
-    "                <div class=\"hero-wrap\">\n" +
-    "                    <div class=\"media-container\" data-bottom-top=\"transform: translateY(-300px);\" data-top-bottom=\"transform: translateY(300px);\">\n" +
-    "                        <div class=\"video-mask\"></div>\n" +
-    "                        <div class=\"video-holder\">\n" +
-    "                            <div class=\"background-vimeo\">\n" +
-    "                                <video autoplay=\"\" class=\"intro-video\" loop=\"\" muted=\"\" src=\"/videos/video.mp4\"></video>\n" +
-    "                            </div>\n" +
-    "                            <div class=\"intro-mobile bg\"></div>\n" +
-    "                        </div>\n" +
-    "                    </div>\n" +
-    "                    <div class=\"overlay\"></div>\n" +
-    "                    <div class=\"container\" style=\"min-height:50vh\">\n" +
-    "                        <div class=\"box on\" ng-animate=\"'box'\" ng-show=\"toggle\" style=\"padding-bottom:100px;\">\n" +
-    "                            <div class=\"mobile-intro\">\n" +
-    "                                <section class=\"rw-wrapper\">\n" +
-    "                                    <h2 class=\"rw-sentence\" style=\"font-size:2.75em;\"><span style=\"color:#fff\">Sponsored...</span><br></h2>\n" +
-    "                                    <div class=\"rw-words rw-words-1\" style=\"font-size:.75em;\">\n" +
-    "                                        <h2 class=\"rw-sentence\" style=\"font-size:2.75em;\"><span>Creators</span> <span>Artists</span> <span>Vloggers</span> <span>Producers</span>\n" +
-    "                                        <span>Musicians</span> <span>Journalists</span></h2>\n" +
-    "                                    </div>\n" +
-    "                                </section>\n" +
-    "                            </div>\n" +
-    "                            <div class=\"spacing-25\"></div>\n" +
-    "                            <!--<a target=\"_blank\" href=\"/video/5730ea61adfa6d0300a0a22b\"><button class=\"btn-5 btn-intro\" style=\"background:transparent;\">Watch Video!</button></a>-->\n" +
-    "                            <a target=\"_blank\" href=\"/register\"><button class=\"btn-5 btn-intro\" style=\"background:transparent;\">Sign up!</button></a>\n" +
-    "                        </div>\n" +
-    "                    </div>\n" +
+    "<div class=\"content intro-sec\" ng-show=\"!currentUser\">\n" +
+    "    <div class=\"hero-wrap\">\n" +
+    "        <div class=\"media-container\" data-bottom-top=\"transform: translateY(-300px);\" data-top-bottom=\"transform: translateY(300px);\">\n" +
+    "            <div class=\"video-mask\"></div>\n" +
+    "            <div class=\"video-holder\">\n" +
+    "                <div class=\"background-vimeo\">\n" +
+    "                    <video autoplay=\"\" class=\"intro-video\" loop=\"\" muted=\"\" src=\"/videos/video.mp4\"></video>\n" +
     "                </div>\n" +
+    "                <div class=\"intro-mobile bg\"></div>\n" +
     "            </div>\n" +
-    "            <div class=\"content\" ng-show=\"!currentUser\">\n" +
-    "                <section id=\"sec1\">\n" +
-    "                    <div class=\"container\">\n" +
-    "                        <div class=\"row\">\n" +
-    "                            <div class=\"col-md-5\">\n" +
-    "                                <div class=\"service-graphic sg2\">\n" +
-    "                                    <div class=\"screen monitor\">\n" +
-    "                                        <div class=\"content\">\n" +
-    "                                            <div class=\"browser\">\n" +
-    "                                                <ul class=\"btns\">\n" +
-    "                                                    <li></li>\n" +
-    "                                                    <li></li>\n" +
-    "                                                    <li></li>\n" +
-    "                                                </ul>\n" +
-    "                                                <div class=\"browser-content\">\n" +
-    "                                                    <ul class=\"txt\">\n" +
-    "                                                        <li></li>\n" +
-    "                                                        <li class=\"big\"></li>\n" +
-    "                                                        <li class=\"third\"></li>\n" +
-    "                                                        <li class=\"third\"></li>\n" +
-    "                                                        <li class=\"third\"></li>\n" +
-    "                                                        <li></li>\n" +
-    "                                                        <li></li>\n" +
-    "                                                        <li class=\"third\"></li>\n" +
-    "                                                        <li class=\"third\"></li>\n" +
-    "                                                        <li class=\"third\"></li>\n" +
-    "                                                        <li class=\"third\"></li>\n" +
-    "                                                        <li class=\"third\"></li>\n" +
-    "                                                        <li class=\"third\"></li>\n" +
-    "                                                        <li></li>\n" +
-    "                                                        <li class=\"big\"></li>\n" +
-    "                                                        <li class=\"third\"></li>\n" +
-    "                                                        <li class=\"third\"></li>\n" +
-    "                                                        <li class=\"third\"></li>\n" +
-    "                                                        <li class=\"third\"></li>\n" +
-    "                                                        <li class=\"third\"></li>\n" +
-    "                                                        <li class=\"third\"></li>\n" +
-    "                                                    </ul>\n" +
-    "                                                </div>\n" +
-    "                                            </div>\n" +
-    "                                        </div>\n" +
-    "                                        <div class=\"base\">\n" +
-    "                                            <div class=\"grey-shadow\"></div>\n" +
-    "                                            <div class=\"foot top\"></div>\n" +
-    "                                            <div class=\"foot bottom\"></div>\n" +
-    "                                        </div>\n" +
-    "                                    </div>\n" +
-    "                                    <div class=\"laptop\">\n" +
-    "                                        <div class=\"screen\">\n" +
-    "                                            <ul class=\"txt\">\n" +
-    "                                                <li></li>\n" +
-    "                                                <li class=\"big\"></li>\n" +
-    "                                                <li class=\"third\"></li>\n" +
-    "                                                <li class=\"third\"></li>\n" +
-    "                                                <li class=\"third\"></li>\n" +
-    "                                                <li></li>\n" +
-    "                                                <li></li>\n" +
-    "                                                <li class=\"third\"></li>\n" +
-    "                                                <li class=\"third\"></li>\n" +
-    "                                                <li class=\"third\"></li>\n" +
-    "                                                <li class=\"third\"></li>\n" +
-    "                                                <li class=\"third\"></li>\n" +
-    "                                                <li class=\"third\"></li>\n" +
-    "                                                <li></li>\n" +
-    "                                                <li class=\"big\"></li>\n" +
-    "                                                <li class=\"third\"></li>\n" +
-    "                                                <li class=\"third\"></li>\n" +
-    "                                                <li class=\"third\"></li>\n" +
-    "                                                <li class=\"third\"></li>\n" +
-    "                                                <li class=\"third\"></li>\n" +
-    "                                                <li class=\"third\"></li>\n" +
-    "                                            </ul>\n" +
-    "                                        </div>\n" +
-    "                                        <div class=\"btm\"></div>\n" +
-    "                                    </div>\n" +
-    "                                    <div class=\"phone\">\n" +
-    "                                        <div class=\"screen\">\n" +
-    "                                            <ul class=\"txt\">\n" +
-    "                                                <li></li>\n" +
-    "                                                <li></li>\n" +
-    "                                                <li class=\"txt-half\"></li>\n" +
-    "                                                <li class=\"txt-half\"></li>\n" +
-    "                                                <li></li>\n" +
-    "                                                <li></li>\n" +
-    "                                                <li></li>\n" +
-    "                                                <li></li>\n" +
-    "                                                <li></li>\n" +
-    "                                                <li></li>\n" +
-    "                                                <li class=\"txt-half\"></li>\n" +
-    "                                                <li class=\"txt-half\"></li>\n" +
-    "                                                <li class=\"txt-half\"></li>\n" +
-    "                                                <li class=\"txt-half\"></li>\n" +
-    "                                                <li></li>\n" +
-    "                                                <li></li>\n" +
-    "                                            </ul>\n" +
-    "                                        </div>\n" +
-    "                                        <div class=\"shadow\"></div>\n" +
-    "                                    </div>\n" +
-    "                                    <div class=\"ipad\" style=\"z-index: 999;\">\n" +
-    "                                        <div class=\"screen\">\n" +
-    "                                            <ul class=\"txt\">\n" +
-    "                                                <li></li>\n" +
-    "                                                <li class=\"big\"></li>\n" +
-    "                                                <li class=\"txt-half\"></li>\n" +
-    "                                                <li class=\"txt-half\"></li>\n" +
-    "                                                <li class=\"txt-half\"></li>\n" +
-    "                                                <li class=\"txt-half\"></li>\n" +
-    "                                                <li></li>\n" +
-    "                                                <li></li>\n" +
-    "                                                <li class=\"txt-half\"></li>\n" +
-    "                                                <li class=\"txt-half\"></li>\n" +
-    "                                                <li class=\"txt-half\"></li>\n" +
-    "                                                <li class=\"txt-half\"></li>\n" +
-    "                                                <li class=\"txt-half\"></li>\n" +
-    "                                                <li class=\"txt-half\"></li>\n" +
-    "                                                <li class=\"txt-half\"></li>\n" +
-    "                                                <li class=\"txt-half\"></li>\n" +
-    "                                                <li></li>\n" +
-    "                                            </ul>\n" +
-    "                                        </div>\n" +
-    "                                    </div>\n" +
-    "                                </div>\n" +
-    "                            </div>\n" +
-    "                            <div class=\"col-md-7 home-desc\">\n" +
-    "                                <h2 class=\"section-title\">Say Hello to <strong style=\"color:#FE9A2E\">BIDIO</strong></h2>\n" +
-    "                                <p>Bidio was built for anyone to freely watch, support and create original videos. Our decentralized auction system helps genuine storytellers get sponsored without sacrificing authenticity.</p>\n" +
-    "                                <!--<p>Our unique system helps creators get sponsored without sacrificing authenticity. Using Bidio, independent video producers can upload original content and set minimum bids, then brands compete for the exclusive sponsorship rights.</p>\n" +
-    "                                <div class=\"spacing-10\"></div>\n" +
-    "                                <p>Bidio promotes <a class=\"desc-link\" href=\"/blog/say-hello-to-bidio\">truly native advertising</a>, which matches the purpose of surrounding media. Simply upload your videos, and our team will make sponsorship deals happen.</p>-->\n" +
-    "                            </div>\n" +
+    "        </div>\n" +
+    "        <div class=\"overlay\"></div>\n" +
+    "        <div class=\"container\" style=\"min-height:50vh\">\n" +
+    "            <div class=\"box on\" ng-animate=\"'box'\" ng-show=\"toggle\" style=\"padding-bottom:100px;\">\n" +
+    "                <div class=\"mobile-intro\">\n" +
+    "                    <section class=\"rw-wrapper\">\n" +
+    "                        <h2 class=\"rw-sentence\" style=\"font-size:2.75em;\"><span style=\"color:#fff\">Sponsored...</span><br></h2>\n" +
+    "                        <div class=\"rw-words rw-words-1\" style=\"font-size:.75em;\">\n" +
+    "                            <h2 class=\"rw-sentence\" style=\"font-size:2.75em;\"><span>Creators</span> <span>Artists</span> <span>Vloggers</span> <span>Producers</span>\n" +
+    "                            <span>Musicians</span> <span>Journalists</span></h2>\n" +
     "                        </div>\n" +
-    "                    </div>\n" +
-    "                </section>\n" +
-    "            </div>\n" +
-    "            <div class=\"content\">\n" +
-    "                <section id=\"sec2\">\n" +
-    "                    <div class=\"container\">\n" +
-    "                        <div class=\"row\">\n" +
-    "                            <div class=\"col-md-6\">\n" +
-    "                                <!--<h2 class=\"section-title algn-left dec-title\"><span>featured <strong style=\"color:#FE9A2E\">Videos</strong></span></h2>-->\n" +
-    "                                <h2 class=\"section-title algn-left dec-title\"><span><a href=\"/discover\">discover</a></span></h2>\n" +
-    "\n" +
-    "                            </div>\n" +
-    "                            <div class=\"col-md-6\">\n" +
-    "                                <div class=\"dropdown sort-dropdown noselect\" style=\"float:right\">\n" +
-    "                                    <a class=\"dropdown-toggle noselect\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">\n" +
-    "                                        <h2 class=\"noselect\">{{sortText[sort]}}<span class=\"caret\"></span></h2>\n" +
-    "                                    </a>\n" +
-    "                                    <ul class=\"dropdown-menu\">\n" +
-    "                                        <li><a class=\"sort-a\" ng-click=\"selectSort('trendingScore DESC')\"><h3>Trending</h3></a></li>\n" +
-    "                                        <hr class=\"sort-hr\">\n" +
-    "                                        <li><a class=\"sort-a\" ng-click=\"selectSort('viewCount DESC')\"><h3>View Count</h3></a></li>\n" +
-    "                                        <hr class=\"sort-hr\">\n" +
-    "                                        <li><a class=\"sort-a\" ng-click=\"selectSort('createdAt DESC')\"><h3>Date Created</h3></a></li>\n" +
-    "                                    </ul>\n" +
-    "                                </div>\n" +
-    "                            </div>\n" +
-    "                        </div>\n" +
-    "                        <div class=\"row\">\n" +
-    "                            <div class=\"spacing-15\"></div>\n" +
-    "                            <div class=\"col-xs-12 col-sm-12 col-md-4 col-lg-4\" ng-repeat=\"video in videos\" style=\"margin-top: 25px;\">\n" +
-    "                                <div class=\"videoCard\">\n" +
-    "                                    <a ui-sref=\"video({id: video.id})\">\n" +
-    "                                        <video\n" +
-    "                                            class=\"video-js vjs-default-skin\"\n" +
-    "                                            preload=\"true\"\n" +
-    "                                            width=\"640\"\n" +
-    "                                            height=\"264\"\n" +
-    "                                            fluid=\"true\"\n" +
-    "                                            poster=\"{{video.media.poster}}\"\n" +
-    "                                            vjs-video\n" +
-    "                                            vjs-media=\"video.media\"\n" +
-    "                                            vjs-ratio=\"16:9\">\n" +
-    "                                        </video>\n" +
-    "                                        <h2 class=\"discover-title\" style=\"margin-top:10px;margin-left:10px; text-align:left;margin-bottom:5px;\">\n" +
-    "                                            {{video.title}}\n" +
-    "                                        </h2>\n" +
-    "                                    </a>\n" +
-    "                                    <p style=\"margin-left:10px;padding-bottom:5px;line-height:0;font-size:12px;\"><b><a style=\"text-align:left\" href=\"member/{{video.user.username}}\">{{video.user.username}}</a></b></p>\n" +
-    "                                    <p style=\"margin-left:10px;font-size:12px;color:grey\">{{video.viewCount}} views - <span am-time-ago=\"video.createdAt\"></span></p>\n" +
-    "                                    <!--<p ng-show=\"video.liveViewCount > 0\">{{video.liveViewCount}} live views</p>-->\n" +
-    "                                </div>\n" +
-    "                            </div>\n" +
-    "                        </div>\n" +
-    "                        <div class=\"row\">\n" +
-    "                            <div class=\"spacing-15\"></div>\n" +
-    "                            <div class=\"btn btn-default col-xs-12\" ng-click=\"loadMore()\">load more</div>\n" +
-    "                        </div>\n" +
-    "\n" +
-    "                    </div>\n" +
-    "                </section>\n" +
+    "                    </section>\n" +
+    "                </div>\n" +
+    "                <div class=\"spacing-25\"></div>\n" +
+    "                <a target=\"_blank\" href=\"/register\"><button class=\"btn-5 btn-intro\" style=\"background:transparent;\">Sign up!</button></a>\n" +
     "            </div>\n" +
     "        </div>\n" +
     "    </div>\n" +
+    "</div>\n" +
+    "\n" +
+    "<div class=\"content\" ng-show=\"!currentUser\">\n" +
+    "\n" +
+    "    <div class=\"spacing-100\"></div> \n" +
+    "    <div class=\"spacing-25\"></div> \n" +
+    "\n" +
+    "    <section style=\"padding:0px;\">\n" +
+    "        <div class=\"container\">\n" +
+    "            <div class=\"row\">\n" +
+    "                <div class=\"col-md-4\">\n" +
+    "                  <img style=\"height:200px\" src=\"images/bidio_logo.png\">\n" +
+    "                  <!--<div class=\"block\">\n" +
+    "                    <div class=\"shape\">\n" +
+    "                      <div class=\"cube outer\">\n" +
+    "                        <div class=\"side-black left\"></div>\n" +
+    "                        <div class=\"side-black right\"></div>\n" +
+    "                        <div class=\"side-black top\"></div>\n" +
+    "                        <div class=\"side-black bottom\"></div>\n" +
+    "                        <div class=\"side-black front\"></div>\n" +
+    "                        <div class=\"side-black back\"></div>\n" +
+    "                        <div class=\"cube\">\n" +
+    "                          <div class=\"side-black left\"></div>\n" +
+    "                          <div class=\"side-black right\"></div>\n" +
+    "                          <div class=\"side-black top\"></div>\n" +
+    "                          <div class=\"side-black bottom\"></div>\n" +
+    "                          <div class=\"side-black front\"></div>\n" +
+    "                          <div class=\"side-black back\"></div>\n" +
+    "                        </div>\n" +
+    "                      </div>\n" +
+    "                    </div>\n" +
+    "                  </div>-->                    \n" +
+    "                  <div class=\"spacing-50\"></div> \n" +
+    "                </div>\n" +
+    "                <div class=\"col-md-1\"></div>\n" +
+    "                <div class=\"col-md-7 home-desc\">\n" +
+    "\n" +
+    "\n" +
+    "                    <!--<h2 class=\"section-title\">Say Hello to <strong style=\"color:#FE9A2E\">BIDIO</strong></h2>-->\n" +
+    "                    <h2 class=\"section-title\">Energy is the <strong style=\"color:#FE9A2E\">Imaginary Now</strong></h2>\n" +
+    "                    <p>Pay attention to watch and support original content. The decentralized cre8coin protocol empowers, and monitizes, creation and viewership. Utilitizing Multidimensional Tokenization, attention created though each channel and piece of unique content has market liqidity.</p><!--is a tradable assest with market liqidity.</p>-->\n" +
+    "                    <!--<p>Bidio was built for anyone to freely watch, support and create original videos. Our decentralized auction system helps genuine storytellers get sponsored without sacrificing authenticity.</p>-->\n" +
+    "                    <a target=\"_blank\" href=\"/register\"><button class=\"btn-6 btn-full\" style=\"background:transparent;\">Sign up!</button></a>\n" +
+    "\n" +
+    "                </div>\n" +
+    "            </div>\n" +
+    "        </div>\n" +
+    "    </section>\n" +
+    "\n" +
+    "    <div class=\"spacing-100\"></div> \n" +
+    "    <div class=\"spacing-25\"></div> \n" +
+    "\n" +
+    "    <section style=\"padding:0px;background:black\">\n" +
+    "        <div class=\"container\">\n" +
+    "            <div class=\"spacing-50\"></div> \n" +
+    "            <div class=\"row\">\n" +
+    "                <div class=\"col-md-12\">\n" +
+    "                    <!--<h2 class=\"section-title\"><span style=\"color:#fff\">Fund the </span> <strong style=\"color:#FE9A2E\">Creative Revolution</strong></h2>-->\n" +
+    "                    <h2 class=\"section-title\"><span style=\"color:#fff\">support the token sale</h2>\n" +
+    "                </div>\n" +
+    "            </div>\n" +
+    "            <div class=\"row\">\n" +
+    "                <div class=\"col-md-12\">\n" +
+    "                    <a target=\"_blank\" href=\"/token\"><button class=\"btn-5 btn-full\" style=\"background:transparent;\">BUY TOKENS</button></a>\n" +
+    "                </div>\n" +
+    "            </div>\n" +
+    "            <div class=\"spacing-50\"></div> \n" +
+    "        </div>\n" +
+    "    </section>\n" +
+    "\n" +
+    "    <div class=\"spacing-50\"></div>\n" +
+    "\n" +
+    "</div>\n" +
+    "\n" +
+    "<div class=\"content\">\n" +
+    "    <section id=\"sec2\">\n" +
+    "        <div class=\"spacing-25\"></div>\n" +
+    "        <div class=\"container\">\n" +
+    "            <div class=\"row\">\n" +
+    "                <div class=\"col-md-6\">\n" +
+    "                    <!--<h2 class=\"section-title algn-left dec-title\"><span>featured <strong style=\"color:#FE9A2E\">Videos</strong></span></h2>-->\n" +
+    "                    <h2 class=\"section-title algn-left dec-title\"><span><a href=\"/discover\">discover</a></span></h2>\n" +
+    "\n" +
+    "                </div>\n" +
+    "                <div class=\"col-md-6\">\n" +
+    "                    <div class=\"dropdown sort-dropdown noselect\" style=\"float:right\">\n" +
+    "                        <a class=\"dropdown-toggle noselect\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">\n" +
+    "                            <h2 class=\"noselect\">{{sortText[sort]}}<span class=\"caret\"></span></h2>\n" +
+    "                        </a>\n" +
+    "                        <ul class=\"dropdown-menu\">\n" +
+    "                            <li><a class=\"sort-a\" ng-click=\"selectSort('trendingScore DESC')\"><h3>Trending</h3></a></li>\n" +
+    "                            <hr class=\"sort-hr\">\n" +
+    "                            <li><a class=\"sort-a\" ng-click=\"selectSort('viewCount DESC')\"><h3>View Count</h3></a></li>\n" +
+    "                            <hr class=\"sort-hr\">\n" +
+    "                            <li><a class=\"sort-a\" ng-click=\"selectSort('createdAt DESC')\"><h3>Date Created</h3></a></li>\n" +
+    "                        </ul>\n" +
+    "                    </div>\n" +
+    "                </div>\n" +
+    "            </div>\n" +
+    "            <div class=\"row\">\n" +
+    "                <div class=\"spacing-15\"></div>\n" +
+    "                <div class=\"col-xs-12 col-sm-12 col-md-4 col-lg-4\" ng-repeat=\"video in videos\" style=\"margin-top: 25px;\">\n" +
+    "                    <div class=\"videoCard\">\n" +
+    "                        <a ui-sref=\"video({id: video.id})\">\n" +
+    "                            <video\n" +
+    "                                class=\"video-js vjs-default-skin\"\n" +
+    "                                preload=\"true\"\n" +
+    "                                width=\"640\"\n" +
+    "                                height=\"264\"\n" +
+    "                                fluid=\"true\"\n" +
+    "                                poster=\"{{video.media.poster}}\"\n" +
+    "                                vjs-video\n" +
+    "                                vjs-media=\"video.media\"\n" +
+    "                                vjs-ratio=\"16:9\">\n" +
+    "                            </video>\n" +
+    "                            <h2 class=\"discover-title\" style=\"margin-top:10px;margin-left:10px; text-align:left;margin-bottom:5px;\">\n" +
+    "                                {{video.title}}\n" +
+    "                            </h2>\n" +
+    "                        </a>\n" +
+    "                        <p style=\"margin-left:10px;padding-bottom:5px;line-height:0;font-size:12px;\"><b><a style=\"text-align:left\" href=\"member/{{video.user.username}}\">{{video.user.username}}</a></b></p>\n" +
+    "                        <p style=\"margin-left:10px;font-size:12px;color:grey\">{{video.viewCount}} views - <span am-time-ago=\"video.createdAt\"></span></p>\n" +
+    "                        <!--<p ng-show=\"video.liveViewCount > 0\">{{video.liveViewCount}} live views</p>-->\n" +
+    "                    </div>\n" +
+    "                </div>\n" +
+    "            </div>\n" +
+    "            <div class=\"row\">\n" +
+    "                <div class=\"spacing-15\"></div>\n" +
+    "                <div class=\"col-xs-12\" ng-click=\"loadMore()\"><button class=\"btn-6 btn-full\" style=\"background:transparent;\">LOAD MORE</button></div>\n" +
+    "            </div>\n" +
+    "\n" +
+    "        </div>\n" +
+    "    </section>\n" +
     "</div>\n" +
     "");
 }]);
@@ -2646,8 +2570,8 @@ angular.module("nav/index.tpl.html", []).run(["$templateCache", function ($templ
     "          <li ng-class=\"{ active: isActive('/campaigns')}\" ng-show=\"currentUser\"><a href=\"/campaigns\">Campaigns</a></li>\n" +
     "          <li ng-class=\"{ active: isActive('/dashboard')}\" ng-show=\"currentUser\"><a href=\"/dashboard\">Dashboard</a></li>\n" +
     "          <li ng-show=\"currentUser\"><a href=\"/logout\">Logout</a></li>\n" +
-    "          <li ng-class=\"{ active: isActive('/creators')}\" ng-show=\"!currentUser\"><a class=\"bidio-nav\" href=\"/creators\">Creators</a></li>\n" +
-    "          <li ng-class=\"{ active: isActive('/sponsors')}\" ng-show=\"!currentUser\"><a class=\"bidio-nav\" href=\"/sponsors\">Sponsors</a></li>\n" +
+    "          <!--<li ng-class=\"{ active: isActive('/creators')}\" ng-show=\"!currentUser\"><a class=\"bidio-nav\" href=\"/creators\">Creators</a></li>\n" +
+    "          <li ng-class=\"{ active: isActive('/sponsors')}\" ng-show=\"!currentUser\"><a class=\"bidio-nav\" href=\"/sponsors\">Sponsors</a></li>-->\n" +
     "          <li ng-class=\"{ active: isActive('/login')}\" ng-show=\"!currentUser\"><a href=\"/login\">Login</a></li>\n" +
     "          <li ng-class=\"{ active: isActive('/register')}\" ng-show=\"!currentUser\"><a href=\"/register\">Register</a></li>\n" +
     "        </ul>\n" +
@@ -2895,141 +2819,6 @@ angular.module("token/index.tpl.html", []).run(["$templateCache", function ($tem
   $templateCache.put("token/index.tpl.html",
     "<style>\n" +
     "  .header { background:#000; }\n" +
-    "  //h2{color:white;}\n" +
-    "  //.projectLink{color:white;padding:25px;}\n" +
-    "\n" +
-    "  .block\n" +
-    "  {\n" +
-    "    position: relatve;\n" +
-    "    width: 200px;\n" +
-    "    height: 200px;\n" +
-    "    margin: 5% auto;\n" +
-    "  }\n" +
-    "\n" +
-    "  .shape{\n" +
-    "    width: 100px;\n" +
-    "    height: 100px;\n" +
-    "  }\n" +
-    "\n" +
-    "  .cube{\n" +
-    "    position: relative;\n" +
-    "    transition:transform .5s;\n" +
-    "    transform-style: preserve-3d;\n" +
-    "  }\n" +
-    "\n" +
-    "  .cube.outer{\n" +
-    "    width: 200px;\n" +
-    "    height: 200px;\n" +
-    "    transform-style: preserve-3d;\n" +
-    "    animation: spin 4s infinite cubic-bezier(.67,.03,.31,.98);\n" +
-    "  }\n" +
-    "\n" +
-    "  .cube.outer > .cube{\n" +
-    "    width: 100px;\n" +
-    "    height: 100px;\n" +
-    "    transform: translateX(50px) translateY(50px);\n" +
-    "    animation: spin-inner 4s infinite cubic-bezier(.67,.03,.31,.98);\n" +
-    "  }\n" +
-    "\n" +
-    "  .side{\n" +
-    "    position: absolute;\n" +
-    "    width: 100%;\n" +
-    "    height: 100%;\n" +
-    "    /*backface-visibility: hidden;*/\n" +
-    "    \n" +
-    "    font-size: 30px;\n" +
-    "    line-height: 100px;\n" +
-    "    text-align: center;\n" +
-    "    opacity: .9;\n" +
-    "    transition: all .2s linear;\n" +
-    "    border: 3px solid #fff;\n" +
-    "    \n" +
-    "    background: rgba(255,255,255, 0.1);\n" +
-    "    box-shadow: inset 0 0 100% 0 rgba(255, 255, 255, .1);\n" +
-    "    box-sizing: border-box;\n" +
-    "  }\n" +
-    "\n" +
-    "  .outer > .cube .side {  \n" +
-    "    background: rgba(255, 255, 255, 0.05);\n" +
-    "  }\n" +
-    "\n" +
-    "  .side.left{\n" +
-    "    transform: translateX(-50px) rotateY(-90deg);  \n" +
-    "  }\n" +
-    "\n" +
-    "  .cube.outer > .side.left{\n" +
-    "    transform: translateX(-100px) rotateY(-90deg);  \n" +
-    "  }\n" +
-    "\n" +
-    "  .side.right{\n" +
-    "    transform: translateX(50px) rotateY(90deg);  \n" +
-    "  }\n" +
-    "\n" +
-    "  .cube.outer > .side.right{\n" +
-    "    transform: translateX(100px) rotateY(90deg);  \n" +
-    "  }\n" +
-    "\n" +
-    "  .side.top{ \n" +
-    "    transform: translateY(-50px) rotateX(90deg);  \n" +
-    "  }\n" +
-    "\n" +
-    "  .cube.outer > .side.top{\n" +
-    "    transform: translateY(-100px) rotateX(90deg);  \n" +
-    "  }\n" +
-    "\n" +
-    "  .side.bottom{ \n" +
-    "    transform: translateY(50px) rotateX(-90deg);  \n" +
-    "  }\n" +
-    "\n" +
-    "  .cube.outer > .side.bottom{\n" +
-    "    transform: translateY(100px) rotateX(-90deg);  \n" +
-    "  }\n" +
-    "\n" +
-    "  .side.front{\n" +
-    "    transform: translateZ(50px); \n" +
-    "  }\n" +
-    "\n" +
-    "  .cube.outer > .side.front{\n" +
-    "    transform: translateZ(100px);  \n" +
-    "  }\n" +
-    "\n" +
-    "  .side.back{  \n" +
-    "    transform: translateZ(-50px) rotateX(180deg);\n" +
-    "  }\n" +
-    "\n" +
-    "  .cube.outer > .side.back{\n" +
-    "    transform: translateZ(-100px) rotateX(180deg); \n" +
-    "  }\n" +
-    "\n" +
-    "  @keyframes spin {  \n" +
-    "    0% {\n" +
-    "      transform: rotateX(0deg) rotateY(0deg);\n" +
-    "    }\n" +
-    "    33.333% {\n" +
-    "      transform: rotateX(-35deg) rotateY(-45deg);\n" +
-    "    }\n" +
-    "    66.666% {\n" +
-    "      transform: rotateX(-35deg) rotateY(45deg);\n" +
-    "    }  \n" +
-    "    100% {\n" +
-    "      transform: rotateX(0deg) rotateY(0deg);\n" +
-    "    }\n" +
-    "  }\n" +
-    "\n" +
-    "  @keyframes spin-inner {\n" +
-    "    0% {\n" +
-    "      transform: translateX(50px) translateY(50px) rotateY(0deg) rotateX(90deg);\n" +
-    "    }\n" +
-    "    33.333% {\n" +
-    "      transform: translateX(50px) translateY(50px) rotateY(90deg) rotateX(90deg);\n" +
-    "    }\n" +
-    "    66.666% {\n" +
-    "      transform: translateX(50px) translateY(50px) rotateY(-90deg) rotateX(90deg);\n" +
-    "    }\n" +
-    "    100% {\n" +
-    "      transform: translateX(50px) translateY(50px) rotateY(0deg) rotateX(90deg);\n" +
-    "    }\n" +
-    "  }\n" +
     "</style>\n" +
     "\n" +
     "<div class=\"header\">\n" +
@@ -3055,7 +2844,7 @@ angular.module("token/index.tpl.html", []).run(["$templateCache", function ($tem
     "    </div>\n" +
     "  </div>\n" +
     "  <div class=\"spacing-10\"></div>\n" +
-    "  <p style=\"color:white;text-align:center;font-family:ubuntu;font-size:22px\">create</p>\n" +
+    "  <p style=\"color:white;text-align:center;font-family:ubuntu;font-size:22px\">ENERGY IS THE IMAGINARY NOW</p>\n" +
     "  <div class=\"spacing-100\"></div>\n" +
     "</div>\n" +
     "\n" +
@@ -3063,25 +2852,40 @@ angular.module("token/index.tpl.html", []).run(["$templateCache", function ($tem
     "\n" +
     "  <div class=\"spacing-50\"></div>\n" +
     "\n" +
-    "  <h1>create the next wave</h1>\n" +
-    "  <p>universal income</p>\n" +
+    "  <h2 class=\"section-title\">create the next wave</h2>\n" +
+    "  <p>Universal Income</p>\n" +
+    "  <p>ERC-88 Standard</p>\n" +
+    "  <p>A muntidemsional attention-backed asset class</p>\n" +
+    "  <div class=\"row\">\n" +
+    "    <a class=\"col-xs-6\" href=\"#whitepaper\"><button class=\"btn-6 btn-full\" style=\"background:transparent;\">White Paper</button></a>\n" +
+    "    <a class=\"col-xs-6\" href=\"https://www.medium.co/bidio\"><button class=\"btn-6 btn-full\" style=\"background:transparent;\">Blog</button></a>\n" +
+    "  </div>\n" +
     "\n" +
-    "  <iframe width='560' height='315' src='http://www.bidio.co/v/57954ce9dea046030031007a' frameborder='0' allowfullscreen></iframe>\n" +
-    "  <iframe width='560' height='315' src='http://www.bidio.co/v/57958aa3a1ad8f030032230c' frameborder='0' allowfullscreen></iframe>\n" +
+    "  <div class=\"spacing-50\"></div>\n" +
+    "\n" +
+    "  <iframe width='560' height='315' src='https://www.bidio.co/v/57954ce9dea046030031007a' frameborder='0' allowfullscreen></iframe>\n" +
+    "  <iframe width='560' height='315' src='https://www.bidio.co/v/57958aa3a1ad8f030032230c' frameborder='0' allowfullscreen></iframe>\n" +
+    "  <p>road map</p>\n" +
     "\n" +
     "  <div class=\"spacing-100\"></div>\n" +
     "\n" +
+    "\n" +
     "  <div class=\"\">\n" +
-    "    <h1>contract address: 0x35F8e9dFc3f97fa18CEf166a6099074B5340e843</h1>\n" +
-    "    <h3>5491 ETH recieved</h3>\n" +
+    "    <h2 class=\"section-title\">contract address: 0x35F8e9dFc3f97fa18CEf166a6099074B5340e843</h2>\n" +
+    "    <p>29629.62 ETH recieved</p>\n" +
+    "    <p>1ETH = f(x) CRE8 Tokens -- functional sale over time</p>\n" +
+    "    <p>CRE8 STG1 Tokens are fund raising tokens and therefore do not have any rights, uses, purpose, attributes, functionalities or features, express or implied, including, without limitation, any uses, purpose, attributes, functionalities or features on the CRE8 Platform. They are a permant record on the ETH blockchain of a show of support for the attention based CRE8 protocol.</p>\n" +
+    "  </div>\n" +
+    "\n" +
+    "  <div class=\"row\">\n" +
+    "    <a class=\"col-xs-12\" href=\"#\"><button class=\"btn-6 btn-full\" style=\"background:transparent;\">White Paper</button></a>\n" +
     "  </div>\n" +
     "\n" +
     "  <div class=\"spacing-100\"></div>\n" +
     "\n" +
     "  <div class=\"\">\n" +
-    "    <h1>The Team</h1>\n" +
+    "    <h2 class=\"section-title\">The Team</h2>\n" +
     "    <a class=\"projectLink\" href=\"https://www.experiencenovo.io\">\n" +
-    "      <h2>NOVO</h2>\n" +
     "      <img src=\"https://www.experiencenovo.io/images/novo/logo.png\">\n" +
     "    </a>\n" +
     "  </div>\n" +
