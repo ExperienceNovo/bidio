@@ -91,17 +91,17 @@ module.exports = {
 
 						//creatorContent
 						creatorModel._id = model.video;
-						if (viewModelChannel._time != 0 && viewModel._time && req.user){blockchainService.createMultiDimensionalViewToken(creatorModel);}
+						if (creatorModel._time != 0 && viewModel._time && req.user){blockchainService.createMultiDimensionalViewToken(creatorModel);}
 
 						//creatorChannel -- VIEWER PAYING ATTENTION
 						creatorModel._id = model.video;
-						if (req.user){viewerModel._id = req.user.walletAddress}
-						else{viewerModel._id = '0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609'}
-						if (viewModelChannel._time != 0 && viewModel._time){blockchainService.createMultiDimensionalViewToken(creatorModel);}
+						if (req.user){creatorModel._id = req.user.walletAddress}
+						else{creatorModel._id = '0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609'}
+						if (creatorModel._time != 0 && creatorModel._time){blockchainService.createMultiDimensionalViewToken(creatorModel);}
 
 						//creatorGeneral
 						viewerModel._id = 'general';
-						if (viewModelChannel._time != 0 && viewModel._time && req.user){blockchainService.createMultiDimensionalViewToken(creatorModel);}
+						if (creatorModel._time != 0 && creatorModel._time && req.user){blockchainService.createMultiDimensionalViewToken(creatorModel);}
 
 		  			});
 		  		});
