@@ -2840,7 +2840,7 @@ angular.module("token/index.tpl.html", []).run(["$templateCache", function ($tem
     "    </div>\n" +
     "  </div>\n" +
     "  <div class=\"spacing-10\"></div>\n" +
-    "  <p style=\"color:white;text-align:center;font-family:ubuntu;font-size:22px\">ENERGY IS THE IMAGINARY NOW</p>\n" +
+    "  <p style=\"color:white;text-align:center;font-size:48px\">ENERGY IS THE IMAGINARY NOW</p>\n" +
     "  <div class=\"spacing-100\"></div>\n" +
     "</div>\n" +
     "\n" +
@@ -2853,15 +2853,15 @@ angular.module("token/index.tpl.html", []).run(["$templateCache", function ($tem
     "  <p>ERC-88 Standard</p>\n" +
     "  <p>A muntidemsional attention-backed asset class</p>\n" +
     "  <div class=\"row\">\n" +
-    "    <a class=\"col-xs-6\" href=\"#whitepaper\"><button class=\"btn-6 btn-full\" style=\"background:transparent;\">White Paper</button></a>\n" +
-    "    <a class=\"col-xs-6\" href=\"https://www.medium.com/bidio\"><button class=\"btn-6 btn-full\" style=\"background:transparent;\">Blog</button></a>\n" +
+    "    <a class=\"col-xs-6\" target=\"_blank\" href=\"https://docs.google.com/document/d/1WJPTpY6vdcu-olyttI1WDFTT5NZGRm2T3OK6IqML3CA/edit\"><button class=\"btn-6 btn-full\" style=\"background:transparent;\">White Paper</button></a>\n" +
+    "    <a class=\"col-xs-6\" target=\"_blank\" href=\"https://www.medium.com/bidio\"><button class=\"btn-6 btn-full\" style=\"background:transparent;\">Blog</button></a>\n" +
     "  </div>\n" +
     "\n" +
     "  <div class=\"spacing-50\"></div>\n" +
     "\n" +
     "  <iframe width='560' height='315' src='https://www.bidio.co/v/57954ce9dea046030031007a' frameborder='0' allowfullscreen></iframe>\n" +
     "  <iframe width='560' height='315' src='https://www.bidio.co/v/57958aa3a1ad8f030032230c' frameborder='0' allowfullscreen></iframe>\n" +
-    "  <p>road map</p>\n" +
+    "  <!--<p>road map</p>-->\n" +
     "\n" +
     "  <div class=\"spacing-100\"></div>\n" +
     "\n" +
@@ -2874,7 +2874,7 @@ angular.module("token/index.tpl.html", []).run(["$templateCache", function ($tem
     "  </div>\n" +
     "\n" +
     "  <div class=\"row\">\n" +
-    "    <a class=\"col-xs-12\" href=\"#\"><button class=\"btn-6 btn-full\" style=\"background:transparent;\">White Paper</button></a>\n" +
+    "    <a class=\"col-xs-12\" href=\"https://docs.google.com/document/d/1WJPTpY6vdcu-olyttI1WDFTT5NZGRm2T3OK6IqML3CA/edit\"><button class=\"btn-6 btn-full\" style=\"background:transparent;\">White Paper</button></a>\n" +
     "  </div>\n" +
     "\n" +
     "  <div class=\"spacing-100\"></div>\n" +

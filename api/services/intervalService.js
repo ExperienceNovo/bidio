@@ -71,7 +71,7 @@ module.exports.intervalService = function(){
 	personal.unlockAccount('0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609', '?><Mtrev77922', 1000000);
 
 	//blockchainService.createCredit({address:'0x0Aa3747A8027c7463679c283c70bB479A141f5C0',amount:100})
-	blockchainService.createMultiDimensionalViewToken({user:'0x0Aa3747A8027c7463679c283c70bB479A141f5C0', video:'general', watchTime:1000});
+	blockchainService.createMultiDimensionalViewToken({_address:'0x0Aa3747A8027c7463679c283c70bB479A141f5C0', _id:'general', _time:1000});
 	//if (typeof web3 !== 'undefined') {web3 = new Web3(web3.currentProvider);}
 	//else {web3 = new Web3(new Web3.providers.WebsocketProvider("ws://localhost:8546"));}
 	//web3.setProvider(new Web3.providers.WebsocketProvider('ws://localhost:8546'));
