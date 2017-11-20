@@ -37,7 +37,6 @@ module.exports = {
 			bid: req.param('bid'),
 			watchTime: req.param('watchTime'),
 		};
-
 		View.create(model)
 		.exec(function(err, model) {
 			if (err) {return console.log(err)}
@@ -63,63 +62,47 @@ module.exports = {
 
 				});
 
-				var viewModel = {
-					watchTime: model.watchTime,
-					video: model.video,
-				};
+				//VIEWER
+				//EXTRA DIMENSION EX CREATOR & VIEWER
+				var viewerModel = {};
+				if (req.user){viewerModel._address = req.user.walletAddress}
+				else{viewerModel._address = '0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609'}
+				viewerModel._time = model.watchTime;
 
-				if (req.user){viewModel.user=req.user.walletAddress}
-				else{viewModel.user='0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609'}
+				//viewerContent -- PERCENTAGE OF SHARED CONTENT TOKEN
+				viewerModel._id = model.video;
+				if (viewerModel._time != 0 && viewerModel._time && req.user){blockchainService.createMultiDimensionalViewToken(viewerModel);}
 
-				//gotta work
-				//this method isnt really effecient ->re general, multidemsional viewtoken..
-				/*viewModel = {
-					watchTime: model.watchTime,
-					content: model.video,
-					channel: model.video,
-				}*/
-				//total viewtoken balance --
-
-				//Legacy viewToken viewer
-		  		//blockchainService.createView(viewModel);
-
-				//viewtokens
-				//--> identifer --> video, channel, general, viewer? 
-
-				//content
-				if (viewModel.watchTime != 0 && viewModel.watchTime){
-					blockchainService.createMultiDimensionalViewToken(viewModel);
-				}
-
-				//channel
-				//blockchainService.createMultiDimensionalViewToken(viewModel);
-				//general
-				viewModel.video = 'general'
-				if (viewModel.watchTime != 0 && viewModel.watchTime){
-					blockchainService.createMultiDimensionalViewToken(viewModel);
-				}
+				//viewerGeneral -- GENERAL TOKEN
+				viewerModel._id = 'general';
+				if (viewerModel._time != 0 && viewerModel._time && req.user){blockchainService.createMultiDimensionalViewToken(viewerModel);}
 				
-		  		//viewToken creator
-		  		//channel token
 		  		Video.find({id:req.param('video')}).then(function(videoModel){
 		  			User.find({id:videoModel[0].user}).then(function(userModel){
-		  				var viewModelChannel = {
-							watchTime: model.watchTime,
-							video: userModel[0].walletAddress,
-						};
-						if (req.user){viewModelChannel.user=req.user.walletAddress}
-						//else{viewModelChannel.user='0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609'}
-						//var viewModelCreaterToken = {
-						//	watchTime: model.watchTime,
-						//	video: userModel[0].walletAddress,
-						//	user: userModel[0].walletAddress
-						//};
-						//channeltoken
-						console.log(viewModelChannel);
-						if (viewModelChannel.watchTime != 0 && viewModel.watchTime && req.user){
-							blockchainService.createMultiDimensionalViewToken(viewModelChannel);
-						}
-						//blockchainService.createMultiDimensionalViewToken(viewModelCreaterToken);
+
+						//viewerChannel -- PERCENTAGE OF SHARED CHANNEL TOKEN
+						viewerModel._id = userModel[0].walletAddress;
+						if (viewerModel._time != 0 && viewerModel._time){blockchainService.createMultiDimensionalViewToken(viewerModel);}
+
+						//CREATOR
+		  				var creatorModel = {};
+						creatorModel._address = userModel[0].walletAddress;
+						creatorModel._time = model.watchTime;
+
+						//creatorContent
+						creatorModel._id = model.video;
+						if (viewModelChannel._time != 0 && viewModel._time && req.user){blockchainService.createMultiDimensionalViewToken(creatorModel);}
+
+						//creatorChannel -- VIEWER PAYING ATTENTION
+						creatorModel._id = model.video;
+						if (req.user){viewerModel._id = req.user.walletAddress}
+						else{viewerModel._id = '0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609'}
+						if (viewModelChannel._time != 0 && viewModel._time){blockchainService.createMultiDimensionalViewToken(creatorModel);}
+
+						//creatorGeneral
+						viewerModel._id = 'general';
+						if (viewModelChannel._time != 0 && viewModel._time && req.user){blockchainService.createMultiDimensionalViewToken(creatorModel);}
+
 		  			});
 		  		});
 			

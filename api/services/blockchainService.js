@@ -59,7 +59,7 @@ module.exports = {
 		//use address vs mongoid
 		//use address vs 'video' re:indetifier
 		console.log(model)
-		viewContract.methods.createView(model.user, model.video, model.watchTime).send({
+		viewContract.methods.createView(model._address, model._id, model._time).send({
 			from: '0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609',
 			gas: 888888
 		}, function(error, result){
