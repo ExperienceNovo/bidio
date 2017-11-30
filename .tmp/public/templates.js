@@ -1,4 +1,4 @@
-angular.module('templates-app', ['admin/index.tpl.html', 'admin/templates/bids.tpl.html', 'admin/templates/contests.tpl.html', 'admin/templates/main.tpl.html', 'admin/templates/users.tpl.html', 'admin/templates/videos.tpl.html', 'blog/index.tpl.html', 'blogPost/index.tpl.html', 'campaign/index.tpl.html', 'campaign/templates/about.tpl.html', 'campaign/templates/main.tpl.html', 'campaign/templates/submitModal.tpl.html', 'campaigns/index.tpl.html', 'creators/index.tpl.html', 'dashboard/index.tpl.html', 'dashboard/templates/addBannerPhoto.tpl.html', 'dashboard/templates/addCampaignPhoto.tpl.html', 'dashboard/templates/addProfilePic.tpl.html', 'dashboard/templates/addVideo.tpl.html', 'dashboard/templates/analytics.tpl.html', 'dashboard/templates/campaign.tpl.html', 'dashboard/templates/campaigns.tpl.html', 'dashboard/templates/createCampaign.tpl.html', 'dashboard/templates/createVideo.tpl.html', 'dashboard/templates/home.tpl.html', 'dashboard/templates/importVideo.tpl.html', 'dashboard/templates/profile.tpl.html', 'dashboard/templates/profileEdit.tpl.html', 'dashboard/templates/video.tpl.html', 'dashboard/templates/videos.tpl.html', 'dashboard/templates/viewModal.tpl.html', 'discover/index.tpl.html', 'footer/index.tpl.html', 'forgot/index.tpl.html', 'forgot/success/index.tpl.html', 'home/index.tpl.html', 'login/index.tpl.html', 'member/index.tpl.html', 'nav/index.tpl.html', 'privacy/index.tpl.html', 'register/index.tpl.html', 'reset/index.tpl.html', 'reset/success/index.tpl.html', 'search/index.tpl.html', 'sponsors/index.tpl.html', 'token/index.tpl.html', 'video/index.tpl.html', 'video/templates/bid.tpl.html', 'video/templates/shareDialog.tpl.html', 'videoEmbed/v/index.tpl.html']);
+angular.module('templates-app', ['admin/index.tpl.html', 'admin/templates/bids.tpl.html', 'admin/templates/contests.tpl.html', 'admin/templates/main.tpl.html', 'admin/templates/users.tpl.html', 'admin/templates/videos.tpl.html', 'blog/index.tpl.html', 'blogPost/index.tpl.html', 'campaign/index.tpl.html', 'campaign/templates/about.tpl.html', 'campaign/templates/main.tpl.html', 'campaign/templates/submitModal.tpl.html', 'campaigns/index.tpl.html', 'creators/index.tpl.html', 'dashboard/index.tpl.html', 'dashboard/templates/addBannerPhoto.tpl.html', 'dashboard/templates/addCampaignPhoto.tpl.html', 'dashboard/templates/addProfilePic.tpl.html', 'dashboard/templates/addVideo.tpl.html', 'dashboard/templates/analytics.tpl.html', 'dashboard/templates/campaign.tpl.html', 'dashboard/templates/campaigns.tpl.html', 'dashboard/templates/createCampaign.tpl.html', 'dashboard/templates/createVideo.tpl.html', 'dashboard/templates/home.tpl.html', 'dashboard/templates/importVideo.tpl.html', 'dashboard/templates/profile.tpl.html', 'dashboard/templates/profileEdit.tpl.html', 'dashboard/templates/video.tpl.html', 'dashboard/templates/videos.tpl.html', 'dashboard/templates/viewModal.tpl.html', 'discover/index.tpl.html', 'footer/index.tpl.html', 'forgot/index.tpl.html', 'forgot/success/index.tpl.html', 'home/index.tpl.html', 'login/index.tpl.html', 'market/index.tpl.html', 'member/index.tpl.html', 'nav/index.tpl.html', 'privacy/index.tpl.html', 'register/index.tpl.html', 'reset/index.tpl.html', 'reset/success/index.tpl.html', 'search/index.tpl.html', 'sponsors/index.tpl.html', 'token/index.tpl.html', 'token/paper.tpl.html', 'video/index.tpl.html', 'video/templates/bid.tpl.html', 'video/templates/shareDialog.tpl.html', 'videoEmbed/v/index.tpl.html']);
 
 angular.module("admin/index.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("admin/index.tpl.html",
@@ -645,7 +645,7 @@ angular.module("dashboard/index.tpl.html", []).run(["$templateCache", function (
     "	<div class=\"spacing-15\"></div>\n" +
     "	<ul class=\"nav nav-tabs\" style=\"width:100%;text-align:center;background:#fff\">\n" +
     "		<li ui-sref-active=\"active\" class=\"ng-scope active\" style=\"float:none;display:inline-block;\">\n" +
-    "			<a ui-sref=\"dashboard.videos\" href=\"/dashboard/videos\">Videos</a>\n" +
+    "			<a ui-sref=\"dashboard.videos\" href=\"/dashboard/videos\">Content</a>\n" +
     "		</li>		\n" +
     "		<li ui-sref-active=\"active\" class=\"ng-scope\" style=\"float:none;display:inline-block;\">\n" +
     "			<a ui-sref=\"dashboard.profileMain\" href=\"/dashboard/profile\">Profile</a>\n" +
@@ -677,7 +677,7 @@ angular.module("dashboard/index.tpl.html", []).run(["$templateCache", function (
     "	      <md-divider ></md-divider>\n" +
     "	      <md-list-item ui-sref-active=\"active\" class=\"menu-select md-3-line\" md-ink-ripple=\"#101010\" ng-click=\"changePath('/videos')\">\n" +
     "	        <div class=\"md-list-item-text\" layout=\"column\">\n" +
-    "	          <h3><a ui-sref=\"dashboard.videos\"><span class=\"pull-left\">Videos</span><md-icon class=\"pull-right\">videocam</md-icon></a></h3>\n" +
+    "	          <h3><a ui-sref=\"dashboard.videos\"><span class=\"pull-left\">Content</span><md-icon class=\"pull-right\">videocam</md-icon></a></h3>\n" +
     "	        </div>\n" +
     "	      </md-list-item>\n" +
     "	      <md-divider ></md-divider>\n" +
@@ -2363,6 +2363,25 @@ angular.module("login/index.tpl.html", []).run(["$templateCache", function ($tem
     "</div>");
 }]);
 
+angular.module("market/index.tpl.html", []).run(["$templateCache", function ($templateCache) {
+  $templateCache.put("market/index.tpl.html",
+    "<div class=\"container\">\n" +
+    "    <div class=\"spacing-50\"></div>\n" +
+    "    <div class=\"blog-head\"><span class=\"bidio-orange\">Market</span></div>\n" +
+    "    <div class=\"spacing-25\"></div>\n" +
+    "    <div class=\"col-md-6\">\n" +
+    "        <div ng-repeat=\"post in [1,2,3,4]\">\n" +
+    "            <h2 class=\"posted-title\">bids {{post}}, multidemsional</h2>\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "    <div class=\"col-md-6\">\n" +
+    "        <div ng-repeat=\"post in [1,2,3,4]\">\n" +
+    "            <h2 class=\"posted-title\">asks {{post}}, multidemsional</h2>\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "</div>");
+}]);
+
 angular.module("member/index.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("member/index.tpl.html",
     "<div class=\"container\">\n" +
@@ -2562,7 +2581,7 @@ angular.module("nav/index.tpl.html", []).run(["$templateCache", function ($templ
     "          <!--<li><a href=\"/search\">Search</a></li>-->\n" +
     "          <li ng-class=\"{ active: isActive('/dashboard/videos')}\" ng-show=\"currentUser\"><a href=\"/dashboard/videos\">Upload</a></li>\n" +
     "          <li ng-class=\"{ active: isActive('/discover')}\"><a href=\"/discover\">Discover</a></li>\n" +
-    "          <li ng-class=\"{ active: isActive('/discover')}\"><a href=\"#\">Market</a></li>\n" +
+    "          <li ng-class=\"{ active: isActive('/discover')}\"><a href=\"/market\">Market</a></li>\n" +
     "          <li ng-class=\"{ active: isActive('/campaigns')}\" ng-show=\"currentUser\"><a href=\"/campaigns\">Campaigns</a></li>\n" +
     "          <li ng-class=\"{ active: isActive('/dashboard')}\" ng-show=\"currentUser\"><a href=\"/dashboard\">Dashboard</a></li>\n" +
     "          <li ng-show=\"currentUser\"><a href=\"/logout\">Logout</a></li>\n" +
@@ -2840,7 +2859,7 @@ angular.module("token/index.tpl.html", []).run(["$templateCache", function ($tem
     "    </div>\n" +
     "  </div>\n" +
     "  <div class=\"spacing-10\"></div>\n" +
-    "  <p style=\"color:white;text-align:center;font-size:48px\">ENERGY IS THE IMAGINARY NOW</p>\n" +
+    "  <p style=\"color:white;text-align:center;font-size:30px\">ENERGY IS THE IMAGINARY NOW</p>\n" +
     "  <div class=\"spacing-100\"></div>\n" +
     "</div>\n" +
     "\n" +
@@ -2851,26 +2870,30 @@ angular.module("token/index.tpl.html", []).run(["$templateCache", function ($tem
     "  <h2 class=\"section-title\">create the next wave</h2>\n" +
     "  <p>Universal Income</p>\n" +
     "  <p>ERC-88 Standard</p>\n" +
-    "  <p>A muntidemsional attention-backed asset class</p>\n" +
-    "  <div class=\"row\">\n" +
-    "    <a class=\"col-xs-6\" target=\"_blank\" href=\"https://docs.google.com/document/d/1WJPTpY6vdcu-olyttI1WDFTT5NZGRm2T3OK6IqML3CA/edit\"><button class=\"btn-6 btn-full\" style=\"background:transparent;\">White Paper</button></a>\n" +
-    "    <a class=\"col-xs-6\" target=\"_blank\" href=\"https://www.medium.com/bidio\"><button class=\"btn-6 btn-full\" style=\"background:transparent;\">Blog</button></a>\n" +
-    "  </div>\n" +
+    "  <p>A MULTIDIMENSIONAL attention-backed asset class</p>\n" +
     "\n" +
     "  <div class=\"spacing-50\"></div>\n" +
+    "  <div class=\"spacing-25\"></div>\n" +
     "\n" +
     "  <iframe width='560' height='315' src='https://www.bidio.co/v/57954ce9dea046030031007a' frameborder='0' allowfullscreen></iframe>\n" +
-    "  <iframe width='560' height='315' src='https://www.bidio.co/v/57958aa3a1ad8f030032230c' frameborder='0' allowfullscreen></iframe>\n" +
+    "  <!--<iframe width='560' height='315' src='https://www.bidio.co/v/57958aa3a1ad8f030032230c' frameborder='0' allowfullscreen></iframe>-->\n" +
     "  <!--<p>road map</p>-->\n" +
-    "\n" +
     "  <div class=\"spacing-100\"></div>\n" +
+    "  <!--<div class=\"row\">\n" +
+    "    <a class=\"col-xs-6\" target=\"_blank\" href=\"https://docs.google.com/document/d/1WJPTpY6vdcu-olyttI1WDFTT5NZGRm2T3OK6IqML3CA/edit\"><button class=\"btn-6 btn-full\" style=\"background:transparent;\">White Paper</button></a>\n" +
+    "    <a class=\"col-xs-6\" target=\"_blank\" href=\"https://www.medium.com/bidio\"><button class=\"btn-6 btn-full\" style=\"background:transparent;\">Blog</button></a>\n" +
+    "  </div>-->\n" +
     "\n" +
     "\n" +
     "  <div class=\"\">\n" +
     "    <h2 class=\"section-title\">contract address: 0x35F8e9dFc3f97fa18CEf166a6099074B5340e843</h2>\n" +
     "    <p>29629.62 ETH recieved</p>\n" +
     "    <p>1ETH = f(x) CRE8 Tokens -- functional sale over time</p>\n" +
+    "    <!--graph-->\n" +
+    "    <!--exchanges link, use decentralized exchanges-->\n" +
+    "\n" +
     "    <p>CRE8 STG1 Tokens are fund raising tokens and therefore do not have any rights, uses, purpose, attributes, functionalities or features, express or implied, including, without limitation, any uses, purpose, attributes, functionalities or features on the CRE8 Platform. They are a permant record on the ETH blockchain of a show of support for the attention based CRE8 protocol.</p>\n" +
+    "    <a href=\"https://saftproject.com/#saft-whitepaper\">terms</a>\n" +
     "  </div>\n" +
     "\n" +
     "  <div class=\"row\">\n" +
@@ -2879,14 +2902,56 @@ angular.module("token/index.tpl.html", []).run(["$templateCache", function ($tem
     "\n" +
     "  <div class=\"spacing-100\"></div>\n" +
     "\n" +
-    "  <div class=\"\">\n" +
+    "  <!--<div class=\"\">\n" +
     "    <h2 class=\"section-title\">The Team</h2>\n" +
     "    <a class=\"projectLink\" href=\"https://www.experiencenovo.io\">\n" +
     "      <img src=\"https://www.experiencenovo.io/images/novo/logo.png\">\n" +
     "    </a>\n" +
-    "  </div>\n" +
+    "  </div>-->\n" +
     "\n" +
-    "  <div class=\"spacing-100\"></div>\n" +
+    "</div>\n" +
+    "\n" +
+    "<div ng-include=\"'token/paper.tpl.html'\"></div>\n" +
+    "<div class=\"spacing-100\"></div>\n" +
+    "\n" +
+    "");
+}]);
+
+angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($templateCache) {
+  $templateCache.put("token/paper.tpl.html",
+    "<div class=\"container\">\n" +
+    "\n" +
+    "    <section class=\"introduction\">\n" +
+    "        <h2 class=\"section-title\">Value Proposition</h2>\n" +
+    "    </section>\n" +
+    "\n" +
+    "    <section class=\"attentionExchanges\">\n" +
+    "        <h2 class=\"section-title\">Attention Exchanges</h2>\n" +
+    "    </section>\n" +
+    "\n" +
+    "    <section class=\"incentivizingPositivity\">\n" +
+    "        <h2 class=\"section-title\">Incentivizing Positivity</h2>\n" +
+    "    </section>\n" +
+    "\n" +
+    "    <section class=\"multidimensionalTokenStandard \">\n" +
+    "        <h2 class=\"section-title\">Multidimensional Token Standard</h2>\n" +
+    "    </section>\n" +
+    "\n" +
+    "    <section class=\"viewTokenProtocol\">\n" +
+    "        <h2 class=\"section-title\">viewToken Protocol</h2>\n" +
+    "    </section>\n" +
+    "\n" +
+    "    <section class=\"cre8coinGovernance\">\n" +
+    "        <h2 class=\"section-title\">cre8coin: Governance</h2>\n" +
+    "    </section>\n" +
+    "\n" +
+    "    <section class=\"hyperledgerSawtoothEthereum\">\n" +
+    "        <h2 class=\"section-title\">Hyperledger Sawtooth Ethereum</h2>\n" +
+    "    </section>\n" +
+    "    \n" +
+    "    <section class=\"Conclusion\">\n" +
+    "        <h2 class=\"section-title\">Conclusion</h2>\n" +
+    "    </section>\n" +
     "\n" +
     "</div>\n" +
     "");
