@@ -10,7 +10,7 @@ var Web3 = require('web3');
 var web3 = new Web3();
 
 var Personal = require('web3-eth-personal');
-var personal = new Personal('http://cre8wium3.eastus.cloudapp.azure.com:8545');
+var personal = new Personal('http://localhost:8545');
 
 /*
 function youtubeToS3(youtubeUrl, user){
@@ -61,29 +61,25 @@ function youtubeToS3(youtubeUrl, user){
 */
 
 
-
 module.exports.intervalService = function(){
 
-
 	if (typeof web3 !== 'undefined') {web3 = new Web3(web3.currentProvider);}
-	else {web3 = new Web3(new Web3.providers.HttpProvider("http://cre8wium3.eastus.cloudapp.azure.com:8545"));}
-	web3.setProvider(new Web3.providers.HttpProvider('http://cre8wium3.eastus.cloudapp.azure.com:8545'));
-	personal.unlockAccount('0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609', '?><Mtrev77922', 1000000);
+	else {web3 = new Web3(new Web3.providers.WebsocketProvider("ws://localhost:8546"));}
+	web3.setProvider(new Web3.providers.WebsocketProvider('ws://localhost:8546'));
+	personal.unlockAccount('0x818c3e3a61a5c2071841df187318e5be2c238201', '7792', 1000000);
 
-	//blockchainService.createCredit({address:'0x0Aa3747A8027c7463679c283c70bB479A141f5C0',amount:100})
-	blockchainService.createMultiDimensionalViewToken({_address:'0x0Aa3747A8027c7463679c283c70bB479A141f5C0', _id:'general', _time:1000});
-	//if (typeof web3 !== 'undefined') {web3 = new Web3(web3.currentProvider);}
-	//else {web3 = new Web3(new Web3.providers.WebsocketProvider("ws://localhost:8546"));}
-	//web3.setProvider(new Web3.providers.WebsocketProvider('ws://localhost:8546'));
 	//else {web3 = new Web3(new Web3.providers.WebsocketProvider("ws://cre8wium3.eastus.cloudapp.azure.com:8546"));}
 	//web3.setProvider(new Web3.providers.WebsocketProvider('ws://cre8wium3.eastus.cloudapp.azure.com:8546'));
+	//personal.unlockAccount('0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609', '?><Mtrev77922', 1000000);
 
+	//blockchainService.createCredit({address:'0x0Aa3747A8027c7463679c283c70bB479A141f5C0',amount:100})
+	//blockchainService.createMultiDimensionalViewToken({_address:'0x0Aa3747A8027c7463679c283c70bB479A141f5C0', _id:'general', _time:1000});
+	
 	var subscription = web3.eth.subscribe('pendingTransactions', function(error, result){
 	})
 	.on("data", function(transaction){	
 		sails.sockets.broadcast('pendingTransactions', 'pendingTransactions', { transaction: transaction });
 	});
-
 
 	//viewcontract w event - testnet
 	var viewContract = new web3.eth.Contract([{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"balances","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"views","outputs":[{"name":"video","type":"string"},{"name":"watchTime","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"video","type":"string"},{"name":"watchTime","type":"uint256"}],"name":"createView","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_amount","type":"uint256"}],"name":"transfer","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"video","type":"string"},{"indexed":false,"name":"watchTime","type":"uint256"}],"name":"CreateView","type":"event"}]);
@@ -114,7 +110,6 @@ module.exports.intervalService = function(){
 		}
 	});
 	*/
-
 
 	//web3.eth.getBalance('0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609', 'latest', function(error, result){
 		//console.log(result)
@@ -261,5 +256,42 @@ module.exports.intervalService = function(){
 	//}, function(error, result){
 	//	console.log(result)
 	//});
+
+
+	//location contract test
+	/*
+	var locationContract = new web3.eth.Contract([{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"balances","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_amount","type":"uint256"}],"name":"transfer","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_lat","type":"uint256"},{"name":"_lng","type":"uint256"}],"name":"createLocation","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"locations","outputs":[{"name":"lat","type":"uint256"},{"name":"lng","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"}],"name":"getLocation","outputs":[{"name":"","type":"uint256[2]"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"}],"name":"getBalance","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_lat","type":"uint256"},{"indexed":true,"name":"_lng","type":"uint256"}],"name":"CreateLocationToken","type":"event"}]);
+	locationContract.options.address ='0x01570f4af02AFBaB605fBf746d48189c8c679572';
+
+	function callContract(){
+		locationContract.methods.createLocation('0x818c3e3a61a5c2071841df187318e5be2c238201', 35, -79).send({
+			from: '0x818c3e3a61a5c2071841df187318e5be2c238201',
+			gas: 888888
+		}, function(error, result){
+			console.log(error, result)
+		});
+		locationContract.methods.getLocation('0x818c3e3a61a5c2071841df187318e5be2c238201').call({from: '0x818c3e3a61a5c2071841df187318e5be2c238201'}, function(error, result){
+			console.log(error, result)
+		});
+		locationContract.methods.getBalance('0x818c3e3a61a5c2071841df187318e5be2c238201').call({from: '0x818c3e3a61a5c2071841df187318e5be2c238201'}, function(error, result){
+			console.log(error, result)
+		});
+	};
+	setInterval(callContract, 1000);
+
+	locationContract.methods.getBalance('0x818c3e3a61a5c2071841df187318e5be2c238201').call({from: '0x818c3e3a61a5c2071841df187318e5be2c238201'}, function(error, result){
+		console.log(error, result)
+	});
+
+	locationContract.events.CreateLocationToken({
+	    fromBlock: 0
+	}) 
+	.on('data', function(event){
+	    console.log(event, 'HELLO123'); // same results as the optional callback above
+	});
+
+	locationContract.getPastEvents('CreateLocationToken', {fromBlock: 0, toBlock: 'latest'}, function(e,l){console.log(l)})
+	*/
+
 
 };

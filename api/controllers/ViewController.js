@@ -66,7 +66,7 @@ module.exports = {
 				//EXTRA DIMENSION EX CREATOR & VIEWER
 				var viewerModel = {};
 				if (req.user){viewerModel._address = req.user.walletAddress}
-				else{viewerModel._address = '0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609'}
+				else{viewerModel._address = '0x818c3e3a61a5c2071841df187318e5be2c238201'}
 				viewerModel._time = model.watchTime;
 
 				//viewerContent -- PERCENTAGE OF SHARED CONTENT TOKEN
@@ -91,12 +91,12 @@ module.exports = {
 
 						//creatorContent
 						creatorModel._id = model.video;
-						if (creatorModel._time != 0 && viewModel._time && req.user){blockchainService.createMultiDimensionalViewToken(creatorModel);}
+						if (creatorModel._time != 0 && creatorModel._time && req.user){blockchainService.createMultiDimensionalViewToken(creatorModel);}
 
 						//creatorChannel -- VIEWER PAYING ATTENTION
 						creatorModel._id = model.video;
 						if (req.user){creatorModel._id = req.user.walletAddress}
-						else{creatorModel._id = '0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609'}
+						else{creatorModel._id = '0x818c3e3a61a5c2071841df187318e5be2c238201'}
 						if (creatorModel._time != 0 && creatorModel._time){blockchainService.createMultiDimensionalViewToken(creatorModel);}
 
 						//creatorGeneral

@@ -41,7 +41,6 @@ geth --datadir="/Users/troverman/cre8coin" init genesis.json
 geth account new --datadir="/Users/troverman/cre8coin"
 geth --datadir="/Users/troverman/cre8coin" --networkid="88888888" --bootnodes="enode://48a3eacd188f3e17edf0e6b08a9248e564c5745ce6cb6fb9cbfaa9ff9de5774a2f70250cf7539ac22f99767847cf395e579370ea686c930d6efaff93f76ab27b@198.85.222.158:30301" --rpc --rpcapi="db,eth,net,web3,personal,web3" --rpccorsdomain="*" --mine --minerthreads="1" --etherbase="0xa6e38eaa9c200cacca443f5293df2c3f0a1d8160" --ws --wsport="8546" --wsorigins="*"
 
-
 //BOOTNODE SETUP
 //runbootnode.then=>get CONFIG_BOOTNODE
 //createnewaddress.then=>get CONFIG_ETHERBASE

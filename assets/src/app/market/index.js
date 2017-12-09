@@ -3,7 +3,7 @@ angular.module( 'bidio.market', [
 
 .config(['$stateProvider', function config( $stateProvider ) {
 	$stateProvider.state( 'market', {
-		url: '/market',
+		url: '/market/:id',
 		views: {
 			"main": {
 				controller: 'MarketCtrl',

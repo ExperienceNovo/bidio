@@ -35,6 +35,7 @@ angular.module( 'bidio', [
     'bidio.home',
     'bidio.login',
     'bidio.market',
+    'bidio.markets',
     'bidio.member',
     'bidio.nav',
     'bidio.privacy',
