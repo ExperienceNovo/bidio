@@ -14,5 +14,5 @@ angular.module( 'bidio.token', [
 }])
 
 .controller( 'TokenCtrl', ['$scope', 'titleService', function TokenController( $scope, titleService ) {
-	titleService.setTitle('cre8bid.io - token sale');
+	titleService.setTitle('CRE8BID.IO | CREATE THE NEXT WAVE');
 }]);
