@@ -36,7 +36,7 @@ angular.module( 'bidio.home', [
 	$scope.sortText = {'trendingScore DESC':'Trending','createdAt DESC':'Date Created', 'viewCount DESC': 'View Count'}
 	$scope.skip = 48;
 
-	$scope.videoList = ['videos/consumer.mp4', 'videos/energy.mp4', 'videos/blob.mp4','videos/cube.mp4'];
+	$scope.videoList = ['videos/consumer.mp4', 'videos/energy.mp4', 'videos/cube.mp4'];
 	$scope.video = $scope.videoList[Math.floor(Math.random()*$scope.videoList.length)];
 		
 	$scope.selectSort = function(sort){

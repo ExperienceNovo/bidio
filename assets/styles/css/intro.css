@@ -802,6 +802,12 @@ svg {
 }
 
 /* media queries */
+.mobile-video{display:none;}
+.desktop-video{display:block}
+@media only screen and (max-width: 1024px){
+  .mobile-video{display:block;}
+  .desktop-video{display:none}
+}
 
 @media only screen and (max-width: 920px) {
 	.intro-container {
