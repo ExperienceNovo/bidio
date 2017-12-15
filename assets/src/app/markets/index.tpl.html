@@ -1,16 +1,15 @@
-<div class="container">
-    <div class="spacing-50"></div>
-    <h1>COMING SOON</h1>
-    <div class="blog-head" style="text-align:left"><span class="bidio-orange">Individual Token Market</span></div>
+<div class="container" style="text-align:left">
+    <div class="spacing-25"></div>
+    <h1>Market</h1>
     <div class="spacing-25"></div>
     <div class="col-md-6">
-        <div ng-repeat="post in [1,2,3,4]">
-            <h2 class="posted-title">bids {{post}}, multidemsional</h2>
+        <div ng-repeat="post in [1,2,3,4,5,6,7,8]">
+            <h2 class="posted-title">1 token[{{post}}]</h2>
         </div>
     </div>
     <div class="col-md-6">
-        <div ng-repeat="post in [1,2,3,4]">
-            <h2 class="posted-title">asks {{post}}, multidemsional</h2>
+        <div ng-repeat="post in [1,2,3,4,5,6,7,8]">
+            <h2 class="posted-title">{{(1/post).toFixed(2)}} cre8coin</h2>
         </div>
     </div>
 </div>
