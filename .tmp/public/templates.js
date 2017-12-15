@@ -2172,9 +2172,13 @@ angular.module("home/index.tpl.html", []).run(["$templateCache", function ($temp
     "            <div class=\"video-mask\"></div>\n" +
     "            <div class=\"video-holder\">\n" +
     "                <div class=\"background-vimeo\">\n" +
-    "                    <video autoplay=\"\" class=\"intro-video\" loop=\"\" muted=\"\" src=\"/videos/video.mp4\"></video>\n" +
+    "                    <!--https://vimeo.com/98732317-->\n" +
+    "                    <!--https://vimeo.com/31976384-->\n" +
+    "                    <!--https://vimeo.com/169725763-->\n" +
+    "                    <video autoplay=\"\" class=\"intro-video\" loop=\"\" muted=\"\" src=\"{{video}}\"></video>\n" +
     "                </div>\n" +
-    "                <div class=\"intro-mobile bg\"></div>\n" +
+    "                <!--reset.css/* max-width: 100%, @media only screen and (max-width: 1024px) intro.css: -->\n" +
+    "                <!--<div class=\"intro-mobile bg\"></div>-->\n" +
     "            </div>\n" +
     "        </div>\n" +
     "        <div class=\"overlay\"></div>\n" +
@@ -2183,17 +2187,16 @@ angular.module("home/index.tpl.html", []).run(["$templateCache", function ($temp
     "                <div class=\"mobile-intro\">\n" +
     "                    <section class=\"rw-wrapper\" style=\"margin-top:21vh\">\n" +
     "                        <h2 class=\"rw-sentence\" style=\"color:#fff;text-transform:uppercase\">Energy is the <span style=\"color:#FE9A2E\">Imaginary Now</span></h2>\n" +
-    "\n" +
     "                    </section>\n" +
     "                </div>\n" +
     "                <div class=\"spacing-25\"></div>\n" +
-    "                <a target=\"_blank\" href=\"/register\"><button class=\"btn-5 btn-intro\" style=\"background:transparent;\">Learn More</button></a>\n" +
+    "                <a href=\"#learn\"><button class=\"btn-5 btn-intro\" style=\"background:transparent;\">Learn More</button></a>\n" +
     "            </div>\n" +
     "        </div>\n" +
     "    </div>\n" +
     "</div>\n" +
     "\n" +
-    "<div class=\"content\" ng-show=\"!currentUser\">\n" +
+    "<div class=\"content\" ng-show=\"!currentUser\"  id=\"learn\">\n" +
     "\n" +
     "    <div class=\"spacing-100\"></div> \n" +
     "\n" +

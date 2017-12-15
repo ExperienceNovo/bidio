@@ -802,30 +802,6 @@ svg {
 }
 
 /* media queries */
-@media only screen and (max-width: 1024px) {
-	.intro-video {
-		display:none
-	}
-
-	.intro-mobile {
-		visibility:visible;
-		height:100%
-	}
-
-	.port-mobile {
-		visibility:visible
-	}
-
-	.port-box a #fill-hover {
-		fill:rgba(255,255,255,0.1);
-		transition:fill .2s
-	}
-
-	.contact-mobile {
-		visibility:visible;
-		height:100%
-	}
-}
 
 @media only screen and (max-width: 920px) {
 	.intro-container {

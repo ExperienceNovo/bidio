@@ -9,5 +9,4 @@ blockquote, q { quotes: none;}
 table { border-collapse: collapse; border-spacing: 0;}
 img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
 a{text-decoration:none; position:relative; color:#000;}
-audio,video,canvas {max-width: 100%;}
  
