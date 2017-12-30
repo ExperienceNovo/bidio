@@ -1,0 +1,29 @@
+<md-content layout-padding>
+    <div class="spacing-15"></div>
+    <div class="container create-modal">
+        <h2><span class="bidio-orange">new bid</h2>
+        <div class="spacing-15"></div>
+        <md-input-container layout-fill>
+            <label>Token</label>
+            <input ng-model="bid.value" type="text">
+        </md-input-container>
+        <md-input-container layout-fill>
+            <label>Amount</label>
+            <input ng-model="bid.attention" type="text">
+        </md-input-container>
+         <md-input-container layout-fill>
+            <label>Token</label>
+            <input ng-model="bid.value" type="text">
+        </md-input-container>
+         <md-input-container layout-fill>
+            <label>Amount</label>
+            <input ng-model="bid.value" type="text">
+        </md-input-container>
+        <!--WILL BUY/SELL UP TO THIS AMOUNT AT THIS PRICE - GRANUAR FUILFILLMENT-->
+
+        <div class="spacing-15"></div>
+        <md-button class="md-raised md-accent" ng-disabled="bid.value <= highestBid.value || !bid.campaign" ng-click="createBid(bid)">Submit</md-button>
+        <md-button class="md-raised" ng-click="cancel()">Cancel</md-button>
+    </div>
+    <div class="spacing-15"></div>
+</md-content>

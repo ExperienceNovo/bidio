@@ -1,4 +1,4 @@
-angular.module('templates-app', ['admin/index.tpl.html', 'admin/templates/bids.tpl.html', 'admin/templates/contests.tpl.html', 'admin/templates/main.tpl.html', 'admin/templates/users.tpl.html', 'admin/templates/videos.tpl.html', 'blog/index.tpl.html', 'blogPost/index.tpl.html', 'campaign/index.tpl.html', 'campaign/templates/about.tpl.html', 'campaign/templates/main.tpl.html', 'campaign/templates/submitModal.tpl.html', 'campaigns/index.tpl.html', 'creators/index.tpl.html', 'dashboard/index.tpl.html', 'dashboard/templates/addBannerPhoto.tpl.html', 'dashboard/templates/addCampaignPhoto.tpl.html', 'dashboard/templates/addProfilePic.tpl.html', 'dashboard/templates/addVideo.tpl.html', 'dashboard/templates/analytics.tpl.html', 'dashboard/templates/campaign.tpl.html', 'dashboard/templates/campaigns.tpl.html', 'dashboard/templates/createCampaign.tpl.html', 'dashboard/templates/createVideo.tpl.html', 'dashboard/templates/home.tpl.html', 'dashboard/templates/importVideo.tpl.html', 'dashboard/templates/profile.tpl.html', 'dashboard/templates/profileEdit.tpl.html', 'dashboard/templates/video.tpl.html', 'dashboard/templates/videos.tpl.html', 'dashboard/templates/viewModal.tpl.html', 'discover/index.tpl.html', 'footer/index.tpl.html', 'forgot/index.tpl.html', 'forgot/success/index.tpl.html', 'home/index.tpl.html', 'login/index.tpl.html', 'market/index.tpl.html', 'markets/index.tpl.html', 'member/index.tpl.html', 'nav/index.tpl.html', 'privacy/index.tpl.html', 'register/index.tpl.html', 'reset/index.tpl.html', 'reset/success/index.tpl.html', 'search/index.tpl.html', 'sponsors/index.tpl.html', 'token/index.tpl.html', 'token/paper.tpl.html', 'video/index.tpl.html', 'video/templates/bid.tpl.html', 'video/templates/shareDialog.tpl.html', 'videoEmbed/v/index.tpl.html']);
+angular.module('templates-app', ['admin/index.tpl.html', 'admin/templates/bids.tpl.html', 'admin/templates/contests.tpl.html', 'admin/templates/main.tpl.html', 'admin/templates/users.tpl.html', 'admin/templates/videos.tpl.html', 'blog/index.tpl.html', 'blogPost/index.tpl.html', 'campaign/index.tpl.html', 'campaign/templates/about.tpl.html', 'campaign/templates/main.tpl.html', 'campaign/templates/submitModal.tpl.html', 'campaigns/index.tpl.html', 'creators/index.tpl.html', 'dashboard/index.tpl.html', 'dashboard/templates/addBannerPhoto.tpl.html', 'dashboard/templates/addCampaignPhoto.tpl.html', 'dashboard/templates/addProfilePic.tpl.html', 'dashboard/templates/addVideo.tpl.html', 'dashboard/templates/analytics.tpl.html', 'dashboard/templates/campaign.tpl.html', 'dashboard/templates/campaigns.tpl.html', 'dashboard/templates/createCampaign.tpl.html', 'dashboard/templates/createVideo.tpl.html', 'dashboard/templates/home.tpl.html', 'dashboard/templates/importVideo.tpl.html', 'dashboard/templates/profile.tpl.html', 'dashboard/templates/profileEdit.tpl.html', 'dashboard/templates/video.tpl.html', 'dashboard/templates/videos.tpl.html', 'dashboard/templates/viewModal.tpl.html', 'discover/index.tpl.html', 'footer/index.tpl.html', 'forgot/index.tpl.html', 'forgot/success/index.tpl.html', 'home/index.tpl.html', 'login/index.tpl.html', 'market/index.tpl.html', 'market/templates/bid.tpl.html', 'markets/index.tpl.html', 'markets/templates/bid.tpl.html', 'member/index.tpl.html', 'nav/index.tpl.html', 'privacy/index.tpl.html', 'register/index.tpl.html', 'reset/index.tpl.html', 'reset/success/index.tpl.html', 'search/index.tpl.html', 'sponsors/index.tpl.html', 'token/index.tpl.html', 'token/paper.tpl.html', 'video/index.tpl.html', 'video/templates/bid.tpl.html', 'video/templates/shareDialog.tpl.html', 'videoEmbed/v/index.tpl.html']);
 
 angular.module("admin/index.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("admin/index.tpl.html",
@@ -2369,27 +2369,15 @@ angular.module("login/index.tpl.html", []).run(["$templateCache", function ($tem
 
 angular.module("market/index.tpl.html", []).run(["$templateCache", function ($templateCache) {
   $templateCache.put("market/index.tpl.html",
-    "<div class=\"container\">\n" +
-    "    <div class=\"spacing-25\"></div>\n" +
-    "    <h1>market</h1>\n" +
-    "    <div class=\"col-md-6\">\n" +
-    "        <div ng-repeat=\"post in [1,2,3,4]\">\n" +
-    "            <h2 class=\"posted-title\">bids {{post}}, multidemsional</h2>\n" +
-    "        </div>\n" +
-    "    </div>\n" +
-    "    <div class=\"col-md-6\">\n" +
-    "        <div ng-repeat=\"post in [1,2,3,4]\">\n" +
-    "            <h2 class=\"posted-title\">asks {{post}}, multidemsional</h2>\n" +
-    "        </div>\n" +
-    "    </div>\n" +
-    "</div>");
-}]);
-
-angular.module("markets/index.tpl.html", []).run(["$templateCache", function ($templateCache) {
-  $templateCache.put("markets/index.tpl.html",
     "<div class=\"container\" style=\"text-align:left\">\n" +
     "    <div class=\"spacing-25\"></div>\n" +
-    "    <h1>Market</h1>\n" +
+    "    <h1>market</h1>\n" +
+    "    <p ng-click=\"bid()\">+ bid</p>\n" +
+    "    <h2>filter</h2>\n" +
+    "    <form>\n" +
+    "        <input style=\"float:left;width:25%\" type=\"text\" placeholder=\"Token\" class=\"form-control\" ng-model=\"newLookup.tokenIdentifier\">\n" +
+    "        <button class=\"float:left\" ng-click=\"tokenLookup()\"><span class=\"fa fa-search\"></span></button>\n" +
+    "    </form>\n" +
     "    <div class=\"spacing-25\"></div>\n" +
     "    <div class=\"col-md-6\">\n" +
     "        <div ng-repeat=\"post in [1,2,3,4,5,6,7,8]\">\n" +
@@ -2402,6 +2390,97 @@ angular.module("markets/index.tpl.html", []).run(["$templateCache", function ($t
     "        </div>\n" +
     "    </div>\n" +
     "</div>");
+}]);
+
+angular.module("market/templates/bid.tpl.html", []).run(["$templateCache", function ($templateCache) {
+  $templateCache.put("market/templates/bid.tpl.html",
+    "<md-content layout-padding>\n" +
+    "    <div class=\"spacing-15\"></div>\n" +
+    "    <div class=\"container create-modal\">\n" +
+    "        <h2><span class=\"bidio-orange\">new bid</h2>\n" +
+    "        <div class=\"spacing-15\"></div>\n" +
+    "        <md-input-container layout-fill>\n" +
+    "            <label>Token</label>\n" +
+    "            <input ng-model=\"bid.value\" type=\"text\">\n" +
+    "        </md-input-container>\n" +
+    "        <md-input-container layout-fill>\n" +
+    "            <label>Amount</label>\n" +
+    "            <input ng-model=\"bid.attention\" type=\"text\">\n" +
+    "        </md-input-container>\n" +
+    "         <md-input-container layout-fill>\n" +
+    "            <label>Token</label>\n" +
+    "            <input ng-model=\"bid.value\" type=\"text\">\n" +
+    "        </md-input-container>\n" +
+    "         <md-input-container layout-fill>\n" +
+    "            <label>Amount</label>\n" +
+    "            <input ng-model=\"bid.value\" type=\"text\">\n" +
+    "        </md-input-container>\n" +
+    "        <!--WILL BUY/SELL UP TO THIS AMOUNT AT THIS PRICE - GRANUAR FUILFILLMENT-->\n" +
+    "\n" +
+    "        <div class=\"spacing-15\"></div>\n" +
+    "        <md-button class=\"md-raised md-accent\" ng-disabled=\"bid.value <= highestBid.value || !bid.campaign\" ng-click=\"createBid(bid)\">Submit</md-button>\n" +
+    "        <md-button class=\"md-raised\" ng-click=\"cancel()\">Cancel</md-button>\n" +
+    "    </div>\n" +
+    "    <div class=\"spacing-15\"></div>\n" +
+    "</md-content>");
+}]);
+
+angular.module("markets/index.tpl.html", []).run(["$templateCache", function ($templateCache) {
+  $templateCache.put("markets/index.tpl.html",
+    "<div class=\"container\" style=\"text-align:left\">\n" +
+    "    <div class=\"spacing-25\"></div>\n" +
+    "    <h1>market</h1>\n" +
+    "    <p ng-click=\"bid()\">+ bid</p>\n" +
+    "    <h2>filter</h2>\n" +
+    "    <form>\n" +
+    "        <input style=\"float:left;width:25%\" type=\"text\" placeholder=\"Token\" class=\"form-control\" ng-model=\"newLookup.tokenIdentifier\">\n" +
+    "        <button class=\"float:left\" ng-click=\"tokenLookup()\"><span class=\"fa fa-search\"></span></button>\n" +
+    "    </form>\n" +
+    "    <div class=\"spacing-25\"></div>\n" +
+    "    <div class=\"col-md-6\">\n" +
+    "        <div ng-repeat=\"post in [1,2,3,4,5,6,7,8]\">\n" +
+    "            <h2 class=\"posted-title\">1 token[{{post}}]</h2>\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "    <div class=\"col-md-6\">\n" +
+    "        <div ng-repeat=\"post in [1,2,3,4,5,6,7,8]\">\n" +
+    "            <h2 class=\"posted-title\">{{(1/post).toFixed(2)}} cre8coin</h2>\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "</div>");
+}]);
+
+angular.module("markets/templates/bid.tpl.html", []).run(["$templateCache", function ($templateCache) {
+  $templateCache.put("markets/templates/bid.tpl.html",
+    "<md-content layout-padding>\n" +
+    "    <div class=\"spacing-15\"></div>\n" +
+    "    <div class=\"container create-modal\">\n" +
+    "        <h2><span class=\"bidio-orange\">new bid</h2>\n" +
+    "        <div class=\"spacing-15\"></div>\n" +
+    "        <md-input-container layout-fill>\n" +
+    "            <label>Token</label>\n" +
+    "            <input ng-model=\"bid.value\" type=\"text\">\n" +
+    "        </md-input-container>\n" +
+    "        <md-input-container layout-fill>\n" +
+    "            <label>Amount</label>\n" +
+    "            <input ng-model=\"bid.attention\" type=\"text\">\n" +
+    "        </md-input-container>\n" +
+    "         <md-input-container layout-fill>\n" +
+    "            <label>Token</label>\n" +
+    "            <input ng-model=\"bid.value\" type=\"text\">\n" +
+    "        </md-input-container>\n" +
+    "         <md-input-container layout-fill>\n" +
+    "            <label>Amount</label>\n" +
+    "            <input ng-model=\"bid.value\" type=\"text\">\n" +
+    "        </md-input-container>\n" +
+    "        <!--WILL BUY/SELL UP TO THIS AMOUNT AT THIS PRICE - GRANUAR FUILFILLMENT-->\n" +
+    "\n" +
+    "        <div class=\"spacing-15\"></div>\n" +
+    "        <md-button class=\"md-raised md-accent\" ng-disabled=\"bid.value <= highestBid.value || !bid.campaign\" ng-click=\"createBid(bid)\">Submit</md-button>\n" +
+    "        <md-button class=\"md-raised\" ng-click=\"cancel()\">Cancel</md-button>\n" +
+    "    </div>\n" +
+    "    <div class=\"spacing-15\"></div>\n" +
+    "</md-content>");
 }]);
 
 angular.module("member/index.tpl.html", []).run(["$templateCache", function ($templateCache) {
@@ -2955,6 +3034,8 @@ angular.module("token/index.tpl.html", []).run(["$templateCache", function ($tem
     "<img src=\"https://d33wubrfki0l68.cloudfront.net/0905fb6ce0f2637b25aaaf764b0d1519ac088cbb/5bcf4/images/hyperchain.png\" style=\"max-width:100%;max-height:100px;padding:10px;max-width:150px;\">\n" +
     "<img src=\"https://poloniex.com/images/media_kit/Poloniex-logo-800px.png\" style=\"max-width:100%;max-height:100px;padding:10px;max-width:150px;\">\n" +
     "<img src=\"images/tesseract.png\" style=\"max-width:100%;max-height:100px;padding:10px;max-width:150px;\">\n" +
+    "<img src=\"https://www.hyperledger.org/wp-content/uploads/2016/09/logo_hl_new.png\" style=\"max-width:100%;max-height:100px;padding:10px;max-width:150px;\">\n" +
+    "<img src=\"https://kryptomoney.com/wp-content/uploads/2017/10/KryptoMoney.com-ConsenSys.jpg\" style=\"max-width:100%;max-height:100px;padding:10px;max-width:150px;\">\n" +
     "\n" +
     "\n" +
     "<div class=\"spacing-100\"></div>\n" +

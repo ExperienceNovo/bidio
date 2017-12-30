@@ -38,11 +38,8 @@ angular.module('models.user', ['lodash', 'services', 'sails.io'])
     };
 
     this.getTokenBalanceFrontend = function(address, identifier){
-        //TODO: Store All Contracts in RootScope? --> ye
-        var viewContract = $rootScope.cre8web3.eth.contract([{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"},{"name":"_id","type":"string"}],"name":"transfer","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_id","type":"string"},{"name":"_time","type":"uint256"}],"name":"createView","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"},{"name":"_id","type":"string"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_from","type":"address"},{"indexed":false,"name":"_to","type":"address"},{"indexed":false,"name":"_id","type":"string"},{"indexed":false,"name":"_time","type":"uint256"}],"name":"CreateViewToken","type":"event"}]);
-        var viewContractInstance = viewContract.at('0x6c728ed572633d08cbea0e7ed7aadbf2f044788f');
-        var result = viewContractInstance.balanceOf(address.toString(), identifier);
-        return result;
+        //TODO: Store All Contracts in RootScope
+        return $rootScope.viewContractInstance.balanceOf(address.toString(), identifier);
     };
 
     //this.getFilter = function(address, identifier){
