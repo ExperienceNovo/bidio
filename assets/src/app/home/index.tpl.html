@@ -94,7 +94,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <a target="_blank" href="/token"><button class="btn-5 btn-full" style="background:transparent;">TOKEN SALE</button></a>
+                    <a href="/token"><button class="btn-5 btn-full" style="background:transparent;">TOKEN SALE</button></a>
                 </div>
             </div>
             <div class="spacing-50"></div> 
@@ -115,12 +115,12 @@
                         <a class="dropdown-toggle noselect" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             <h2 class="noselect" style="font-size:2.2em">{{sortText[sort]}}<span class="caret"></span></h2>
                         </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="sort-a" ng-click="selectSort('trendingScore DESC')"><h3>Trending</h3></a></li>
+                        <ul class="dropdown-menu" style="text-align:right">
+                            <li style="text-align:right"><a class="sort-a" ng-click="selectSort('trendingScore DESC')"><h3>Trending</h3></a></li>
                             <hr class="sort-hr">
-                            <li><a class="sort-a" ng-click="selectSort('viewCount DESC')"><h3>View Count</h3></a></li>
+                            <li style="text-align:right"><a class="sort-a" ng-click="selectSort('viewCount DESC')"><h3>View Count</h3></a></li>
                             <hr class="sort-hr">
-                            <li><a class="sort-a" ng-click="selectSort('createdAt DESC')"><h3>Date Created</h3></a></li>
+                            <li style="text-align:right"><a class="sort-a" ng-click="selectSort('createdAt DESC')"><h3>Date Created</h3></a></li>
                         </ul>
                     </div>
                 </div>
