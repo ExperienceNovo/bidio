@@ -3020,7 +3020,7 @@ angular.module("token/index.tpl.html", []).run(["$templateCache", function ($tem
     "    </a>\n" +
     "  </div>\n" +
     "\n" +
-    "  <div class=\"spacing-25\"></div>\n" +
+    "  <div id=\"paper\" class=\"spacing-50\"></div>\n" +
     "\n" +
     "  <div class=\"row\">\n" +
     "    <a class=\"col-xs-12\" href=\"https://docs.google.com/document/d/1WJPTpY6vdcu-olyttI1WDFTT5NZGRm2T3OK6IqML3CA/edit\"><button class=\"btn-6 btn-full\" style=\"background:transparent;\">White Paper</button></a>\n" +
@@ -3028,7 +3028,7 @@ angular.module("token/index.tpl.html", []).run(["$templateCache", function ($tem
     "\n" +
     "</div>\n" +
     "\n" +
-    "<div id=\"paper\" class=\"spacing-50\"></div>\n" +
+    "<div class=\"spacing-25\"></div>\n" +
     "\n" +
     "<div ng-include=\"'token/paper.tpl.html'\"></div>\n" +
     "<div class=\"spacing-100\"></div>\n" +
