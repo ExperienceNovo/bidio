@@ -2936,7 +2936,6 @@ angular.module("token/index.tpl.html", []).run(["$templateCache", function ($tem
     "<style>\n" +
     "  .header { background:#000; }\n" +
     "</style>\n" +
-    "\n" +
     "<div class=\"header\">\n" +
     "  <div class=\"spacing-100\"></div>\n" +
     "  <div class=\"block\">\n" +
@@ -2967,7 +2966,6 @@ angular.module("token/index.tpl.html", []).run(["$templateCache", function ($tem
     "</div>\n" +
     "\n" +
     "<div class=\"container\">\n" +
-    "\n" +
     "  <div class=\"spacing-50\"></div>\n" +
     "  <h2 class=\"section-title\">create the next wave</h2>\n" +
     "  <p style=\"font-size:20px\">Universal Income</p>\n" +
@@ -2983,7 +2981,7 @@ angular.module("token/index.tpl.html", []).run(["$templateCache", function ($tem
     "  </div>\n" +
     "  <!--<iframe width='560' height='315' src='https://www.bidio.co/v/57958aa3a1ad8f030032230c' frameborder='0' allowfullscreen></iframe>-->\n" +
     "  <!--<p>road map</p>-->\n" +
-    "  <div class=\"spacing-100\"></div>\n" +
+    "  <div class=\"spacing-50\"></div>\n" +
     "  <!--\n" +
     "  <div class=\"row\">\n" +
     "    <a class=\"col-xs-6\" target=\"_blank\" href=\"https://docs.google.com/document/d/1WJPTpY6vdcu-olyttI1WDFTT5NZGRm2T3OK6IqML3CA/edit\"><button class=\"btn-6 btn-full\" style=\"background:transparent;\">White Paper</button></a>\n" +
@@ -2991,25 +2989,24 @@ angular.module("token/index.tpl.html", []).run(["$templateCache", function ($tem
     "  </div>\n" +
     "  -->\n" +
     "\n" +
+    "  \n" +
+    "\n" +
+    "  <div class=\"spacing-50\"></div>\n" +
     "\n" +
     "  <div class=\"\">\n" +
     "    <h2 class=\"section-title\">contract address: 0x35F8e9dFc3f97fa18CEf166a6099074B5340e843</h2>\n" +
     "    <p style=\"font-size:20px\">{{totalEth}} ETH recieved, {{totalToken}} CRE8 Tokens distributed</p>\n" +
     "    <p style=\"font-size:20px\">100 Tokens = {{tokenPrice}} ETH</p><br>\n" +
     "\n" +
-    "  <!--<div class=\"row\">\n" +
-    "    <a class=\"col-xs-12\" href=\"https://docs.google.com/document/d/1WJPTpY6vdcu-olyttI1WDFTT5NZGRm2T3OK6IqML3CA/edit\"><button class=\"btn-6 btn-full\" style=\"background:transparent;\">Purchase</button></a>\n" +
-    "  </div>-->\n" +
+    "    <div class=\"row\">\n" +
+    "      <!--exchanges link, use decentralized exchanges-->\n" +
+    "      <a class=\"col-xs-12\" href=\"#paper\" du-smooth-scroll><button class=\"btn-6 btn-full\" style=\"background:transparent;\">Purchase</button></a>\n" +
+    "    </div>\n" +
     "\n" +
-    "    <!--exchanges link, use decentralized exchanges-->\n" +
     "\n" +
     "    <p style=\"font-size:12px\">CRE8 STG1 Tokens are fund raising tokens and therefore do not have any rights, uses, purpose, attributes, functionalities or features, express or implied, including, without limitation, any uses, purpose, attributes, functionalities or features on the CRE8 Platform. They are a permant record on the ETH blockchain of a show of support for the attention based CRE8 protocol.</p>\n" +
     "    <!--<a style=\"text-align:left\" href=\"https://saftproject.com/#saft-whitepaper\">terms</a>-->\n" +
     "\n" +
-    "  </div>\n" +
-    "\n" +
-    "  <div class=\"row\">\n" +
-    "    <a class=\"col-xs-12\" href=\"https://docs.google.com/document/d/1WJPTpY6vdcu-olyttI1WDFTT5NZGRm2T3OK6IqML3CA/edit\"><button class=\"btn-6 btn-full\" style=\"background:transparent;\">White Paper</button></a>\n" +
     "  </div>\n" +
     "\n" +
     "  <div class=\"spacing-50\"></div>\n" +
@@ -3021,11 +3018,17 @@ angular.module("token/index.tpl.html", []).run(["$templateCache", function ($tem
     "    </a>\n" +
     "  </div>\n" +
     "\n" +
+    "  <div class=\"spacing-25\"></div>\n" +
+    "\n" +
+    "  <div class=\"row\">\n" +
+    "    <a class=\"col-xs-12\" href=\"https://docs.google.com/document/d/1WJPTpY6vdcu-olyttI1WDFTT5NZGRm2T3OK6IqML3CA/edit\"><button class=\"btn-6 btn-full\" style=\"background:transparent;\">White Paper</button></a>\n" +
+    "  </div>\n" +
+    "\n" +
     "</div>\n" +
     "\n" +
     "<div class=\"spacing-50\"></div>\n" +
     "\n" +
-    "<div ng-include=\"'token/paper.tpl.html'\"></div>\n" +
+    "<div id=\"paper\" ng-include=\"'token/paper.tpl.html'\"></div>\n" +
     "<div class=\"spacing-100\"></div>\n" +
     "\n" +
     "<a href=\"https://rebelai.com\"><img src=\"https://rebelai.com/wp-content/uploads/2017/01/MobileLogo-01.png\" style=\"max-width:100%;max-height:100px;padding:10px;max-width:150px;\"></a>\n" +
