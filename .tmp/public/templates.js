@@ -2966,32 +2966,34 @@ angular.module("token/index.tpl.html", []).run(["$templateCache", function ($tem
     "</div>\n" +
     "\n" +
     "<div class=\"container\">\n" +
-    "  <div class=\"spacing-50\"></div>\n" +
-    "  <h2 class=\"section-title\">create the next wave</h2>\n" +
-    "  <p style=\"font-size:20px\">Universal Income</p>\n" +
-    "  <p style=\"font-size:20px\">ERC-88 Standard</p>\n" +
-    "  <p style=\"font-size:20px\">A MULTIDIMENSIONAL attention-backed asset class</p>\n" +
+    "  <div class=\"col-xs-6\">\n" +
+    "    <div class=\"spacing-50\"></div>\n" +
+    "    <h2 class=\"section-title\">create the next wave</h2>\n" +
+    "    <p style=\"font-size:20px\">Universal Income</p>\n" +
+    "    <p style=\"font-size:20px\">ERC-88 Standard</p>\n" +
+    "    <p style=\"font-size:20px\">A MULTIDIMENSIONAL attention-backed asset class</p>\n" +
+    "    <a href=\"#paper\" du-smooth-scroll><button class=\"btn-6 btn-full\" style=\"background:transparent;\">White Paper</button></a>\n" +
+    "  </div>\n" +
     "\n" +
-    "  <div class=\"spacing-50\"></div>\n" +
-    "  <img style=\"height:100px;\" src=\"https://wikimedia.org/api/rest_v1/media/math/render/svg/327546c3f8bd78d7d533c5c04f7602086862dfd4\">\n" +
-    "  <div class=\"spacing-50\"></div>\n" +
+    "  <div class=\"col-xs-12\">\n" +
+    "    <div class=\"spacing-50\"></div>\n" +
+    "    <img style=\"height:100px;\" src=\"https://wikimedia.org/api/rest_v1/media/math/render/svg/327546c3f8bd78d7d533c5c04f7602086862dfd4\">\n" +
+    "    <div class=\"spacing-50\"></div>\n" +
+    "  </div>\n" +
     "\n" +
-    "  <div style=\"text-align:right\">\n" +
+    "  <div class=\"col-xs-12\" style=\"text-align:right\">\n" +
     "    <iframe width='560' height='315' src='https://www.bidio.co/v/57954ce9dea046030031007a' frameborder='0' allowfullscreen></iframe>\n" +
     "  </div>\n" +
+    "\n" +
     "  <!--<iframe width='560' height='315' src='https://www.bidio.co/v/57958aa3a1ad8f030032230c' frameborder='0' allowfullscreen></iframe>-->\n" +
-    "  <!--<p>road map</p>-->\n" +
-    "  <div class=\"spacing-50\"></div>\n" +
-    "  <!--\n" +
-    "  <div class=\"row\">\n" +
+    "  <!--<p>road map</p>-->  \n" +
+    "  <!--<div class=\"row\">\n" +
     "    <a class=\"col-xs-6\" target=\"_blank\" href=\"https://docs.google.com/document/d/1WJPTpY6vdcu-olyttI1WDFTT5NZGRm2T3OK6IqML3CA/edit\"><button class=\"btn-6 btn-full\" style=\"background:transparent;\">White Paper</button></a>\n" +
     "    <a class=\"col-xs-6\" target=\"_blank\" href=\"https://www.medium.com/bidio\"><button class=\"btn-6 btn-full\" style=\"background:transparent;\">Blog</button></a>\n" +
-    "  </div>\n" +
-    "  -->\n" +
-    "\n" +
-    "  \n" +
-    "\n" +
-    "  <div class=\"spacing-50\"></div>\n" +
+    "  </div>-->\n" +
+    "</div>\n" +
+    "<div class=\"spacing-50\"></div>\n" +
+    "<div class=\"container\">\n" +
     "\n" +
     "  <div class=\"\">\n" +
     "    <h2 class=\"section-title\">contract address: 0x35F8e9dFc3f97fa18CEf166a6099074B5340e843</h2>\n" +
@@ -3026,18 +3028,15 @@ angular.module("token/index.tpl.html", []).run(["$templateCache", function ($tem
     "\n" +
     "</div>\n" +
     "\n" +
-    "<div class=\"spacing-50\"></div>\n" +
+    "<div id=\"paper\" class=\"spacing-50\"></div>\n" +
     "\n" +
-    "<div id=\"paper\" ng-include=\"'token/paper.tpl.html'\"></div>\n" +
+    "<div ng-include=\"'token/paper.tpl.html'\"></div>\n" +
     "<div class=\"spacing-100\"></div>\n" +
     "\n" +
     "<a href=\"https://rebelai.com\"><img src=\"https://rebelai.com/wp-content/uploads/2017/01/MobileLogo-01.png\" style=\"max-width:100%;max-height:100px;padding:10px;max-width:150px;\"></a>\n" +
     "<a href=\"https://www.experiencenovo.io\"><img src=\"https://www.experiencenovo.io/images/novo/logo.png\" style=\"max-width:100%;max-height:100px;padding:10px;max-width:150px;\"></a>\n" +
-    "<!--<img src=\"http://blockchain.capital/wp-content/uploads/2017/03/Logo-Wht.png\" style=\"max-width:100%;max-height:100px;padding:10px;max-width:150px;\">-->\n" +
-    "<!--<img src=\"https://d33wubrfki0l68.cloudfront.net/46f78a5b003a51940d85b3e9bb0000dacaff465c/1b2ce/images/clients/eos.png\" style=\"max-width:100%;max-height:100px;padding:10px;max-width:150px;\">-->\n" +
     "<a href=\"https://www.ethereum.org\"><img src=\"https://www.ethereum.org/images/logos/ETHEREUM-LOGO_PORTRAIT_Black_small.png\" style=\"max-width:100%;max-height:100px;padding:10px;max-width:150px;\"></a>\n" +
     "<a href=\"#\"><img src=\"https://steemitimages.com/DQmP64m1oDQQtgjsdqjcTHGXzi93sxPH6FRyTVTz8CYYKjf/Bitfinex%20Logo.png\" style=\"max-width:100%;max-height:100px;padding:10px;max-width:150px;\"></a>\n" +
-    "<!--<img src=\"https://d33wubrfki0l68.cloudfront.net/0905fb6ce0f2637b25aaaf764b0d1519ac088cbb/5bcf4/images/hyperchain.png\" style=\"max-width:100%;max-height:100px;padding:10px;max-width:150px;\">-->\n" +
     "<a href=\"https://poloniex.com\"><img src=\"https://poloniex.com/images/media_kit/Poloniex-logo-800px.png\" style=\"max-width:100%;max-height:100px;padding:10px;max-width:150px;\"></a>\n" +
     "<a href=\"https://www.experiencenovo.io\"><img src=\"images/tesseract.png\" style=\"max-width:100%;max-height:100px;padding:10px;max-width:150px;\"></a>\n" +
     "<a href=\"https://www.hyperledger.org\"><img src=\"https://www.hyperledger.org/wp-content/uploads/2016/09/logo_hl_new.png\" style=\"max-width:100%;max-height:100px;padding:10px;max-width:150px;\"></a>\n" +
