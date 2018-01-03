@@ -2969,14 +2969,14 @@ angular.module("token/index.tpl.html", []).run(["$templateCache", function ($tem
     "<div class=\"container\">\n" +
     "\n" +
     "  <div class=\"spacing-50\"></div>\n" +
-    "\n" +
     "  <h2 class=\"section-title\">create the next wave</h2>\n" +
     "  <p style=\"font-size:20px\">Universal Income</p>\n" +
     "  <p style=\"font-size:20px\">ERC-88 Standard</p>\n" +
     "  <p style=\"font-size:20px\">A MULTIDIMENSIONAL attention-backed asset class</p>\n" +
-    "  <img src=\"https://wikimedia.org/api/rest_v1/media/math/render/svg/327546c3f8bd78d7d533c5c04f7602086862dfd4\">\n" +
     "\n" +
-    "  <div class=\"spacing-100\"></div>\n" +
+    "  <div class=\"spacing-50\"></div>\n" +
+    "  <img style=\"height:100px;\" src=\"https://wikimedia.org/api/rest_v1/media/math/render/svg/327546c3f8bd78d7d533c5c04f7602086862dfd4\">\n" +
+    "  <div class=\"spacing-50\"></div>\n" +
     "\n" +
     "  <div style=\"text-align:right\">\n" +
     "    <iframe width='560' height='315' src='https://www.bidio.co/v/57954ce9dea046030031007a' frameborder='0' allowfullscreen></iframe>\n" +
@@ -3065,43 +3065,70 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "    <section class=\"introduction\">\n" +
     "        <h2 class=\"section-title\">Value Proposition</h2>\n" +
     "        <img src=\"https://wikimedia.org/api/rest_v1/media/math/render/svg/327546c3f8bd78d7d533c5c04f7602086862dfd4\">\n" +
+    "        <div class=\"spacing-25\"></div>\n" +
     "\n" +
     "        <p>Energy is the imaginary now.</p>\n" +
+    "        <p>It is in the moment, in this quantifiable property of the imagined observer, energy flows and is transformed.</p>\n" +
     "\n" +
-    "        <p>We define a multidimensional crypto-system which aligns the incentives of <!--creators, viewers and sponsors-->.</p>\n" +
+    "        <!--<p>This moment is energy. This moment is valuable.</p>-->\n" +
+    "        <p>Imagination is energy. Imagination is valuable.</p>\n" +
+    "        <!--<p>imagination is energy</p>-->\n" +
     "\n" +
+    "        <!--\n" +
+    "        <p>In defining a crypto ecosystem, we are able to</p>\n" +
+    "            quantify valuable dimensional attention\n" +
+    "            create crypto-asset streams as a public ledger of our attention.\n" +
+    "            create direct attention markets and exchange potential\n" +
+    "\n" +
+    "            //We define attention as valuable through a crypto asset \n" +
+    "\n" +
+    "            Multidimensional Tokenization\n" +
+    "        -->\n" +
+    "        <div class=\"spacing-25\"></div>\n" +
+    "        <!--<p>We define a multidimensional crypto-system which aligns the incentives of creators, viewers and sponsors.</p>-->\n" +
     "\n" +
     "        <!-- introduce cre8coin, attentionToken / viewToken protocol, introduce utlility - and distributed governance (over YT/goog) -->\n" +
     "        <!-- inrocdue the value of choice in how you spend your attention(Token) --> \n" +
-    "        <p>The goal is to create value according to the attentionToken protocol and cre8coin governance.</p>\n" +
-    "        <p>When one conumes content valuable attention exchanges occur when ones choses to spend their scarce, and quantazible, time watching a specific piece of content.</p>\n" +
+    "        <p>CRE8coin and the attentionToken protocol introduce utlility and distributed governance though the value of choice in how you spend your attention(Token).</p>\n" +
+    "        <!--<p>The goal is to create value according to the attentionToken protocol and cre8coin governance.</p>-->\n" +
+    "        <p>valuable attention exchanges, and a thiriving dapp ecosystem is emergent</p>\n" +
+    "        <p>the protocol creates valuable attention exchanges.</p>\n" +
+    "        <p>a protocol for programatic, valuable attention exchanges</p>\n" +
     "\n" +
+    "        <div class=\"spacing-25\"></div>\n" +
     "\n" +
     "        <!-- ethos: the why-->\n" +
+    "        <p>When one conumes content valuable attention exchanges occur.</p>\n" +
     "        <p>Utilizing the Bidio dapp, advertisers place buy-orders for dimensions of viewer actions. This preserves integrity of the digital media ecosystem. We believe truly native advertising matches the purpose of intentionally sponsored creators.</p>\n" +
+    "        <p>If a creator accepts a bid, the sponsor will get any tokens minted when the audience chooses to engage.</p>\n" +
+    "        <p>Though the open-source bidding mechanism tokenized viewer actions becomes market liquid.</p>\n" +
+    "\n" +
+    "\n" +
+    "        <div class=\"spacing-25\"></div>\n" +
     "\n" +
     "        <!-- introduce technecalities - programatic problems to solve, ERC-88 standard, link in gist etc. -->\n" +
-    "        <p>cre8coin’s network must impose programatic constraints on the ideal system, i.e. one viewToken minted per second of watch time. In the following sections, our team introduces a new token standard, ERC88, which enabled us to design a unique set of mechanisms by which multidimensional viewTokens are distributed to maximize utility.</p>\n" +
+    "        <p>cre8coin’s network creates an intelligently designed system: one viewToken minted per second of watch time.</p>\n" +
+    "        <p>ERC88, a new token standard, enables us to design a unique set of mechanisms by which multidimensional viewTokens are distributed to maximize general utility.</p>\n" +
+    "\n" +
+    "        <div class=\"spacing-25\"></div>\n" +
+    "\n" +
+    "\n" +
     "\n" +
     "        <!--what are the consequences of a qauntized attention based crypto ecosystem -->\n" +
-    "        <p>This cryptosystem actually optimizes for desired outcomes ~ rewarding creativity through purposeful sponsorship. In auctions you may be looking for an incentive compatible, individually rational mechanism that maximizes revenue. Equitable distribution of value based on token-curated awards.</p>\n" +
+    "        <p>This cryptosystem optimizes for desired outcomes though rewarding creativity and purposeful sponsorship/investment.</p>\n" +
+    "        <!--In auctions one looks for rational mechanisms that maximize projected and realized utility. There is an equitable distribution of value based on attention-generated, token-curated awards.</p>-->\n" +
     "\n" +
     "\n" +
-    "        <!-- alligning of value; these value exchanges are implicit; we are makiing it explicit-->\n" +
+    "        <!-- alligning of value; these value exchanges are implicit; we are making it explicit-->\n" +
     "        <p>The attentionToken protocol empowers any genuine storyteller to monetize the intrinsic value of their original content by selling extrinsic value created when viewers pay attention.</p>\n" +
-    "\n" +
+    "        <p>This is implict value exchange is ongoing, and when quantized becomes explicit - on the ledger.</p>\n" +
     "\n" +
     "        <!-- important section -->\n" +
     "        <!-- expaning on the idea of a crypto unility and the overall goals-->\n" +
     "        <p>Ultimately, our team is developing a self-sustaining public utility for direct attention exchanges. Our mission is to incentivize universal support of creativity to drive progress throughout digital media networks and society generally.</p>\n" +
+    "        <!--<p>Ultimately, though expanding on the idea of a generalized crypto utilities, our team is developing a self-sustaining public utility for direct attention exchanges. Our mission is to incentivize universal support of creativity to drive progress throughout digital media networks and society generally.</p>-->\n" +
     "\n" +
-    "\n" +
-    "        <p>Though the open-source bidding mechanism tokenized viewer actions becomes market liquid.</p>\n" +
-    "        <p>If a creator accepts a bid, the sponsor will get any tokens minted when the audience chooses to engage.</p>\n" +
-    "        <p>Through complete transparency, the cre8coin protocol<!--levels the playing field, allowing creators to get sponsored without compromising their integrity.</p> --> tokenizes attention.</p>\n" +
-    "\n" +
-    "\n" +
-    "\n" +
+    "        <div class=\"spacing-50\"></div>\n" +
     "    </section>\n" +
     "\n" +
     "    <section class=\"attentionExchanges\">\n" +
@@ -3111,24 +3138,16 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "\n" +
     "        <p>Participants / Associated Unknowns</p>\n" +
     "        <ul>\n" +
-    "            <li>A) Creators: why do I create?</li>\n" +
+    "            <li>A) Creators: Why do I create?</li>\n" +
     "            <li>B) Viewers: How do I spend my attention?</li>\n" +
-    "            <li>C) Sponsors: how do I reach my audience?</li>\n" +
+    "            <!--<li>C) Sponsors: Why do I exchange?</li>-->\n" +
+    "            <li>C) Sponsors: How do I reach my audience?</li>\n" +
+    "\n" +
     "        </ul>\n" +
     "\n" +
     "        <p>Motivation Sets</p>\n" +
-    "\n" +
+    "        <div class=\"spacing-25\"></div>\n" +
     "        <!--\n" +
-    "        Game theoretic models of attention networks involve three participants, which do not know each other’s utility function. Bayes-Nash equilibrium (against a common prior) is the ideal outcome in such games of incomplete information. However, the practice of audience-based targeting damaged this equilibrium, which supports genuine storytelling. Within the information economy, there should be three primary unknowns – one for each group involved:\n" +
-    "\n" +
-    "        Participants / Associated Unknowns\n" +
-    "        A) Creators: why am I creating?!\n" +
-    "        B) Viewers: what should I watch next?\n" +
-    "        C) Sponsors: how can I reach my audience?\n" +
-    "\n" +
-    "        Motivation Sets\n" +
-    "\n" +
-    "\n" +
     "        Sponsor\n" +
     "        Creator\n" +
     "        Viewer\n" +
@@ -3154,18 +3173,17 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "        Imagination\n" +
     "        and Integrity\n" +
     "        Evaluation, Intention, Curiosity and Impulse\n" +
-    "\n" +
-    "        Experience is identical to a conceptual structure in global maximum of intrinsic powers. Consciousness is not just functional. Subjective meaning is derived from \n" +
-    "\n" +
-    "        Bayesian probability ~ Extension of propositional logic that enables reasoning with hypotheses, i.e. the propositions whose truth or falsity is uncertain. Instead of frequency or propensity of some phenomenon, probability is interpreted as reasonable expectation, representing a state of knowledge (objectivist justified by Cox’s Theorem), or as quantification of a personal belief (subjectivist justified by requirements of rationality and coherence following the Dutch book argument or decision theory and de Finetti’s Theorem). Prior vs. Posterior.\n" +
     "        -->\n" +
+    "        <p>Experience is identical to a conceptual structure in global maximum of intrinsic powers. Consciousness is not just functional. Subjective meaning is derived from</p>\n" +
     "\n" +
+    "        <p>Bayesian probability ~ Extension of propositional logic that enables reasoning with hypotheses, i.e. the propositions whose truth or falsity is uncertain. Instead of frequency or propensity of some phenomenon, probability is interpreted as reasonable expectation, representing a state of knowledge (objectivist justified by Cox’s Theorem), or as quantification of a personal belief (subjectivist justified by requirements of rationality and coherence following the Dutch book argument or decision theory and de Finetti’s Theorem). Prior vs. Posterior.</p>\n" +
+    "\n" +
+    "        <div class=\"spacing-50\"></div>\n" +
     "    </section>\n" +
     "\n" +
     "    <section class=\"incentivizingPositivity\">\n" +
     "        <h2 class=\"section-title\">Incentivizing Positivity</h2>\n" +
     "        <!--CREATING EXTRINSIC VALUE-->\n" +
-    "\n" +
     "        <p>meta</p>\n" +
     "        <p>Multidimensionality engenders exchange value to align with personal value - our valuable attention - and it's exchange</p>\n" +
     "\n" +
@@ -3200,13 +3218,27 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "        -->\n" +
     "\n" +
     "\n" +
-    "\n" +
-    "\n" +
+    "        <div class=\"spacing-50\"></div>\n" +
     "    </section>\n" +
     "\n" +
     "    <section class=\"multidimensionalTokenStandard\">\n" +
     "        <h2 class=\"section-title\">Multidimensional Token Standard</h2>\n" +
     "        <p>ERC-88</p>\n" +
+    "\n" +
+    "        <!--\n" +
+    "        participants: creators, viewers and sponsors.\n" +
+    "        Mapping (address => mapping (string => uint)) balances; [gist]\n" +
+    "        // N-dimensional balances or string based tokens - ex: token per address [address][‘address’][balance]\n" +
+    "        Multidimensional viewToken Structure: [address][_id][_time]\n" +
+    "        Implementation Theory ~ in equilibrium, the mapping from types to outcomes is the same as the mapping that would be chosen by the social choice function. Such intentional structure is required in dominant strategies or Bayes-Nash equilibrium.\n" +
+    "        Revelation Principle ~ any social choice function that can be implemented by any arbitrary mechanism, can also be implemented by a truthful, direct-revelation mechanism with the same equilibrium outcome.\n" +
+    "        Direct-revelation mechanism: agents declare their types to the mechanism, leading to a decision and set of transfers\n" +
+    "        Truthful ~ authenticated\n" +
+    "        Incentive compatibility\n" +
+    "        between bonded node incentives and protocol security guarantees.\n" +
+    "        Strategy-proof\n" +
+    "        Originality, coordination\n" +
+    "        -->\n" +
     "        \n" +
     "        <pre style=\"text-align:left\">\n" +
     "            contract MultidimensionalToken {\n" +
@@ -3228,35 +3260,7 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "                }\n" +
     "            }\n" +
     "        </pre>\n" +
-    "\n" +
-    "\n" +
-    "\n" +
-    "        <!--\n" +
-    "        participants: creators, viewers and sponsors.\n" +
-    "\n" +
-    "        Mapping (address => mapping (string => uint)) balances; [gist]\n" +
-    "\n" +
-    "        // N-dimensional balances or string based tokens - ex: token per address [address][‘address’][balance]\n" +
-    "\n" +
-    "        Multidimensional viewToken Structure: [address][_id][_time]\n" +
-    "\n" +
-    "        Implementation Theory ~ in equilibrium, the mapping from types to outcomes is the same as the mapping that would be chosen by the social choice function. Such intentional structure is required in dominant strategies or Bayes-Nash equilibrium.\n" +
-    "\n" +
-    "        Revelation Principle ~ any social choice function that can be implemented by any arbitrary mechanism, can also be implemented by a truthful, direct-revelation mechanism with the same equilibrium outcome.\n" +
-    "\n" +
-    "        Direct-revelation mechanism: agents declare their types to the mechanism, leading to a decision and set of transfers\n" +
-    "        Truthful ~ authenticated\n" +
-    "        Incentive compatibility\n" +
-    "        between bonded node incentives and protocol security guarantees.\n" +
-    "        Strategy-proof\n" +
-    "\n" +
-    "        Originality, coordination\n" +
-    "\n" +
-    "        -->\n" +
-    "\n" +
-    "\n" +
-    "\n" +
-    "\n" +
+    "        <div class=\"spacing-50\"></div>\n" +
     "    </section>\n" +
     "\n" +
     "    <section class=\"viewTokenProtocol\">\n" +
@@ -3266,7 +3270,6 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "        <p>general vT</p>\n" +
     "        <p>user-based Attention token</p>\n" +
     "        <p>content-based Attention token</p>\n" +
-    "\n" +
     "\n" +
     "\n" +
     "        <!--\n" +
@@ -3381,9 +3384,7 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "        Revenue Maximization\n" +
     "\n" +
     "        What if we don’t know v? How should we set r?\n" +
-    "\n" +
     "        Revelation principle boils down to figuring out the last price you’re willing to offer…\n" +
-    "\n" +
     "        Not even clear it’s a well-defined, meaningful mathematical question\n" +
     "\n" +
     "        For revenue, unlike social surplus, different auctions do better on different inputs.\n" +
@@ -3486,7 +3487,6 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "        If (x, p) is DSIC, what does P have to look like?\n" +
     "        Fix i, b-i , write x(z), p(z) for xi (z, b-i) & pi (z, b-i)\n" +
     "\n" +
-    "\n" +
     "        Piecewise constant allocation rules:\n" +
     "\n" +
     "        Swapping trick:\n" +
@@ -3578,26 +3578,16 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "        Revenue Equivalence ~ concept in auction theory that states that given certain conditions, any mechanism that results in the same outcomes (i.e. allocates items to the same bidders) also has the same expected revenue ( max bj ).\n" +
     "\n" +
     "        Three New Connections Between Complexity Theory and Algorithmic Game Theory\n" +
-    "\n" +
-    "        “Complexity governs the answer to these basic economic questions:”\n" +
-    "\n" +
-    "        Why Prices Need Algorithms\n" +
-    "\n" +
     "        Walrasian Equilibria ~ indivisible goods\n" +
     "        Every bidder gets favorite bundle\n" +
     "        The market should clear\n" +
     "\n" +
     "        V is the set of all monotone, sub-modular functions OR single-minded “and” bidders\n" +
-    "\n" +
     "        Suppose that, for a class V of valuations, “welfare maximization” doesn’t reduce to “utility maximization” (polynomial Turing reductions), there are markets with valuations in V without Walrasian equilibria\n" +
-    "\n" +
     "        Forges a link between a purely economic question and complexity theory as we know it\n" +
-    "\n" +
     "        Welfare-maximization should be no harder than utility-maximization\n" +
-    "\n" +
     "        Barriers to Near-Optimal Equilibria\n" +
     "\n" +
-    "        The Borders of Border’s Theorem\n" +
     "\n" +
     "\n" +
     "        specifying the model of user utilities and deriving clear design objectives\n" +
@@ -3607,60 +3597,14 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "        Sponsor strategy ~ adding extrinsic value through bidding (staking)\n" +
     "\n" +
     "        Curation Markets\n" +
-    "\n" +
     "        Reducing information asymmetry\n" +
-    "        Using tokenized signals for curation\n" +
-    "        Helping various groups coordinate around shared goals (schelling point)\n" +
     "        Continuous token models (CTMs)\n" +
     "        Problems\n" +
     "        Tragedy of the Commons\n" +
-    "        Bribery Attacks\n" +
-    "        Speculative Participation (how to reason about quorum in situations where you don’t know the ratio of active to inactive participants)\n" +
-    "        Themes\n" +
     "        Complexity Theory, Contract Theory, Signalling Theory, Theory of the Firm, Biological Hormesis, Eustress\n" +
-    "        Bonding Curves\n" +
     "\n" +
     "        Token-Curated Registries\n" +
     "         \n" +
-    "        MIN_DEPOSIT\n" +
-    "        The number of tokens a candidate must lock as a deposit for their application, and for the duration of their listing thereafter.\n" +
-    "         \n" +
-    "        APPLY_STAGE_LEN\n" +
-    "        The duration, in blocks or epoch time, during which an application can be challenged. If this period passes with no challenge being issued, the candidate becomes a listee.\n" +
-    "         \n" +
-    "        COMMIT_PERIOD_LEN\n" +
-    "        The duration, in blocks or epoch time, during which token holders can commit votes for a particular challenge.\n" +
-    "         \n" +
-    "        REVEAL_PERIOD_LEN\n" +
-    "        The duration, in blocks or epoch time, during which token holders can reveal committed votes for a particular challenge.\n" +
-    "         \n" +
-    "        DISPENSATION_PCT\n" +
-    "        The percentage of the forfeited deposit in a challenge which is awarded to the winning party as a special dispensation compensating for their capital risk.\n" +
-    "         \n" +
-    "        VOTE_QUORUM\n" +
-    "        The percentage of tokens out of the total tokens revealed in favor of admitting/keeping a challenged candidate necessary for that candidate to get/keep listee status. The VOTE_QUORUM does not count non-voting tokens, and unrevealed tokens are considered non-voting. By way of example, a VOTE_QUORUM of 50 means all challenges are simple majority votes.\n" +
-    "        __________________\n" +
-    "\n" +
-    "        PLCR token-weighted voting mechanism (GitHub)\n" +
-    "        medium.com/@AdChain/a-walkthrough-of-plcr-voting-in-solidity-92420bd5b87c\n" +
-    "        Finite number of tokens generated\n" +
-    "        medium.com/@simondlr/continuous-token-curated-registries-the-infinity-of-lists-69024c9eb70d\n" +
-    "        Questions Answered by Misbehaving Inequality\n" +
-    "        Under what circumstances will an entity listed in a TCR take an action contrary to expectations given the TCR’s value signaling?\n" +
-    "        More generally, what analysis will a listed entity make before taking any action?\n" +
-    "        P_punish(action) * V_stake < V_action\n" +
-    "        For the set of actions where the inequality is true, the listed entity can be expected to take the action with the greatest V_action\n" +
-    "        useful for determining under what circumstances a listed entity may be bribed to take an action contrary to expectations given the TCR’s value signaling\n" +
-    "        In 1.0 TCRs, V_stake is determined by the MIN_DEPOSIT parameter, which must suffice to provide sufficient security against anti-social behavior for as many cases as possible without pricing out too many otherwise suitable candidates\n" +
-    "        What if the MIN_DEPOSIT parameter did not exist?\n" +
-    "        This enables subjectivity around the trust pool size necessary for a consumer to rely on a TCR-listed entity to be deferred to consumers rather than determined by token holders\n" +
-    "        empowers ‘listees’ to make a responsive market for trust.\n" +
-    "        2.0 TCRs\n" +
-    "        medium.com/@ilovebagels/token-curated-registries-1-1-2-0-tcrs-new-theory-and-dev-updates-34c9f079f33d\n" +
-    "        https://medium.com/@lkngtn/hi-mike-f39e9cbc4699\n" +
-    "        https://medium.com/@ilovebagels/i-actually-have-a-different-conclusion-luke-let-me-know-if-you-disagree-bcaee71ccb39\n" +
-    "        https://blog.ethereum.org/2015/01/28/p-epsilon-attack\n" +
-    "\n" +
     "        Token-Curated Awards\n" +
     "        This new model inflates market supply to reward participants who add extrinsic value, driving progress\n" +
     "        Consuming content (watching videos) actually increases the number of multidimensional viewTokens\n" +
@@ -3670,14 +3614,7 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "\n" +
     "        https://medium.com/@cburniske/cryptoasset-valuations-ac83479ffca7\n" +
     "        -->\n" +
-    "\n" +
-    "\n" +
-    "\n" +
-    "\n" +
-    "\n" +
-    "\n" +
-    "\n" +
-    "\n" +
+    "        <div class=\"spacing-50\"></div>\n" +
     "    </section>\n" +
     "\n" +
     "    <section class=\"cre8coinGovernance\">\n" +
@@ -3724,9 +3661,9 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "        https://medium.com/@Vlad_Zamfir/against-on-chain-governance-a4ceacd040ca\n" +
     "        http://vitalik.ca/general/2017/12/17/voting.html\n" +
     "\n" +
-    "        Delphi\n" +
     "        -->\n" +
     "\n" +
+    "        <div class=\"spacing-50\"></div>\n" +
     "    </section>\n" +
     "\n" +
     "    <section class=\"hyperledgerSawtoothEthereum\">\n" +
@@ -3736,19 +3673,15 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "\n" +
     "        <!--\n" +
     "        Burrow // Indy\n" +
-    "\n" +
     "        Proof of Elapsed Time (PoET)\n" +
-    "\n" +
     "        https://www.hyperledger.org/blog/2017/08/22/hello-world-meet-seth-sawtooth-ethereum\n" +
     "        -->\n" +
-    "\n" +
-    "\n" +
-    "\n" +
-    "\n" +
+    "        <div class=\"spacing-50\"></div>\n" +
     "    </section>\n" +
     "    \n" +
     "    <section class=\"Conclusion\">\n" +
     "        <h2 class=\"section-title\">Conclusion</h2>\n" +
+    "\n" +
     "        <p>cre8, authentic, universal income</p>\n" +
     "\n" +
     "        <p>Information will be tokenized, including various metrics for attention.</p>\n" +
@@ -3760,10 +3693,12 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "\n" +
     "        Never stop creating! Sign up to start earning viewToken and cre8coin today.-->\n" +
     "\n" +
-    "\n" +
-    "\n" +
-    "\n" +
+    "        <div class=\"spacing-50\"></div>\n" +
     "    </section>\n" +
+    "\n" +
+    "    <!--<section class=\"roadMap\">\n" +
+    "        <h2 class=\"section-title\">Road Map</h2>\n" +
+    "    </section>-->\n" +
     "\n" +
     "</div>\n" +
     "");
