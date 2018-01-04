@@ -2966,23 +2966,29 @@ angular.module("token/index.tpl.html", []).run(["$templateCache", function ($tem
     "</div>\n" +
     "\n" +
     "<div class=\"container\">\n" +
-    "  <div class=\"col-xs-6\">\n" +
-    "    <div class=\"spacing-50\"></div>\n" +
-    "    <h2 class=\"section-title\">create the next wave</h2>\n" +
-    "    <p style=\"font-size:20px\">Universal Income</p>\n" +
-    "    <p style=\"font-size:20px\">ERC-88 Standard</p>\n" +
-    "    <p style=\"font-size:20px\">A MULTIDIMENSIONAL attention-backed asset class</p>\n" +
-    "    <a href=\"#paper\" du-smooth-scroll><button class=\"btn-6 btn-full\" style=\"background:transparent;\">White Paper</button></a>\n" +
+    "  <div class=\"row\">\n" +
+    "    <div class=\"col-md-6\">\n" +
+    "      <div class=\"spacing-50\"></div>\n" +
+    "      <h2 class=\"section-title\">create the next wave</h2>\n" +
+    "      <p style=\"font-size:20px\">Universal Income</p>\n" +
+    "      <p style=\"font-size:20px\">ERC-88 Standard</p>\n" +
+    "      <p style=\"font-size:20px\">A MULTIDIMENSIONAL attention-backed asset class</p>\n" +
+    "      <a href=\"#paper\" du-smooth-scroll><button class=\"btn-6 btn-full\" style=\"background:transparent;\">White Paper</button></a>\n" +
+    "    </div>\n" +
     "  </div>\n" +
     "\n" +
-    "  <div class=\"col-xs-12\">\n" +
-    "    <div class=\"spacing-50\"></div>\n" +
-    "    <img style=\"height:100px;\" src=\"https://wikimedia.org/api/rest_v1/media/math/render/svg/327546c3f8bd78d7d533c5c04f7602086862dfd4\">\n" +
-    "    <div class=\"spacing-50\"></div>\n" +
+    "  <div class=\"row\">\n" +
+    "    <div class=\"col-xs-12\">\n" +
+    "      <div class=\"spacing-50\"></div>\n" +
+    "      <img style=\"height:100px;\" src=\"https://wikimedia.org/api/rest_v1/media/math/render/svg/327546c3f8bd78d7d533c5c04f7602086862dfd4\">\n" +
+    "      <div class=\"spacing-50\"></div>\n" +
+    "    </div>\n" +
     "  </div>\n" +
     "\n" +
-    "  <div class=\"col-xs-12\" style=\"text-align:right\">\n" +
-    "    <iframe width='560' height='315' src='https://www.bidio.co/v/57954ce9dea046030031007a' frameborder='0' allowfullscreen></iframe>\n" +
+    "  <div class=\"row\">\n" +
+    "    <div class=\"col-xs-12\" style=\"text-align:right\">\n" +
+    "      <iframe width='560' height='315' src='https://www.bidio.co/v/57954ce9dea046030031007a' frameborder='0' allowfullscreen></iframe>\n" +
+    "    </div>\n" +
     "  </div>\n" +
     "\n" +
     "  <!--<iframe width='560' height='315' src='https://www.bidio.co/v/57958aa3a1ad8f030032230c' frameborder='0' allowfullscreen></iframe>-->\n" +
@@ -2996,7 +3002,7 @@ angular.module("token/index.tpl.html", []).run(["$templateCache", function ($tem
     "<div class=\"container\">\n" +
     "\n" +
     "  <div class=\"\">\n" +
-    "    <h2 class=\"section-title\">contract address: 0x35F8e9dFc3f97fa18CEf166a6099074B5340e843</h2>\n" +
+    "    <h2 class=\"section-title\" style=\"word-wrap:break-word;\">contract address: 0x35F8e9dFc3f97fa18CEf166a6099074B5340e843</h2>\n" +
     "    <p style=\"font-size:20px\">{{totalEth}} ETH recieved, {{totalToken}} CRE8 Tokens distributed</p>\n" +
     "    <p style=\"font-size:20px\">100 Tokens = {{tokenPrice}} ETH</p><br>\n" +
     "\n" +
@@ -3023,7 +3029,7 @@ angular.module("token/index.tpl.html", []).run(["$templateCache", function ($tem
     "  <div id=\"paper\" class=\"spacing-50\"></div>\n" +
     "\n" +
     "  <div class=\"row\">\n" +
-    "    <a class=\"col-xs-12\" href=\"https://docs.google.com/document/d/1WJPTpY6vdcu-olyttI1WDFTT5NZGRm2T3OK6IqML3CA/edit\"><button class=\"btn-6 btn-full\" style=\"background:transparent;\">White Paper</button></a>\n" +
+    "    <a target=\"_blank\" class=\"col-xs-12\" href=\"https://docs.google.com/document/d/1WJPTpY6vdcu-olyttI1WDFTT5NZGRm2T3OK6IqML3CA/edit\"><button class=\"btn-6 btn-full\" style=\"background:transparent;\">White Paper</button></a>\n" +
     "  </div>\n" +
     "\n" +
     "</div>\n" +
@@ -3066,7 +3072,7 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "\n" +
     "    <section class=\"introduction\">\n" +
     "        <h2 class=\"section-title\">Value Proposition</h2>\n" +
-    "        <img src=\"https://wikimedia.org/api/rest_v1/media/math/render/svg/327546c3f8bd78d7d533c5c04f7602086862dfd4\">\n" +
+    "        <img style=\"100px\" src=\"https://wikimedia.org/api/rest_v1/media/math/render/svg/327546c3f8bd78d7d533c5c04f7602086862dfd4\">\n" +
     "        <div class=\"spacing-25\"></div>\n" +
     "\n" +
     "        <p>Energy is the imaginary now.</p>\n" +
