@@ -3096,14 +3096,14 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "        <!-- inrocdue the value of choice in how you spend your attention(Token) --> \n" +
     "        <p>CRE8coin and the attentionToken protocol introduce utlility and distributed governance though the value of choice in how you spend your attention(Token).</p>\n" +
     "        <!--<p>The goal is to create value according to the attentionToken protocol and cre8coin governance.</p>-->\n" +
-    "        <p>valuable attention exchanges, and a thiriving dapp ecosystem is emergent</p>\n" +
+    "        <p>valuable attention exchanges, and a thriving dapp ecosystem is emergent</p>\n" +
     "        <p>the protocol creates valuable attention exchanges.</p>\n" +
-    "        <p>a protocol for programatic, valuable attention exchanges</p>\n" +
+    "        <p>a protocol for programmatic, valuable attention exchanges</p>\n" +
     "\n" +
     "        <div class=\"spacing-25\"></div>\n" +
     "\n" +
     "        <!-- ethos: the why-->\n" +
-    "        <p>When one conumes content valuable attention exchanges occur.</p>\n" +
+    "        <p>When one consumes content valuable attention exchanges occur.</p>\n" +
     "        <p>Utilizing the Bidio dapp, advertisers place buy-orders for dimensions of viewer actions. This preserves integrity of the digital media ecosystem. We believe truly native advertising matches the purpose of intentionally sponsored creators.</p>\n" +
     "        <p>If a creator accepts a bid, the sponsor will get any tokens minted when the audience chooses to engage.</p>\n" +
     "        <p>Though the open-source bidding mechanism tokenized viewer actions becomes market liquid.</p>\n" +
@@ -3126,7 +3126,7 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "\n" +
     "        <!-- alligning of value; these value exchanges are implicit; we are making it explicit-->\n" +
     "        <p>The attentionToken protocol empowers any genuine storyteller to monetize the intrinsic value of their original content by selling derivative crypto value created when viewers pay attention.</p>\n" +
-    "        <p>This is implict value exchange is ongoing, and when quantized becomes explicit - on the ledger.</p>\n" +
+    "        <p>This implicit value exchange is ongoing, and when quantized becomes explicit - on the ledger.</p>\n" +
     "\n" +
     "        <!-- important section -->\n" +
     "        <!-- expaning on the idea of a crypto unility and the overall goals-->\n" +
@@ -3143,6 +3143,8 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "\n" +
     "        <p>Participants / Players / Associated Unknowns</p>\n" +
     "        <p>Social Decisions</p>\n" +
+    "        <p>Energy is the imaginary now</p>\n" +
+    "\n" +
     "        <ul>\n" +
     "            <li>A) Creators: Why do I create?</li>\n" +
     "            <li>B) Viewers: How do I spend my attention?</li>\n" +
@@ -3152,8 +3154,6 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "        </ul>\n" +
     "\n" +
     "        <!--\n" +
-    "        Social Decisions:\n" +
-    "        Energy is the imaginary now\n" +
     "        Time ~ paying attention\n" +
     "        Money ~ sponsorship and/or patronage/subscription\n" +
     "        Private Information:\n" +
@@ -3237,8 +3237,8 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "        <h2 class=\"section-title\">Incentivizing Positivity</h2>\n" +
     "        <!--CREATING EXTRINSIC VALUE-->\n" +
     "        <p>Multidimensionality engenders exchange value to align with personal value - our valuable attention - and it's exchange</p>\n" +
-    "\n" +
     "        <a href=\"https://sites.duke.edu/niou/files/2014/06/Arrow-Social-Choice-And-Individual-Values.pdf\">Social Choice Functions</a>\n" +
+    "\n" +
     "\n" +
     "        <!--\n" +
     "        General distribution of viewToken provides a universal floor, allowing creators to earn and share the value of their viewers’ attention and engagement. When sponsors want to get attention from a specific audience, they can buy the rights to any tokens minted in real time (with strings attached). Net bid value is the full bid amount minus the market value of general attentionToken.\n" +
@@ -3246,8 +3246,6 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "        Overall, the goal is to incentivize progress.\n" +
     "\n" +
     "        Social Choice Functions\n" +
-    "\n" +
-    "        Three Layers:\n" +
     "\n" +
     "        market mechanism ~ economic\n" +
     "        Supply side\n" +
@@ -3280,9 +3278,11 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "        participants: creators, viewers and sponsors.\n" +
     "        Revelation Principle ~ any social choice function that can be implemented by any arbitrary mechanism, can also be implemented by a truthful, direct-revelation mechanism with the same equilibrium outcome.\n" +
     "        -->\n" +
+    "\n" +
     "        <p>Multidimensional viewToken Structure: [address][_id][_value]</p>\n" +
     "        <p>Mapping (address => mapping (string => uint)) balances; <a href=\"https://gist.github.com/troverman/809dba32d8510e7713aaa5c869e607ae\">[gist]</a></p>\n" +
     "        <p>N-dimensional balances or string based tokens - ex: token per address [address][‘address’][balance]</p>\n" +
+    "        <p><a href=\"/market\">Multidimensional Token Market</a></p>\n" +
     "        <pre style=\"text-align:left;font-family:monospace;white-space:pre-wrap;\">\n" +
     "        contract MultidimensionalToken {\n" +
     "            mapping (address => mapping (string => uint)) balances;\n" +
@@ -3518,8 +3518,8 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "    <section class=\"cre8coinGovernance\">\n" +
     "        <h2 class=\"section-title\">cre8coin: Governance</h2>\n" +
     "\n" +
-    "        <p>democratically elected NGOs</p>\n" +
-    "        <p>master account governance - price setting, budgeting, smart contact implementation</p>\n" +
+    "        <p>Democratically elected NGOs</p>\n" +
+    "        <p>Master account governance - price setting, budgeting, smart contact implementation</p>\n" +
     "        <p>Mechanisms of Coordination</p>\n" +
     "\n" +
     "\n" +
@@ -3611,6 +3611,35 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "        http://www.cramton.umd.edu/papers2000-2004/cramton-simultaneous-ascending-auction.pdf\n" +
     "\n" +
     "        Myerson–Satterthwaite Theorem ~ important result in mechanism design and the economics of asymmetric information, which says there is no efficient way for two parties to trade a good when they each have secret, probabilistically different valuations for it, without the risk of forcing one party to trade at a loss. \n" +
+    "        -->\n" +
+    "\n" +
+    "        <!--\n" +
+    "        RESOURCES\n" +
+    "        https://people.cs.uchicago.edu/~teutsch/papers/ico.pdf\n" +
+    "        http://vitalik.ca/general/2017/06/09/sales.html\n" +
+    "        https://medium.com/@Vlad_Zamfir/a-safe-token-sale-mechanism-8d73c430ddd1\n" +
+    "        http://continuations.com/post/161776542685/optimal-token-sales\n" +
+    "        SAFTproject.com\n" +
+    "        https://www.sec.gov/news/public-statement/statement-clayton-2017-12-11#_ftn1\n" +
+    "        https://web.stanford.edu/~jacksonm/mechtheo.pdf\n" +
+    "        https://users.cs.duke.edu/~conitzer/thesis_ch4.pdf\n" +
+    "        http://www.eecs.harvard.edu/~parkes/cs286r/spring07/papers/myerson.pdf\n" +
+    "        Zooko’s Triangle\n" +
+    "        Security\n" +
+    "        User choice\n" +
+    "        Decentralization\n" +
+    "        “Bitcoin is the first example of a new form of life. It lives and breathes on the internet. It lives because it can pay people to keep it alive. It lives because it performs a useful service that people will pay it to perform.” -- Ralph Merkle [source]\n" +
+    "        http://mason.gmu.edu/~rhanson/futarchy.html\n" +
+    "        https://pdfs.semanticscholar.org/54aa/bd54018e9b9750bc0c1f749f58e5a9f2efa4.pdf\n" +
+    "        when voters have three or more distinct alternatives (options), no ranked voting electoral system can convert the ranked preferences of individuals into a community-wide (complete and transitive) ranking while also meeting a specified set of criteria: unrestricted domain, non-dictatorship, Pareto efficiency and independence of irrelevant alternatives.\n" +
+    "        Leonid Hurwicz ~ incentive compatibility and mechanism design\n" +
+    "        Roger Myerson ~ Optimal Auction Design\n" +
+    "        https://en.wikipedia.org/wiki/Myerson%E2%80%93Satterthwaite_theorem\n" +
+    "        Eric Maskin ~ theory of mechanism design (Nobel Prize Lecture)\n" +
+    "        https://en.wikipedia.org/wiki/Arrow%27s_impossibility_theorem\n" +
+    "        https://people.csail.mit.edu/costis/thesis.pdf\n" +
+    "        Metric Definitions for Blockchain Technology (via Hyperledger’s Performance & Scalability Working Group)\n" +
+    "        https://coincenter.org/entry/what-are-decentralized-markets\n" +
     "        -->\n" +
     "\n" +
     "\n" +
