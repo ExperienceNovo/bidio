@@ -3164,14 +3164,16 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "        <p>Motivation Sets</p>\n" +
     "        <!--<style>tr{padding:10px;}</style>-->\n" +
     "        <div class=\"spacing-25\"></div>\n" +
-    "        <table>\n" +
-    "            <tbody>\n" +
+    "        <table class=\"table table-striped table-hover\">\n" +
+    "            <thead class=\"thead-inverse\">\n" +
     "                <tr>\n" +
     "                    <td></td>\n" +
-    "                    <td>Sponsor</td>\n" +
-    "                    <td>Creator</td>\n" +
-    "                    <td>Viewer</td>\n" +
+    "                    <td><b>Sponsor</b></td>\n" +
+    "                    <td><b>Creator</b></td>\n" +
+    "                    <td><b>Viewer</b></td>\n" +
     "                </tr>\n" +
+    "            </thead>\n" +
+    "            <tbody>\n" +
     "                <tr>\n" +
     "                    <td><b>Motive</b></td>\n" +
     "                    <td>Attention</td>\n" +
@@ -3208,63 +3210,58 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "        </table>\n" +
     "        <div class=\"spacing-25\"></div>\n" +
     "\n" +
-    "        <!--<p>Experience is identical to a conceptual structure in global maximum of intrinsic powers. Consciousness is not just functional. Subjective meaning is derived from</p>-->\n" +
-    "\n" +
+    "        <!--WIP-->\n" +
     "        <p>Bayesian probability</p>\n" +
-    "        <!--<p>Extension of propositional logic that enables reasoning with hypotheses, i.e. the propositions whose truth or falsity is uncertain. Instead of frequency or propensity of some phenomenon, probability is interpreted as reasonable expectation, representing a state of knowledge (objectivist justified by Cox’s Theorem), or as quantification of a personal belief (subjectivist justified by requirements of rationality and coherence following the Dutch book argument or decision theory and de Finetti’s Theorem). Prior vs. Posterior.</p>-->\n" +
+    "        <p>Extension of propositional logic that enables reasoning with hypotheses, i.e. the propositions whose truth or falsity is uncertain. Instead of frequency or propensity of some phenomenon, probability is interpreted as reasonable expectation, representing a state of knowledge (objectivist justified by Cox’s Theorem), or as quantification of a personal belief (subjectivist justified by requirements of rationality and coherence following the Dutch book argument or decision theory and de Finetti’s Theorem). Prior vs. Posterior.</p>\n" +
+    "        <div class=\"spacing-10\"></div>\n" +
     "\n" +
-    "        <!--\n" +
-    "        adding a mechanism turns a Bayesian setting into “game form”\n" +
-    "        deterministic: always outputting the same decision and payouts for a given setting\n" +
-    "        probabilistic/randomized according to some rule\n" +
-    "    \n" +
-    "        Common Prior:\n" +
-    "        probability distribution over types\n" +
-    "        Anyone and everyone can be a creator, viewer and sponsor!\n" +
-    "        Decision Rule:\n" +
-    "        maps types to social decisions ~ paying attention\n" +
-    "        Viewers: watching, engaging and sharing\n" +
-    "        Creators: producing content and sharing revenue\n" +
-    "        Sponsors: bidding for tokenized information\n" +
-    "        -->\n" +
+    "        <p>adding a mechanism turns a Bayesian setting into “game form”</p>\n" +
+    "        <p>deterministic: always outputting the same decision and payouts for a given setting</p>\n" +
+    "        <p>probabilistic/randomized according to some rule</p>\n" +
+    "        <div class=\"spacing-10\"></div>\n" +
     "\n" +
-    "\n" +
+    "        <p>Common Prior: probability distribution over types - anyone and everyone can be a creator, viewer and sponsor!</p>\n" +
+    "        <p>Decision Rule: maps types to social decisions ~ paying attention</p>\n" +
+    "        <p>Viewers: watching, engaging and sharing</p>\n" +
+    "        <p>Creators: producing content and sharing revenue</p>\n" +
+    "        <p>Sponsors: bidding for tokenized information</p>\n" +
+    "        <p>Experience is identical to a conceptual structure in global maximum of intrinsic powers. Consciousness is not just functional. Subjective meaning is derived from</p>\n" +
     "\n" +
     "        <div class=\"spacing-50\"></div>\n" +
     "    </section>\n" +
     "\n" +
     "    <section class=\"incentivizingPositivity\">\n" +
     "        <h2 class=\"section-title\">Incentivizing Positivity</h2>\n" +
-    "        <!--CREATING EXTRINSIC VALUE-->\n" +
+    "        <!--CREATING REAL VALUE-->\n" +
     "        <p>Multidimensionality engenders exchange value to align with personal value - our valuable attention - and it's exchange</p>\n" +
     "        <a href=\"https://sites.duke.edu/niou/files/2014/06/Arrow-Social-Choice-And-Individual-Values.pdf\">Social Choice Functions</a>\n" +
+    "        <div class=\"spacing-10\"></div>\n" +
+    "\n" +
+    "        <p>General distribution of viewToken provides a universal floor, allowing creators to earn and share the value of their viewers’ attention and engagement. When sponsors want to get attention from a specific audience, they can buy the rights to any tokens minted in real time (with strings attached). Net bid value is the full bid amount minus the market value of general attentionToken.</p>\n" +
+    "        <p>Overall, the goal is to incentivize progress.</p>\n" +
+    "        <p>Generally, participants will support high-quality content which adds extrinsic value. Here is what each type is now incentivized to do.</p>\n" +
+    "        <div class=\"spacing-10\"></div>\n" +
+    "\n" +
+    "        <p>viewers: watch - pay attention - improved accountability</p>\n" +
+    "        <p>creators: create - adding extrinsic value</p>\n" +
+    "        <p>sponsors: bid - contextual targeting rewards quality</p>\n" +
+    "        <p>all dimensions are publicly available</p>\n" +
+    "        <div class=\"spacing-10\"></div>\n" +
+    "\n" +
+    "        <p>economic market mechanism</p>\n" +
+    "        <p>Supply side - Continuous attentionToken model</p>\n" +
+    "        <p>Demand side - Bidding</p>\n" +
+    "        <div class=\"spacing-10\"></div>\n" +
+    "\n" +
+    "        <p>Mechanisms of Coordination</p>\n" +
+    "        <p>Bidding: assigning liquid values to multidimensional viewer actions | stake or trust pooling around high-quality content</p>\n" +
+    "        <p>Watching: token-curated award system | creating supply to reward creators who add extrinsic value</p>\n" +
+    "        <p>Creating: releasing energy through self-expression | offering rewards to patrons and sponsors</p>\n" +
+    "        <div class=\"spacing-10\"></div>\n" +
     "\n" +
     "\n" +
-    "        <!--\n" +
-    "        General distribution of viewToken provides a universal floor, allowing creators to earn and share the value of their viewers’ attention and engagement. When sponsors want to get attention from a specific audience, they can buy the rights to any tokens minted in real time (with strings attached). Net bid value is the full bid amount minus the market value of general attentionToken.\n" +
-    "\n" +
-    "        Overall, the goal is to incentivize progress.\n" +
-    "\n" +
-    "        Social Choice Functions\n" +
-    "\n" +
-    "        market mechanism ~ economic\n" +
-    "        Supply side\n" +
-    "        Multidimensional viewToken protocol\n" +
-    "        Continuous token model\n" +
-    "        Demand side\n" +
-    "        Bidding\n" +
-    "        Complete transparency and control\n" +
-    "        governance / voting ~ political\n" +
-    "\n" +
-    "        Generally, participants will support high-quality content which adds extrinsic value. Here is what each type is now incentivized to do.\n" +
-    "\n" +
-    "        Watch - improved accountability\n" +
-    "        viewers are incentivized by tokens\n" +
-    "        all dimensions are publicly available\n" +
-    "        Create - adding extrinsic value\n" +
-    "        Bidding - contextual targeting rewards quality\n" +
-    "        https://sites.duke.edu/niou/files/2014/06/Arrow-Social-Choice-And-Individual-Values.pdf\n" +
-    "        -->\n" +
+    "        <p>generalized utility governance</p>\n" +
+    "        <p>complete transparency and control</p>\n" +
     "\n" +
     "\n" +
     "        <div class=\"spacing-50\"></div>\n" +
@@ -3308,32 +3305,35 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "    <section class=\"viewTokenProtocol\">\n" +
     "        <h2 class=\"section-title\">viewToken Protocol</h2>\n" +
     "        <!--<h2 class=\"section-title\">attentionToken Protocol</h2>-->\n" +
-    "        <h3>Mechanism Design</h3>\n" +
+    "        <p>Mechanism Design</p>\n" +
     "        <p>(vT)</p>\n" +
     "        <p>Three Dimensions</p>\n" +
     "        <p>general vT</p>\n" +
-    "        <p>user-based Attention token</p>\n" +
-    "        <p>content-based Attention token</p>\n" +
+    "        <p>user-based viewToken</p>\n" +
+    "        <p>content-based viewToken</p>\n" +
     "        <p>ERC-88 Multidimensional standard</p>\n" +
+    "        <div class=\"spacing-10\"></div>\n" +
     "\n" +
     "        <p>Incentive compatibility</p>\n" +
     "        <p>between bonded node incentives and protocol security guarantees.</p>\n" +
     "        <p>minting logic</p>\n" +
     "        <p>Strategy-proof</p>\n" +
     "        <p>Direct-revelation mechanism: agents declare their types to the mechanism, leading to a decision and set of transfers</p>\n" +
+    "        <div class=\"spacing-10\"></div>\n" +
     "\n" +
     "\n" +
     "        <p>Our central task is to specify a mechanism that incentivizes rational agents to behave in a mannor, based on their private information, that lead to socially desired outcomes.</p>\n" +
     "        <p>Implementation Theory ~ in equilibrium, the mapping from types to outcomes is the same as the mapping that would be chosen by the social choice function. Such intentional structure is required in dominant strategies or Bayes-Nash equilibrium.</p>\n" +
     "        <p>adding a mechanism turns a Bayesian setting into “game form”</p>\n" +
     "        <p>Mechanism: a pair of strategy spaces and a function which maps any strategy to resulting social decisions and transfers.</p>\n" +
+    "        <div class=\"spacing-10\"></div>\n" +
     "\n" +
     "        <p>AttentionTokens are continuously minted based on viewer actions.</p>\n" +
     "\n" +
     "        <p>Desired Outcomes: Creators will produce high-quality content, which drives progress with energy and information. Bidders will reward creators who add extrinsic value to unified groups coordinating around shared goal(s). Viewers will be more accountable for what they watch because they want their own attention to be more valuable. Overall, cre8coin optimizes for individual belief systems by gamifying the discovery of qualitative schelling points. For Bidio participants, utility means fulfillment of purpose with guaranteed authenticity.</p>\n" +
     "\n" +
     "        <p>Our team developed a real-time auction system that empowers genuine storytellers with complete transparency and control. The question is how can we design a game to incentivize everyone to represent their utilities truthfully?</p>\n" +
-    "\n" +
+    "        <div class=\"spacing-10\"></div>\n" +
     "\n" +
     "\n" +
     "        <!--\n" +
@@ -3519,8 +3519,13 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "        <h2 class=\"section-title\">cre8coin: Governance</h2>\n" +
     "\n" +
     "        <p>Democratically elected NGOs</p>\n" +
+    "        <p>Generalized crypto-utility governance</p>\n" +
     "        <p>Master account governance - price setting, budgeting, smart contact implementation</p>\n" +
     "        <p>Mechanisms of Coordination</p>\n" +
+    "\n" +
+    "        <!--<a href=\"https://medium.com/@DimitriDeJonghe/curated-governance-with-stake-machines\">curanted gov</a>\n" +
+    "        <a href=\"https://medium.com/@Vlad_Zamfir/against-on-chain-governance-a4ceacd040ca\">against on-chain gov</a>\n" +
+    "        <a href=\"http://vitalik.ca/general/2017/12/17/voting.html\">voting</a>-->\n" +
     "\n" +
     "\n" +
     "        <!--\n" +
@@ -3531,22 +3536,11 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "        clickToken\n" +
     "        embedToken\n" +
     "         \n" +
-    "        Mechanisms for Coordination\n" +
-    "\n" +
     "        Requirements:\n" +
     "        ex-ante Individual Rationality\n" +
     "        Weak Balanced Budget\n" +
     "        Nash equilibrium Incentive compatibility\n" +
     "        ex-post Pareto efficiency\n" +
-    "\n" +
-    "        Bidding: assigning liquid values to multidimensional viewer actions\n" +
-    "        stake or trust pooling around high-quality content\n" +
-    "        Watching: token-curated award system\n" +
-    "        inflating supply to reward creators who add extrinsic value\n" +
-    "        Creating: releasing energy through self-expression\n" +
-    "        offering rewards to patrons and sponsors\n" +
-    "\n" +
-    "        https://medium.com/@DimitriDeJonghe/curated-governance-with-stake-machines\n" +
     "\n" +
     "        one coin, one vote\n" +
     "        problem: plutarchy\n" +
@@ -3557,14 +3551,10 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "\n" +
     "        Arrow’s Impossibility Theorem\n" +
     "\n" +
-    "        https://jsecoin.com\n" +
-    "\n" +
     "        Slashing conditions:\n" +
     "        Copyright infringement\n" +
     "        Voting for low-quality content?\n" +
     "\n" +
-    "        https://medium.com/@Vlad_Zamfir/against-on-chain-governance-a4ceacd040ca\n" +
-    "        http://vitalik.ca/general/2017/12/17/voting.html\n" +
     "\n" +
     "        Delphi\n" +
     "        -->\n" +
@@ -3577,6 +3567,8 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "        <p>peers and mining, Proof of Elapsed Time (PoET), browser mining</p>\n" +
     "        <p>unification of machine and human attention</p>\n" +
     "        \n" +
+    "        <!--https://jsecoin.com-->\n" +
+    "\n" +
     "\n" +
     "        <div class=\"spacing-50\"></div>\n" +
     "    </section>\n" +
@@ -3588,6 +3580,7 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "\n" +
     "        <p>Information will be tokenized, including various metrics for attention.</p>\n" +
     "        <p>Through a commitment to innovation around governance, performance and scalability..</p>\n" +
+    "        <div class=\"spacing-25\"></div>\n" +
     "\n" +
     "\n" +
     "        <!-- Initially, we’re making the viewToken protocol available to all creators within cre8coin’s network. The Bidio platform is already up and running, and we’re committed to innovation around governance, performance and scalability. This powerful cryptosystem mints fractalized networks of multidimensional viewTokens. \n" +
@@ -3613,34 +3606,22 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "        Myerson–Satterthwaite Theorem ~ important result in mechanism design and the economics of asymmetric information, which says there is no efficient way for two parties to trade a good when they each have secret, probabilistically different valuations for it, without the risk of forcing one party to trade at a loss. \n" +
     "        -->\n" +
     "\n" +
-    "        <!--\n" +
-    "        RESOURCES\n" +
-    "        https://people.cs.uchicago.edu/~teutsch/papers/ico.pdf\n" +
-    "        http://vitalik.ca/general/2017/06/09/sales.html\n" +
-    "        https://medium.com/@Vlad_Zamfir/a-safe-token-sale-mechanism-8d73c430ddd1\n" +
-    "        http://continuations.com/post/161776542685/optimal-token-sales\n" +
-    "        SAFTproject.com\n" +
-    "        https://www.sec.gov/news/public-statement/statement-clayton-2017-12-11#_ftn1\n" +
-    "        https://web.stanford.edu/~jacksonm/mechtheo.pdf\n" +
-    "        https://users.cs.duke.edu/~conitzer/thesis_ch4.pdf\n" +
-    "        http://www.eecs.harvard.edu/~parkes/cs286r/spring07/papers/myerson.pdf\n" +
-    "        Zooko’s Triangle\n" +
-    "        Security\n" +
-    "        User choice\n" +
-    "        Decentralization\n" +
-    "        “Bitcoin is the first example of a new form of life. It lives and breathes on the internet. It lives because it can pay people to keep it alive. It lives because it performs a useful service that people will pay it to perform.” -- Ralph Merkle [source]\n" +
-    "        http://mason.gmu.edu/~rhanson/futarchy.html\n" +
-    "        https://pdfs.semanticscholar.org/54aa/bd54018e9b9750bc0c1f749f58e5a9f2efa4.pdf\n" +
-    "        when voters have three or more distinct alternatives (options), no ranked voting electoral system can convert the ranked preferences of individuals into a community-wide (complete and transitive) ranking while also meeting a specified set of criteria: unrestricted domain, non-dictatorship, Pareto efficiency and independence of irrelevant alternatives.\n" +
-    "        Leonid Hurwicz ~ incentive compatibility and mechanism design\n" +
-    "        Roger Myerson ~ Optimal Auction Design\n" +
-    "        https://en.wikipedia.org/wiki/Myerson%E2%80%93Satterthwaite_theorem\n" +
-    "        Eric Maskin ~ theory of mechanism design (Nobel Prize Lecture)\n" +
-    "        https://en.wikipedia.org/wiki/Arrow%27s_impossibility_theorem\n" +
-    "        https://people.csail.mit.edu/costis/thesis.pdf\n" +
-    "        Metric Definitions for Blockchain Technology (via Hyperledger’s Performance & Scalability Working Group)\n" +
-    "        https://coincenter.org/entry/what-are-decentralized-markets\n" +
-    "        -->\n" +
+    "        <h3 style=\"font-size:26px\">RESOURCES</h3><br><br>\n" +
+    "        <a href=\"https://people.cs.uchicago.edu/~teutsch/papers/ico.pdf\">[1] ICO</a><br>\n" +
+    "        <a href=\"http://vitalik.ca/general/2017/06/09/sales.html\">[2] SALES</a><br>\n" +
+    "        <a href=\"https://medium.com/@Vlad_Zamfir/a-safe-token-sale-mechanism-8d73c430ddd1\">[3] SALE MECHANISMS</a><br>\n" +
+    "        <a href=\"http://continuations.com/post/161776542685/optimal-token-sales\">[4] OPTIMAL SALES</a><br>\n" +
+    "        <a href=\"SAFTproject.com\">[5] SAFT PROJECT</a><br>\n" +
+    "        <a href=\"https://www.sec.gov/news/public-statement/statement-clayton-2017-12-11#_ftn1\">[6] SEC STATEMENT</a><br>\n" +
+    "        <a href=\"https://web.stanford.edu/~jacksonm/mechtheo.pdf\">[7] MECH DESIGN</a><br>\n" +
+    "        <a href=\"https://users.cs.duke.edu/~conitzer/thesis_ch4.pdf\">[8] THESIS</a><br>\n" +
+    "        <a href=\"http://www.eecs.harvard.edu/~parkes/cs286r/spring07/papers/myerson.pdf\">[9] MYERSON</a><br>\n" +
+    "        <a href=\"http://mason.gmu.edu/~rhanson/futarchy.html\">[10] FUTARCHY</a><br>\n" +
+    "        <a href=\"https://pdfs.semanticscholar.org/54aa/bd54018e9b9750bc0c1f749f58e5a9f2efa4.pdf\">[11] THESIS</a><br>\n" +
+    "        <a href=\"https://en.wikipedia.org/wiki/Myerson%E2%80%93Satterthwaite_theorem\">[12] SATTERTHWAITE THEOREM</a><br>\n" +
+    "        <a href=\"https://en.wikipedia.org/wiki/Arrow%27s_impossibility_theorem\">[13] ARROWS IMPOSSIBILY THEOREM</a><br>\n" +
+    "        <a href=\"https://people.csail.mit.edu/costis/thesis.pdf\">[14] THESIS</a><br>\n" +
+    "        <a href=\"https://coincenter.org/entry/what-are-decentralized-markets\">[15] DECENTRALIZED MARKETS</a><br>\n" +
     "\n" +
     "\n" +
     "\n" +
