@@ -29,11 +29,10 @@
             quantify valuable dimensional attention
             create crypto-asset streams as a public ledger of our attention.
             create direct attention markets and exchange potential
-
             //We define attention as valuable through a crypto asset 
-
             Multidimensional Tokenization
         -->
+
         <div class="spacing-25"></div>
         <!--<p>We define a multidimensional crypto-system which aligns the incentives of creators, viewers and sponsors.</p>-->
 
@@ -86,7 +85,8 @@
 
         <p>Game theoretic models of attention networks involve three participants, which do not know each other’s utility function. Bayes-Nash equilibrium (against a common prior) is the ideal outcome in such games of incomplete information. Within the information economy, there should be three primary unknowns – one for each group involved:</p>
 
-        <p>Participants / Associated Unknowns</p>
+        <p>Participants / Players / Associated Unknowns</p>
+        <p>Social Decisions</p>
         <ul>
             <li>A) Creators: Why do I create?</li>
             <li>B) Viewers: How do I spend my attention?</li>
@@ -94,6 +94,16 @@
             <li>C) Sponsors: How do I reach my audience?</li>
 
         </ul>
+
+        <!--
+        Social Decisions:
+        Energy is the imaginary now
+        Time ~ paying attention
+        Money ~ sponsorship and/or patronage/subscription
+        Private Information:
+        signals/types
+        represent preferences
+        any information really (i.e. knowledge of quality or validity)-->
 
         <p>Motivation Sets</p>
         <!--<style>tr{padding:10px;}</style>-->
@@ -147,13 +157,29 @@
         <p>Bayesian probability</p>
         <!--<p>Extension of propositional logic that enables reasoning with hypotheses, i.e. the propositions whose truth or falsity is uncertain. Instead of frequency or propensity of some phenomenon, probability is interpreted as reasonable expectation, representing a state of knowledge (objectivist justified by Cox’s Theorem), or as quantification of a personal belief (subjectivist justified by requirements of rationality and coherence following the Dutch book argument or decision theory and de Finetti’s Theorem). Prior vs. Posterior.</p>-->
 
+        <!--
+        adding a mechanism turns a Bayesian setting into “game form”
+        deterministic: always outputting the same decision and payouts for a given setting
+        probabilistic/randomized according to some rule
+    
+        Common Prior:
+        probability distribution over types
+        Anyone and everyone can be a creator, viewer and sponsor!
+        Decision Rule:
+        maps types to social decisions ~ paying attention
+        Viewers: watching, engaging and sharing
+        Creators: producing content and sharing revenue
+        Sponsors: bidding for tokenized information
+        -->
+
+
+
         <div class="spacing-50"></div>
     </section>
 
     <section class="incentivizingPositivity">
         <h2 class="section-title">Incentivizing Positivity</h2>
         <!--CREATING EXTRINSIC VALUE-->
-        <p>meta</p>
         <p>Multidimensionality engenders exchange value to align with personal value - our valuable attention - and it's exchange</p>
 
         <a href="https://sites.duke.edu/niou/files/2014/06/Arrow-Social-Choice-And-Individual-Values.pdf">Social Choice Functions</a>
@@ -193,22 +219,14 @@
     <section class="multidimensionalTokenStandard">
         <h2 class="section-title">Multidimensional Token Standard</h2>
         <p>ERC-88</p>
-
+       
         <!--
         participants: creators, viewers and sponsors.
-        Mapping (address => mapping (string => uint)) balances; [gist]
-        // N-dimensional balances or string based tokens - ex: token per address [address][‘address’][balance]
-        Multidimensional viewToken Structure: [address][_id][_time]
-        Implementation Theory ~ in equilibrium, the mapping from types to outcomes is the same as the mapping that would be chosen by the social choice function. Such intentional structure is required in dominant strategies or Bayes-Nash equilibrium.
         Revelation Principle ~ any social choice function that can be implemented by any arbitrary mechanism, can also be implemented by a truthful, direct-revelation mechanism with the same equilibrium outcome.
-        Direct-revelation mechanism: agents declare their types to the mechanism, leading to a decision and set of transfers
-        Truthful ~ authenticated
-        Incentive compatibility
-        between bonded node incentives and protocol security guarantees.
-        Strategy-proof
-        Originality, coordination
         -->
-        
+        <p>Multidimensional viewToken Structure: [address][_id][_value]</p>
+        <p>Mapping (address => mapping (string => uint)) balances; <a href="https://gist.github.com/troverman/809dba32d8510e7713aaa5c869e607ae">[gist]</a></p>
+        <p>N-dimensional balances or string based tokens - ex: token per address [address][‘address’][balance]</p>
         <pre style="text-align:left;font-family:monospace;white-space:pre-wrap;">
         contract MultidimensionalToken {
             mapping (address => mapping (string => uint)) balances;
@@ -234,49 +252,35 @@
     <section class="viewTokenProtocol">
         <h2 class="section-title">viewToken Protocol</h2>
         <!--<h2 class="section-title">attentionToken Protocol</h2>-->
+        <h3>Mechanism Design</h3>
         <p>(vT)</p>
         <p>Three Dimensions</p>
         <p>general vT</p>
         <p>user-based Attention token</p>
         <p>content-based Attention token</p>
-        <p>ERC-88 multiDemsional standard</p>
+        <p>ERC-88 Multidimensional standard</p>
+
+        <p>Incentive compatibility</p>
+        <p>between bonded node incentives and protocol security guarantees.</p>
+        <p>minting logic</p>
+        <p>Strategy-proof</p>
+        <p>Direct-revelation mechanism: agents declare their types to the mechanism, leading to a decision and set of transfers</p>
+
+
+        <p>Our central task is to specify a mechanism that incentivizes rational agents to behave in a mannor, based on their private information, that lead to socially desired outcomes.</p>
+        <p>Implementation Theory ~ in equilibrium, the mapping from types to outcomes is the same as the mapping that would be chosen by the social choice function. Such intentional structure is required in dominant strategies or Bayes-Nash equilibrium.</p>
+        <p>adding a mechanism turns a Bayesian setting into “game form”</p>
+        <p>Mechanism: a pair of strategy spaces and a function which maps any strategy to resulting social decisions and transfers.</p>
+
+        <p>AttentionTokens are continuously minted based on viewer actions.</p>
+
+        <p>Desired Outcomes: Creators will produce high-quality content, which drives progress with energy and information. Bidders will reward creators who add extrinsic value to unified groups coordinating around shared goal(s). Viewers will be more accountable for what they watch because they want their own attention to be more valuable. Overall, cre8coin optimizes for individual belief systems by gamifying the discovery of qualitative schelling points. For Bidio participants, utility means fulfillment of purpose with guaranteed authenticity.</p>
+
+        <p>Our team developed a real-time auction system that empowers genuine storytellers with complete transparency and control. The question is how can we design a game to incentivize everyone to represent their utilities truthfully?</p>
+
 
 
         <!--
-        Mechanism Design
-        Our central task is to specify a mechanism that incentivizes rational agents to behave in certain 
-        ways, based on their private information, that lead to socially desired outcomes.
-        adding a mechanism turns a Bayesian setting into “game form”
-        Mechanism: a pair of strategy spaces and a function which maps any strategy to resulting social decisions and transfers.
-        deterministic: always outputting the same decision and payouts for a given setting
-        probabilistic/randomized according to some rule
-        According to Bidio’s unique mechanism, attentionTokens are continuously minted based on viewer actions.
-        Three Dimensions:
-        General
-        Creator ID
-        Content ID
-        Desired Outcomes: Creators will produce high-quality content, which drives progress with energy and information. Bidders will reward creators who add extrinsic value to unified groups coordinating around shared goal(s). Viewers will be more accountable for what they watch because they want their own attention to be more valuable. Overall, cre8coin optimizes for individual belief systems by gamifying the discovery of qualitative schelling points. For Bidio participants, utility means fulfillment of purpose with guaranteed authenticity.
-        Our team developed a real-time auction system that empowers genuine storytellers with complete transparency and control. The question is how can we design a game to incentivize everyone to represent their utilities truthfully?
-        Players:
-        Creators
-        Viewers
-        Sponsors
-        Social Decisions:
-        Energy is the imaginary now
-        Time ~ paying attention
-        Money ~ sponsorship and/or patronage/subscription
-        Private Information:
-        signals/types
-        represent preferences
-        any information really (i.e. knowledge of quality or validity)
-        Common Prior:
-        probability distribution over types
-        Anyone and everyone can be a creator, viewer and sponsor!
-        Decision Rule:
-        maps types to social decisions ~ paying attention
-        Viewers: watching, engaging and sharing
-        Creators: producing content and sharing revenue
-        Sponsors: bidding for tokenized information
         “Individuals’ utilities will be a function of their reported type, their actual type, and the output of the decision rule... Designers control the choices of their mechanisms, but not the players or their types.” Are they genuine storytellers?
         “there is no loss in generality by just focusing on truthful, direct-revelation mechanisms”
         When the contour lines of two functions f and g are tangent, their gradient vectors are parallel and proportional. Don’t forget corner solutions!
@@ -462,45 +466,6 @@
         <p>master account governance - price setting, budgeting, smart contact implementation</p>
         <p>Mechanisms of Coordination</p>
 
-        <!--
-        Incentives // Tokens
-        cre8coin
-        How should the network reward miners?
-        viewToken
-        clickToken
-        embedToken
-         
-        Mechanisms for Coordination
-
-        Bidding ~ assigning liquid values to multidimensional viewer actions
-        stake or trust pooling around high-quality content
-        Watching ~ token-curated award system
-        inflating supply to reward creators who add extrinsic value
-        Creating ~ releasing energy through self-expression
-        offering rewards to patrons and sponsors
-
-        https://medium.com/@DimitriDeJonghe/curated-governance-with-stake-machines
-
-        one coin, one vote
-        problem: plutarchy
-        one person, one vote
-        problem: sybil attacks
-
-        paradox of voting ~ for a rational, self-interested voter, the costs of voting will normally exceed the expected benefits
-
-        Arrow’s Impossibility Theorem
-
-        https://jsecoin.com
-
-        Slashing conditions:
-        Copyright infringement
-        Voting for low-quality content?
-
-        https://medium.com/@Vlad_Zamfir/against-on-chain-governance-a4ceacd040ca
-        http://vitalik.ca/general/2017/12/17/voting.html
-
-        -->
-
 
         <!--
         incentives // tokens
@@ -548,22 +513,14 @@
         Delphi
         -->
 
-
-
-
         <div class="spacing-50"></div>
     </section>
 
     <section class="hyperledgerSawtoothEthereum">
-        <h2 class="section-title">Hyperledger Sawtooth Ethereum</h2>
-        <p>peers and mining, PoET, browser mining -- unify of machiene and human attention</p>
-        <p>download to mine..</p>
-
-        <!--
-        Burrow // Indy
-        Proof of Elapsed Time (PoET)
-        https://www.hyperledger.org/blog/2017/08/22/hello-world-meet-seth-sawtooth-ethereum
-        -->
+        <h2 class="section-title"><a href="https://www.hyperledger.org/blog/2017/08/22/hello-world-meet-seth-sawtooth-ethereum">Hyperledger Sawtooth Ethereum</a></h2>
+        <p>peers and mining, Proof of Elapsed Time (PoET), browser mining</p>
+        <p>unification of machine and human attention</p>
+        
 
         <div class="spacing-50"></div>
     </section>
@@ -582,7 +539,6 @@
         Anyone can register and purchase cre8coin with Stripe. Our existing platform stores value in wallets attached to each user’s account - you can see an example on this profile. Art, journalism and entertainment must evolve with support from the digital advertising industry. Let’s create communities around the monetization of high-quality content.
 
         Never stop creating! Sign up to start earning viewToken and cre8coin today.-->
-
 
         <!--
         Information will eventually be tokenized, including various metrics for attention. Initially, we’re making the viewToken protocol available to all creators within cre8coin’s network. The Bidio platform is already up and running, and we’re committed to innovation around governance, performance and scalability. This powerful cryptosystem mints fractalized networks of multidimensional viewTokens. Soon, Bidio and cre8coin will release the official roadmap.

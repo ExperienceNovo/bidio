@@ -2681,7 +2681,7 @@ angular.module("nav/index.tpl.html", []).run(["$templateCache", function ($templ
     "          <!--<li><a href=\"/search\">Search</a></li>-->\n" +
     "          <li ng-class=\"{ active: isActive('/dashboard/videos')}\" ng-show=\"currentUser\"><a href=\"/dashboard/videos\">Upload</a></li>\n" +
     "          <li ng-class=\"{ active: isActive('/discover')}\"><a href=\"/discover\">Discover</a></li>\n" +
-    "          <li ng-class=\"{ active: isActive('/market')}\"><a href=\"/market\">Market</a></li>\n" +
+    "          <li ng-class=\"{ active: isActive('/market')}\"><a href=\"#\">Market</a></li>\n" +
     "          <li ng-class=\"{ active: isActive('/campaigns')}\" ng-show=\"currentUser\"><a href=\"/campaigns\">Campaigns</a></li>\n" +
     "          <li ng-class=\"{ active: isActive('/dashboard')}\" ng-show=\"currentUser\"><a href=\"/dashboard\">Dashboard</a></li>\n" +
     "          <li ng-show=\"currentUser\"><a href=\"/logout\">Logout</a></li>\n" +
@@ -3085,11 +3085,10 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "            quantify valuable dimensional attention\n" +
     "            create crypto-asset streams as a public ledger of our attention.\n" +
     "            create direct attention markets and exchange potential\n" +
-    "\n" +
     "            //We define attention as valuable through a crypto asset \n" +
-    "\n" +
     "            Multidimensional Tokenization\n" +
     "        -->\n" +
+    "\n" +
     "        <div class=\"spacing-25\"></div>\n" +
     "        <!--<p>We define a multidimensional crypto-system which aligns the incentives of creators, viewers and sponsors.</p>-->\n" +
     "\n" +
@@ -3142,7 +3141,8 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "\n" +
     "        <p>Game theoretic models of attention networks involve three participants, which do not know each other’s utility function. Bayes-Nash equilibrium (against a common prior) is the ideal outcome in such games of incomplete information. Within the information economy, there should be three primary unknowns – one for each group involved:</p>\n" +
     "\n" +
-    "        <p>Participants / Associated Unknowns</p>\n" +
+    "        <p>Participants / Players / Associated Unknowns</p>\n" +
+    "        <p>Social Decisions</p>\n" +
     "        <ul>\n" +
     "            <li>A) Creators: Why do I create?</li>\n" +
     "            <li>B) Viewers: How do I spend my attention?</li>\n" +
@@ -3150,6 +3150,16 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "            <li>C) Sponsors: How do I reach my audience?</li>\n" +
     "\n" +
     "        </ul>\n" +
+    "\n" +
+    "        <!--\n" +
+    "        Social Decisions:\n" +
+    "        Energy is the imaginary now\n" +
+    "        Time ~ paying attention\n" +
+    "        Money ~ sponsorship and/or patronage/subscription\n" +
+    "        Private Information:\n" +
+    "        signals/types\n" +
+    "        represent preferences\n" +
+    "        any information really (i.e. knowledge of quality or validity)-->\n" +
     "\n" +
     "        <p>Motivation Sets</p>\n" +
     "        <!--<style>tr{padding:10px;}</style>-->\n" +
@@ -3203,13 +3213,29 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "        <p>Bayesian probability</p>\n" +
     "        <!--<p>Extension of propositional logic that enables reasoning with hypotheses, i.e. the propositions whose truth or falsity is uncertain. Instead of frequency or propensity of some phenomenon, probability is interpreted as reasonable expectation, representing a state of knowledge (objectivist justified by Cox’s Theorem), or as quantification of a personal belief (subjectivist justified by requirements of rationality and coherence following the Dutch book argument or decision theory and de Finetti’s Theorem). Prior vs. Posterior.</p>-->\n" +
     "\n" +
+    "        <!--\n" +
+    "        adding a mechanism turns a Bayesian setting into “game form”\n" +
+    "        deterministic: always outputting the same decision and payouts for a given setting\n" +
+    "        probabilistic/randomized according to some rule\n" +
+    "    \n" +
+    "        Common Prior:\n" +
+    "        probability distribution over types\n" +
+    "        Anyone and everyone can be a creator, viewer and sponsor!\n" +
+    "        Decision Rule:\n" +
+    "        maps types to social decisions ~ paying attention\n" +
+    "        Viewers: watching, engaging and sharing\n" +
+    "        Creators: producing content and sharing revenue\n" +
+    "        Sponsors: bidding for tokenized information\n" +
+    "        -->\n" +
+    "\n" +
+    "\n" +
+    "\n" +
     "        <div class=\"spacing-50\"></div>\n" +
     "    </section>\n" +
     "\n" +
     "    <section class=\"incentivizingPositivity\">\n" +
     "        <h2 class=\"section-title\">Incentivizing Positivity</h2>\n" +
     "        <!--CREATING EXTRINSIC VALUE-->\n" +
-    "        <p>meta</p>\n" +
     "        <p>Multidimensionality engenders exchange value to align with personal value - our valuable attention - and it's exchange</p>\n" +
     "\n" +
     "        <a href=\"https://sites.duke.edu/niou/files/2014/06/Arrow-Social-Choice-And-Individual-Values.pdf\">Social Choice Functions</a>\n" +
@@ -3249,22 +3275,14 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "    <section class=\"multidimensionalTokenStandard\">\n" +
     "        <h2 class=\"section-title\">Multidimensional Token Standard</h2>\n" +
     "        <p>ERC-88</p>\n" +
-    "\n" +
+    "       \n" +
     "        <!--\n" +
     "        participants: creators, viewers and sponsors.\n" +
-    "        Mapping (address => mapping (string => uint)) balances; [gist]\n" +
-    "        // N-dimensional balances or string based tokens - ex: token per address [address][‘address’][balance]\n" +
-    "        Multidimensional viewToken Structure: [address][_id][_time]\n" +
-    "        Implementation Theory ~ in equilibrium, the mapping from types to outcomes is the same as the mapping that would be chosen by the social choice function. Such intentional structure is required in dominant strategies or Bayes-Nash equilibrium.\n" +
     "        Revelation Principle ~ any social choice function that can be implemented by any arbitrary mechanism, can also be implemented by a truthful, direct-revelation mechanism with the same equilibrium outcome.\n" +
-    "        Direct-revelation mechanism: agents declare their types to the mechanism, leading to a decision and set of transfers\n" +
-    "        Truthful ~ authenticated\n" +
-    "        Incentive compatibility\n" +
-    "        between bonded node incentives and protocol security guarantees.\n" +
-    "        Strategy-proof\n" +
-    "        Originality, coordination\n" +
     "        -->\n" +
-    "        \n" +
+    "        <p>Multidimensional viewToken Structure: [address][_id][_value]</p>\n" +
+    "        <p>Mapping (address => mapping (string => uint)) balances; <a href=\"https://gist.github.com/troverman/809dba32d8510e7713aaa5c869e607ae\">[gist]</a></p>\n" +
+    "        <p>N-dimensional balances or string based tokens - ex: token per address [address][‘address’][balance]</p>\n" +
     "        <pre style=\"text-align:left;font-family:monospace;white-space:pre-wrap;\">\n" +
     "        contract MultidimensionalToken {\n" +
     "            mapping (address => mapping (string => uint)) balances;\n" +
@@ -3290,49 +3308,35 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "    <section class=\"viewTokenProtocol\">\n" +
     "        <h2 class=\"section-title\">viewToken Protocol</h2>\n" +
     "        <!--<h2 class=\"section-title\">attentionToken Protocol</h2>-->\n" +
+    "        <h3>Mechanism Design</h3>\n" +
     "        <p>(vT)</p>\n" +
     "        <p>Three Dimensions</p>\n" +
     "        <p>general vT</p>\n" +
     "        <p>user-based Attention token</p>\n" +
     "        <p>content-based Attention token</p>\n" +
-    "        <p>ERC-88 multiDemsional standard</p>\n" +
+    "        <p>ERC-88 Multidimensional standard</p>\n" +
+    "\n" +
+    "        <p>Incentive compatibility</p>\n" +
+    "        <p>between bonded node incentives and protocol security guarantees.</p>\n" +
+    "        <p>minting logic</p>\n" +
+    "        <p>Strategy-proof</p>\n" +
+    "        <p>Direct-revelation mechanism: agents declare their types to the mechanism, leading to a decision and set of transfers</p>\n" +
+    "\n" +
+    "\n" +
+    "        <p>Our central task is to specify a mechanism that incentivizes rational agents to behave in a mannor, based on their private information, that lead to socially desired outcomes.</p>\n" +
+    "        <p>Implementation Theory ~ in equilibrium, the mapping from types to outcomes is the same as the mapping that would be chosen by the social choice function. Such intentional structure is required in dominant strategies or Bayes-Nash equilibrium.</p>\n" +
+    "        <p>adding a mechanism turns a Bayesian setting into “game form”</p>\n" +
+    "        <p>Mechanism: a pair of strategy spaces and a function which maps any strategy to resulting social decisions and transfers.</p>\n" +
+    "\n" +
+    "        <p>AttentionTokens are continuously minted based on viewer actions.</p>\n" +
+    "\n" +
+    "        <p>Desired Outcomes: Creators will produce high-quality content, which drives progress with energy and information. Bidders will reward creators who add extrinsic value to unified groups coordinating around shared goal(s). Viewers will be more accountable for what they watch because they want their own attention to be more valuable. Overall, cre8coin optimizes for individual belief systems by gamifying the discovery of qualitative schelling points. For Bidio participants, utility means fulfillment of purpose with guaranteed authenticity.</p>\n" +
+    "\n" +
+    "        <p>Our team developed a real-time auction system that empowers genuine storytellers with complete transparency and control. The question is how can we design a game to incentivize everyone to represent their utilities truthfully?</p>\n" +
+    "\n" +
     "\n" +
     "\n" +
     "        <!--\n" +
-    "        Mechanism Design\n" +
-    "        Our central task is to specify a mechanism that incentivizes rational agents to behave in certain \n" +
-    "        ways, based on their private information, that lead to socially desired outcomes.\n" +
-    "        adding a mechanism turns a Bayesian setting into “game form”\n" +
-    "        Mechanism: a pair of strategy spaces and a function which maps any strategy to resulting social decisions and transfers.\n" +
-    "        deterministic: always outputting the same decision and payouts for a given setting\n" +
-    "        probabilistic/randomized according to some rule\n" +
-    "        According to Bidio’s unique mechanism, attentionTokens are continuously minted based on viewer actions.\n" +
-    "        Three Dimensions:\n" +
-    "        General\n" +
-    "        Creator ID\n" +
-    "        Content ID\n" +
-    "        Desired Outcomes: Creators will produce high-quality content, which drives progress with energy and information. Bidders will reward creators who add extrinsic value to unified groups coordinating around shared goal(s). Viewers will be more accountable for what they watch because they want their own attention to be more valuable. Overall, cre8coin optimizes for individual belief systems by gamifying the discovery of qualitative schelling points. For Bidio participants, utility means fulfillment of purpose with guaranteed authenticity.\n" +
-    "        Our team developed a real-time auction system that empowers genuine storytellers with complete transparency and control. The question is how can we design a game to incentivize everyone to represent their utilities truthfully?\n" +
-    "        Players:\n" +
-    "        Creators\n" +
-    "        Viewers\n" +
-    "        Sponsors\n" +
-    "        Social Decisions:\n" +
-    "        Energy is the imaginary now\n" +
-    "        Time ~ paying attention\n" +
-    "        Money ~ sponsorship and/or patronage/subscription\n" +
-    "        Private Information:\n" +
-    "        signals/types\n" +
-    "        represent preferences\n" +
-    "        any information really (i.e. knowledge of quality or validity)\n" +
-    "        Common Prior:\n" +
-    "        probability distribution over types\n" +
-    "        Anyone and everyone can be a creator, viewer and sponsor!\n" +
-    "        Decision Rule:\n" +
-    "        maps types to social decisions ~ paying attention\n" +
-    "        Viewers: watching, engaging and sharing\n" +
-    "        Creators: producing content and sharing revenue\n" +
-    "        Sponsors: bidding for tokenized information\n" +
     "        “Individuals’ utilities will be a function of their reported type, their actual type, and the output of the decision rule... Designers control the choices of their mechanisms, but not the players or their types.” Are they genuine storytellers?\n" +
     "        “there is no loss in generality by just focusing on truthful, direct-revelation mechanisms”\n" +
     "        When the contour lines of two functions f and g are tangent, their gradient vectors are parallel and proportional. Don’t forget corner solutions!\n" +
@@ -3518,45 +3522,6 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "        <p>master account governance - price setting, budgeting, smart contact implementation</p>\n" +
     "        <p>Mechanisms of Coordination</p>\n" +
     "\n" +
-    "        <!--\n" +
-    "        Incentives // Tokens\n" +
-    "        cre8coin\n" +
-    "        How should the network reward miners?\n" +
-    "        viewToken\n" +
-    "        clickToken\n" +
-    "        embedToken\n" +
-    "         \n" +
-    "        Mechanisms for Coordination\n" +
-    "\n" +
-    "        Bidding ~ assigning liquid values to multidimensional viewer actions\n" +
-    "        stake or trust pooling around high-quality content\n" +
-    "        Watching ~ token-curated award system\n" +
-    "        inflating supply to reward creators who add extrinsic value\n" +
-    "        Creating ~ releasing energy through self-expression\n" +
-    "        offering rewards to patrons and sponsors\n" +
-    "\n" +
-    "        https://medium.com/@DimitriDeJonghe/curated-governance-with-stake-machines\n" +
-    "\n" +
-    "        one coin, one vote\n" +
-    "        problem: plutarchy\n" +
-    "        one person, one vote\n" +
-    "        problem: sybil attacks\n" +
-    "\n" +
-    "        paradox of voting ~ for a rational, self-interested voter, the costs of voting will normally exceed the expected benefits\n" +
-    "\n" +
-    "        Arrow’s Impossibility Theorem\n" +
-    "\n" +
-    "        https://jsecoin.com\n" +
-    "\n" +
-    "        Slashing conditions:\n" +
-    "        Copyright infringement\n" +
-    "        Voting for low-quality content?\n" +
-    "\n" +
-    "        https://medium.com/@Vlad_Zamfir/against-on-chain-governance-a4ceacd040ca\n" +
-    "        http://vitalik.ca/general/2017/12/17/voting.html\n" +
-    "\n" +
-    "        -->\n" +
-    "\n" +
     "\n" +
     "        <!--\n" +
     "        incentives // tokens\n" +
@@ -3604,22 +3569,14 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "        Delphi\n" +
     "        -->\n" +
     "\n" +
-    "\n" +
-    "\n" +
-    "\n" +
     "        <div class=\"spacing-50\"></div>\n" +
     "    </section>\n" +
     "\n" +
     "    <section class=\"hyperledgerSawtoothEthereum\">\n" +
-    "        <h2 class=\"section-title\">Hyperledger Sawtooth Ethereum</h2>\n" +
-    "        <p>peers and mining, PoET, browser mining -- unify of machiene and human attention</p>\n" +
-    "        <p>download to mine..</p>\n" +
-    "\n" +
-    "        <!--\n" +
-    "        Burrow // Indy\n" +
-    "        Proof of Elapsed Time (PoET)\n" +
-    "        https://www.hyperledger.org/blog/2017/08/22/hello-world-meet-seth-sawtooth-ethereum\n" +
-    "        -->\n" +
+    "        <h2 class=\"section-title\"><a href=\"https://www.hyperledger.org/blog/2017/08/22/hello-world-meet-seth-sawtooth-ethereum\">Hyperledger Sawtooth Ethereum</a></h2>\n" +
+    "        <p>peers and mining, Proof of Elapsed Time (PoET), browser mining</p>\n" +
+    "        <p>unification of machine and human attention</p>\n" +
+    "        \n" +
     "\n" +
     "        <div class=\"spacing-50\"></div>\n" +
     "    </section>\n" +
@@ -3638,7 +3595,6 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "        Anyone can register and purchase cre8coin with Stripe. Our existing platform stores value in wallets attached to each user’s account - you can see an example on this profile. Art, journalism and entertainment must evolve with support from the digital advertising industry. Let’s create communities around the monetization of high-quality content.\n" +
     "\n" +
     "        Never stop creating! Sign up to start earning viewToken and cre8coin today.-->\n" +
-    "\n" +
     "\n" +
     "        <!--\n" +
     "        Information will eventually be tokenized, including various metrics for attention. Initially, we’re making the viewToken protocol available to all creators within cre8coin’s network. The Bidio platform is already up and running, and we’re committed to innovation around governance, performance and scalability. This powerful cryptosystem mints fractalized networks of multidimensional viewTokens. Soon, Bidio and cre8coin will release the official roadmap.\n" +
