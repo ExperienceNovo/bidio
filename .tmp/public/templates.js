@@ -2542,7 +2542,7 @@ angular.module("member/index.tpl.html", []).run(["$templateCache", function ($te
     "  		</div>\n" +
     "  	</div>\n" +
     "	<uib-tabset>\n" +
-    "		<uib-tab heading=\"Videos\" active=\"active\">\n" +
+    "		<uib-tab heading=\"Content\" active=\"active\">\n" +
     "			<div class=\"spacing-25\"></div>\n" +
     "			<div ng-show=\"currentUser.id == member.id\">\n" +
     "				<ul class=\"list-inline intro-social-buttons\" style=\"position:relative;top:25px;text-align:left\">\n" +
@@ -2574,7 +2574,7 @@ angular.module("member/index.tpl.html", []).run(["$templateCache", function ($te
     "\n" +
     "		  	</div>\n" +
     "		</uib-tab>\n" +
-    "		<uib-tab heading=\"Campaigns\">\n" +
+    "		<uib-tab ng-show=\"campaigns.length != 0\" heading=\"Campaigns\">\n" +
     "			<div class=\"spacing-25\"></div>\n" +
     "			<div ng-show=\"currentUser.id == member.id\">\n" +
     "				<ul class=\"list-inline intro-social-buttons\" style=\"position:relative;top:25px;text-align:left\">\n" +
@@ -2583,7 +2583,6 @@ angular.module("member/index.tpl.html", []).run(["$templateCache", function ($te
     "					</li>\n" +
     "				</ul>\n" +
     "			</div>\n" +
-    "\n" +
     "			<div ng-show=\"campaigns.length == 0\" style=\"font-size:22px;text-align:left;\">\n" +
     "				{{member.username}} has not created any campaigns\n" +
     "			</div>\n" +
@@ -2958,7 +2957,7 @@ angular.module("token/index.tpl.html", []).run(["$templateCache", function ($tem
     "      </div>\n" +
     "    </div>\n" +
     "  </div>\n" +
-    "  <div class=\"spacing-10\"></div>\n" +
+    "  <div class=\"spacing-20\"></div>\n" +
     "  <p style=\"color:white;text-align:center;font-size:30px\">\n" +
     "    ENERGY IS THE IMAGINARY NOW\n" +
     "  </p>\n" +
@@ -3010,7 +3009,6 @@ angular.module("token/index.tpl.html", []).run(["$templateCache", function ($tem
     "      <!--exchanges link, use decentralized exchanges-->\n" +
     "      <a class=\"col-xs-12\" href=\"#paper\" du-smooth-scroll><button class=\"btn-6 btn-full\" style=\"background:transparent;\">Purchase</button></a>\n" +
     "    </div>\n" +
-    "\n" +
     "\n" +
     "    <p style=\"font-size:12px\">CRE8 STG1 Tokens are fund raising tokens and therefore do not have any rights, uses, purpose, attributes, functionalities or features, express or implied, including, without limitation, any uses, purpose, attributes, functionalities or features on the CRE8 Platform. They are a permant record on the ETH blockchain of a show of support for the attention based CRE8 protocol.</p>\n" +
     "    <!--<a style=\"text-align:left\" href=\"https://saftproject.com/#saft-whitepaper\">terms</a>-->\n" +
@@ -3065,7 +3063,7 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     ".viewTokenProtocol{min-height:50vh;text-align:left}\n" +
     ".cre8coinGovernance{min-height:50vh;text-align:left}\n" +
     ".hyperledgerSawtoothEthereum{min-height:50vh;text-align:left}\n" +
-    ".Conclusion{min-height:50vh;text-align:left}\n" +
+    ".conclusion{min-height:50vh;text-align:left}\n" +
     "\n" +
     "</style>\n" +
     "<div class=\"container\">\n" +
@@ -3128,7 +3126,7 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "\n" +
     "\n" +
     "        <!-- alligning of value; these value exchanges are implicit; we are making it explicit-->\n" +
-    "        <p>The attentionToken protocol empowers any genuine storyteller to monetize the intrinsic value of their original content by selling extrinsic value created when viewers pay attention.</p>\n" +
+    "        <p>The attentionToken protocol empowers any genuine storyteller to monetize the intrinsic value of their original content by selling derivative crypto value created when viewers pay attention.</p>\n" +
     "        <p>This is implict value exchange is ongoing, and when quantized becomes explicit - on the ledger.</p>\n" +
     "\n" +
     "        <!-- important section -->\n" +
@@ -3154,37 +3152,56 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "        </ul>\n" +
     "\n" +
     "        <p>Motivation Sets</p>\n" +
+    "        <!--<style>tr{padding:10px;}</style>-->\n" +
     "        <div class=\"spacing-25\"></div>\n" +
-    "        <!--\n" +
-    "        Sponsor\n" +
-    "        Creator\n" +
-    "        Viewer\n" +
-    "        Motive\n" +
-    "        Attention\n" +
-    "        Purpose\n" +
-    "        Expectations\n" +
-    "        Rewards\n" +
-    "        Influencing Consumer Behavior\n" +
-    "        Patronage\n" +
-    "        and Sponsorship\n" +
-    "        High-quality Experience\n" +
-    "        Costs\n" +
-    "        Money\n" +
-    "        Energy\n" +
-    "        Time\n" +
-    "        Utility\n" +
-    "        Brand / Sales Lift\n" +
-    "        Self-actualization\n" +
-    "        Satisfaction\n" +
-    "        Strategy\n" +
-    "        Paid, Earned and Owned Media\n" +
-    "        Imagination\n" +
-    "        and Integrity\n" +
-    "        Evaluation, Intention, Curiosity and Impulse\n" +
-    "        -->\n" +
-    "        <p>Experience is identical to a conceptual structure in global maximum of intrinsic powers. Consciousness is not just functional. Subjective meaning is derived from</p>\n" +
+    "        <table>\n" +
+    "            <tbody>\n" +
+    "                <tr>\n" +
+    "                    <td></td>\n" +
+    "                    <td>Sponsor</td>\n" +
+    "                    <td>Creator</td>\n" +
+    "                    <td>Viewer</td>\n" +
+    "                </tr>\n" +
+    "                <tr>\n" +
+    "                    <td><b>Motive</b></td>\n" +
+    "                    <td>Attention</td>\n" +
+    "                    <td>Purpose</td>\n" +
+    "                    <td>Expectations</td>\n" +
+    "                </tr>\n" +
+    "                <tr>\n" +
+    "                    <td><b>Rewards</b></td>\n" +
+    "                    <td>Influencing Consumer Behavior</td>\n" +
+    "                    <td>Patronage\n" +
+    "                    and Sponsorship</td>\n" +
+    "                    <td>High-Quality Experience</td>\n" +
+    "                </tr>\n" +
+    "                <tr>\n" +
+    "                    <td><b>Costs</b></td>\n" +
+    "                    <td>Money</td>\n" +
+    "                    <td>Energy</td>\n" +
+    "                    <td>Time</td>\n" +
+    "                </tr>\n" +
+    "                <tr>\n" +
+    "                    <td><b>Utility</b></td>\n" +
+    "                    <td>Brand / Sales Lift</td>\n" +
+    "                    <td>Self-Actualization</td>\n" +
+    "                    <td>Satisfaction</td>\n" +
+    "                </tr>\n" +
+    "                <tr>\n" +
+    "                    <td><b>Strategy</b></td>\n" +
+    "                    <td>Bidding for Value</td>\n" +
+    "                    <td>Imagination\n" +
+    "                    and Integrity</td>\n" +
+    "                    <td>Evaluation and Intention</td>\n" +
+    "                </tr>\n" +
+    "            </tbody>\n" +
+    "        </table>\n" +
+    "        <div class=\"spacing-25\"></div>\n" +
     "\n" +
-    "        <p>Bayesian probability ~ Extension of propositional logic that enables reasoning with hypotheses, i.e. the propositions whose truth or falsity is uncertain. Instead of frequency or propensity of some phenomenon, probability is interpreted as reasonable expectation, representing a state of knowledge (objectivist justified by Cox’s Theorem), or as quantification of a personal belief (subjectivist justified by requirements of rationality and coherence following the Dutch book argument or decision theory and de Finetti’s Theorem). Prior vs. Posterior.</p>\n" +
+    "        <!--<p>Experience is identical to a conceptual structure in global maximum of intrinsic powers. Consciousness is not just functional. Subjective meaning is derived from</p>-->\n" +
+    "\n" +
+    "        <p>Bayesian probability</p>\n" +
+    "        <!--<p>Extension of propositional logic that enables reasoning with hypotheses, i.e. the propositions whose truth or falsity is uncertain. Instead of frequency or propensity of some phenomenon, probability is interpreted as reasonable expectation, representing a state of knowledge (objectivist justified by Cox’s Theorem), or as quantification of a personal belief (subjectivist justified by requirements of rationality and coherence following the Dutch book argument or decision theory and de Finetti’s Theorem). Prior vs. Posterior.</p>-->\n" +
     "\n" +
     "        <div class=\"spacing-50\"></div>\n" +
     "    </section>\n" +
@@ -3248,380 +3265,249 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "        Originality, coordination\n" +
     "        -->\n" +
     "        \n" +
-    "        <pre style=\"text-align:left\">\n" +
-    "            contract MultidimensionalToken {\n" +
-    "                mapping (address => mapping (string => uint)) balances;\n" +
-    "                event Transfer(address indexed _from, address indexed _to, string _id, uint256 _value);\n" +
-    "                \n" +
-    "                function balanceOf(address _owner, string _id) constant returns (uint256 balance) {\n" +
-    "                    return balances[_owner][_id];\n" +
-    "                }\n" +
-    "\n" +
-    "                function transfer(address _to, string _id, uint256 _value) returns (bool success) {\n" +
-    "                    if (balances[msg.sender][_id] >= _value && _value > 0) {\n" +
-    "                        balances[msg.sender][_id] -= _value;\n" +
-    "                        balances[_to][_id] += _value;\n" +
-    "                        Transfer(msg.sender, _to, _id, _value);\n" +
-    "                        return true;\n" +
-    "                    } \n" +
-    "                    else {return false;}\n" +
-    "                }\n" +
+    "        <pre style=\"text-align:left;font-family:monospace;white-space:pre-wrap;\">\n" +
+    "        contract MultidimensionalToken {\n" +
+    "            mapping (address => mapping (string => uint)) balances;\n" +
+    "            event Transfer(address indexed _from, address indexed _to, string _id, uint256 _value);\n" +
+    "            \n" +
+    "            function balanceOf(address _owner, string _id) constant returns (uint256 balance) {\n" +
+    "                return balances[_owner][_id];\n" +
     "            }\n" +
-    "        </pre>\n" +
+    "\n" +
+    "            function transfer(address _to, string _id, uint256 _value) returns (bool success) {\n" +
+    "                if (balances[msg.sender][_id] >= _value && _value > 0) {\n" +
+    "                    balances[msg.sender][_id] -= _value;\n" +
+    "                    balances[_to][_id] += _value;\n" +
+    "                    Transfer(msg.sender, _to, _id, _value);\n" +
+    "                    return true;\n" +
+    "                } \n" +
+    "                else {return false;}\n" +
+    "            }\n" +
+    "        }</pre>\n" +
     "        <div class=\"spacing-50\"></div>\n" +
     "    </section>\n" +
     "\n" +
     "    <section class=\"viewTokenProtocol\">\n" +
     "        <h2 class=\"section-title\">viewToken Protocol</h2>\n" +
+    "        <!--<h2 class=\"section-title\">attentionToken Protocol</h2>-->\n" +
     "        <p>(vT)</p>\n" +
     "        <p>Three Dimensions</p>\n" +
     "        <p>general vT</p>\n" +
     "        <p>user-based Attention token</p>\n" +
     "        <p>content-based Attention token</p>\n" +
+    "        <p>ERC-88 multiDemsional standard</p>\n" +
     "\n" +
     "\n" +
     "        <!--\n" +
     "        Mechanism Design\n" +
-    "\n" +
-    "        The central task is to specify a mechanism that incentivizes rational agents to behave in certain \n" +
+    "        Our central task is to specify a mechanism that incentivizes rational agents to behave in certain \n" +
     "        ways, based on their private information, that lead to socially desired outcomes.\n" +
-    "\n" +
-    "        Continuously minted based on milliseconds watched.\n" +
-    "\n" +
+    "        adding a mechanism turns a Bayesian setting into “game form”\n" +
+    "        Mechanism: a pair of strategy spaces and a function which maps any strategy to resulting social decisions and transfers.\n" +
+    "        deterministic: always outputting the same decision and payouts for a given setting\n" +
+    "        probabilistic/randomized according to some rule\n" +
+    "        According to Bidio’s unique mechanism, attentionTokens are continuously minted based on viewer actions.\n" +
     "        Three Dimensions:\n" +
     "        General\n" +
     "        Creator ID\n" +
     "        Content ID\n" +
-    "\n" +
-    "        Desired Outcomes:\n" +
-    "\n" +
-    "        Creators will produce high-quality content, which drives progress with energy and information. Bidders will reward creators who add extrinsic value to unified groups coordinating around shared goal(s). Viewers will be more accountable for what they watch because they want their own attention to be more valuable. Overall, cre8coin optimizes for individual belief systems by gamifying the discovery of qualitative schelling points. For Bidio participants, utility means fulfillment of purpose with guaranteed authenticity.\n" +
-    "\n" +
-    "        Our team developed a real-time auction system that empowers genuine storytelling with complete transparency and control. The question is how can we design a game that incentivizes everyone to represent their utilities truthfully?\n" +
-    "\n" +
+    "        Desired Outcomes: Creators will produce high-quality content, which drives progress with energy and information. Bidders will reward creators who add extrinsic value to unified groups coordinating around shared goal(s). Viewers will be more accountable for what they watch because they want their own attention to be more valuable. Overall, cre8coin optimizes for individual belief systems by gamifying the discovery of qualitative schelling points. For Bidio participants, utility means fulfillment of purpose with guaranteed authenticity.\n" +
+    "        Our team developed a real-time auction system that empowers genuine storytellers with complete transparency and control. The question is how can we design a game to incentivize everyone to represent their utilities truthfully?\n" +
     "        Players:\n" +
     "        Creators\n" +
     "        Viewers\n" +
     "        Sponsors\n" +
-    "\n" +
     "        Social Decisions:\n" +
     "        Energy is the imaginary now\n" +
     "        Time ~ paying attention\n" +
-    "        Money ~ patronage & sponsorship\n" +
-    "\n" +
+    "        Money ~ sponsorship and/or patronage/subscription\n" +
     "        Private Information:\n" +
     "        signals/types\n" +
     "        represent preferences\n" +
     "        any information really (i.e. knowledge of quality or validity)\n" +
-    "\n" +
     "        Common Prior:\n" +
     "        probability distribution over types\n" +
     "        Anyone and everyone can be a creator, viewer and sponsor!\n" +
-    "\n" +
     "        Decision Rule:\n" +
     "        maps types to social decisions ~ paying attention\n" +
     "        Viewers: watching, engaging and sharing\n" +
     "        Creators: producing content and sharing revenue\n" +
     "        Sponsors: bidding for tokenized information\n" +
-    "\n" +
     "        “Individuals’ utilities will be a function of their reported type, their actual type, and the output of the decision rule... Designers control the choices of their mechanisms, but not the players or their types.” Are they genuine storytellers?\n" +
-    "\n" +
-    "        Setting: ‘given’ elements\n" +
-    "\n" +
-    "        adding a mechanism turns this Bayesian setting into a game (also referred to as a ‘game form’)\n" +
-    "\n" +
-    "        Mechanism: a pair of message/strategy spaces and a function which maps messages/strategies to resulting social decisions and transfers. \n" +
-    "        deterministic: always outputting the same decision and payouts for a given\n" +
-    "        probabilistic/randomized according to some rule\n" +
-    "\n" +
-    "        there is no loss in generality by focusing on just truthful, direct-revelation mechanisms\n" +
-    "\n" +
-    "        Constrained Optimization ~ maximize cre8coin under set of constraints\n" +
-    "\n" +
-    "        Gradient ~ direction of steepest ascent\n" +
-    "\n" +
-    "        Asymmetric information\n" +
-    "\n" +
-    "        When the contour lines of two functions f and g are tangent, their gradient vectors are parallel and proportional. Corner solutions.\n" +
-    "\n" +
+    "        “there is no loss in generality by just focusing on truthful, direct-revelation mechanisms”\n" +
+    "        When the contour lines of two functions f and g are tangent, their gradient vectors are parallel and proportional. Don’t forget corner solutions!\n" +
     "        Lagrange multiplier technique lets you find the maximum or minimum of a multivariable function f (x,y,…) when there is some constraint on the input values you are allowed to use.\n" +
-    "\n" +
     "        L(x, y, λ) = R(x, y) - λ(B(x, y) - b)\n" +
-    "\n" +
     "        Set gradient of L = 0 (direction of steepest ascent)\n" +
-    "\n" +
     "        Turns constrained optimization into unconstrained optimization...\n" +
-    "\n" +
     "        ▽R = λ▽B\n" +
-    "\n" +
     "        λ* = dM* / db* \n" +
-    "\n" +
     "        Constraint functions with same input space must be some constant C\n" +
-    "\n" +
     "        Asymmetric information interferes with operation of markets\n" +
     "        Hidden action\n" +
     "        Hidden information\n" +
-    "\n" +
     "        Compatibility between the bonded nodes’ incentives and protocol security guarantees\n" +
     "        Individual Rationality\n" +
     "        Efficiency\n" +
     "        Budget balance constrains the mechanism to transfers that net to zero across individuals\n" +
     "        weak budget balance (also referred to as feasibility) simply requires that the mechanism not pay out more than it receives\n" +
-    "\n" +
     "        Vickrey-Clarke Groves mechanisms are highly susceptible to collusion. They allow bad actors to add arbitrary terms to the payout that individual participants can’t influence without changing the underlying incentives.\n" +
-    "\n" +
     "        For years in the ad-tech industry, waterfall auction dynamics have provided unfair advantages to advertisers and their media buying agencies. However, publishers recently gained the power to sell ‘programmatic guaranteed’ inventory. Bidio’s direct bidding mechanism enables brands to buy exclusive rights to specific tokens, which are continuously minted as viewers pay attention.\n" +
-    "\n" +
     "        Bidio’s continuous auction mechanism runs without any input from the creator, and it proposes outcomes that would maximize utility of sponsors. Utilizing the multidimensional viewToken protocol, creators know which brands are willing to pay and how much per token.\n" +
-    "\n" +
     "        Complete Transparency and Control\n" +
-    "\n" +
     "        At any given time, individual creators have the choice to approve a number of sponsor(s) per video. Since the creator has no way of affecting who will pay the most, she is effectively trying to maximize the sum of her and her viewers’ utility.\n" +
     "         \n" +
     "        For every individual, we run the mechanism without her and choose the outcome that maximizes the utility of all other players given their reported types. Then we include the individual and run the mechanism again. The latter is the outcome chosen. Each player pays (or collects) the difference between the sum of utilities for the other players in the two cases. Effectively, this payment is equivalent to the individual’s social cost or benefit. Since the individual has no way of affecting the sum of utilities that occurs without her, she is effectively trying to maximize the sum of her own and everyone else’s utility. But this is exactly the same as maximizing total social utility!\n" +
-    "\n" +
-    "        Aligning incentives in this way ensures not just incentive-compatibility, but also guarantees efficiency. It is also easy to find ex-post individually rational and weakly budget balanced versions of this mechanism with some pretty mild additional assumptions. We can also add arbitrary terms to the payout that the individual can’t influence (such as giving each individual some constant amount regardless of the outcome), without changing the underlying incentives. \n" +
-    "\n" +
+    "        Aligning everyone’s incentives not only ensures incentive-compatibility, but also guarantees efficiency. It is easy to find ex-post individually rational and weakly budget balanced versions of this mechanism with some pretty mild additional assumptions. We can also add arbitrary terms to the payout that the individual can’t influence (such as giving each individual some constant amount regardless of the outcome), without changing the underlying incentives. \n" +
     "        Which sponsor aligns with the creative purpose?!\n" +
-    "\n" +
+    "        Algorithmic Game Theory ~ Tim Roughgarden\n" +
     "        Lecture 1: https://www.youtube.com/watch?v=TM_QFmQU_VA\n" +
     "        Lecture 2: https://www.youtube.com/watch?v=z1QZqYuiGa8\n" +
+    "        Lecture 3: https://www.youtube.com/watch?v=9qZwchMuslk\n" +
     "        Lecture 4: https://www.youtube.com/watch?v=BMoSLmuJsak\n" +
     "        Lecture 5: https://www.youtube.com/watch?v=jQsAoMcxlIo\n" +
-    "\n" +
     "        Revenue Maximization\n" +
-    "\n" +
     "        What if we don’t know v? How should we set r?\n" +
-    "        Revelation principle boils down to figuring out the last price you’re willing to offer…\n" +
-    "        Not even clear it’s a well-defined, meaningful mathematical question\n" +
-    "\n" +
-    "        For revenue, unlike social surplus, different auctions do better on different inputs.\n" +
-    "\n" +
+    "        Not even clear it’s a well-defined, meaningful mathematical question. Revelation principle boils down to figuring out the last price you’re willing to offer… Truthfully, in terms of revenue, unlike social surplus, different auctions do better with different inputs.\n" +
     "        Average Case Analysis ~ posit a distribution over inputs (private valuations) and seek to do as well as possible on expectation with respect to a distribution F\n" +
-    "\n" +
     "        F = d(z)\n" +
     "        probability that the realization is at most z ~ range is [0, 1]\n" +
-    "\n" +
     "        Fi with density fi on { 0, vmax }\n" +
-    "\n" +
     "        mechanism designers know the independent distributions, but not the actual realization\n" +
-    "\n" +
-    "\n" +
+    "        Some introductory concepts…\n" +
     "        Quasi-linear model of utility\n" +
-    "\n" +
     "        Braess Paradox\n" +
-    "\n" +
     "        Intractability Critique of Nash Equilibrium\n" +
-    "\n" +
     "        Price of Anarchy\n" +
-    "\n" +
-    "        Complexity Theory\n" +
-    "        theoretical frameworks used for modeling complex systems:\n" +
+    "        Complexity ~ theoretical frameworks used for modeling complex systems:\n" +
     "        self-organization\n" +
     "        nonlinear systems\n" +
     "        network theory\n" +
     "        adaptive systems\n" +
-    "\n" +
-    "        single-item auction\n" +
-    "\n" +
-    "        For sealed bids:\n" +
-    "\n" +
-    "        1st-price auction ~ if you bid your value, you are guaranteed zero utility.\n" +
-    "        How much less? Depends on what you think other people are bidding.\n" +
-    "\n" +
-    "        2nd-price (Vickrey) auction - do not have to reason about competitors\n" +
-    "        Problem: collusion\n" +
-    "\n" +
-    "        Three Orthogonal Properties of “Awesome” Auctions\n" +
+    "        Our mechanism was designed for single-item auctions: exchanging multidimensional attentionTokens, which represent viewer actions.\n" +
+    "        Three Orthogonal Properties of Ideal Auctions\n" +
     "        Strong incentive guarantees\n" +
-    "        DSIC mechanism (dominant strategy incentive compatible)\n" +
-    "        Truthful bidding maximizes utility AND\n" +
-    "        Guarantees non-negative utility\n" +
+    "        DSIC mechanism (dominant-strategy incentive-compatible)\n" +
+    "        Truthful bidding maximizes utility and guarantees non-negative utility\n" +
     "        Maximizes the social surplus\n" +
     "        ∑ vi xi\n" +
     "        Runs in polynomial (or linear) time\n" +
     "        Computational efficiency\n" +
-    "\n" +
     "        As a participant, it’s easy to figure out what to do.\n" +
     "        As the designer, it’s easy to predict what will happen...\n" +
-    "\n" +
-    "        Google ~ sponsored search auctions </ol>\n" +
+    "        Example: Google ~ sponsored search auctions </ol>\n" +
     "\n" +
     "        http://campuspress.yale.edu/dirkbergemann/files/2012/04/lecture22auction.pdf\n" +
-    "\n" +
     "        Understanding the design space:\n" +
-    "        What do DSIC auctions look like?\n" +
-    "\n" +
     "        single-parameter environments\n" +
     "        n bidders\n" +
     "        i has a private valuation vi\n" +
-    "\n" +
     "        feasible allocations\n" +
     "        X = { (x1 , ... xn ) }\n" +
-    "        where vi is the amount of stuff that i gets\n" +
-    "\n" +
-    "\n" +
+    "        For sealed bids:\n" +
+    "        1st-price auction ~ if you bid your value, you are guaranteed zero utility.\n" +
+    "        How much less? Depends on what you think other people are bidding.\n" +
+    "        2nd-price (Vickrey) auction - do not have to reason about competitors\n" +
+    "        Problem: collusion\n" +
     "        For sealed bid auctions:\n" +
-    "\n" +
     "        Step 1: Collect bids\n" +
     "        b = ( b1 , … bn )\n" +
     "        Step 2: Allocation Rule ~ deciding who is the winner as a function of the available bids\n" +
     "        Choose x(b) ∈ X ∈ ℝn\n" +
     "        Step 3: Payment rule ~ who pays what (how much)\n" +
     "        Choose p(b) ∈ ℝn\n" +
-    "\n" +
     "        ^ are these rules coupled in the right way?\n" +
-    "\n" +
     "        i’s utility on bid profile b\n" +
     "        vi * xi(b) - pi(b)\n" +
-    "\n" +
     "        “sellers won’t pay bidders”\n" +
     "        pi(b) ∈ [ 0, bi * xi(b) ]\n" +
     "        ^ guarantees non-negative utility\n" +
-    "\n" +
     "        Defining key properties of allocation rules:\n" +
     "        implementable: there is a payment rule P such that (x, p) is DSIC\n" +
     "        monotone: amount of stuff can only go up\n" +
     "        Intuitively a much more operational condition\n" +
     "        If ∀i, ∀b-i \n" +
     "        xi ( z, b-i ) is nondecreasing in its bid z\n" +
-    "\n" +
     "        Instantiating Myerson’s Lemma\n" +
     "        Checking if ‘implementable’ reduces to checking if ‘monotone’\n" +
     "        Design space is trivial for payment rules\n" +
     "        There is a unique payment rule P such that (x, p) is DSIC\n" +
     "        P is given by an explicit formula\n" +
-    "\n" +
     "        If (x, p) is DSIC, what does P have to look like?\n" +
     "        Fix i, b-i , write x(z), p(z) for xi (z, b-i) & pi (z, b-i)\n" +
-    "\n" +
-    "        Piecewise constant allocation rules:\n" +
+    "        Piecewise Constant Allocation Rules\n" +
     "\n" +
     "        Swapping trick:\n" +
     "        If (x, p) is DSIC, then 0 < z < y\n" +
-    "\n" +
     "        “Payment Difference Sandwich”\n" +
     "        z(x(y) - x(z)) < p(y) - p(z) < y(x(y) - x(z))\n" +
     "        Implies that if x is not monotone, then x is not implementable\n" +
-    "\n" +
-    "\n" +
     "        Revenue-Maximizing Auctions\n" +
-    "\n" +
     "        With one bidder, “take it or leave it”\n" +
-    "\n" +
     "        Expected revenue of posted price r = r * (1 - F(r))\n" +
-    "\n" +
-    "        F is the distribution (probability that v is at least r) \n" +
-    "\n" +
+    "        F is the distribution (probability that v is at least r)\n" +
     "        Any single parameter environment with any distribution, characterize the ‘optimal auction’\n" +
     "        Regular (means virtual value function = strictly increasing) vs. irregular\n" +
-    "\n" +
     "        Figure out the auction which maximizes expected revenue with respect to distributions F1-N\n" +
-    "\n" +
-    "        revelation principle \n" +
-    "        you give me any auction with guaranteed dominant strategies, I will give an equivalent auction in terms of revenue, so that truth-telling is a dominant strategy\n" +
-    "\n" +
+    "        revelation principle ~ you give me any auction with guaranteed dominant strategies, there is an equivalent auction in terms of revenue, so that truth-telling is a dominant strategy.\n" +
     "        b = v\n" +
-    "\n" +
     "        allocation rule(s): monotone and bounded\n" +
     "        Payment rule(s):\n" +
     "\n" +
     "\n" +
-    "        Someone doesn’t always win...\n" +
-    "\n" +
-    "        Reserve price\n" +
-    "\n" +
-    "        Virtual value: in auction theory, particularly Bayesian-optimal mechanism design, a virtual valuation of an agent is a function that measures the surplus that can be extracted from that agent. Typical application is a seller who wants to sell an item to a potential buyer and wants to decide on the optimal price.\n" +
-    "\n" +
-    "        Approximation guarantee\n" +
-    "\n" +
-    "        Prior independent\n" +
-    "\n" +
-    "        Independently and identically distributed bidders\n" +
-    "\n" +
+    "        Someone doesn’t always win… Creators will often set reserve prices, or simply choose to promote their own brand.\n" +
+    "        Virtual value: in auction theory, particularly Bayesian-optimal mechanism design, a virtual valuation of an agent is a function that measures the surplus that can be extracted from that agent. Typical application is a seller who wants to sell an item to a potential buyer and wants to decide on the optimal price. Independently and identically distributed bidders\n" +
     "        General (Multi-Parameter) Mechanism Design\n" +
-    "\n" +
     "        N bidders\n" +
-    "\n" +
     "        Finite set of outcomes\n" +
-    "\n" +
     "        i has private valuation vi for each set of outcomes\n" +
-    "\n" +
     "        VCG Mechanism\n" +
-    "\n" +
     "        Theorem: in every environment, there is a DSIC surplus-maximizing mechanism\n" +
     "        Problem with polynomial time\n" +
-    "\n" +
     "        Why not?\n" +
-    "\n" +
     "        Elicitation\n" +
     "        2m private parameters per bidder\n" +
     "        Gathering data is not feasible\n" +
-    "\n" +
     "        https://theory.stanford.edu/~tim/f13/l/l3.pdf\n" +
     "        http://users.eecs.northwestern.edu/~hartline/amd03.pdf\n" +
     "        Dimensionality Reduction: http://theory.stanford.edu/~tim/s17/l/l4.pdf\n" +
-    "\n" +
+    "        Creating Decentralized Governance\n" +
     "        Gibbard (1973) and Satterthwaite (1975) give an impossibility result similar in spirit to Arrow's impossibility theorem. For a very general class of games, only \"dictatorial\" social choice functions can be implemented.\n" +
     "        A social choice function f () is dictatorial if one agent always receives his most-favored goods allocation, for f (𝜭), ∃i ϵI ui(x, 𝜭i) > ui(x’, 𝜭i) ∀x’ ϵ X\n" +
-    "         \n" +
     "        The theorem states that under general conditions any truthfully implementable social choice function must be dictatorial,\n" +
     "        X is finite and contains at least three elements\n" +
     "        Preferences are rational\n" +
     "        f (𝜭) = X\n" +
-    "\n" +
     "        It states that for every voting rule, one of the following three things must hold:\n" +
-    "        The rule is dictatorial, i.e. there exists a distinguished voter who can choose the winner; or\n" +
+    "        The rule is dictatorial\n" +
     "        The rule limits the possible outcomes to two alternatives only; or\n" +
     "        The rule is susceptible to tactical voting: in certain conditions some voter's sincere ballot may not defend their opinion best.\n" +
-    "\n" +
     "        Benchmark Model (vs. Game-Theoretic)\n" +
     "        All of the bidders are risk-neutral.\n" +
     "        Each bidder has a private valuation for the item independently drawn from some probability distribution.\n" +
     "        The bidders possess symmetric information.\n" +
     "        The payment is represented as a function of only the bids.\n" +
-    "\n" +
-    "        Private Value vs. Common Value\n" +
-    "\n" +
+    "        Private vs. Common Value\n" +
     "        Revenue Equivalence ~ concept in auction theory that states that given certain conditions, any mechanism that results in the same outcomes (i.e. allocates items to the same bidders) also has the same expected revenue ( max bj ).\n" +
-    "\n" +
-    "        Three New Connections Between Complexity Theory and Algorithmic Game Theory\n" +
-    "        Walrasian Equilibria ~ indivisible goods\n" +
+    "        Simple Auctions:\n" +
+    "        The Price of Anarchy and Equilibrium Welfare Guarantees\n" +
+    "        Communication Complexity and Impossibility Results\n" +
+    "        Complexity Theory and Algorithmic Game Theory: Some New Connections\n" +
+    "        Complexity governs the answer to these basic economic questions:\n" +
+    "        Why Prices Need Algorithms:\n" +
+    "            Walrasian Equilibria ~ indivisible goods\n" +
     "        Every bidder gets favorite bundle\n" +
     "        The market should clear\n" +
-    "\n" +
     "        V is the set of all monotone, sub-modular functions OR single-minded “and” bidders\n" +
-    "        Suppose that, for a class V of valuations, “welfare maximization” doesn’t reduce to “utility maximization” (polynomial Turing reductions), there are markets with valuations in V without Walrasian equilibria\n" +
-    "        Forges a link between a purely economic question and complexity theory as we know it\n" +
-    "        Welfare-maximization should be no harder than utility-maximization\n" +
-    "        Barriers to Near-Optimal Equilibria\n" +
+    "        Suppose that, for a class V of valuations, “welfare maximization” doesn’t reduce to “utility maximization” (polynomial Turing reductions), there are markets with valuations in V without Walrasian equilibria. This forges a link between a purely economic question and complexity theory as we know it.\n" +
+    "        Welfare-maximization should be no harder than utility-maximization.\n" +
+    "        Barriers to Near-Optimal Equilibria: “The Borders of Border’s Theorem”\n" +
+    "        specifying the model of user utilities and deriving clear design objectives; maximizing the amount to be redistributed can become a non-trivial component of their utility\n" +
+    "        sponsor strategy ~ adding extrinsic value through bidding (staking)\n" +
     "\n" +
-    "\n" +
-    "\n" +
-    "        specifying the model of user utilities and deriving clear design objectives\n" +
-    "\n" +
-    "        maximizing the amount to be redistributed can become a non-trivial component of their utility\n" +
-    "\n" +
-    "        Sponsor strategy ~ adding extrinsic value through bidding (staking)\n" +
-    "\n" +
-    "        Curation Markets\n" +
-    "        Reducing information asymmetry\n" +
-    "        Continuous token models (CTMs)\n" +
-    "        Problems\n" +
-    "        Tragedy of the Commons\n" +
-    "        Complexity Theory, Contract Theory, Signalling Theory, Theory of the Firm, Biological Hormesis, Eustress\n" +
-    "\n" +
-    "        Token-Curated Registries\n" +
-    "         \n" +
-    "        Token-Curated Awards\n" +
-    "        This new model inflates market supply to reward participants who add extrinsic value, driving progress\n" +
-    "        Consuming content (watching videos) actually increases the number of multidimensional viewTokens\n" +
-    "        Our mechanism distributes value from bidders to creator and viewers\n" +
-    "\n" +
-    "        MV = PQ\n" +
-    "\n" +
-    "        https://medium.com/@cburniske/cryptoasset-valuations-ac83479ffca7\n" +
     "        -->\n" +
+    "\n" +
+    "\n" +
     "        <div class=\"spacing-50\"></div>\n" +
     "    </section>\n" +
     "\n" +
@@ -3671,6 +3557,56 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "\n" +
     "        -->\n" +
     "\n" +
+    "\n" +
+    "        <!--\n" +
+    "        incentives // tokens\n" +
+    "        cre8coin\n" +
+    "        How should the network reward miners?\n" +
+    "        viewToken\n" +
+    "        clickToken\n" +
+    "        embedToken\n" +
+    "         \n" +
+    "        Mechanisms for Coordination\n" +
+    "\n" +
+    "        Requirements:\n" +
+    "        ex-ante Individual Rationality\n" +
+    "        Weak Balanced Budget\n" +
+    "        Nash equilibrium Incentive compatibility\n" +
+    "        ex-post Pareto efficiency\n" +
+    "\n" +
+    "        Bidding: assigning liquid values to multidimensional viewer actions\n" +
+    "        stake or trust pooling around high-quality content\n" +
+    "        Watching: token-curated award system\n" +
+    "        inflating supply to reward creators who add extrinsic value\n" +
+    "        Creating: releasing energy through self-expression\n" +
+    "        offering rewards to patrons and sponsors\n" +
+    "\n" +
+    "        https://medium.com/@DimitriDeJonghe/curated-governance-with-stake-machines\n" +
+    "\n" +
+    "        one coin, one vote\n" +
+    "        problem: plutarchy\n" +
+    "        one person, one vote\n" +
+    "        problem: sybil attacks\n" +
+    "\n" +
+    "        paradox of voting ~ for a rational, self-interested voter, the costs of voting will normally exceed the expected benefits\n" +
+    "\n" +
+    "        Arrow’s Impossibility Theorem\n" +
+    "\n" +
+    "        https://jsecoin.com\n" +
+    "\n" +
+    "        Slashing conditions:\n" +
+    "        Copyright infringement\n" +
+    "        Voting for low-quality content?\n" +
+    "\n" +
+    "        https://medium.com/@Vlad_Zamfir/against-on-chain-governance-a4ceacd040ca\n" +
+    "        http://vitalik.ca/general/2017/12/17/voting.html\n" +
+    "\n" +
+    "        Delphi\n" +
+    "        -->\n" +
+    "\n" +
+    "\n" +
+    "\n" +
+    "\n" +
     "        <div class=\"spacing-50\"></div>\n" +
     "    </section>\n" +
     "\n" +
@@ -3684,10 +3620,11 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "        Proof of Elapsed Time (PoET)\n" +
     "        https://www.hyperledger.org/blog/2017/08/22/hello-world-meet-seth-sawtooth-ethereum\n" +
     "        -->\n" +
+    "\n" +
     "        <div class=\"spacing-50\"></div>\n" +
     "    </section>\n" +
     "    \n" +
-    "    <section class=\"Conclusion\">\n" +
+    "    <section class=\"conclusion\">\n" +
     "        <h2 class=\"section-title\">Conclusion</h2>\n" +
     "\n" +
     "        <p>cre8, authentic, universal income</p>\n" +
@@ -3695,11 +3632,32 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "        <p>Information will be tokenized, including various metrics for attention.</p>\n" +
     "        <p>Through a commitment to innovation around governance, performance and scalability..</p>\n" +
     "\n" +
+    "\n" +
     "        <!-- Initially, we’re making the viewToken protocol available to all creators within cre8coin’s network. The Bidio platform is already up and running, and we’re committed to innovation around governance, performance and scalability. This powerful cryptosystem mints fractalized networks of multidimensional viewTokens. \n" +
     "\n" +
     "        Anyone can register and purchase cre8coin with Stripe. Our existing platform stores value in wallets attached to each user’s account - you can see an example on this profile. Art, journalism and entertainment must evolve with support from the digital advertising industry. Let’s create communities around the monetization of high-quality content.\n" +
     "\n" +
     "        Never stop creating! Sign up to start earning viewToken and cre8coin today.-->\n" +
+    "\n" +
+    "\n" +
+    "        <!--\n" +
+    "        Information will eventually be tokenized, including various metrics for attention. Initially, we’re making the viewToken protocol available to all creators within cre8coin’s network. The Bidio platform is already up and running, and we’re committed to innovation around governance, performance and scalability. This powerful cryptosystem mints fractalized networks of multidimensional viewTokens. Soon, Bidio and cre8coin will release the official roadmap.\n" +
+    "\n" +
+    "        Anyone can register and purchase cre8coin with Stripe. Our existing platform stores value in wallets attached to each user’s account - you can see an example on this profile. Soon, Bidio will announce the pre-sale of cre8coin to develop a truly decentralized YouTube for the sake of creativity. Art, journalism, entertainment and general viewership must evolve with support from the digital advertising industry. Let’s create valuable communities around quality content.\n" +
+    "\n" +
+    "        Never stop creating! Sign up to start earning viewToken and cre8coin today.\n" +
+    "\n" +
+    "        Continuous English Auction ~ problem of monotonicity\n" +
+    "\n" +
+    "        Allocation Rule: creator (seller) decides who is currently winning the auction\n" +
+    "        Payment Rule: reserve price set by creator\n" +
+    "\n" +
+    "        http://www.cramton.umd.edu/papers2000-2004/cramton-simultaneous-ascending-auction.pdf\n" +
+    "\n" +
+    "        Myerson–Satterthwaite Theorem ~ important result in mechanism design and the economics of asymmetric information, which says there is no efficient way for two parties to trade a good when they each have secret, probabilistically different valuations for it, without the risk of forcing one party to trade at a loss. \n" +
+    "        -->\n" +
+    "\n" +
+    "\n" +
     "\n" +
     "        <div class=\"spacing-50\"></div>\n" +
     "    </section>\n" +

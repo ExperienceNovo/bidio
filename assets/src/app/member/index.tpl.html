@@ -87,7 +87,7 @@
 
 		  	</div>
 		</uib-tab>
-		<uib-tab ng-show="videos.campaigns != 0" heading="Campaigns">
+		<uib-tab ng-show="campaigns.length != 0" heading="Campaigns">
 			<div class="spacing-25"></div>
 			<div ng-show="currentUser.id == member.id">
 				<ul class="list-inline intro-social-buttons" style="position:relative;top:25px;text-align:left">
@@ -96,7 +96,6 @@
 					</li>
 				</ul>
 			</div>
-
 			<div ng-show="campaigns.length == 0" style="font-size:22px;text-align:left;">
 				{{member.username}} has not created any campaigns
 			</div>
