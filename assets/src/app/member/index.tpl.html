@@ -55,7 +55,7 @@
   		</div>
   	</div>
 	<uib-tabset>
-		<uib-tab heading="Videos" active="active">
+		<uib-tab heading="Content" active="active">
 			<div class="spacing-25"></div>
 			<div ng-show="currentUser.id == member.id">
 				<ul class="list-inline intro-social-buttons" style="position:relative;top:25px;text-align:left">
@@ -87,7 +87,7 @@
 
 		  	</div>
 		</uib-tab>
-		<uib-tab heading="Campaigns">
+		<uib-tab ng-show="videos.campaigns != 0" heading="Campaigns">
 			<div class="spacing-25"></div>
 			<div ng-show="currentUser.id == member.id">
 				<ul class="list-inline intro-social-buttons" style="position:relative;top:25px;text-align:left">
