@@ -97,6 +97,19 @@ angular.module( 'bidio', [
     $rootScope.viewContractInstance = $rootScope.viewContract.at($rootScope.viewTokenAddress);
 
 
+    //TODO:
+    //PEER CODE - APP MINING / BROWSER MINING
+    //CENTRAL PEER CODE -- SER UP S3 GETH
+    //REFACTOR FRONTEND web3 INTERFACE 'CALI'
+    //TOKEN SALE 
+
+    //view contract (erc 88)-->logic
+    //content contract
+    //user contract
+    //bid contract / market contract
+    //comment? 
+
+
 
     var filter = $rootScope.cre8web3.eth.filter('latest');
     

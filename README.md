@@ -1,27 +1,22 @@
-##bidio
+![alt text](https://s3.amazonaws.com/bidio8/marketing+images/bidio_logo_color.png "cre8bid.io")
 
-####TODOs:
+# cre8bid.io
 
--Credit Frontend
+> This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote. 
 
--Credit Backend Check Out
+## cre8coin
 
--Credit Production api
+```
+cool story bro
+```
 
--Sharability functionality
+## ERC-88
+[gist](https://www.google.com)
 
--Bid - campaign functionality
+```javascript
+var s = "JavaScript syntax highlighting";
+alert(s);
+```
 
--Video/:id UI and graph algorithm
 
--Analytics graph algorithm
 
--Thumbnail generation on upload
-
--Upload speed enchancements
-
--S3 to cloudfront hosting
-
--Api Security Policies
-
--Https integration
