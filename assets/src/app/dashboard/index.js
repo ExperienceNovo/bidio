@@ -256,15 +256,6 @@ angular.module( 'bidio.dashboard', [
     newDate.setMonth( newDate.getMonth() - 1, newDate.getDate());
     $scope.startDate = newDate;
 
-
-    $scope.$watch('startDate', function() {
-        $scope.updateData();
-    });
-
-    $scope.$watch('endDate', function() {
-        $scope.updateData();
-    });
-
     $scope.updateData = function(){
         $scope.videoData = [[],[]];
         $scope.videoLabels = [];
@@ -306,7 +297,7 @@ angular.module( 'bidio.dashboard', [
         }
 
     };
-    $scope.updateData()
+    $scope.updateData();
 
     $scope.$watch('startDate', function() {
         $scope.updateData();
@@ -374,14 +365,6 @@ angular.module( 'bidio.dashboard', [
 
     };
 
-    $scope.$watch('startDate', function() {
-        $scope.updateData();
-    });
-
-    $scope.$watch('endDate', function() {
-        $scope.updateData();
-    });
-
     $scope.startDateMin = new Date($scope.views[0].createdAt);
     $scope.endDateMax = new Date($scope.views[$scope.views.length-1].createdAt);
 
@@ -392,7 +375,6 @@ angular.module( 'bidio.dashboard', [
     var newDate = new Date( $scope.endDate );
     newDate.setMonth( newDate.getMonth() - 1, newDate.getDate());
     $scope.startDate = newDate;
-
 
     $scope.updateData = function(){
         $scope.videoData = [[],[]];
@@ -435,7 +417,15 @@ angular.module( 'bidio.dashboard', [
         }
 
     };
-    $scope.updateData()
+    $scope.updateData();
+
+    $scope.$watch('startDate', function() {
+        $scope.updateData();
+    });
+
+    $scope.$watch('endDate', function() {
+        $scope.updateData();
+    });
 
     $sailsSocket.subscribe('view', function (envelope) {
         switch(envelope.verb) {

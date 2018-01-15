@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="spacing-15"></div>
-        <div ng-hide="video.amazonUrl || videoLoading" style="max-width: 100%;width: 500px;" ngf-accept="'video/*'" ngf-drop ngf-select="upload($file)" ng-model="file" class="drop-box" ngf-drag-over-class="dragover" ngf-allow-dir="true">
+        <div ng-hide="video.amazonUrl || videoLoading" style="max-width: 100%;width: 500px;" ngf-accept="'video/*,audio/*'" ngf-drop ngf-select="upload($file)" ng-model="file" class="drop-box" ngf-drag-over-class="dragover" ngf-allow-dir="true">
             <div>Drag videos or click here to upload.</div>
             <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>  
         </div>

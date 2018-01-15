@@ -13,8 +13,9 @@ angular.module( 'bidio.market', [
 	});
 }])
 
-.controller( 'MarketCtrl', ['$mdDialog', '$scope', 'titleService', function MarketController( $mdDialog, $scope, titleService ) {
-	titleService.setTitle('bidio - market');
+.controller( 'MarketCtrl', ['$mdDialog', '$scope', '$stateParams', 'titleService', function MarketController( $mdDialog, $scope, $stateParams, titleService ) {
+	titleService.setTitle('bidio - '+$stateParams.id+' market');
+    $scope.stateParams = $stateParams;
 
 	$scope.bid = function(ev){
 	    $mdDialog.show({

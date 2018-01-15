@@ -256,6 +256,10 @@
         <p>ERC-88 Multidimensional standard</p>
         <div class="spacing-10"></div>
 
+        <!--below this is what-->
+        <!--talk about smart contract ecosystem with respect to viewtoken-->
+        <!--token market & liquidity-->
+
         <p>Incentive compatibility</p>
         <p>between bonded node incentives and protocol security guarantees.</p>
         <p>minting logic</p>
@@ -271,38 +275,44 @@
         <div class="spacing-10"></div>
 
         <p>AttentionTokens are continuously minted based on viewer actions.</p>
-
         <p>Desired Outcomes: Creators will produce high-quality content, which drives progress with energy and information. Bidders will reward creators who add extrinsic value to unified groups coordinating around shared goal(s). Viewers will be more accountable for what they watch because they want their own attention to be more valuable. Overall, cre8coin optimizes for individual belief systems by gamifying the discovery of qualitative schelling points. For Bidio participants, utility means fulfillment of purpose with guaranteed authenticity.</p>
-
-        <p>Our team developed a real-time auction system that empowers genuine storytellers with complete transparency and control. The question is how can we design a game to incentivize everyone to represent their utilities truthfully?</p>
         <div class="spacing-10"></div>
+
+        <p>Individuals’ utilities are a function of their type, and the output of their decisions.</p>
+        <p>Designers control the choices of their mechanisms, but not the players or their types.</p>
+        <p>There is no loss in generality by just focusing on truthful, direct-revelation mechanisms</p>
+        <div class="spacing-10"></div>
+
+        <!--what: way too much -->
+        <p>When the contour lines of two functions f and g are tangent, their gradient vectors are parallel and proportional. Don’t forget corner solutions!</p>
+        <p>Lagrange multiplier technique lets you find the maximum or minimum of a multivariable function f (x,y,…) when there is some constraint on the input values you are allowed to use.</p>
+        <p>L(x, y, λ) = R(x, y) - λ(B(x, y) - b)</p>
+        <p>Set gradient of L = 0 (direction of steepest ascent)</p>
+        <p>From constrained optimization to unconstrained optimization:</p>
+        <p>▽R = λ▽B</p>
+        <p>λ* = dM* / db*</p>
+        <p>Constraint functions with same input space must be some constant C</p>
+        <p>Asymmetric information interferes with operation of markets</p>
+        <p>Hidden information</p>
+        <p>Compatibility between the bonded nodes’ incentives and protocol security guarantees -- contract based minting of ERC88</p>
+        <p>Individual Rationality</p>
+        <p>weak budget balance (also referred to as feasibility) requires that the mechanism not pay out more than it receives</p>
+        <p>Vickrey-Clarke Groves mechanisms are highly susceptible to collusion. They allow bad actors to add arbitrary terms to the payout that individual participants can’t influence without changing the underlying incentives.</p>
+        <div class="spacing-10"></div>
+
+        <!--AD TECH PROB-->
+        <p>For years in the ad-tech industry, waterfall auction dynamics have provided unfair advantages to advertisers and their media buying agencies. However, publishers recently gained the power to sell ‘programmatic guaranteed’ inventory. 
+        <p>Bidio’s direct bidding mechanism enables brands to buy exclusive rights to specific tokens, which are continuously minted as viewers pay attention.</p>
+
+        <p>Bidio’s continuous auction mechanism runs without any input from the creator, and it proposes outcomes that would maximize utility of sponsors. Utilizing the multidimensional viewToken protocol, creators know which brands are willing to pay and how much per token.</p>
+        <div class="spacing-10"></div>
+
+        <p>Complete Transparency and Control</p>
+        <p>At any given time, individual creators have the choice to approve a number of sponsor(s) per video. Since the creator has no way of affecting who will pay the most, she is effectively trying to maximize the sum of her and her viewers’ utility.</p>
+         
 
 
         <!--
-        “Individuals’ utilities will be a function of their reported type, their actual type, and the output of the decision rule... Designers control the choices of their mechanisms, but not the players or their types.” Are they genuine storytellers?
-        “there is no loss in generality by just focusing on truthful, direct-revelation mechanisms”
-        When the contour lines of two functions f and g are tangent, their gradient vectors are parallel and proportional. Don’t forget corner solutions!
-        Lagrange multiplier technique lets you find the maximum or minimum of a multivariable function f (x,y,…) when there is some constraint on the input values you are allowed to use.
-        L(x, y, λ) = R(x, y) - λ(B(x, y) - b)
-        Set gradient of L = 0 (direction of steepest ascent)
-        Turns constrained optimization into unconstrained optimization...
-        ▽R = λ▽B
-        λ* = dM* / db* 
-        Constraint functions with same input space must be some constant C
-        Asymmetric information interferes with operation of markets
-        Hidden action
-        Hidden information
-        Compatibility between the bonded nodes’ incentives and protocol security guarantees
-        Individual Rationality
-        Efficiency
-        Budget balance constrains the mechanism to transfers that net to zero across individuals
-        weak budget balance (also referred to as feasibility) simply requires that the mechanism not pay out more than it receives
-        Vickrey-Clarke Groves mechanisms are highly susceptible to collusion. They allow bad actors to add arbitrary terms to the payout that individual participants can’t influence without changing the underlying incentives.
-        For years in the ad-tech industry, waterfall auction dynamics have provided unfair advantages to advertisers and their media buying agencies. However, publishers recently gained the power to sell ‘programmatic guaranteed’ inventory. Bidio’s direct bidding mechanism enables brands to buy exclusive rights to specific tokens, which are continuously minted as viewers pay attention.
-        Bidio’s continuous auction mechanism runs without any input from the creator, and it proposes outcomes that would maximize utility of sponsors. Utilizing the multidimensional viewToken protocol, creators know which brands are willing to pay and how much per token.
-        Complete Transparency and Control
-        At any given time, individual creators have the choice to approve a number of sponsor(s) per video. Since the creator has no way of affecting who will pay the most, she is effectively trying to maximize the sum of her and her viewers’ utility.
-         
         For every individual, we run the mechanism without her and choose the outcome that maximizes the utility of all other players given their reported types. Then we include the individual and run the mechanism again. The latter is the outcome chosen. Each player pays (or collects) the difference between the sum of utilities for the other players in the two cases. Effectively, this payment is equivalent to the individual’s social cost or benefit. Since the individual has no way of affecting the sum of utilities that occurs without her, she is effectively trying to maximize the sum of her own and everyone else’s utility. But this is exactly the same as maximizing total social utility!
         Aligning everyone’s incentives not only ensures incentive-compatibility, but also guarantees efficiency. It is easy to find ex-post individually rational and weakly budget balanced versions of this mechanism with some pretty mild additional assumptions. We can also add arbitrary terms to the payout that the individual can’t influence (such as giving each individual some constant amount regardless of the outcome), without changing the underlying incentives. 
         Which sponsor aligns with the creative purpose?!
@@ -399,7 +409,6 @@
         b = v
         allocation rule(s): monotone and bounded
         Payment rule(s):
-
 
         Someone doesn’t always win… Creators will often set reserve prices, or simply choose to promote their own brand.
         Virtual value: in auction theory, particularly Bayesian-optimal mechanism design, a virtual valuation of an agent is a function that measures the surplus that can be extracted from that agent. Typical application is a seller who wants to sell an item to a potential buyer and wants to decide on the optimal price. Independently and identically distributed bidders

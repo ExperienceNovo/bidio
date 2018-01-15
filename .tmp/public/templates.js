@@ -794,7 +794,6 @@ angular.module("dashboard/templates/addVideo.tpl.html", []).run(["$templateCache
     "      <div flex=\"15\"><p><b>View</b></p></div>\n" +
     "      <div flex=\"15\"><p><b>Select</b></p></div>\n" +
     "    </md-list-item>\n" +
-    "\n" +
     "    <md-radio-group ng-model=\"videoUrl\">\n" +
     "    <div ng-repeat=\"video in videos\">\n" +
     "      <md-divider></md-divider>\n" +
@@ -1413,7 +1412,7 @@ angular.module("dashboard/templates/createVideo.tpl.html", []).run(["$templateCa
     "            </div>\n" +
     "        </div>\n" +
     "        <div class=\"spacing-15\"></div>\n" +
-    "        <div ng-hide=\"video.amazonUrl || videoLoading\" style=\"max-width: 100%;width: 500px;\" ngf-accept=\"'video/*'\" ngf-drop ngf-select=\"upload($file)\" ng-model=\"file\" class=\"drop-box\" ngf-drag-over-class=\"dragover\" ngf-allow-dir=\"true\">\n" +
+    "        <div ng-hide=\"video.amazonUrl || videoLoading\" style=\"max-width: 100%;width: 500px;\" ngf-accept=\"'video/*,audio/*'\" ngf-drop ngf-select=\"upload($file)\" ng-model=\"file\" class=\"drop-box\" ngf-drag-over-class=\"dragover\" ngf-allow-dir=\"true\">\n" +
     "            <div>Drag videos or click here to upload.</div>\n" +
     "            <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>  \n" +
     "        </div>\n" +
@@ -2371,24 +2370,46 @@ angular.module("market/index.tpl.html", []).run(["$templateCache", function ($te
   $templateCache.put("market/index.tpl.html",
     "<div class=\"container\" style=\"text-align:left\">\n" +
     "    <div class=\"spacing-25\"></div>\n" +
-    "    <h1>market</h1>\n" +
-    "    <p ng-click=\"bid()\">+ bid</p>\n" +
-    "    <h2>filter</h2>\n" +
-    "    <form>\n" +
-    "        <input style=\"float:left;width:25%\" type=\"text\" placeholder=\"Token\" class=\"form-control\" ng-model=\"newLookup.tokenIdentifier\">\n" +
-    "        <button class=\"float:left\" ng-click=\"tokenLookup()\"><span class=\"fa fa-search\"></span></button>\n" +
-    "    </form>\n" +
+    "    <div class=\"row\">\n" +
+    "        <div class=\"col-md-12\">\n" +
+    "            <h1>{{stateParams.id}} market</h1>\n" +
+    "        </div>\n" +
+    "        <!--\n" +
+    "        <div class=\"col-md-8\">\n" +
+    "            <div class=\"discover-search\">\n" +
+    "                <div class=\"input-group\">\n" +
+    "                    <input class=\"search-query form-control\" ng-model=\"newLookup.tokenIdentifier\" id=\"search-link\" size=\"40\" type=\"text\" placeholder=\"Token\">\n" +
+    "                    <span class=\"input-group-btn\">\n" +
+    "                        <button class=\"btn\" type=\"button\" ng-click=\"tokenLookup()\">\n" +
+    "                            <span class=\"fa fa-search\"></span>\n" +
+    "                        </button>\n" +
+    "                    </span>\n" +
+    "                </div>\n" +
+    "            </div>\n" +
+    "        </div>\n" +
+    "        -->\n" +
+    "    </div>\n" +
+    "\n" +
     "    <div class=\"spacing-25\"></div>\n" +
-    "    <div class=\"col-md-6\">\n" +
-    "        <div ng-repeat=\"post in [1,2,3,4,5,6,7,8]\">\n" +
-    "            <h2 class=\"posted-title\">1 token[{{post}}]</h2>\n" +
-    "        </div>\n" +
-    "    </div>\n" +
-    "    <div class=\"col-md-6\">\n" +
-    "        <div ng-repeat=\"post in [1,2,3,4,5,6,7,8]\">\n" +
-    "            <h2 class=\"posted-title\">{{(1/post).toFixed(2)}} cre8coin</h2>\n" +
-    "        </div>\n" +
-    "    </div>\n" +
+    "    <h2 ng-click=\"bid()\">+ bid</h2>\n" +
+    "    <div class=\"spacing-10\"></div>\n" +
+    "\n" +
+    "    <table class=\"table table-striped table-hover\">\n" +
+    "        <thead>\n" +
+    "            <tr>\n" +
+    "                <th>member</th>\n" +
+    "                <th>asset set 1</th>\n" +
+    "                <th>asset set 2</th>\n" +
+    "            </tr>\n" +
+    "        </thead>\n" +
+    "        <tbody>\n" +
+    "            <tr ng-repeat=\"post in ['0x2b9b6e08595642F0D932287eebCE2C6efAbd6bFB',2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]\">\n" +
+    "                <td><a href=\"member/admin\">member</a> {{post}}</td>\n" +
+    "                <td>1 <a href=\"market/{{post}}\">token[{{post}}]</a></td>\n" +
+    "                <td>{{(1/post).toFixed(2)}} <a href=\"market/cre8\">cre8coin</a></td>\n" +
+    "            </tr>\n" +
+    "        </tbody>\n" +
+    "    </table>\n" +
     "</div>");
 }]);
 
@@ -2429,24 +2450,44 @@ angular.module("markets/index.tpl.html", []).run(["$templateCache", function ($t
   $templateCache.put("markets/index.tpl.html",
     "<div class=\"container\" style=\"text-align:left\">\n" +
     "    <div class=\"spacing-25\"></div>\n" +
-    "    <h1>market</h1>\n" +
-    "    <p ng-click=\"bid()\">+ bid</p>\n" +
-    "    <h2>filter</h2>\n" +
-    "    <form>\n" +
-    "        <input style=\"float:left;width:25%\" type=\"text\" placeholder=\"Token\" class=\"form-control\" ng-model=\"newLookup.tokenIdentifier\">\n" +
-    "        <button class=\"float:left\" ng-click=\"tokenLookup()\"><span class=\"fa fa-search\"></span></button>\n" +
-    "    </form>\n" +
+    "    <div class=\"row\">\n" +
+    "        <div class=\"col-md-4\">\n" +
+    "            <h1>market</h1>\n" +
+    "        </div>\n" +
+    "        <div class=\"col-md-8\">\n" +
+    "            <div class=\"discover-search\">\n" +
+    "                <div class=\"input-group\">\n" +
+    "                    <input class=\"search-query form-control\" ng-model=\"newLookup.tokenIdentifier\" id=\"search-link\" size=\"40\" type=\"text\" placeholder=\"Token\">\n" +
+    "                    <span class=\"input-group-btn\">\n" +
+    "                        <button class=\"btn\" type=\"button\" ng-click=\"tokenLookup()\">\n" +
+    "                            <span class=\"fa fa-search\"></span>\n" +
+    "                        </button>\n" +
+    "                    </span>\n" +
+    "                </div>\n" +
+    "            </div>\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "\n" +
     "    <div class=\"spacing-25\"></div>\n" +
-    "    <div class=\"col-md-6\">\n" +
-    "        <div ng-repeat=\"post in [1,2,3,4,5,6,7,8]\">\n" +
-    "            <h2 class=\"posted-title\">1 token[{{post}}]</h2>\n" +
-    "        </div>\n" +
-    "    </div>\n" +
-    "    <div class=\"col-md-6\">\n" +
-    "        <div ng-repeat=\"post in [1,2,3,4,5,6,7,8]\">\n" +
-    "            <h2 class=\"posted-title\">{{(1/post).toFixed(2)}} cre8coin</h2>\n" +
-    "        </div>\n" +
-    "    </div>\n" +
+    "    <h2 ng-click=\"bid()\">+ bid</h2>\n" +
+    "    <div class=\"spacing-10\"></div>\n" +
+    "\n" +
+    "    <table class=\"table table-striped table-hover\">\n" +
+    "        <thead>\n" +
+    "            <tr>\n" +
+    "                <th>member</th>\n" +
+    "                <th>asset set 1</th>\n" +
+    "                <th>asset set 2</th>\n" +
+    "            </tr>\n" +
+    "        </thead>\n" +
+    "        <tbody>\n" +
+    "            <tr ng-repeat=\"post in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]\">\n" +
+    "                <td><a href=\"member/admin\">member</a> {{post}}</td>\n" +
+    "                <td>1 <a href=\"market/{{post}}\">token[{{post}}]</a></td>\n" +
+    "                <td>{{(1/post).toFixed(2)}} <a href=\"market/cre8\">cre8coin</a></td>\n" +
+    "            </tr>\n" +
+    "        </tbody>\n" +
+    "    </table>\n" +
     "</div>");
 }]);
 
@@ -2459,19 +2500,19 @@ angular.module("markets/templates/bid.tpl.html", []).run(["$templateCache", func
     "        <div class=\"spacing-15\"></div>\n" +
     "        <md-input-container layout-fill>\n" +
     "            <label>Token</label>\n" +
-    "            <input ng-model=\"bid.value\" type=\"text\">\n" +
+    "            <input ng-model=\"bid.token1\" type=\"text\">\n" +
     "        </md-input-container>\n" +
     "        <md-input-container layout-fill>\n" +
     "            <label>Amount</label>\n" +
-    "            <input ng-model=\"bid.attention\" type=\"text\">\n" +
+    "            <input ng-model=\"bid.amount1\" type=\"text\">\n" +
     "        </md-input-container>\n" +
     "         <md-input-container layout-fill>\n" +
     "            <label>Token</label>\n" +
-    "            <input ng-model=\"bid.value\" type=\"text\">\n" +
+    "            <input ng-model=\"bid.token2\" type=\"text\">\n" +
     "        </md-input-container>\n" +
     "         <md-input-container layout-fill>\n" +
     "            <label>Amount</label>\n" +
-    "            <input ng-model=\"bid.value\" type=\"text\">\n" +
+    "            <input ng-model=\"bid.amount2\" type=\"text\">\n" +
     "        </md-input-container>\n" +
     "        <!--WILL BUY/SELL UP TO THIS AMOUNT AT THIS PRICE - GRANUAR FUILFILLMENT-->\n" +
     "\n" +
@@ -2681,7 +2722,7 @@ angular.module("nav/index.tpl.html", []).run(["$templateCache", function ($templ
     "          <!--<li><a href=\"/search\">Search</a></li>-->\n" +
     "          <li ng-class=\"{ active: isActive('/dashboard/videos')}\" ng-show=\"currentUser\"><a href=\"/dashboard/videos\">Upload</a></li>\n" +
     "          <li ng-class=\"{ active: isActive('/discover')}\"><a href=\"/discover\">Discover</a></li>\n" +
-    "          <li ng-class=\"{ active: isActive('/market')}\"><a href=\"#\">Market</a></li>\n" +
+    "          <li ng-class=\"{ active: isActive('/market')}\"><a href=\"/market\">Market</a></li>\n" +
     "          <li ng-class=\"{ active: isActive('/campaigns')}\" ng-show=\"currentUser\"><a href=\"/campaigns\">Campaigns</a></li>\n" +
     "          <li ng-class=\"{ active: isActive('/dashboard')}\" ng-show=\"currentUser\"><a href=\"/dashboard\">Dashboard</a></li>\n" +
     "          <li ng-show=\"currentUser\"><a href=\"/logout\">Logout</a></li>\n" +
@@ -3148,9 +3189,7 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "        <ul>\n" +
     "            <li>A) Creators: Why do I create?</li>\n" +
     "            <li>B) Viewers: How do I spend my attention?</li>\n" +
-    "            <!--<li>C) Sponsors: Why do I exchange?</li>-->\n" +
     "            <li>C) Sponsors: How do I reach my audience?</li>\n" +
-    "\n" +
     "        </ul>\n" +
     "\n" +
     "        <!--\n" +
@@ -3314,6 +3353,10 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "        <p>ERC-88 Multidimensional standard</p>\n" +
     "        <div class=\"spacing-10\"></div>\n" +
     "\n" +
+    "        <!--below this is what-->\n" +
+    "        <!--talk about smart contract ecosystem with respect to viewtoken-->\n" +
+    "        <!--token market & liquidity-->\n" +
+    "\n" +
     "        <p>Incentive compatibility</p>\n" +
     "        <p>between bonded node incentives and protocol security guarantees.</p>\n" +
     "        <p>minting logic</p>\n" +
@@ -3329,38 +3372,44 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "        <div class=\"spacing-10\"></div>\n" +
     "\n" +
     "        <p>AttentionTokens are continuously minted based on viewer actions.</p>\n" +
-    "\n" +
     "        <p>Desired Outcomes: Creators will produce high-quality content, which drives progress with energy and information. Bidders will reward creators who add extrinsic value to unified groups coordinating around shared goal(s). Viewers will be more accountable for what they watch because they want their own attention to be more valuable. Overall, cre8coin optimizes for individual belief systems by gamifying the discovery of qualitative schelling points. For Bidio participants, utility means fulfillment of purpose with guaranteed authenticity.</p>\n" +
-    "\n" +
-    "        <p>Our team developed a real-time auction system that empowers genuine storytellers with complete transparency and control. The question is how can we design a game to incentivize everyone to represent their utilities truthfully?</p>\n" +
     "        <div class=\"spacing-10\"></div>\n" +
+    "\n" +
+    "        <p>Individuals’ utilities are a function of their type, and the output of their decisions.</p>\n" +
+    "        <p>Designers control the choices of their mechanisms, but not the players or their types.</p>\n" +
+    "        <p>There is no loss in generality by just focusing on truthful, direct-revelation mechanisms</p>\n" +
+    "        <div class=\"spacing-10\"></div>\n" +
+    "\n" +
+    "        <!--what: way too much -->\n" +
+    "        <p>When the contour lines of two functions f and g are tangent, their gradient vectors are parallel and proportional. Don’t forget corner solutions!</p>\n" +
+    "        <p>Lagrange multiplier technique lets you find the maximum or minimum of a multivariable function f (x,y,…) when there is some constraint on the input values you are allowed to use.</p>\n" +
+    "        <p>L(x, y, λ) = R(x, y) - λ(B(x, y) - b)</p>\n" +
+    "        <p>Set gradient of L = 0 (direction of steepest ascent)</p>\n" +
+    "        <p>From constrained optimization to unconstrained optimization:</p>\n" +
+    "        <p>▽R = λ▽B</p>\n" +
+    "        <p>λ* = dM* / db*</p>\n" +
+    "        <p>Constraint functions with same input space must be some constant C</p>\n" +
+    "        <p>Asymmetric information interferes with operation of markets</p>\n" +
+    "        <p>Hidden information</p>\n" +
+    "        <p>Compatibility between the bonded nodes’ incentives and protocol security guarantees -- contract based minting of ERC88</p>\n" +
+    "        <p>Individual Rationality</p>\n" +
+    "        <p>weak budget balance (also referred to as feasibility) requires that the mechanism not pay out more than it receives</p>\n" +
+    "        <p>Vickrey-Clarke Groves mechanisms are highly susceptible to collusion. They allow bad actors to add arbitrary terms to the payout that individual participants can’t influence without changing the underlying incentives.</p>\n" +
+    "        <div class=\"spacing-10\"></div>\n" +
+    "\n" +
+    "        <!--AD TECH PROB-->\n" +
+    "        <p>For years in the ad-tech industry, waterfall auction dynamics have provided unfair advantages to advertisers and their media buying agencies. However, publishers recently gained the power to sell ‘programmatic guaranteed’ inventory. \n" +
+    "        <p>Bidio’s direct bidding mechanism enables brands to buy exclusive rights to specific tokens, which are continuously minted as viewers pay attention.</p>\n" +
+    "\n" +
+    "        <p>Bidio’s continuous auction mechanism runs without any input from the creator, and it proposes outcomes that would maximize utility of sponsors. Utilizing the multidimensional viewToken protocol, creators know which brands are willing to pay and how much per token.</p>\n" +
+    "        <div class=\"spacing-10\"></div>\n" +
+    "\n" +
+    "        <p>Complete Transparency and Control</p>\n" +
+    "        <p>At any given time, individual creators have the choice to approve a number of sponsor(s) per video. Since the creator has no way of affecting who will pay the most, she is effectively trying to maximize the sum of her and her viewers’ utility.</p>\n" +
+    "         \n" +
     "\n" +
     "\n" +
     "        <!--\n" +
-    "        “Individuals’ utilities will be a function of their reported type, their actual type, and the output of the decision rule... Designers control the choices of their mechanisms, but not the players or their types.” Are they genuine storytellers?\n" +
-    "        “there is no loss in generality by just focusing on truthful, direct-revelation mechanisms”\n" +
-    "        When the contour lines of two functions f and g are tangent, their gradient vectors are parallel and proportional. Don’t forget corner solutions!\n" +
-    "        Lagrange multiplier technique lets you find the maximum or minimum of a multivariable function f (x,y,…) when there is some constraint on the input values you are allowed to use.\n" +
-    "        L(x, y, λ) = R(x, y) - λ(B(x, y) - b)\n" +
-    "        Set gradient of L = 0 (direction of steepest ascent)\n" +
-    "        Turns constrained optimization into unconstrained optimization...\n" +
-    "        ▽R = λ▽B\n" +
-    "        λ* = dM* / db* \n" +
-    "        Constraint functions with same input space must be some constant C\n" +
-    "        Asymmetric information interferes with operation of markets\n" +
-    "        Hidden action\n" +
-    "        Hidden information\n" +
-    "        Compatibility between the bonded nodes’ incentives and protocol security guarantees\n" +
-    "        Individual Rationality\n" +
-    "        Efficiency\n" +
-    "        Budget balance constrains the mechanism to transfers that net to zero across individuals\n" +
-    "        weak budget balance (also referred to as feasibility) simply requires that the mechanism not pay out more than it receives\n" +
-    "        Vickrey-Clarke Groves mechanisms are highly susceptible to collusion. They allow bad actors to add arbitrary terms to the payout that individual participants can’t influence without changing the underlying incentives.\n" +
-    "        For years in the ad-tech industry, waterfall auction dynamics have provided unfair advantages to advertisers and their media buying agencies. However, publishers recently gained the power to sell ‘programmatic guaranteed’ inventory. Bidio’s direct bidding mechanism enables brands to buy exclusive rights to specific tokens, which are continuously minted as viewers pay attention.\n" +
-    "        Bidio’s continuous auction mechanism runs without any input from the creator, and it proposes outcomes that would maximize utility of sponsors. Utilizing the multidimensional viewToken protocol, creators know which brands are willing to pay and how much per token.\n" +
-    "        Complete Transparency and Control\n" +
-    "        At any given time, individual creators have the choice to approve a number of sponsor(s) per video. Since the creator has no way of affecting who will pay the most, she is effectively trying to maximize the sum of her and her viewers’ utility.\n" +
-    "         \n" +
     "        For every individual, we run the mechanism without her and choose the outcome that maximizes the utility of all other players given their reported types. Then we include the individual and run the mechanism again. The latter is the outcome chosen. Each player pays (or collects) the difference between the sum of utilities for the other players in the two cases. Effectively, this payment is equivalent to the individual’s social cost or benefit. Since the individual has no way of affecting the sum of utilities that occurs without her, she is effectively trying to maximize the sum of her own and everyone else’s utility. But this is exactly the same as maximizing total social utility!\n" +
     "        Aligning everyone’s incentives not only ensures incentive-compatibility, but also guarantees efficiency. It is easy to find ex-post individually rational and weakly budget balanced versions of this mechanism with some pretty mild additional assumptions. We can also add arbitrary terms to the payout that the individual can’t influence (such as giving each individual some constant amount regardless of the outcome), without changing the underlying incentives. \n" +
     "        Which sponsor aligns with the creative purpose?!\n" +
@@ -3457,7 +3506,6 @@ angular.module("token/paper.tpl.html", []).run(["$templateCache", function ($tem
     "        b = v\n" +
     "        allocation rule(s): monotone and bounded\n" +
     "        Payment rule(s):\n" +
-    "\n" +
     "\n" +
     "        Someone doesn’t always win… Creators will often set reserve prices, or simply choose to promote their own brand.\n" +
     "        Virtual value: in auction theory, particularly Bayesian-optimal mechanism design, a virtual valuation of an agent is a function that measures the surplus that can be extracted from that agent. Typical application is a seller who wants to sell an item to a potential buyer and wants to decide on the optimal price. Independently and identically distributed bidders\n" +

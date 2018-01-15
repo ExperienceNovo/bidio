@@ -41,6 +41,8 @@ angular.module( 'bidio.video', [
 	    poster: $scope.video.thumbnailUrl || '/images/video-overlay.png'
 	};
 	if($scope.media.sources[0].type == 'video/mov'){$scope.media.sources[0].type = 'video/mp4'}
+	if($scope.media.sources[0].type == 'video/flv'){$scope.media.sources[0].type = 'video/flv'}
+	if($scope.media.sources[0].type == 'video/mp3'){$scope.media.sources[0].type = 'audio/mp3'}
 
 	var activeBid = video.bids.filter(function(bid){ return bid.isActive });
 	$scope.highestBid = activeBid.length ? activeBid[0] : {value: "0.01"};
@@ -50,13 +52,14 @@ angular.module( 'bidio.video', [
 	}
 	$scope.viewModel.video = $scope.video.id;
 	$scope.viewModel.bid = $scope.highestBid.id;
+
     //ViewModel.create($scope.viewModel).then(function(model){
     //	console.log(model);
     	//ViewModel.update(
     		//on room close for the viewmodel watch -- update the view with the timer - on backend (y)
     //});
 
-
+    //TODO: FIX SECURITY FOR WATCHTIME ACCURACY -- LIVE ON THE CHAIN -- SECURITY CONTRACT
     //security - make server call -- ws connection -- this isnt secure. but ok for now
     //could spoof watchtime
     //store startTime and endTime? - nah
@@ -86,7 +89,7 @@ angular.module( 'bidio.video', [
 	    });
 	});
 
-
+    //TODO: FIX BUGS HERE.. 
     //lotta potiental bugz
 	$rootScope.$on('$stateChangeStart',function(){
 		ViewModel.create($scope.viewModel).then(function(){$scope.viewModel = {};});
@@ -111,7 +114,6 @@ angular.module( 'bidio.video', [
 	.then(function(events){
 	    console.log(events);
 	});*/
-
 
 
 	//apparently not loading ---~~~

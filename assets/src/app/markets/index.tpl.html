@@ -1,21 +1,41 @@
 <div class="container" style="text-align:left">
     <div class="spacing-25"></div>
-    <h1>market</h1>
-    <p ng-click="bid()">+ bid</p>
-    <h2>filter</h2>
-    <form>
-        <input style="float:left;width:25%" type="text" placeholder="Token" class="form-control" ng-model="newLookup.tokenIdentifier">
-        <button class="float:left" ng-click="tokenLookup()"><span class="fa fa-search"></span></button>
-    </form>
+    <div class="row">
+        <div class="col-md-4">
+            <h1>market</h1>
+        </div>
+        <div class="col-md-8">
+            <div class="discover-search">
+                <div class="input-group">
+                    <input class="search-query form-control" ng-model="newLookup.tokenIdentifier" id="search-link" size="40" type="text" placeholder="Token">
+                    <span class="input-group-btn">
+                        <button class="btn" type="button" ng-click="tokenLookup()">
+                            <span class="fa fa-search"></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="spacing-25"></div>
-    <div class="col-md-6">
-        <div ng-repeat="post in [1,2,3,4,5,6,7,8]">
-            <h2 class="posted-title">1 token[{{post}}]</h2>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div ng-repeat="post in [1,2,3,4,5,6,7,8]">
-            <h2 class="posted-title">{{(1/post).toFixed(2)}} cre8coin</h2>
-        </div>
-    </div>
+    <h2 ng-click="bid()">+ bid</h2>
+    <div class="spacing-10"></div>
+
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>member</th>
+                <th>asset set 1</th>
+                <th>asset set 2</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="post in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]">
+                <td><a href="member/admin">member</a> {{post}}</td>
+                <td>1 <a href="market/{{post}}">token[{{post}}]</a></td>
+                <td>{{(1/post).toFixed(2)}} <a href="market/cre8">cre8coin</a></td>
+            </tr>
+        </tbody>
+    </table>
 </div>
