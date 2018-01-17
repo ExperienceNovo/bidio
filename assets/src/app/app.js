@@ -183,19 +183,5 @@ angular.module( 'bidio', [
         console.log(result, error);
     });
 
-    $rootScope.marketContractInstance.CreateOrderEvent({}, { fromBlock: 0, toBlock: 'latest' }).get((error, eventResult) => {
-      if (error)
-        console.log('Error in myEvent event handler: ' + error);
-      else
-        console.log(eventResult)
-    });
-
-     $rootScope.marketContractInstance.CreateOrderEvent({}, { fromBlock: 0, toBlock: 'latest' }).watch((error, eventResult) => {
-      if (error)
-        console.log('Error in myEvent event handler: ' + error);
-      else
-        console.log(eventResult)
-    });
-
    
 }]);
