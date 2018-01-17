@@ -117,6 +117,12 @@ module.exports.routes = {
   'post /api/credit': 'CreditController.stripe',
 
   /**
+   * Order routes
+   */
+  'post /api/order': 'OrderController.create',
+
+
+  /**
    * Post routes
    */
   'get /api/post': 'PostController.getAll',

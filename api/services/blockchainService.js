@@ -17,6 +17,18 @@ var masterAccount = '0x818c3e3a61a5c2071841df187318e5be2c238201';
 
 module.exports = {
 
+	createOrder: function(model){
+		var marketContract = new web3.eth.Contract([{"constant":false,"inputs":[{"name":"_member","type":"address"},{"name":"_orderExchangeAmount","type":"int256[]"},{"name":"_orderExchangeIdentifier","type":"address[]"},{"name":"_orderExchangeAmount1","type":"int256[]"},{"name":"_orderExchangeIdentifier1","type":"address[]"}],"name":"createOrder","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_member","type":"address"},{"indexed":false,"name":"_orderExchangeAmount","type":"int256[]"},{"indexed":true,"name":"_orderExchangeIdentifier","type":"address[]"},{"indexed":false,"name":"_orderExchangeAmount1","type":"int256[]"},{"indexed":false,"name":"_orderExchangeIdentifier1","type":"address[]"}],"name":"CreateOrder","type":"event"}]);
+		marketContract.options.address ='0x21088b1d083cb55Ff99A8e4bfcC2006A29Ea6498';
+		marketContract.methods.createOrder(model._member, model._orderExchangeAmount, model._orderExchangeIdentifier, model._orderExchangeAmount1, model._orderExchangeIdentifier1).send({
+			from: masterAccount,
+			gas: 888888
+		}, function(error, result){
+			console.log(error);
+			console.log(result);
+		});
+	},
+
 	createCredit: function(model){
 		web3.eth.sendTransaction({
 			from:'0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609',

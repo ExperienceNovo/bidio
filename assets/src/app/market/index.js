@@ -9,13 +9,20 @@ angular.module( 'bidio.market', [
 				controller: 'MarketCtrl',
 				templateUrl: 'market/index.tpl.html'
 			}
+		},
+		resolve:{
+			orders: function(OrderModel){
+				//return OrderModel.getAll();
+				return [1,2,3,4,5,6,7,8];
+			}
 		}
 	});
 }])
 
-.controller( 'MarketCtrl', ['$mdDialog', '$scope', '$stateParams', 'titleService', function MarketController( $mdDialog, $scope, $stateParams, titleService ) {
+.controller( 'MarketCtrl', ['$mdDialog', '$scope', '$stateParams', 'titleService', 'orders', function MarketController( $mdDialog, $scope, $stateParams, titleService, orders ) {
 	titleService.setTitle('bidio - '+$stateParams.id+' market');
     $scope.stateParams = $stateParams;
+    $scope.orders = orders;
 
 	$scope.bid = function(ev){
 	    $mdDialog.show({
@@ -24,7 +31,11 @@ angular.module( 'bidio.market', [
 			parent: angular.element(document.body),
 			targetEvent: ev,
 			clickOutsideToClose: true,
-
+			resolve: {
+				market: [function(){
+					return $scope.stateParams.id;
+				}]
+			}
 		})
         .then(function(result){
         	console.log(result)
@@ -34,13 +45,25 @@ angular.module( 'bidio.market', [
 
 }])
 
-.controller('MarketBidCtrl', ['$scope', '$mdDialog', 'BidModel', 'config', function ($scope, $mdDialog, BidModel, config ) {
+.controller('MarketBidCtrl', ['$scope', '$mdDialog', 'BidModel', 'config', 'market', 'OrderModel', function ($scope, $mdDialog, BidModel, config, market, OrderModel) {
+
+	$scope.market = market;
+
+	$scope.order = {};
+	$scope.order.member = '';
+	$scope.order.orderExchangeAmount = [];
+	$scope.order.orderExchangeIdentifier = [];
+	$scope.order.orderExchangeAmount1 = [];
+	$scope.order.orderExchangeIdentifier1 = [];
+
+
+	$scope.createOrderAsset = function(value){
+		//$scope.assetArray.push(value)
+	};
 
 	$scope.createBid = function(bid){
-		BidModel.create(bid).then(function(result){
-			//$uibModalInstance.close(result)
-			$mdDialog.hide(result);
-		});
+		OrderModel.create($scope.order);
+		$mdDialog.cancel();
 	};
 
 	$scope.cancel = function() {

@@ -2,27 +2,42 @@
     <div class="spacing-15"></div>
     <div class="container create-modal">
         <h2><span class="bidio-orange">new bid</h2>
+
+
+        <!--set one-->
         <div class="spacing-15"></div>
         <md-input-container layout-fill>
             <label>Token</label>
-            <input ng-model="bid.token1" type="text">
+            <input ng-model="orderExchangeIdentifier" type="text">
         </md-input-container>
+
         <md-input-container layout-fill>
             <label>Amount</label>
-            <input ng-model="bid.amount1" type="text">
+            <input ng-model="orderExchangeAmount" type="text">
         </md-input-container>
+        <md-button class="md-raised md-accent" ng-click="">Add Asset</md-button>
+
+        <!--set two-->
          <md-input-container layout-fill>
             <label>Token</label>
-            <input ng-model="bid.token2" type="text">
+            <input ng-model="orderExchangeIdentifier1" type="text">
         </md-input-container>
+
          <md-input-container layout-fill>
             <label>Amount</label>
-            <input ng-model="bid.amount2" type="text">
+            <input ng-model="orderExchangeAmount1" type="text">
         </md-input-container>
+        <md-button class="md-raised md-accent" ng-click="">Add Asset</md-button>
+
+
+
         <!--WILL BUY/SELL UP TO THIS AMOUNT AT THIS PRICE - GRANUAR FUILFILLMENT-->
 
+
+
+
         <div class="spacing-15"></div>
-        <md-button class="md-raised md-accent" ng-disabled="bid.value <= highestBid.value || !bid.campaign" ng-click="createBid(bid)">Submit</md-button>
+        <md-button class="md-raised md-accent" ng-disabled="orderExchangeAmount1 < 0 || orderExchangeIdentifier1=='' " ng-click="createBid(bid)">Submit</md-button>
         <md-button class="md-raised" ng-click="cancel()">Cancel</md-button>
     </div>
     <div class="spacing-15"></div>
