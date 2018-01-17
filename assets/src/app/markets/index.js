@@ -19,10 +19,29 @@ angular.module( 'bidio.markets', [
 	});
 }])
 
-.controller( 'MarketsCtrl', ['$mdDialog', '$scope', 'titleService', 'orders', function MarketsController( $mdDialog, $scope, titleService, orders ) {
+.controller( 'MarketsCtrl', ['$mdDialog', '$rootScope', '$scope', 'config', 'titleService', 'orders', function MarketsController( $mdDialog, $rootScope, $scope, config, titleService, orders ) {
 	titleService.setTitle('bidio - market');
 	$scope.orders = orders;
 	//ORDERS WEB3 FILTER.... ~sockets etc --> same 'filters' --> for videos / dash..
+	console.log($rootScope.marketContractInstance.allEvents())
+	$rootScope.marketContractInstance.allEvents().watch(function(error, event){
+        console.log(event);
+    });
+
+    // Or pass a callback to start watching immediately
+    $rootScope.marketContractInstance.allEvents(function(error, log){
+        console.log(log);
+    });
+
+    $rootScope.marketContractInstance.CreateOrderEvent({fromBlock: 0, toBlock: 'latest'})
+    .watch(function(error, result){
+        console.log(error, result);
+    });
+
+    $rootScope.marketContractInstance.CreateOrderEvent({fromBlock: 0, toBlock: 'latest'})
+    .get(function(error, logs){
+        console.log(error, logs);
+    });
 
 
 	$scope.bid = function(ev){
@@ -38,18 +57,20 @@ angular.module( 'bidio.markets', [
         	console.log(result)
         });
 	};
+
 }])
 
 .controller('MarketsBidCtrl', ['$scope', '$mdDialog', 'BidModel', 'config', 'OrderModel', function ($scope, $mdDialog, BidModel, config, OrderModel ) {
 
 	$scope.order = {};
-	$scope.order.member = '';
+	$scope.order.member = '';//config.currentUser.walletAddress
 	$scope.order.orderExchangeAmount = [];
 	$scope.order.orderExchangeIdentifier = [];
 	$scope.order.orderExchangeAmount1 = [];
 	$scope.order.orderExchangeIdentifier1 = [];
 
-	$scope.createBid = function(bid){
+	$scope.createBid = function(){
+		console.log($scope.order)
 		OrderModel.create($scope.order);
 		$mdDialog.cancel();
 	};

@@ -17,10 +17,26 @@ var masterAccount = '0x818c3e3a61a5c2071841df187318e5be2c238201';
 
 module.exports = {
 
-	createOrder: function(model){
-		var marketContract = new web3.eth.Contract([{"constant":false,"inputs":[{"name":"_member","type":"address"},{"name":"_orderExchangeAmount","type":"int256[]"},{"name":"_orderExchangeIdentifier","type":"address[]"},{"name":"_orderExchangeAmount1","type":"int256[]"},{"name":"_orderExchangeIdentifier1","type":"address[]"}],"name":"createOrder","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_member","type":"address"},{"indexed":false,"name":"_orderExchangeAmount","type":"int256[]"},{"indexed":true,"name":"_orderExchangeIdentifier","type":"address[]"},{"indexed":false,"name":"_orderExchangeAmount1","type":"int256[]"},{"indexed":false,"name":"_orderExchangeIdentifier1","type":"address[]"}],"name":"CreateOrder","type":"event"}]);
-		marketContract.options.address ='0x21088b1d083cb55Ff99A8e4bfcC2006A29Ea6498';
-		marketContract.methods.createOrder(model._member, model._orderExchangeAmount, model._orderExchangeIdentifier, model._orderExchangeAmount1, model._orderExchangeIdentifier1).send({
+	createOrder: function(_member, _orderExchangeAmount, _orderExchangeIdentifier, _orderExchangeAmount1, _orderExchangeIdentifier1){
+		//var marketContract = new web3.eth.Contract([{"constant":false,"inputs":[{"components":[{"name":"identifier","type":"string"},{"name":"amount","type":"uint256"}],"name":"assetSet","type":"tuple[]"},{"components":[{"name":"identifier","type":"string"},{"name":"amount","type":"uint256"}],"name":"assetSet1","type":"tuple[]"}],"name":"createOrder","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"components":[{"name":"identifier","type":"string"},{"name":"amount","type":"uint256"}],"indexed":true,"name":"assetSet","type":"tuple[]"},{"components":[{"name":"identifier","type":"string"},{"name":"amount","type":"uint256"}],"indexed":true,"name":"assetSet1","type":"tuple[]"}],"name":"CreateOrder","type":"event"}]);
+		//var marketContract = new web3.eth.Contract([{"constant":false,"inputs":[{"name":"_member","type":"address"},{"name":"_orderExchangeAmount","type":"int256[]"},{"name":"_orderExchangeIdentifier","type":"address[]"},{"name":"_orderExchangeAmount1","type":"int256[]"},{"name":"_orderExchangeIdentifier1","type":"address[]"}],"name":"createOrder","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_member","type":"address"},{"indexed":false,"name":"_orderExchangeAmount","type":"int256[]"},{"indexed":true,"name":"_orderExchangeIdentifier","type":"address[]"},{"indexed":false,"name":"_orderExchangeAmount1","type":"int256[]"},{"indexed":false,"name":"_orderExchangeIdentifier1","type":"address[]"}],"name":"CreateOrder","type":"event"}]);
+		var marketContract = new web3.eth.Contract([{"constant":false,"inputs":[{"name":"_member","type":"address"},{"name":"_orderExchangeAmount","type":"int256[]"},{"name":"_orderExchangeIdentifier","type":"address[]"},{"name":"_orderExchangeAmount1","type":"int256[]"},{"name":"_orderExchangeIdentifier1","type":"address[]"}],"name":"createOrder","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_member","type":"address"},{"indexed":false,"name":"_orderExchangeAmount","type":"int256[]"},{"indexed":true,"name":"_orderExchangeIdentifier","type":"address[]"},{"indexed":false,"name":"_orderExchangeAmount1","type":"int256[]"},{"indexed":false,"name":"_orderExchangeIdentifier1","type":"address[]"}],"name":"CreateOrderEvent","type":"event"}]);
+
+		//marketContract.options.address = '0x7be2Ff74F3Ffb9d73eF776e741d615CdF43220dD';
+		marketContract.options.address = '0x9b870E0D29D485CB0bd2a076344B4F0bf2Fee009';
+
+		console.log(_member, _orderExchangeAmount, _orderExchangeIdentifier, _orderExchangeAmount1, _orderExchangeIdentifier1);
+
+		//address _member, 
+		//int[] _orderExchangeAmount, 
+		//address[] _orderExchangeIdentifier, 
+		//int[] _orderExchangeAmount1, 
+		//address[] _orderExchangeIdentifier1
+
+		//gottaa multid
+		marketContract.methods.createOrder(masterAccount,[_orderExchangeAmount],[_orderExchangeIdentifier], [_orderExchangeAmount1], [_orderExchangeIdentifier1]).send({
+		//marketContract.methods.createOrder([{"identifier":"1","amount":"10"},{"identifier":"2","amount":"5"}],[{"identifier":"1","amount":"10"},{"identifier":"2","amount":"5"}]).send({
+		//marketContract.methods.createOrder(_member, _orderExchangeAmount, _orderExchangeIdentifier, _orderExchangeAmount1, _orderExchangeIdentifier1).send({
 			from: masterAccount,
 			gas: 888888
 		}, function(error, result){

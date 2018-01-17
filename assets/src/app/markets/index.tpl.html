@@ -31,10 +31,10 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="post in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]">
-                <td><a href="member/admin">member</a> {{post}}</td>
-                <td>1 <a href="market/{{post}}">token[{{post}}]</a></td>
-                <td>{{(1/post).toFixed(2)}} <a href="market/cre8">cre8coin</a></td>
+            <tr ng-repeat="order in orders">
+                <td><a href="member/admin">member</a> {{order}}</td>
+                <td>1 <a href="market/{{post}}">token[{{order}}]</a></td>
+                <td>{{(1/order).toFixed(2)}} <a href="market/cre8">cre8coin</a></td>
             </tr>
         </tbody>
     </table>

@@ -2,9 +2,10 @@ angular.module('models.order', ['lodash', 'services', 'sails.io',])
 
 .service('OrderModel', ['$rootScope', '$sailsSocket', 'utils', function($rootScope, $sailsSocket, utils) {
 
-    this.create = function(member, orderExchangeAmount, orderExchangeIdentifier, orderExchangeAmount1, orderExchangeIdentifier1) {
+    this.create = function(newOrder) {
         //TODO: SECURITY - DECENTRALIZATION ~ master acct gas.
-        var query = {params:{member:member, orderExchangeAmount:orderExchangeAmount, orderExchangeIdentifier:orderExchangeIdentifier, orderExchangeAmount1: orderExchangeAmount1, orderExchangeIdentifier1:orderExchangeIdentifier1}};
+        var query = {params:{member:newOrder.member, orderExchangeAmount:newOrder.orderExchangeAmount, orderExchangeIdentifier:newOrder.orderExchangeIdentifier, orderExchangeAmount1: newOrder.orderExchangeAmount1, orderExchangeIdentifier1:newOrder.orderExchangeIdentifier1}};
+        console.log(query)
         var url = utils.prepareUrl('order');
         return $sailsSocket.post(url, query).then(success, error);
     };

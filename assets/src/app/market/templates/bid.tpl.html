@@ -13,7 +13,7 @@
 
         <md-input-container layout-fill>
             <label>Amount</label>
-            <input ng-model="orderExchangeAmount" type="text">
+            <input ng-model="order.orderExchangeAmount" type="text">
         </md-input-container>
 
         <br><br><br>
@@ -21,12 +21,12 @@
         <!--set two-->
          <md-input-container layout-fill>
             <label>Token</label>
-            <input ng-model="orderExchangeIdentifier1" type="text">
+            <input ng-model="order.orderExchangeIdentifier1" type="text">
         </md-input-container>
 
          <md-input-container layout-fill>
             <label>Amount</label>
-            <input ng-model="orderExchangeAmount1" type="text">
+            <input ng-model="order.orderExchangeAmount1" type="text">
         </md-input-container>
         <md-button class="md-raised md-accent" ng-click="">Add Asset</md-button>
 
@@ -38,7 +38,7 @@
 
 
         <div class="spacing-15"></div>
-        <md-button class="md-raised md-accent" ng-disabled="orderExchangeAmount1 < 0 || orderExchangeIdentifier1=='' " ng-click="createBid(bid)">Submit</md-button>
+        <md-button class="md-raised md-accent" ng-disabled="orderExchangeAmount1 < 0 || orderExchangeIdentifier1=='' " ng-click="createBid()">Submit</md-button>
         <md-button class="md-raised" ng-click="cancel()">Cancel</md-button>
     </div>
     <div class="spacing-15"></div>

@@ -98,16 +98,16 @@ angular.module( 'bidio', [
     $rootScope.viewContractInstance = $rootScope.viewContract.at($rootScope.viewTokenAddress);
 
     //MARKET CONTRACT
-    $rootScope.marketContractAbi = [{"constant":false,"inputs":[{"name":"_member","type":"address"},{"name":"_orderExchangeAmount","type":"int256[]"},{"name":"_orderExchangeIdentifier","type":"address[]"},{"name":"_orderExchangeAmount1","type":"int256[]"},{"name":"_orderExchangeIdentifier1","type":"address[]"}],"name":"createOrder","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_member","type":"address"},{"indexed":false,"name":"_orderExchangeAmount","type":"int256[]"},{"indexed":true,"name":"_orderExchangeIdentifier","type":"address[]"},{"indexed":false,"name":"_orderExchangeAmount1","type":"int256[]"},{"indexed":false,"name":"_orderExchangeIdentifier1","type":"address[]"}],"name":"CreateOrder","type":"event"}]
-    $rootScope.marketContractAddress = '0x21088b1d083cb55Ff99A8e4bfcC2006A29Ea6498';
+    $rootScope.marketContractAbi = [{"constant":false,"inputs":[{"name":"_member","type":"address"},{"name":"_orderExchangeAmount","type":"int256[]"},{"name":"_orderExchangeIdentifier","type":"address[]"},{"name":"_orderExchangeAmount1","type":"int256[]"},{"name":"_orderExchangeIdentifier1","type":"address[]"}],"name":"createOrder","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_member","type":"address"},{"indexed":false,"name":"_orderExchangeAmount","type":"int256[]"},{"indexed":true,"name":"_orderExchangeIdentifier","type":"address[]"},{"indexed":false,"name":"_orderExchangeAmount1","type":"int256[]"},{"indexed":false,"name":"_orderExchangeIdentifier1","type":"address[]"}],"name":"CreateOrderEvent","type":"event"}]
+    $rootScope.marketContractAddress = '0x9b870E0D29D485CB0bd2a076344B4F0bf2Fee009';
     $rootScope.marketContract = $rootScope.cre8web3.eth.contract($rootScope.marketContractAbi);
     $rootScope.marketContractInstance = $rootScope.marketContract.at($rootScope.marketContractAddress);
 
     //USER CONTRACT
-    $rootScope.userContractAbi = [{"constant":false,"inputs":[{"name":"_member","type":"address"},{"name":"_orderExchangeAmount","type":"int256[]"},{"name":"_orderExchangeIdentifier","type":"address[]"},{"name":"_orderExchangeAmount1","type":"int256[]"},{"name":"_orderExchangeIdentifier1","type":"address[]"}],"name":"createOrder","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_member","type":"address"},{"indexed":false,"name":"_orderExchangeAmount","type":"int256[]"},{"indexed":true,"name":"_orderExchangeIdentifier","type":"address[]"},{"indexed":false,"name":"_orderExchangeAmount1","type":"int256[]"},{"indexed":false,"name":"_orderExchangeIdentifier1","type":"address[]"}],"name":"CreateOrder","type":"event"}]
-    $rootScope.userContractAddress = '0x21088b1d083cb55Ff99A8e4bfcC2006A29Ea6498';
-    $rootScope.userContract = $rootScope.cre8web3.eth.contract($rootScope.marketContractAbi);
-    $rootScope.userContractInstance = $rootScope.marketContract.at($rootScope.marketContractAddress);
+    //$rootScope.userContractAbi = [{"constant":false,"inputs":[{"name":"_member","type":"address"},{"name":"_orderExchangeAmount","type":"int256[]"},{"name":"_orderExchangeIdentifier","type":"address[]"},{"name":"_orderExchangeAmount1","type":"int256[]"},{"name":"_orderExchangeIdentifier1","type":"address[]"}],"name":"createOrder","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_member","type":"address"},{"indexed":false,"name":"_orderExchangeAmount","type":"int256[]"},{"indexed":true,"name":"_orderExchangeIdentifier","type":"address[]"},{"indexed":false,"name":"_orderExchangeAmount1","type":"int256[]"},{"indexed":false,"name":"_orderExchangeIdentifier1","type":"address[]"}],"name":"CreateOrder","type":"event"}]
+    //$rootScope.userContractAddress = '0x21088b1d083cb55Ff99A8e4bfcC2006A29Ea6498';
+    //$rootScope.userContract = $rootScope.cre8web3.eth.contract($rootScope.marketContractAbi);
+    //$rootScope.userContractInstance = $rootScope.marketContract.at($rootScope.marketContractAddress);
 
     //SECURITY CONTRACT?
 
@@ -125,28 +125,77 @@ angular.module( 'bidio', [
     //comment? 
 
 
-    var filter = $rootScope.cre8web3.eth.filter('latest');
-    
-    filter.watch(function(error, result){
-        //console.log(result);
+    // watch for changes
+    $rootScope.marketContractInstance.allEvents().watch(function(error, event){
+        console.log(event);
     });
 
-    $rootScope.marketContractInstance.CreateOrder(function(error, result){
+    // Or pass a callback to start watching immediately
+    $rootScope.marketContractInstance.allEvents(function(error, log){
+        console.log(log);
+    });
+
+    $rootScope.marketContractInstance.CreateOrderEvent({fromBlock: 0, toBlock: 'latest'})
+    .watch(function(error, result){
+        console.log(error, result);
+    });
+
+    $rootScope.marketContractInstance.CreateOrderEvent({fromBlock: 0, toBlock: 'latest'})
+    .get(function(error, logs){
+        console.log(error, logs);
+    });
+
+
+    var marketEvent = $rootScope.marketContractInstance.CreateOrderEvent({fromBlock: 0, toBlock: 'latest'});
+
+    marketEvent.watch(function(error, result){
+        console.log(error, result);
+    });
+
+    marketEvent.get(function(error, logs){
+        console.log(error, logs);
+    });
+
+
+    var filter = $rootScope.cre8web3.eth.filter({address:"0x9b870E0D29D485CB0bd2a076344B4F0bf2Fee009"});
+    
+    filter.watch(function(error, result){
+        console.log(result);
+    });
+
+    $rootScope.marketContractInstance.CreateOrderEvent(function(error, result){
         console.log(result, error);
     });
 
+    $rootScope.marketContractInstance.CreateOrderEvent().watch(function(error, result){
+        console.log(error, result)
+    });
 
     //TODO: SRSLY GET THIS>>>>>>>~~~~~
-    var newFilter = web3.eth.filter({
+    var newFilter = $rootScope.cre8web3.eth.filter({
         fromBlock: 0,
         toBlock: 'latest',
-        address: '0x21088b1d083cb55Ff99A8e4bfcC2006A29Ea6498',
-        topics: [web3.sha3('CreateOrder(string,uint256,string,string,uint256)')]
+        address: '0x9b870E0D29D485CB0bd2a076344B4F0bf2Fee009',
+        topics: [$rootScope.cre8web3.sha3('CreateOrderEvent(string,uint256,string,string,uint256)')]
     });
 
     newFilter.watch(function(error, result){
         console.log(result, error);
     });
 
+    $rootScope.marketContractInstance.CreateOrderEvent({}, { fromBlock: 0, toBlock: 'latest' }).get((error, eventResult) => {
+      if (error)
+        console.log('Error in myEvent event handler: ' + error);
+      else
+        console.log(eventResult)
+    });
 
+     $rootScope.marketContractInstance.CreateOrderEvent({}, { fromBlock: 0, toBlock: 'latest' }).watch((error, eventResult) => {
+      if (error)
+        console.log('Error in myEvent event handler: ' + error);
+      else
+        console.log(eventResult)
+    });
+
+   
 }]);
