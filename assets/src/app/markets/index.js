@@ -22,8 +22,9 @@ angular.module( 'bidio.markets', [
 .controller( 'MarketsCtrl', ['$mdDialog', '$rootScope', '$scope', 'config', 'titleService', 'orders', function MarketsController( $mdDialog, $rootScope, $scope, config, titleService, orders ) {
 	titleService.setTitle('bidio - market');
 	$scope.orders = orders;
+
 	//ORDERS WEB3 FILTER.... ~sockets etc --> same 'filters' --> for videos / dash..
-	console.log($rootScope.marketContractInstance.allEvents())
+	/*console.log($rootScope.marketContractInstance.allEvents())
 	$rootScope.marketContractInstance.allEvents().watch(function(error, event){
         console.log(event);
     });
@@ -41,7 +42,7 @@ angular.module( 'bidio.markets', [
     $rootScope.marketContractInstance.CreateOrderEvent({fromBlock: 0, toBlock: 'latest'})
     .get(function(error, logs){
         console.log(error, logs);
-    });
+    });*/
 
 
 	$scope.bid = function(ev){

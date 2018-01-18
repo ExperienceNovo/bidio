@@ -16,9 +16,9 @@ angular.module( 'bidio.token', [
 .controller( 'TokenCtrl', ['$scope', 'titleService', function TokenController( $scope, titleService ) {
 	titleService.setTitle('CRE8BID.IO | CREATE THE NEXT WAVE');
 
-	$scope.totalEth  = ((Math.round(+new Date()/1000) - 1515710442)/60).toFixed(4);
-	$scope.tokenPrice = (Math.pow(2, Math.log($scope.totalEth*60))/100 - 2309500).toFixed(8);
-	$scope.totalToken =  Math.floor(100 * $scope.totalEth / $scope.tokenPrice);
+	$scope.totalEth  = 0//((Math.round(+new Date()/1000) - 1515710442)/60).toFixed(4);
+	$scope.tokenPrice = 0//(Math.pow(2, Math.log($scope.totalEth*60))/100 - 2309500).toFixed(8);
+	$scope.totalToken =  0//Math.floor(100 * $scope.totalEth / $scope.tokenPrice);
 
 	//TOKEN CONTRACT
 	$scope.ethWeb3 = new Web3();
@@ -35,10 +35,10 @@ angular.module( 'bidio.token', [
 
 
 	$scope.getPrice = function(){
-		var unix = Math.round(+new Date()/1000);
-		var power = Math.log(unix)/100
-		$scope.tokenPrice = (Math.pow(2, power)/2 - 2309500/2).toFixed(8);
-		$scope.totalToken = (Math.floor(100 * $scope.totalEth / $scope.tokenPrice)*power).toFixed(0);
+		var unix = 0//Math.round(+new Date()/1000);
+		var power = 0//Math.log(unix)/100
+		$scope.tokenPrice = 0//(Math.pow(2, power)/2 - 2309500/2).toFixed(8);
+		$scope.totalToken = 0//(Math.floor(100 * $scope.totalEth / $scope.tokenPrice)*power).toFixed(0);
 	};
 
 
