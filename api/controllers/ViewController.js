@@ -72,11 +72,11 @@ module.exports = {
 				//viewerContent -- PERCENTAGE OF SHARED CONTENT TOKEN
 				viewerModel._id = model.video;
 				if (viewerModel._time != 0 && viewerModel._time && req.user){blockchainService.createMultiDimensionalViewToken(viewerModel);}
-				console.log(viewerModel)
+				//console.log(viewerModel)
 				//viewerGeneral -- GENERAL TOKEN
 				viewerModel._id = 'general';
 				if (viewerModel._time != 0 && viewerModel._time && req.user){blockchainService.createMultiDimensionalViewToken(viewerModel);}
-				console.log(viewerModel)
+				//console.log(viewerModel)
 
 		  		Video.find({id:req.param('video')}).then(function(videoModel){
 		  			User.find({id:videoModel[0].user}).then(function(userModel){
@@ -84,7 +84,7 @@ module.exports = {
 						//viewerChannel -- PERCENTAGE OF SHARED CHANNEL TOKEN
 						viewerModel._id = userModel[0].walletAddress;
 						if (viewerModel._time != 0 && viewerModel._time){blockchainService.createMultiDimensionalViewToken(viewerModel);}
-						console.log(viewerModel)
+						//console.log(viewerModel)
 
 						//CREATOR
 		  				var creatorModel = {};
@@ -94,19 +94,19 @@ module.exports = {
 						//creatorContent
 						creatorModel._id = model.video;
 						if (creatorModel._time != 0 && creatorModel._time && req.user){blockchainService.createMultiDimensionalViewToken(creatorModel);}
-						console.log(viewerModel)
+						//console.log(viewerModel)
 
 						//creatorChannel -- VIEWER PAYING ATTENTION
 						creatorModel._id = model.video;
 						if (req.user){creatorModel._id = req.user.walletAddress}
 						else{creatorModel._id = '0x818c3e3a61a5c2071841df187318e5be2c238201'}
 						if (creatorModel._time != 0 && creatorModel._time){blockchainService.createMultiDimensionalViewToken(creatorModel);}
-						console.log(viewerModel)
+						//console.log(viewerModel)
 
 						//creatorGeneral
 						viewerModel._id = 'general';
 						if (creatorModel._time != 0 && creatorModel._time && req.user){blockchainService.createMultiDimensionalViewToken(creatorModel);}
-						console.log(viewerModel)
+						//console.log(viewerModel)
 
 		  			});
 		  		});

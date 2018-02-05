@@ -47,7 +47,7 @@ module.exports = {
 		//marketContract.methods.createOrder(_member, _orderExchangeAmount, _orderExchangeIdentifier, _orderExchangeAmount1, _orderExchangeIdentifier1).send({
 			from: masterAccount,
 			gas: 8888888,
-			gasPrice: 20000000000,
+			gasPrice: 10000000000000,//88000000000,
 			//888888888888
 		}, function(error, result){
 			console.log(error);
@@ -90,6 +90,7 @@ module.exports = {
 	},
 
 	createMultiDimensionalViewToken:function(model){
+		console.log('CREATE')
 		console.log(model);
 		var viewContract = new web3.eth.Contract([{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_id","type":"string"},{"name":"_time","type":"uint256"}],"name":"createView","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"},{"name":"_id","type":"string"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_id","type":"string"},{"name":"_value","type":"uint256"}],"name":"transfer","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":true,"name":"_id","type":"string"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_from","type":"address"},{"indexed":false,"name":"_to","type":"address"},{"indexed":false,"name":"_id","type":"string"},{"indexed":false,"name":"_time","type":"uint256"}],"name":"CreateViewToken","type":"event"}]);
 		viewContract.options.address = viewTokenAddress;
@@ -99,10 +100,10 @@ module.exports = {
 		viewContract.methods.createView(model._address, model._id, model._time).send({
 			from: masterAccount,
 			gas: 8888888,
-			gasPrice: 20000000000,
+			gasPrice: 10000000000000,
 		}, function(error, result){
 			console.log('createMultiDimensionalViewToken');
-			console.log(result);
+			console.log(error, result);
 		});
 	},
 

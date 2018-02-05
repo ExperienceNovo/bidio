@@ -127,57 +127,57 @@ angular.module( 'bidio', [
 
     // watch for changes
     $rootScope.marketContractInstance.allEvents().watch(function(error, event){
-        console.log(event);
+        //console.log(event);
     });
 
     $rootScope.viewContractInstance.allEvents().watch(function(error, event){
-        console.log(event);
+        //console.log(event);
     });
 
     $rootScope.marketContractInstance.CreateOrderEvent({fromBlock: 0, toBlock: 'latest'})
     .watch(function(error, result){
-        console.log(error, result);
+        //console.log(error, result);
     });
 
     // Or pass a callback to start watching immediately
     $rootScope.marketContractInstance.allEvents(function(error, log){
-        console.log(log);
+        //console.log(log);
     });
 
     $rootScope.marketContractInstance.CreateOrderEvent({fromBlock: 0, toBlock: 'latest'})
     .watch(function(error, result){
-        console.log(error, result);
+        //console.log(error, result);
     });
 
     $rootScope.marketContractInstance.CreateOrderEvent({fromBlock: 0, toBlock: 'latest'})
     .get(function(error, logs){
-        console.log(error, logs);
+        //console.log(error, logs);
     });
 
 
     var marketEvent = $rootScope.marketContractInstance.CreateOrderEvent({fromBlock: 0, toBlock: 'latest'});
 
     marketEvent.watch(function(error, result){
-        console.log(error, result);
+        //console.log(error, result);
     });
 
     marketEvent.get(function(error, logs){
-        console.log(error, logs);
+        //console.log(error, logs);
     });
 
 
     var filter = $rootScope.cre8web3.eth.filter({address:"0x9b870E0D29D485CB0bd2a076344B4F0bf2Fee009"});
     
     filter.watch(function(error, result){
-        console.log(result);
+        //console.log(result);
     });
 
     $rootScope.marketContractInstance.CreateOrderEvent(function(error, result){
-        console.log(result, error);
+       // console.log(result, error);
     });
 
     $rootScope.marketContractInstance.CreateOrderEvent().watch(function(error, result){
-        console.log(error, result)
+        //console.log(error, result)
     });
 
     //TODO: SRSLY GET THIS>>>>>>>~~~~~
@@ -189,7 +189,7 @@ angular.module( 'bidio', [
     });
 
     newFilter.watch(function(error, result){
-        console.log(result, error);
+        //console.log(result, error);
     });
 
    

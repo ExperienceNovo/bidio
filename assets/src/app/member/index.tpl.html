@@ -150,8 +150,8 @@
 				    <tbody>
 						<tr ng-repeat="event in balance.events">
 							<td><a href="/member/{{event.returnValues._to}}">{{event.returnValues._to}}</a></td>
-							<td>{{event.returnValues.identifier}}</td>
-							<td>{{event.returnValues.time/1000}}</td>
+							<td>{{event.returnValues._id}}</td>
+							<td>{{event.returnValues._time/1000}}</td>
 						</tr>
 				    </tbody>
 				</table>
@@ -161,9 +161,9 @@
 				<div ng-repeat="transaction in pendingTransactionsList">
 					{{transaction}}
 				</div>-->
-				<div ng-repeat="event in balance.events">
+				<!--<div ng-repeat="event in balance.events">
 					{{event}}
-				</div>
+				</div>-->
 
 			</div>
 		</uib-tab>
