@@ -10,7 +10,7 @@ var Web3 = require('web3');
 var web3 = new Web3();
 
 var Personal = require('web3-eth-personal');
-var personal = new Personal('http://localhost:8545');
+var personal = new Personal('http://172.31.19.250:30302');
 
 /*
 function youtubeToS3(youtubeUrl, user){
@@ -64,9 +64,9 @@ function youtubeToS3(youtubeUrl, user){
 module.exports.intervalService = function(){
 
 	if (typeof web3 !== 'undefined') {web3 = new Web3(web3.currentProvider);}
-	else {web3 = new Web3(new Web3.providers.WebsocketProvider("ws://localhost:8546"));}
-	web3.setProvider(new Web3.providers.WebsocketProvider('ws://localhost:8546'));
-	personal.unlockAccount('0x818c3e3a61a5c2071841df187318e5be2c238201', '7792', 1000000);
+	else {web3 = new Web3(new Web3.providers.WebsocketProvider("ws://172.31.19.250:8546"));}
+	web3.setProvider(new Web3.providers.WebsocketProvider('ws://172.31.19.250:8546'));
+	personal.unlockAccount('0xc2bb26082403cc1fb0e75769559c85be14ae95a3', 'create', 1000000);
 
 	//else {web3 = new Web3(new Web3.providers.WebsocketProvider("ws://cre8wium3.eastus.cloudapp.azure.com:8546"));}
 	//web3.setProvider(new Web3.providers.WebsocketProvider('ws://cre8wium3.eastus.cloudapp.azure.com:8546'));
@@ -81,11 +81,11 @@ module.exports.intervalService = function(){
 		sails.sockets.broadcast('pendingTransactions', 'pendingTransactions', { transaction: transaction });
 	});
 
-	//viewcontract w event - testnet
-	var viewContract = new web3.eth.Contract([{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"balances","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"views","outputs":[{"name":"video","type":"string"},{"name":"watchTime","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"video","type":"string"},{"name":"watchTime","type":"uint256"}],"name":"createView","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_amount","type":"uint256"}],"name":"transfer","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"video","type":"string"},{"indexed":false,"name":"watchTime","type":"uint256"}],"name":"CreateView","type":"event"}]);
-	viewContract.options.address ='0xb835f4b6cb820bf7ff23915db98f734dca603616';
+	//viewcontract w event
+	var viewContract = new web3.eth.Contract([{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_id","type":"string"},{"name":"_time","type":"uint256"}],"name":"createView","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"},{"name":"_id","type":"string"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_id","type":"string"},{"name":"_value","type":"uint256"}],"name":"transfer","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"_id","type":"string"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_from","type":"address"},{"indexed":false,"name":"_to","type":"address"},{"indexed":false,"name":"identifier","type":"string"},{"indexed":false,"name":"time","type":"uint256"}],"name":"CreateViewToken","type":"event"}]);
+	viewContract.options.address ='0x76eDD91a05cd7B0d9f1e526c677Ad153B37251c7';
 
-	viewContract.events.CreateView({
+	viewContract.events.CreateViewToken({
 	    fromBlock: 0
 	}, 
 	function(error, event){ console.log(error, 'ERROR');console.log(event, 'HELLO'); })
@@ -93,7 +93,7 @@ module.exports.intervalService = function(){
 	    console.log(event, 'HELLO123'); // same results as the optional callback above
 	});
 
-	viewContract.getPastEvents('CreateView', {fromBlock: 0, toBlock: 'latest'}, function(e,l){console.log(l)})
+	viewContract.getPastEvents('CreateViewToken', {fromBlock: 0, toBlock: 'latest'}, function(e,l){console.log(l)})
 
 	//SUBSCRIBE... EVENT IN THE VIEW CONTRACT :)
 
@@ -239,17 +239,7 @@ module.exports.intervalService = function(){
 	}
 	*/
 
-	var viewContract = new web3.eth.Contract([{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"balances","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"views","outputs":[{"name":"video","type":"string"},{"name":"watchTime","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"video","type":"string"},{"name":"watchTime","type":"uint256"}],"name":"createView","outputs":[],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_amount","type":"uint256"}],"name":"transfer","outputs":[],"payable":false,"type":"function"},{"inputs":[],"payable":false,"type":"constructor"}]);
-	viewContract.options.address ='0x3a66bba9c404e66d2863e85041810add03031860';
 
-	viewContract.methods.views('0x9fB168CEbAe474Ccb36a8B5D53Aa56c225B9c579').call({from: '0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609'}, function(error, result){
-		//console.log(result)
-	});
-
-	viewContract.methods.balances('0x9fB168CEbAe474Ccb36a8B5D53Aa56c225B9c579').call({from: '0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609'}, function(error, result){
-		//console.log(result)
-	});
-	
 	//viewContract.methods.createView('0x9fB168CEbAe474Ccb36a8B5D53Aa56c225B9c579', 'videoId', 600000).send({
 	//	from: '0xCE6e3661ec5745158A7fc040FBD3077C5E1c4609',
 	//	gas: 88888

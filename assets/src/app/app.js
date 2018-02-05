@@ -86,14 +86,14 @@ angular.module( 'bidio', [
 
     //LOCALHOST FRONTEND WEB3 TESTING
     $rootScope.cre8web3 = new Web3();
-    $rootScope.cre8web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+    $rootScope.cre8web3 = new Web3(new Web3.providers.HttpProvider("http://ec2-54-212-193-239.us-west-2.compute.amazonaws.com:8545"));
     //$rootScope.cre8web3 = new Web3(new Web3.providers.HttpProvider("http://cre8wium3.eastus.cloudapp.azure.com:8545"));
     
 
     //STORE ALL CONTRACT INFO HERE
     //VIEW CONTRACT
-    $rootScope.viewTokenAbi = [{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"},{"name":"_id","type":"string"}],"name":"transfer","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_id","type":"string"},{"name":"_time","type":"uint256"}],"name":"createView","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"},{"name":"_id","type":"string"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_from","type":"address"},{"indexed":false,"name":"_to","type":"address"},{"indexed":false,"name":"_id","type":"string"},{"indexed":false,"name":"_time","type":"uint256"}],"name":"CreateViewToken","type":"event"}]
-    $rootScope.viewTokenAddress = '0x6c728ed572633d08cbea0e7ed7aadbf2f044788f';
+    $rootScope.viewTokenAbi = [{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_id","type":"string"},{"name":"_time","type":"uint256"}],"name":"createView","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"},{"name":"_id","type":"string"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_id","type":"string"},{"name":"_value","type":"uint256"}],"name":"transfer","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":true,"name":"_id","type":"string"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_from","type":"address"},{"indexed":false,"name":"_to","type":"address"},{"indexed":false,"name":"_id","type":"string"},{"indexed":false,"name":"_time","type":"uint256"}],"name":"CreateViewToken","type":"event"}];
+    $rootScope.viewTokenAddress = '0xF0f36c3A545fD00191ED8392028e94eE6d379f17';
     $rootScope.viewContract = $rootScope.cre8web3.eth.contract($rootScope.viewTokenAbi);
     $rootScope.viewContractInstance = $rootScope.viewContract.at($rootScope.viewTokenAddress);
 
@@ -128,6 +128,15 @@ angular.module( 'bidio', [
     // watch for changes
     $rootScope.marketContractInstance.allEvents().watch(function(error, event){
         console.log(event);
+    });
+
+    $rootScope.viewContractInstance.allEvents().watch(function(error, event){
+        console.log(event);
+    });
+
+    $rootScope.marketContractInstance.CreateOrderEvent({fromBlock: 0, toBlock: 'latest'})
+    .watch(function(error, result){
+        console.log(error, result);
     });
 
     // Or pass a callback to start watching immediately
