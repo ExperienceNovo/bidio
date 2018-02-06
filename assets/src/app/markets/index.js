@@ -11,10 +11,10 @@ angular.module( 'bidio.markets', [
 			}
 		},
 		resolve:{
-			orders: function(OrderModel){
+			orders: ['OrderModel', function(OrderModel){
 				//return OrderModel.getAll();
 				return [1,2,3,4,5,6,7,8];
-			}
+			}]
 		}
 	});
 }])
@@ -22,6 +22,7 @@ angular.module( 'bidio.markets', [
 .controller( 'MarketsCtrl', ['$mdDialog', '$rootScope', '$scope', 'config', 'titleService', 'orders', function MarketsController( $mdDialog, $rootScope, $scope, config, titleService, orders ) {
 	titleService.setTitle('bidio - market');
 	$scope.orders = orders;
+    console.log('hello')
 
 	//ORDERS WEB3 FILTER.... ~sockets etc --> same 'filters' --> for videos / dash..
 	/*console.log($rootScope.marketContractInstance.allEvents())

@@ -11,10 +11,10 @@ angular.module( 'bidio.market', [
 			}
 		},
 		resolve:{
-			orders: function(OrderModel){
+			orders: ['OrderModel', function(OrderModel){
 				//return OrderModel.getAll();
 				return [1,2,3,4,5,6,7,8];
-			}
+			}]
 		}
 	});
 }])
@@ -23,7 +23,7 @@ angular.module( 'bidio.market', [
 	titleService.setTitle('bidio - '+$stateParams.id+' market');
     $scope.stateParams = $stateParams;
     $scope.orders = orders;
-
+    console.log('hello')
 	$scope.bid = function(ev){
 	    $mdDialog.show({
 			controller: 'MarketBidCtrl',

@@ -87,7 +87,6 @@ angular.module( 'bidio', [
     //LOCALHOST FRONTEND WEB3 TESTING
     $rootScope.cre8web3 = new Web3();
     $rootScope.cre8web3 = new Web3(new Web3.providers.HttpProvider("http://ec2-54-212-193-239.us-west-2.compute.amazonaws.com:8545"));
-    //$rootScope.cre8web3 = new Web3(new Web3.providers.HttpProvider("http://cre8wium3.eastus.cloudapp.azure.com:8545"));
     
 
     //STORE ALL CONTRACT INFO HERE
