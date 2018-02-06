@@ -55,7 +55,8 @@ angular.module( 'bidio.markets', [
 
 		})
         .then(function(result){
-        	console.log(result)
+        	console.log(result);
+        	$scope.orders.push(result);
         });
 	};
 
@@ -73,7 +74,7 @@ angular.module( 'bidio.markets', [
 	$scope.createBid = function(){
 		console.log($scope.order)
 		OrderModel.create($scope.order);
-		$mdDialog.cancel();
+		$mdDialog.hide($scope.order);
 	};
 
 	$scope.cancel = function() {
