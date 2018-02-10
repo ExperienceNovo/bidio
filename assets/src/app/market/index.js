@@ -51,8 +51,8 @@ angular.module( 'bidio.market', [
 
 	$scope.order = {};
 	$scope.order.member = '';
-	$scope.order.orderExchangeAmount = [market];
-	$scope.order.orderExchangeIdentifier = [];
+	$scope.order.orderExchangeAmount = [1];
+	$scope.order.orderExchangeIdentifier = [market];
 	$scope.order.orderExchangeAmount1 = [];
 	$scope.order.orderExchangeIdentifier1 = [];
 
