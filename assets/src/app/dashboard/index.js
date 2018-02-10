@@ -268,8 +268,8 @@ angular.module( 'bidio.dashboard', [
         var currentDate = new Date(startDate.getTime());
         var newDate = new Date(currentDate.getTime());
         var newDate2 = new Date(currentDate.getTime());
-        var viewArray = _.pluck($scope.views, 'createdAt').map(function(a) {return new Date(a).getTime();});
-        var clickArray = _.pluck($scope.clicks, 'createdAt').map(function(a) {return new Date(a).getTime();});
+        var viewArray = _.map($scope.views, 'createdAt').map(function(a) {return new Date(a).getTime();});
+        var clickArray = _.map($scope.clicks, 'createdAt').map(function(a) {return new Date(a).getTime();});
 
         for(var i = 0; i < $scope.dayCount; i++) {
             var newDate = new Date(newDate.getTime());
@@ -388,8 +388,8 @@ angular.module( 'bidio.dashboard', [
         var currentDate = new Date(startDate.getTime());
         var newDate = new Date(currentDate.getTime());
         var newDate2 = new Date(currentDate.getTime());
-        var viewArray = _.pluck($scope.views, 'createdAt').map(function(a) {return new Date(a).getTime();});
-        var clickArray = _.pluck($scope.clicks, 'createdAt').map(function(a) {return new Date(a).getTime();});
+        var viewArray = _.map($scope.views, 'createdAt').map(function(a) {return new Date(a).getTime();});
+        var clickArray = _.map($scope.clicks, 'createdAt').map(function(a) {return new Date(a).getTime();});
 
         for(var i = 0; i < $scope.dayCount; i++) {
             var newDate = new Date(newDate.getTime());
@@ -865,8 +865,8 @@ angular.module( 'bidio.dashboard', [
         var currentDate = new Date(startDate.getTime());
         var newDate = new Date(currentDate.getTime());
         var newDate2 = new Date(currentDate.getTime());
-        var viewArray = _.pluck($scope.views, 'createdAt').map(function(a) {return new Date(a).getTime();});
-        var clickArray = _.pluck($scope.clicks, 'createdAt').map(function(a) {return new Date(a).getTime();});
+        var viewArray = _.map($scope.views, 'createdAt').map(function(a) {return new Date(a).getTime();});
+        var clickArray = _.map($scope.clicks, 'createdAt').map(function(a) {return new Date(a).getTime();});
 
         for(var i = 0; i < $scope.dayCount; i++) {
             var newDate = new Date(newDate.getTime());

@@ -168,7 +168,7 @@
 				    <tbody>
 						<tr ng-repeat="transaction in transactionHistory">
 							<td><a href="/member/{{transaction.args._to}}">{{transaction.args._to}}</a></td>
-							<td>{{transaction.args._id}}</td>
+							<td><a href="/market/{{transaction.args._id}}">{{transaction.args._id}}</a></td>
 							<td>{{transaction.args._time.c[0]/1000}}</td>
 						</tr>
 				    </tbody>

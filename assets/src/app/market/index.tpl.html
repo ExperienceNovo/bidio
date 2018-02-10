@@ -34,9 +34,9 @@
         </thead>
         <tbody>
             <tr ng-repeat="order in orders">
-                <td><a href="member/admin">member</a> {{order}}</td>
-                <td>[1 <a href="market/{{order}}">token[{{order}}]</a>]</td>
-                <td>[{{(1/order).toFixed(2)}} <a href="market/cre8">cre8coin</a>]</td>
+                <td><a href="member/{{order.member}}">{{order.member}}</a></td>
+                <td>[<a href="market/{{order.orderExchangeIdentifier}}">{{order.orderExchangeAmount}} token[{{order.orderExchangeIdentifier}}]</a>]</td>
+                <td>[{{order.orderExchangeAmount1}} <a href="market/cre8coin">cre8coin</a>]</td>
             </tr>
         </tbody>
     </table>

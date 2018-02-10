@@ -13,7 +13,7 @@ angular.module( 'bidio.markets', [
 		resolve:{
 			orders: ['OrderModel', function(OrderModel){
 				//return OrderModel.getAll();
-				return [1,2,3,4,5,6,7,8];
+				return [{member:'0x2b9b6e08595642F0D932287eebCE2C6efAbd6bFB', orderExchangeIdentifier:'0x2b9b6e08595642F0D932287eebCE2C6efAbd6bFB', orderExchangeAmount: 1, orderExchangeIdentifier1:'0x2b9b6e08595642F0D932287eebCE2C6efAbd6bFA', orderExchangeAmount1:28}];
 			}]
 		}
 	});
@@ -57,7 +57,7 @@ angular.module( 'bidio.markets', [
 .controller('MarketsBidCtrl', ['$scope', '$mdDialog', 'BidModel', 'config', 'OrderModel', function ($scope, $mdDialog, BidModel, config, OrderModel ) {
 
 	$scope.order = {};
-	$scope.order.member = '';//config.currentUser.walletAddress
+	$scope.order.member = config.currentUser.walletAddress;
 	$scope.order.orderExchangeAmount = [];
 	$scope.order.orderExchangeIdentifier = [];
 	$scope.order.orderExchangeAmount1 = [];
