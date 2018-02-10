@@ -11,15 +11,13 @@ http://jessepollak.github.io/card/
 
 ## Installation
 
-### bower
-`bower install angular-card`
-
 ### npm
 `npm install angular-card`
 
-##Usage
+## Usage
 
-###`name` is required for form and inputs (you can use any unique name)
+### `name` is required for form and inputs (you can use any unique name)
+### `width` is optional, it can be set on the element or the options object (defaults to 350)
 
 ```html
 <form action="#"
@@ -44,7 +42,7 @@ http://jessepollak.github.io/card/
     <input type="button" value="Change card" data-ng-click="changeCard()" />
     <input type="button" value="Clear" data-ng-click="clear()" />
   </div>
-  
+
 </form>
 ```
 
@@ -73,8 +71,18 @@ angular.module('app', ['gavruk.card'])
 
   $scope.cardOptions = {
     debug: false,
-    formatting: true
+    formatting: true,
+    width: 500 //optional
   };
 
 }]);
+```
+
+#### Using multiple fields for card expiry
+
+Simply use 2 input fields for the expiry, and pass either `month`, or `year` to the directive.
+
+```js
+<input placeholder="MM" type="text" name="CardExpiryMonth" card-expiry="month" data-ng-model="card.expiryMonth" />
+<input placeholder="YYYY" type="text" name="CardExpiryYear" card-expiry="year" data-ng-model="card.expiryYear" />
 ```

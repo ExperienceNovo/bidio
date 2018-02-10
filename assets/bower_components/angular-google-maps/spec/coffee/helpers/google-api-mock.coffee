@@ -127,10 +127,6 @@ angular.module('uiGmapgoogle-maps.mocks', ['uiGmapgoogle-maps'])
         @props= ['draggable', 'editable', 'map','visible', 'radius', 'center']
         @setOptions opts
 
-        Circle.instances += 1
-        if window?.google?.maps?.event?
-          window.google.maps.event.fireAllListeners 'creation', @
-
         #getters
         @props.forEach (p) =>
           @["get#{capitalize p}"] = =>
@@ -140,6 +136,13 @@ angular.module('uiGmapgoogle-maps.mocks', ['uiGmapgoogle-maps'])
         @props.forEach (p) =>
           @["set#{capitalize p}"] = (val) =>
             @[p] = val
+            if p == "radius" or p == "center"
+              window.google.maps.event.fireAllListeners "#{p}_changed", @
+
+        Circle.instances += 1
+        @instance = Circle.instances
+        if window?.google?.maps?.event?
+          window.google.maps.event.fireAllListeners 'creation', @
 
       setOptions: (o)=>
         super(o)
@@ -363,10 +366,13 @@ angular.module('uiGmapgoogle-maps.mocks', ['uiGmapgoogle-maps'])
             toPush = {}
             toPush.obj = thing
             toPush.events = {}
-            toPush.events[eventName] = callBack
+            toPush.events[eventName] = [callBack]
             listeners.push toPush
           else
-            found.events[eventName] = callBack
+            if !found.events[eventName]
+              found.events[eventName] = [callBack]
+            else
+              found.events[eventName].push callBack
 
         event.addListenerOnce = (thing, eventName, callBack) ->
           callBack() #forcing immediate return for idle so async api kicks off
@@ -386,7 +392,8 @@ angular.module('uiGmapgoogle-maps.mocks', ['uiGmapgoogle-maps'])
         event.fireListener = (thing, eventName) ->
           found = _.find listeners, (obj)->
             obj.obj == thing
-          found.events[eventName](found.obj) if found? and found?.events[eventName]?
+          if found? and found?.events[eventName]?
+            found.events[eventName].forEach (cb) -> cb(found.obj)
 
       unless event.normalizedEvents
         event.normalizedEvents = ->
@@ -402,7 +409,7 @@ angular.module('uiGmapgoogle-maps.mocks', ['uiGmapgoogle-maps'])
         event.fireAllListeners = (eventName, state) ->
           listeners.forEach (obj)->
             if obj.events[eventName]?
-              obj.events[eventName](state)
+              obj.events[eventName].forEach (cb) -> cb(state)
 
       window.google.maps.event = event
       return listeners

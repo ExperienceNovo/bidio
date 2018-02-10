@@ -66,9 +66,9 @@ angular.module( 'bidio.member', [
     //UserModel.getBalance($scope.member.walletAddress);
 
     //TODO: FRONTEND REFACTOR: CALI
-    //$rootScope.cre8web3.eth.getBalance($scope.member.walletAddress, 'latest', function(error, result){
-    //    console.log(result);
-    //});
+    $rootScope.cre8web3.eth.getBalance($scope.member.walletAddress, 'latest', function(error, result){
+        console.log(result);
+    });
 
 
 	$scope.multiDemsionalBalance = 0;
@@ -92,14 +92,19 @@ angular.module( 'bidio.member', [
         console.log(result, error);
     });
   
+    //IS THIS IT??
+    //No..:/
+    $scope.transactionHistory = [];
     var viewContractEvent = $rootScope.viewContractInstance.CreateViewToken({_to: $scope.member.walletAddress.toString()}, {fromBlock: 0, toBlock: 'latest'});
-
 	viewContractEvent.watch(function(error, result){
-		//console.log(result)
+		$scope.transactionHistory.push(result);
+		//console.log(result);
+		var data = 'to: ' + result.args._to+"<br>ID: "+result.args._id +"<br>";
+		console.log(data)
 	});
 
 	var myResults = viewContractEvent.get(function(error, logs){
-    	//console.log(error, logs);
+    	//console.log(logs);
 	});
 
 
@@ -111,8 +116,9 @@ angular.module( 'bidio.member', [
 	});
 
 	newFilter.watch(function(error, result){
-        console.log(result, error);
+        console.log(result);
     });
+
 
 
 }]);

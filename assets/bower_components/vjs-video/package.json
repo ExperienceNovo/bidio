@@ -1,14 +1,14 @@
 {
   "name": "vjs-video",
-  "version": "0.1.5",
+  "version": "0.1.11",
   "description": "An angular js directive for video.js",
   "homepage": "http://lonnygomes.github.io/vjs-video/",
   "author": {
     "name": "Lonny Gomes"
   },
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/LonnyGomes/vjs-video.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LonnyGomes/vjs-video.git"
   },
   "main": "dist/vjs-video.min.js",
   "private": false,
@@ -48,13 +48,15 @@
     "karma-mocha-reporter": "^1.1.1",
     "karma-ng-html2js-preprocessor": "^0.1.2",
     "mocha": "^2.2.5",
+    "prettier": "1.7.4",
     "time-grunt": "^1.0.0"
   },
   "engines": {
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt test",
+    "prettier": "prettier --write \"{app,test}/**/*.js\""
   },
   "keywords": [
     "angular",
@@ -64,5 +66,9 @@
     "vjs",
     "directive"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "angular": ">=1.3.0",
+    "video.js": "^5.12.0"
+  }
 }

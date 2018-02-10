@@ -18,7 +18,7 @@ angular.module( 'bidio', [
     'LocalStorageModule',
     'ezfb',
     'stripe',
-    'gavruk.card',
+    //'gavruk.card',
     'textAngular',
     'angular-thumbnails',
     'bidio.admin',
@@ -97,8 +97,8 @@ angular.module( 'bidio', [
     $rootScope.viewContractInstance = $rootScope.viewContract.at($rootScope.viewTokenAddress);
 
     //MARKET CONTRACT
-    $rootScope.marketContractAbi = [{"constant":false,"inputs":[{"name":"_member","type":"address"},{"name":"_orderExchangeAmount","type":"int256[]"},{"name":"_orderExchangeIdentifier","type":"address[]"},{"name":"_orderExchangeAmount1","type":"int256[]"},{"name":"_orderExchangeIdentifier1","type":"address[]"}],"name":"createOrder","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_member","type":"address"},{"indexed":false,"name":"_orderExchangeAmount","type":"int256[]"},{"indexed":true,"name":"_orderExchangeIdentifier","type":"address[]"},{"indexed":false,"name":"_orderExchangeAmount1","type":"int256[]"},{"indexed":false,"name":"_orderExchangeIdentifier1","type":"address[]"}],"name":"CreateOrderEvent","type":"event"}]
-    $rootScope.marketContractAddress = '0x9b870E0D29D485CB0bd2a076344B4F0bf2Fee009';
+    $rootScope.marketContractAbi = [{"constant":false,"inputs":[{"name":"_member","type":"address"},{"name":"_orderExchangeAmount","type":"int256[]"},{"name":"_orderExchangeIdentifier","type":"address[]"},{"name":"_orderExchangeAmount1","type":"int256[]"},{"name":"_orderExchangeIdentifier1","type":"address[]"}],"name":"createOrder","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_member","type":"address"},{"indexed":false,"name":"_orderExchangeAmount","type":"int256[]"},{"indexed":true,"name":"_orderExchangeIdentifier","type":"address[]"},{"indexed":false,"name":"_orderExchangeAmount1","type":"int256[]"},{"indexed":false,"name":"_orderExchangeIdentifier1","type":"address[]"}],"name":"CreateOrder","type":"event"}];
+    $rootScope.marketContractAddress = '0x12fd8bb95ccdcab34c257a4e80727154e21081ef';
     $rootScope.marketContract = $rootScope.cre8web3.eth.contract($rootScope.marketContractAbi);
     $rootScope.marketContractInstance = $rootScope.marketContract.at($rootScope.marketContractAddress);
 
@@ -133,31 +133,31 @@ angular.module( 'bidio', [
         //console.log(event);
     });
 
-    $rootScope.marketContractInstance.CreateOrderEvent({fromBlock: 0, toBlock: 'latest'})
+    $rootScope.marketContractInstance.CreateOrder({fromBlock: 0, toBlock: 'latest'})
     .watch(function(error, result){
-        //console.log(error, result);
+        console.log(error, result);
     });
 
     // Or pass a callback to start watching immediately
     $rootScope.marketContractInstance.allEvents(function(error, log){
-        //console.log(log);
+        console.log(log);
     });
 
-    $rootScope.marketContractInstance.CreateOrderEvent({fromBlock: 0, toBlock: 'latest'})
+    $rootScope.marketContractInstance.CreateOrder({fromBlock: 0, toBlock: 'latest'})
     .watch(function(error, result){
-        //console.log(error, result);
+        console.log(error, result);
     });
 
-    $rootScope.marketContractInstance.CreateOrderEvent({fromBlock: 0, toBlock: 'latest'})
+    $rootScope.marketContractInstance.CreateOrder({fromBlock: 0, toBlock: 'latest'})
     .get(function(error, logs){
-        //console.log(error, logs);
+        console.log(error, logs);
     });
 
 
-    var marketEvent = $rootScope.marketContractInstance.CreateOrderEvent({fromBlock: 0, toBlock: 'latest'});
+    var marketEvent = $rootScope.marketContractInstance.CreateOrder({fromBlock: 0, toBlock: 'latest'});
 
     marketEvent.watch(function(error, result){
-        //console.log(error, result);
+        console.log(error, result);
     });
 
     marketEvent.get(function(error, logs){
@@ -168,15 +168,15 @@ angular.module( 'bidio', [
     var filter = $rootScope.cre8web3.eth.filter({address:"0x9b870E0D29D485CB0bd2a076344B4F0bf2Fee009"});
     
     filter.watch(function(error, result){
-        //console.log(result);
+        console.log(result);
     });
 
-    $rootScope.marketContractInstance.CreateOrderEvent(function(error, result){
-       // console.log(result, error);
+    $rootScope.marketContractInstance.CreateOrder(function(error, result){
+        console.log(result, error);
     });
 
-    $rootScope.marketContractInstance.CreateOrderEvent().watch(function(error, result){
-        //console.log(error, result)
+    $rootScope.marketContractInstance.CreateOrder().watch(function(error, result){
+        console.log(error, result)
     });
 
     //TODO: SRSLY GET THIS>>>>>>>~~~~~
@@ -188,7 +188,7 @@ angular.module( 'bidio', [
     });
 
     newFilter.watch(function(error, result){
-        //console.log(result, error);
+        console.log(result, error);
     });
 
    

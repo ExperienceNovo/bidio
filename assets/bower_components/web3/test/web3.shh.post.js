@@ -7,24 +7,39 @@ var method = 'post';
 
 var tests = [{
     args: [{
-        symKeyID: '123123123ff',
-        sig: '44ffdd55',
-        topic: '0xffdd11',
+        from: '0x123123123',
+        topics: ['hello_world'],
         payload: web3.toHex('12345'),
         ttl: 100,
-        minPow: 0.5,
-        powTarget: 3,
-        padding: '0xffdd4455'
+        workToProve: 101
     }],
     formattedArgs: [{
-        symKeyID: '123123123ff',
-        sig: '44ffdd55',
-        topic: '0xffdd11',
+        from: '0x123123123',
+        topics: [web3.fromAscii('hello_world')],
         payload: web3.toHex('12345'),
-        ttl: 100,
-        minPow: 0.5,
-        powTarget: 3,
-        padding: '0xffdd4455'
+        ttl: web3.toHex('100'),
+        workToProve: web3.toHex('101'),
+        priority: '0x0'
+    }],
+    result: true,
+    formattedResult: true,
+    call: 'shh_'+ method
+}, {
+    args: [{
+        from: '0x21312',
+        topics: ['hello_world'],
+        payload: '0x12345',
+        ttl: 0x100,
+        workToProve: 0x101,
+        priority: 0x15
+    }],
+    formattedArgs: [{
+        from: '0x21312',
+        topics: [web3.fromAscii('hello_world')],
+        payload: '0x12345',
+        ttl: '0x100',
+        workToProve: '0x101',
+        priority: '0x15'
     }],
     result: true,
     formattedResult: true,

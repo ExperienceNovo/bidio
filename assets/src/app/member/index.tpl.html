@@ -138,7 +138,8 @@
 
 				<div class="spacing-25"></div>
 
-				<!--<h2>total views? {{balance.events.length}}</h2>-->
+				<!--<h2>{{balance.events.length}}</h2>
+				<h2>{{transactionHistory.length}}</h2>
 				<table class="table table-striped table-hover">
 				    <thead>
 						<tr>
@@ -152,6 +153,23 @@
 							<td><a href="/member/{{event.returnValues._to}}">{{event.returnValues._to}}</a></td>
 							<td>{{event.returnValues._id}}</td>
 							<td>{{event.returnValues._time/1000}}</td>
+						</tr>
+				    </tbody>
+				</table>-->
+
+				<table class="table table-striped table-hover">
+				    <thead>
+						<tr>
+							<th>Address</th>
+							<th>Token</th>
+							<th>Time</th>
+						</tr>
+				    </thead>
+				    <tbody>
+						<tr ng-repeat="transaction in transactionHistory">
+							<td><a href="/member/{{transaction.args._to}}">{{transaction.args._to}}</a></td>
+							<td>{{transaction.args._id}}</td>
+							<td>{{transaction.args._time.c[0]/1000}}</td>
 						</tr>
 				    </tbody>
 				</table>

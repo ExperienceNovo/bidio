@@ -735,52 +735,68 @@ SolidityCoder.prototype.encodeMultiWithOffset = function (types, solidityTypes, 
     return result;
 };
 
+// TODO: refactor whole encoding!
 SolidityCoder.prototype.encodeWithOffset = function (type, solidityType, encoded, offset) {
-    /* jshint maxcomplexity: 17 */
-    /* jshint maxdepth: 5 */
-
     var self = this;
-    var encodingMode={dynamic:1,static:2,other:3};
+    if (solidityType.isDynamicArray(type)) {
+        return (function () {
+            // offset was already set
+            var nestedName = solidityType.nestedName(type);
+            var nestedStaticPartLength = solidityType.staticPartLength(nestedName);
+            var result = encoded[0];
 
-    var mode=(solidityType.isDynamicArray(type)?encodingMode.dynamic:(solidityType.isStaticArray(type)?encodingMode.static:encodingMode.other));
-
-    if(mode !== encodingMode.other){
-        var nestedName = solidityType.nestedName(type);
-        var nestedStaticPartLength = solidityType.staticPartLength(nestedName);
-        var result = (mode === encodingMode.dynamic ? encoded[0] : '');
-
-        if (solidityType.isDynamicArray(nestedName)) {
-            var previousLength = (mode === encodingMode.dynamic ? 2 : 0);
-
-            for (var i = 0; i < encoded.length; i++) {
-                // calculate length of previous item
-                if(mode === encodingMode.dynamic){
-                    previousLength += +(encoded[i - 1])[0] || 0;
+            (function () {
+                var previousLength = 2; // in int
+                if (solidityType.isDynamicArray(nestedName)) {
+                    for (var i = 1; i < encoded.length; i++) {
+                        previousLength += +(encoded[i - 1])[0] || 0;
+                        result += f.formatInputInt(offset + i * nestedStaticPartLength + previousLength * 32).encode();
+                    }
                 }
-                else if(mode === encodingMode.static){
-                    previousLength += +(encoded[i - 1] || [])[0] || 0;
+            })();
+
+            // first element is length, skip it
+            (function () {
+                for (var i = 0; i < encoded.length - 1; i++) {
+                    var additionalOffset = result / 2;
+                    result += self.encodeWithOffset(nestedName, solidityType, encoded[i + 1], offset +  additionalOffset);
                 }
-                result += f.formatInputInt(offset + i * nestedStaticPartLength + previousLength * 32).encode();
-            }
-        }
+            })();
 
-        var len= (mode === encodingMode.dynamic ? encoded.length-1 : encoded.length);
-        for (var c = 0; c < len; c++) {
-            var additionalOffset = result / 2;
-            if(mode === encodingMode.dynamic){
-                result += self.encodeWithOffset(nestedName, solidityType, encoded[c + 1], offset +  additionalOffset);
-            }
-            else if(mode === encodingMode.static){
-                result += self.encodeWithOffset(nestedName, solidityType, encoded[c], offset + additionalOffset);
-            }
-        }
+            return result;
+        })();
 
-        return result;
+    } else if (solidityType.isStaticArray(type)) {
+        return (function () {
+            var nestedName = solidityType.nestedName(type);
+            var nestedStaticPartLength = solidityType.staticPartLength(nestedName);
+            var result = "";
+
+
+            if (solidityType.isDynamicArray(nestedName)) {
+                (function () {
+                    var previousLength = 0; // in int
+                    for (var i = 0; i < encoded.length; i++) {
+                        // calculate length of previous item
+                        previousLength += +(encoded[i - 1] || [])[0] || 0;
+                        result += f.formatInputInt(offset + i * nestedStaticPartLength + previousLength * 32).encode();
+                    }
+                })();
+            }
+
+            (function () {
+                for (var i = 0; i < encoded.length; i++) {
+                    var additionalOffset = result / 2;
+                    result += self.encodeWithOffset(nestedName, solidityType, encoded[i], offset + additionalOffset);
+                }
+            })();
+
+            return result;
+        })();
     }
 
     return encoded;
 };
-
 
 /**
  * Should be used to decode bytes to plain param
@@ -1887,8 +1903,8 @@ var unitMap = {
     'microether':   '1000000000000',
     'micro':        '1000000000000',
     'finney':       '1000000000000000',
-    'milliether':   '1000000000000000',
-    'milli':        '1000000000000000',
+    'milliether':    '1000000000000000',
+    'milli':         '1000000000000000',
     'ether':        '1000000000000000000',
     'kether':       '1000000000000000000000',
     'grand':        '1000000000000000000000',
@@ -2157,6 +2173,7 @@ var fromWei = function(number, unit) {
  * - mwei       picoether      lovelace
  * - gwei       nanoether      shannon      nano
  * - --         microether     szabo        micro
+ * - --         microether     szabo        micro
  * - --         milliether     finney       milli
  * - ether      --             --
  * - kether                    --           grand
@@ -2351,7 +2368,7 @@ var isFunction = function (object) {
  * @return {Boolean}
  */
 var isObject = function (object) {
-    return object !== null && !(Array.isArray(object)) && typeof object === 'object';
+    return object !== null && !(object instanceof Array) && typeof object === 'object';
 };
 
 /**
@@ -2373,7 +2390,7 @@ var isBoolean = function (object) {
  * @return {Boolean}
  */
 var isArray = function (object) {
-    return Array.isArray(object);
+    return object instanceof Array;
 };
 
 /**
@@ -2458,7 +2475,7 @@ module.exports = {
 
 },{"./sha3.js":19,"bignumber.js":"bignumber.js","utf8":85}],21:[function(require,module,exports){
 module.exports={
-    "version": "0.20.3"
+    "version": "0.19.0"
 }
 
 },{}],22:[function(require,module,exports){
@@ -2632,7 +2649,7 @@ module.exports = Web3;
     You should have received a copy of the GNU Lesser General Public License
     along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
 */
-/**
+/** 
  * @file allevents.js
  * @author Marek Kotewicz <marek@ethdev.com>
  * @date 2014
@@ -2694,7 +2711,7 @@ AllSolidityEvents.prototype.execute = function (options, callback) {
 
     var o = this.encode(options);
     var formatter = this.decode.bind(this);
-    return new Filter(o, 'eth', this._requestManager, watches.eth(), formatter, callback);
+    return new Filter(this._requestManager, o, watches.eth(), formatter, callback);
 };
 
 AllSolidityEvents.prototype.attachToContract = function (contract) {
@@ -3147,7 +3164,7 @@ module.exports = {
     You should have received a copy of the GNU Lesser General Public License
     along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
 */
-/**
+/** 
  * @file event.js
  * @author Marek Kotewicz <marek@ethdev.com>
  * @date 2014
@@ -3218,7 +3235,7 @@ SolidityEvent.prototype.signature = function () {
 
 /**
  * Should be used to encode indexed params and options to one final object
- *
+ * 
  * @method encode
  * @param {Object} indexed
  * @param {Object} options
@@ -3249,7 +3266,7 @@ SolidityEvent.prototype.encode = function (indexed, options) {
         if (value === undefined || value === null) {
             return null;
         }
-
+        
         if (utils.isArray(value)) {
             return value.map(function (v) {
                 return '0x' + coder.encodeParam(i.type, v);
@@ -3271,17 +3288,17 @@ SolidityEvent.prototype.encode = function (indexed, options) {
  * @return {Object} result object with decoded indexed && not indexed params
  */
 SolidityEvent.prototype.decode = function (data) {
-
+ 
     data.data = data.data || '';
     data.topics = data.topics || [];
 
     var argTopics = this._anonymous ? data.topics : data.topics.slice(1);
     var indexedData = argTopics.map(function (topics) { return topics.slice(2); }).join("");
-    var indexedParams = coder.decodeParams(this.types(true), indexedData);
+    var indexedParams = coder.decodeParams(this.types(true), indexedData); 
 
     var notIndexedData = data.data.slice(2);
     var notIndexedParams = coder.decodeParams(this.types(false), notIndexedData);
-
+    
     var result = formatters.outputLogFormatter(data);
     result.event = this.displayName();
     result.address = data.address;
@@ -3316,10 +3333,10 @@ SolidityEvent.prototype.execute = function (indexed, options, callback) {
             indexed = {};
         }
     }
-
+    
     var o = this.encode(indexed, options);
     var formatter = this.decode.bind(this);
-    return new Filter(o, 'eth', this._requestManager, watches.eth(), formatter, callback);
+    return new Filter(this._requestManager, o, watches.eth(), formatter, callback);
 };
 
 /**
@@ -3442,8 +3459,7 @@ var toTopic = function(value){
 /// This method should be called on options object, to verify deprecated properties && lazy load dynamic ones
 /// @param should be string or object
 /// @returns options string or object
-var getOptions = function (options, type) {
-    /*jshint maxcomplexity: 6 */
+var getOptions = function (options) {
 
     if (utils.isString(options)) {
         return options;
@@ -3451,27 +3467,20 @@ var getOptions = function (options, type) {
 
     options = options || {};
 
+    // make sure topics, get converted to hex
+    options.topics = options.topics || [];
+    options.topics = options.topics.map(function(topic){
+        return (utils.isArray(topic)) ? topic.map(toTopic) : toTopic(topic);
+    });
 
-    switch(type) {
-        case 'eth':
-
-            // make sure topics, get converted to hex
-            options.topics = options.topics || [];
-            options.topics = options.topics.map(function(topic){
-                return (utils.isArray(topic)) ? topic.map(toTopic) : toTopic(topic);
-            });
-
-            return {
-                topics: options.topics,
-                from: options.from,
-                to: options.to,
-                address: options.address,
-                fromBlock: formatters.inputBlockNumberFormatter(options.fromBlock),
-                toBlock: formatters.inputBlockNumberFormatter(options.toBlock)
-            };
-        case 'shh':
-            return options;
-    }
+    return {
+        topics: options.topics,
+        from: options.from,
+        to: options.to,
+        address: options.address,
+        fromBlock: formatters.inputBlockNumberFormatter(options.fromBlock),
+        toBlock: formatters.inputBlockNumberFormatter(options.toBlock)
+    };
 };
 
 /**
@@ -3479,7 +3488,7 @@ Adds the callback and sets up the methods, to iterate over the results.
 
 @method getLogsAtStart
 @param {Object} self
-@param {function} callback
+@param {funciton}
 */
 var getLogsAtStart = function(self, callback){
     // call getFilterLogs for the first watch callback start
@@ -3531,7 +3540,7 @@ var pollFilter = function(self) {
 
 };
 
-var Filter = function (options, type, requestManager, methods, formatter, callback, filterCreationErrorCallback) {
+var Filter = function (requestManager, options, methods, formatter, callback, filterCreationErrorCallback) {
     var self = this;
     var implementation = {};
     methods.forEach(function (method) {
@@ -3539,7 +3548,7 @@ var Filter = function (options, type, requestManager, methods, formatter, callba
         method.attachToObject(implementation);
     });
     this.requestManager = requestManager;
-    this.options = getOptions(options, type);
+    this.options = getOptions(options);
     this.implementation = implementation;
     this.filterId = null;
     this.callbacks = [];
@@ -3660,9 +3669,6 @@ module.exports = Filter;
  * @author Fabian Vogelsteller <fabian@ethdev.com>
  * @date 2015
  */
-
-'use strict';
-
 
 var utils = require('../utils/utils');
 var config = require('../utils/config');
@@ -3833,11 +3839,11 @@ var outputBlockFormatter = function(block) {
  * @returns {Object} log
 */
 var outputLogFormatter = function(log) {
-    if(log.blockNumber)
+    if(log.blockNumber !== null)
         log.blockNumber = utils.toDecimal(log.blockNumber);
-    if(log.transactionIndex)
+    if(log.transactionIndex !== null)
         log.transactionIndex = utils.toDecimal(log.transactionIndex);
-    if(log.logIndex)
+    if(log.logIndex !== null)
         log.logIndex = utils.toDecimal(log.logIndex);
 
     return log;
@@ -3916,9 +3922,6 @@ var inputAddressFormatter = function (address) {
 
 
 var outputSyncingFormatter = function(result) {
-    if (!result) {
-        return result;
-    }
 
     result.startingBlock = utils.toDecimal(result.startingBlock);
     result.currentBlock = utils.toDecimal(result.currentBlock);
@@ -4016,10 +4019,7 @@ SolidityFunction.prototype.extractDefaultBlock = function (args) {
 SolidityFunction.prototype.validateArgs = function (args) {
     var inputArgs = args.filter(function (a) {
       // filter the options object but not arguments that are arrays
-      return !( (utils.isObject(a) === true) &&
-                (utils.isArray(a) === false) &&
-                (utils.isBigNumber(a) === false)
-              );
+      return !(utils.isObject(a) === true && utils.isArray(a) === false);
     });
     if (inputArgs.length !== this._inputTypes.length) {
         throw errors.InvalidNumberOfSolidityArgs();
@@ -4258,16 +4258,17 @@ module.exports = SolidityFunction;
  * @date 2015
  */
 
+
 var errors = require('./errors');
 
 // workaround to use httpprovider in different envs
 
 // browser
 if (typeof window !== 'undefined' && window.XMLHttpRequest) {
-  XMLHttpRequest = window.XMLHttpRequest; // jshint ignore: line
+    XMLHttpRequest = window.XMLHttpRequest; // jshint ignore: line
 // node
 } else {
-  XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest; // jshint ignore: line
+    XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest; // jshint ignore: line
 }
 
 var XHR2 = require('xhr2'); // jshint ignore: line
@@ -4275,12 +4276,9 @@ var XHR2 = require('xhr2'); // jshint ignore: line
 /**
  * HttpProvider should be used to send rpc calls over http
  */
-var HttpProvider = function (host, timeout, user, password, headers) {
-  this.host = host || 'http://localhost:8545';
-  this.timeout = timeout || 0;
-  this.user = user;
-  this.password = password;
-  this.headers = headers;
+var HttpProvider = function (host, timeout) {
+    this.host = host || 'http://localhost:8545';
+    this.timeout = timeout || 0;
 };
 
 /**
@@ -4291,26 +4289,18 @@ var HttpProvider = function (host, timeout, user, password, headers) {
  * @return {XMLHttpRequest} object
  */
 HttpProvider.prototype.prepareRequest = function (async) {
-  var request;
+    var request;
 
-  if (async) {
-    request = new XHR2();
-    request.timeout = this.timeout;
-  } else {
-    request = new XMLHttpRequest();
-  }
+    if (async) {
+      request = new XHR2();
+      request.timeout = this.timeout;
+    }else {
+      request = new XMLHttpRequest();
+    }
 
-  request.open('POST', this.host, async);
-  if (this.user && this.password) {
-    var auth = 'Basic ' + new Buffer(this.user + ':' + this.password).toString('base64');
-    request.setRequestHeader('Authorization', auth);
-  } request.setRequestHeader('Content-Type', 'application/json');
-  if(this.headers) {
-      this.headers.forEach(function(header) {
-          request.setRequestHeader(header.name, header.value);
-      });
-  }
-  return request;
+    request.open('POST', this.host, async);
+    request.setRequestHeader('Content-Type','application/json');
+    return request;
 };
 
 /**
@@ -4321,23 +4311,23 @@ HttpProvider.prototype.prepareRequest = function (async) {
  * @return {Object} result
  */
 HttpProvider.prototype.send = function (payload) {
-  var request = this.prepareRequest(false);
+    var request = this.prepareRequest(false);
 
-  try {
-    request.send(JSON.stringify(payload));
-  } catch (error) {
-    throw errors.InvalidConnection(this.host);
-  }
+    try {
+        request.send(JSON.stringify(payload));
+    } catch(error) {
+        throw errors.InvalidConnection(this.host);
+    }
 
-  var result = request.responseText;
+    var result = request.responseText;
 
-  try {
-    result = JSON.parse(result);
-  } catch (e) {
-    throw errors.InvalidResponse(request.responseText);
-  }
+    try {
+        result = JSON.parse(result);
+    } catch(e) {
+        throw errors.InvalidResponse(request.responseText);
+    }
 
-  return result;
+    return result;
 };
 
 /**
@@ -4348,32 +4338,32 @@ HttpProvider.prototype.send = function (payload) {
  * @param {Function} callback triggered on end with (err, result)
  */
 HttpProvider.prototype.sendAsync = function (payload, callback) {
-  var request = this.prepareRequest(true);
+    var request = this.prepareRequest(true);
 
-  request.onreadystatechange = function () {
-    if (request.readyState === 4 && request.timeout !== 1) {
-      var result = request.responseText;
-      var error = null;
+    request.onreadystatechange = function() {
+        if (request.readyState === 4 && request.timeout !== 1) {
+            var result = request.responseText;
+            var error = null;
 
-      try {
-        result = JSON.parse(result);
-      } catch (e) {
-        error = errors.InvalidResponse(request.responseText);
-      }
+            try {
+                result = JSON.parse(result);
+            } catch(e) {
+                error = errors.InvalidResponse(request.responseText);
+            }
 
-      callback(error, result);
+            callback(error, result);
+        }
+    };
+
+    request.ontimeout = function() {
+      callback(errors.ConnectionTimeout(this.timeout));
+    };
+
+    try {
+        request.send(JSON.stringify(payload));
+    } catch(error) {
+        callback(errors.InvalidConnection(this.host));
     }
-  };
-
-  request.ontimeout = function () {
-    callback(errors.ConnectionTimeout(this.timeout));
-  };
-
-  try {
-    request.send(JSON.stringify(payload));
-  } catch (error) {
-    callback(errors.InvalidConnection(this.host));
-  }
 };
 
 /**
@@ -4382,18 +4372,18 @@ HttpProvider.prototype.sendAsync = function (payload, callback) {
  * @method isConnected
  * @return {Boolean} returns true if request haven't failed. Otherwise false
  */
-HttpProvider.prototype.isConnected = function () {
-  try {
-    this.send({
-      id: 9999999999,
-      jsonrpc: '2.0',
-      method: 'net_listening',
-      params: []
-    });
-    return true;
-  } catch (e) {
-    return false;
-  }
+HttpProvider.prototype.isConnected = function() {
+    try {
+        this.send({
+            id: 9999999999,
+            jsonrpc: '2.0',
+            method: 'net_listening',
+            params: []
+        });
+        return true;
+    } catch(e) {
+        return false;
+    }
 };
 
 module.exports = HttpProvider;
@@ -5495,8 +5485,8 @@ Eth.prototype.contract = function (abi) {
     return factory;
 };
 
-Eth.prototype.filter = function (options, callback, filterCreationErrorCallback) {
-    return new Filter(options, 'eth', this._requestManager, watches.eth(), formatters.outputLogFormatter, callback, filterCreationErrorCallback);
+Eth.prototype.filter = function (fil, callback, filterCreationErrorCallback) {
+    return new Filter(this._requestManager, fil, watches.eth(), formatters.outputLogFormatter, callback, filterCreationErrorCallback);
 };
 
 Eth.prototype.namereg = function () {
@@ -5703,12 +5693,12 @@ module.exports = Personal;
 */
 /** @file shh.js
  * @authors:
- *   Fabian Vogelsteller <fabian@ethereum.org>
- *   Marek Kotewicz <marek@ethcore.io>
- * @date 2017
+ *   Marek Kotewicz <marek@ethdev.com>
+ * @date 2015
  */
 
 var Method = require('../method');
+var formatters = require('../formatters');
 var Filter = require('../filter');
 var watches = require('./watches');
 
@@ -5717,120 +5707,62 @@ var Shh = function (web3) {
 
     var self = this;
 
-    methods().forEach(function(method) {
+    methods().forEach(function(method) { 
         method.attachToObject(self);
         method.setRequestManager(self._requestManager);
     });
 };
 
-Shh.prototype.newMessageFilter = function (options, callback, filterCreationErrorCallback) {
-    return new Filter(options, 'shh', this._requestManager, watches.shh(), null, callback, filterCreationErrorCallback);
+Shh.prototype.filter = function (fil, callback) {
+    return new Filter(this._requestManager, fil, watches.shh(), formatters.outputPostFormatter, callback);
 };
 
-var methods = function () {
+var methods = function () { 
+
+    var post = new Method({
+        name: 'post', 
+        call: 'shh_post', 
+        params: 1,
+        inputFormatter: [formatters.inputPostFormatter]
+    });
+
+    var newIdentity = new Method({
+        name: 'newIdentity',
+        call: 'shh_newIdentity',
+        params: 0
+    });
+
+    var hasIdentity = new Method({
+        name: 'hasIdentity',
+        call: 'shh_hasIdentity',
+        params: 1
+    });
+
+    var newGroup = new Method({
+        name: 'newGroup',
+        call: 'shh_newGroup',
+        params: 0
+    });
+
+    var addToGroup = new Method({
+        name: 'addToGroup',
+        call: 'shh_addToGroup',
+        params: 0
+    });
 
     return [
-        new Method({
-            name: 'version',
-            call: 'shh_version',
-            params: 0
-        }),
-        new Method({
-            name: 'info',
-            call: 'shh_info',
-            params: 0
-        }),
-        new Method({
-            name: 'setMaxMessageSize',
-            call: 'shh_setMaxMessageSize',
-            params: 1
-        }),
-        new Method({
-            name: 'setMinPoW',
-            call: 'shh_setMinPoW',
-            params: 1
-        }),
-        new Method({
-            name: 'markTrustedPeer',
-            call: 'shh_markTrustedPeer',
-            params: 1
-        }),
-        new Method({
-            name: 'newKeyPair',
-            call: 'shh_newKeyPair',
-            params: 0
-        }),
-        new Method({
-            name: 'addPrivateKey',
-            call: 'shh_addPrivateKey',
-            params: 1
-        }),
-        new Method({
-            name: 'deleteKeyPair',
-            call: 'shh_deleteKeyPair',
-            params: 1
-        }),
-        new Method({
-            name: 'hasKeyPair',
-            call: 'shh_hasKeyPair',
-            params: 1
-        }),
-        new Method({
-            name: 'getPublicKey',
-            call: 'shh_getPublicKey',
-            params: 1
-        }),
-        new Method({
-            name: 'getPrivateKey',
-            call: 'shh_getPrivateKey',
-            params: 1
-        }),
-        new Method({
-            name: 'newSymKey',
-            call: 'shh_newSymKey',
-            params: 0
-        }),
-        new Method({
-            name: 'addSymKey',
-            call: 'shh_addSymKey',
-            params: 1
-        }),
-        new Method({
-            name: 'generateSymKeyFromPassword',
-            call: 'shh_generateSymKeyFromPassword',
-            params: 1
-        }),
-        new Method({
-            name: 'hasSymKey',
-            call: 'shh_hasSymKey',
-            params: 1
-        }),
-        new Method({
-            name: 'getSymKey',
-            call: 'shh_getSymKey',
-            params: 1
-        }),
-        new Method({
-            name: 'deleteSymKey',
-            call: 'shh_deleteSymKey',
-            params: 1
-        }),
-
-        // subscribe and unsubscribe missing
-
-        new Method({
-            name: 'post',
-            call: 'shh_post',
-            params: 1,
-            inputFormatter: [null]
-        })
+        post,
+        newIdentity,
+        hasIdentity,
+        newGroup,
+        addToGroup
     ];
 };
 
 module.exports = Shh;
 
 
-},{"../filter":29,"../method":36,"./watches":43}],42:[function(require,module,exports){
+},{"../filter":29,"../formatters":30,"../method":36,"./watches":43}],42:[function(require,module,exports){
 /*
     This file is part of web3.js.
 
@@ -6055,28 +5987,35 @@ var eth = function () {
 
 /// @returns an array of objects describing web3.shh.watch api methods
 var shh = function () {
+    var newFilter = new Method({
+        name: 'newFilter',
+        call: 'shh_newFilter',
+        params: 1
+    });
+
+    var uninstallFilter = new Method({
+        name: 'uninstallFilter',
+        call: 'shh_uninstallFilter',
+        params: 1
+    });
+
+    var getLogs = new Method({
+        name: 'getLogs',
+        call: 'shh_getMessages',
+        params: 1
+    });
+
+    var poll = new Method({
+        name: 'poll',
+        call: 'shh_getFilterChanges',
+        params: 1
+    });
 
     return [
-        new Method({
-            name: 'newFilter',
-            call: 'shh_newMessageFilter',
-            params: 1
-        }),
-        new Method({
-            name: 'uninstallFilter',
-            call: 'shh_deleteMessageFilter',
-            params: 1
-        }),
-        new Method({
-            name: 'getLogs',
-            call: 'shh_getFilterMessages',
-            params: 1
-        }),
-        new Method({
-            name: 'poll',
-            call: 'shh_getFilterMessages',
-            params: 1
-        })
+        newFilter,
+        uninstallFilter,
+        getLogs,
+        poll
     ];
 };
 

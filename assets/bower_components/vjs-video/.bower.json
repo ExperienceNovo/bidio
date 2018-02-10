@@ -1,6 +1,6 @@
 {
   "name": "vjs-video",
-  "version": "0.1.5",
+  "version": "0.1.11",
   "description": "An angular js directive for video.js",
   "main": "dist/vjs-video.min.js",
   "authors": [
@@ -14,9 +14,10 @@
   },
   "dependencies": {
     "angular": "^1.3.0",
-    "video.js": "~4.12.13"
+    "video.js": "4.12.13 - 5"
   },
   "devDependencies": {
+    "video.js": "~4.12.13",
     "jquery": "~2.1.4",
     "angular-mocks": "^1.3.0",
     "sinonjs": "~1.14.1",
@@ -36,14 +37,13 @@
     "directive"
   ],
   "homepage": "https://github.com/LonnyGomes/vjs-video",
-  "_release": "0.1.5",
+  "_release": "0.1.11",
   "_resolution": {
     "type": "version",
-    "tag": "v0.1.5",
-    "commit": "b210b676faa65f8a81018420cabb1dc25262700d"
+    "tag": "v0.1.11",
+    "commit": "3677a449fff91548ea862a718c2d09ecb951c4f3"
   },
-  "_source": "git://github.com/LonnyGomes/vjs-video.git",
+  "_source": "https://github.com/LonnyGomes/vjs-video.git",
   "_target": "~0.1.5",
-  "_originalSource": "vjs-video",
-  "_direct": true
+  "_originalSource": "vjs-video"
 }

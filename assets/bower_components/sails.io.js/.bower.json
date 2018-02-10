@@ -39,7 +39,7 @@
     "tag": "v0.11.5",
     "commit": "ea7995c218144949fca6aa7f8700ae44efdc38a9"
   },
-  "_source": "git://github.com/balderdashy/sails.io.js.git",
+  "_source": "https://github.com/balderdashy/sails.io.js.git",
   "_target": "0.11.5",
   "_originalSource": "sails.io.js"
 }

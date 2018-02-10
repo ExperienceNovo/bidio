@@ -121,9 +121,6 @@ digraph dependencies {
         "uiGmapLogger"[label="uiGmapLogger"]
         "uiGmapLogger" -> "uiGmapFitHelper"
       
-        "uiGmap_async"[label="uiGmap_async"]
-        "uiGmap_async" -> "uiGmapFitHelper"
-      
     
       
         "uiGmapLogger"[label="uiGmapLogger"]

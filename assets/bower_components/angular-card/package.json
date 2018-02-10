@@ -1,6 +1,6 @@
 {
   "name": "angular-card",
-  "version": "0.3.7",
+  "version": "0.3.13",
   "description": "Angular directive for card https://github.com/jessepollak/card",
   "main": "src/card.js",
   "directories": {
@@ -25,7 +25,12 @@
   },
   "homepage": "https://github.com/gavruk/angular-card#readme",
   "dependencies": {
-    "card": "~1.2.2",
-    "angular": "~1.4.8"
+    "card": "^2.4.0"
+  },
+  "peerDependencies": {
+    "angular": "^1.4.8"
+  },
+  "devDependencies": {
+    "angular": "^1.4.8"
   }
 }
