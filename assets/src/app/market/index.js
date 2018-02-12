@@ -20,8 +20,9 @@ angular.module( 'bidio.market', [
 	});
 }])
 
-.controller( 'MarketCtrl', ['$mdDialog', '$rootScope', '$scope', '$stateParams', 'titleService', 'orders', function MarketController( $mdDialog, $rootScope, $scope, $stateParams, titleService, orders ) {
+.controller( 'MarketCtrl', ['$location', '$mdDialog', '$rootScope', '$scope', '$stateParams', 'config', 'titleService', 'orders', function MarketController( $location, $mdDialog, $rootScope, $scope, $stateParams, config, titleService, orders ) {
 	titleService.setTitle('bidio - '+$stateParams.id+' market');
+	$scope.currentUser = config.currentUser;
     $scope.stateParams = $stateParams;
     $scope.orders = orders;
     
@@ -34,37 +35,38 @@ angular.module( 'bidio.market', [
     });
 
 	$scope.bid = function(ev){
-	    $mdDialog.show({
-			controller: 'MarketBidCtrl',
-			templateUrl: 'market/templates/bid.tpl.html',
-			parent: angular.element(document.body),
-			targetEvent: ev,
-			clickOutsideToClose: true,
-			resolve: {
-				market: [function(){
-					return $scope.stateParams.id;
-				}]
-			}
-		})
-        .then(function(result){
-        	console.log(result);
-        	$scope.orders.push({args:result});
-        });
+		if ($scope.currentUser){
+		    $mdDialog.show({
+				controller: 'MarketBidCtrl',
+				templateUrl: 'market/templates/bid.tpl.html',
+				parent: angular.element(document.body),
+				targetEvent: ev,
+				clickOutsideToClose: true,
+				resolve: {
+					market: [function(){
+						return $scope.stateParams.id;
+					}]
+				}
+			})
+	        .then(function(result){
+	        	$scope.orders.push({args:result});
+	        });
+    	}
+    	else{$location.path('/register')}
 	};
 
 
 }])
 
-.controller('MarketBidCtrl', ['$scope', '$mdDialog', 'BidModel', 'config', 'market', 'OrderModel', function ($scope, $mdDialog, BidModel, config, market, OrderModel) {
+.controller('MarketBidCtrl', ['$scope', '$mdDialog', 'BidModel', 'config', 'market', 'OrderModel', function MarketBidController($scope, $mdDialog, BidModel, config, market, OrderModel) {
 
 	$scope.market = market;
-
 	$scope.order = {};
 	$scope.order._member = config.currentUser.walletAddress;
-	$scope.order._orderExchangeAmount = [1];
-	$scope.order._orderExchangeIdentifier = [market];
-	$scope.order._orderExchangeAmount1 = [];
-	$scope.order._orderExchangeIdentifier1 = [];
+	//$scope.order._orderExchangeAmount = 1;
+	$scope.order._orderExchangeIdentifier = market;
+	//$scope.order._orderExchangeAmount1 = [];
+	//$scope.order._orderExchangeIdentifier1 = [];
 
 
 	$scope.createOrderAsset = function(value){

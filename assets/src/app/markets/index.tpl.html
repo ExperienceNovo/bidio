@@ -7,7 +7,7 @@
         <div class="col-md-8">
             <div class="discover-search">
                 <div class="input-group">
-                    <input class="search-query form-control" ng-model="newLookup.tokenIdentifier" id="search-link" size="40" type="text" placeholder="Token">
+                    <input ng-keyup="$event.keyCode == 13 && tokenLookup()" class="search-query form-control" ng-model="newLookup.tokenIdentifier" id="search-link" size="40" type="text" placeholder="Token">
                     <span class="input-group-btn">
                         <button class="btn" type="button" ng-click="tokenLookup()">
                             <span class="fa fa-search"></span>
@@ -18,7 +18,7 @@
         </div>
     </div>
 
-    <div class="spacing-25"></div>
+    <div class="spacing-10"></div>
     <h2 ng-click="bid()">+ bid</h2>
     <div class="spacing-10"></div>
 

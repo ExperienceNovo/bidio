@@ -18,7 +18,6 @@ angular.module( 'bidio', [
     'LocalStorageModule',
     'ezfb',
     'stripe',
-    //'gavruk.card',
     'textAngular',
     'angular-thumbnails',
     'bidio.admin',
@@ -88,7 +87,6 @@ angular.module( 'bidio', [
     $rootScope.cre8web3 = new Web3();
     //$rootScope.cre8web3 = new Web3(new Web3.providers.HttpProvider("http://ec2-54-212-193-239.us-west-2.compute.amazonaws.com:8545"));
     //$rootScope.cre8web3 = new Web3(new Web3.providers.HttpProvider("http://54.212.193.239:8545"));
-    //$rootScope.cre8web3 = new Web3(new Web3.providers.HttpProvider("https://peer.bidio.co:8545"));
     $rootScope.cre8web3 = new Web3(new Web3.providers.HttpProvider("https://peer.cre8.xyz"));
 
 
@@ -122,64 +120,12 @@ angular.module( 'bidio', [
     //$rootScope.userContract = $rootScope.cre8web3.eth.contract($rootScope.marketContractAbi);
     //$rootScope.userContractInstance = $rootScope.marketContract.at($rootScope.marketContractAddress);
 
-    //SECURITY CONTRACT?
+    //SECURITY CONTRACTS
 
     //TODO:
     //PEER CODE - APP MINING / BROWSER MINING
-    //CENTRAL PEER CODE -- SET UP S3 GETH
     //REFACTOR FRONTEND web3 INTERFACE 'CALI'
     //TOKEN SALE 
-
-    //view contract (erc 88)-->logic
-    //content contract
-    //user contract
-    //bid contract / market contract
-    //comment? 
-
-    // watch for changes
-    $rootScope.marketContractInstance.allEvents().watch(function(error, event){
-        //console.log(event);
-    });
-
-    $rootScope.viewContractInstance.allEvents().watch(function(error, event){
-        //console.log(event);
-    });
-
-    $rootScope.marketContractInstance.CreateOrder({fromBlock: 0, toBlock: 'latest'})
-    .watch(function(error, result){
-        console.log(error, result);
-    });
-
-    // Or pass a callback to start watching immediately
-    $rootScope.marketContractInstance.allEvents(function(error, log){
-        console.log(log);
-    });
-
-    $rootScope.marketContractInstance.CreateOrder({fromBlock: 0, toBlock: 'latest'})
-    .watch(function(error, result){
-        console.log(error, result);
-    });
-
-    $rootScope.marketContractInstance.CreateOrder({fromBlock: 0, toBlock: 'latest'})
-    .get(function(error, logs){
-        console.log(error, logs);
-    });
-
-    var marketEvent = $rootScope.marketContractInstance.CreateOrder({fromBlock: 0, toBlock: 'latest'});
-
-    marketEvent.watch(function(error, result){
-        console.log(error, result);
-    });
-
-    marketEvent.get(function(error, logs){
-        //console.log(error, logs);
-    });
-
-    var filter = $rootScope.cre8web3.eth.filter({address:"0x9b870E0D29D485CB0bd2a076344B4F0bf2Fee009"});
-    
-    filter.watch(function(error, result){
-        console.log(result);
-    });
 
     $rootScope.marketContractInstance.CreateOrder(function(error, result){
         console.log(result, error);

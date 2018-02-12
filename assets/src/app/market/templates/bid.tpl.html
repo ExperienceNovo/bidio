@@ -1,3 +1,6 @@
+<style>
+md-dialog{min-width:50%;}
+</style>
 <md-content layout-padding>
     <div class="spacing-15"></div>
     <div class="container create-modal">
@@ -13,7 +16,7 @@
 
         <md-input-container layout-fill>
             <label>Amount</label>
-            <input ng-model="order.orderExchangeAmount" type="text">
+            <input ng-model="order._orderExchangeAmount" type="text">
         </md-input-container>
 
         <br><br><br>
@@ -21,25 +24,24 @@
         <!--set two-->
          <md-input-container layout-fill>
             <label>Token</label>
-            <input ng-model="order.orderExchangeIdentifier1" type="text">
+            <input ng-model="order._orderExchangeIdentifier1" type="text">
         </md-input-container>
 
          <md-input-container layout-fill>
             <label>Amount</label>
-            <input ng-model="order.orderExchangeAmount1" type="text">
+            <input ng-model="order._orderExchangeAmount1" type="text">
         </md-input-container>
-        <md-button class="md-raised md-accent" ng-click="">Add Asset</md-button>
-
-
+        <!--<md-button class="md-raised md-accent" ng-click="">Add Asset</md-button>-->
 
         <!--WILL BUY/SELL UP TO THIS AMOUNT AT THIS PRICE - GRANUAR FUILFILLMENT-->
 
-
-
-
         <div class="spacing-15"></div>
-        <md-button class="md-raised md-accent" ng-disabled="orderExchangeAmount1 < 0 || orderExchangeIdentifier1=='' " ng-click="createBid()">Submit</md-button>
-        <md-button class="md-raised" ng-click="cancel()">Cancel</md-button>
+        
+        <div class="spacing-15"></div>
+        <a style="width:100%" class="text-center btn anim-button fl-l" ng-disabled="isValid()" ng-click="createBid()" ><span class="network-name">Create Order</span><i class="fa fa-long-arrow-right fa-fw"></i></a>
+        <br><br>
+        <a style="width:100%" class="text-center btn anim-button fl-l" ng-click="cancel()" ><span class="network-name">Cancel</span><i class="fa fa-long-arrow-left fa-fw"></i></a>
+
     </div>
     <div class="spacing-15"></div>
 </md-content>

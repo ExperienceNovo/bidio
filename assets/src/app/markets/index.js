@@ -19,10 +19,11 @@ angular.module( 'bidio.markets', [
 	});
 }])
 
-.controller( 'MarketsCtrl', ['$mdDialog', '$rootScope', '$scope', 'config', 'titleService', 'orders', function MarketsController( $mdDialog, $rootScope, $scope, config, titleService, orders ) {
+.controller( 'MarketsCtrl', ['$location', '$mdDialog', '$rootScope', '$scope', 'config', 'titleService', 'orders', function MarketsController( $location, $mdDialog, $rootScope, $scope, config, titleService, orders ) {
 	titleService.setTitle('bidio - market');
-	$scope.curretUser = config.currentUser;
+	$scope.currentUser = config.currentUser;
 	$scope.orders = orders;
+	$scope.newLookup = {};
 
 	//ORDERS WEB3 FILTER.... ~sockets etc --> same 'filters' --> for videos / dash..
 	var marketEvent = $rootScope.marketContractInstance.CreateOrder({_to: ''}, {fromBlock: 0, toBlock: 'latest'});
@@ -32,17 +33,24 @@ angular.module( 'bidio.markets', [
 		console.log(error, result);
     });
 
+    $scope.tokenLookup = function(){
+    	$location.path('/market/'+ $scope.newLookup.tokenIdentifier)
+    }
+
 	$scope.bid = function(ev){
-	    $mdDialog.show({
-			controller: 'MarketsBidCtrl',
-			templateUrl: 'markets/templates/bid.tpl.html',
-			parent: angular.element(document.body),
-			targetEvent: ev,
-			clickOutsideToClose: true,
-		})
-        .then(function(result){
-        	$scope.orders.push({args:result});
-        });
+		if ($scope.currentUser){
+		    $mdDialog.show({
+				controller: 'MarketsBidCtrl',
+				templateUrl: 'markets/templates/bid.tpl.html',
+				parent: angular.element(document.body),
+				targetEvent: ev,
+				clickOutsideToClose: true,
+			})
+	        .then(function(result){
+	        	$scope.orders.push({args:result});
+	        });
+    	}
+    	else{$location.path('/register')}
 	};
 
 }])
@@ -51,10 +59,10 @@ angular.module( 'bidio.markets', [
 
 	$scope.order = {};
 	$scope.order._member = config.currentUser.walletAddress;
-	$scope.order._orderExchangeAmount = [];
-	$scope.order._orderExchangeIdentifier = [];
-	$scope.order._orderExchangeAmount1 = [];
-	$scope.order._orderExchangeIdentifier1 = [];
+	//$scope.order._orderExchangeAmount = [];
+	//$scope.order._orderExchangeIdentifier = [];
+	//$scope.order._orderExchangeAmount1 = [];
+	//$scope.order._orderExchangeIdentifier1 = [];
 
 	$scope.createBid = function(){
 		console.log($scope.order)
