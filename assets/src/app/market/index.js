@@ -12,17 +12,31 @@ angular.module( 'bidio.market', [
 		},
 		resolve:{
 			orders: ['OrderModel', function(OrderModel){
+				return [];
 				//return OrderModel.getAll();
-				return [{member:'0x2b9b6e08595642F0D932287eebCE2C6efAbd6bFB', orderExchangeIdentifier:'0x2b9b6e08595642F0D932287eebCE2C6efAbd6bFB', orderExchangeAmount: 1, orderExchangeIdentifier1:'0x2b9b6e08595642F0D932287eebCE2C6efAbd6bFA', orderExchangeAmount1:28}];
+				//return [{member:'0x2b9b6e08595642F0D932287eebCE2C6efAbd6bFB', orderExchangeIdentifier:'0x2b9b6e08595642F0D932287eebCE2C6efAbd6bFB', orderExchangeAmount: 1, orderExchangeIdentifier1:'0x2b9b6e08595642F0D932287eebCE2C6efAbd6bFA', orderExchangeAmount1:28}];
 			}]
 		}
 	});
 }])
 
-.controller( 'MarketCtrl', ['$mdDialog', '$scope', '$stateParams', 'titleService', 'orders', function MarketController( $mdDialog, $scope, $stateParams, titleService, orders ) {
+.controller( 'MarketCtrl', ['$mdDialog', '$rootScope', '$scope', '$stateParams', 'titleService', 'orders', function MarketController( $mdDialog, $rootScope, $scope, $stateParams, titleService, orders ) {
 	titleService.setTitle('bidio - '+$stateParams.id+' market');
     $scope.stateParams = $stateParams;
     $scope.orders = orders;
+
+
+    $scope.test = [];
+	//THIS FILTER ACTUALL WORKS!!!!!!!
+	var marketEvent = $rootScope.marketContractInstance.CreateOrder({_orderExchangeIdentifier: $stateParams.id}, {fromBlock: 0, toBlock: 'latest'});
+    marketEvent.watch(function(error, result){
+        $scope.orders.push(result);
+        $scope.test.push(result);
+		$scope.$apply();
+		console.log(error, result);
+    });
+
+
 	$scope.bid = function(ev){
 	    $mdDialog.show({
 			controller: 'MarketBidCtrl',
@@ -38,7 +52,7 @@ angular.module( 'bidio.market', [
 		})
         .then(function(result){
         	console.log(result);
-        	$scope.orders.push(result);
+        	$scope.orders.push({args:result});
         });
 	};
 
@@ -50,11 +64,11 @@ angular.module( 'bidio.market', [
 	$scope.market = market;
 
 	$scope.order = {};
-	$scope.order.member = '';
-	$scope.order.orderExchangeAmount = [1];
-	$scope.order.orderExchangeIdentifier = [market];
-	$scope.order.orderExchangeAmount1 = [];
-	$scope.order.orderExchangeIdentifier1 = [];
+	$scope.order._member = config.currentUser.walletAddress;
+	$scope.order._orderExchangeAmount = [1];
+	$scope.order._orderExchangeIdentifier = [market];
+	$scope.order._orderExchangeAmount1 = [];
+	$scope.order._orderExchangeIdentifier1 = [];
 
 
 	$scope.createOrderAsset = function(value){

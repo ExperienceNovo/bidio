@@ -18,7 +18,14 @@ var masterAccount = '0xc2bb26082403cc1fb0e75769559c85be14ae95a3';
 
 //ERC88
 var viewTokenAddress = '0xF0f36c3A545fD00191ED8392028e94eE6d379f17';
-var marketAddress = '0x12fd8bb95ccdcab34c257a4e80727154e21081ef';
+
+//BINARYMARKET
+var marketAddress = '0xc74B8C27fBaD80eDbAb2D9549D37EBfd54ca23D0'
+
+//MULTIDMARKET
+//THIS IS REAL INNOVATION
+//var marketAddress = '0x12fd8bb95ccdcab34c257a4e80727154e21081ef';
+
 var contentAddress = '0x499a2c6452818F6c34aE74e2c4b00C4a65c40D22';
 var userAddress = '0x499a2c6452818F6c34aE74e2c4b00C4a65c40D22';
 var bidAddress = '0x499a2c6452818F6c34aE74e2c4b00C4a65c40D22';
@@ -26,6 +33,20 @@ var bidAddress = '0x499a2c6452818F6c34aE74e2c4b00C4a65c40D22';
 module.exports = {
 
 	createOrder: function(_member, _orderExchangeAmount, _orderExchangeIdentifier, _orderExchangeAmount1, _orderExchangeIdentifier1){
+   		var marketContract = new web3.eth.Contract([{"constant":false,"inputs":[{"name":"_member","type":"address"},{"name":"_orderExchangeAmount","type":"int256"},{"name":"_orderExchangeIdentifier","type":"address"},{"name":"_orderExchangeAmount1","type":"int256"},{"name":"_orderExchangeIdentifier1","type":"address"}],"name":"createOrder","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_member","type":"address"},{"indexed":false,"name":"_orderExchangeAmount","type":"int256"},{"indexed":true,"name":"_orderExchangeIdentifier","type":"address"},{"indexed":false,"name":"_orderExchangeAmount1","type":"int256"},{"indexed":true,"name":"_orderExchangeIdentifier1","type":"address"}],"name":"CreateOrder","type":"event"}]);
+		marketContract.options.address = marketAddress;
+		console.log(_member, _orderExchangeAmount, _orderExchangeIdentifier, _orderExchangeAmount1, _orderExchangeIdentifier1);
+		marketContract.methods.createOrder(_member, _orderExchangeAmount,_orderExchangeIdentifier, _orderExchangeAmount1, _orderExchangeIdentifier1).send({
+			from: masterAccount,
+			gas: 8888888,
+			gasPrice: 10000000000000,
+		}, function(error, result){
+			console.log(result);
+		});
+	},
+
+	//MULTIDORDER // TODO: SOON
+	createOrderM: function(_member, _orderExchangeAmount, _orderExchangeIdentifier, _orderExchangeAmount1, _orderExchangeIdentifier1){
 		//var marketContract = new web3.eth.Contract([{"constant":false,"inputs":[{"components":[{"name":"identifier","type":"string"},{"name":"amount","type":"uint256"}],"name":"assetSet","type":"tuple[]"},{"components":[{"name":"identifier","type":"string"},{"name":"amount","type":"uint256"}],"name":"assetSet1","type":"tuple[]"}],"name":"createOrder","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"components":[{"name":"identifier","type":"string"},{"name":"amount","type":"uint256"}],"indexed":true,"name":"assetSet","type":"tuple[]"},{"components":[{"name":"identifier","type":"string"},{"name":"amount","type":"uint256"}],"indexed":true,"name":"assetSet1","type":"tuple[]"}],"name":"CreateOrder","type":"event"}]);
 		//var marketContract = new web3.eth.Contract([{"constant":false,"inputs":[{"name":"_member","type":"address"},{"name":"_orderExchangeAmount","type":"int256[]"},{"name":"_orderExchangeIdentifier","type":"address[]"},{"name":"_orderExchangeAmount1","type":"int256[]"},{"name":"_orderExchangeIdentifier1","type":"address[]"}],"name":"createOrder","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_member","type":"address"},{"indexed":false,"name":"_orderExchangeAmount","type":"int256[]"},{"indexed":true,"name":"_orderExchangeIdentifier","type":"address[]"},{"indexed":false,"name":"_orderExchangeAmount1","type":"int256[]"},{"indexed":false,"name":"_orderExchangeIdentifier1","type":"address[]"}],"name":"CreateOrder","type":"event"}]);
    		var marketContract = new web3.eth.Contract([{"constant":false,"inputs":[{"name":"_member","type":"address"},{"name":"_orderExchangeAmount","type":"int256[]"},{"name":"_orderExchangeIdentifier","type":"address[]"},{"name":"_orderExchangeAmount1","type":"int256[]"},{"name":"_orderExchangeIdentifier1","type":"address[]"}],"name":"createOrder","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_member","type":"address"},{"indexed":false,"name":"_orderExchangeAmount","type":"int256[]"},{"indexed":true,"name":"_orderExchangeIdentifier","type":"address[]"},{"indexed":false,"name":"_orderExchangeAmount1","type":"int256[]"},{"indexed":false,"name":"_orderExchangeIdentifier1","type":"address[]"}],"name":"CreateOrder","type":"event"}]);
@@ -39,7 +60,7 @@ module.exports = {
 		//address[] _orderExchangeIdentifier1
 
 		//gottaa multid
-		marketContract.methods.createOrder(masterAccount,[_orderExchangeAmount],[_orderExchangeIdentifier], [_orderExchangeAmount1], [_orderExchangeIdentifier1]).send({
+		marketContract.methods.createOrder(_member, [_orderExchangeAmount],[_orderExchangeIdentifier], [_orderExchangeAmount1], [_orderExchangeIdentifier1]).send({
 		//marketContract.methods.createOrder([{"identifier":"1","amount":"10"},{"identifier":"2","amount":"5"}],[{"identifier":"1","amount":"10"},{"identifier":"2","amount":"5"}]).send({
 		//marketContract.methods.createOrder(_member, _orderExchangeAmount, _orderExchangeIdentifier, _orderExchangeAmount1, _orderExchangeIdentifier1).send({
 			from: masterAccount,

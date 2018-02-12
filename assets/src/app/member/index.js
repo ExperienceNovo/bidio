@@ -95,6 +95,7 @@ angular.module( 'bidio.member', [
     //IS THIS IT??
     //No..:/
     $scope.transactionHistory = [];
+    //change _to identifer for proper filtering.. i think
     var viewContractEvent = $rootScope.viewContractInstance.CreateViewToken({_to: $scope.member.walletAddress.toString()}, {fromBlock: 0, toBlock: 'latest'});
 	viewContractEvent.watch(function(error, result){
 		$scope.transactionHistory.push(result);

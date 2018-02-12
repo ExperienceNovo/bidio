@@ -12,8 +12,9 @@ angular.module( 'bidio.markets', [
 		},
 		resolve:{
 			orders: ['OrderModel', function(OrderModel){
+				return [];
 				//return OrderModel.getAll();
-				return [{member:'0x2b9b6e08595642F0D932287eebCE2C6efAbd6bFB', orderExchangeIdentifier:'0x2b9b6e08595642F0D932287eebCE2C6efAbd6bFB', orderExchangeAmount: 1, orderExchangeIdentifier1:'0x2b9b6e08595642F0D932287eebCE2C6efAbd6bFA', orderExchangeAmount1:28}];
+				//return [{args:{_member:'0x2b9b6e08595642F0D932287eebCE2C6efAbd6bFB', _orderExchangeIdentifier:'0x2b9b6e08595642F0D932287eebCE2C6efAbd6bFB', _orderExchangeAmount: 1, _orderExchangeIdentifier1:'0x2b9b6e08595642F0D932287eebCE2C6efAbd6bFA', _orderExchangeAmount1:28}}];
 			}]
 		}
 	});
@@ -21,21 +22,19 @@ angular.module( 'bidio.markets', [
 
 .controller( 'MarketsCtrl', ['$mdDialog', '$rootScope', '$scope', 'config', 'titleService', 'orders', function MarketsController( $mdDialog, $rootScope, $scope, config, titleService, orders ) {
 	titleService.setTitle('bidio - market');
+	$scope.curretUser = config.currentUser;
 	$scope.orders = orders;
 
 	//ORDERS WEB3 FILTER.... ~sockets etc --> same 'filters' --> for videos / dash..
-
-	var marketEvent = $rootScope.marketContractInstance.CreateOrder({fromBlock: 0, toBlock: 'latest'});
-
+	$scope.test = [];
+	//THIS FILTER ACTUALL WORKS!!!!!!!
+	var marketEvent = $rootScope.marketContractInstance.CreateOrder({_to: ''}, {fromBlock: 0, toBlock: 'latest'});
     marketEvent.watch(function(error, result){
-        console.log(error, result);
-        $scope.orders.push(result);
+        $scope.orders.push(result)
+        $scope.test.push(result);
+        $scope.$apply();
+		console.log(error, result);
     });
-
-	var myResults = marketEvent.get(function(error, logs){
-    	console.log(logs);
-	});
-
 
 	$scope.bid = function(ev){
 	    $mdDialog.show({
@@ -44,11 +43,9 @@ angular.module( 'bidio.markets', [
 			parent: angular.element(document.body),
 			targetEvent: ev,
 			clickOutsideToClose: true,
-
 		})
         .then(function(result){
-        	console.log(result);
-        	$scope.orders.push(result);
+        	$scope.orders.push({args:result});
         });
 	};
 
@@ -57,11 +54,11 @@ angular.module( 'bidio.markets', [
 .controller('MarketsBidCtrl', ['$scope', '$mdDialog', 'BidModel', 'config', 'OrderModel', function ($scope, $mdDialog, BidModel, config, OrderModel ) {
 
 	$scope.order = {};
-	$scope.order.member = config.currentUser.walletAddress;
-	$scope.order.orderExchangeAmount = [];
-	$scope.order.orderExchangeIdentifier = [];
-	$scope.order.orderExchangeAmount1 = [];
-	$scope.order.orderExchangeIdentifier1 = [];
+	$scope.order._member = config.currentUser.walletAddress;
+	$scope.order._orderExchangeAmount = [];
+	$scope.order._orderExchangeIdentifier = [];
+	$scope.order._orderExchangeAmount1 = [];
+	$scope.order._orderExchangeIdentifier1 = [];
 
 	$scope.createBid = function(){
 		console.log($scope.order)
