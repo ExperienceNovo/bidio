@@ -26,13 +26,19 @@ angular.module( 'bidio.market', [
     $scope.stateParams = $stateParams;
     $scope.orders = orders;
     
+
+
+
 	//THIS FILTER ACTUALLY WORKS!!!!!!!
-	var marketEvent = $rootScope.marketContractInstance.CreateOrder({_orderExchangeIdentifier: $stateParams.id}, {fromBlock: 0, toBlock: 'latest'});
-    marketEvent.watch(function(error, result){
-        $scope.orders.push(result);
-		$scope.$apply();
-		console.log(error, result);
-    });
+	//hardcode general, and cre8.. or figure out string
+	if ($stateParams.id.length == 42){
+		var marketEvent = $rootScope.marketContractInstance.CreateOrder({_orderExchangeIdentifier: $stateParams.id}, {fromBlock: 0, toBlock: 'latest'});
+	    marketEvent.watch(function(error, result){
+	        $scope.orders.push(result);
+			$scope.$apply();
+			console.log(error, result);
+	    });
+	}
 
 	$scope.bid = function(ev){
 		if ($scope.currentUser){
