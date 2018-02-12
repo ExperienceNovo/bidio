@@ -47,6 +47,7 @@ angular.module( 'bidio.member', [
 
 
     //CRYPTO
+    //TODO: REDO
     $scope.pendingTransactions = [];
     $scope.pendingTransactionsList = [];
     //COULD HAVE web3 on the front end ----....
@@ -59,55 +60,64 @@ angular.module( 'bidio.member', [
 		}
 	});
 
-	UserModel.getBalanceBackend($scope.member.walletAddress).then(function(model){
-        $scope.balance = model;
-        console.log($scope.balance)
-    });
-    //UserModel.getBalance($scope.member.walletAddress);
-
-    //TODO: FRONTEND REFACTOR: CALI
-    $rootScope.cre8web3.eth.getBalance($scope.member.walletAddress, 'latest', function(error, result){
-        console.log(result);
-    });
-
-
+	//TODO: FRONTEND REFACTOR
 	$scope.multiDemsionalBalance = 0;
-	$scope.tokenIdentifer = 'general'
+	$scope.tokenIdentifier = 'general'
 	$scope.newLookup = {};
 	$scope.tokenLookup = function(){
-		console.log($scope.tokenIdentifier)
-		UserModel.getTokenBalance($scope.member.walletAddress, $scope.newLookup.tokenIdentifier).then(function(model){
-			console.log(model);
- 			$scope.multiDemsionalBalance = model.viewTokenBalance;
- 		});
+		console.log($scope.newLookup.tokenIdentifier)
+		//console.log($scope.tokenIdentifier)
+		//UserModel.getTokenBalance($scope.member.walletAddress, $scope.newLookup.tokenIdentifier).then(function(model){
+		//	console.log(model);
+ 		//	$scope.multiDemsionalBalance = model.viewTokenBalance;
+ 		//});
+	 	//$rootScope.viewContractInstance.balanceOf($scope.member.walletAddress.toString(), $scope.tokenIdentifier, function(model){
+	 	//	console.log(model)
+	 	//	$scope.multiDemsionalBalance = model.viewTokenBalance;
+	    //});
+		$scope.multiDemsionalBalance = UserModel.getTokenBalanceFrontend($scope.member.walletAddress, $scope.newLookup.tokenIdentifier).c[0]
+    	console.log($scope.multiDemsionalBalance);
+
 	};
 
-	
+	//UserModel.getBalanceBackend($scope.member.walletAddress).then(function(model){
+    //    $scope.balance = model;
+    //    console.log($scope.balance)
+    //});
 
-	//UserModel.getTokenBalanceFrontend($scope.member.walletAddress, $scope.tokenIdentifer);
 
 	//FONTEND WEB3!
-	var filter = $rootScope.cre8web3.eth.filter('pending');
-    filter.watch(function(error, result){
-        console.log(result, error);
-    });
-  
-    //IS THIS IT??
-    //No..:/
+	//TODO: FRONTEND REFACTOR: CALI
+    //$rootScope.viewContractInstance.balanceOf($scope.member.walletAddress.toString(), $scope.tokenIdentifier, function(model){
+ 	//	console.log(model)
+ 	//	$scope.multiDemsionalBalance = model.viewTokenBalance;
+    //});
+    //UserModel.getTokenBalanceFrontend($scope.member.walletAddress, $scope.tokenIdentifier).then(function(){
+ 	//	$scope.multiDemsionalBalance = model.viewTokenBalance;
+    //});
+
+	//$rootScope.cre8web3.eth.getBalance($scope.member.walletAddress, 'latest', function(model){
+	//	console.log(model)
+	//	$scope.balance = model;
+	//});
+    $scope.cre8coinBalance = UserModel.getBalance($scope.member.walletAddress).c[0]
+    console.log($scope.cre8coinBalance);
+
+    $scope.timeBalance = UserModel.getTokenBalanceFrontend($scope.member.walletAddress, 'general').c[0]
+    console.log($scope.timeBalance);
+
+
     $scope.transactionHistory = [];
     //change _to identifer for proper filtering.. i think
     var viewContractEvent = $rootScope.viewContractInstance.CreateViewToken({_to: $scope.member.walletAddress.toString()}, {fromBlock: 0, toBlock: 'latest'});
 	viewContractEvent.watch(function(error, result){
 		$scope.transactionHistory.push(result);
-		//console.log(result);
-		var data = 'to: ' + result.args._to+"<br>ID: "+result.args._id +"<br>";
-		console.log(data)
+		$scope.$apply();
 	});
 
 	var myResults = viewContractEvent.get(function(error, logs){
     	//console.log(logs);
 	});
-
 
 	var newFilter = $rootScope.cre8web3.eth.filter({
 		fromBlock: 0,
@@ -119,7 +129,5 @@ angular.module( 'bidio.member', [
 	newFilter.watch(function(error, result){
         console.log(result);
     });
-
-
 
 }]);
