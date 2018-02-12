@@ -24,18 +24,14 @@ angular.module( 'bidio.market', [
 	titleService.setTitle('bidio - '+$stateParams.id+' market');
     $scope.stateParams = $stateParams;
     $scope.orders = orders;
-
-
-    $scope.test = [];
+    
 	//THIS FILTER ACTUALL WORKS!!!!!!!
 	var marketEvent = $rootScope.marketContractInstance.CreateOrder({_orderExchangeIdentifier: $stateParams.id}, {fromBlock: 0, toBlock: 'latest'});
     marketEvent.watch(function(error, result){
         $scope.orders.push(result);
-        $scope.test.push(result);
 		$scope.$apply();
 		console.log(error, result);
     });
-
 
 	$scope.bid = function(ev){
 	    $mdDialog.show({

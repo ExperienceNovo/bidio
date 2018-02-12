@@ -105,13 +105,15 @@ angular.module( 'bidio', [
     //$rootScope.marketContractInstance = $rootScope.marketContract.at($rootScope.marketContractAddress);
 
     //BINARY MARKET CONTRACT
-
     $rootScope.marketContractAbi = [{"constant":false,"inputs":[{"name":"_member","type":"address"},{"name":"_orderExchangeAmount","type":"int256"},{"name":"_orderExchangeIdentifier","type":"address"},{"name":"_orderExchangeAmount1","type":"int256"},{"name":"_orderExchangeIdentifier1","type":"address"}],"name":"createOrder","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_member","type":"address"},{"indexed":false,"name":"_orderExchangeAmount","type":"int256"},{"indexed":true,"name":"_orderExchangeIdentifier","type":"address"},{"indexed":false,"name":"_orderExchangeAmount1","type":"int256"},{"indexed":true,"name":"_orderExchangeIdentifier1","type":"address"}],"name":"CreateOrder","type":"event"}];
     $rootScope.marketContractAddress =  '0xc74B8C27fBaD80eDbAb2D9549D37EBfd54ca23D0';
     $rootScope.marketContract = $rootScope.cre8web3.eth.contract($rootScope.marketContractAbi);
     $rootScope.marketContractInstance = $rootScope.marketContract.at($rootScope.marketContractAddress);
 
-    //USER- IDENTITY CONTRACT
+    //FUTURE MARKET CONTRACT >:]
+    
+
+    //USER - IDENTITY CONTRACT
     //$rootScope.userContractAbi = [{"constant":false,"inputs":[{"name":"_member","type":"address"},{"name":"_orderExchangeAmount","type":"int256[]"},{"name":"_orderExchangeIdentifier","type":"address[]"},{"name":"_orderExchangeAmount1","type":"int256[]"},{"name":"_orderExchangeIdentifier1","type":"address[]"}],"name":"createOrder","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_member","type":"address"},{"indexed":false,"name":"_orderExchangeAmount","type":"int256[]"},{"indexed":true,"name":"_orderExchangeIdentifier","type":"address[]"},{"indexed":false,"name":"_orderExchangeAmount1","type":"int256[]"},{"indexed":false,"name":"_orderExchangeIdentifier1","type":"address[]"}],"name":"CreateOrder","type":"event"}]
     //$rootScope.userContractAddress = '0x21088b1d083cb55Ff99A8e4bfcC2006A29Ea6498';
     //$rootScope.userContract = $rootScope.cre8web3.eth.contract($rootScope.marketContractAbi);

@@ -14,7 +14,6 @@ angular.module( 'bidio.markets', [
 			orders: ['OrderModel', function(OrderModel){
 				return [];
 				//return OrderModel.getAll();
-				//return [{args:{_member:'0x2b9b6e08595642F0D932287eebCE2C6efAbd6bFB', _orderExchangeIdentifier:'0x2b9b6e08595642F0D932287eebCE2C6efAbd6bFB', _orderExchangeAmount: 1, _orderExchangeIdentifier1:'0x2b9b6e08595642F0D932287eebCE2C6efAbd6bFA', _orderExchangeAmount1:28}}];
 			}]
 		}
 	});
@@ -26,12 +25,9 @@ angular.module( 'bidio.markets', [
 	$scope.orders = orders;
 
 	//ORDERS WEB3 FILTER.... ~sockets etc --> same 'filters' --> for videos / dash..
-	$scope.test = [];
-	//THIS FILTER ACTUALL WORKS!!!!!!!
 	var marketEvent = $rootScope.marketContractInstance.CreateOrder({_to: ''}, {fromBlock: 0, toBlock: 'latest'});
     marketEvent.watch(function(error, result){
         $scope.orders.push(result)
-        $scope.test.push(result);
         $scope.$apply();
 		console.log(error, result);
     });
