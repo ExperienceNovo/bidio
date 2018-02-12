@@ -84,10 +84,13 @@ angular.module( 'bidio', [
         $rootScope.stateIsLoading = false;
     });
 
-    //LOCALHOST FRONTEND WEB3 TESTING
+    //WEB3
     $rootScope.cre8web3 = new Web3();
-    $rootScope.cre8web3 = new Web3(new Web3.providers.HttpProvider("http://ec2-54-212-193-239.us-west-2.compute.amazonaws.com:8545"));
-    
+    //$rootScope.cre8web3 = new Web3(new Web3.providers.HttpProvider("http://ec2-54-212-193-239.us-west-2.compute.amazonaws.com:8545"));
+    //$rootScope.cre8web3 = new Web3(new Web3.providers.HttpProvider("http://54.212.193.239:8545"));
+    //$rootScope.cre8web3 = new Web3(new Web3.providers.HttpProvider("https://peer.bidio.co:8545"));
+    $rootScope.cre8web3 = new Web3(new Web3.providers.HttpProvider("https://peer.cre8.xyz"));
+
 
     //STORE ALL CONTRACT INFO HERE
     //VIEW CONTRACT
@@ -162,7 +165,6 @@ angular.module( 'bidio', [
         console.log(error, logs);
     });
 
-
     var marketEvent = $rootScope.marketContractInstance.CreateOrder({fromBlock: 0, toBlock: 'latest'});
 
     marketEvent.watch(function(error, result){
@@ -172,7 +174,6 @@ angular.module( 'bidio', [
     marketEvent.get(function(error, logs){
         //console.log(error, logs);
     });
-
 
     var filter = $rootScope.cre8web3.eth.filter({address:"0x9b870E0D29D485CB0bd2a076344B4F0bf2Fee009"});
     
