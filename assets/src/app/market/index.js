@@ -26,7 +26,7 @@ angular.module( 'bidio.market', [
     $scope.stateParams = $stateParams;
     $scope.orders = orders;
     
-	//THIS FILTER ACTUALL WORKS!!!!!!!
+	//THIS FILTER ACTUALLY WORKS!!!!!!!
 	var marketEvent = $rootScope.marketContractInstance.CreateOrder({_orderExchangeIdentifier: $stateParams.id}, {fromBlock: 0, toBlock: 'latest'});
     marketEvent.watch(function(error, result){
         $scope.orders.push(result);
