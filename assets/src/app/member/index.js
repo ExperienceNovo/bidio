@@ -78,6 +78,12 @@ angular.module( 'bidio.member', [
 		$scope.multiDemsionalBalance = UserModel.getTokenBalanceFrontend($scope.member.walletAddress, $scope.newLookup.tokenIdentifier).c[0]
     	console.log($scope.multiDemsionalBalance);
 
+    	//var viewContractEvent = $rootScope.viewContractInstance.CreateViewToken({_to: $scope.member.walletAddress.toString()}, {fromBlock: 0, toBlock: 'latest'});
+		//viewContractEvent.watch(function(error, result){
+		//	$scope.transactionHistory.push(result);
+		//	$scope.$apply();
+		//});
+
 	};
 
 	//UserModel.getBalanceBackend($scope.member.walletAddress).then(function(model){
