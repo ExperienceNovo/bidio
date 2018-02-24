@@ -41,7 +41,6 @@ angular.module( 'bidio.token', [
 		$scope.totalToken = 0//(Math.floor(100 * $scope.totalEth / $scope.tokenPrice)*power).toFixed(0);
 	};
 
-
 	//reload every second ? 
 	$scope.getPrice();
 
