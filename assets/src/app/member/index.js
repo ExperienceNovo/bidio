@@ -31,7 +31,7 @@ angular.module( 'bidio.member', [
 	$scope.currentUser = config.currentUser;
 	$scope.member = member;
 	if(typeof($scope.member)=="undefined"){$location.path('/')}
-	titleService.setTitle(member.username + ' - bidio');
+	titleService.setTitle(member.username + ' | bidio');
 	$scope.profile = member.profile[0];
 	$scope.campaigns = campaigns.filter(function(obj){return obj.published == true});
 	$scope.videos = videos;

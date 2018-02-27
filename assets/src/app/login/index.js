@@ -14,7 +14,7 @@ angular.module( 'bidio.login', [
 }])
 
 .controller( 'LoginCtrl', ['$location', '$scope', 'config', 'localStorageService', 'titleService', function LoginController( $location, $scope, config, localStorageService, titleService ) {
-	titleService.setTitle('bidio - login');
+	titleService.setTitle('login | bidio');
 	$scope.currentUser = config.currentUser;
 	if ($scope.currentUser){$location.path('/')};
 

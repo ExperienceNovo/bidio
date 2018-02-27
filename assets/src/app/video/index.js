@@ -27,7 +27,7 @@ angular.module( 'bidio.video', [
 	$scope.currentUser = config.currentUser;
 	$scope.video = video;
 	if(typeof($scope.video)=="undefined"){$location.path('/')}
-	titleService.setTitle(video.title + ' - bidio');
+	titleService.setTitle(video.title + ' | bidio');
 	seoService.setKeywords('bidio, video, custom tags')
 	seoService.setDescription(video.description)
 	$scope.viewModel = {};

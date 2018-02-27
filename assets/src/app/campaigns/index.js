@@ -19,7 +19,7 @@ angular.module( 'bidio.campaigns', [
 }])
 
 .controller( 'CampaignsCtrl', ['$sailsSocket', '$sce', '$scope', 'CampaignModel', 'campaigns', 'config', 'titleService', function CampaignsCtrl( $sailsSocket, $sce, $scope, CampaignModel, campaigns, config, titleService) {
-	titleService.setTitle('campaigns - bidio');
+	titleService.setTitle('campaigns | bidio');
 	$scope.currentUser = config.currentUser;
 	$scope.campaigns = campaigns;
 	

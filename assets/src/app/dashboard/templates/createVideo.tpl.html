@@ -13,7 +13,7 @@
             <textarea ng-model="video.description" rows="4"></textarea>
         </md-input-container>
         <div class="spacing-15"></div>
-        <div layout="row">
+        <!--<div layout="row">
             <div class="text-left" flex="100">
                 <md-checkbox ng-model="setMinimum" aria-label="Set budget">
                     <label class="label-small">Set a minimum price per click?</label>
@@ -29,7 +29,7 @@
                     <input type="text" ng-model="minimumPrice" ng-disabled="!setMinimum">
                 </md-input-container>
             </div>
-        </div>
+        </div>-->
         <div class="spacing-15"></div>
         <div ng-hide="video.amazonUrl || videoLoading" style="max-width: 100%;width: 500px;" ngf-accept="'video/*,audio/*'" ngf-drop ngf-select="upload($file)" ng-model="file" class="drop-box" ngf-drag-over-class="dragover" ngf-allow-dir="true">
             <div>Drag videos or click here to upload.</div>
@@ -60,7 +60,8 @@
                 vjs-media="media"
                 vjs-ratio="16:9"
                 vjs-video
-                playsinline>
+                playsinline
+                crossorigin="anonymous">
             </video>
             <md-button class="md-raised pull-left" ng-click="captureThumbnail()">select thumbnail</md-button>
             <canvas style="width:100%" id="canvas"></canvas>

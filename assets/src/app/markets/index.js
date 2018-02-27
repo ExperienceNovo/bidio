@@ -20,7 +20,7 @@ angular.module( 'bidio.markets', [
 }])
 
 .controller( 'MarketsCtrl', ['$location', '$mdDialog', '$rootScope', '$scope', 'config', 'titleService', 'orders', function MarketsController( $location, $mdDialog, $rootScope, $scope, config, titleService, orders ) {
-	titleService.setTitle('bidio - market');
+	titleService.setTitle('market | bidio');
 	$scope.currentUser = config.currentUser;
 	$scope.orders = orders;
 	$scope.newLookup = {};

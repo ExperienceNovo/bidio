@@ -128,7 +128,7 @@ angular.module( 'bidio.dashboard', [
 }])
 
 .controller( 'DashboardHomeCtrl', ['$location', '$mdDialog', '$scope', '$state', 'config', 'localStorageService', 'lodash', 'ProfileModel', 'titleService', 'user', 'UserModel', function DashboardHomeCtrl( $location, $mdDialog, $scope, $state, config, localStorageService, lodash, ProfileModel, titleService, user, UserModel ) {
-    titleService.setTitle('dashboard');
+    titleService.setTitle('dashboard | bidio');
     //NOT RUNNING CURRENTLY
 
     $scope.currentUser = config.currentUser;
@@ -219,7 +219,7 @@ angular.module( 'bidio.dashboard', [
 }])
 
 .controller( 'DashboardAnalyticsCtrl', ['$scope', 'campaigns', 'ClickModel', 'config', 'titleService', 'videos', 'ViewModel', function DashboardAnalyticsCtrl( $scope, campaigns, ClickModel, config, titleService, videos, ViewModel ) {
-    titleService.setTitle('dashboard - analytics');
+    titleService.setTitle('dashboard | analytics');
     $scope.currentUser = config.currentUser;
     $scope.campaigns = campaigns.filter(function(obj){return obj.published == true});
     $scope.videos = videos;
@@ -320,7 +320,7 @@ angular.module( 'bidio.dashboard', [
         ],
         poster: $scope.video.thumbnailUrl || '/images/video-overlay.png'
     };
-    titleService.setTitle('dashboard - ' + video.title);
+    titleService.setTitle('dashboard | ' + video.title);
     $scope.views = views;
     $scope.clicks = clicks;
     $scope.editingInfo = false;
@@ -454,7 +454,7 @@ angular.module( 'bidio.dashboard', [
 }])
 
 .controller( 'DashboardVideosCtrl', ['$mdDialog', '$scope', 'titleService', 'videos', 'VideoModel', function DashboardVideosCtrl( $mdDialog, $scope, titleService, videos, VideoModel ) {
-    titleService.setTitle('dashboard - videos');
+    titleService.setTitle('dashboard | videos');
     $scope.videos = videos;
     for (x in $scope.videos){
         $scope.videos[x].media = {
@@ -639,7 +639,7 @@ angular.module( 'bidio.dashboard', [
 }])
 
 .controller('DashboardProfileCtrl', ['$location', '$mdDialog', '$scope', '$state', 'credit', 'CreditModel', 'localStorageService', 'ProfileModel', 'titleService', 'user', 'UserModel', function ($location, $mdDialog, $scope, $state, credit, CreditModel, localStorageService, ProfileModel, titleService, user, UserModel) {
-    titleService.setTitle('dashboard - profile');
+    titleService.setTitle('dashboard | profile');
 
     $scope.username = user.username;
     $scope.submitLoading = false;
@@ -802,7 +802,7 @@ angular.module( 'bidio.dashboard', [
 }])
 
 .controller('DashboardCampaignsCtrl', ['$mdDialog', '$scope', '$state', 'CampaignModel', 'campaigns', 'config', 'titleService', function ($mdDialog, $scope, $state, CampaignModel, campaigns, config, titleService) {
-    titleService.setTitle('dashboard - campaigns');
+    titleService.setTitle('dashboard | campaigns');
 
     $scope.campaigns = campaigns;
     console.log(campaigns)

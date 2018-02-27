@@ -14,7 +14,7 @@ angular.module( 'bidio.search', [
 }])
 
 .controller( 'SearchCtrl', ['$scope', 'titleService', function SearchCtrl( $scope, titleService ) {
-    titleService.setTitle('search - bidio');
+    titleService.setTitle('search | bidio');
     /*$scope.keyPress = function(searchValue){
         SearchModel.search(searchValue).then(function(models){
             $scope.searchResults = models;

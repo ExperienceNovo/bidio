@@ -19,7 +19,7 @@ angular.module( 'bidio.discover', [
 }])
 
 .controller( 'DiscoverCtrl', ['$rootScope','$sce', '$scope', 'config', 'SearchModel', 'titleService', 'VideoModel', 'videos', function DiscoverCtrl( $rootScope, $sce, $scope, config, SearchModel, titleService, VideoModel, videos ) {
-	titleService.setTitle('bidio - discover');
+	titleService.setTitle('bidio | discover');
 	$scope.videos = videos;
 	$scope.skip = 48
  	for (x in $scope.videos){

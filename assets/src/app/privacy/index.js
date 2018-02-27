@@ -14,5 +14,5 @@ angular.module( 'bidio.privacy', [
 }])
 
 .controller( 'PrivacyCtrl', ['$scope', 'titleService', function PrivacyController( $scope, titleService ) {
-	titleService.setTitle('bidio - privacy');
+	titleService.setTitle('privacy | bidio');
 }]);

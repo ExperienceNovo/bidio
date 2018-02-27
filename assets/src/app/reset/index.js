@@ -15,7 +15,7 @@ angular.module( 'bidio.reset', [
 
 .controller( 'ResetCtrl', ['$scope', '$stateParams', 'config', 'titleService', function ResetController( $scope, $stateParams, config, titleService ) {
 	$scope.globalErr = config.globalErr;
-	titleService.setTitle('bidio - reset');
+	titleService.setTitle('reset | bidio');
 	$scope.currentUser = config.currentUser;
 	/*setup token validation or nah??*/
 	$scope.actionUrl = "/api/user/reset/" + $stateParams.token;

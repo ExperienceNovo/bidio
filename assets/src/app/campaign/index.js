@@ -30,7 +30,7 @@ angular.module( 'bidio.campaign', [
 .controller( 'CampaignCtrl', ['$sce', '$scope', '$uibModal', 'config', 'campaign', 'CampaignModel', 'titleService', function CampaignCtrl( $sce, $scope, $uibModal, config, campaign, CampaignModel, titleService ) {
 	$scope.campaign = campaign;
   console.log(campaign)
-  titleService.setTitle('bidio - ' + $scope.campaign.title);
+  titleService.setTitle($scope.campaign.title + ' | bidio');
 	$scope.currentUser = config.currentUser;
 
   $scope.campaignContent = $sce.trustAsHtml($scope.campaign.campaignContent);

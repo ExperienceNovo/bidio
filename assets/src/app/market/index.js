@@ -21,7 +21,7 @@ angular.module( 'bidio.market', [
 }])
 
 .controller( 'MarketCtrl', ['$location', '$mdDialog', '$rootScope', '$scope', '$stateParams', 'config', 'titleService', 'orders', function MarketController( $location, $mdDialog, $rootScope, $scope, $stateParams, config, titleService, orders ) {
-	titleService.setTitle('bidio - '+$stateParams.id+' market');
+	titleService.setTitle($stateParams.id+' market | bidio');
 	$scope.currentUser = config.currentUser;
     $scope.stateParams = $stateParams;
     $scope.orders = orders;
