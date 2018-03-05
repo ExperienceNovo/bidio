@@ -8,10 +8,10 @@
 
 // CSS files to inject in order
 var cssFilesToInject = [
-  'styles/**/*.css',
   'bower_components/angular-material/angular-material.css',
   'bower_components/video.js/dist/video-js.css',
   'bower_components/textAngular/dist/textAngular.css',
+  'styles/**/*.css',
 
 ];
 

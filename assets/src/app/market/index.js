@@ -25,7 +25,7 @@ angular.module( 'bidio.market', [
 	$scope.currentUser = config.currentUser;
     $scope.stateParams = $stateParams;
     $scope.orders = orders;
-
+ 	$scope.tokenInCirculation = (88888*Math.random()).toFixed(0)
 
     $scope.orderBookOptions = {
         chart: {
@@ -51,11 +51,11 @@ angular.module( 'bidio.market', [
         }
     };
 
-    $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
-    $scope.series = ['Series A', 'Series B'];
+    $scope.labels = ["1", "2", "3", "4", "5", "6", "7", "8"];
+    $scope.series = ['Bids', 'Asks'];
     $scope.data = [
-        [65, 59, 80, 81, 56, 55, 40],
-        [28, 48, 40, 19, 86, 27, 90]
+        [0, 0, 0, 0, 56, 59, 85, 121],
+        [109, 72, 55, 35, 0, 0, 0, 0]
     ];
 
 
