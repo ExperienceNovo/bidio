@@ -59,8 +59,6 @@ angular.module( 'bidio.market', [
     ];
 
 
-
-
 	//THIS FILTER ACTUALLY WORKS!!!!!!!
 	//hardcode general, and cre8.. or figure out string
 	if ($stateParams.id.length == 42){

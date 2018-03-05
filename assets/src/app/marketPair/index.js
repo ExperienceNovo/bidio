@@ -2,12 +2,12 @@ angular.module( 'bidio.marketPair', [
 ])
 
 .config(['$stateProvider', function config( $stateProvider ) {
-	$stateProvider.state( 'market', {
+	$stateProvider.state( 'marketPair', {
 		url: '/market/:asset1/:asset2',
 		views: {
 			"main": {
-				controller: 'MarketCtrl',
-				templateUrl: 'market/index.tpl.html'
+				controller: 'MarketPairCtrl',
+				templateUrl: 'marketPair/index.tpl.html'
 			}
 		},
 		resolve:{
@@ -20,18 +20,48 @@ angular.module( 'bidio.marketPair', [
 	});
 }])
 
-.controller( 'MarketCtrl', ['$location', '$mdDialog', '$rootScope', '$scope', '$stateParams', 'config', 'titleService', 'orders', function MarketController( $location, $mdDialog, $rootScope, $scope, $stateParams, config, titleService, orders ) {
-	titleService.setTitle($stateParams.id+' market | bidio');
+.controller( 'MarketPairCtrl', ['$location', '$mdDialog', '$rootScope', '$scope', '$stateParams', 'config', 'titleService', 'orders', function MarketPairController( $location, $mdDialog, $rootScope, $scope, $stateParams, config, titleService, orders ) {
+	titleService.setTitle($stateParams.asset1+' market | bidio');
 	$scope.currentUser = config.currentUser;
     $scope.stateParams = $stateParams;
     $scope.orders = orders;
     
+	$scope.orderBookOptions = {
+	    chart: {
+	        type: 'multiBarChart',
+	        height: 450,
+	        margin : {
+	            top: 20,
+	            right: 20,
+	            bottom: 45,
+	            left: 45
+	        },
+	        x: function(d){ 
+	            return parseFloat(d[0]); 
+	        },
+	        y: function(d){ 
+	            return parseFloat(d[1]); 
+	        },
+	        yDomain:[0,25],
+	        staggerLabels: true,
+	        duration: 500,
+	        reduceXTicks:true,
+	        showControls: false,
+	    }
+	};
 
-    
+	$scope.labels = ["1", "2", "3", "4", "5", "6", "7", "8"];
+	$scope.series = ['Bids', 'Asks'];
+	$scope.data = [
+	    [0, 0, 0, 0, 56, 59, 85, 121],
+	    [109, 72, 55, 35, 0, 0, 0, 0]
+	];
+
+
 
 	//THIS FILTER ACTUALLY WORKS!!!!!!!
 	//hardcode general, and cre8.. or figure out string
-	if ($stateParams.id.length == 42){
+	if ($stateParams.asset1.length == 42){
 		var marketEvent = $rootScope.marketContractInstance.CreateOrder({_orderExchangeIdentifier: $stateParams.id}, {fromBlock: 0, toBlock: 'latest'});
 	    marketEvent.watch(function(error, result){
 	        $scope.orders.push(result);
@@ -43,14 +73,17 @@ angular.module( 'bidio.marketPair', [
 	$scope.bid = function(ev){
 		if ($scope.currentUser){
 		    $mdDialog.show({
-				controller: 'MarketBidCtrl',
-				templateUrl: 'market/templates/bid.tpl.html',
+				controller: 'MarketPairBidCtrl',
+				templateUrl: 'marketPair/templates/bid.tpl.html',
 				parent: angular.element(document.body),
 				targetEvent: ev,
 				clickOutsideToClose: true,
 				resolve: {
-					market: [function(){
-						return $scope.stateParams.id;
+					asset1: [function(){
+						return $scope.stateParams.asset1;
+					}],
+					asset2: [function(){
+						return $scope.stateParams.asset2;
 					}]
 				}
 			})
@@ -64,15 +97,17 @@ angular.module( 'bidio.marketPair', [
 
 }])
 
-.controller('MarketBidCtrl', ['$scope', '$mdDialog', 'BidModel', 'config', 'market', 'OrderModel', function MarketBidController($scope, $mdDialog, BidModel, config, market, OrderModel) {
+.controller('MarketPairBidCtrl', ['$scope', '$mdDialog', 'asset1', 'asset2', 'BidModel', 'config', 'OrderModel', function MarketPairBidController($scope, $mdDialog, asset1, asset2, BidModel, config, OrderModel) {
 
-	$scope.market = market;
+	$scope.asset1 = asset1;
+	$scope.asset2 = asset2;
+
 	$scope.order = {};
 	$scope.order._member = config.currentUser.walletAddress;
 	//$scope.order._orderExchangeAmount = 1;
-	$scope.order._orderExchangeIdentifier = market;
+	$scope.order._orderExchangeIdentifier = asset1;
 	//$scope.order._orderExchangeAmount1 = [];
-	//$scope.order._orderExchangeIdentifier1 = [];
+	$scope.order._orderExchangeIdentifier1 = asset2;
 
 
 	$scope.createOrderAsset = function(value){

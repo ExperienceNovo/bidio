@@ -55,6 +55,7 @@ module.exports.routes = {
   'get /logout': 'AuthController.logout',
   'get /market': 'HomeController.index',
   'get /market/:path': 'HomeController.index',
+  'get /market/:asset1/:asset2': 'HomeController.index',
   'get /member/:path': 'HomeController.index',
   'get /privacy': 'HomeController.index',
   'get /register': 'HomeController.index',
