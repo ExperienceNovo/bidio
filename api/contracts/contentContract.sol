@@ -1,4 +1,4 @@
-pragma solidity ^0.4.0;
+pragma solidity ^0.4.2;
 contract content {
 
 	struct Content {
@@ -7,6 +7,7 @@ contract content {
         string description;
         string url;
     }
+    
     mapping (address => Content) public content;
     event CreateContent(address indexed _member, string _title, string _description, string _url);
 
