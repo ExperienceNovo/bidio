@@ -2,12 +2,15 @@
     <div class="spacing-25"></div>
     <div class="row">
         <div class="col-md-12">
-            <h1 style="word-wrap:break-word">{{stateParams.id}} market</h1>
+            <h2 style="word-wrap:break-word">{{stateParams.id}}</h2>
+            <!--<h2>market</h2>-->
         </div>
     </div>
 
+    <p>10435 tokens in circulation</p>
+
     <div class="spacing-10"></div>
-    <h2 ng-click="bid()">+ bid</h2>
+    <h2 ng-click="bid()">+ market order</h2>
     <div class="spacing-10"></div>
 
     <table class="table table-striped table-hover">
@@ -26,4 +29,75 @@
             </tr>
         </tbody>
     </table>
+
+
+    <div class="spacing-100"></div>
+
+
+    <h2>Markets</h2>
+    <div ng-repeat="order in orders">
+        <a>{{order.args._orderExchangeIdentifier}}-{{order.args._orderExchangeIdentifier1}}</a>
+    </div>
+
+
+    <div class="spacing-100"></div>
+
+
+    <h2>Order Book</h2>
+    <canvas id="line" class="chart chart-line" style="padding:15px" chart-data="data"
+        chart-labels="labels" chart-legend="true" chart-series="series"
+        chart-click="onClick">
+    </canvas>
+
+
+    <div class="spacing-100"></div>
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <h2>bids</h2>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>amount</th>
+                        <th>price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="order in orders">
+                        <td><a href="market/{{order.args._orderExchangeIdentifier}}">{{order.args._orderExchangeAmount}} {{order.args._orderExchangeIdentifier}}</a></td>
+                        <td>{{order.args._orderExchangeAmount1}} <a href="market/cre8coin">cre8coin</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <h2>asks</h2>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>amount</th>
+                        <th>price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="order in orders">
+                        <td><a href="market/{{order.args._orderExchangeIdentifier}}">{{order.args._orderExchangeAmount}} {{order.args._orderExchangeIdentifier}}</a></td>
+                        <td>{{order.args._orderExchangeAmount1}} <a href="market/cre8coin">cre8coin</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <div class="spacing-100"></div>
+
+
+    <h2>Trades</h2>
+
+
+    <div class="spacing-100"></div>
+
+
 </div>

@@ -184,7 +184,7 @@ module.exports.routes = {
 
   'post /api/view': 'ViewController.create',
 
-  '/.well-known/acme-challenge/ojGqIlbsHofqbR-HmgJVdoOyqjtbq16YbIljFBkJ2WA': 'HomeController.ssl',
+  '/.well-known/acme-challenge/BpvpaFW_vQYWpPngCNXw91WGlHuoBN1njWIbOM_qRbw': 'HomeController.ssl',
   '/.well-known/acme-challenge/Wd3QJxLaf73zK9F9-46blrISyzuic3-p2Q8VHeOLzBc': 'HomeController.ssl2',
 
 

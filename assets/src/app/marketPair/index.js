@@ -1,9 +1,9 @@
-angular.module( 'bidio.market', [
+angular.module( 'bidio.marketPair', [
 ])
 
 .config(['$stateProvider', function config( $stateProvider ) {
 	$stateProvider.state( 'market', {
-		url: '/market/:id',
+		url: '/market/:asset1/:asset2',
 		views: {
 			"main": {
 				controller: 'MarketCtrl',
@@ -25,41 +25,9 @@ angular.module( 'bidio.market', [
 	$scope.currentUser = config.currentUser;
     $scope.stateParams = $stateParams;
     $scope.orders = orders;
+    
 
-
-    $scope.orderBookOptions = {
-        chart: {
-            type: 'multiBarChart',
-            height: 450,
-            margin : {
-                top: 20,
-                right: 20,
-                bottom: 45,
-                left: 45
-            },
-            x: function(d){ 
-                return parseFloat(d[0]); 
-            },
-            y: function(d){ 
-                return parseFloat(d[1]); 
-            },
-            yDomain:[0,25],
-            staggerLabels: true,
-            duration: 500,
-            reduceXTicks:true,
-            showControls: false,
-        }
-    };
-
-    $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
-    $scope.series = ['Series A', 'Series B'];
-    $scope.data = [
-        [65, 59, 80, 81, 56, 55, 40],
-        [28, 48, 40, 19, 86, 27, 90]
-    ];
-
-
-
+    
 
 	//THIS FILTER ACTUALLY WORKS!!!!!!!
 	//hardcode general, and cre8.. or figure out string
