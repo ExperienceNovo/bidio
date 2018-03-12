@@ -238,12 +238,20 @@
 
     <section class="multidimensionalTokenStandard">
         <h2 class="section-title">Multidimensional Token Standard</h2>
-        <p><a href="https://ddgithub.com/ethereum/EIPs/issues/888">ERC-888</a></p>
-       
-        <p>Multidimensional viewToken Structure: [address][_id][_value]</p>
-        <p>Mapping (address => mapping (string => uint)) balances; <a href="https://gist.github.com/troverman/809dba32d8510e7713aaa5c869e607ae">[gist]</a></p>
-        <p>N-dimensional balances or string based tokens - ex: token per address [address][‘address’][balance]</p>
+
+        <p><a href="https://github.com/ethereum/EIPs/issues/888">ERC-888</a></p>
+        <span style="font-style: italic;color:gray;">a model for multidimensional tokenization, which utilizes identifiers to refer to balances & data.</span>
+
+        <p>Token data-structures with balances specified by unique identifiers create emergent properties within cryptoeconomic systems that introduce valuable approaches to mechanism design and contract development. Multidimensional tokens involve layers of information and functionality, create interdependent curation markets, and give rise to integrated information across networks.</p>
+
+        <p>N-dimensional balances are based on identifiers - ex: token per address [address][‘address’][balance]</p>
+        <p>Multidimensional Token Structure: [address][_id][_value]</p>
+        <p>Mapping (address => mapping (string => uint)) balances</p>
+
         <p><a href="/market">Multidimensional Token Market</a></p>
+
+        <a href="https://gist.github.com/troverman/809dba32d8510e7713aaa5c869e607ae">Solidity Contract</a>
+
         <pre style="text-align:left;font-family:monospace;white-space:pre-wrap;">
         contract MultidimensionalToken {
             mapping (address => mapping (string => uint)) balances;
@@ -263,26 +271,26 @@
                 else {return false;}
             }
         }</pre>
+
         <div class="spacing-50"></div>
     </section>
 
     <section class="viewTokenProtocol">
-        <h2 class="section-title">viewToken Protocol</h2>
-        <p>Mechanism Design</p>
-        <p>(vT)</p>
+        <h2 class="section-title">viewToken(vT) Protocol</h2>
+        <p>ERC-888 Multidimensional standard</p>
+        <p>Utility protocol contracts are based on ERC-888 identifiers.</p>
         <div class="spacing-10"></div>
-        <p>Three Dimensions</p>
+        <p>Mechanism Design</p>
         <p>general vT</p>
         <p>user-based viewToken</p>
         <p>content-based viewToken</p>
-        <p>ERC-888 Multidimensional standard</p>
+        
+        <div class="spacing-10"></div>
+        <img src="images/protocol.png"/>
         <div class="spacing-10"></div>
 
         <!--talk about smart contract ecosystem with respect to viewtoken-->
         <!--token market & liquidity-->
-
-        <p>Utility contracts based on ERC-888 identifiers</p>
-        <div class="spacing-10"></div>
 
         <p>In equilibrium, the mapping from types to outcomes is the same as the mapping that would be chosen by the social choice function.</p>
         <p>adding a mechanism turns a Bayesian setting into “game form”</p>
@@ -299,8 +307,8 @@
 
         <p>Complete Transparency and Control</p>
         <p>At any given time, individual creators have the choice to approve a number of sponsor(s) per video. Since the creator has no way of affecting who will pay the most, she is effectively trying to maximize the sum of her and her viewers’ utility.</p>
-        
         <div class="spacing-50"></div>
+
     </section>
 
     <section class="cre8coinGovernance">
@@ -336,10 +344,10 @@
         <p>cre8, authentic, universal income</p>
 
         <p>Information will be tokenized, including various metrics for attention.</p>
-        <p>Through a commitment to innovation around governance, performance and scalability..</p>
-        <div class="spacing-25"></div>
 
-        <p>Information will be tokenized, including various metrics for attention. Initially, we’re making the viewToken protocol available to all creators within cre8coin’s network. Through a commitment to innovation around governance, performance and scalability, the cre8coin utility creates innovative distribtued attention backed value networks. This powerful cryptosystem mints fractalized networks of multidimensional viewTokens. </p>
+        <p>Through a commitment to innovation around governance, performance and scalability, the cre8coin utility creates innovative distribtued attention backed value networks. This powerful cryptosystem mints fractalized networks of multidimensional viewTokens.</p>
+
+        <div class="spacing-50"></div>
 
         <h3 style="font-size:26px">RESOURCES</h3><br><br>
         <a href="https://people.cs.uchicago.edu/~teutsch/papers/ico.pdf">[1] ICO</a><br>
