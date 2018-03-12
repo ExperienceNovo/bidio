@@ -1,4 +1,5 @@
 pragma solidity ^0.4.2;
+//TODO: STRINGS ATTACHED -- LOGO.. CLICK
 contract multidimensionalMarket {
     address member;
     struct Asset{

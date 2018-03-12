@@ -79,6 +79,7 @@
     <section class="attentionExchanges">
         <h2 class="section-title">Attention Exchanges</h2>
 
+        <p>this needs to be less game theroy and more marketing</p>
         <p>Game theoretic models of attention networks involve three participants, which do not know each other’s utility function. Bayes-Nash equilibrium (against a common prior) is the ideal outcome in such games of incomplete information. Within the information economy, there should be three primary unknowns – one for each group involved:</p>
 
         <p>Participants / Players / Associated Unknowns</p>
@@ -190,8 +191,6 @@
 
 
 
-
-
         <p>General distribution of viewToken provides a universal floor, allowing creators to earn and share the value of their viewers’ attention and engagement. When sponsors want to get attention from a specific audience, they can buy the rights to any tokens minted in real time (with strings attached). Net bid value is the full bid amount minus the market value of general attentionToken.</p>
 
         <p>Generally, participants will support high-quality content which adds extrinsic value. Here is what each type is now incentivized to do.</p>
@@ -225,11 +224,6 @@
         <h2 class="section-title">Multidimensional Token Standard</h2>
         <p><a href="https://ddgithub.com/ethereum/EIPs/issues/888">ERC-888</a></p>
        
-        <!--
-        participants: creators, viewers and sponsors.
-        Revelation Principle ~ any social choice function that can be implemented by any arbitrary mechanism, can also be implemented by a truthful, direct-revelation mechanism with the same equilibrium outcome.
-        -->
-
         <p>Multidimensional viewToken Structure: [address][_id][_value]</p>
         <p>Mapping (address => mapping (string => uint)) balances; <a href="https://gist.github.com/troverman/809dba32d8510e7713aaa5c869e607ae">[gist]</a></p>
         <p>N-dimensional balances or string based tokens - ex: token per address [address][‘address’][balance]</p>
@@ -258,9 +252,9 @@
 
     <section class="viewTokenProtocol">
         <h2 class="section-title">viewToken Protocol</h2>
-        <!--<h2 class="section-title">attentionToken Protocol</h2>-->
         <p>Mechanism Design</p>
         <p>(vT)</p>
+        <div class="spacing-10"></div>
         <p>Three Dimensions</p>
         <p>general vT</p>
         <p>user-based viewToken</p>
@@ -268,20 +262,13 @@
         <p>ERC-888 Multidimensional standard</p>
         <div class="spacing-10"></div>
 
-        <!--below this is what-->
         <!--talk about smart contract ecosystem with respect to viewtoken-->
         <!--token market & liquidity-->
 
-        <p>Incentive compatibility</p>
-        <p>between bonded node incentives and protocol security guarantees.</p>
-        <p>minting logic</p>
-        <p>Strategy-proof</p>
-        <p>Direct-revelation mechanism: agents declare their types to the mechanism, leading to a decision and set of transfers</p>
+        <p>Utility contracts based on ERC-888 identifiers</p>
         <div class="spacing-10"></div>
 
-
-        <p>Our central task is to specify a mechanism that incentivizes rational agents to behave in a mannor, based on their private information, that lead to socially desired outcomes.</p>
-        <p>Implementation Theory ~ in equilibrium, the mapping from types to outcomes is the same as the mapping that would be chosen by the social choice function. Such intentional structure is required in dominant strategies or Bayes-Nash equilibrium.</p>
+        <p>In equilibrium, the mapping from types to outcomes is the same as the mapping that would be chosen by the social choice function.</p>
         <p>adding a mechanism turns a Bayesian setting into “game form”</p>
         <p>Mechanism: a pair of strategy spaces and a function which maps any strategy to resulting social decisions and transfers.</p>
         <div class="spacing-10"></div>
@@ -290,39 +277,13 @@
         <p>Desired Outcomes: Creators will produce high-quality content, which drives progress with energy and information. Bidders will reward creators who add extrinsic value to unified groups coordinating around shared goal(s). Viewers will be more accountable for what they watch because they want their own attention to be more valuable. Overall, cre8coin optimizes for individual belief systems by gamifying the discovery of qualitative schelling points. For Bidio participants, utility means fulfillment of purpose with guaranteed authenticity.</p>
         <div class="spacing-10"></div>
 
-        <p>Individuals’ utilities are a function of their type, and the output of their decisions.</p>
-        <p>Designers control the choices of their mechanisms, but not the players or their types.</p>
-        <p>There is no loss in generality by just focusing on truthful, direct-revelation mechanisms</p>
-        <div class="spacing-10"></div>
-
-        <!--what: way too much -->
-        <p>When the contour lines of two functions f and g are tangent, their gradient vectors are parallel and proportional. Don’t forget corner solutions!</p>
-        <p>Lagrange multiplier technique lets you find the maximum or minimum of a multivariable function f (x,y,…) when there is some constraint on the input values you are allowed to use.</p>
-        <p>L(x, y, λ) = R(x, y) - λ(B(x, y) - b)</p>
-        <p>Set gradient of L = 0 (direction of steepest ascent)</p>
-        <p>From constrained optimization to unconstrained optimization:</p>
-        <p>▽R = λ▽B</p>
-        <p>λ* = dM* / db*</p>
-        <p>Constraint functions with same input space must be some constant C</p>
-        <p>Asymmetric information interferes with operation of markets</p>
-        <p>Hidden information</p>
-        <p>Compatibility between the bonded nodes’ incentives and protocol security guarantees -- contract based minting of ERC88</p>
-        <p>Individual Rationality</p>
-        <p>weak budget balance (also referred to as feasibility) requires that the mechanism not pay out more than it receives</p>
-        <p>Vickrey-Clarke Groves mechanisms are highly susceptible to collusion. They allow bad actors to add arbitrary terms to the payout that individual participants can’t influence without changing the underlying incentives.</p>
-        <div class="spacing-10"></div>
-
-        <!--AD TECH PROB-->
-        <p>For years in the ad-tech industry, waterfall auction dynamics have provided unfair advantages to advertisers and their media buying agencies. However, publishers recently gained the power to sell ‘programmatic guaranteed’ inventory.</p> 
-        <p>Bidio’s direct bidding mechanism enables brands to buy exclusive rights to specific tokens, which are continuously minted as viewers pay attention.</p>
-
+        <p>The ViewToken protol, and multidimensional markets, enables direct bidding mechanisms which enable sponsors to buy exclusive rights to identified tokens, which are continuously minted as viewers pay attention.</p>
         <p>Bidio’s continuous auction mechanism runs without any input from the creator, and it proposes outcomes that would maximize utility of sponsors. Utilizing the multidimensional viewToken protocol, creators know which brands are willing to pay and how much per token.</p>
         <div class="spacing-10"></div>
 
         <p>Complete Transparency and Control</p>
         <p>At any given time, individual creators have the choice to approve a number of sponsor(s) per video. Since the creator has no way of affecting who will pay the most, she is effectively trying to maximize the sum of her and her viewers’ utility.</p>
-         
-
+        
         <div class="spacing-50"></div>
     </section>
 
@@ -334,42 +295,14 @@
         <p>Master account governance - price setting, budgeting, smart contact implementation</p>
         <p>Mechanisms of Coordination</p>
 
-        <!--<a href="https://medium.com/@DimitriDeJonghe/curated-governance-with-stake-machines">curanted gov</a>
+        <a href="https://medium.com/@DimitriDeJonghe/curated-governance-with-stake-machines">curated gov</a>
         <a href="https://medium.com/@Vlad_Zamfir/against-on-chain-governance-a4ceacd040ca">against on-chain gov</a>
-        <a href="http://vitalik.ca/general/2017/12/17/voting.html">voting</a>-->
+        <a href="http://vitalik.ca/general/2017/12/17/voting.html">voting</a>
 
-
-        <!--
-        incentives // tokens
-        cre8coin
-        How should the network reward miners?
-        viewToken
-        clickToken
-        embedToken
+        <p>incentives // tokens</p>
+        <p>cre8coin</p>
+        <p>How should the network reward miners?</p>
          
-        Requirements:
-        ex-ante Individual Rationality
-        Weak Balanced Budget
-        Nash equilibrium Incentive compatibility
-        ex-post Pareto efficiency
-
-        one coin, one vote
-        problem: plutarchy
-        one person, one vote
-        problem: sybil attacks
-
-        paradox of voting ~ for a rational, self-interested voter, the costs of voting will normally exceed the expected benefits
-
-        Arrow’s Impossibility Theorem
-
-        Slashing conditions:
-        Copyright infringement
-        Voting for low-quality content?
-
-
-        Delphi
-        -->
-
         <div class="spacing-50"></div>
     </section>
 
@@ -377,10 +310,7 @@
         <h2 class="section-title"><a href="https://www.hyperledger.org/blog/2017/08/22/hello-world-meet-seth-sawtooth-ethereum">Hyperledger Sawtooth Ethereum</a></h2>
         <p>peers and mining, Proof of Elapsed Time (PoET), browser mining</p>
         <p>unification of machine and human attention</p>
-        
-        <!--https://jsecoin.com-->
-
-
+    
         <div class="spacing-50"></div>
     </section>
     
@@ -393,29 +323,7 @@
         <p>Through a commitment to innovation around governance, performance and scalability..</p>
         <div class="spacing-25"></div>
 
-
-        <!-- Initially, we’re making the viewToken protocol available to all creators within cre8coin’s network. The Bidio platform is already up and running, and we’re committed to innovation around governance, performance and scalability. This powerful cryptosystem mints fractalized networks of multidimensional viewTokens. 
-
-        Anyone can register and purchase cre8coin with Stripe. Our existing platform stores value in wallets attached to each user’s account - you can see an example on this profile. Art, journalism and entertainment must evolve with support from the digital advertising industry. Let’s create communities around the monetization of high-quality content.
-
-        Never stop creating! Sign up to start earning viewToken and cre8coin today.-->
-
-        <!--
-        Information will eventually be tokenized, including various metrics for attention. Initially, we’re making the viewToken protocol available to all creators within cre8coin’s network. The Bidio platform is already up and running, and we’re committed to innovation around governance, performance and scalability. This powerful cryptosystem mints fractalized networks of multidimensional viewTokens. Soon, Bidio and cre8coin will release the official roadmap.
-
-        Anyone can register and purchase cre8coin with Stripe. Our existing platform stores value in wallets attached to each user’s account - you can see an example on this profile. Soon, Bidio will announce the pre-sale of cre8coin to develop a truly decentralized YouTube for the sake of creativity. Art, journalism, entertainment and general viewership must evolve with support from the digital advertising industry. Let’s create valuable communities around quality content.
-
-        Never stop creating! Sign up to start earning viewToken and cre8coin today.
-
-        Continuous English Auction ~ problem of monotonicity
-
-        Allocation Rule: creator (seller) decides who is currently winning the auction
-        Payment Rule: reserve price set by creator
-
-        http://www.cramton.umd.edu/papers2000-2004/cramton-simultaneous-ascending-auction.pdf
-
-        Myerson–Satterthwaite Theorem ~ important result in mechanism design and the economics of asymmetric information, which says there is no efficient way for two parties to trade a good when they each have secret, probabilistically different valuations for it, without the risk of forcing one party to trade at a loss. 
-        -->
+        <p>Information will be tokenized, including various metrics for attention. Initially, we’re making the viewToken protocol available to all creators within cre8coin’s network. Through a commitment to innovation around governance, performance and scalability, the cre8coin utility creates innovative distribtued attention backed value networks. This powerful cryptosystem mints fractalized networks of multidimensional viewTokens. </p>
 
         <h3 style="font-size:26px">RESOURCES</h3><br><br>
         <a href="https://people.cs.uchicago.edu/~teutsch/papers/ico.pdf">[1] ICO</a><br>
