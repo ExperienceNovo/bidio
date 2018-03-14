@@ -24,6 +24,8 @@ angular.module( 'bidio.markets', [
 	$scope.currentUser = config.currentUser;
 	$scope.orders = orders;
 	$scope.newLookup = {};
+	$scope.marketCount = (888888*Math.random()).toFixed(0);
+	$scope.tokenVolume = (8888888*Math.random()).toFixed(0);
 
 	//ORDERS WEB3 FILTER.... ~sockets etc --> same 'filters' --> for videos / dash..
 	var marketEvent = $rootScope.marketContractInstance.CreateOrder({_to: ''}, {fromBlock: 0, toBlock: 'latest'});

@@ -25,9 +25,9 @@ angular.module( 'bidio.market', [
 	$scope.currentUser = config.currentUser;
     $scope.stateParams = $stateParams;
     $scope.orders = orders;
- 	$scope.tokenInCirculation = (88888*Math.random()).toFixed(0)
+ 	$scope.tokenInCirculation = (88888*Math.random()).toFixed(0);
 
-    $scope.chart = {
+	$scope.chart = {
         chart: {
             zoomType: 'x',
         },
@@ -54,16 +54,7 @@ angular.module( 'bidio.market', [
             }
         },
         credits:{enabled:false},
-        //chartType:'stock'
     };
-
-    $scope.labels = ["1", "2", "3", "4", "5", "6", "7", "8"];
-    $scope.series = ['Bids', 'Asks'];
-    $scope.data = [
-        [0, 0, 0, 0, 56, 59, 85, 121],
-        [109, 72, 55, 35, 0, 0, 0, 0]
-    ];
-
 
 	//THIS FILTER ACTUALLY WORKS!!!!!!!
 	//hardcode general, and cre8.. or figure out string

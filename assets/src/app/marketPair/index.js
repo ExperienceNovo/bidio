@@ -25,6 +25,7 @@ angular.module( 'bidio.marketPair', [
 	$scope.currentUser = config.currentUser;
     $scope.stateParams = $stateParams;
     $scope.orders = orders;
+    $scope.dailyVolume = (888888*Math.random()).toFixed(0);
     
 	$scope.chart = {
         chart: {
@@ -53,7 +54,6 @@ angular.module( 'bidio.marketPair', [
             }
         },
         credits:{enabled:false},
-        //chartType:'stock'
     };
 
 	$scope.labels = ["1", "2", "3", "4", "5", "6", "7", "8"];

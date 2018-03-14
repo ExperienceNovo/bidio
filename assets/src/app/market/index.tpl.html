@@ -12,7 +12,7 @@
     <div class="spacing-10"></div>
     <h2>Markets</h2><hr>
     <div ng-repeat="order in orders">
-        <a href="market/{{order.args._orderExchangeIdentifier}}/{{order.args._orderExchangeIdentifier}}">{{order.args._orderExchangeIdentifier}}-{{order.args._orderExchangeIdentifier1}}</a>
+        <a href="market/{{order.args._orderExchangeIdentifier}}/{{order.args._orderExchangeIdentifier}}">{{order.args._orderExchangeIdentifier}}/{{order.args._orderExchangeIdentifier1}}</a>
     </div>
 
     <div class="spacing-25"></div>
@@ -82,9 +82,6 @@
 
     <div class="spacing-25"></div>
 
-    <!--<canvas id="bar" class="chart chart-bar"
-      chart-data="data" chart-labels="labels" chart-series="series">
-    </canvas>-->
     <highchart config="chart"></highchart>
 
 
