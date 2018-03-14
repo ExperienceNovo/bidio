@@ -11,6 +11,7 @@ var cssFilesToInject = [
   'bower_components/angular-material/angular-material.css',
   'bower_components/video.js/dist/video-js.css',
   'bower_components/textAngular/dist/textAngular.css',
+  'bower_components/highcharts-ng/dist/highcharts-ng.css',
   'styles/**/*.css',
 
 ];
@@ -54,6 +55,12 @@ var jsFilesToInject = [
   'bower_components/textAngular/dist/textAngular.min.js',
   'bower_components/angular-thumbnails/dist/angular-thumbnails.min.js',
   'bower_components/web3/dist/web3.min.js',
+
+  'bower_components/highcharts/highstock.js',
+  'bower_components/highcharts/modules/heatmap.js',
+  'bower_components/highcharts/modules/wordcloud.js',
+  'bower_components/highcharts/highcharts-more.js',
+  'bower_components/highcharts-ng/dist/highcharts-ng.js',
 
   // All of the rest of your app scripts
   'src/**/*.js',

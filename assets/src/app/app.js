@@ -20,6 +20,7 @@ angular.module( 'bidio', [
     'stripe',
     'textAngular',
     'angular-thumbnails',
+    'highcharts-ng',
     'bidio.admin',
     'bidio.blog',
     'bidio.blogPost',

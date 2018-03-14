@@ -27,28 +27,34 @@ angular.module( 'bidio.market', [
     $scope.orders = orders;
  	$scope.tokenInCirculation = (88888*Math.random()).toFixed(0)
 
-    $scope.orderBookOptions = {
+    $scope.chart = {
         chart: {
-            type: 'multiBarChart',
-            height: 450,
-            margin : {
-                top: 20,
-                right: 20,
-                bottom: 45,
-                left: 45
-            },
-            x: function(d){ 
-                return parseFloat(d[0]); 
-            },
-            y: function(d){ 
-                return parseFloat(d[1]); 
-            },
-            yDomain:[0,25],
-            staggerLabels: true,
-            duration: 500,
-            reduceXTicks:true,
-            showControls: false,
-        }
+            zoomType: 'x',
+        },
+        series: [{
+            type: 'column',
+            name: 'Bids',
+            data: [0, 0, 0, 0, 56, 59, 85, 121]
+        },{
+            type: 'column',
+            name: 'Asks',
+            data: [109, 72, 55, 35, 0, 0, 0, 0]
+        }],
+        title: {
+            text: ''
+        },
+        xAxis: {
+            title: {
+                text: 'Price'
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Amount'
+            }
+        },
+        credits:{enabled:false},
+        //chartType:'stock'
     };
 
     $scope.labels = ["1", "2", "3", "4", "5", "6", "7", "8"];
