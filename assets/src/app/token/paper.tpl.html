@@ -11,7 +11,7 @@
 
 <div class="container">
 
-    <!--intro, multidimstd, vt protocol, market intell, attention ex, governance, sawtooth, conclusion-->
+    <!--intro, multidimstd, market intell, vt protocol, attention ex, governance, sawtooth, conclusion-->
 
     <section class="introduction">
 
@@ -94,10 +94,127 @@
             <p>Known & Chosen</p>
             <div class="spacing-50"></div>
         </div>
-
     </section>
 
-    <!--go to the end-->
+    <section class="multidimensionalTokenStandard">
+
+        <div class="col-xs-12">
+            <h2 class="section-title">Multidimensional Token Standard</h2>
+            <p><a href="https://github.com/ethereum/EIPs/issues/888">ERC-888</a></p>
+            <span style="font-style: italic;color:gray;">a model for multidimensional tokenization, which utilizes identifiers to refer to balances & data.</span>
+            <div class="spacing-10"></div>
+            <p>Token data-structures with balances specified by unique identifiers create emergent properties within cryptoeconomic systems that introduce valuable approaches to mechanism design and contract development. Multidimensional tokens involve layers of information and functionality, create interdependent curation markets, and give rise to integrated information across networks.</p>
+            <p>N-dimensional balances are based on identifiers - ex: token per address [address][‘address’][balance]</p>
+            <span style="font-style: italic;color:gray;">Multidimensional Token Structure: [address][_id][_value]</span>
+            <br>
+            <span style="font-style: italic;color:gray;">Mapping (address => mapping (string => uint)) balances</span>
+            <br><br>
+        </div>
+
+        <div class="col-xs-12">
+            <a href="https://gist.github.com/troverman/809dba32d8510e7713aaa5c869e607ae">Solidity Contract</a>
+            <br><br>
+            <pre style="text-align:left;font-family:monospace;white-space:pre-wrap;">
+            contract MultidimensionalToken {
+                mapping (address => mapping (string => uint)) balances;
+                event Transfer(address indexed _from, address indexed _to, string _id, uint256 _value);
+                
+                function balanceOf(address _owner, string _id) constant returns (uint256 balance) {
+                    return balances[_owner][_id];
+                }
+
+                function transfer(address _to, string _id, uint256 _value) returns (bool success) {
+                    if (balances[msg.sender][_id] >= _value && _value > 0) {
+                        balances[msg.sender][_id] -= _value;
+                        balances[_to][_id] += _value;
+                        Transfer(msg.sender, _to, _id, _value);
+                        return true;
+                    } 
+                    else {return false;}
+                }
+            }</pre>
+            <div class="spacing-50"></div>
+        </div>
+    </section>
+
+    <section class="marketIntelligence">
+
+        <div class="col-xs-12">
+            <h2 class="section-title">Market Intelligence</h2>
+            <p style="font-size:18px"><a href="/market">Multidimensional Token Market</a></p>
+            <p>Multidimensionality as a market set enables sets of choices for investment with real social impact</p>
+            <!-- we create an infinte number of assets; whose creation and ownesrship rules are dependant on a protocol set: a set of users that create them, a set of..-->  
+            <p>In creating an infnite potiental set of crypto assets, emergent market intelligence aligns profitability motivations of market investors with overall implict value of those assets</p> <!--that this motivation propigates.</p>-->
+            <!--programatic designition of identifer based asset properties-->
+            <p>Though designing protocols to govern the process of creating, exchanging, and distribution of multidimensional crypto assets, a maket is given emergent intelligence potiental.</p>  
+            <p>Multidimensionality engenders exchange value to align with personal value - our valuable attention - and it's exchange</p>
+        </div>
+
+        <div class="col-xs-12">
+            <div class="spacing-10"></div>
+            <hr>
+            <div class="spacing-10"></div>
+        </div>
+
+        <div class="col-xs-12">
+            <!--talk about the power of market makers-->
+            <!--<p>In general, the power of market makers, aligns with the general ethos of crypto as a whole, as one is able to hold assets, and create liquidity, for tokenization that begets real social impact, drives progress, and engenders a positive future.</p>-->
+            <p>General distribution of viewToken provides a universal floor, allowing creators to earn and share the value of their viewers’ attention and engagement. When sponsors want to purchase attention from a specific audience, they can buy the rights to any tokens minted in real time (with strings attached). Net bid value is the full bid amount minus the market value of general attentionToken.</p>
+            <div class="spacing-10"></div>
+            <p style="font-size:18px">Mechanisms of Coordination</p>
+            <p>Watching: creating supply to reward creators who add extrinsic value | token-curated award system</p>
+            <p>Creating: releasing energy through self-expression | offering rewards to patrons and sponsors</p>
+            <p>Bidding: assigning liquid values to multidimensional viewer actions | stake or trust pooling around high-quality content</p>
+            <div class="spacing-10"></div>
+            <p>Viewers: watch with intentionality to improved society</p>
+            <p>Creators: create to add extrinsic value</p>
+            <p>Market Makers: bid to reward quality</p>
+            <div class="spacing-50"></div>
+        </div>
+    </section>
+
+    <section class="viewTokenProtocol">
+
+        <div class="col-xs-12">
+            <h2 class="section-title"><a href="#">viewToken(vT) Protocol</a></h2>
+            <p>ERC-888 Multidimensional standard</p>
+            <p>Utility protocol contracts are based on ERC-888 identifiers.</p>
+            <div class="spacing-10"></div>
+            <p style="font-size:18px">Mechanism Design</p>
+            <p>general vT, account based viewToken, content based viewToken</p>
+            <a href="https://gist.github.com/troverman/809dba32d8510e7713aaa5c869e607ae">Solidity Contract</a><br>
+            <a href="https://gist.github.com/troverman/809dba32d8510e7713aaa5c869e607ae">Solidity Contract</a><br>
+            <a href="https://gist.github.com/troverman/809dba32d8510e7713aaa5c869e607ae">Solidity Contract</a><br>
+        </div>
+
+        <div class="col-xs-12">
+            <div class="spacing-10"></div>
+            <img style="max-width:100%" src="images/protocol.png"/>
+            <div class="spacing-10"></div>
+        </div>
+
+        <div class="col-sm-6 col-xs-12">
+            <!--talk about smart contract ecosystem with respect to viewtoken-->
+            <!--token market & liquidity-->
+            <p>In equilibrium, the mapping from types to outcomes is the same as the mapping that would be chosen by the social choice function.</p>
+            <p>adding a mechanism turns a Bayesian setting into “game form”</p>
+            <p>Mechanism: a pair of strategy spaces and a function which maps any strategy to resulting social decisions and transfers.</p>
+            <div class="spacing-10"></div>
+            <p>AttentionTokens are continuously minted based on viewer actions.</p>
+            <p>Desired Outcomes: Creators will produce high-quality content, which drives progress with energy and information. Bidders will reward creators who add extrinsic value to unified groups coordinating around shared goal(s). Viewers will be more accountable for what they watch because they want their own attention to be more valuable. Overall, cre8coin optimizes for individual belief systems by gamifying the discovery of qualitative schelling points. For Bidio participants, utility means fulfillment of purpose with guaranteed authenticity.</p>
+            <div class="spacing-10"></div>
+        </div>
+
+        <div class="col-sm-6 col-xs-12">
+            <p>The ViewToken protol, and multidimensional markets, enables direct bidding mechanisms which enable sponsors to buy exclusive rights to identified tokens, which are continuously minted as viewers pay attention.</p>
+            <p>Bidio’s continuous auction mechanism runs without any input from the creator, and it proposes outcomes that would maximize utility of sponsors. Utilizing the multidimensional viewToken protocol, creators know which brands are willing to pay and how much per token.</p>
+            <div class="spacing-10"></div>
+            <p>Complete Transparency and Control</p>
+            <p>At any given time, individual creators have the choice to approve a number of sponsor(s) per video. Since the creator has no way of affecting who will pay the most, she is effectively trying to maximize the sum of her and her viewers’ utility.</p>
+            <div class="spacing-50"></div>
+        </div>
+    </section>
+
     <section class="attentionExchanges">
         <h2 class="section-title">Attention Exchanges</h2>
 
@@ -185,127 +302,6 @@
         <p>Experience is identical to a conceptual structure in global maximum of intrinsic powers. Consciousness is not just functional. Subjective meaning is derived from</p>
 
         <div class="spacing-50"></div>
-    </section>
-
-    <section class="marketIntelligence">
-
-        <div class="col-xs-12">
-            <h2 class="section-title">Market Intelligence</h2>
-            <p style="font-size:18px"><a href="/market">Multidimensional Token Market</a></p>
-            <p>Multidimensionality as a market set enables sets of choices for investment with real social impact</p>
-            <!-- we create an infinte number of assets; whose creation and ownesrship rules are dependant on a protocol set: a set of users that create them, a set of..-->  
-            <p>In creating an infnite potiental set of crypto assets, emergent market intelligence aligns profitability motivations of market investors with overall implict value of those assets</p> <!--that this motivation propigates.</p>-->
-            <!--programatic designition of identifer based asset properties-->
-            <p>Though designing protocols to govern the process of creating, exchanging, and distribution of multidimensional crypto assets, a maket is given emergent intelligence potiental.</p>  
-            <p>Multidimensionality engenders exchange value to align with personal value - our valuable attention - and it's exchange</p>
-        </div>
-
-        <div class="col-xs-12">
-            <div class="spacing-10"></div>
-            <hr>
-            <div class="spacing-10"></div>
-        </div>
-
-        <div class="col-xs-12">
-            <!--talk about the power of market makers-->
-            <!--<p>In general, the power of market makers, aligns with the general ethos of crypto as a whole, as one is able to hold assets, and create liquidity, for tokenization that begets real social impact, drives progress, and engenders a positive future.</p>-->
-            <p>General distribution of viewToken provides a universal floor, allowing creators to earn and share the value of their viewers’ attention and engagement. When sponsors want to purchase attention from a specific audience, they can buy the rights to any tokens minted in real time (with strings attached). Net bid value is the full bid amount minus the market value of general attentionToken.</p>
-            <div class="spacing-10"></div>
-            <p style="font-size:18px">Mechanisms of Coordination</p>
-            <p>Watching: creating supply to reward creators who add extrinsic value | token-curated award system</p>
-            <p>Creating: releasing energy through self-expression | offering rewards to patrons and sponsors</p>
-            <p>Bidding: assigning liquid values to multidimensional viewer actions | stake or trust pooling around high-quality content</p>
-            <div class="spacing-10"></div>
-            <p>Viewers: watch with intentionality to improved society</p>
-            <p>Creators: create to add extrinsic value</p>
-            <p>Market Makers: bid to reward quality</p>
-            <div class="spacing-50"></div>
-        </div>
-    </section>
-
-    <section class="multidimensionalTokenStandard">
-
-        <div class="col-xs-12">
-            <h2 class="section-title">Multidimensional Token Standard</h2>
-            <p><a href="https://github.com/ethereum/EIPs/issues/888">ERC-888</a></p>
-            <span style="font-style: italic;color:gray;">a model for multidimensional tokenization, which utilizes identifiers to refer to balances & data.</span>
-            <div class="spacing-10"></div>
-            <p>Token data-structures with balances specified by unique identifiers create emergent properties within cryptoeconomic systems that introduce valuable approaches to mechanism design and contract development. Multidimensional tokens involve layers of information and functionality, create interdependent curation markets, and give rise to integrated information across networks.</p>
-            <p>N-dimensional balances are based on identifiers - ex: token per address [address][‘address’][balance]</p>
-            <span style="font-style: italic;color:gray;">Multidimensional Token Structure: [address][_id][_value]</span>
-            <br>
-            <span style="font-style: italic;color:gray;">Mapping (address => mapping (string => uint)) balances</span>
-            <br><br>
-        </div>
-
-        <div class="col-xs-12">
-            <a href="https://gist.github.com/troverman/809dba32d8510e7713aaa5c869e607ae">Solidity Contract</a>
-            <br><br>
-            <pre style="text-align:left;font-family:monospace;white-space:pre-wrap;">
-            contract MultidimensionalToken {
-                mapping (address => mapping (string => uint)) balances;
-                event Transfer(address indexed _from, address indexed _to, string _id, uint256 _value);
-                
-                function balanceOf(address _owner, string _id) constant returns (uint256 balance) {
-                    return balances[_owner][_id];
-                }
-
-                function transfer(address _to, string _id, uint256 _value) returns (bool success) {
-                    if (balances[msg.sender][_id] >= _value && _value > 0) {
-                        balances[msg.sender][_id] -= _value;
-                        balances[_to][_id] += _value;
-                        Transfer(msg.sender, _to, _id, _value);
-                        return true;
-                    } 
-                    else {return false;}
-                }
-            }</pre>
-            <div class="spacing-50"></div>
-        </div>
-
-    </section>
-
-    <section class="viewTokenProtocol">
-
-        <div class="col-xs-12">
-            <h2 class="section-title"><a href="#">viewToken(vT) Protocol</a></h2>
-            <p>ERC-888 Multidimensional standard</p>
-            <p>Utility protocol contracts are based on ERC-888 identifiers.</p>
-            <div class="spacing-10"></div>
-            <p style="font-size:18px">Mechanism Design</p>
-            <p>general vT, account based viewToken, content based viewToken</p>
-            <a href="https://gist.github.com/troverman/809dba32d8510e7713aaa5c869e607ae">Solidity Contract</a><br>
-            <a href="https://gist.github.com/troverman/809dba32d8510e7713aaa5c869e607ae">Solidity Contract</a><br>
-            <a href="https://gist.github.com/troverman/809dba32d8510e7713aaa5c869e607ae">Solidity Contract</a><br>
-        </div>
-
-        <div class="col-xs-12">
-            <div class="spacing-10"></div>
-            <img style="max-width:100%" src="images/protocol.png"/>
-            <div class="spacing-10"></div>
-        </div>
-
-        <div class="col-sm-6 col-xs-12">
-            <!--talk about smart contract ecosystem with respect to viewtoken-->
-            <!--token market & liquidity-->
-            <p>In equilibrium, the mapping from types to outcomes is the same as the mapping that would be chosen by the social choice function.</p>
-            <p>adding a mechanism turns a Bayesian setting into “game form”</p>
-            <p>Mechanism: a pair of strategy spaces and a function which maps any strategy to resulting social decisions and transfers.</p>
-            <div class="spacing-10"></div>
-            <p>AttentionTokens are continuously minted based on viewer actions.</p>
-            <p>Desired Outcomes: Creators will produce high-quality content, which drives progress with energy and information. Bidders will reward creators who add extrinsic value to unified groups coordinating around shared goal(s). Viewers will be more accountable for what they watch because they want their own attention to be more valuable. Overall, cre8coin optimizes for individual belief systems by gamifying the discovery of qualitative schelling points. For Bidio participants, utility means fulfillment of purpose with guaranteed authenticity.</p>
-            <div class="spacing-10"></div>
-        </div>
-
-        <div class="col-sm-6 col-xs-12">
-            <p>The ViewToken protol, and multidimensional markets, enables direct bidding mechanisms which enable sponsors to buy exclusive rights to identified tokens, which are continuously minted as viewers pay attention.</p>
-            <p>Bidio’s continuous auction mechanism runs without any input from the creator, and it proposes outcomes that would maximize utility of sponsors. Utilizing the multidimensional viewToken protocol, creators know which brands are willing to pay and how much per token.</p>
-            <div class="spacing-10"></div>
-            <p>Complete Transparency and Control</p>
-            <p>At any given time, individual creators have the choice to approve a number of sponsor(s) per video. Since the creator has no way of affecting who will pay the most, she is effectively trying to maximize the sum of her and her viewers’ utility.</p>
-            <div class="spacing-50"></div>
-        </div>
-
     </section>
 
     <section class="cre8coinGovernance">
