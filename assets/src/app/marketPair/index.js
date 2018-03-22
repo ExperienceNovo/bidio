@@ -90,10 +90,11 @@ angular.module( 'bidio.marketPair', [
 
     };
 
-    for (var i=0;i>1000;i++){
+    for (var x=0;x>1000;x++){
     	 $scope.timeChart.series[0].data.push([x,Math.random()*x*100]);
     	 $scope.timeChart.series[1].data.push([x,Math.random()*x*150])
     	 $scope.timeChart.series[2].data.push([x,Math.random()*x*50])
+
     }
 
 
