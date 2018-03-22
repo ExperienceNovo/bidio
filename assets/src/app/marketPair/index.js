@@ -95,9 +95,9 @@ angular.module( 'bidio.marketPair', [
     };
 
 	for (var x = 0; x < 1000; x++){
-     	$scope.timeChart.series[0].data.push([x,Math.abs(Math.sin(x))*200]);
-    	$scope.timeChart.series[1].data.push([x,Math.abs(Math.sin(x))*300]);
-    	$scope.timeChart.series[2].data.push([x,Math.abs(Math.sin(x))*50]);
+     	$scope.timeChart.series[0].data.push([x,x*Math.abs(Math.sin(x/5))*200+x*300]);
+    	$scope.timeChart.series[1].data.push([x,x*Math.abs(Math.sin(x/5))*300+x*300]);
+    	$scope.timeChart.series[2].data.push([x,x*Math.abs(Math.sin(x/5))*50+x*300]);
     	console.log($scope.timeChart.series[2])
     }
 
