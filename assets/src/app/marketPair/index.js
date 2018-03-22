@@ -61,16 +61,19 @@ angular.module( 'bidio.marketPair', [
             zoomType: 'x',
         },
         series: [{
+			id: 'Price',
             type: 'spline',
             name: 'Price',
             data: []
         },{
+        	id: 'Bid',
             type: 'spline',
-            name: 'Bids',
+            name: 'Bid',
             data: []
         },{
+			id: 'Ask',
             type: 'spline',
-            name: 'Asks',
+            name: 'Ask',
             data: []
         },
         ],
@@ -79,22 +82,23 @@ angular.module( 'bidio.marketPair', [
         },
         xAxis: {
             title: {
-                text: 'Price'
+                text: null
             }
         },
         yAxis: {
             title: {
-                text: 'Amount'
+                text: null
             }
         },
+        credits:{enabled:false},
 
     };
 
-    for (var x=0;x>1000;x++){
-    	 $scope.timeChart.series[0].data.push([x,Math.random()*x*100]);
-    	 $scope.timeChart.series[1].data.push([x,Math.random()*x*150])
-    	 $scope.timeChart.series[2].data.push([x,Math.random()*x*50])
-
+	for (var x = 0; x < 1000; x++){
+     	$scope.timeChart.series[0].data.push([x,Math.abs(Math.sin(x))*200]);
+    	$scope.timeChart.series[1].data.push([x,Math.abs(Math.sin(x))*300]);
+    	$scope.timeChart.series[2].data.push([x,Math.abs(Math.sin(x))*50]);
+    	console.log($scope.timeChart.series[2])
     }
 
 
