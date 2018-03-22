@@ -42,7 +42,7 @@ angular.module( 'bidio.home', [
 	$scope.selectSort = function(sort){
 		$scope.sort = sort;
 		$rootScope.stateIsLoading = true;
-		VideoModel.getSome(48, $scope.skip, $scope.sort).then(function(videos) {
+		VideoModel.getSome(48, $scope.skip, $scope.sortText).then(function(videos) {
 			$rootScope.stateIsLoading = false;
 			$scope.videos = videos;
 			for (x in $scope.videos){

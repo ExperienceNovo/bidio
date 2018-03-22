@@ -56,13 +56,45 @@ angular.module( 'bidio.marketPair', [
         credits:{enabled:false},
     };
 
-	$scope.labels = ["1", "2", "3", "4", "5", "6", "7", "8"];
-	$scope.series = ['Bids', 'Asks'];
-	$scope.data = [
-	    [0, 0, 0, 0, 56, 59, 85, 121],
-	    [109, 72, 55, 35, 0, 0, 0, 0]
-	];
+    $scope.timeChart = {
+    	chart: {
+            zoomType: 'x',
+        },
+        series: [{
+            type: 'spline',
+            name: 'Price',
+            data: []
+        },{
+            type: 'spline',
+            name: 'Bids',
+            data: []
+        },{
+            type: 'spline',
+            name: 'Asks',
+            data: []
+        },
+        ],
+        title: {
+            text: ''
+        },
+        xAxis: {
+            title: {
+                text: 'Price'
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Amount'
+            }
+        },
 
+    };
+
+    for (var i;i>1000;i++){
+    	 $scope.timeChart.series[0].data.push([x,Math.random()*x*100]);
+    	 $scope.timeChart.series[1].data.push([x,Math.random()*x*100])
+    	 $scope.timeChart.series[2].data.push([x,Math.random()*x*100])
+    }
 
 
 	//THIS FILTER ACTUALLY WORKS!!!!!!!

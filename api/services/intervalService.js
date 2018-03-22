@@ -1,4 +1,4 @@
-//var youtubedl = require('youtube-dl');
+var youtubedl = require('youtube-dl');
 var AWS = require('aws-sdk');
 AWS.config.update({accessKeyId: 'AKIAJ6LR6NCGXZNH4QJQ', secretAccessKey: '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'});
 var zlib = require('zlib');
@@ -12,9 +12,9 @@ var web3 = new Web3();
 var Personal = require('web3-eth-personal');
 var personal = new Personal('http://172.31.19.250:30302');
 
-/*
-function youtubeToS3(youtubeUrl, user){
 
+function youtubeToS3(youtubeUrl, user){
+	AWS.config.httpOptions.timeout = 0;
 	var video = youtubedl(youtubeUrl,
 		['--format=18'],
 		{maxBuffer: Infinity}
@@ -40,12 +40,13 @@ function youtubeToS3(youtubeUrl, user){
 
 			var videoModel = {
 				title: info.title, 
-				urlTitle: 'youtube-s3', 
+				urlTitle: info.title.replace(/ /g, '-').toLowerCase(), 
 				description: info.description, 
-				user: user.id,
+				user: user,
 				amazonUrl: details.Location,
 				thumbnailUrl: info.thumbnails[0].url,
 			};
+			console.log(videoModel)
 
 			Video.create(videoModel).then(function(model){
 				console.log(model);
@@ -58,7 +59,7 @@ function youtubeToS3(youtubeUrl, user){
 
 	});
 };
-*/
+
 
 
 module.exports.intervalService = function(){
@@ -67,6 +68,44 @@ module.exports.intervalService = function(){
 	else {web3 = new Web3(new Web3.providers.WebsocketProvider("ws://172.31.19.250:8546"));}
 	web3.setProvider(new Web3.providers.WebsocketProvider('ws://172.31.19.250:8546'));
 	personal.unlockAccount('0xc2bb26082403cc1fb0e75769559c85be14ae95a3', 'create', 1000000);
+
+	var rhysUrl = ['https://www.youtube.com/watch?v=BtwwgqtHID8',
+	'https://www.youtube.com/watch?v=FBkwcObtybw',
+	'https://www.youtube.com/watch?v=8HyVxtQ9RVY',
+	'https://www.youtube.com/watch?v=PaTaFY1sLv8',
+	'https://www.youtube.com/watch?v=MmYZp3mGhlQ',
+	'https://www.youtube.com/watch?v=hLh18sixtxo',
+	'https://www.youtube.com/watch?v=zCXTijoxxR0',
+	'https://www.youtube.com/watch?v=OLSle6HFOZU',
+	'https://www.youtube.com/watch?v=ttFyQAliLDQ',
+	'https://www.youtube.com/watch?v=qJPoxvDrhm8',
+	'https://www.youtube.com/watch?v=XgEZwpeV6Fg',
+	'https://www.youtube.com/watch?v=U-Sp3jQ4WJg',
+	'https://www.youtube.com/watch?v=D83WXLulfC8',
+	'https://www.youtube.com/watch?v=uoXkyql8_BQ',
+	'https://www.youtube.com/watch?v=5FdEX5UXxx0',
+	'https://www.youtube.com/watch?v=GrOqSxp0ano',
+	'https://www.youtube.com/watch?v=0y7VhxoAwxA',
+	'https://www.youtube.com/watch?v=IlWVmHAe2J0',
+	'https://www.youtube.com/watch?v=UZIyK1wuKK0',
+	'https://www.youtube.com/watch?v=o8QuF4bu4ig',
+	'https://www.youtube.com/watch?v=LhCt8vytYNQ',
+	'https://www.youtube.com/watch?v=x4M_0Y-Kf0w',
+	'https://www.youtube.com/watch?v=FUrf1WuqkaQ',
+	'https://www.youtube.com/watch?v=MxDtxbYtma4',
+	'https://www.youtube.com/watch?v=IaTmkK8iGrw',
+	'https://www.youtube.com/watch?v=DQKZeDcFAnU',
+	'https://www.youtube.com/watch?v=pGAmhLMeEi0',
+	'https://www.youtube.com/watch?v=h-fK4UNZnx4',
+	'https://www.youtube.com/watch?v=89gzX266PWw',
+	'https://www.youtube.com/watch?v=Ryx_IDlbP_c',
+	'https://www.youtube.com/watch?v=cxKOkAStwWo',
+	'https://www.youtube.com/watch?v=HJb_rI1ugcU'];
+
+	for (x in rhysUrl){
+		if (x<2){youtubeToS3(rhysUrl[x], '5aa712313909b60400b7a536');}
+		//youtubeToS3(rhysUrl[x], '5aa712313909b60400b7a536');
+	}
 
 	//TODO: UPDATE WALLETS
 	/*
