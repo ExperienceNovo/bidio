@@ -40,11 +40,10 @@ angular.module( 'bidio.video', [
 	    ],
 	    poster: $scope.video.thumbnailUrl || '/images/video-overlay.png'
 	};
-	
+
 	//MEDIA TYPES
 	if($scope.media.sources[0].type == 'video/mov'){$scope.media.sources[0].type = 'video/mp4'}
 	if($scope.media.sources[0].type == 'video/m4v'){$scope.media.sources[0].type = 'video/mp4'}
-	if($scope.media.sources[0].type == 'video/flv'){$scope.media.sources[0].type = 'video/flv'}
 	if($scope.media.sources[0].type == 'video/mp3'){$scope.media.sources[0].type = 'audio/mp3'}
 
 	var activeBid = video.bids.filter(function(bid){ return bid.isActive });
