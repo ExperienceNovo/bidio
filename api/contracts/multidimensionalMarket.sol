@@ -63,8 +63,20 @@ contract multidimensionalMarket {
         //check order sets below price threshold to match and fuilfil.. 
         //aka transfer from owner eskrow to order maker transfer order maker balance to eskrow holder
         //NEXT TIME
-        string[] storage ordersOnBook = orderBook['_idSet1']['_idSet2']['_valueSet1'];
         
+        string[] storage ordersOnBook = orderBook['_idSet1']['_idSet2']['_valueSet1']; // PROBABLY HUGE.. CHECK SUM TO LEVEL OF ORDER.
+        //THIS IS NOT CROSS DIMENSIONAL .. 
+        for (uint x = 0; x < ordersOnBook.length; x++){
+            
+            for (uint y = 0; y < _idSet1.length; x++){
+                
+                //FUILFIL ORDER
+                //member1 ESKROW --> member2 balance
+                token.transferFromEskrow(ordersOnBook[x]/*member*/, _idSet1[y], _valueSet1[y]/*ordersOnBook[x].split value*/, "fuilfil");
+            
+            }
+            
+        }
         
         //CHECK IF ADDRESS HAS TOKENS
         //TODO: EFFICENCY? 
@@ -114,7 +126,7 @@ contract multidimensionalMarket {
                     amountSet: _valueSet2,
                     length: _idSet2.length
                 }),
-                member:_member,
+                member: _member,
                 index: orders.length
             })
         );
