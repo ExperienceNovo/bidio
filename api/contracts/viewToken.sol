@@ -4,15 +4,21 @@ contract ViewToken {
     
     mapping (address => mapping (string => uint256)) balances;
     mapping (address => mapping (string => uint256)) dailyBalance;
+    mapping (address => mapping (string => uint256)) eskrow;
     
     mapping (address => uint256) lastView;
     mapping (address => uint256) lastDate;
 
     event Transfer(address indexed _from, address indexed _to, string indexed _id, uint256 _value);
+    event TransferEskrow(address indexed _address, string indexed _type, string indexed _id, uint256 _value);
     event Create(address indexed _from, address indexed _to, string indexed _id, uint256 _value);
 
     function balanceOf(address _owner, string _id) public constant returns (uint256 balance) {
         return balances[_owner][_id];
+    }
+
+    function eskrowBalanceOf(address _owner, string _id) public constant returns (uint256 balance) {
+        return eskrow[_owner][_id];
     }
 
     function transfer(address _to, string _id, uint256 _value) public returns (bool success){
@@ -23,6 +29,28 @@ contract ViewToken {
             return true;
         } 
         else { revert; }
+    }
+
+    function transferEskrow(address _address, string _id, uint256 _value, string _type) public returns (bool success){
+        if (_type == "deposit"){
+            if (balances[msg.sender][_id] >= _value && _value > 0) {
+                balances[msg.sender][_id] -= _value;
+                eskrow[msg.sender][_id] += _value;
+                emit TransferEskrow(msg.sender, _type, _id, _value);
+                return true;
+            } 
+            else { revert; }
+        }
+        if (_type == "withdrawl"){
+            if (eskrow[msg.sender][_id] >= _value && _value > 0) {
+                eskrow[msg.sender][_id] -= _value;
+                balances[msg.sender][_id] += _value;
+                emit TransferEskrow(msg.sender, _type, _id, _value);
+                return true;
+            } 
+            else { revert; }
+
+        }
     }
     
     function transferMulti(address _to, string[] _idSet, uint256[] _valueSet) public returns (bool success){
