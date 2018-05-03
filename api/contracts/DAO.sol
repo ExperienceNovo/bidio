@@ -10,6 +10,41 @@ contract ERC888{
     
 }
 
+contract Organization {
+    
+    struct Organization{
+        string title;
+        string content;
+        address creator;
+        address parent;
+        address identifer;
+    }
+    
+    //A DNFT.. based on reputation
+    struct Ownership{}//share
+    
+    function getOrganization(address _organization){}
+    function createOrganization(){}
+    
+
+}
+
+contract Reputation {
+    mapping (address => mapping (string => uint)) reputation;
+    
+    function getReputation(address _owner, string _id) constant returns (uint256 balance) {
+         return reputation[_owner][_id];
+    }
+    
+    //ON COMPLETE TASK.. ON VALIDATE WORK..
+    //REPUTATION IS TOTAL TOKEN -- NOT TRANSFERRABLE
+    //NEGATIVE REP?
+    function createReputation(address _address, string _identifer){
+        reputation[_address][_identifer]++;
+    }  
+    
+}
+
 contract Task {
     
     struct Task{
@@ -21,6 +56,7 @@ contract Task {
         uint256[] onValidateValueSet;
         string[] categorySet; //PARENT(S)
         address taskIdentifer;
+        uint256 validationScore;
 
     }
 
@@ -42,27 +78,14 @@ contract Work {
         //GET TASK ID TOKENS.. 
         //GET CATEGORY TOKENS..
     }
-    function validateWork(address _member){
+    function validateWork(address _member, address _task){
+        
         //REPUTATION PROTOCOL
         Reputation reputation = Reputation(0xF0f36c3A545fD00191ED8392028e94eE6d379f17);
+        //GET REPUTATION FOR CATEGORIES OF 'TASK'
         uint256 dimensionalReputation = reputation.getReputation(_member, 'general');
-        
+
     }
 
-}
-
-contract Reputation {
-    mapping (address => mapping (string => uint)) reputation;
-    
-    function getReputation(address _owner, string _id) constant returns (uint256 balance) {
-         return reputation[_owner][_id];
-    }
-    
-    //ON COMPLETE TASK.. ON VALIDATE WORK..
-    //REPUTATION IS TOTAL TOKEN -- NOT TRANSFERRABLE
-    function createReputation(address _address, string _identifer){
-        reputation[_address][_identifer]++;
-    }  
-    
 }
 
