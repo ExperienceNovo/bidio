@@ -483,7 +483,7 @@ h2 {
   }
 
   .outer > .cube .side-black {  
-    background: rgba(255, 255, 255, 0.05);
+    //background: rgba(255, 255, 255, 0.05);
   }
   .side-black.left{
     transform: translateX(-50px) rotateY(-90deg);  
@@ -532,9 +532,6 @@ h2 {
   .cube.outer > .side-black.back{
     transform: translateZ(-100px) rotateX(180deg); 
   }
-
-
-  
 
   @keyframes spin {  
     0% {
