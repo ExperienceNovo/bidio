@@ -1,8 +1,8 @@
 /**
 * Video.js
 *
-* @description :: TODO: You might write a short summary of how this model works and what it represents here.
-* @docs        :: http://sailsjs.org/#!documentation/models
+* @description :: Video Model..
+*
 */
 
 module.exports = {
@@ -76,9 +76,7 @@ module.exports = {
                     values.urlTitle = urlTitle + '.8'
                     cb();
                 }
-                else{
-                    cb();
-                }
+                else{cb();}
             });
         }
         else{cb();}

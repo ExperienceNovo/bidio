@@ -13,13 +13,11 @@ var AuthController = {
     // Get a list of available providers for use in your templates.
     Object.keys(strategies).forEach(function (key) {
       if (key === 'local') return;
-
       providers[key] = {
         name : strategies[key].name
       , slug : key
       };
     });
-
     // Render the `auth/login.ext` view
     res.view({
       providers : providers
@@ -33,9 +31,7 @@ var AuthController = {
   },
 
   register: function (req, res) {
-    res.view({
-      errors: req.flash('error')
-    });
+    res.view({errors: req.flash('error')});
   },
 
   provider: function (req, res) {
@@ -53,9 +49,7 @@ var AuthController = {
         }
         // Upon successful login, send the user to the homepage were req.user
         // will available.
-        else {
-          res.redirect('/dashboard');
-        }
+        else {res.redirect('/dashboard');}
       });
     });
   }

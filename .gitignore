@@ -1,3 +1,8 @@
+#SECRET
+/config/secret.js
+/config/env/development.js
+/config/env/production.js
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db

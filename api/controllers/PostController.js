@@ -2,12 +2,14 @@
  * PostController
  *
  * @description :: Server-side logic for managing posts
- * @help        :: See http://links.sailsjs.org/docs/controllers
+ *
  */
+ 
 var _ = require('lodash');
 
 module.exports = {
 
+	//TODO: DELETE
 	getAll: function(req, res) {
 		Post.getAll()
 		.spread(function(models) {
@@ -15,9 +17,6 @@ module.exports = {
 			Post.subscribe(req, models);
 			res.json(models);
 		})
-		.fail(function(err) {
-			// An error occured
-		});
 	},
 
 	getOne: function(req, res) {
@@ -25,10 +24,11 @@ module.exports = {
 		.spread(function(model) {
 			Post.subscribe(req, model);
 			res.json(model);
-		})
-		.fail(function(err) {
-			res.send(404);
 		});
+	},
+
+	getSome: function(req, res) {
+
 	},
 
 	getByUrlTitle: function(req, res) {
@@ -37,44 +37,30 @@ module.exports = {
 		.spread(function(model) {
 			Post.subscribe(req, model);
 			res.json(model);
-		})
-		.fail(function(err) {
-			res.send(404);
 		});
 	},
 
 	update: function(req, res) {
 		var id = req.param('id');
-		var userId = req.param('user');
-
 		var model = {
 			title: req.param('title'),
-			url_title: req.param('urlTitle'),
-			post_content: req.param('postContent'),
-			user: userId
+			postContent: req.param('postContent'),
+			user: req.param('user')
 		};
-
 		Post.update( {id: id}, model).exec(function afterwards(err, updated){
-		  if (err) {
-		    return;
-		  }
+		  if (err) {return;}
 		});
 	},
 
 	create: function (req, res) {
-		var userId = req.param('user');
 		var model = {
 			title: req.param('title'),
-			url_title: req.param('urlTitle'),
-			post_content: req.param('postContent'),
-			user: userId
+			postContent: req.param('postContent'),
+			user: req.param('user')
 		};
-
 		Post.create(model)
 		.exec(function(err, post) {
-			if (err) {
-				return console.log(err);
-			}
+			if (err) {return console.log(err);}
 			else {
 				Post.publishCreate(post);
 				res.json(post);
@@ -84,24 +70,12 @@ module.exports = {
 
 	destroy: function (req, res) {
 		var id = req.param('id');
-		if (!id) {
-			return res.badRequest('No id provided.');
-		}
-
-		// Otherwise, find and destroy the model in question
+		if (!id) {return res.badRequest('No id provided.');}
 		Post.findOne(id).exec(function(err, model) {
-			if (err) {
-				return res.serverError(err);
-			}
-			if (!model) {
-				return res.notFound();
-			}
-
+			if (err) {return res.serverError(err);}
+			if (!model) {return res.notFound();}
 			Post.destroy(id, function(err) {
-				if (err) {
-					return res.serverError(err);
-				}
-
+				if (err) {return res.serverError(err);}
 				Post.publishDestroy(model.id);
 				return res.json(model);
 			});

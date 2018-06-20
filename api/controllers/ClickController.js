@@ -2,7 +2,7 @@
  * ClickController
  *
  * @description :: Server-side logic for managing views
- * @help        :: See http://links.sailsjs.org/docs/controllers
+ *
  */
 
 module.exports = {
@@ -16,19 +16,15 @@ module.exports = {
 			Click.subscribe(req, model);
 			res.json(model);
 		})
-		.catch(function(err) {
-			res.send(404);
-		});
+		.catch(function(err) {res.send(404);});
 	},
 
 	create: function (req, res) {
-		console.log('CLICK!')
 		var model = {
 			user: req.param('user'),
 			video: req.param('video'),
 			bid: req.param('bid'),
 		};
-
 		Click.create(model)
 		.exec(function(err, click) {
 			if (err) {return console.log(err)}
@@ -49,10 +45,10 @@ module.exports = {
 				res.json(click);
 			}
 		});
-		var clickModel = {
-			video: model.video,
-			user: '0x9fB168CEbAe474Ccb36a8B5D53Aa56c225B9c579'
-		};
-  		blockchainService.createView(viewModel);
+		//var clickModel = {
+		//	video: model.video,
+		//	user: '0x9fB168CEbAe474Ccb36a8B5D53Aa56c225B9c579'
+		//};
+  		//blockchainService.createView(viewModel);
 	}
 };

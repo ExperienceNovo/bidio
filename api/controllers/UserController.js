@@ -1,33 +1,27 @@
 var crypto = require("crypto");
 
 module.exports = {
+	
 	getAll: function(req, res) {
 		User.getAll()
 		.spread(function(models) {
 			User.watch(req);
 			res.json(models);
-		})
-		.fail(function(err) {
-			// An error occured
 		});
 	},
 
 	getBalance: function(req, res) {
 		blockchainService.getBalance(req.param('address')).then(function(cre8coinBalance){
-			
 			//blockchainService.getMultiDimensionalTokenEvents({address:req.param('address')}).then(function(results){
 			//TimeBalance as general total?
 			blockchainService.getMultiDimensionalTokenBalanceLegacy({address:req.param('address'), identifier:'general'}).then(function(results){
 			//blockchainService.getTokenBalanceNew(req.param('address')).then(function(viewTokenBalance){
 				//console.log('cre8coin:',cre8coinBalance, 'viewtoken:', results)
-
 				//res.json({cre8coinBalance: cre8coinBalance, events:results})
 				res.json({cre8coinBalance: cre8coinBalance, viewTokenBalance: results.balance, events:results.events})
 				//res.json({cre8coinBalance: cre8coinBalance, viewTokenBalance: viewTokenBalance})
 				//res.json({balance: cre8coin});
 			});
-
-
 		});
 	},
 
@@ -43,27 +37,17 @@ module.exports = {
 			user must be logged in, id is taken from session
 			returns all passports of user associated w/ id
 		*/
-		id = req.user.id;
-		User.findOne( id )
+		var id = req.user.id;
+		User.findOne(id)
 		.populate('passports')
-		.then(function( user ){
-			return res.json( user.passports );
-		})
-		.fail(function( err ){
-			return res.json( err );
-		})
+		.then(function( user ){return res.json(user.passports);});
 	},
 
 	removePassport: function(req,res){
 		var id = req.user.id;
 		var provider = req.param("provider");
 		Passport.destroy({user: id, provider: provider})
-		.then(function(passport){
-			res.json(passport);
-		})
-		.fail(function(err){
-			res.json(err);
-		});
+		.then(function(passport){res.json(passport);});
 	},
 
 	getMine: function(req,res){
@@ -71,27 +55,19 @@ module.exports = {
 		User.findOne(me)
 		.populate('profile')
 		.populate('passports')
-		.then(function(user){
-			return res.json(user);
-		})
-		.catch(function(err){
-			return res.negotiate(err);
-		});
+		.then(function(user){return res.json(user);})
+		.catch(function(err){return res.negotiate(err);});
 	},
 
 	getSome: function(req,res){
-
 		var limiting = req.param('limiting');
 		var skipping = req.param('skipping');
-
 		User.getSome(limiting,skipping)
 		.then(function(users){
 			User.watch(req);
 			return res.json(users);
 		})
-		.catch(function(err){
-			return res.negotiate(err);
-		})
+		.catch(function(err){return res.negotiate(err);})
 	},
 
 	getByUsername: function(req, res) {
@@ -105,9 +81,6 @@ module.exports = {
 		.spread(function(model) {
 			User.subscribe(req, model);
 			res.json(model);
-		})
-		.fail(function(err) {
-			res.send(404);
 		});
 	},
 
@@ -115,9 +88,6 @@ module.exports = {
 		User.getOne(req.param('id'))
 		.spread(function(model) {
 			res.json(model);
-		})
-		.fail(function(err) {
-			// res.send(404);
 		});
 	},
 
@@ -125,15 +95,12 @@ module.exports = {
 		var model = {
 			username: req.param('username'),
 			email: req.param('email'),
-			first_name: req.param('first_name'),
 			passports: req.param('passports')
 		};
 
 		User.create(model)
 		.exec(function(err, model) {
-			if (err) {
-				return console.log(err);
-			}
+			if (err) {return console.log(err);}
 			else {
 				User.publishCreate(model.toJSON());
 				res.json(model);
@@ -148,34 +115,24 @@ module.exports = {
 			username : req.param('username'),
 			socialAccounts: req.param('socialAccounts')
 		};
-
 		User.update({id: id}, model)
 		.then(function(model){
 			User.publishUpdate(id, model);
 			res.json(model);
 		});
-
 	},
 
 	destroy: function(res,res){
 		var id = req.param("id");
 		User.destroy(id)
-		.then(function(){
-			return res.send(200);
-		})
-		.catch(function(err){
-			return res.negotiate(err);
-		})
+		.then(function(){return res.send(200);})
+		.catch(function(err){return res.negotiate(err);})
 	},
+
 	forgot: function(req,res){
-
-		if (!req.param("email")){
-			return res.negotiate("No email provided")
-		}
-
+		if (!req.param("email")){return res.negotiate("No email provided")}
 		var email = req.param("email");
 		var token;
-
 		User.find({email: email})
 		.populate("passports")
 		.then(function(user){
@@ -183,7 +140,6 @@ module.exports = {
 				req.flash("error", "No user found with email address " + email);
 				res.redirect("/forgot");
 			}
-
 			/*make sure user already has local auth setup*/
 			var hasLocal = user[0].passports.filter(function(passport){
 				return passport.protocol == "local";
@@ -193,9 +149,7 @@ module.exports = {
 				res.redirect("/forgot");
 			}
 			crypto.randomBytes(20, function(err,buf){
-				if (err){
-					return res.negotiate(err);
-				}
+				if (err){return res.negotiate(err);}
 				token = buf.toString('hex');
 				var now = Date.now() + 3600000;
 				User.update({email: email},{
@@ -203,7 +157,7 @@ module.exports = {
 					resetTokenExpiresAfter: now
 				})	
 				.then(function(user){
-					var tokenUrl = 'https://www.bidio.co' + '/reset/' + token;
+					var tokenUrl = 'https://www.cre8bid.io' + '/reset/' + token;
 					var data = {tokenUrl: tokenUrl, username: user.firstName || user.email};
 					console.log(data);
 		            return emailService.sendTemplate('reset', user[0].email, 'Reset Password', data);
@@ -214,11 +168,7 @@ module.exports = {
 					//}
 					/*send success message here*/
 					return res.redirect("/forgot/success");
-				})
-				.fail(function(err){
-					res.negotiate(err);
 				});
-
 			});
 		});
 	},
@@ -233,13 +183,11 @@ module.exports = {
 				req.flash("error", "Reset token is invalid or expired");
 				res.redirect("/reset/" + token);
 			}
-
 			/*shouldnt have to throw an error here but make sure only users who have
 			local auth setup can get here*/
 			var localPassport = user[0].passports.filter(function(passport){
 				return passport.protocol == "local";
 			})[0];
-
 			Passport.update({id: localPassport.id}, {password: newPassword})
 			.then(function(user){
 				if (!user.length){
@@ -247,13 +195,7 @@ module.exports = {
 					res.redirect("/reset/" + token);
 				}
 				return res.redirect("/reset-success");
-			})
-			.fail(function(err){
-				res.negotiate(err);
 			});
-		})
-		.fail(function(err){
-			res.negotiate(err);
 		});
 	}
 };

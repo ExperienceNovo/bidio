@@ -116,7 +116,7 @@ module.exports.sockets = {
 
   /***************************************************************************
   *                                                                          *
-  * This custom afterDisconnect function will be run each time a socket         *
+  * This custom afterDisconnect function will be run each time a socket      *
   * disconnects                                                              *
   *                                                                          *
   ***************************************************************************/

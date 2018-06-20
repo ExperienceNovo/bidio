@@ -1,27 +1,22 @@
 /**
- *CampaignController
+ * CampaignController
  *
  * @description :: Server-side logic for managing Campaigns
- * @help        :: See http://links.sailsjs.org/docs/controllers
+ *
  */
 var _ = require('lodash');
 
+//TODO: AUDIT AND REFACTOR
 module.exports = {
 
 	check: function(req,res){
-
 		var params = req.params.all();
-
 		Campaign.find(params)
 		.then(function(result){
-			if (result.length){
-				return res.send(400, "Record already exists");
-			}
+			if (result.length){return res.send(400, "Record already exists");}
 			return res.send(200);
 		})
-		.catch(function(err){
-			return res.negotiate(err);
-		})
+		.catch(function(err){return res.negotiate(err);})
 	},
 
 	getAll: function(req, res) {
@@ -31,9 +26,7 @@ module.exports = {
 			Campaign.subscribe(req, models);
 			res.json(models);
 		})
-		.catch(function(err) {
-			console.log(err);
-			return res.negotiate(err);			
+		.catch(function(err) {console.log(err);return res.negotiate(err);			
 		});
 	},
 
@@ -45,9 +38,7 @@ module.exports = {
 			Campaign.subscribe(req, models);
 			return res.json(models);
 		})
-		.catch(function(err) {
-			console.log(err);
-			return res.negotiate(err);
+		.catch(function(err) {console.log(err);return res.negotiate(err);
 		});
 	},
 
@@ -57,9 +48,7 @@ module.exports = {
 			Campaign.subscribe(req, model);
 			res.json(model);
 		})
-		.catch(function(err) {
-			res.send(404);
-		});
+		.catch(function(err) {res.send(404);});
 	},
 
 	getFeatured: function(req, res) {
@@ -68,9 +57,7 @@ module.exports = {
 			Campaign.subscribe(req, model);
 			res.json(model);
 		})
-		.catch(function(err) {
-			res.send(404);
-		});
+		.catch(function(err) {res.send(404);});
 	},
 
 	getByMember: function(req, res) {
@@ -79,9 +66,7 @@ module.exports = {
 			Campaign.subscribe(req, model);
 			res.json(model);
 		})
-		.catch(function(err) {
-			res.send(404);
-		});
+		.catch(function(err) {res.send(404);});
 	},
 
 	getByUrlTitle: function(req, res) {
@@ -89,17 +74,13 @@ module.exports = {
 		.populate('user')
 		.populate('bids', {where: {isActive: true}})
 		.then(function(campaign){
-			if (!campaign.published){
-				//error handling here
-				return res.redirect("/campaigns")
-			}
-
+			//error handling here
+			if (!campaign.published){return res.redirect("/campaigns")}
 			return [campaign, Promise.all(
 				campaign.bids.map(function(bid){
 					return Video.findOne(bid.video)
 				})
 			)];
-
 		})
 		//gotta work on this -->
 		.spread(function(campaign, videos){
@@ -133,16 +114,13 @@ module.exports = {
 				console.log(bid)
 				bid.video.user = users[i]
 			});
-
 			return campaign;
 		})
 		.then(function(model) {
 			Campaign.subscribe(req, model);
 			res.json(model);
 		})
-		.catch(function(err) {
-			res.negotiate(err);
-		});
+		.catch(function(err) {res.negotiate(err);});
 	},
 
 	// getSubmittedVideos: function(req, res) {
@@ -158,11 +136,7 @@ module.exports = {
 	// },
 
 	create: function (req, res) {
-
-		if (req.user.id != req.param("user")){
-			return res.send(400, "Wrong User");
-		}
-
+		if (req.user.id != req.param("user")){return res.send(400, "Wrong User");}
 		var model = {
 			title: req.param('title'),
 			videoUrl: req.param('videoUrl'),
@@ -176,12 +150,9 @@ module.exports = {
 			campaignContent: req.param('campaignContent'),
 			user: req.param('user')
 		};
-
 		Campaign.create(model)
 		.exec(function(err, campaign) {
-			if (err) {
-				return console.log(err);
-			}
+			if (err) {return console.log(err);}
 			else {
 				Campaign.publishCreate(campaign);
 				res.json(campaign);
@@ -190,97 +161,38 @@ module.exports = {
 	},
 
 	update: function(req,res){
-
 		var id = req.param('id');
-
 		var model = {};
-
-		if(req.param('title')){
-	    	model.title = req.param('title');
-	    }
-
-		if(req.param('doesRedirect')){
-	    	model.doesRedirect = req.param('doesRedirect');
-	    }
-
-		if(req.param('price')){
-	    	model.price = req.param('price');
-	    }
-
-		if(req.param('intro')){
-	    	model.intro = req.param('intro');
-	    }
-
-		if(req.param('prompt')){
-	    	model.prompt = req.param('prompt');
-	    }
-		
-		if(req.param('campaignContent')){
-	    	model.campaignContent = req.param('campaignContent');
-	    }
-
-		if(req.param('videoUrl')){
-	    	model.videoUrl = req.param('videoUrl');
-	    }
-
-		if(req.param('published')){
-	    	model.published = req.param('published');
-	    }
-
-		if(req.param('bannerUrl')){
-	    	model.bannerUrl = req.param('bannerUrl');
-	    }
-
-		if(req.param('campaignImageUrl')){
-	    	model.campaignImageUrl = req.param('campaignImageUrl');
-	    }
-
-		if(req.param('user')){
-	    	model.user = req.param('user');
-	    }
-
-		if(req.param('redirectUrl')){
-	    	model.redirectUrl = req.param('redirectUrl');
-	    }
-
-	    if(req.param('contributionGoal')){
-	    	model.contributionGoal = req.param('contributionGoal')
-	    }
-
-	    if(req.param('maxContributionPerVideo')){
-	    	model.maxContributionPerVideo = req.param('maxContributionPerVideo')
-	    }
-
+		if(req.param('title')){model.title = req.param('title');}
+		if(req.param('doesRedirect')){model.doesRedirect = req.param('doesRedirect');}
+		if(req.param('price')){model.price = req.param('price');}
+		if(req.param('intro')){model.intro = req.param('intro');}
+		if(req.param('prompt')){model.prompt = req.param('prompt');}
+		if(req.param('campaignContent')){model.campaignContent = req.param('campaignContent');}
+		if(req.param('videoUrl')){model.videoUrl = req.param('videoUrl');}
+		if(req.param('published')){model.published = req.param('published');}
+		if(req.param('bannerUrl')){model.bannerUrl = req.param('bannerUrl');}
+		if(req.param('campaignImageUrl')){model.campaignImageUrl = req.param('campaignImageUrl');}
+		if(req.param('user')){model.user = req.param('user');}
+		if(req.param('redirectUrl')){model.redirectUrl = req.param('redirectUrl');}
+	    if(req.param('contributionGoal')){model.contributionGoal = req.param('contributionGoal')}
+	    if(req.param('maxContributionPerVideo')){model.maxContributionPerVideo = req.param('maxContributionPerVideo')}
 		Campaign.update({id: id}, model)
 		.then(function(model){
 			Campaign.publishUpdate(model[0].id, model);
 			res.json(model);
 		});
-
-
 	},
 
 	destroy: function (req, res) {
 		var id = req.param('id');
-		if (!id) {
-			return res.badRequest('No id provided.');
-		}
-		//console.log('campaign')
-
+		if (!id) {return res.badRequest('No id provided.');}
 		// Otherwise, find and destroy the model in question
 		Campaign.findOne(id).exec(function(err, model) {
-			if (err) {
-				return res.serverError(err);
-			}
-			if (!model) {
-				return res.notFound();
-			}
-
+			if (err) {return res.serverError(err);}
+			if (!model) {return res.notFound();}
 			Campaign.destroy(id, function(err) {
-				if (err) {
-					return res.serverError(err);
-				}
-
+				if (err) {return res.serverError(err);}
 				Campaign.publishDestroy(model.id);
 				return res.json(model);
 			});

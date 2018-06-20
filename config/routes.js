@@ -156,11 +156,8 @@ module.exports.routes = {
   'post /api/user/reset/:token': 'UserController.reset',
   'post /api/user/:id': 'UserController.update',
   'delete /api/user/:id': 'UserController.destroy',
-  
   'get /api/wallet/:address': 'UserController.getBalance',
-
   'get /api/token': 'UserController.getTokenBalance',
-
 
   /**
   *	Video Routes
@@ -186,8 +183,6 @@ module.exports.routes = {
   'post /api/view': 'ViewController.create',
 
   '/.well-known/acme-challenge/BpvpaFW_vQYWpPngCNXw91WGlHuoBN1njWIbOM_qRbw': 'HomeController.ssl',
-  '/.well-known/acme-challenge/Wd3QJxLaf73zK9F9-46blrISyzuic3-p2Q8VHeOLzBc': 'HomeController.ssl2',
-
 
   // If a request to a URL doesn't match any of the custom routes above, it is matched
   // against Sails route blueprints.  See `config/blueprints.js` for configuration options

@@ -10,9 +10,7 @@
  */
 
 module.exports.bootstrap = function(cb) {
-
-  // It's very important to trigger this callback method when you are finished
-  // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
+  //sails.config.secret = process.env.SECRET;
   intervalService.intervalService();
   sails.services.passport.loadStrategies();
   sails.services.emailservice.loadTemplates().then(function(){

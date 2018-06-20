@@ -1,16 +1,17 @@
 /**
- * ViewController
+ * SearchController
  *
  * @description :: Server-side logic for managing views
- * @help        :: See http://links.sailsjs.org/docs/controllers
+ *
  */
 
 module.exports = {
-
 	search: function (req, res) {
+		//TODO: REFACTOR INTO API FRIENDLY REQ.QUERY
 		var searchQuery = req.param('searchQuery');
 		var limit = req.param('limit');
 		var skip = req.param('skip');
+		//TODO: MULTIMODEL SEARCH | MORE COMPLEX EVM LOGGING LOGIC..
 		Video.find()
 		.limit(limit)
 		.skip(skip)
@@ -24,9 +25,6 @@ module.exports = {
 			Video.watch(req);
 			Video.subscribe(req, models);
 			res.json(models);
-		})
-		.fail(function(err) {
-			// An error occured
 		});
 	},
 };

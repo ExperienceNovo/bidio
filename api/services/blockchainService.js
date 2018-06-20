@@ -3,20 +3,28 @@ var Web3 = require('web3');
 var web3 = new Web3();
 var Q = require('q');
 
-var Personal = require('web3-eth-personal');//ec2-54-212-193-239.us-west-2.compute.amazonaws.com
-var personal = new Personal('http://ec2-54-212-193-239.us-west-2.compute.amazonaws.com:8545');//http://172.31.19.250
+var Personal = require('web3-eth-personal');
+
+//TODO: PEERCRE8XYZ | AUDIT
+var personal = new Personal('http://ec2-54-212-193-239.us-west-2.compute.amazonaws.com:8545');
 
 if (typeof web3 !== 'undefined') {web3 = new Web3(web3.currentProvider);}
+
+//TODO: AUDIT
 else {web3 = new Web3(new Web3.providers.HttpProvider("http://ec2-54-212-193-239.us-west-2.compute.amazonaws.com:8545"));}
 web3.setProvider(new Web3.providers.HttpProvider('http://ec2-54-212-193-239.us-west-2.compute.amazonaws.com:8545'));
-//ws://172.31.19.250:8546
 
 //WARNING: sketch security --> need governace code.
 //SOLVE THE GAS PROBLEM!
-personal.unlockAccount("0xc2bb26082403cc1fb0e75769559c85be14ae95a3","create", 1000000)
-var masterAccount = '0xc2bb26082403cc1fb0e75769559c85be14ae95a3';
 
-//ERC88
+//WARNING: CREDENTIALS
+personal.unlockAccount(sails.config.secret.MASTERACCT.address, sails.config.secret.MASTERACCT.secret, 1000000);
+
+var masterAccount = sails.config.secret.MASTERACCT.address;
+
+//TODO: CONTRACT REGISTERY
+
+//ERC888
 var viewTokenAddress = '0xF0f36c3A545fD00191ED8392028e94eE6d379f17';
 
 //BINARYMARKET
@@ -25,7 +33,6 @@ var marketAddress = '0xc74B8C27fBaD80eDbAb2D9549D37EBfd54ca23D0'
 //MULTIDMARKET
 //THIS IS REAL INNOVATION
 //var marketAddress = '0x12fd8bb95ccdcab34c257a4e80727154e21081ef';
-
 var contentAddress = '0x499a2c6452818F6c34aE74e2c4b00C4a65c40D22';
 var userAddress = '0x499a2c6452818F6c34aE74e2c4b00C4a65c40D22';
 var bidAddress = '0x499a2c6452818F6c34aE74e2c4b00C4a65c40D22';

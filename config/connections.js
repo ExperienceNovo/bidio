@@ -18,11 +18,7 @@
  * For more information on configuration, check out:
  * http://sailsjs.org/#/documentation/reference/sails.config/sails.config.connections.html
  */
+
 module.exports.connections = {
-	productionMongoHqDb: {
-		adapter: 'sails-mongo',
-		url: 'mongodb://heroku_wds9j5tq:i54cta42llqeu518u7s5o6gnl4@ds011790.mlab.com:11790/heroku_wds9j5tq'
-		//url: process.env.MONGOLAB_URI
-	}
 };
 

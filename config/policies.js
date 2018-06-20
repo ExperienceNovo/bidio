@@ -29,8 +29,6 @@ module.exports.policies = {
   '*': true,
   '*': [ 'passport' ]
 
-  // '*': true,
-
   /***************************************************************************
   *                                                                          *
   * Here's an example of mapping some policies to run before a controller    *
@@ -38,7 +36,6 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 	// RabbitController: {
-
 		// Apply the `false` policy as the default for all of RabbitController's actions
 		// (`false` prevents all access, which ensures that nothing bad happens to our rabbits)
 		// '*': false,
@@ -51,4 +48,5 @@ module.exports.policies = {
 		// before letting any users feed our rabbits
 		// feed : ['isNiceToAnimals', 'hasRabbitFood']
 	// }
+  
 };

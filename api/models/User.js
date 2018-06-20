@@ -1,3 +1,9 @@
+/**
+* User.js
+*
+* @description :: User Model..
+*/
+
 module.exports = {
     attributes: {
         username: {

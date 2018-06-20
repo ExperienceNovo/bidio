@@ -6,7 +6,6 @@ module.exports = {
 		var args = Array.prototype.slice.call(arguments);
 		var prePromise = args.shift();
 		var that = this;
-
 		return new Promise(function(resolve,reject){
 			prePromise.apply(that, args.concat(function(err,result){
 				if (err) reject(err);
@@ -14,7 +13,6 @@ module.exports = {
 			}));
 		});
 	},
-
 	guid: function(){
 	  function s4() {
 	    return Math.floor((1 + Math.random()) * 0x10000)

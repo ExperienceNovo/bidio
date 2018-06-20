@@ -1,22 +1,16 @@
 /**
- * Click.js
- *
- * @description :: TODO: You might write a short summary of how this model works and what it represents here.
- * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
- */
+* Click.js
+*
+* @description :: Click Model...
+*
+*/
 
 module.exports = {
 
     attributes: {
-        video: {
-            model: 'video',
-        },
-        user: {
-            model: 'user',
-        },
-        bid: {
-        	model: 'bid',
-        }
+        video: {model: 'video'},
+        user: {model: 'user'},
+        bid: {model: 'bid'}
     },
 
     beforeCreate: function(model, next) {
@@ -48,7 +42,6 @@ module.exports = {
                 value: parseFloat(-1*bid[0].value),
             };
             console.log(newModel);
-
             //subtract credit from sponsor
             Credit.create(newModel).then(function(credit){
                 //Credit.publishUpdate(credit);

@@ -2,7 +2,7 @@
  * ViewController
  *
  * @description :: Server-side logic for managing views
- * @help        :: See http://links.sailsjs.org/docs/controllers
+ *
  */
 
 module.exports = {
@@ -17,6 +17,7 @@ module.exports = {
     	res.json({});
 	},
 
+	//TODO: GETSOME
 	getByVideo: function(req, res) {
 		View.find()
 		.where({video:req.param('id')})
@@ -25,11 +26,10 @@ module.exports = {
 			View.subscribe(req, model);
 			res.json(model);
 		})
-		.catch(function(err) {
-			res.send(404);
-		});
+		.catch(function(err) {res.send(404);});
 	},
 
+	//TODO: PROTOCOL UPDATE
 	create: function (req, res) {
 		var model = {
 			user: req.param('user'),
@@ -51,15 +51,11 @@ module.exports = {
 							Video.publishUpdate(video[0].id, video[0]);
 						});
 					})
-					.catch(function(err){
-						return res.negotiate(err);
-					})
-
+					.catch(function(err){return res.negotiate(err);})
 					//Bid.update({id: req.param('bid')}, {viewCount:viewCount}).exec(function afterwards(err, updated){
 						//if (err) {return;}
 						//else{Bid.publishUpdate(updated.toJSON())}
 					//});
-
 				});
 
 				//VIEWER
