@@ -55,7 +55,7 @@ module.exports = {
   },
 
   afterCreate: function(model, next){
-        var bannerUrl = ['images/banner.jpeg', 'images/panel-3bg2.jpg', 'images/panel-4bg.jpg', 'images/panel-1bg.jpg', 'images/creator-hero.jpg', 'images/sponsor-hero.jpg', 'images/natural.jpg' ,'images/panel-2bg.jpg', 'images/intro.jpg'];
+        var bannerUrl = ['images/banner.jpeg', 'images/panel-3bg2.jpg', 'images/panel-4bg.jpg', 'images/panel-1bg.jpg', 'images/creator-hero.png', 'images/sponsor-hero.png', 'images/natural.jpg' ,'images/panel-2bg.jpg', 'images/intro.jpg'];
         var pictureUrl = ['images/silhouette_orange.jpg', 'images/bidio_symbol.png', 'images/bidio_logo.png'];
         var bannerInt = Math.floor(Math.random() * (bannerUrl.length));
         var pictureInt = Math.floor(Math.random() * (pictureUrl.length));

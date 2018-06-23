@@ -96,7 +96,6 @@ module.exports.intervalService = function(){
 	'https://www.youtube.com/watch?v=HJb_rI1ugcU'];
 
 	for (x in rhysUrl){
-		//if (x<2){youtubeToS3(rhysUrl[x], '5aa712313909b60400b7a536');}
 		//youtubeToS3(rhysUrl[x], '5aa712313909b60400b7a536');
 	}
 
