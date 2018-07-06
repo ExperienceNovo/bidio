@@ -5,7 +5,6 @@
  *
  */
 
-
 var _ = require('lodash');
 var fs = require("fs");
 var ffmpeg = require('fluent-ffmpeg');
@@ -104,9 +103,9 @@ module.exports = {
 		//WARNING: CREDENTIALS
 		var options = {
 			adapter: require("skipper-s3"),
-			key: process.env.SECRET.AMAZON.key,
-		 	secret: process.env.SECRET.AMAZON.secret,
-		 	bucket: process.env.SECRET.AMAZON.bucket,
+			key: sails.config.secret.key,
+		 	secret: sails.config.secret.AMAZON.secret,
+		 	bucket: sails.config.secret.AMAZON.bucket,
 		}
 		//console.log(req.file('video'))
 		var byteCount = req.file('video')._files[0].stream.byteCount
@@ -149,9 +148,10 @@ module.exports = {
 
 	create: function (req, res) {
 		var model = {
-			title: req.param("title"),
-			description: req.param("description"),
 			amazonUrl: req.param("amazonUrl"),
+			description: req.param("description"),
+			tags: req.param("tags"),
+			title: req.param("title"),
 			urlTitle: req.param("urlTitle"),
 			user: req.user.id
 		};
@@ -167,19 +167,14 @@ module.exports = {
 	update: function(req, res) {
 		var id = req.param('id');
 		var model = {id: id};
-		if (req.param("title")){model.title = req.param("title");}
-		if (req.param("description")){model.description = req.param("description");}
 		if (req.param("approved")){model.approved = req.param("approved");}
+		if (req.param('clicked')){model.click = {video: id}; if (req.user){model.click.user = req.user.id;}}
+		if (req.param("description")){model.description = req.param("description");}
 		if (req.param("minimumPrice")){model.minimumPrice = req.param("minimumPrice");}
-		if (req.param('clicked')){
-			model.click = {video: id};
-			if (req.user){model.click.user = req.user.id;}
-			console.log('CLICK')
-		}
-		console.log(model)
+		if (req.param("tags")){model.tags = req.param("tags");}
+		if (req.param("title")){model.title = req.param("title");}
 		Video.update({id: id}, model)
 		.then(function(result){
-			console.log(result)
 			return res.json(result);
 		})
 		.catch(function(err){return res.negotiate(err);})

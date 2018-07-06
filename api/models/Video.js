@@ -1,14 +1,45 @@
 /**
-* Video.js
+* Content.js
 *
-* @description :: Video Model..
+* @description :: Content Model.
 *
 */
 
 module.exports = {
 
 	attributes: {
-
+        amazonUrl: {
+            type: 'string',
+            required: true
+        },
+        bids: {
+            collection: 'bid',
+            via: 'video'  
+        }
+        clickCount: {
+            type: 'integer',
+            required: true,
+            defaultsTo: 0
+        },
+        clicks: {
+            collection: 'click',
+            via: 'video'
+        },
+        description: {
+            type: 'string',
+            required: true
+        },
+        liveViewCount:{
+            type: 'integer',
+            defaultsTo: 0
+        },
+        thumbnailUrl: {
+            type: 'string',
+            defaultsTo: '/images/video-overlay.png'
+        },
+        tags: {
+            type: 'string',
+        },
         title: {
             type: 'string',
             required: true,
@@ -22,49 +53,19 @@ module.exports = {
             required: true,
             unique: true
         },
-        amazonUrl: {
-            type: 'string',
-            required: true
-        },
-        description: {
-            type: 'string',
-            required: true
-        },
         user: {
             model: 'user',
             required: true
-        },
-        thumbnailUrl: {
-            type: 'string',
-            defaultsTo: '/images/video-overlay.png'
-        },
-        views: {
-            collection: 'view',
-            via: 'video'
-        },
-        clicks: {
-            collection: 'click',
-            via: 'video'
         },
         viewCount: {
             type: 'integer',
             required: true,
             defaultsTo: 0
         },
-        liveViewCount:{
-            type: 'integer',
-            defaultsTo: 0
-        },
-        clickCount: {
-            type: 'integer',
-            required: true,
-            defaultsTo: 0
-        },
-        bids: {
-            collection: 'bid',
-            via: 'video'  
-        }
-        
+        views: {
+            collection: 'view',
+            via: 'video'
+        }, 
     },
 
     beforeValidate: function(values, cb) {

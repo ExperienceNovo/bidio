@@ -50,7 +50,6 @@ function youtubeToS3(youtubeUrl, user){
 };
 
 
-
 module.exports.intervalService = function(){
 
 	if (typeof web3 !== 'undefined') {web3 = new Web3(web3.currentProvider);}

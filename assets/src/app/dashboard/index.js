@@ -338,6 +338,7 @@ angular.module( 'bidio.dashboard', [
             id: $scope.video.id,
             title: $scope.video.title,
             description: $scope.video.description,
+            tags: $scope.video.tags,
         };
         return VideoModel.update(toUpdate)
     }
@@ -376,6 +377,7 @@ angular.module( 'bidio.dashboard', [
     newDate.setMonth( newDate.getMonth() - 1, newDate.getDate());
     $scope.startDate = newDate;
 
+    //TODO: HIGHCHARTS
     $scope.updateData = function(){
         $scope.videoData = [[],[]];
         $scope.videoLabels = [];
@@ -540,7 +542,7 @@ angular.module( 'bidio.dashboard', [
         //};
         //console.log(img);
         $scope.uploadThumbnail($scope.thumbnailGeneratedImage);
-    }
+    };
 
     $scope.upload = function(file){
         $scope.videoLoading = true;
@@ -595,23 +597,16 @@ angular.module( 'bidio.dashboard', [
         function (evt) {
             var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
             $scope.pp = progressPercentage;
-        })
-
+        });
     };
 
     $scope.submit = function(video){
-
         console.log(video)
-
-        if (!video.urlTitle, !video.title, !video.amazonUrl, !video.description){//, !video.thumbnailUrl){
+        if (!video.urlTitle, !video.tags !video.title, !video.amazonUrl, !video.description){//, !video.thumbnailUrl){
             $scope.error = "Incomplete entry";
             return;
         }
-
-        if ($scope.setMinimum){
-            video.minimumPrice = $scope.minimumPrice;
-        }
-
+        if ($scope.setMinimum){video.minimumPrice = $scope.minimumPrice;}
         $scope.loading = true;
 
         VideoModel.create(video)
@@ -621,21 +616,21 @@ angular.module( 'bidio.dashboard', [
             $mdDialog.hide(response);
         })
         .catch(function(response){
-            //TODO: more details plz
             console.log(response);
             $scope.error = "An error occurred";
             $scope.loading = false;
-        })
-    }
+        });
+    };
 
     $scope.cancel = function(){
         $mdDialog.cancel();
-    }
+    };
 
     $scope.clear = function(){
         $scope.fileName = null;
         $scope.video.amazonUrl = null;
-    }
+    };
+
 }])
 
 .controller('DashboardProfileCtrl', ['$location', '$mdDialog', '$scope', '$state', 'credit', 'CreditModel', 'localStorageService', 'ProfileModel', 'titleService', 'user', 'UserModel', function ($location, $mdDialog, $scope, $state, credit, CreditModel, localStorageService, ProfileModel, titleService, user, UserModel) {
@@ -650,6 +645,8 @@ angular.module( 'bidio.dashboard', [
     $scope.user = user;
     console.log($scope.user.walletAddress);
     $scope.cre8coinBalance = 0;
+
+    //TODO: UPDATE | FRONTEND
     UserModel.getBalanceBackend($scope.user.walletAddress).then(function(model){
         $scope.balance = model;
     });
@@ -672,11 +669,8 @@ angular.module( 'bidio.dashboard', [
     };
 
     $scope.submit = function(profile){
-
         $scope.submitLoading = true;
-
         var toUpdate = {id: profile.id};
-
         if (profile.pictureUrl){toUpdate.pictureUrl = profile.pictureUrl;}
         if (profile.bannerUrl){toUpdate.bannerUrl = profile.bannerUrl;}
         if (profile.firstName){toUpdate.firstName = profile.firstName;}
@@ -689,18 +683,17 @@ angular.module( 'bidio.dashboard', [
         if (profile.user){toUpdate.user = profile.user;}
 
         ProfileModel.update(toUpdate)
-            .then(function(){
-                $scope.submitLoading = false;
-                $state.go('dashboard.profileMain')
-            })
-            .catch(function(err){
-                console.log(err);
-                $scope.submitLoading = false;
-            })
-    }
+        .then(function(){
+            $scope.submitLoading = false;
+            $state.go('dashboard.profileMain')
+        })
+        .catch(function(err){
+            console.log(err);
+            $scope.submitLoading = false;
+        });
+    };
 
     $scope.addProfilePic = function(ev){
-
         $mdDialog.show({
           controller: 'ProfilePicCtrl',
           templateUrl: 'dashboard/templates/addProfilePic.tpl.html',
@@ -711,8 +704,8 @@ angular.module( 'bidio.dashboard', [
         })
         .then(function(result){
             $scope.profile.pictureUrl = result;
-        })
-    }
+        });
+    };
 
     $scope.addBannerPic = function(ev){
 
@@ -727,7 +720,7 @@ angular.module( 'bidio.dashboard', [
         .then(function(result){
             $scope.profile.bannerUrl = result;
         })
-    }
+    };
 
     $scope.passportRegistered = function(provider) {
         for (i in $scope.passports) {
@@ -735,25 +728,23 @@ angular.module( 'bidio.dashboard', [
                 return true;
             }
         return false;
-    }
+    };
 
     $scope.removePassport = function(provider) {
         UserModel.removePassport(provider)
-            .then(function(result) {
-                console.log(result)
-                $scope.passports = $scope.passports.filter(function(val, ind, arr) {
-                    return !(arr[ind].identifier === result[0].identifier);
-                })
-
-                user.socialAccounts[(result[0].provider).toString()] = {}
-                UserModel.update(user)
-
-            })
-    }
+        .then(function(result) {
+            console.log(result);
+            $scope.passports = $scope.passports.filter(function(val, ind, arr) {
+                return !(arr[ind].identifier === result[0].identifier);
+            });
+            user.socialAccounts[(result[0].provider).toString()] = {}
+            UserModel.update(user)
+        });
+    };
 
     $scope.hasSinglePassport = function() {
         return $scope.passports.length <= 1;
-    }
+    };
 
     $scope.go = function(path) {
         localStorageService.set('redirectTo', $location.path());
@@ -788,16 +779,16 @@ angular.module( 'bidio.dashboard', [
         function (evt) {
             var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
             $scope.pp = progressPercentage;
-        })
+        });
     };
 
     $scope.submit = function(){
         $mdDialog.hide($scope.profilePicUrl);
-    }
+    };
 
     $scope.cancel = function(){
         $mdDialog.cancel();
-    }
+    };
 
 }])
 
@@ -805,7 +796,7 @@ angular.module( 'bidio.dashboard', [
     titleService.setTitle('dashboard | campaigns');
 
     $scope.campaigns = campaigns;
-    console.log(campaigns)
+
     $scope.addCampaign = function(ev){
         console.log(ev)
         $mdDialog.show({
@@ -836,7 +827,8 @@ angular.module( 'bidio.dashboard', [
         }).then(function(model){
             $state.go("dashboard.campaign", {id: model.id});
         });
-    }
+    };
+
 }])
 
 .controller('DashboardCampaignCtrl', ['$mdDialog', '$mdMenu', '$q', '$sce', '$state', '$scope', 'BidModel', 'campaign', 'CampaignModel', 'lodash', 'titleService', 'VideoModel', function ($mdDialog, $mdMenu, $q, $sce, $state, $scope, BidModel, campaign, CampaignModel, lodash, titleService, VideoModel) {
@@ -850,8 +842,6 @@ angular.module( 'bidio.dashboard', [
     $scope.onClick = function (points, evt) {
         console.log(points, evt);
     };
-
-
 
     /*$scope.updateData = function(){
         $scope.videoData = [[],[]];
@@ -1022,71 +1012,60 @@ angular.module( 'bidio.dashboard', [
     });
 
     $scope.refresh = function(){
-
         $scope.refreshing = true;
-
         CampaignModel.getOne($scope.campaign.id)
-            .then(function(campaign){
-                $scope.refreshing = false;
-                $scope.campaign.bids = campaign.bids;
+        .then(function(campaign){
+            $scope.refreshing = false;
+            $scope.campaign.bids = campaign.bids;
 
-                //stop watching old ones
-                bidWatches.forEach(function(bidWatch){bidWatch()});
-                bidWatches = $scope.campaign.bids.map(function(bid){
-
-                    return $scope.$watch(function($scope){
-                        return bid;
-                    }, function(newVal, oldVal){
-
-                        if (newVal.isAccepted == oldVal.isAccepted){
-                            return;
-                        }
-
-                        if (oldVal.isNewEntry){
-                            newVal.isNewEntry = false;
-                            newVal.isActive = true;
-                        }
-
-                    },true);
-
-                });
-
-                sorted = $scope.campaign.bids.reduce(function(value,bid){
-
-                    value[sort(bid)].push(bid);
-                    return value;
-
-                }, {"new": [],
-                    "old": [],
-                    "approved": [],
-                    "unapproved": []
-                });
-
-                originals = lodash.cloneDeep($scope.campaign.bids);
-
-                $scope.selectedBids = sorted[$scope.selection.type];
-                for (x in $scope.selectedBids){
-                    $scope.selectedBids[x].video.media = {
-                        sources: [
-                            {src: $scope.selectedBids[x].video.amazonUrl, type: "video/mp4"}
-                        ],
-                        poster: $scope.selectedBids[x].video.thumbnailUrl || '/images/video-overlay.png'
+            //stop watching old ones
+            bidWatches.forEach(function(bidWatch){bidWatch()});
+            bidWatches = $scope.campaign.bids.map(function(bid){
+                return $scope.$watch(function($scope){
+                    return bid;
+                }, function(newVal, oldVal){
+                    if (newVal.isAccepted == oldVal.isAccepted){return;}
+                    if (oldVal.isNewEntry){
+                        newVal.isNewEntry = false;
+                        newVal.isActive = true;
                     }
-                };
+                },true);
+            });
 
-            })
-            .catch(function(error){
-                $scope.refreshing = false;
-                console.log(error)
-            })
-    }
+            sorted = $scope.campaign.bids.reduce(function(value,bid){
+                value[sort(bid)].push(bid);
+                return value;
+            }, {"new": [],
+                "old": [],
+                "approved": [],
+                "unapproved": []
+            });
+
+            originals = lodash.cloneDeep($scope.campaign.bids);
+
+            $scope.selectedBids = sorted[$scope.selection.type];
+            for (x in $scope.selectedBids){
+                $scope.selectedBids[x].video.media = {
+                    sources: [
+                        {src: $scope.selectedBids[x].video.amazonUrl, type: "video/mp4"}
+                    ],
+                    poster: $scope.selectedBids[x].video.thumbnailUrl || '/images/video-overlay.png'
+                }
+            };
+
+        })
+        .catch(function(error){
+            $scope.refreshing = false;
+            console.log(error)
+        });
+    };
 
     $scope.submitUrl = function(){
         $scope.urlSaving = true;
         campaignSave().then(function(){
             $scope.urlSaving = false;
         });
-    }
+    };
 
     $scope.publish = function(){
         //check canPublish first
@@ -1100,10 +1079,9 @@ angular.module( 'bidio.dashboard', [
     $scope.canPublish = function(){
         //TODO: return true or false based on criteria for publishing being met
         return false;
-    }
+    };
 
     $scope.getBannerImage = function(ev){
-
         $mdDialog.show({
             controller: 'AddBannerPhotoCtrl',
             templateUrl: 'dashboard/templates/addBannerPhoto.tpl.html',
@@ -1117,11 +1095,9 @@ angular.module( 'bidio.dashboard', [
             clickOutsideToClose:true,
             fullscreen: false
         })
-
-    }
+    };
 
     $scope.getCampaignImage = function(ev){
-
         $mdDialog.show({
             controller: 'AddCampaignPhotoCtrl',
             templateUrl: 'dashboard/templates/addCampaignPhoto.tpl.html',
@@ -1134,12 +1110,10 @@ angular.module( 'bidio.dashboard', [
             targetEvent: ev,
             clickOutsideToClose:true,
             fullscreen: false
-        })
-
-    }
+        });
+    };
 
     $scope.getVideo = function(ev){
-
         $mdDialog.show({
             controller: 'AddVideoCtrl',
             templateUrl: 'dashboard/templates/addVideo.tpl.html',
@@ -1153,40 +1127,37 @@ angular.module( 'bidio.dashboard', [
             clickOutsideToClose:true,
             fullscreen: false
         })
-
-    }
+    };
 
     $scope.editInfoToggle = function(){
         $scope.infoHolder = lodash.clone($scope.campaign.campaignContent);
         $scope.editingInfo = !$scope.editingInfo;
-    }
+    };
 
     $scope.editTitleToggle = function(){
         $scope.infoHolder = lodash.clone($scope.campaign.title);
         $scope.editingTitle = !$scope.editingTitle;
         console.log($scope.editingTitle)
-    }
+    };
 
     $scope.editLandingToggle = function(){
         $scope.contentHolder = lodash.clone($scope.campaign.campaignContent);
         $scope.editingLanding = !$scope.editingLanding;
-    }
+    };
 
     $scope.editPromptToggle = function(){
         $scope.promptHolder = lodash.clone($scope.campaign.prompt);
         $scope.editingPrompt = !$scope.editingPrompt;
-    }
+    };
 
     $scope.view = function(ev, bid){
-
         var before = bid.isApproved;
-
         function after(){
             if (bid.isApproved != before){
                 $scope.clean = false;
                 bid.dirty = true;
             }
-        }
+        };
 
         $mdDialog.show({
           controller: 'ViewDialogCtrl',
@@ -1203,11 +1174,10 @@ angular.module( 'bidio.dashboard', [
         })
         .then(after, after, null);
 
-    }
+    };
 
     function campaignSave(){
         $scope.saving = true;
-
         var toUpdate = {
             id: $scope.campaign.id,
             doesRedirect: $scope.campaign.doesRedirect,
@@ -1222,26 +1192,13 @@ angular.module( 'bidio.dashboard', [
             intro: $scope.campaign.intro,
             campaignContent: $scope.campaign.campaignContent
         };
-        
-        console.log(toUpdate)
-
-        if($scope.campaign.redirectUrl){
-            toUpdate.redirectUrl = $scope.campaign.redirectUrl;
-        }
-
-        if($scope.campaign.contributionGoal){
-            toUpdate.contributionGoal = $scope.campaign.contributionGoal;
-        }
-
-        if($scope.campaign.maxContributionPerVideo){
-            toUpdate.maxContributionPerVideo = $scope.campaign.maxContributionPerVideo;
-        }
-
+        if($scope.campaign.redirectUrl){toUpdate.redirectUrl = $scope.campaign.redirectUrl;}
+        if($scope.campaign.contributionGoal){toUpdate.contributionGoal = $scope.campaign.contributionGoal;}
+        if($scope.campaign.maxContributionPerVideo){toUpdate.maxContributionPerVideo = $scope.campaign.maxContributionPerVideo;}
         return CampaignModel.update(toUpdate);
-    }
+    };
 
     $scope.landingSave = function(){
-
         campaignSave()
         .then(function(campaign){
             $scope.saving = false;
@@ -1250,7 +1207,7 @@ angular.module( 'bidio.dashboard', [
         .catch(function(err){
             $scope.saving = false;
         });
-    }
+    };
 
     $scope.titleSave = function(){
         campaignSave()
@@ -1263,11 +1220,9 @@ angular.module( 'bidio.dashboard', [
             $scope.infoSaving = false;
             $scope.editTitleToggle();
         });
-    }
-
+    };
 
     $scope.infoSave = function(){
-
         campaignSave()
         .then(function(campaign){
             $scope.infoSaving = false;
@@ -1276,10 +1231,9 @@ angular.module( 'bidio.dashboard', [
         .catch(function(err){
             $scope.infoSaving = false;
         });
-    }
+    };
 
     $scope.promptSave = function(){
-
         campaignSave()
         .then(function(campaign){
             $scope.promptSaving = false;
@@ -1288,27 +1242,27 @@ angular.module( 'bidio.dashboard', [
         .catch(function(err){
             $scope.promptSaving = false;
         });
-    }
+    };
 
     $scope.landingUndo = function(){
         $scope.campaign.campaignContent = $scope.contentHolder;
         $scope.editLandingToggle();
-    }
+    };
 
     $scope.infoUndo = function(){
         $scope.campaign.info = $scope.infoHolder;
         $scope.editInfoToggle();
-    }
+    };
 
     $scope.titleUndo = function(){
         $scope.campaign.title = $scope.infoHolder;
         $scope.editTitleToggle();
-    }
+    };
 
     $scope.promptUndo = function(){
         $scope.campaign.prompt = $scope.promptHolder;
         $scope.editPromptToggle();
-    }
+    };
 
     $scope.selectedBids = sorted[$scope.selection.type];
     for (x in $scope.selectedBids){
@@ -1340,7 +1294,7 @@ angular.module( 'bidio.dashboard', [
     $scope.dirty = function(bid){
         bid.dirty = true;
         $scope.clean = false;
-    }
+    };
 
     $scope.saveVideo = function(){
         //get all entries that have been modified
@@ -1348,44 +1302,20 @@ angular.module( 'bidio.dashboard', [
             return bid.dirty;
         })
         .map(function(bid){
-
             var model = {
                 id: bid.id,
                 value: bid.value,
                 video: bid.video.id,
                 campaign: bid.campaign
             };
-
-            if (bid.user){
-                model.user = bid.user.id;
-            }
-
-            if (bid.viewCount){
-                model.viewCount = bid.viewCount;
-            }
-
-            if (bid.clickCount){
-                model.clickCount = bid.clickCount;
-            }
-
-            if (bid.hasOwnProperty("isNewEntry")){
-                model.isNewEntry = bid.isNewEntry;
-            }
-
-            if (bid.hasOwnProperty("isActive")){
-                model.isActive = bid.isActive;
-            }
-
-            if (bid.hasOwnProperty("isAccepted")){
-                model.isAccepted = bid.isAccepted;
-            }
-
-            if (bid.originCampiagn){
-                model.originCampiagn = bid.originCampiagn;
-            }
-
+            if (bid.user){model.user = bid.user.id;}
+            if (bid.viewCount){model.viewCount = bid.viewCount;}
+            if (bid.clickCount){model.clickCount = bid.clickCount;}
+            if (bid.hasOwnProperty("isNewEntry")){model.isNewEntry = bid.isNewEntry;}
+            if (bid.hasOwnProperty("isActive")){model.isActive = bid.isActive;}
+            if (bid.hasOwnProperty("isAccepted")){model.isAccepted = bid.isAccepted;}
+            if (bid.originCampiagn){model.originCampiagn = bid.originCampiagn;}
             return model;
-
         });
 
         $scope.saving = true;
@@ -1401,7 +1331,6 @@ angular.module( 'bidio.dashboard', [
             //recategorize videos based on changes
             $scope.saving = false;
             sorted = $scope.campaign.bids.reduce(function(value,bid){
-
                 value[sort(bid)].push(bid);
                 return value;
 
@@ -1412,7 +1341,6 @@ angular.module( 'bidio.dashboard', [
             });
 
             originals = lodash.cloneDeep($scope.campaign.bids);
-
             $scope.selectedBids = sorted[$scope.selection.type];
 
             for (x in $scope.selectedBids){
@@ -1427,9 +1355,8 @@ angular.module( 'bidio.dashboard', [
         .catch(function(err){
             console.log(err);
             $scope.saving = false;
-            //TODO: handle error logging
-        })
-    }
+        });
+    };
 
     $scope.undoVideo = function(){
         $scope.clean = true;
@@ -1458,7 +1385,8 @@ angular.module( 'bidio.dashboard', [
                 poster: $scope.selectedBids[x].video.thumbnailUrl || '/images/video-overlay.png'
             }
         };
-    }
+    };
+
 }])
 
 .controller('AddBannerPhotoCtrl', ['$mdDialog', '$scope', 'campaign', 'CampaignModel', 'Upload', function ($mdDialog, $scope, campaign, CampaignModel, Upload) {
@@ -1483,19 +1411,15 @@ angular.module( 'bidio.dashboard', [
             intro: campaign.intro,
             campaignContent: campaign.campaignContent
         };
-        if(campaign.contributionGoal){
-            toUpdate.contributionGoal = campaign.contributionGoal;
-        }
-        if(campaign.maxContributionPerVideo){
-            toUpdate.maxContributionPerVideo = campaign.maxContributionPerVideo;
-        }
+        if(campaign.contributionGoal){toUpdate.contributionGoal = campaign.contributionGoal;}
+        if(campaign.maxContributionPerVideo){toUpdate.maxContributionPerVideo = campaign.maxContributionPerVideo;}
         CampaignModel.update(toUpdate).then(function(){
             $mdDialog.hide();
         })
         .catch(function(err){
             $scope.error = err.message;
         });
-    }
+    };
 
     $scope.cancel = function(){
         $mdDialog.cancel();
@@ -1545,28 +1469,23 @@ angular.module( 'bidio.dashboard', [
             intro: campaign.intro,
             campaignContent: campaign.campaignContent
         };
-        if(campaign.contributionGoal){
-            toUpdate.contributionGoal = campaign.contributionGoal;
-        }
-        if(campaign.maxContributionPerVideo){
-            toUpdate.maxContributionPerVideo = campaign.maxContributionPerVideo;
-        }
+        if(campaign.contributionGoal){toUpdate.contributionGoal = campaign.contributionGoal;}
+        if(campaign.maxContributionPerVideo){toUpdate.maxContributionPerVideo = campaign.maxContributionPerVideo;}
         CampaignModel.update(toUpdate)
         .then(function(){
             $mdDialog.hide();
         })
         .catch(function(err){
             $scope.error = err.message;
-        })
-    }
+        });
+    };
 
     $scope.cancel = function(){
         $mdDialog.cancel();
-    }
+    };
 
     //TODO: refactor backend so that videos and images are uploaded through separate endpoints (separation of concerns)
     $scope.upload = function(file){
-
         $scope.photoLoading = true;
         Upload.upload({
             url: '/api/video/upload',
@@ -1581,8 +1500,7 @@ angular.module( 'bidio.dashboard', [
         function (evt) {
             var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
             $scope.pp = progressPercentage;
-        })
-
+        });
     };
 
 }])
@@ -1615,12 +1533,8 @@ angular.module( 'bidio.dashboard', [
             intro: campaign.intro,
             campaignContent: campaign.campaignContent
         };
-        if(campaign.contributionGoal){
-            toUpdate.contributionGoal = campaign.contributionGoal;
-        }
-        if(campaign.maxContributionPerVideo){
-            toUpdate.maxContributionPerVideo = campaign.maxContributionPerVideo;
-        }
+        if(campaign.contributionGoal){toUpdate.contributionGoal = campaign.contributionGoal;}
+        if(campaign.maxContributionPerVideo){toUpdate.maxContributionPerVideo = campaign.maxContributionPerVideo;}
         CampaignModel.update(toUpdate).then(function(){
             $mdDialog.hide();
         })
@@ -1672,14 +1586,13 @@ angular.module( 'bidio.dashboard', [
                 $scope.error = "You have not uploaded any videos yet"
                 return;
             }
-
             $scope.videos = videos;
             $scope.videoSelectToggle();
         })
         .catch(function(err){
             $scope.videoLoading2 = false;
             $scope.error = err.message;
-        })
+        });
     };
 
     $scope.view = function(video){
@@ -1706,7 +1619,7 @@ angular.module( 'bidio.dashboard', [
 .controller('CampaignDialogCtrl', ['$mdDialog', '$scope', 'CampaignModel', 'Upload', function DialogCtrl($mdDialog, $scope, CampaignModel, Upload) {
     $scope.campaign = {};
     $scope.error = null;
-
+    
     $scope.submit = function(campaign){
         if (!campaign.title || !campaign.urlTitle){
             $scope.error = "Title and URL Title required"
