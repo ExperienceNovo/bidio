@@ -15,7 +15,7 @@ module.exports = {
         bids: {
             collection: 'bid',
             via: 'video'  
-        }
+        },
         clickCount: {
             type: 'integer',
             required: true,
