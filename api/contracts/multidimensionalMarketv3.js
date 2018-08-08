@@ -49,7 +49,6 @@ contract multidimensionalMarket {
 
     //CREATE ORDER
     function createOrder(
-        address _token,
         address _member,
         string _type, 
         string _idSet1, 
@@ -59,7 +58,7 @@ contract multidimensionalMarket {
     ) public returns (bool success) {
 
         //TOKEN
-        ERC888 token = ERC888(_token);
+        ERC888 token = ERC888(0xF0f36c3A545fD00191ED8392028e94eE6d379f17);
         
         //CHECK IF ADDRESS HAS TOKENS FOR ORDER
         //string[] memory _idSet1 = split(_idSet1);
